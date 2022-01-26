@@ -12,11 +12,6 @@ const Header = (props) => {
        <Container className="shrink-header" id="shrink-header">
             <Row className="ck pc os app-navbar top-nav">
                 <div className=" col-sm-3">
-                  <div className="thedate">
-                    <span><i className="fa fa-clock-o" aria-hidden="true"></i></span>
-                          <span id="date-part" className="nav navbar-nav ss">{ "12:01" }
-                          </span>
-                  </div>
                   <div>
                       <a className="e logo" href="/" title="Betnare">
                       <img src={logo} alt="Betnare" title="Betnare" />

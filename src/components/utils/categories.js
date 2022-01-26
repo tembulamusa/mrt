@@ -11,8 +11,8 @@ const useCategories = (props) => {
 
     const getCategories = () => {
         let categories = getFromLocalStorage('categories');
-
-        if(categories !== null) {
+        console.log("Getting form localstorage has ", categories);
+        if(categories) {
            return categories;
         }
 
@@ -21,7 +21,6 @@ const useCategories = (props) => {
         makeRequest({url:endpoint, method:"get", data:null }).then((response) => {
             let {status, result} = response;                     
             if(status = 200) {
-                /* Will cache categories data for 5 minutes */
                 setLocalStorage('categories', result, 5*60*1000);
                 return result;
             } else {

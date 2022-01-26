@@ -12,8 +12,22 @@ export const SportItem = (props) => {
         } = props;
 
     const {spid} = useParams('sp');
+    const [activeClass, setActiveClass] = useState('');
 
-    const active_class = (sport_id == spid) ?? 'active';
+    const handleMenuToggle = () => {
+        if(activeClass === ''){
+            setActiveClass("active");
+        } else {
+            setActiveClass('');
+        }
+    }
+
+    useEffect(() => {
+        if (sport_id == spid) {
+            setActiveClass('active');
+        }
+    }, []);
+
     const default_img = 'default_sport';
     let sport_image = null;
 
@@ -24,8 +38,8 @@ export const SportItem = (props) => {
     }
     
     return (
-        <li className={`treeview ${active_class}`} >
-            <a href="#">
+        <li className={`treeview ${activeClass}`} >
+            <a href="#" onClick={handleMenuToggle}>
                 <span style={{"padding":0}}>
                    <img  
                        className="side-icon" 
@@ -40,7 +54,8 @@ export const SportItem = (props) => {
                       ([category_id, category]) => (
                           <CategoryItem 
                               category={category} 
-                              key={category_id}  
+                              key={category_id} 
+                              active_class={activeClass}
                               category_id={category_id} 
                                />
                       )
@@ -54,6 +69,12 @@ export const SportItem = (props) => {
 export const CategoryItem = (props) => {
     const {category, category_id } = props;
     const {ctid} = useParams('id');
+    const [activeClass, setActiveClass] = useState('');
+    useEffect(() => {
+        if(ctid == category_id){
+            setActiveClass('menu-open')
+        }
+    }, [])
     const active = ctid == category_id ? 'active': '';
     return (
         <li className={`treeview ${active}`}>
@@ -61,7 +82,7 @@ export const CategoryItem = (props) => {
                 <img className="side-icon" src={category.flag}/>
                 <span className="topl"> {category.category_name} </span>
             </a>
-            <ul className="treeview-menu second-child {ctid == category_id &&  'menu-open'}">
+            <ul className={`treeview-menu second-child ${activeClass}`}>
                 { 
                     category.competitions && 
                        Object.entries(category.competitions).map(

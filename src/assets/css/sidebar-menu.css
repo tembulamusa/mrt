@@ -32,15 +32,15 @@
 }
 
 .sidebar-menu > li.active > a {
-  background: #fe478a !important;
-  color: #fff !important;
+  background: #262e4a  !important;
+  opacity:1;
 }
 
 
 .sidebar-menu > li > .treeview-menu {
   margin: 0;
-  background: #fff;
-  border-top: 1px solid #6a273a;
+  background: #1f2b3d;
+  opacity:0.7
 }
     .sidebar-menu > li .label,
     .sidebar-menu > li .badge {
@@ -84,7 +84,7 @@
   padding: 5px 5px 5px 30px;
   display: block;
   font-size: 12px;
-  border-bottom: 1px solid #b0acad99;
+  border-bottom: 1px solid #28372f;
 }
         .sidebar-menu .treeview-menu > li > a > .fa {
           width: 20px; }
@@ -92,9 +92,8 @@
         .sidebar-menu .treeview-menu > li > a > .fa-angle-down {
           width: auto; }
 .sidebar-menu .treeview-menu > li > a:hover {
-    background:#cce6ff !important;
-    color: #000 !important;
-    opacity:0.8;
+    background:#30435f !important;
+    opacity:1;
 
 }
 .sidebar-menu .treeview-menu > li.active > a {
