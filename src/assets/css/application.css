@@ -121,7 +121,6 @@
 } 
 
 .betslip form {
-  color: #262424cc;
   margin-top: 10px;
   line-height: 1.3;
 }
@@ -197,9 +196,10 @@
   color: #000000;
 }
 .betslip {
-  background: #fff;
-  padding: 5px;
-  font-size: 14px;
+    background: #1c313b;
+    padding: 5px;
+    font-size: 14px;
+    opacity: 0.8;
 }
     .tab-content > .active, .pill-content > .active {
     display: block;
@@ -292,7 +292,7 @@ li.bet-option {
 .bet-type{font-size: 12px}
 
 .place-bet-btn {
-  background: #c91d56;
+  background: #4c2a3e;
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -307,10 +307,9 @@ li.bet-option {
 }
 
 .place-bet-btn.primary, .place_bet_button, #place_bet_button {
-  background: #fbd702 !important;
-  color: #000;
-  background-image: linear-gradient(#ffeb73 20%, #fbd702 70%) !important;
-  border: 1px solid #ddd;
+    background: #fbd702 !important;
+    color: #000;
+    border-radius: 2px;
 }
 
 .social-icons{
@@ -394,4 +393,19 @@ clear: both;
 }
 .payment-tabs-container .payment-tab{
 display: none;
+}
+.react-loading, .react-loading span{
+    width:100%;
+   background: #212931;
+   --base-color: #2b3640;
+   --highlight-color: #404f5f;
+}
+.react-loading-image, .react-loading-image span{
+   background: #212931;
+   --base-color: #2b3640;
+   --highlight-color: #404f5f;
+    width: fit-content;
+    float: left;
+}
+.react-loading-skeleton {
 }

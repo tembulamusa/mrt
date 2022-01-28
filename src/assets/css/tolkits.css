@@ -124,6 +124,7 @@ header, li a, .thedate span {
     width: 33.33333333%;
     float: left;
     text-align: center;
+    border-bottom: 1px solid #cc5500;
 }
 
 .cancel {
@@ -756,12 +757,6 @@ button {
     border-bottom: 5px solid #FFD800;
 }
 
-/*.gz {
-    width: 56%;
-    padding: 0px 8px !important;
-    background: transparent;
-}*/
-
 .f-list li a::after {
     color: #a8a6a6;
     content: "\f054";
@@ -771,11 +766,8 @@ button {
 }
 
 .bet {
-    /* background: #6d9915; */
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-
-    border: 1px solid #fff3;
 }
 
 .betslip-mobi {
@@ -837,7 +829,7 @@ button {
 }
 
 .shrink-header .e img {
-    max-width: 140px !important;
+    max-width: 200px !important;
 }
 
 .shrink-header .by form {
@@ -895,7 +887,7 @@ button {
 }
 
 .treeview-menu.menu-open {
-    background: #f5f5f5 !important;
+    background: #3f6878 !important;
 }
 
 .shrink-header .navbar-nav > li > a {
@@ -1645,9 +1637,9 @@ events-header {
 }
 
 .compt-teams {
-    font-size: 20px;
+    font-size: 12px;
     font-family: arial;
-    /* text-transform: uppercase; */
+    text-transform: uppercase !important;
 }
 
 .matches .top-matches button {
@@ -1692,14 +1684,13 @@ events-header {
     padding-bottom: 0;
 }
 
-.top-matches button:hover {
-    /*No rules for no hover*/
+.top-matches button.picked {
+    background: #f6ce1f !important
 }
 
 @media (hover: hover) {
     .top-matches button:hover {
         background: #f6ce1f !important;
-        color: #121212;
     }
 }
 
@@ -2191,11 +2182,10 @@ a:focus, a:hover {
 
 .betslip-header {
     clear: both;
-    background: #fbd702;
+    background: #4c372a;
     overflow: auto;
-    color: #000;
+    color: #fff;
     text-shadow: 0px 0px 1px #fbe2a4;
-    font-weight: bold;
     font-family: arial;
 }
 
@@ -3355,11 +3345,13 @@ input[type="checkbox"]:focus {
 }
 
 .by form {
-    color: #443b24;
-    font-size: 13px;
+    font-size: 12px;
     font-family: 'GothamBold', sans-serif;
     margin-top: 15px;
     overflow: hidden;
+    opacity:0.8;
+    color:#fff;
+    font-weight:normal;
 }
 
 #search-event form {
@@ -7485,10 +7477,6 @@ a.cq.active {
     margin-top: 5px;
 }
 
-.ps,
-.alert-dismissible {
-    padding-right: 35px;
-}
 
 .ps .close,
 .alert-dismissible .close {

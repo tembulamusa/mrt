@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/img/new/logo.png';
+import logo from '../../assets/img/logo.png';
 import ProfileMenu from './profile-menu';
 import HeaderLogin from './top-login';
 import HeaderNav from './header-nav';

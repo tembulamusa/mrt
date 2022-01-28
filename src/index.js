@@ -1,4 +1,5 @@
 import React,  { useContext, useEffect } from "react";
+
 import { render } from "react-dom";
 
 import { 
@@ -17,6 +18,7 @@ import './index.css';
 
 import Store, { Context }  from './context/store';
 import Index  from './components/index';
+import CompetitionsMatches  from './components/competition-matches';
 
 
 const container = document.getElementById("app");
@@ -25,6 +27,10 @@ render((
     <BrowserRouter>
         <Routes>
            <Route exact path = "/" element = { <Index /> }  />
+           <Route exact path = "/highlights" element = { <Index /> }  />
+           <Route exact path = "/upcoming" element = { <Index /> }  />
+           <Route exact path = "/tomorrow" element = { <Index /> }  />
+           <Route exact path = "/competition/:id" element = { <CompetitionsMatches /> }  />
        </Routes>
     </BrowserRouter>
     </Store>

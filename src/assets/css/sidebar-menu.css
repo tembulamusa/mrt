@@ -20,7 +20,7 @@
 
 }
 .treeview-menu.second-child {
-  background: #ede7eae6 !important;
+  background: #1c2737 !important;
 }
     .sidebar-menu > li > a {
   padding: 5px 5px 5px 15px;
@@ -97,7 +97,7 @@
 
 }
 .sidebar-menu .treeview-menu > li.active > a {
-    background:#ffcccc !important;
+    background:#0f4357 !important;
 }
 .sidebar-menu .treeview-menu > li.selected > a{
    background:#cce6ff !important;
