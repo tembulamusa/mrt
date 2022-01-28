@@ -70,7 +70,9 @@ const OddButton = (props) => {
     const [ucn, setUcn] = useState('');
     const [picked, setPicked] = useState('');
     const [oddValue, setOddValue] = useState(null);
-    const reference = useRef(match.match_id);
+    const [state, dispatch] = useContext(Context);                              
+    const ref = useRef();
+    let reference = match.match_id + "_selected";
 
     useEffect(() => {
         if(match){
@@ -95,6 +97,17 @@ const OddButton = (props) => {
             }
         }
     }, []);
+
+    useEffect(() => {
+        console.log("Picled on ", state?.[reference], "for ", ucn);
+        if(state?.[reference] ){
+            if(state?.[reference] == ucn){
+                setPicked('picked')
+            } else {
+                setPicked('');
+            }
+        } 
+    }, [state?.[reference]])
     
     const handleButtonOnClick = (event) => {
        let pmid = event.currentTarget.getAttribute("parent_match_id");
@@ -107,15 +120,18 @@ const OddButton = (props) => {
        let cstm = clean(mid + "" + stid + oddk)
 
        console.log("ucn", ucn, "cstm", cstm, "ref", reference.current); 
-       reference.current.classList.remove('picked');
        if(cstm == ucn) {
-               setPicked('picked')
+           if(picked == 'picked') {
+                setPicked('');
+           } else {
+               dispatch({type:"SET", key:reference, payload:cstm});
+           }
        }
     }
 
     return (
         <button 
-            ref={reference}
+            ref={ref}
             className={`home-team ${match.match_id} ${ucn} ${picked}`}
             hometeam={match.home_team}
             oddtype="1x2" 
