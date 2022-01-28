@@ -6,6 +6,12 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 
 import Skeleton from 'react-loading-skeleton'
+import {
+    addToSlip, 
+    removeFromSlip, 
+    clearSlip,
+} from '../utils/betslip';
+
 import 'react-loading-skeleton/dist/skeleton.css'
 
 
@@ -41,11 +47,6 @@ const MatchHeaderRow = (props) => {
     )
 }
 
-const addBet = (match_id, sub_type_id, special_bet_value, oddValue, mkt) => {
-   console.log("I picked ", match_id, sub_type_id, special_bet_value, oddValue, mkt);
-   console.log("ADD BET");
-}
-
 const SideBets = (props) => {
     const {match, theMatch} = props;
     const [picked, setPicked] = useState();
@@ -75,19 +76,26 @@ const OddButton = (props) => {
     let reference = match.match_id + "_selected";
 
     useEffect(() => {
+        let betslip = state?.betslip;
+        let uc = clean(
+            match.match_id 
+            + "" + match.sub_type_id 
+            + (match?.[mkt] || 'draw') 
+        );
+        if((betslip?.[match.match_id]?.match_id == match.match_id) 
+            && uc === betslip?.[match.match_id]?.ucn){
+            setPicked('picked');
+        }
+    }, [state?.betslip])
+
+    useEffect(() => {
         if(match){
-            console.log("loading match data", match);
             let uc = clean(
                 match.match_id 
                 + "" + match.sub_type_id 
                 + (match?.[mkt] || 'draw') 
             );
             setUcn(uc);
-
-            let picked = (theMatch?.bet_pick == match[mkt] && 
-                theMatch?.sub_type_id == match.sub_type_id) ? 'picked' : '';
-            setPicked(picked);
-
             if(mkt === 'home_team'){
                 setOddValue(match.odds.home_odd)
             } else if(mkt === 'away_team'){
@@ -99,7 +107,6 @@ const OddButton = (props) => {
     }, []);
 
     useEffect(() => {
-        console.log("Picled on ", state?.[reference], "for ", ucn);
         if(state?.[reference] ){
             if(state?.[reference] == ucn){
                 setPicked('picked')
@@ -117,15 +124,33 @@ const OddButton = (props) => {
        let oddk = event.currentTarget.getAttribute("odd_key"); 
        let  odd_value = event.currentTarget.getAttribute("odd_value"); 
        let  bet_type = event.currentTarget.getAttribute("odd_type"); 
+       let  home_team = event.currentTarget.getAttribute("home_team"); 
+       let  away_team = event.currentTarget.getAttribute("away_team"); 
        let cstm = clean(mid + "" + stid + oddk)
 
-       console.log("ucn", ucn, "cstm", cstm, "ref", reference.current); 
+       let slip = {
+           "match_id":mid,
+           "parent_match_id":pmid,
+           "special_bet_value": sbv,
+           "sub_type_id":stid,
+           "bet_pick":oddk,
+           "odd_value":odd_value,
+           "home_team":home_team,
+           "away_team":away_team,
+           "bet_type":bet_type,
+           "ucn":cstm,
+       }
+       
        if(cstm == ucn) {
+           let betslip;
            if(picked == 'picked') {
+                betslip = removeFromSlip(mid);
                 setPicked('');
            } else {
+               betslip = addToSlip(slip);
                dispatch({type:"SET", key:reference, payload:cstm});
            }
+           dispatch({type:"SET", key:"betslip", payload:betslip});
        }
     }
 
@@ -133,10 +158,10 @@ const OddButton = (props) => {
         <button 
             ref={ref}
             className={`home-team ${match.match_id} ${ucn} ${picked}`}
-            hometeam={match.home_team}
-            oddtype="1x2" 
-            bettype='prematch'
-            awayteam={match.away_team}
+            home_team={match.home_team}
+            odd_type="1x2" 
+            bet_type='prematch'
+            away_team={match.away_team}
             odd_value={oddValue}
             odd_key={match?.[mkt] || 'draw'}
             parent_match_id={match.parent_match_id}
@@ -199,7 +224,6 @@ const MatchList = (props) => {
     const [state, dispatch] = useContext(Context);                              
     const [matches, setMatches] = useState();
     useEffect(()=>{
-        console.log("Received a state change", state?.matches);
         if(state?.matches) {
             setMatches(state.matches);
         }

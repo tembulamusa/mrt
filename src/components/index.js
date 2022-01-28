@@ -11,6 +11,8 @@ import SearchBar from './header/search-bar';
 import MatchList from './matches/index';
 import Right from './right/index';
 
+import { getBetslip } from './utils/betslip' ;
+
 import useAxios from "../hooks/axios.hook";
 import { Context }  from '../context/store';
 
@@ -35,6 +37,13 @@ const Index = (props) => {
             abortController.abort();                                            
         };                                                                      
     }, [state?.page]);
+
+    useEffect(() => {
+        let betslip = getBetslip();
+        if(betslip){
+            dispatch({type:"SET", key:"betslip", payload:betslip});
+        }
+    }, []);
 
    return (
        <>

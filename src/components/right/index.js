@@ -24,11 +24,10 @@ const Right = (props) => {
                     <header>
                         <div className="betslip-header">
                             <span className="col-sm-2 bkmrk"><i className="fa fa-bookmark" aria-hidden="true"></i></span>
-                            <span className="col-sm-8 slp">Pay</span>
+                            <span className="col-sm-8 slp">BETSLIP</span>
                             <span className="col-sm-2 slip-counter">{props.betslip_count}</span>
                         </div>
                     </header>
-                    <img src={loader} className="loader"/>
                     <button id="slip-button-close" type="button" className="close mobi" aria-hidden="true">×</button>
                     <div id="betslip" className="betslip">
                         

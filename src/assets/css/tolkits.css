@@ -99,7 +99,7 @@ header, li a, .thedate span {
 }
 
 .bet-option:nth-child(2n) {
-    background: #fff;
+    background: #58849e;
 }
 
 #quick-login label {
@@ -2814,7 +2814,7 @@ ul,
 ol {
     margin-top: 0;
     margin-bottom: 0;
-    padding-left: 15px;
+    padding-left: 0px;
 }
 
 ul ul,
