@@ -1,5 +1,5 @@
 import React,  { useContext, useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Header from './header/header';
 import Footer from './footer/footer';
@@ -8,42 +8,36 @@ import banner from '../assets/img/banner.jpg';
 import CarouselLoader from './carousel/index';
 import MainTabs from './header/main-tabs';
 import SearchBar from './header/search-bar';
-import MatchList from './matches/index';
+import { MarketList } from './matches/index';
 import Right from './right/index';
-
-import { getBetslip } from './utils/betslip' ;
 
 import useAxios from "../hooks/axios.hook";
 import { Context }  from '../context/store';
 
-const Index = (props) => {
+const MatchAllMarkets = (props) => {
     const [page, setPage] = useState(1);
     const [state, dispatch] = useContext(Context);                              
     const {response, makeRequest} = useAxios()
-    const [tab, setTab] = useState('highlights');
-    const location = useLocation();
+    const params = useParams();
 
     useEffect(()=>{                                                             
         const abortController = new AbortController();                          
-        let tab =  location.pathname.replace("/","") || 'highlights'; 
-        let endpoint = "/v1/matches?page="+ (state?.page|| 1) +"&tab="+tab;     
-                                                                                
-        makeRequest({url:endpoint, method:"get", data:null }).then((response) => {
-            let {status, result} = response;                      
-            dispatch({type:"SET", key:"matches", payload:result});
-        });                                                                     
-                                                                                
+        if(!isNaN(+params.id)) {
+            console.log("Found an integer in ID",params.id);
+            let endpoint = "/v1/matches?id="+params.id; 
+                                                                                    
+            makeRequest({url:endpoint, method:"get", data:null }).then((response) => {
+                let {status, result} = response;                      
+                console.log("Received match result", result);
+                dispatch({type:"SET", key:"matchwithmarkets", payload:result});
+            });                                                                     
+        } else {
+           console.log("Attempting to load id", params.id);
+        }
         return () => {                                                          
             abortController.abort();                                            
         };                                                                      
-    }, [state?.page]);
-
-    useEffect(() => {
-        let betslip = getBetslip();
-        if(betslip){
-            dispatch({type:"SET", key:"betslip", payload:betslip});
-        }
-    }, []);
+    }, [params?.id]);
 
    return (
        <>
@@ -53,9 +47,7 @@ const Index = (props) => {
             <SideBar />
             <div className="gz home">
                 <div className="homepage">
-                    <CarouselLoader />
-                    <MainTabs tab={ location.pathname.replace("/","")}/>
-                    <MatchList />
+                    <MarketList />
                 </div> 
             </div>  
             <Right />
@@ -65,4 +57,4 @@ const Index = (props) => {
    )
 }
 
-export default Index
+export default MatchAllMarkets;

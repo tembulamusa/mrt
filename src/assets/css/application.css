@@ -164,7 +164,10 @@
     padding: 0px;
 }
 
-.inline-block{display: inline-block;}
+h4.inline-block{display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+}
 
 .side-icon {
   padding: 0 !important;
@@ -256,7 +259,7 @@ li.bet-option {
 
 .bet-body .clearfix {
   float: left;
-  margin-left: 16px;
+  margin:0;
 }
 
 .bet-value {
@@ -264,12 +267,11 @@ li.bet-option {
 }
 
 .bet-pick {
-  font-weight: 700;
   font-family: 'Montserrat', sans-serif;
-  /* line-height: 2.2; */
   float: left;
   margin-top: 5px;
   width: 100%;
+  color: #101b25;
 }
 .pay-method label {
   margin-bottom: 0;

@@ -406,23 +406,25 @@ header, li a, .thedate span {
 .matches {
     display: inline-block;
 }
-
-.match-detail button {
+.matches .top-matches .match-detail button {
     cursor: pointer;
-    /* background: #F3F3F3; */
-    background: #f9f9f9 !important;
-    border: 1px solid #777 !important;
+    border: 1px solid #3c5a6c !important;
     box-shadow: none !important;
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
-    border-radius: 0 !important;
-    color: #444 !important;
-    padding: 7px 10px !important;
-    line-height: 1;
+    border-radius: 1px !important;
+    color: #fff !important;
+    float: left;
+    min-width: 100%;
+    margin-right: 0px;
+    background: #334c5c;
+    border-top: none !important;
+    border-radius: 0px !important;
+    color: #fff !important;
 }
 
 .match-detail button .label {
-    color: #444444 !important;
+    color: #fff !important;
 }
 
 .yellow {
@@ -458,16 +460,24 @@ header, li a, .thedate span {
     color: #fff;
 }
 
-.home .header {
-    background: #ece7e7;
-    padding: 10px;
+.matches .top-matches.match {
+    padding: 0px 0px 0px 0px;
     opacity: 1;
     color: #292828 !important;
     font-size: 15px;
-    font-family: inherit;
-    font-weight: bold;
+    border: 1px solid #2a4054;
+    border-radius: 3px;
+    margin-bottom: 10px;
 }
 
+.matches .top-matches.header {
+    background: #101B25;
+    padding: 10px;
+    opacity: 1;
+    color: #fff !important;
+    font-size: 15px;
+    font-family: inherit;
+}
 .match-header {
     background: #63b9e4;
     color: #3b4367;
@@ -499,7 +509,7 @@ header, li a, .thedate span {
 }
 
 .events-header {
-    background: #0e131b;
+    background: #101B25;
     opacity:0.9;
     padding: 0;
 }
@@ -1664,7 +1674,7 @@ events-header {
 }
 
 .draw {
-    background: #d96189 !important;
+    background: #1e2d36 !important;
     color: #ffffff;
     font-weight: bold !important;
 }
@@ -2038,15 +2048,25 @@ img {
     vertical-align: middle;
     max-width: 100%;
 }
-
 .panel-header {
     background: #454545;
     color: #ffffff;
     padding: 10px;
     margin-top: 0px;
     line-height: 1;
+    border: 1px solid #101B25;
+    margin-bottom: 5px;
+    border-radius: 2px !important;
+    font-size: 18px;
+    font-family: ;
 }
 
+.panel-header .header-text, .panel-header .start-time {
+   text-align:center;
+   font-size:14px;
+   font-weight:normal;
+   opacity:0.7;
+}
 .match-detail .picked {
     background: #fdd835 !important;
     color: #000 !important;
@@ -4160,7 +4180,7 @@ fieldset[disabled] .fm.fl {
 }
 
 .primary-bg {
-    background: #c91d56;
+    background: #131728;
     color: #fff;
 }
 

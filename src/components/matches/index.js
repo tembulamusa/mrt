@@ -47,19 +47,34 @@ const MatchHeaderRow = (props) => {
     )
 }
 
+const MoreMarketsHeaderRow = (props) => {
+    const {home_team, away_team, game_id, category, competition, start_time} = props;
+    return (
+        <Container>
+          <Row className="panel-header primary-bg">
+             
+            <h4 className="inline-block"> {home_team} <small>VS</small> {away_team} </h4>
+            <Row className="header-text">
+               <Col>{category} {competition}</Col>
+            </Row>
+            <Row className="start-time">
+                 <Col>Start: {start_time }</Col>
+                 <Col>Game ID: {game_id} </Col> 
+            </Row>
+          </Row>
+        </Container>
+    )
+}
+
 const SideBets = (props) => {
-    const {match, theMatch} = props;
+    const {match} = props;
     const [picked, setPicked] = useState();
-    useEffect(()=>{
-        setPicked(
-            theMatch?.sub_type_id && theMatch?.sub_type_id === match.sub_type_id ? ' picked': '');
-    }, []);
 
     return (
 
         <div className={`col-sm-1 events-odd pad ${picked}`} >
             <a className="side" 
-                href={`match?id=${match.match_id}`}>+{match.side_bets}
+                href={`match/${match.match_id}`}>+{match.side_bets}
             </a>
         </div>
     )
@@ -67,7 +82,7 @@ const SideBets = (props) => {
 }
 
 const OddButton = (props) => {
-    const {theMatch, match, mkt} = props
+    const {match, mkt, detail} = props
     const [ucn, setUcn] = useState('');
     const [picked, setPicked] = useState('');
     const [oddValue, setOddValue] = useState(null);
@@ -80,7 +95,7 @@ const OddButton = (props) => {
         let uc = clean(
             match.match_id 
             + "" + match.sub_type_id 
-            + (match?.[mkt] || 'draw') 
+            + (match?.[mkt] ||match?.odd_key || 'draw') 
         );
         if((betslip?.[match.match_id]?.match_id == match.match_id) 
             && uc === betslip?.[match.match_id]?.ucn){
@@ -93,7 +108,7 @@ const OddButton = (props) => {
             let uc = clean(
                 match.match_id 
                 + "" + match.sub_type_id 
-                + (match?.[mkt] || 'draw') 
+                + (match?.[mkt] || match?.odd_key || 'draw') 
             );
             setUcn(uc);
             if(mkt === 'home_team'){
@@ -102,6 +117,8 @@ const OddButton = (props) => {
                 setOddValue(match.odds.away_odd)
             }else if(mkt === 'draw'){
                 setOddValue(match.odds.neutral_odd)
+            } else {
+                setOddValue(match.odd_value);
             }
         }
     }, []);
@@ -111,7 +128,13 @@ const OddButton = (props) => {
             if(state?.[reference].startsWith('remove.')){
                 setPicked('');
             } else {
-                if(state?.[reference] == ucn){
+                
+                let uc = clean(
+                    match.match_id 
+                    + "" + match.sub_type_id 
+                    + (match?.[mkt] ||match?.odd_key || 'draw') 
+                );
+                if(state?.[reference] == uc){
                     setPicked('picked')
                 } else {
                     setPicked('');
@@ -145,6 +168,7 @@ const OddButton = (props) => {
            "ucn":cstm,
        }
        
+       console.log("Handling on click", cstm, ucn);
        if(cstm == ucn) {
            let betslip;
            if(picked == 'picked') {
@@ -152,6 +176,7 @@ const OddButton = (props) => {
                 setPicked('');
            } else {
                betslip = addToSlip(slip);
+               console.log("on add bet", reference, cstm);
                dispatch({type:"SET", key:reference, payload:cstm});
            }
            dispatch({type:"SET", key:"betslip", payload:betslip});
@@ -163,23 +188,65 @@ const OddButton = (props) => {
             ref={ref}
             className={`home-team ${match.match_id} ${ucn} ${picked}`}
             home_team={match.home_team}
-            odd_type="1x2" 
+            odd_type={match?.name||"1x2"} 
             bet_type='prematch'
             away_team={match.away_team}
             odd_value={oddValue}
-            odd_key={match?.[mkt] || 'draw'}
+            odd_key={match?.[mkt] || match?.odd_key || 'draw'}
             parent_match_id={match.parent_match_id}
             match_id={match.match_id}
             custom={ ucn } 
             sub_type_id={match.sub_type_id}
-            special_bet_value={''}
+            special_bet_value={match?.special_bet_value || ''}
             onClick={handleButtonOnClick} >
-                <span className="theodds">{oddValue}</span>
+                { !detail && (<span className="theodds">{oddValue}</span>)}
+                { detail && 
+                    (<>
+                      <span 
+                        className="label label-inverse blueish">
+                        {match.odd_key}
+                      </span>
+                      <span 
+                        className="label label-inverse blueish odd-value">
+                          {oddValue}
+                     </span>
+                    </> ) }
         </button>
     )
 }
 
 
+const MarketRow = (props) => {
+  const { markets, match, market_id, width} = props;
+  
+
+  const ucn = clean(
+            match.match_id 
+            + "" + match.sub_type_id 
+            + (match.display) 
+        );
+
+ const MktOddsButton = (props) => {
+    const { match, mktodds} = props;
+    let fullmatch = {...match, ...mktodds};
+    return <OddButton match={fullmatch} detail mkt={"detail"}/>
+ }
+
+  return (
+        <div className="top-matches match">
+          <Row className="top-matches header">{market_id}</Row>
+          
+          { markets && markets.map((mkt_odds) =>{
+            return (<>
+                  <Col className="match-detail" style={{width:width, float:"left"}}>
+                      <MktOddsButton  match={match} mktodds={mkt_odds}/>
+                  </Col>
+              </>)
+          }) 
+        }
+        </div>
+    )
+}
 
 const MatchRow = (props) => {
     const [betslip, setBetslip] = useState([]);
@@ -202,28 +269,90 @@ const MatchRow = (props) => {
             <Row className="col-3 m-0 p-0">
                 <div className="col-sm-4 match-div-col" style={{padding:0}}>
                     { match?.odds?.home_odd 
-                        ?  <OddButton match={match} theMatch={{}} mkt="home_team" /> 
+                        ?  <OddButton match={match}  mkt="home_team" /> 
                         :  <EmptyTextRow /> 
                     }
                 </div>
                 <div className="col-sm-4 events-odd match-div-col" style={{padding:0}}>
                     { match?.odds?.neutral_odd 
-                        ?  <OddButton match={match} theMatch={{}} mkt="draw" /> 
+                        ?  <OddButton match={match}  mkt="draw" /> 
                         :  <EmptyTextRow /> 
                     }
                 </div>
                 <div className="col-sm-4 match-div-col" style={{padding:0}}>
                     { match?.odds?.away_odd 
-                        ?  <OddButton match={match} theMatch={{}} mkt="away_team" /> 
+                        ?  <OddButton match={match}  mkt="away_team" /> 
                         :  <EmptyTextRow /> 
                     }
                 </div>
             </Row>
-            <SideBets theMatch={{}} match={match} style={{d:"inline"}}/>
+            <SideBets  match={match} style={{d:"inline"}}/>
         </Row>
     )
 
 } 
+
+export const MarketList = (props) => {
+
+    const [state, dispatch] = useContext(Context);                              
+    const [matchWithMarkets, setMatchWithMarkets] = useState();
+    useEffect(()=>{
+        if(state?.matchwithmarkets) {
+            setMatchWithMarkets(state.matchwithmarkets);
+        }
+    }, [state?.matchwithmarkets])
+
+    return (
+        <div className="matches full-width">
+
+            <MoreMarketsHeaderRow {...matchWithMarkets?.data?.match}   />
+
+            <Container className="web-element">
+                { matchWithMarkets?.data && 
+                    Object.entries(matchWithMarkets?.data?.odds).map(([mkt_id, markets]) => {
+                        return <MarketRow 
+                            market_id={mkt_id}
+                            markets={markets} 
+                            width={markets.length === 3 ? "33.333%" : "50%"}
+                            match={matchWithMarkets?.data?.match}
+                            key={mkt_id}/>
+                    })
+                }
+               { !matchWithMarkets && [...Array(10).keys()].map((index, n) => (
+                   <div className="react-loading" key={n}  >
+                      <Container className=" top-matches">
+                          <Row style={{height:40, opacity:0.7}}>
+                           <Col lg="1" >
+                               <Skeleton className="pad left-text"></Skeleton>
+                           </Col>
+                           <Col className="col-sm-7">
+                               <Skeleton className="compt-detail"></Skeleton>
+                               <Skeleton className="compt-teams"></Skeleton>
+                           </Col>
+
+                           <Col className="col-sm-1 match-div-col" >
+                                <Skeleton className="home-team" ></Skeleton>
+                            </Col>
+
+                           <Col className="col-sm-1 events-odd match-div-col">
+                                <Skeleton className="home-team" ></Skeleton>
+                           </Col>
+                           <Col className="col-sm-1 match-div-col" >
+                                <Skeleton className="awy-team" ></Skeleton>
+                           </Col>
+                           <Col className="col-sm-1 events-odd pad" >
+                               <Skeleton className="side" />
+                           </Col>
+                          </Row>
+                       </Container>
+                  </div>) )
+               }
+            </Container>
+        </div>
+    )
+
+}
+
 const MatchList = (props) => {
     const [state, dispatch] = useContext(Context);                              
     const [matches, setMatches] = useState();

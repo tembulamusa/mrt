@@ -19,6 +19,7 @@ import './index.css';
 import Store, { Context }  from './context/store';
 import Index  from './components/index';
 import CompetitionsMatches  from './components/competition-matches';
+import MatchAllMarkets  from './components/all-markets';
 
 
 const container = document.getElementById("app");
@@ -31,6 +32,7 @@ render((
            <Route exact path = "/upcoming" element = { <Index /> }  />
            <Route exact path = "/tomorrow" element = { <Index /> }  />
            <Route exact path = "/competition/:id" element = { <CompetitionsMatches /> }  />
+           <Route exact path = "/match/:id" element = { <MatchAllMarkets /> }  />
        </Routes>
     </BrowserRouter>
     </Store>
