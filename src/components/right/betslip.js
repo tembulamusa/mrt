@@ -35,6 +35,7 @@ const BetSlip = (props) => {
                    );   
        
        dispatch({type:"SET", key:"betslip", payload:betslip});
+       dispatch({type:"SET", key:match_selector, payload:"remove."+ucn});
     }
     return (
         <div className="bet-body">

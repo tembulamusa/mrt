@@ -108,10 +108,14 @@ const OddButton = (props) => {
 
     useEffect(() => {
         if(state?.[reference] ){
-            if(state?.[reference] == ucn){
-                setPicked('picked')
-            } else {
+            if(state?.[reference].startsWith('remove.')){
                 setPicked('');
+            } else {
+                if(state?.[reference] == ucn){
+                    setPicked('picked')
+                } else {
+                    setPicked('');
+                }
             }
         } 
     }, [state?.[reference]])

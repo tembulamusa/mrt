@@ -197,7 +197,11 @@ header, li a, .thedate span {
 }
 
 #betting input {
-    max-width: 80px;
+    max-width: 100%;
+    color: #000;
+    padding: 3px;
+    border-radius: 5.2px;
+    text-align: center;
 }
 
 .mobi h2 {

@@ -219,13 +219,11 @@ li.bet-option {
 .bet-option-list li {
     padding-bottom: 3px !important;
     padding-top: 3px !important;
-    border-bottom: none;
     background: #4f768e;
     color: #fff;
     padding: 4px;
-    margin-bottom: 1px;
     text-shadow: none;
-    border: 1px solid #334c5c;
+    border-bottom: 1px solid #334c5c;
     overflow: hidden;
     line-height: 1.6;
 }
