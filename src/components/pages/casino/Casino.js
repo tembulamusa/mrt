@@ -67,7 +67,7 @@ const Casino = (props) => {
                                     <div className="game-categories shadow-sm  p-2 shadow-sm casino-category-container">
                                         {categories?.map((category, index) => (
                                             <button
-                                                className={`cursor-pointer text-center casino-category`}
+                                                className={`cursor-pointer text-center casino-category ${category.game_type_id === 'rgs-vsb' ? 'd-none' : ''}`}
                                                 key={category.game_type_id}
                                                 autoFocus={index === 0}
                                                 onClick={() => getCategoryGames(category)}>
@@ -90,8 +90,6 @@ const Casino = (props) => {
                                         )}
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
