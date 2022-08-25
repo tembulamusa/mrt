@@ -101,7 +101,7 @@ const PrivacyPolicy = () => {
                                                 become
                                                 obsolete. Should you believe that any personal information we hold for
                                                 you
-                                                is incorrect, please email our customer services on customercare@betnare.com
+                                                is incorrect, please email our customer services on customercare@bethipo.com
                                                 and we
                                                 will amend any information found to be incorrect.
                                             </p>

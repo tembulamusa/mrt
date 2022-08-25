@@ -1,16 +1,20 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState, useContext} from 'react';
 import {ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent} from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import {getFromLocalStorage, setLocalStorage} from "../../utils/local-storage";
 import makeRequest from "../../utils/fetch-request";
 import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import {Context} from '../../../context/store';
 
 const Sidebar = (props) => {
 
     const [collapsed, setCollapsed] = useState(false)
     const [toggled, setToggled] = useState(false)
     const [sport, setSport] = useState(79)
+    const [, dispatch] = useContext(Context);
 
     const handleCollapsedChange = (checked) => {
         setCollapsed(checked);
@@ -35,11 +39,13 @@ const Sidebar = (props) => {
             if (c_status === 200) {
                 setCompetitions(c_result);
                 setLocalStorage('categories', c_result);
+                dispatch({type:"SET", key:"categories", payload:c_result});
             } else {
                 fetchData()
             }
         } else {
             setCompetitions(cached_competitions);
+            dispatch({type:"SET", key:"categories", payload:cached_competitions});
         }
 
     }, []);
@@ -115,7 +121,7 @@ const Sidebar = (props) => {
                 onToggle={handleToggleSidebar}
                 collapsed={collapsed}
                 toggled={toggled}>
-                <SidebarHeader>
+        {/** <SidebarHeader>
                     <div
                         style={{
                             padding: '5px',
@@ -143,64 +149,47 @@ const Sidebar = (props) => {
                         </div>
                     </div>
                 </SidebarHeader>
+                */}
                 <SidebarContent>
                     <Menu iconShape="circle">
+
+                        <SubMenu title={'Top Leagues'} defaultOpen={true}
+                           icon={<img style={{borderRadius: '50%', height: '20px'}}
+                                    src={getSportImageIcon("Soccer")}/>} >
+                            {competitions?.top_soccer?.map((top_league, index) => (
+                                <MenuItem key={`l_${index}`}
+                                          icon={<img
+                                              src={getSportImageIcon(top_league?.flag, 'img/flags-2-1', true)}
+                                              style={{borderRadius: "49%", height: "20px"}}></img>}>
+                                    <a href={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}?sub_type_id=1,18,29`}>
+                                        {top_league?.competition_name}
+                                    </a>
+                                </MenuItem>
+                            ))}
+                        </SubMenu>
                         {competitions?.all_sports.map((competition, index) => (
 
-                            <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id)}
+                            <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id) && index !== 0}
                                      icon={<img style={{borderRadius: '50%', height: '20px'}}
                                                 src={getSportImageIcon(competition.sport_name)}/>}
                                      key={index}>
-                                {index === 0 && (
-                                    <SubMenu title={'Top Leagues'}>
-                                        {competitions?.top_soccer?.map((top_league, index) => (
-                                            <MenuItem key={`l_${index}`}
-                                                      icon={<img
-                                                          src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
-                                                          style={{borderRadius: "50%", height: "20px"}}></img>}>
-                                                <a href={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}?sub_type_id=${getDefaultMarketsForSport(competition)}`}>
-                                                    {top_league?.competition_name}
-                                                </a>
-                                            </MenuItem>
-                                        ))}
-                                    </SubMenu>
-                                )}
-                                <SubMenu title={'Countries'}
-                                         style={{maxHeight: '300px', overflowY: 'auto', overflowX: 'hidden'}}>
+                            {/* <SubMenu title={'Countries'}
+                                         style={{maxHeight: '300px', overflowY: 'auto', overflowX: 'hidden'}}> */}
+                                    <PerfectScrollbar >
                                     {competition?.categories.map((country, countryKey) => (
-                                        <div key={`${countryKey}_category`}>
-                                            <SubMenu title={country.category_name}
+                                            <MenuItem title={country.category_name}
                                                      icon={<img style={{borderRadius: '50%', height: '20px'}}
-                                                                src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
-                                                     />}
-                                            >
-                                                {country?.competitions.map((league, leagueKey) => (
-                                                    <MenuItem key={`${leagueKey}_league`}>
-                                                        <a href={`/competition/${competition.sport_id}/${country.category_id}/${league.competition_id}?sub_type_id=${getDefaultMarketsForSport(competition)}`}
+                                                     src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
+                                                     />} key={countryKey} >
+
+                                                        <a href={`/competition/${competition.sport_id}/${country.category_id}/all?sub_type_id=${getDefaultMarketsForSport(competition)}`}
                                                            onClick={() => setLocalStorage('active_item', competition.sport_id)}>
-                                                            {league.competition_name}
+                                                            {country.category_name}
                                                         </a>
-                                                    </MenuItem>
-                                                ))}
-                                            </SubMenu>
-                                        </div>
+                                            </MenuItem>
                                     ))}
-                                </SubMenu>
-                                <MenuItem>
-                                    <a href={`/upcoming?sport_id =${competition.sport_id}&sub_type_id=${getDefaultMarketsForSport(competition)}`}>
-                                        Today Games
-                                    </a>
-                                </MenuItem>
-                                <MenuItem>
-                                    <a href={`/highlights?sport_id=${competition.sport_id}&sub_type_id=${getDefaultMarketsForSport(competition)}`}>
-                                        Highlights
-                                    </a>
-                                </MenuItem>
-                                <MenuItem>
-                                    <a href={`/tomorrow?sport_id=${competition.sport_id}&sub_type_id=${getDefaultMarketsForSport(competition)}`}>
-                                        Tomorrow
-                                    </a>
-                                </MenuItem>
+                                    </PerfectScrollbar >
+                            { /* </SubMenu> */}
                             </SubMenu>
                         ))}
                     </Menu>

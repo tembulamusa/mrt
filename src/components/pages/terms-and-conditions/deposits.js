@@ -22,7 +22,7 @@ const Deposits = () => {
                         deposit methods availed on the company’s website. Further
                         information
                         about the deposit methods are included in the Deposit section on the
-                        website (www.betnare.com).
+                        website (www.bethipo.com).
                     </li>
                     <li>
                         BetNare reserves the right to impose certain conditions on the use

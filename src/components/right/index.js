@@ -23,7 +23,7 @@ const Right = (props) => {
 
     return (
         <div className="col-md-3 gn betslip-container sticky-top">
-            <div className="overflow-scroll betslip-container d-none d-md-block">
+            <div className=" betslip-container d-none d-md-block">
                 {props?.message && <AlertMessage classname={props.classname} message={props.message}/>}
                 <div className="bet-option-list sticky-top" id=''>
                     <div className="bet alu block-shadow">

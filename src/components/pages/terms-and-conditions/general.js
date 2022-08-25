@@ -39,7 +39,7 @@ const General = () => {
                     <li> This Agreement describes the terms, conditions and risks applicable
                         to the CLIENT using of BetNare’ services available under the domains
                         of
-                        www.betnare.com (the "SITE" If the CLIENT has any questions
+                        www.bethipo.com (the "SITE" If the CLIENT has any questions
                         regarding
                         this Agreement, please contact Customer Support.
                     </li>
@@ -156,7 +156,7 @@ const General = () => {
                         services offered after a change is enacted in the terms and
                         conditions,
                         the CLIENT will be entitled to withdraw their uncommitted funds by
-                        sending an email to customercare@betnare.com. The company will cease to
+                        sending an email to customercare@bethipo.com. The company will cease to
                         have
                         any continued obligation towards the CLIENT from the day of receipt
                         of

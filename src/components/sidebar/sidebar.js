@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import football from '../../assets/svg/football.svg'
 import Competitions from './competitions';
 import AllSportCompetitions from './all-sport-competition';
@@ -37,7 +37,6 @@ const SideBar = (props) => {
         } else {
             setCompetitions(cached_competitions);
         }
-
     }, []);
 
     useEffect(() => {

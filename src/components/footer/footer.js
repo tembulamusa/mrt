@@ -10,23 +10,23 @@ const Footer = (props) => {
         <footer className="footer-custom">
             <div className="row">
                 <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-white">
-                    <h5>BETNARE</h5>
+                    <h5>HipoBet</h5>
                     <ul>
                         <li className="">
-                            P.O.BOX 00100 NAIROBI KENYA
+                            3RD FLR, Utalii House <br/>Utalii Lane, NAIROBI
                         </li>
                         <li className="">
-                            <a href="mailto:care@ke.betnare.com">
-                                <FontAwesomeIcon icon={faEnvelope}/> customercare@betnare.com
+                            <a href="mailto:info@ke.bethipo.com">
+                                <FontAwesomeIcon icon={faEnvelope}/> info@bethipo.com
                             </a>
                         </li>
                         <li className="footer-icon">
-                            <a href="http://facebook.com/Betnare-101164702604689">
+                            <a href="http://facebook.com/BetHipo-101164702604689">
                                 <FontAwesomeIcon icon={faFacebook}/> Facebook
                             </a>
                         </li>
                         <li className="footer-icon">
-                            <a href="https://instagram.com/betnareke?igshid=YmMyMTA2M2Y=">
+                            <a href="https://instagram.com/bethipoke?igshid=YmMyMTA2M2Y=">
                                 <FontAwesomeIcon icon={faInstagram}/> Instagram
                             </a>
                         </li>
@@ -71,7 +71,7 @@ const Footer = (props) => {
                     <hr/>
                     <p>
                         We are licensed and regulated by the Betting Control and Licensing
-                        Board BCLB 0000397
+                        Board BCLB 0000454
                     </p>
                 </div>
             </div>

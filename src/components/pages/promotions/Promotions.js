@@ -36,7 +36,7 @@ const Promotions = () => {
                                                         ✅ Register on sms by sending the word JOIN or BET or Game etc to 29877
                                                     </li>
                                                     <li>
-                                                        ✅ Visit betnare.com and create an account
+                                                        ✅ Visit bethipo.com and create an account
                                                     </li>
                                                 </ul>
                                                 <div className="col-md-12">
@@ -141,12 +141,12 @@ const Promotions = () => {
                                                             available on FRIDAY, SATURDAY & SUNDAY
                                                             <br/>
 
-                                                            ✅ Betnare reserves the right to end the promotion at any
+                                                            ✅ BetHipo reserves the right to end the promotion at any
                                                             time without any
                                                             explanation or notification.
                                                             <br/>
 
-                                                            ✅ Betnare reserves the right to disqualify any player at
+                                                            ✅ BetHipo reserves the right to disqualify any player at
                                                             any time without being
                                                             bound to give reasons.
                                                             <br/>
@@ -187,12 +187,12 @@ const Promotions = () => {
                                                             ✅ The maximum bonus that you can receive is KES.500
                                                             <br/>
 
-                                                            ✅ Betnare may reclaim any bonus amount, Free Bets,
+                                                            ✅ BetHipo may reclaim any bonus amount, Free Bets,
                                                             shinda points or enhanced
                                                             payments that have been awarded in error.
                                                             <br/>
 
-                                                            ✅ Betnare may, at any time, make minor amendments to
+                                                            ✅ BetHipo may, at any time, make minor amendments to
                                                             this promotion to correct
                                                             typographical errors or to improve on clarity or
                                                             customer experience and may

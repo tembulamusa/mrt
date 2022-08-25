@@ -9,7 +9,7 @@ const Header = React.lazy(() => import('../../header/header'));
 const SideBar = React.lazy(() => import('../../sidebar/awesome/Sidebar'));
 const Footer = React.lazy(() => import('../../footer/footer'));
 const Right = React.lazy(() => import('../../right/index'));
-const downloadAPKFile = React.lazy(() => import('../../../assets/betnare.apk'));
+const downloadAPKFile = React.lazy(() => import('../../../assets/bethipo.apk'));
 
 
 const MobileApp = () => {
@@ -35,7 +35,7 @@ const MobileApp = () => {
                                 <DownloadLink
                                     className="btn btn-primary btn-lg mb-5 text-white text-decoration-none"
                                     label="Download App"
-                                    filename="betnare.apk"
+                                    filename="bethipo.apk"
                                     exportFile={() => getDownloadFile()}
                                 />
                             </div>
@@ -69,7 +69,7 @@ const MobileApp = () => {
                                     <DownloadLink
                                         className="btn btn-primary btn-lg mb-5 text-white btn-lg col-md-3 text-decoration-none"
                                         label="Download App Now"
-                                        filename="betnare.apk"
+                                        filename="bethipo.apk"
                                         exportFile={() => getDownloadFile()}
                                     />
                                 </div>
