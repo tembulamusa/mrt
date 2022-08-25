@@ -28,37 +28,6 @@ const Header = (props) => {
     const history = useNavigate();
     const containerRef = useRef();
     const {current} = containerRef;
-    const [competitions, setCompetitions] = useState({});
-
-    const fetchData = useCallback(async () => {
-        let cached_categories = getFromLocalStorage('categories');
-        let endpoint = "/v1/categories";
-
-        if (!cached_categories) {
-            const [competition_result] = await Promise.all([
-                makeRequest({url: endpoint, method: "get", data: null}),
-            ]);
-            let [c_status, c_result] = competition_result
-
-            if (c_status === 200) {
-                setCompetitions(c_result);
-                setLocalStorage('categories', c_result);
-            }
-        } else {
-            setCompetitions(cached_categories);
-        }
-
-    }, []);
-
-    useEffect(() => {
-
-        const abortController = new AbortController();
-        fetchData();
-
-        return () => {
-            abortController.abort();
-        };
-    }, [fetchData]);
 
 
     const NotifyToastContaner = () => {
@@ -112,10 +81,10 @@ const Header = (props) => {
         <>
             <Navbar expand="md" className="mb-0 ck pc os app-navbar top-nav" fixed="top" variant="dark">
                 <Container fluid className={'d-flex justify-content-between mobile-change'}>
-                    <Navbar.Brand href="/" className="e logo align-self-start" title="Betnare">
+                    <Navbar.Brand href="/" className="e logo align-self-start" title="BetHipo">
                         <div className="col-3">
                             <div>
-                                <LazyLoadImage src={logo} alt="Betnare" title="Betnare" effects="blur"/>
+                                <LazyLoadImage src={logo} alt="BetHipo" title="BetHipo" effects="blur"/>
                             </div>
                         </div>
                     </Navbar.Brand>
@@ -139,7 +108,7 @@ const Header = (props) => {
                             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                                 <div className="col-3">
                                     <div>
-                                        <LazyLoadImage src={logo} alt="Betnare" title="Betnare" effects="blur"/>
+                                        <LazyLoadImage src={logo} alt="BetHipo" title="BetHipo" effects="blur"/>
                                     </div>
                                 </div>
                             </Offcanvas.Title>

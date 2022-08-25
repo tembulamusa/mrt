@@ -22,9 +22,9 @@ const LiveScore = () => {
                                         <div className="col-md-12 d-flex flex-row shadow-lg p-3">
                                             <div className="col-md-12">
                                                 <div className="d-flex flex-column">
-                                                    <iframe src="https://ls.sir.sportradar.com/betnaremts"
+                                                    <iframe src="https://ls.sir.sportradar.com/bethipomts"
                                                             height={'100%'} className={'vh-100 frame-spacing'}
-                                                            title="Betnare Livescore"></iframe>
+                                                            title="BetHipo Livescore"></iframe>
                                                 </div>
                                             </div>
                                         </div>

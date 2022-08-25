@@ -58,7 +58,7 @@ const DailyJackpotTermsAndConditions = () =>
                         <p>The BetNare Daily Jackpot competition consists of predicting results of 13 matches which are
                             selected by BetNare every day.</p>
                         <p>To take part and have a chance to win the BetNare jackpot you must get registered on
-                            www.betnare.com and have at least KES 15 in your BetNare account.</p>
+                            www.bethipo.com and have at least KES 15 in your BetNare account.</p>
                         <p>If you correctly predict all the 13 match results, you win the Daily Jackpot prize of Kshs
                             1,000,000/=</p>
 
@@ -116,14 +116,14 @@ const DailyJackpotTermsAndConditions = () =>
                         <p>The Daily Jackpot amount, consolation prizes and/or any bonuses thereof will be divided equally
                             amongst all the Daily Jackpot winners.</p>
                         <p>To make your selections- On the BetNare Daily Jackpot competition entry page
-                            (www.betnare.com/jackpot) make your predictions on the 13 pre-selected football matches </p>
+                            (www.bethipo.com/jackpot) make your predictions on the 13 pre-selected football matches </p>
                         <p><strong>(HOME, WIN, DRAW, AWAY WIN)</strong>. The stake amount of each combination is KES 15.</p>
                         <p><strong>NOTE ;</strong> You CANNOT make more than 1 prediction for ONE match.</p>
                         <p className={' text-uppercase text-decoration-underline'}><strong>The Daily Jackpot bet can be placed through:</strong> </p>
                         <p  ><strong>  </strong> </p>
                         <ul>
                             <li>submitting predictions of the results of 13 pre-selected
-                                football matches at (www.betnare.com/jackpot)</li>
+                                football matches at (www.bethipo.com/jackpot)</li>
                             <li>
                                 By choosing “Auto Bet” option, a random selection of one prediction per match will be
                                 automatically selected with a fixed stake of KES 15.

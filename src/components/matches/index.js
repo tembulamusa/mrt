@@ -36,7 +36,7 @@ const EmptyTextRow = (props) => {
                  height: "30px",
                  padding: "2px",
                  color: "#fff",
-                 background: "#334c5c",
+                 background: "#d7d7d7",
                  opacity: 1
              }}>
             {odd_key && <span className="et label btn-disabled ">{odd_key}</span>}
@@ -57,6 +57,7 @@ const MatchHeaderRow = (props) => {
     const categories = getFromLocalStorage('categories')
     const sport_id = new URL(window.location).searchParams.get('sport_id') || 79
     let sport = categories?.all_sports?.filter((category) => category.sport_id == sport_id)
+
     const [sportName, setSportName] = useState(sport?.[0].sport_name || 'Soccer');
     const [showX, setShowX] = useState(true);
     const [market, setMarket] = useState('1x2');
@@ -156,24 +157,24 @@ const MatchHeaderRow = (props) => {
                  style={{opacity: "1", top: "100px"}}>
                 <div className="col-sm-2 col-xs-12 pad left-text">
                     <div className="align-self-center col">
-                        <h3 className="main-heading-1 text-white">
-                            {live && <span className="live-header">LIVE </span>}
-                            {sportName} {market && <></>}
-                        </h3>
+        {/* <h3 className="main-heading-1 ">
+                            {live && <span className="live-header">LIVE </span> }
+                            {!live && <span className="">PREMATCH </span> }
+                        </h3> */} 
                     </div>
                 </div>
                 <div className={'col-2 col-xs-12 match-detail-container'}></div>
                 <div className={'col d-flex flex-row justify-content-between'}>
                     {threeWay &&
                         <div className="d-flex flex-row">
-                            <div className="d-flex flex-column text-center text-white">
+                            <div className="d-flex flex-column text-center">
                                 <div className={'bold'}>
                                     3 WAY
                                 </div>
                                 <div className={'c-btn-group align-self-end'}>
-                                    <a className="c-btn-header text-white">1</a>
-                                    <a className="c-btn-header text-white">X</a>
-                                    <a className="c-btn-header text-white">2</a>
+                                    <a className="c-btn-header">1</a>
+                                    <a className="c-btn-header">X</a>
+                                    <a className="c-btn-header">2</a>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +182,7 @@ const MatchHeaderRow = (props) => {
                     {!live && !jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
-                                <div className={'d-flex flex-column text-white'}>
+                                <div className={'d-flex flex-column'}>
                                     <span className={'small text-center text-uppercase bold'}>
                                         {extra_market.name}
                                     </span>
@@ -271,7 +272,7 @@ const SideBets = (props) => {
                    }>+{match.side_bets}
                 </a>
                 <a className="side"
-                   href={`https://s5.sir.sportradar.com/betnaremts/en/match/${match.parent_match_id}`}
+                   href={`https://s5.sir.sportradar.com/bethipomts/en/match/${match.parent_match_id}`}
                    target={"_blank"}
                    title={'View Stats'}>
                     <FontAwesomeIcon icon={faChartLine}/>
@@ -552,7 +553,7 @@ const getUpdatedMatchFromOdds = (props) => {
     newMatch.special_bet_value = odd_data.special_bet_value;
     delete newMatch['odds']
     delete newMatch['extra_odds']
-    console.log(newMatch)
+    //console.log(newMatch)
     return newMatch;
 
 }
@@ -574,7 +575,7 @@ const MatchRow = (props) => {
             <div className="col-sm-2 col-xs-12 pad left-text">
                 {live &&
                     <>
-                        <small style={{color: "green"}}> {match?.match_status} </small>
+                        <small style={{color: "red"}}> {match?.match_status} </small>
                         <br/>
                     </>
                 }

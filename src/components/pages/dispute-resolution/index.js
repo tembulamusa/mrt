@@ -52,9 +52,9 @@ const DisputeResolution = () => {
                                             </p>
                                             <p>
                                                 You can contact the BetNare Customer Services team by way of email
-                                                customercare@betnare.com or call our customer care lines or inbox us through
+                                                customercare@bethipo.com or call our customer care lines or inbox us through
                                                 our
-                                                social Media Pages Facebook, Betnare, Instagram Betnare etc. Queries
+                                                social Media Pages Facebook, BetHipo, Instagram BetHipo etc. Queries
                                                 will
                                                 always be processed within one business day. However, if, after your
                                                 issue
