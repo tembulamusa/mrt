@@ -144,7 +144,7 @@ const Signup = (props) => {
                     <div className="gz home">
                         <div className="homepage">
                             <FormTitle/>
-                            <div className="col-md-12 mt-2 text-white p-2">
+                            <div className="col-md-12 mt-2  p-2">
                                 {message && <Alert/>}
                                 <div className="modal-body pb-0" data-backdrop="static">
                                     <SignupForm/>
