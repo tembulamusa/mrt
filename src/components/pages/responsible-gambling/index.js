@@ -26,144 +26,134 @@ const ResponsibleGambling = () => {
                                     RESPONSIBLE GAMBLING POLICY
                                 </h4>
                             </div>
-                            <div className="col-md-12 mt-2 text-white p-2 ">
-                                Responsible Gambling is a key corporate strategy endorsed by BetNare and championed by
-                                all staff. BetNare recognizes the importance of putting in place practices and processes
-                                to achieve a high standard of gaming.
-                                We design proprietary communications and related collaterals to promote the importance
-                                of playing responsibly with the "PLAY RESPONSIBLY" message featured in all
-                                communications materials and incorporated into betting merchandise, marketing materials
-                                etc. Our information on games are factual and transparent and the betting gaming rules
-                                on products are always made available for our customers to assist them in making
-                                informed decisions. Other means are as follows
-                            </div>
-                            <div className="col-md-12 mt-2 text-white accordion-container">
-                                <Accordion allowMultipleExpanded={false} allowZeroExpanded={true}>
-                                    <AccordionItem>
-                                        <AccordionItemHeading>
-                                            <AccordionItemButton className='accordion-button'>
-                                                Protection of vulnerable gamblers
-                                            </AccordionItemButton>
-                                        </AccordionItemHeading>
-                                        <AccordionItemPanel className='accordion-item-panel'>
-                                            <p>
-                                                One of the most important areas of Responsible Gambling is concerned
-                                                with
-                                                the protection of vulnerable players. Some players may become addicted
-                                                to
-                                                sports betting activities and by spending too much money their normal
-                                                lives
-                                                are soon affected.
-                                                Among the main measures that we impose in the industry, we can mention
-                                                self-exclusion programs, limits on the amount of money and time players
-                                                can
-                                                spend on our gaming website.
-                                                All the same, we implement many other tools to assist players enjoy
-                                                responsible gaming sessions, such as the possibility to set financial
-                                                limits
-                                                to their accounts. For instance, to avoid potential hasten decisions, an
-                                                increase in their deposit limit will not take effect until a period of
-                                                24
-                                                hours.
-                                            </p>
-                                        </AccordionItemPanel>
-                                    </AccordionItem>
-                                    <AccordionItem>
-                                        <AccordionItemHeading>
-                                            <AccordionItemButton className='accordion-button'>
-                                                Prevention of underage gambling
-                                            </AccordionItemButton>
-                                        </AccordionItemHeading>
-                                        <AccordionItemPanel className='accordion-item-panel'>
-                                            <p>
-                                                The prevention of underage gaming is one of the most important aspects
-                                                of responsible gambling and it needs to be emphasized that individuals
-                                                that have not reached the legal age (18) must not be allowed to gamble
-                                                for real-money.
-                                                BetNare takes all the necessary steps to make sure that underage
-                                                gambling activities do not take place on our website and that the laws
-                                                protecting minors in their targeted jurisdictions are respected.
-                                                As operators we present a clear registration processes for all players
-                                                and mandatory verification steps to be followed to ensure the age of
-                                                gamblers.
-                                            </p>
-                                        </AccordionItemPanel>
-                                    </AccordionItem>
-                                    <AccordionItem>
-                                        <AccordionItemHeading>
-                                            <AccordionItemButton className='accordion-button'>
-                                                Safety measures against criminal activities
-                                            </AccordionItemButton>
-                                        </AccordionItemHeading>
-                                        <AccordionItemPanel className='accordion-item-panel'>
-                                            <p>
-                                                Gambling websites can be affected by online criminals’ activities just
-                                                like any other sites dealing with e-commerce or financial transactions.
-                                                To accomplish their goals and obtain private and financial data, online
-                                                criminals deploy malicious software that targets websites’
-                                                vulnerabilities.
-                                                To stop this growing tendency, we have inserted procedures and software
-                                                programs that detect and block money laundering activities and hacking
-                                                devices.
-                                            </p>
-                                        </AccordionItemPanel>
-                                    </AccordionItem>
-                                    <AccordionItem>
-                                        <AccordionItemHeading>
-                                            <AccordionItemButton className='accordion-button'>
-                                                Information privacy
-                                            </AccordionItemButton>
-                                        </AccordionItemHeading>
-                                        <AccordionItemPanel className='accordion-item-panel'>
-                                            <p>
-                                                We protect our customers’ private details from prying eyes. This is
-                                                connected to the need of keeping safe players’ private details from
-                                                unauthorized access that may occur due to illegal online criminal
-                                                attacks.
-                                                By introducing several strong policies to control access to important
-                                                private data, starting with gamblers’ names, their addresses and phone
-                                                numbers, BetNare ensures information privacy is respected and that we
-                                                are in line with regulators’ requirements.
-                                            </p>
-                                        </AccordionItemPanel>
-                                    </AccordionItem>
-                                    <AccordionItem>
-                                        <AccordionItemHeading>
-                                            <AccordionItemButton className='accordion-button'>
-                                                Online payment protection
-                                            </AccordionItemButton>
-                                        </AccordionItemHeading>
-                                        <AccordionItemPanel className='accordion-item-panel'>
-                                            <p>
-                                                We ensure that players access a reliable software platform that protects
-                                                our customers personal data and financial details. This is an important
-                                                reason why we must give a major attention to choosing the most
-                                                appropriate gaming solution for the purposes of our players to safely
-                                                deposit, transfer and withdraw money on our gambling website or mobile
-                                                wallets.
-                                            </p>
-                                        </AccordionItemPanel>
-                                    </AccordionItem>
-                                    <AccordionItem>
-                                        <AccordionItemHeading>
-                                            <AccordionItemButton className='accordion-button'>
-                                                Ethical and responsible marketing
-                                            </AccordionItemButton>
-                                        </AccordionItemHeading>
-                                        <AccordionItemPanel className='accordion-item-panel'>
-                                            <p>
-                                                We comply with the relevant regulatory advertising codes of practice
-                                                which typically ensure that advertisements are factually correct and do
-                                                not target underage or vulnerable gamblers, such as players who have
-                                                self-excluded themselves from gambling. BetNare seek permission from the
-                                                customer prior to engaging in direct marketing through use of the
-                                                customer’s personal details.
-                                            </p>
-                                        </AccordionItemPanel>
-                                    </AccordionItem>
-                                </Accordion>
-                            </div>
-                        </div>
+                              <div className="col-md-12 mt-2 p-5">
+
+                                <h2>1 INTRODUCTION</h2>
+
+                            <p>As Bethipo we are committed to responsible gambling and take our customers and our social
+                            responsibility very seriously. Our products are designed for your entertainment and enjoyment
+                            and we are committed to providing a secure, fair and socially responsible service. We want you
+                            to enjoy our products safely and responsibly.</p>
+
+                            <p>We believe in a firm but fair approach to responsible gambling. That is why to assist you, we
+                            offer a range of advice and options to help you manage your gaming and ensure that everyone
+                            who enjoys our service can do so in as safe a way as possible.</p>
+
+                            <h2>2 RESPONSIBLE GAMBLING TIPS</h2>
+
+                            <p>We believe that gambling should always be an enjoyable leisure activity. Remembering these
+                            simple tips can help make sure your gambling does not become a problem.</p>
+
+                            <p>1. Gambling should be entertaining and not seen as a way of making money.</p>
+
+                            <p>2. Bet sensibly and never chase losses.</p>
+
+                            <p>3. Only gamble what you can afford to lose.</p>
+
+                            <p>4. Monitor the amount of time you spend playing.</p>
+
+                            <p>5. Balance gambling with other activities. If gambling is your only form of entertainment,
+                            think about whether you are still having fun.</p>
+
+                            <p>6. Take regular breaks from gambling. Gambling continuously will cause you to lose track
+                            of time and perspective.</p>
+
+                            <p>7. Do not gamble when under the influence of alcohol or any substance/circumstance that
+                            may impair your judgment or when you are upset or depressed.</p>
+
+                            <p>8. Think about how much money you spend gambling. You can track your activity in your
+                            bet history.</p>
+
+                            <h2>SELF-EXCLUSION</h2>
+
+                            <p>For a few customers gambling might become a serious problem. We offer a self-exclusion
+                            option that can be easily implemented by a customer's request.</p>
+
+                            <p>To self-exclude from accessing our products,</p>
+
+                            <p>1. Please contact Customer Services and give clear written instructions of the self-exclsion
+                            measure you would like implemented on your specific account;<br/>
+                            the customer ought to be diligent to ensure that the withdrawal has been made from
+                            their Bethipo wallet and all the information and documentation above has been sent in
+                            full;</p>
+
+                            <p>Once the self-exclusion application is made by you, you are advised not to place any
+                            bets as that would rescind the existing application. Any running bets placed prior to self-
+                            exclusion applied will continue to be in place and any winnings will be credited into your
+                            account as soon as the event is settled.</p>
+
+                            <p>Once you make an application to self-exclude, or communicate with our customer
+                            service team on email, refrain from accessing your account under any circumstance. In
+                            circumstances where this is not possible, we will contact you for the sole purpose of
+                            obtaining alternative refund method details. Refunds to such alternative method shall be
+                            processed subject to it being successfully verified.</p>
+
+                            <p>Access to account and our games and services will be restricted throughout the self-exclusion
+                            period, or permanently if permanent self-exclusion was applied.<br/>
+                            If permanent exclusion is applied, your account will be permanently blocked and no re-activation is possible.</p>
+
+                            <p>2. Bethipo reserves the right to exclude a customer for a longer period at our discretion. This may
+                            include instances where Bethipo is informed by legitimate sources (e.g. regulators or other
+                            authorities, authorized professional organizations, authorized medical professional etc.) that may warrant extension of a customer's self-exclusion period.</p>
+
+                            <p>3.  We may receive problem gambler or problem gambling related information concerning our
+                            customers from third parties from time to time. Such information will be acted upon ONLY IF
+                            they are received directly from the following legitimate third parties:</p>
+
+                            <p>a) Regulators or other similar authorities;</p>
+
+                            <p>b) Authorized professional organizations that help and provide support to problem
+                            gamblers; or</p>
+
+                            <p>c) The customer's authorized medical general practitioner.</p>
+
+                            <p>Information received from any other third parties will be afforded due consideration, but will not
+                            be acted upon in isolation. Activities of a customer who has been reported as problem gambler
+                            by such third parties will be monitored to establish if the person displays any signs of gambling
+                            problem. Whilst we recognize that information may be provided by such third parties with good
+                            intentions and for appropriate reasons, it may not always be the case. Rather than acting solely
+                            based on unverified information received, we will undertake appropriate monitoring and
+                            assessment of suspected problem gamblers to identify if the reported customer is potentially a
+                            problem gambler. We will not, at any point, discuss and/or disclose any aspect of customer's
+                            account with such third parties (related or otherwise).</p>
+
+                            <h2>4 PREVENTING UNDERAGE GAMBLING</h2>
+
+                            <p>It is illegal for anyone under the age of 18 to gamble. Bethipo takes its responsibilities to
+                            prevent access by persons under the permitted age very seriously. We make it clear in our Terms
+                            and Conditions and in the account registration process that underage gambling is illegal. We
+                            reserve the right to carry out verification checks to ensure that all account holders are at least 18
+                            years old and may suspend an account until adequate verification is received.</p>
+
+                            <p>It is unlawful to allow minors to gamble and we ask our customers to do their part in ensuring
+                            that this does not happen. We ask all of our customers, and in fact it is the responsibility of our
+                            customers, to ensure that their account is not used for under aged gambling. Some suggestions
+                            on how to make sure this does not happen are provided below:</p>
+
+                            <p>a) Do not leave your computer unattended when you are logged on to our website.</p>
+                            <p>b) Make sure to logout when you leave our website.</p>
+                            <p>c) Do not share your Mobile Money account details. </p>
+                            <p>d) Do not leave the "Save Password" option enabled.</p>
+
+                            <p>e) Use child protection software.</p>
+                            <p>f) Create separate computer profiles for your children.</p>
+
+                            <h2>5 COMPLAINTS</h2>
+
+                            <p>Bethipo endeavours to make a customer's experience with us an enjoyable one. However, there
+                            may be occasions where a customer feels dissatisfied with the quality of our product/s or our
+                            customer service. A customer may raise a complaint by sending an e-mail to our Customer
+                            Service.</p>
+
+                            <p>We will endeavor to handle complaints as soon as practicable. We request our clients to be
+                            patient with our internal processes owing to the number of requests we receive on a daily basis,
+                            system upgrades, changes requested by the regulator and new instructions from the customer.</p>
+
+                            <p>A complaint shall be deemed to have been submitted in a valid manner when it contains clear
+                            information regarding the customer's identity and gives all relevant details giving rise to the
+                            complaint.</p>
+                      </div>
+                       </div>
                     </div>
                     <Right/>
                 </div>
