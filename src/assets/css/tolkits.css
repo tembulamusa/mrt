@@ -4549,8 +4549,8 @@ fieldset[disabled] .fm.fl {
 }
 
 .primary-bg {
-    background: #0e131b;
-    color: #fff;
+    background: #bebebe;
+    color: #781c5d;
 }
 
 .fp:focus,
@@ -15341,6 +15341,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     border: none;
     font-size: 14px;
     text-transform: uppercase;
+    background:##902065;
 }
 
 .input-square {
