@@ -51,8 +51,7 @@ const MainTabs = (props) => {
     const getCategoryOptionLabel = (category_name, cat_flag, showCaret=false) => {
         let cat_image = null;
         try {
-
-            cat_image = cat_flag ? require(`../../assets/img/flags-1-1/${cat_flag}.svg`) : require(`../../assets/img/flags-1-1/default_flag.svg`); 
+            cat_image = require(`../../assets/img/flags-1-1/${cat_flag || "default_flag" }.svg`) 
         } catch(error){
            console.log("Missing image for category ", category_name, error)
        }
