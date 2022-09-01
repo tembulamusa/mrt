@@ -132,7 +132,7 @@ const Withdrawal = (props) => {
             setFieldValue(field, value);
         }
        return (
-            <Form className="shadow-sm rounded border-0" >
+            <Form className=" rounded border-0" >
                 <div className="pt-0">
                     <div className="row">
                         <div className='col-md-7 text-center'>
@@ -175,7 +175,7 @@ const Withdrawal = (props) => {
                      <div className="gz home" style={{width: '100%'}}>
                          <div className="homepage">
                       <FormTitle />
-                        <div className="col-md-12 mt-2 text-white p-2">
+                        <div className="col-md-12 mt-2  p-2">
                             <Alert />
                             <div className="modal-body pb-0" data-backdrop="static">
                                  <WithdrawalForm />
