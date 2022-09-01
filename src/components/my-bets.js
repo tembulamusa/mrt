@@ -22,16 +22,15 @@ const Styles = {
        background:'#22323e !important',
    },
    headers: {
-       background:'#18242f', 
+       background:'#613354',
        color:'#ffffff',
        padding: '10px 40px 10px',
        fontSize: '12px'
    },
    bet:{
-       background:'#1e2d3b',
+       background:'#947389',
+       color:'#fff',
        padding: '10px',
-       color: '#fff',
-       opacity: 0.8,
        marginBottom: '1px'
    }
 };
@@ -164,11 +163,12 @@ const MyBets = (props) => {
 
     const MyBetsList = (props) => {
 		return (
-         <Accordion >
+         <Accordion allowMultipleExpanded >
 			{state?.mybets && state.mybets.map((bet) => (
 				<AccordionItem 
                     key = {bet.bet_id} 
                     uuid = { bet.bet_id }
+                    dangerouslySetExpanded={true}
 					>
 					<AccordionItemHeading>
 						<AccordionItemButton>

@@ -54,7 +54,7 @@ const Deposit = (props) => {
 
     const FormTitle = () => {
         return (
-            <div className='col-md-12 primary-bg p-4 text-center'>
+            <div className='col-md-12  p-4 text-center primary-bg'>
                 <h4 className="inline-block">
                     DEPOSIT FUNDS (MOBILE MONEY)
                 </h4>
@@ -147,7 +147,7 @@ const Deposit = (props) => {
         }
 
         return (
-            <Form className="shadow-sm rounded border-0">
+            <Form className="rounded border-0">
                 <div className="pt-0">
                     <div className="row">
                         <div className='col-md-7 text-center'>
@@ -190,7 +190,7 @@ const Deposit = (props) => {
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage">
                             <FormTitle/>
-                            <div className="col-md-12 mt-2 text-white p-2">
+                            <div className="col-md-12 mt-2  p-2">
                                 <Alert/>
                                 <div className="modal-body pb-0" data-backdrop="static">
                                     <DepositForm/>
