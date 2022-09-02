@@ -706,7 +706,6 @@ header, li a, .thedate span {
 .main-icon::after {
     left: 100%;
     top: 50%;
-    border: solid transparent;
     content: " ";
     height: 0;
     width: 0;
@@ -728,21 +727,22 @@ header, li a, .thedate span {
 
 .matches .top-matches .match-detail button {
     cursor: pointer;
-    border: 1px solid #3c5a6c !important;
     color: #fff !important;
     float: left;
     min-width: 100%;
     margin-right: 0px;
-    background: #334c5c;
     border-top: none !important;
     border-radius: 0px !important;
     text-align: left;
 }
 
 .match-detail button .label {
-    color: #fff !important;
+    color: #2c2457 !important;
 }
 
+.match-detail button .label:hover, .match-detail button.picked .label {
+    color: #fff !important;
+}
 .yellow {
     background-color: #ffc428;
     color: #000000;
@@ -797,19 +797,17 @@ header, li a, .thedate span {
 .matches .top-matches.match {
     padding: 0px 0px 0px 0px;
     opacity: 1;
-    color: #292828 !important;
     font-size: 15px;
-    border: 1px solid #2a4054;
     border-radius: 3px;
     margin-bottom: 10px;
 }
 
 .matches .top-matches.header {
-    background: #101B25;
+    background: #bbb3b7;
     padding: 10px;
-    opacity: 1;
-    color: #fff !important;
-    font-size: 15px;
+    opacity: 0.8;
+    color: #000 !important;
+    font-size: 12px;
     font-family: inherit;
     text-transform: uppercase;
 }
@@ -833,13 +831,7 @@ header, li a, .thedate span {
     /*flex-grow: 1;*/
 }
 
-.match .blueish {
-    color: #fff !important;
-}
 
-.match .odd-value {
-    color: #ffffff !important;
-}
 
 .picked .odd-value {
     color: #fff !important;
@@ -886,6 +878,10 @@ header, li a, .thedate span {
 
 .matches .top-matches .events-odd {
     background: transparent;
+}
+.top-matches button:hover{
+   background:#2c2457 !important;
+   color:#fff;
 }
 
 .top-matches button {
@@ -2036,7 +2032,7 @@ events-header {
     font-weight: normal;
     color: #797979;
     font-size: 12px;
-    margin:5px 0px;
+    margin:0px;
 }
 
 .mobi #search-event {
@@ -2378,16 +2374,12 @@ img {
 }
 
 .panel-header {
-    background: #454545;
-    color: #ffffff;
     padding: 10px;
     margin-top: 0px;
     line-height: 1;
-    border: 1px solid #101B25;
     margin-bottom: 5px;
     border-radius: 2px !important;
     font-size: 18px;
-    /*font-family: ;*/
 }
 
 .panel-header .header-text, .panel-header .start-time {
@@ -7257,20 +7249,10 @@ ul.sport {
         transition: opacity 0.5s ease;
     }
 
-    /*#slip-holder  .hide-on-affix {*/
-    /*visibility: visible;*/
-    /*opacity: 1;*/
-    /*}*/
-    /*#slip-holder.affix .hide-on-affix {*/
-    /*visibility: hidden;*/
-    /*opacity: 0;*/
-    /*transition: visibility 0s, opacity 0.5s linear;*/
-    /*}*/
 }
 
 @media (hover: hover) {
     .top-matches button:hover {
-        background: #2c2457 !important;
         color:#fff !important;
     }
 }
@@ -7943,7 +7925,8 @@ ul.sport {
     }
 
     .gz {
-        width: 60%;
+        width: 100%;
+        margin:10px;
     }
 
     .gv {
@@ -15300,7 +15283,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 
 .jp-header-text {
     text-align: center;
-    color: #fff;
+    color: #902065;
     text-transform: uppercase;
     font-size: 18px;
 }
@@ -15344,6 +15327,10 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     background:#902065;
 }
 
+.deposit-withdraw-button:hover{
+
+    background:#902065;
+}
 .input-square {
     border-radius: 0 !important;
 }
@@ -15366,17 +15353,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     letter-spacing: 5px;
     font-size: 30px;
     font-weight: bold;
-    background-image: linear-gradient(
-            to right,
-            #462523 0,
-            #cb9b51 22%,
-            #f6e27a 45%,
-            #f6f2c0 50%,
-            #f6e27a 55%,
-            #cb9b51 78%,
-            #462523 100%
-    );
-    color: transparent;
+    color: #f9a744;
     -webkit-background-clip: text;
 
 }
@@ -15410,19 +15387,11 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     border-top-left-radius: 10px;
 }
 
-.background-primary {
-    background-color: #2C2457 !important;
-}
 
 .modal-50w {
     width: 100vw !important;
 }
 
-/*.match-category-container{*/
-/*    overflow: hidden;*/
-/*    white-space: nowrap;*/
-/*    padding: 2px;*/
-/*}*/
 
 .filters-modal .modal-content {
     background-color: #2C2457;
@@ -15573,13 +15542,26 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     right: auto;
     position: sticky !important;
 }
+.nav-tabs {
+    background: #947389;
+} 
+.nav-tabs .nav-link {
+	display: block;
+	padding: .5rem 1rem;
+	border: none;
+	background: #947389;
+	color: #fff;
+    border-radius:none !important;
+    border-top-right-radius:none;
+    border-top-left-radius:none;
+}
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     background-color: #1c313b;
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    background-color: #1c313b;
+    background-color: #613354;
     color: white;
     border: none !important;
 }

@@ -46,7 +46,9 @@ const CompetitionMatches = (props) => {
             return;
         }
         setFetching(true)
-        let endpoint = "/v1/sports/competition?id=" + competitionid + "&page=" + (page || 1) + "&sport_id=79";
+        let endpoint = "/v1/sports/competition?id=" 
+            + competitionid + "&page=" + (page || 1) 
+            + "&sport_id="+ sportid + "&category_id="+categoryid;
         let sub_types = new URL(window.location).searchParams.get('sub_type_id')
         endpoint += sub_types ? '&sub_type_id=' + sub_types : ''
         let betslip = findPostableSlip();
@@ -68,7 +70,9 @@ const CompetitionMatches = (props) => {
         if (!fetching && shouldFetch) {
             setFetching(true);
             let betslip = findPostableSlip();
-            let endpoint = "/v1/sports/competition?id=" + competitionid + "&page=" + (page || 1);
+            let endpoint = "/v1/sports/competition?id=" 
+                + competitionid + "&page=" + (page || 1) 
+                + "&sport_id="+ sportid + "&category_id="+categoryid;
             let sub_types = new URL(window.location).searchParams.get('sub_type_id')
             endpoint += sub_types ? '&sub_type_id=' + sub_types : ''
             makeRequest({url: endpoint, method: "post", data: betslip}).then(([status, result]) => {
@@ -111,6 +115,7 @@ const CompetitionMatches = (props) => {
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage">
                             <CarouselLoader/>
+                            <MainTabs tab={window.location.pathname.replace("/", "")}/>
                             {matches && <MatchList
                                 live={false}
                                 matches={matches}
