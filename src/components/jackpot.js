@@ -11,7 +11,6 @@ import Tabs from 'react-bootstrap/Tabs';
 import Container from "react-bootstrap/Container";
 
 const Right = React.lazy(() => import('./right/index'));
-const DailyJackpotTermsAndConditions = React.lazy(() => import('./pages/terms-and-conditions/DailyJackpotTermsAndConditions'))
 
 const Jackpot = (props) => {
     const [matches, setMatches] = useState(null);
@@ -62,7 +61,7 @@ const Jackpot = (props) => {
                                         </>
                                     ) : (
                                         <div
-                                            className={'text-white col-md-12 text-center background-primary shadow mt-2 p-3'}>
+                                            className={'col-md-12 text-center background-primary shadow mt-2 p-3'}>
                                             There are no active jackpots at the moment.
                                         </div>
                                     )}
@@ -71,7 +70,7 @@ const Jackpot = (props) => {
                                     <JackpotHeader jackpot={matches?.meta}/>
                                     <div className="matches full-mobile sticky-top container">
                                         <div
-                                            className="top-matches d-flex position-sticky shadow-lg p-4 mt-5 text-white">
+                                            className="top-matches d-flex position-sticky shadow-lg p-4 mt-5">
                                             <div className="col-md-3 bold">
                                                 TIME
                                             </div>
@@ -88,7 +87,7 @@ const Jackpot = (props) => {
                                         <div className={'matches full-width'} key={index}>
                                             <Container className="web-element">
                                                 <div
-                                                    className="col-md-12 shadow d-flex flex-row p-2 text-white top-matches">
+                                                    className="col-md-12 shadow d-flex flex-row p-2 top-matches">
                                                     <div className="col-md-3">
                                                         {match?.start_time}
                                                     </div>
@@ -112,9 +111,6 @@ const Jackpot = (props) => {
                                             </Container>
                                         </div>
                                     ))}
-                                </Tab>
-                                <Tab eventKey="terms" title="Terms & Conditions" >
-                                    <DailyJackpotTermsAndConditions/>
                                 </Tab>
                             </Tabs>
                         </div>
