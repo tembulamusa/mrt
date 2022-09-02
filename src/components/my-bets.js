@@ -30,8 +30,7 @@ const Styles = {
    bet:{
        background:'#947389',
        color:'#fff',
-       padding: '10px',
-       marginBottom: '1px'
+       padding: '5px',
    }
 };
 
@@ -64,7 +63,7 @@ const MyBets = (props) => {
                     <div className="col">BET AMOUNT</div>
                     <div className="col">POSSIBLE WIN</div>
                     <div className="col">TAX</div>
-                    <div className="col">State</div>
+                    <div className="col">Status</div>
                 </div>
             </div>
         );
@@ -106,14 +105,12 @@ const MyBets = (props) => {
         return (
             <div className={`container`} style={Styles.bet} key={bet.bet_id}>
                 <div className="row">
-                    <div className="col">{ bet.created}</div>
-                    <div className="col">{ bet.bet_id}</div>
-                    <div className="col">{ bet.total_matches}</div>
-                    <div className="col">{ bet.bet_amount}</div>
-                    <div className="col">{ bet.possible_win}</div>
-                    <div className="col">{ bet.tax}</div>
+                    <div className="col">Time { bet.created}</div>
+                    <div className="col">Bet ID { bet.bet_id}</div>
+                    <div className="col">Amount KES { bet.bet_amount}</div>
+                    <div className="col">Possible Win KES { bet.possible_win}</div>
                     { canCancel == false 
-                        ? <div className="col">{ betStatus}</div>
+                        ? <div className="col"> Status { betStatus}</div>
                         : cancelBetMarkup() 
                     }
                 </div>
@@ -163,19 +160,15 @@ const MyBets = (props) => {
 
     const MyBetsList = (props) => {
 		return (
-         <Accordion allowMultipleExpanded >
+         <div className="row" >
 			{state?.mybets && state.mybets.map((bet) => (
-				<AccordionItem 
+				<div className="mybet-list" 
                     key = {bet.bet_id} 
                     uuid = { bet.bet_id }
-                    dangerouslySetExpanded={true}
 					>
-					<AccordionItemHeading>
-						<AccordionItemButton>
+					<div className="bet-item">
 							<BetItem bet={bet}  key={bet.id}/>
-						</AccordionItemButton>
-					</AccordionItemHeading>
-					<AccordionItemPanel>
+					</div>
                      <BetslipHeader />
 					{  bet.betslip?.map((betslip) => (
                          <BetslipItem 
@@ -185,10 +178,9 @@ const MyBets = (props) => {
                        ))
                     }
                     { isLoading && <p>Loading ... </p>}
-					</AccordionItemPanel>
-				</AccordionItem>
+				</div>
 			))}
-		</Accordion>
+		</div>
 	    );
 
     }
@@ -212,7 +204,6 @@ const MyBets = (props) => {
                         <div className="homepage">
                             <CarouselLoader/>
                             <PageTitle />
-                            <BetItemHeader />
                             <MyBetsList  />
                         </div>
                     </div>

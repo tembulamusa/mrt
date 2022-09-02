@@ -86,15 +86,24 @@ const VerifyAccount = (props) => {
             <Form>
                 <div className="pt-0">
                     <div className="row">
-                        <hr/>
                         <div className="form-group row d-flex justify-content-center mt-5">
                             <div className="col-md-12">
+                                <div className="row">
+                                <div className="col-md-12">
+                                    <span className=''>
+                                        Didn't receive code? Resend OTP  &nbsp;
+                                    </span>
+                                    <button onClick={() => resendOTP()} type={"button"}
+                                            className='btn btn-primary btn-sm'>Resend OTP
+                                    </button>
+                                </div>
+                                </div>
                                 <label>Mobile Number</label>
                                 <div className="row">
-                                    <div className="col-md-8">
+                                    <div className="col-md-12">
                                         <input
                                             value={values.mobile}
-                                            className="h-100 text-dark deposit-input form-control col-md-12 input-field"
+                                            className="text-dark deposit-input form-control col-md-12 input-field"
                                             id="mobile"
                                             name="mobile"
                                             type="text"
@@ -103,21 +112,13 @@ const VerifyAccount = (props) => {
                                         />
                                         {errors.mobile && <div className='text-danger'> {errors.mobile} </div>}
                                     </div>
-                                    <div className="col-md-4">
-                                        <span className=''>
-                                            Didn't receive code? Resend Code
-                                        </span>
-                                        <button onClick={() => resendOTP()} type={"button"}
-                                                className='btn btn-primary btn-sm'>Resend OTP
-                                        </button>
-                                    </div>
                                 </div>
 
                             </div>
                         </div>
 
                         <div className="form-group row d-flex  mt-5">
-                            <div className="col-md-8">
+                            <div className="col-md-12">
                                 <label>Code (OTP)</label>
                                 <input
                                     value={values.code}
@@ -171,10 +172,10 @@ const VerifyAccount = (props) => {
             <div className="amt">
                 <div className="d-flex flex-row justify-content-between">
                     <SideBar loadCompetitions />
-                    <div className="gz home"  style={{width:'auto'}}>
+                    <div className="gz home">
                         <div className="homepage">
                             <FormTitle/>
-                            <div className="col-md-12 mt-2 text-white p-2">
+                            <div className="col-md-12 mt-2  p-2">
                                 {message && <Alert/>}
                                 <div className="modal-body pb-0" data-backdrop="static">
                                     <VerifyAccountForm/>

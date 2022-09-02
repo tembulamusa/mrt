@@ -204,7 +204,7 @@ const MatchHeaderRow = (props) => {
                     )}
                     <div
                         className="bet-fix events-odd pad undefined align-self-center more-markets-container m-lg-2 col-3">
-                        <FontAwesomeIcon icon={faFire} className={'text-warning'}/>
+                        &nbsp;
                     </div>
                 </div>
             </div>
@@ -227,8 +227,8 @@ const MoreMarketsHeaderRow = (props) => {
     } = props;
 
     return (
-        <Row>
-            <Row className="panel-header primary-bg">
+        <Container className="mt-2">
+            <div className="panel-header primary-bg">
 
                 <h4 className="inline-block">
                     {home_team} <small> - </small> {away_team}
@@ -253,8 +253,8 @@ const MoreMarketsHeaderRow = (props) => {
                         <Col>Game ID: {game_id} </Col>
                     </Row>
                 }
-            </Row>
-        </Row>
+            </div>
+        </Container>
     )
 }
 
