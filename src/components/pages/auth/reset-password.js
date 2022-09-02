@@ -112,7 +112,6 @@ const ResetPassword = (props) => {
             <Form className={`${otp_sent ? 'd-none' : 'd-block'}`}>
                 <div className="pt-0">
                     <div className="row">
-                        <hr/>
                         <div className="form-group row d-flex justify-content-center mt-5">
                             <div className="col-md-12">
                                 <label>Mobile Number</label>
@@ -266,7 +265,7 @@ const ResetPassword = (props) => {
                     <div className="gz home">
                         <div className="homepage">
                             <FormTitle/>
-                            <div className="col-md-12 mt-2 text-white p-2">
+                            <div className="col-md-12 mt-2 p-2">
                                 {message && <Alert/>}
                                 <div className="modal-body pb-0" data-backdrop="static">
                                     <OptForm/>

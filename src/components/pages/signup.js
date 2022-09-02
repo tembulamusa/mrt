@@ -141,7 +141,7 @@ const Signup = (props) => {
             <div className="amt">
                 <div className="d-flex flex-row justify-content-between">
                     <SideBar loadCompetitions/>
-                    <div className="gz home">
+                    <div className="gz home mt-3">
                         <div className="homepage">
                             <FormTitle/>
                             <div className="col-md-12 mt-2  p-2">

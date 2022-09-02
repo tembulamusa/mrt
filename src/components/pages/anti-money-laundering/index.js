@@ -21,139 +21,83 @@ const AntiMoneyLaundering = () => {
                     <SideBar loadCompetitions/>
                     <div className="gz home">
                         <div className="homepage">
-                            <div className='col-md-12 primary-bg p-4 text-center'>
-                                <h4 className="inline-block">
-                                    ANTI-MONEY LAUNDERING
-                                </h4>
-                            </div>
-                            <div className="col-md-12 mt-2 text-white p-2 text-center">
-                            </div>
-                            <div className="col-md-12 mt-2 p-5 text-white accordion-container">
-                                <Accordion allowMultipleExpanded={false} allowZeroExpanded={true}>
-                                    <AccordionItem>
-                                        <AccordionItemHeading>
-                                            <AccordionItemButton className='accordion-button'>
-                                                ANTI-MONEY LAUNDERING
-                                            </AccordionItemButton>
-                                        </AccordionItemHeading>
-                                        <AccordionItemPanel className='accordion-item-panel'>
-                                            <p>
-                                                We endeavor to carry out all appropriate measures to combat money
-                                                laundering
-                                                and international terrorism. We are bound to inform the relevant
-                                                authorities
-                                                if we suspect that funds deposited by the Player are used for money
-                                                laundering, terrorism financing or any other illegal activity.
-                                            </p>
-                                            <p>
-                                                BetNare is obliged to block such funds and to undertake measure as
-                                                provided
-                                                in the AML policy rules.
-                                            </p>
+       
+<div className='col-md-12 primary-bg p-4'>          
+        <h4 className="inline-block">                   
+            ANTI-MONEY LAUNDERING POLICY               
+        </h4>                                           
+    </div>                                              
+    <div className="col-md-12 p-5"> 
 
-                                            <p>
-                                                When you open an account, you agree to undertake the following
-                                                obligations:
-                                            </p>
+    <h1>Purpose</h1>
+    <p>The purpose of this policy is to prohibit and actively prevent money laundering and any activity that facilitates money laundering or the funding of terrorist or criminal activities within Bethipo by complying with all applicable requirements under the Proceeds of Crime and Anti-Money Laundering (Amendment) Act of Kenya, 2017 and its implementing regulations.</p>
 
-                                            <ul>
-                                                <li>
-                                                    You agree that you comply with all applicable laws and regulations
-                                                    on
-                                                    combating money laundering and terrorism financing, including the
-                                                    АМL
-                                                    Policy.
-                                                </li>
-                                                <li>
-                                                    You confirm that you have no information or any suspicions about the
-                                                    fact
-                                                    that funds used for depositing in the past, present or future, are
-                                                    received
-                                                    from any illegal source, or have any relation to legalization of
-                                                    income
-                                                    obtained illegally, or other unlawful activity prohibited by
-                                                    applicable law
-                                                    or the instructions of any international organizations.
-                                                </li>
-                                                <li>
-                                                    You agree to immediately provide any information we think fit to
-                                                    require
-                                                    according to applicable laws and regulatory requirements in respect
-                                                    of
-                                                    combating the legalization of funds obtained illegally.
-                                                    The company collects and keeps copies of ID documentation, mobile
-                                                    numbers
-                                                    etc of the players during registration and withdrawals, and reports
-                                                    on all
-                                                    changes made in the account.
-                                                </li>
-                                                <li>
-                                                    The company monitors any suspicious activity on the User's account,
-                                                    as well
-                                                    as operations carried out under special conditions.
-                                                    The company has the right to ban the User at any time, if the
-                                                    Company has
-                                                    grounds for supposing that this operation has any relation to money
-                                                    laundering and criminal activity. In accordance with international
-                                                    law the
-                                                    Company is not obliged to inform the User about his suspicious
-                                                    activity and
-                                                    let him know that it has been passed to relevant authorities.
-                                                </li>
-                                                <li>
-                                                    In accordance with the internal AML procedures the Company performs
-                                                    initial
-                                                    and ongoing personal identity verification procedures as provided by
-                                                    the
-                                                    level of risk of each User.
-                                                </li>
-                                                <li>
-                                                    The company will ask you to provide the minimal information to
-                                                    confirm
-                                                    your identity.
-                                                </li>
-                                                <li>
-                                                    The company will record and preserve all data and ID, as well as
-                                                    which
-                                                    methods of confirmation have been used and the results of
-                                                    verification
-                                                    procedures.
-                                                </li>
-                                                <li>
-                                                    The company, through KYC, will check your personal data to match the
-                                                    list
-                                                    of persons suspected of terrorism, which is formed by the authorized
-                                                    state
-                                                    and independent authorities. A minimum set of identification data
-                                                    includes:
-                                                    the User's full name; date of birth (for individuals); residential
-                                                    address
-                                                    or registered address of the User;
-                                                </li>
-                                                <li>
-                                                    sources of funds that you plan to Deposit into the account.
-                                                    To verify and confirm the authenticity of the above-mentioned data,
-                                                    the
-                                                    Company may require the following documents:
-                                                </li>
-                                                <li>
-                                                    passport or identification card, or other document equivalent that
-                                                    meets
-                                                    the following requirements: contains the name, date of birth and a
-                                                    photograph of the document holder.
-                                                </li>
-                                                <li>
-                                                    The company may also require other additional information, confirmed
-                                                    by
-                                                    relevant documents. In certain cases, the Company may also require
-                                                    notarized
-                                                    copies of documents from the User.
-                                                </li>
-                                            </ul>
-                                        </AccordionItemPanel>
-                                    </AccordionItem>
-                                </Accordion>
-                            </div>
+    <p>The scope of this process applies to all who use Bethipo ’s money remittance services as well as Bethipo ’s employees.</p>
+
+    <h1>Objectives</h1>
+    <p>The objectives of this AML policy include:</p>
+    <ol>
+        <li>1. Enable Bethipo to identify, assess, monitor, manage and mitigate the risks associated with money laundering and financing of terrorism.</li>
+        <li>2. Create awareness to Bethipo ’s employees, clients and other stakeholders with regard to AML.</li>
+        <li>Ensure compliance with Kenyan laws and regulations on AML.</li>
+    </ol>
+    <h1>Policies</h1>
+    <p><strong>Definition of Money Laundering</strong></p>
+    <p>a) Money laundering is generally defined as engaging in acts designed to conceal or disguise the true origins of criminally derived proceeds so that the proceeds appear to have derived from legitimate origins or constitute legitimate assets.</p>
+    <p>b) Terrorist financing may not involve the proceeds of criminal conduct, but rather an attempt to conceal either the origin of the funds or their intended use, which could be for criminal purposes.</p>
+    <h1>Bethipo’s AML Approach</h1>
+    <p>a) In order to ensure that Bethipo does not promote ML/TF activities, the company is keen to foster and promote the following culture of compliance including:</p>
+    <ul>
+    <li>Establishing a system of internal controls and policies and procedures to assure ongoing compliance with AML requirements; </li>
+    <li>Ensuring independent testing of AML compliance, of a scope and frequency that matches the money laundering and terrorist financing risks present;</li>
+    <li>Training staff, as warranted for individual jobs, in the identification of unusual financial transactions or suspicious activities, in the recording and aggregation of currency
+    transactions, and all legal requirements and Bethipo’s compliance policies and procedures; and </li>
+    <li>Designating an individual or individuals responsible for assuring day-to-day AML compliance within Bethipo.</li>
+    <li>Carrying out regular monitoring and review exercises to ensure AML compliance</li>
+    </ul>
+    <h1>AML Strategies</h1>
+    <p>Bethipo will implement the following strategies in addressing AML compliance:</p>
+    <p><b>AML Risk Management</b></p>
+    <p>a) As part of Bethipo’s Enterprise Risk Management Framework, risks as a result of ML/TF will be identified, assessed, evaluated, treated, monitored and reported regularly.</p>
+    <p>b) ML/TF risks will be identified across all stages associated with ML activities i.e. placement,layering and integration.</p>
+    <p>c) A risk register will be used to record ML/TF risks and communicated to key stakeholders.</p>
+    <p>d) ML/TF risk treatment measures will be regularly audited to ensure that new or changed risks are covered appropriately.</p>
+    <p>e) ML/TF risk identification and assessment will be guided by the following questions:</p>
+    <ul>
+    <li>What are the entry and exit points at Bethipo for funds that may come from illicit sources?</li>
+    <li>What Bethipo departments or employees are best positioned to detect the entry and exit of such funds?</li>
+    <li>What are characteristics of transactions that may involve illicit funds, or of customers who are more likely to engage in suspicious activity?</li>
+    <li>What mitigation measures or elimination measures can Bethipo employ? </li>
+    </ul>
+
+    <h1>KYC</h1>
+
+    <p>a) Bethipo will endeavor to request and verify original identification documents from all its individual customers/suppliers before facilitating any registration, deposit or withdrawal
+    transactions.</p>
+    <p>b) Bethipo will endeavor to request and verify original registration documents from all its corporate customers before facilitating any registration, deposit or withdrawal transactions including but not limited to:</p>
+    <p>
+    • Certificate of registration or incorporation <br/>
+    • Memorandum and Articles of Association<br />
+    • PIN certificate<br />
+    • VAT certificate <br />
+    • Business permit <br />
+    • Bank details and bank statements <br />
+    • Copies of identification documents of directors <br />
+    • Ownership structures (CR12) <br />
+    </p>
+    <p>c) Where identification or registration documents are unavailable or found to be falsified, Bethipo will deny or sever the business arrangement as per contract terms. </p>
+    <p>d) Bethipo will carry out regular due diligence local and world checks to identify persons of disreputable character, politically exposed persons as well as persons or corporations on sanctions or other ML/TF watch lists. If such persons or corporations are identified, Bethipo will review the engagement and take appropriate action to limit the company’s exposure topotential ML/TF activities. </p>
+    <h1>Transaction Monitoring</h1>
+    <p>a) Bethipo will actively monitor and carry out regular analysis of money transfers transactions to identify suspicious or unusual activities that could point to ML/TF activities.</p>
+    <p>b) Bethipo will endeavor to inform clients/suppliers where transactions have been flagged as suspicious or unusual and ask for appropriate information that would clear the transactions.</p>
+    <p>c) Bethipo will report identified suspicious or unusual activities to the relevant government authorities once they are verified as potential ML/TF activities, and take action to curtail them.</p>
+    <h1>Record Keeping</h1>
+    <p>a) Bethipo will keep records of all documents obtained for the purpose of identification and all transaction data as well as other information related to money laundering matters in accordance with the applicable AML and data retention laws and regulations of Kenya. </p>
+    <h1>Training and Awareness</h1>
+    <p>a) Bethipo will regularly carry out regular training and awareness sessions to its employees and suppliers with regard to AML.</p>
+    <p>b) Bethipo will endeavor to inform potential and current clients, suppliers and stakeholders of its standpoint on AML.</p>
+ 
+                         </div> 
                         </div>
                     </div>
                     <Right/>
