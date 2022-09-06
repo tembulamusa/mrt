@@ -18,7 +18,7 @@ const Complaints = () => {
             <AccordionItemPanel className='accordion-item-panel'>
 
                 <p>
-                    BetNare is committed to provide the best quality of support for our
+                    BetHipo is committed to provide the best quality of support for our
                     players.
                 </p>
                 <p>

@@ -13,20 +13,20 @@ const Footer = (props) => {
                     <h5>HipoBet</h5>
                     <ul>
                         <li className="">
-                            3RD FLR, Utalii House <br/>Utalii Lane, NAIROBI
+                            BOX 347856-00100, NAIROBI
                         </li>
                         <li className="">
-                            <a href="mailto:info@ke.bethipo.com">
-                                <FontAwesomeIcon icon={faEnvelope}/> info@bethipo.com
+                            <a href="mailto:customercare@bethipo.co.ke">
+                                <FontAwesomeIcon icon={faEnvelope}/> customercare@bethipo.co.ke
                             </a>
                         </li>
                         <li className="footer-icon">
-                            <a href="http://facebook.com/BetHipo-101164702604689">
+                            <a href="http://facebook.com/BetHipoKenya">
                                 <FontAwesomeIcon icon={faFacebook}/> Facebook
                             </a>
                         </li>
                         <li className="footer-icon">
-                            <a href="https://instagram.com/bethipoke?igshid=YmMyMTA2M2Y=">
+                            <a href="https://instagram.com/bethipo.co.ke?igshid=YmMyMTA2M2Y=">
                                 <FontAwesomeIcon icon={faInstagram}/> Instagram
                             </a>
                         </li>

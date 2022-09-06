@@ -70,7 +70,7 @@ const ErrorsOrOmissions = () => {
                     </li>
                 </ul>
                 <p>
-                    BetNare reserves the right to:
+                    BetHipo reserves the right to:
                 </p>
                 <ul>
                     <li>
