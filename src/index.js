@@ -104,8 +104,8 @@ const container = document.getElementById("app");
 render((
     <Store>
         <BrowserRouter>
-            <Routes>
-              <Suspense fallback={<div>&nbsp;</div>}>
+            <Suspense fallback={<div>&nbsp;</div>}>
+              <Routes>
                 <Route exact path="/" element={<Index/>}/>
                 <Route exact path="/virtuals" element={<Casino/>}/>
                 <Route exact path="/livescore" element={<LiveScore/>}/>
@@ -143,8 +143,8 @@ render((
                        element={<ProtectedRoute><Withdraw/></ProtectedRoute>}/>
                 <Route exact path="/my-bets"
                        element={<ProtectedRoute><MyBets/> </ProtectedRoute>}/>
-               </Suspense>
-            </Routes>
+              </Routes>
+          </Suspense>
         </BrowserRouter>
     </Store>
 ), container);
