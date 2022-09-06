@@ -45,11 +45,11 @@ export default function MatchesList() {
     ]
 
     const totalEventOptions = [
-        {value: '10', label: '10'},
-        {value: '30', label: '30'},
-        {value: '50', label: '50'},
         {value: '100', label: '100'},
         {value: '200', label: '200'},
+        {value: '300', label: '300'},
+        {value: '400', label: '400'},
+        {value: '500', label: '500'},
     ]
 
     const handleEventsChange = e => {
@@ -137,37 +137,6 @@ export default function MatchesList() {
                                                     loading ? "Preparing Document..." : "Download Matches"
                                                 }
                                             </PDFDownloadLink>
-                                        </div>
-                                    </Tab>
-                                    <Tab eventKey="jackpot" title="Jackpot Matches"
-                                         style={{border: '1px solid #334c5c'}}
-                                         className={'background-primary shadow'}>
-                                        <div className="col mt-5 background-primary">
-                                            <Card className={'background-primary text-white'}>
-                                                <Card.Header>
-                                                    {jackpotData?.name} - {formatNumber(jackpotData?.jackpot_amount)}/=
-                                                </Card.Header>
-                                                <Card.Body>
-                                                    <Card.Title>
-                                                        {jackpotData?.type}
-                                                    </Card.Title>
-                                                    <Card.Text>
-                                                        Download Jackpot Games and play in through sms in the format
-                                                        <div className={'bold mt-2'}>
-                                                            JP#PICK#PICK#.....
-                                                        </div>
-                                                    </Card.Text>
-                                                    <PDFDownloadLink
-                                                        className={`btn btn-primary text-white btn-lg p-4 col-md-4 ${loaded ? '' : 'disabled'}`}
-                                                        document={<PdfDocument matches={matches} jackpot={isJackpot}
-                                                                               title={title}/>}
-                                                        fileName="matches.pdf">
-                                                        {({blob, url, loading, error}) =>
-                                                            loading ? "Preparing Document..." : "Download Matches"
-                                                        }
-                                                    </PDFDownloadLink>
-                                                </Card.Body>
-                                            </Card>
                                         </div>
                                     </Tab>
                                 </Tabs>
