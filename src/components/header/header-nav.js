@@ -92,6 +92,7 @@ const HeaderNav = (props) => {
                             <FontAwesomeIcon icon={faMagic}/> Promotions
                         </a>
                     </li>
+                    {/**
                     <li>
                         <a className="g url-link" href="/livescore"
                            title="Live Score">
@@ -100,6 +101,8 @@ const HeaderNav = (props) => {
                             </span>
                         </a>
                     </li>
+                    **/ 
+                    }
                     <li className={pathname === '/print-matches' ? 'spacing-end' : 'spacing-end'}>
                         <a className="g url-link fix-display" href="#" title="Search"
                            onClick={() => showSearchBar()}>
