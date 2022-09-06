@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback, Suspense} from "react";
+import React, {useEffect, useCallback} from "react";
 import {render} from "react-dom";
 
 import {
