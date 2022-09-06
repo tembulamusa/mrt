@@ -21,7 +21,7 @@ const Promotions = () => {
                                 <div className="col-md-12">
                                     <div
                                         className="game-categories shadow-sm  p-2 shadow-sm casino-category-container text-white">
-                                        BETNARE PROMOTIONS
+                                        BetHipo PROMOTIONS
                                     </div>
                                 </div>
                                 <div className="col">

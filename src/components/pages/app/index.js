@@ -29,7 +29,7 @@ const MobileApp = () => {
                             <div
                                 className='col-md-12 primary-bg p-4 text-center d-flex flex-row justify-content-between sticky-top'>
                                 <h4 className="inline-block">
-                                    BETNARE APP
+                                    BetHipo APP
                                 </h4>
 
                                 <DownloadLink
@@ -42,7 +42,7 @@ const MobileApp = () => {
                             <div className="col-md-12 mt-2 text-white accordion-container text-start">
                                 <hr/>
                                 <div className={'d-flex justify-content-center shadow-lg mb-5'}>
-                                    Download the 🔥BetNare APP🔥 now!!
+                                    Download the BetHipo APP now!!
                                     FOR BETTER EXPERIENCE
                                     Take Control of Your Bets
 
@@ -54,11 +54,11 @@ const MobileApp = () => {
                                 <div className="col p-2">
                                     <br/>✅ Only 2MB in size
                                     <br/>✅ Faster & Lighter - Uses less data with data saver mode to play LIVE games.
-                                    <br/>✅ Enjoy Instant Winnings on BetNare Virtuals.
-                                    <br/>✅ Enjoy Instant Deposits and Fast Payouts only on BetNare App!
+                                    <br/>✅ Enjoy Instant Winnings on BetHipo Virtuals.
+                                    <br/>✅ Enjoy Instant Deposits and Fast Payouts only on BetHipo App!
                                     <br/>✅ Livescore - Stay updated with accurate and real time match results.
                                     <br/>✅ Enjoy Light & Dark Theme Mode.
-                                    <br/>✅ Instant Notifications - Don’t Miss Out on BetNare Offers and News Updates.
+                                    <br/>✅ Instant Notifications - Don’t Miss Out on BetHipo Offers and News Updates.
                                 </div>
                                 <div className="col">
                                     <hr/>
