@@ -35,13 +35,13 @@ const LiveBetting = () => {
                     at all.
                 </p>
 
-                <p>BetNare reiterates that any live scores displayed on its sites during
+                <p>BetHipo reiterates that any live scores displayed on its sites during
                     live
-                    events remain placed for guidance purposes only and that BetNare will
+                    events remain placed for guidance purposes only and that BetHipo will
                     not
                     take any responsibility for any errors and inaccuracies on the same.
                 </p>
-                <p>BetNare reserves the right to void any bets placed after the outcome of
+                <p>BetHipo reserves the right to void any bets placed after the outcome of
                     an
                     event is known. Should a bet be placed with incorrect odds due to
                     delayed

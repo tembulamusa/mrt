@@ -104,47 +104,45 @@ const container = document.getElementById("app");
 render((
     <Store>
         <BrowserRouter>
-            <Suspense fallback={<p> Loading ... </p>}>
-                <Routes>
-                    <Route exact path="/" element={<Index/>}/>
-                    <Route exact path="/virtuals" element={<Casino/>}/>
-                    <Route exact path="/livescore" element={<LiveScore/>}/>
-                    {/*<Route exact path="/casino" element={<Casino/>}/>*/}
-                    <Route exact path="/gameplay/:game_id" element={<CasinoGamePlay/>}/>
-                    <Route exact path="/highlights" element={<Index/>}/>
-                    <Route exact path="/upcoming" element={<Index/>}/>
-                    <Route exact path="/tomorrow" element={<Index/>}/>
-                    <Route exact path="/competition/:id" element={<CompetitionsMatches/>}/>
-                    <Route exact path="/competition/:sportid/:categoryid/:competitionid"
-                           element={<CompetitionsMatches/>}/>
-                    <Route exact path="/match/:id" element={<MatchAllMarkets/>}/>
-                    <Route exact path="/match/live/:id" element={<MatchAllMarkets live/>}/>
-                    <Route exact path="/jackpot" element={<Jackpot/>}/>
-                    <Route exact path="/live" element={<Live/>}/>
-                    <Route exact path="/live/:spid" element={<Live/>}/>
-                    <Route exact path="/privacy-policy" element={<PrivacyPolicy/>}/>
-                    <Route exact path="/anti-money-laundering" element={<AntimoneyLaundering/>}/>
-                    <Route exact path="/responsible-gambling" element={<ResponsibleGambling/>}/>
-                    <Route exact path="/dispute-resolution" element={<DisputeResolution/>}/>
-                    <Route exact path="/cookie-policy" element={<CookiePolicy/>}/>
-                    <Route exact path="/terms-and-conditions" element={<TermsAndConditions/>}/>
-                    <Route exact path="/how-to-play" element={<HowToPlay/>}/>
-                    <Route exact path="/signup" element={<Signup/>}/>
-                    <Route exact path="/reset-password" element={<ResetPassword/>}/>
-                    <Route exact path="/verify-account" element={<VerifyAccount/>}/>
-                    <Route exact path="/app" element={<MobileApp/>}/>
-                    <Route exact path="/logout" element={<Logout/>}/>
-                    <Route exact path="/print-matches" element={<PrintMatches/>}/>
-                    <Route exact path="/promotions" element={<Promotions/>}/>
+            <Routes>
+                <Route exact path="/" element={<Index/>}/>
+                <Route exact path="/virtuals" element={<Casino/>}/>
+                <Route exact path="/livescore" element={<LiveScore/>}/>
+                {/*<Route exact path="/casino" element={<Casino/>}/>*/}
+                <Route exact path="/gameplay/:game_id" element={<CasinoGamePlay/>}/>
+                <Route exact path="/highlights" element={<Index/>}/>
+                <Route exact path="/upcoming" element={<Index/>}/>
+                <Route exact path="/tomorrow" element={<Index/>}/>
+                <Route exact path="/competition/:id" element={<CompetitionsMatches/>}/>
+                <Route exact path="/competition/:sportid/:categoryid/:competitionid"
+                       element={<CompetitionsMatches/>}/>
+                <Route exact path="/match/:id" element={<MatchAllMarkets/>}/>
+                <Route exact path="/match/live/:id" element={<MatchAllMarkets live/>}/>
+                <Route exact path="/jackpot" element={<Jackpot/>}/>
+                <Route exact path="/live" element={<Live/>}/>
+                <Route exact path="/live/:spid" element={<Live/>}/>
+                <Route exact path="/privacy-policy" element={<PrivacyPolicy/>}/>
+                <Route exact path="/anti-money-laundering" element={<AntimoneyLaundering/>}/>
+                <Route exact path="/responsible-gambling" element={<ResponsibleGambling/>}/>
+                <Route exact path="/dispute-resolution" element={<DisputeResolution/>}/>
+                <Route exact path="/cookie-policy" element={<CookiePolicy/>}/>
+                <Route exact path="/terms-and-conditions" element={<TermsAndConditions/>}/>
+                <Route exact path="/how-to-play" element={<HowToPlay/>}/>
+                <Route exact path="/signup" element={<Signup/>}/>
+                <Route exact path="/reset-password" element={<ResetPassword/>}/>
+                <Route exact path="/verify-account" element={<VerifyAccount/>}/>
+                <Route exact path="/app" element={<MobileApp/>}/>
+                <Route exact path="/logout" element={<Logout/>}/>
+                <Route exact path="/print-matches" element={<PrintMatches/>}/>
+                <Route exact path="/promotions" element={<Promotions/>}/>
 
-                    <Route exact path="/deposit"
-                           element={<ProtectedRoute><Deposit/> </ProtectedRoute>}/>
-                    <Route exact path="/withdraw"
-                           element={<ProtectedRoute><Withdraw/></ProtectedRoute>}/>
-                    <Route exact path="/my-bets"
-                           element={<ProtectedRoute><MyBets/> </ProtectedRoute>}/>
-                </Routes>
-            </Suspense>
+                <Route exact path="/deposit"
+                       element={<ProtectedRoute><Deposit/> </ProtectedRoute>}/>
+                <Route exact path="/withdraw"
+                       element={<ProtectedRoute><Withdraw/></ProtectedRoute>}/>
+                <Route exact path="/my-bets"
+                       element={<ProtectedRoute><MyBets/> </ProtectedRoute>}/>
+            </Routes>
         </BrowserRouter>
     </Store>
 ), container);
