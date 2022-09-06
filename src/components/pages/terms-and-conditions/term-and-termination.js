@@ -20,7 +20,7 @@ const TermAndTermination = () => {
                     The term of the Agreement shall be for an indefinite period.
                 </p>
                 <p>
-                    BetNare shall have the right prior to accepting any bet, temporarily to
+                    BetHipo shall have the right prior to accepting any bet, temporarily to
                     suspend or permanently to terminate, the provision of betting services
                     to a
                     CLIENT without providing any reason.

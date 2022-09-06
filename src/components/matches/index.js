@@ -271,12 +271,14 @@ const SideBets = (props) => {
                        live ? match.parent_match_id : match?.match_id}`
                    }>+{match.side_bets}
                 </a>
-                <a className="side"
-                   href={`https://s5.sir.sportradar.com/bethipomts/en/match/${match.parent_match_id}`}
+                { /**
+                   <a className="side"
+                   href=#
                    target={"_blank"}
                    title={'View Stats'}>
                     <FontAwesomeIcon icon={faChartLine}/>
                 </a>
+                **/ }
             </>}
         </div>
     )
