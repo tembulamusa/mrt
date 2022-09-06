@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from "react";
+import React, {useEffect, useCallback, Suspense} from "react";
 import {render} from "react-dom";
 
 import {
@@ -105,6 +105,7 @@ render((
     <Store>
         <BrowserRouter>
             <Routes>
+              <Suspense fallback={<div>&nbsp;</div>}>
                 <Route exact path="/" element={<Index/>}/>
                 <Route exact path="/virtuals" element={<Casino/>}/>
                 <Route exact path="/livescore" element={<LiveScore/>}/>
@@ -142,6 +143,7 @@ render((
                        element={<ProtectedRoute><Withdraw/></ProtectedRoute>}/>
                 <Route exact path="/my-bets"
                        element={<ProtectedRoute><MyBets/> </ProtectedRoute>}/>
+               </Suspense>
             </Routes>
         </BrowserRouter>
     </Store>
