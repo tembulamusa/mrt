@@ -104,32 +104,33 @@ export default function MatchesList() {
                                     DOWNLOAD MATCHES
                                 </h4>
                             </div>
-                            <div className="col-md-12 mt-2 text-center vh-100">
+                            <div className="col-md-12 text-center vh-100">
                                 <Tabs
                                     variant={'tabs'}
                                     defaultActiveKey="matches"
                                     onSelect={(k) => fetchActiveTabMatches(k)}
                                     className="background-primary"
                                     justify>
-                                    <Tab eventKey="matches" title="Matches" className={'background-primary shadow p-5'}
-                                         style={{border: '1px solid #334c5c'}}>
+                                    <Tab eventKey="matches" title="Grab your favorite games in printable format here. Bethipo provides the the best competitie odds for you to take advantage of in all areas of betting" className={'background-primary shadow p-5'}
+                                         style={{}}>
                                         <div className="col-md-12 d-flex flex-column p-2">
-                                            <div className="col-md-12 text-start p-2">
-                                                <label htmlFor="" className={'text-white'}>Select Section</label>
+        {/* <div className="col-md-12 text-start p-2">
+                                                <label htmlFor="" className={''}>Select Section</label>
                                                 <Select options={sectionOptions}
                                                         value={sectionOptions.filter(obj => obj.value === section)}
                                                         onChange={handleSectionChange}/>
-                                            </div>
+                                            </div> */}
                                             <div className="col-md-12 text-start p-2">
-                                                <label htmlFor="" className={'text-white'}>Number of Events</label>
+                                                <label htmlFor="" className={''}>Select Number of Games</label>
                                                 <Select options={totalEventOptions}
                                                         value={totalEventOptions.filter(obj => obj.value === events)}
                                                         onChange={handleEventsChange}/>
                                             </div>
                                         </div>
-                                        <div className="col-md-12 mt-5 text-center">
+                                        <div className="col-md-12 mt-5 text-start">
                                             <PDFDownloadLink
-                                                className={`btn btn-primary text-white btn-lg p-4 col-md-4 ${loaded ? '' : 'disabled'}`}
+                                                className={`btn login-button text-white btn-lg col-1 ${loaded ? '' : 'disabled'}`}
+                                                style={{width: "150px", border: "none", padding: "3px", marginLeft:"10px"}}
                                                 document={<PdfDocument matches={matches} jackpot={isJackpot}
                                                                        title={title}/>}
                                                 fileName="matches.pdf">

@@ -83,7 +83,7 @@ const MainTabs = (props) => {
 
     const setCategroyOptions = () => {
        if(selectedSport) {
-           let selectedRawSportData = state.categories.all_sports.find((sport) => sport.sport_id === selectedSport.sport_id)
+           let selectedRawSportData = state?.categories?.all_sports.find((sport) => sport.sport_id === selectedSport.sport_id)
            console.log("This is what wee habe in cate ", selectedRawSportData?.categories);
            const categoryOptions = selectedRawSportData?.categories?.map((category) => {
                return {
@@ -100,9 +100,9 @@ const MainTabs = (props) => {
 
     const setCompetitionOptions = () => {
        if(selectedSport.sport_id && selectedCategory) {
-           let thisSport = state.categories.all_sports.find((sport) => sport.sport_id === selectedSport.sport_id)
+           let thisSport = state?.categories?.all_sports.find((sport) => sport.sport_id === selectedSport.sport_id)
            console.log("This is the sport am working with ", thisSport);
-           let selectedRawCompetitionData = thisSport.categories.find((category) => category.category_id === selectedCategory.category_id)
+           let selectedRawCompetitionData = thisSport?.categories.find((category) => category.category_id === selectedCategory.category_id)
            const competitionOptions = selectedRawCompetitionData?.competitions?.map((competition) => {
                return {
                   competiton_id: competition.competition_id,

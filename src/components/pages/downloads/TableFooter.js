@@ -47,12 +47,6 @@ const styles = StyleSheet.create({
 const TableFooter = ({items}) => {
     return (
         <>
-            <View style={styles.row}>
-                <Text style={styles.companyName}>PAYBILL</Text>
-                <Text style={styles.companyAddress}>
-                    4087777
-                </Text>
-            </View>
             <Image style={styles.logo} src={PrintFooter}/>
         </>
     )
