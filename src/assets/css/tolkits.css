@@ -231,7 +231,8 @@ header, li a, .thedate span {
 .header-menu li.active  a, .header-menu li.active a:hover{
     background-color: #2c2457 !important;
     color:#fff;
-    border-radius: 15px;
+    border-radius: 10px;
+    padding:5px 10px;
 }
 .header-menu a.active {
     border-bottom: 2px solid #dfbc64;
@@ -657,6 +658,11 @@ header, li a, .thedate span {
     color: #000;
 }
 
+.panel-header.primary-bg{
+    background: #824571;
+    color: #fff;
+}
+
 .betslipJ .bet-table td {
     padding: 4px;
 }
@@ -723,11 +729,11 @@ header, li a, .thedate span {
 
 .matches {
     display: inline-block;
+    background:#fff !important;
 }
 
 .matches .top-matches .match-detail button {
     cursor: pointer;
-    color: #fff !important;
     float: left;
     min-width: 100%;
     margin-right: 0px;
@@ -737,9 +743,22 @@ header, li a, .thedate span {
 }
 
 .match-detail button .label {
-    color: #2c2457 !important;
+    font-weight:400;
 }
-
+.matches .top-matches .match-detail button.home-team{
+    background: #fff !important;
+}
+.matches .top-matches .match-detail button.home-team.picked{
+    background: #2c2457 !important;
+}
+.matches .top-matches .match-detail button.home-team label:hover, .matches .top-matches .match-detail button.home-team:hover{
+    background: #2c2457 !important;
+    color:#fff !important;
+}
+.match-detail button .label:hover{
+    background: #2c2457 !important;
+    color:#fff !important;
+}
 .match-detail button .label:hover, .match-detail button.picked .label {
     color: #fff !important;
 }
@@ -803,9 +822,8 @@ header, li a, .thedate span {
 }
 
 .matches .top-matches.header {
-    background: #bbb3b7;
+    background: #d1d1d1;
     padding: 10px;
-    opacity: 0.8;
     color: #000 !important;
     font-size: 12px;
     font-family: inherit;
@@ -15170,6 +15188,14 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     color: #fff;
     background-color: #C00000 !important;
 }
+.navbar-nav li a.live-game{
+    margin:10px;
+    padding:5px 10px;
+    border-radius:10px;
+}
+.pro-sidebar .pro-menu a{
+    color:#666 !important;
+}
 
 
 #live_matches a.active {
@@ -15360,7 +15386,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 
 .login-button {
     color: #ffffff;
-    background-color: #902065;
+    background-color: #902065 !important;
     border-color: #24367e;
     height: 29px;
     padding: 0px 10px;
