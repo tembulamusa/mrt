@@ -20,12 +20,12 @@ const Promotions = () => {
                             <div className="col-md-12 d-flex flex-column">
                                 <div className="col-md-12">
                                     <div
-                                        className="game-categories shadow-sm  p-2 shadow-sm casino-category-container text-white">
-                                        BetHipo PROMOTIONS
+                                        className="primary-bg shadow-sm  p-2 shadow-sm casino-category-container ">
+                                    PROMOTIONS
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <div className={'row text-white p-2 shadow-sm d-flex justify-content-center'}>
+                                    <div className={'row  p-2 shadow-sm d-flex justify-content-center'}>
                                         <div className="col-md-12 shadow-lg">
                                             <div className="d-flex flex-column">
                                                 <h5>50 BOB KARIBU BONUS</h5>
@@ -33,17 +33,17 @@ const Promotions = () => {
                                                 <span><u>Register</u></span>
                                                 <ul>
                                                     <li>
-                                                        ✅ Register on sms by sending the word JOIN or BET or Game etc to 29877
+                                                        Register on sms by sending the word JOIN or BET or Game etc to 29877
                                                     </li>
                                                     <li>
-                                                        ✅ Visit bethipo.com and create an account
+                                                        Visit bethipo.co.ke and create an account
                                                     </li>
                                                 </ul>
                                                 <div className="col-md-12">
                                                     <span><u>Terms and conditions</u></span>
                                                     <ol>
 
-                                                        ✅ Eligible for new accounts only.
+                                                        Eligible for new accounts only.
                                                         <br/>
 
                                                         Bonus rules apply
@@ -59,10 +59,10 @@ const Promotions = () => {
                                                 <span><u>How to Play</u></span>
                                                 <ul>
                                                     <li>
-                                                        ✅ Deposit KES.50 to 500 get 20% as bonus
+                                                        Deposit KES.50 to 500 get 20% as bonus
                                                     </li>
                                                     <li>
-                                                        ✅ Deposit 500 and above get ksh.100 free (bonus). i.e. it is
+                                                        Deposit 500 and above get ksh.100 free (bonus). i.e. it is
                                                         capped at Ksh.500. Any
                                                         amount above 500 bonus issued will be Ksh.100.
                                                     </li>
@@ -71,17 +71,17 @@ const Promotions = () => {
                                                     <span><u>Terms and conditions</u></span>
                                                     <ol>
 
-                                                        ✅ Promotion is capped at KES.500 max
+                                                        Promotion is capped at KES.500 max
                                                         <br/>
-                                                        ✅ Any deposit amounts exceeding 500 will only get
+                                                        Any deposit amounts exceeding 500 will only get
                                                         KES.100
                                                         <br/>
 
-                                                        ✅ The bonus is only to be issued ONCE, per player per
+                                                        The bonus is only to be issued ONCE, per player per
                                                         day.
                                                         <br/>
 
-                                                        ✅ The bonus is ONLY to be issued on one transaction of
+                                                        The bonus is ONLY to be issued on one transaction of
                                                         KES 50 and above.
                                                         <br/>
 
@@ -109,44 +109,44 @@ const Promotions = () => {
                                                         <span><u>Terms and conditions</u></span>
                                                         <ol>
 
-                                                            ✅ This promotion will apply to your third (2.5 and above
+                                                            This promotion will apply to your third (2.5 and above
                                                             odds) cash bet made
                                                             every day.
 
                                                             <br/>
 
-                                                            ✅ The award in is CASH, which is credited to the
+                                                             The award in is CASH, which is credited to the
                                                             customer’s wallet
                                                             <br/>
 
 
-                                                            ✅ The maximum amount issued as a cash back bonus will be
+                                                             The maximum amount issued as a cash back bonus will be
                                                             KSH 100.
                                                             <br/>
 
-                                                            ✅ Bets with bonus amounts will not be considered for
+                                                             Bets with bonus amounts will not be considered for
                                                             this promotion as they
                                                             are not cash bets.
                                                             <br/>
 
-                                                            ✅ Jackpot bets will not be considered for this
+                                                             Jackpot bets will not be considered for this
                                                             promotion.
                                                             <br/>
 
-                                                            ✅ Voided Bets will be considered as cash refunds.
+                                                             Voided Bets will be considered as cash refunds.
                                                             <br/>
 
-                                                            ✅ The promotion runs on Monday to Thursday ONLY and WILL
+                                                             The promotion runs on Monday to Thursday ONLY and WILL
                                                             NOT be
                                                             available on FRIDAY, SATURDAY & SUNDAY
                                                             <br/>
 
-                                                            ✅ BetHipo reserves the right to end the promotion at any
+                                                             BetHipo reserves the right to end the promotion at any
                                                             time without any
                                                             explanation or notification.
                                                             <br/>
 
-                                                            ✅ BetHipo reserves the right to disqualify any player at
+                                                             BetHipo reserves the right to disqualify any player at
                                                             any time without being
                                                             bound to give reasons.
                                                             <br/>
@@ -166,10 +166,10 @@ const Promotions = () => {
                                                     <span><u>How to Play</u></span>
                                                     <ul>
 
-                                                        ✅ Place a pre-match Multibet / accumulator of 5 or more
+                                                         Place a pre-match Multibet / accumulator of 5 or more
                                                         selections.
 
-                                                        ✅ If your bet is unsuccessful from 1 loss out of the
+                                                         If your bet is unsuccessful from 1 loss out of the
                                                         accumulator, we will refund a
                                                         bonus of a set percentage based on the matrix set on your
                                                         stake. i.e., The bonus
@@ -180,37 +180,37 @@ const Promotions = () => {
                                                         <span><u>Terms and conditions</u></span>
                                                         <ol>
 
-                                                            ✅ This offer ONLY applies to returns on pre-match
+                                                            This offer ONLY applies to returns on pre-match
                                                             accumulators
                                                             <br/>
 
-                                                            ✅ The maximum bonus that you can receive is KES.500
+                                                            The maximum bonus that you can receive is KES.500
                                                             <br/>
 
-                                                            ✅ BetHipo may reclaim any bonus amount, Free Bets,
+                                                            BetHipo may reclaim any bonus amount, Free Bets,
                                                             shinda points or enhanced
                                                             payments that have been awarded in error.
                                                             <br/>
 
-                                                            ✅ BetHipo may, at any time, make minor amendments to
+                                                            BetHipo may, at any time, make minor amendments to
                                                             this promotion to correct
                                                             typographical errors or to improve on clarity or
                                                             customer experience and may
                                                             cancel this promotion for legal or regulatory reasons.
                                                             <br/>
 
-                                                            ✅ Bets placed with bonuses do not apply/qualify for this
+                                                            Bets placed with bonuses do not apply/qualify for this
                                                             offer
                                                             <br/>
 
-                                                            ✅ The refund is paid in BONUS and bonus rules apply
+                                                            The refund is paid in BONUS and bonus rules apply
                                                             <br/>
 
-                                                            ✅ Jackpot bets will not apply/ be considered for this
+                                                            Jackpot bets will not apply/ be considered for this
                                                             promotion
                                                             <br/>
 
-                                                            ✅ Voided Bets will not apply/ be considered.
+                                                            Voided Bets will not apply/ be considered.
 
                                                         </ol>
                                                     </div>
@@ -219,28 +219,28 @@ const Promotions = () => {
                                                         <span><u>SET AMOUNTS</u></span>
                                                         <ol>
 
-                                                            ✅ Minimum Bet Amount: The minimum betting amount for a single/multi bet is KES.10
+                                                            Minimum Bet Amount: The minimum betting amount for a single/multi bet is KES.10
                                                             <br/>
 
-                                                            ✅ Maximum Bet Amount: The maximum betting amount for a single/multi bet is KES.20,000
+                                                            Maximum Bet Amount: The maximum betting amount for a single/multi bet is KES.20,000
                                                             <br/>
 
-                                                            ✅ Maximum Single Bet Winning: The Single bet winning amount is limited to KES.500,000
+                                                            Maximum Single Bet Winning: The Single bet winning amount is limited to KES.500,000
                                                             <br/>
 
-                                                            ✅ Maximum Multi bet Winning: The Multi bet winning amount is limited to KES.500,000
+                                                            Maximum Multi bet Winning: The Multi bet winning amount is limited to KES.500,000
                                                             <br/>
 
-                                                            ✅ Maximum Aggregate Winning (maximum payout): The Maximum winnings amount per customer per day is limited to KES.500,000
+                                                            Maximum Aggregate Winning (maximum payout): The Maximum winnings amount per customer per day is limited to KES.500,000
                                                             <br/>
 
-                                                            ✅ Minimum withdrawal amount is KES.100
+                                                            Minimum withdrawal amount is KES.100
                                                             <br/>
 
-                                                            ✅ Maximum withdrawal amount per transaction is KES.20,000
+                                                            Maximum withdrawal amount per transaction is KES.20,000
                                                             <br/>
 
-                                                            ✅ Maximum withdrawal per person /per account / per day KES.20,000
+                                                            Maximum withdrawal per person /per account / per day KES.20,000
 
                                                         </ol>
                                                     </div>
