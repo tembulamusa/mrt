@@ -471,11 +471,11 @@ const OddButton = (props) => {
             {detail &&
                 (<>
                       <span
-                          className="label label-inverse blueish">
+                          className="label label-inverse">
                         {match.odd_key}
                       </span>
                     <span
-                        className="label label-inverse blueish odd-value">
+                        className="label label-inverse odd-value">
                             {oddValue}
                      </span>
                 </>)}

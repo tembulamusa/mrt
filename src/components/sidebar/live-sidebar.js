@@ -46,7 +46,7 @@ const LiveSideBar = (props) => {
                 top: "100px",
                 marginTop: "10px"
             }}
-                 className={`vh-100 text-white sticky-top d-none d-md-block up`}>
+                 className={`vh-100 sticky-top d-none d-md-block up`}>
                 <ProSidebar
                     style={{backgroundColor: '#16202c !important'}}
                     image={false}>
@@ -91,7 +91,7 @@ const LiveSideBar = (props) => {
                                                 <Row>
                                                     <Col lg="11" md="11" sm="11" xs="11" className="topl">
                                                         <Row style={{color: "#69819a"}}>
-                                                            <Col className={'text-white'}>{livesport.sport_name} </Col>
+                                                            <Col className={''}>{livesport.sport_name} </Col>
                                                             <Col>
                                                                 <span className={'badge rounded-pill bg-dark'} style={{
                                                                     float: "right",
