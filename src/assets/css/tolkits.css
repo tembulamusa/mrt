@@ -15594,3 +15594,12 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     border: none !important;
 }
 .dropdown-toggle:after { content: none }
+.nav > li > a > img.svg-menu-img-icon {
+    width: 20px;
+    margin: 0px 0px;
+    height: 20px;
+    border: none;
+    border-radius: none;
+    border-radius: unset;
+    stroke:#fff;
+}

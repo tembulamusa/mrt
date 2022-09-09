@@ -3,10 +3,10 @@ import SideBar from "../../sidebar/awesome/Sidebar";
 import Footer from "../../footer/footer";
 import React from "react";
 
-import twentyPercentDepositBonus from '../../../assets/img/banner/products/20PercentFirstdepositBonus-min.png'
-import thirtyPercentDailyCashback from '../../../assets/img/banner/products/30PercentDAILYCASHBACK.png'
-import seventyPercentMultibetCashback from '../../../assets/img/banner/products/70PercentMULTIBETCASHBACK.png'
-import karibuBonus from '../../../assets/img/banner/products/KaribuBonus.png'
+import twentyPercentDepositBonus from '../../../assets/img/banner/products/CashBack.png'
+import thirtyPercentDailyCashback from '../../../assets/img/banner/products/CashBack.png'
+import seventyPercentMultibetCashback from '../../../assets/img/banner/products/Welcome-Bonus.png'
+import karibuBonus from '../../../assets/img/banner/products/Welcome-Bonus.png'
 
 const Promotions = () => {
     return (
