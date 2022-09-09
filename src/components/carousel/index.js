@@ -3,14 +3,13 @@ import Carousel from 'react-bootstrap/Carousel';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-import banner4 from '../../assets/img/banner/products/20PercentFirstdepositBonus-min.png'
-import banner2 from '../../assets/img/banner/products/30PercentDAILYCASHBACK.png'
-import banner3 from '../../assets/img/banner/products/70PercentMULTIBETCASHBACK.png'
-import banner1 from '../../assets/img/banner/products/KaribuBonus.png'
-import banner5 from '../../assets/img/banner/products/100PercentDepositBonus.png'
+import banner4 from '../../assets/img/banner/CashBack.png'
+import banner2 from '../../assets/img/banner/Live-Betting.png'
+import banner3 from '../../assets/img/banner/Virtuals.png'
+import banner1 from '../../assets/img/banner/products/Welcome-Bonus.png'
 
 const banners = [
-    banner1, banner2, banner3, banner4, banner5
+    banner1, banner2, banner3, banner4
 ]
 
 const CarouselLoader = (props) => {
