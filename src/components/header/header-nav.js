@@ -14,6 +14,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import makeRequest from "../utils/fetch-request";
 import {faMobile, faCoins} from "@fortawesome/free-solid-svg-icons";
+import HomeIcon from "../../assets/svg/Home.svg";
+import LiveIcon from "../../assets/svg/Live.svg";
+import JackpotIcon from "../../assets/svg/JP.svg";
+import PromotionIcon from "../../assets/svg/Promotions.svg";
 
 const HeaderNav = (props) => {
     const [state,] = useContext(Context);
@@ -56,16 +60,16 @@ const HeaderNav = (props) => {
                 <ListGroup as="ul" xs="12" horizontal className="nav navbar-nav og d-flex ale ss  col-lg-12 col-md-12 col-sm-12 change-display">
                     
                     <li className={pathname === '/' ? "active" : ''}>
-                        <a className="cg fm ox anl url-link not-selectable " href="/" title="Home">Home</a>
+                        <a className="cg fm ox anl url-link not-selectable " href="/" title="Home"><img src={HomeIcon} alt=""  className="svg-menu-img-icon" />Home</a>
                     </li>
                     <li>
                         <a className={`g url-link live-game ${pathname === '/live' ? 'active' : ''}`} href="/live"
-                           title="Live">Live</a>
+                           title="Live"><img src={LiveIcon} alt="" className="svg-menu-img-icon" />Live</a>
                     </li>
 
                     <li className={pathname === '/jackpot' ? 'active' : ''}>
                         <a className="cg fm ox anl url-link" href="/jackpot" title="Jackpot">
-                            <FontAwesomeIcon icon={faCoins}/> Jackpot
+                            <img src={JackpotIcon} alt="" className="svg-menu-img-icon" /> Jackpot
                         </a>
                     </li>
                     <li className={pathname === '/app' ? 'active' : ''}>
@@ -89,7 +93,7 @@ const HeaderNav = (props) => {
                     {/*</li>*/}
                     <li className={pathname === '/promotions' || pathname.includes("gameplay") ? 'active' : ''}>
                         <a className="g url-link" href="/promotions" title="Promotions">
-                            <FontAwesomeIcon icon={faMagic}/> Promotions
+                            <img src={PromotionIcon} alt="" className="svg-menu-img-icon" /> Promotions
                         </a>
                     </li>
                     {/**
