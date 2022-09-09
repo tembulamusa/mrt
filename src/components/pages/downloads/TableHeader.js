@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image} from '@react-pdf/renderer';
-import PrintHeader from "../../../assets/img/banner/print-matches/HEADER.jpg"
+import PrintHeader from "../../../assets/img/banner/print-matches/Header.png"
 
 const styles = StyleSheet.create({
     row: {
