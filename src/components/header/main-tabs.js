@@ -24,7 +24,7 @@ const MainTabs = (props) => {
     const [sports, setSports] = useState();
     const [sportCategories, setSportCategories] = useState();
     const [competitions, setCompetitions] = useState();
-    const [state, ] = useContext(Context);
+    const [state, dispatch] = useContext(Context);
 
     const u_class = tab === 'upcoming' ? "home-tabs-active" : "home-tabs";
     const h_class = (!tab || tab === 'highlights') ? "home-tabs-active" : "home-tabs";
@@ -105,7 +105,7 @@ const MainTabs = (props) => {
            let selectedRawCompetitionData = thisSport?.categories.find((category) => category.category_id === selectedCategory.category_id)
            const competitionOptions = selectedRawCompetitionData?.competitions?.map((competition) => {
                return {
-                  competiton_id: competition.competition_id,
+                  competition_id: competition.competition_id,
                   label: getCompetitionOptionLabel(competition.competition_name),
                   competition_name:competition.competition_name,
                } 
@@ -115,12 +115,10 @@ const MainTabs = (props) => {
     };
 
     useEffect(() => {
-        console.log("Calling set categoty options again ..", selectedSport);
         setCompetitionOptions();
     }, [selectedCategory]);
 
     useEffect(() => {
-        console.log("Calling set categoty options again ..", selectedSport);
         setCategroyOptions();
     }, [selectedSport]);
 
@@ -147,6 +145,9 @@ const MainTabs = (props) => {
                 label:getCompetitionOptionLabel(null, true)
             }
         )
+        dispatch({type:"SET", key:"filtersport", payload:sp});
+        dispatch({type:"DEL", key:"filtercompetition"});
+        dispatch({type:"DEL", key:"filtercategory"});
     } 
 
     const handleCategorySelect = (category) => {
@@ -164,28 +165,21 @@ const MainTabs = (props) => {
                 label:getCompetitionOptionLabel(null, true)
             }
         )
+
+        dispatch({type:"SET", key:"filtercategory", payload:spc});
+        dispatch({type:"DEL", key:"filtercompetition"});
     } 
     const handleCompetitionSelect = (competition) => {
         const cspc = {
-              competiton_id: competition.competition_id,
+              competition_id: competition.competition_id,
               label: getCompetitionOptionLabel(competition.competition_name),
               competition_name:competition.competition_name,
         }
         setSelectedCompetition(cspc); 
+        dispatch({type:"SET", key:"filtercompetition", payload:cspc});
     } 
     return (
         <div>
-            <Row className="full-mobile filter-icons">
-                <div className="filter-icon">
-                    <div className="main-t-filter"><FontAwesomeIcon icon={faTasks} /> FILTER</div>
-                </div>
-                <div className="filter-icon">
-                    <div className="main-t-search"><FontAwesomeIcon icon={faSearch}/> SEARCH</div>
-                </div>
-                <div className="filter-icon">
-                    <div className="main-t-highlights"> <FontAwesomeIcon icon={faToggleOn} /> HIGHLIGHTS</div>
-                </div>
-            </Row>
             <Row className="full-mobile filter-groups">
                 <div className="filter-group-icon">
                     <Dropdown>

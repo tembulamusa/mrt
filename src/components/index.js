@@ -34,79 +34,48 @@ const Index = (props) => {
         return values;
     };
 
-    useInterval(async () => {
 
+    const fetchData = () => {
+        console.log("Calling fetch data again")
         setFetching(true)
-
-        let endpoint = "/v1/matches";
-
+        let tab = location.pathname.replace("/", "") || 'highlights';
         let betslip = findPostableSlip();
-
         let method = betslip ? "POST" : "GET";
-
-        let tab = location.pathname.replace("/", "") || 'highlights';
-
-        endpoint += "?page=" + (page || 1) + `&limit=${limit || 50}&tab=` + tab
-
-        let url = new URL(window.location.href)
-
-        let sport_id = url.searchParams.get('sport_id')
-
-        if (sport_id !== null) {
-            endpoint += " &sport_id=" + sport_id
-        }
-
-        endpoint = endpoint.replaceAll(" ", '')
-
-        endpoint += `&sub_type_id=` + (url.searchParams.get('sub_type_id') || "1,18,29")
-
-
-        let search_term = url.searchParams.get('search')
-
-        if (search_term !== null) {
-            return
-        }
-
-        await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
-            if (status == 200) {
-                setMatches(matches.length > 0 ? {...matches, ...result?.data} : result?.data || result)
-                setFetching(false)
-                // setMatches(result?.data || result)
-                if (result?.slip_data) {
-                    setUserSlipsValidation(result?.slip_data)
-                }
-                setProducerDown(result?.producer_status === 1);
-            }
-        });
-    }, 100000);
-
-    const fetchData = useCallback(async () => {
-        setFetching(true)
-        let tab = location.pathname.replace("/", "") || 'highlights';
-        let betslip = findPostableSlip();
         let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}&tab=` + tab;
+
         let url = new URL(window.location.href)
         let sport_id = url.searchParams.get('sport_id')
+
+        if(state?.filtersport) {
+            sport_id = state.filtersport.sport_id;
+        }
 
         if (sport_id !== null) {
             endpoint += " &sport_id=" + sport_id
         }
-
-        endpoint = endpoint.replaceAll(" ", '')
-
 
         let search_term = url.searchParams.get('search')
         if (search_term !== null) {
             endpoint += ' &search=' + search_term
+        }  else {
+        
+            if(state?.filtercategory) {
+                endpoint += "&category_id =" + state.filtercategory.category_id;
+            }
+            if(state?.filtercompetition) {
+                endpoint += "&competition_id =" + state.filtercompetition.competition_id;
+            }
+        
         }
 
+        endpoint = endpoint.replaceAll(" ", '')
 
         endpoint += `&sub_type_id=` + (url.searchParams.get('sub_type_id') || "1,18,29")
+        console.log("Am going to fetch data from url", endpoint);
 
-
-        await makeRequest({url: endpoint, method: "POST", data: betslip}).then(([status, result]) => {
+        makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
-                setMatches(matches.length > 0 ? {...matches, ...result?.data} : result?.data || result)
+                setMatches(matches?.length > 0 ? {...matches, ...result?.data} : result?.data || result)
                 setFetching(false)
                 if (result?.slip_data) {
                     setUserSlipsValidation(result?.slip_data)
@@ -115,7 +84,16 @@ const Index = (props) => {
             }
         });
 
-    }, []);
+    };
+
+    useInterval(async () => {
+      fetchData();
+    }, 100000);
+
+
+    useEffect(() => {
+       fetchData();
+    }, [state?.filtersport, state?.filtercategory, state?.filtercompetition])
 
     useEffect(() => {
         checkThreeWay()
@@ -127,7 +105,7 @@ const Index = (props) => {
         return () => {
             setMatches(null);
         };
-    }, [fetchData]);
+    }, []);
 
     const listInnerRef = useRef();
 

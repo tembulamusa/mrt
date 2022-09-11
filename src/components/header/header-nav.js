@@ -9,6 +9,7 @@ import {
     faQuestionCircle,
     faTimes,
     faLaptop,
+    faClock,
     faMagnet,
     faMagic, faInfo, faChessBoard, faDice
 } from '@fortawesome/free-solid-svg-icons'
@@ -25,10 +26,22 @@ const HeaderNav = (props) => {
     const [searching, setSearching] = useState(false)
     const [matches, setMatches] = useState([])
     const searchInputRef = useRef(null)
+    const [time, setTime] = useState();
 
     useEffect(() => {
         fetchMatches()
     }, [searching])
+
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+          setTime(new Date().toLocaleString().slice(10,22));
+        }, 1000);
+
+        return () => {
+          clearInterval(timer);
+        };
+      }, []);
 
     const fetchMatches = async (search) => {
         if (search && search.length >= 3) {
@@ -60,29 +73,29 @@ const HeaderNav = (props) => {
                 <ListGroup as="ul" xs="12" horizontal className="nav navbar-nav og d-flex ale ss  col-lg-12 col-md-12 col-sm-12 change-display">
                     
                     <li className={pathname === '/' ? "active" : ''}>
-                        <a className="cg fm ox anl url-link not-selectable " href="/" title="Home"><img src={HomeIcon} alt=""  className="svg-menu-img-icon" />Home</a>
+                        <a className="cg fm ox anl url-link not-selectable " href="/" title="Home"><img src={HomeIcon} alt=""  className="svg-menu-img-icon hide1" /> Home</a>
                     </li>
                     <li>
                         <a className={`g url-link live-game ${pathname === '/live' ? 'active' : ''}`} href="/live"
-                           title="Live"><img src={LiveIcon} alt="" className="svg-menu-img-icon" />Live</a>
+                           title="Live"><img src={LiveIcon} alt="" className="svg-menu-img-icon hide1" />Live</a>
                     </li>
 
                     <li className={pathname === '/jackpot' ? 'active' : ''}>
                         <a className="cg fm ox anl url-link" href="/jackpot" title="Jackpot">
-                            <img src={JackpotIcon} alt="" className="svg-menu-img-icon" /> Jackpot
+                            <img src={JackpotIcon} alt="" className="svg-menu-img-icon hide1" /> Jackpot
                         </a>
                     </li>
                     <li className={pathname === '/app' ? 'active' : ''}>
                         <a className="g url-link" href="/app" title="App">
                             <span>
-                                <FontAwesomeIcon icon={faMobile}/> APP
+                                <FontAwesomeIcon icon={faMobile} className="hide1"/> APP
                             </span>
                         </a>
                     </li>
                     <li className={pathname === '/virtuals' || pathname.includes("gameplay") ? 'active' : ''}>
                         <a className="g url-link" href="/virtuals" title="Virtuals">
-                            <span>
-                                <FontAwesomeIcon icon={faLaptop}/> Virtuals
+                            <span >
+                                <FontAwesomeIcon icon={faLaptop} className="hide1"/> Virtuals
                             </span>
                         </a>
                     </li>
@@ -93,7 +106,13 @@ const HeaderNav = (props) => {
                     {/*</li>*/}
                     <li className={pathname === '/promotions' || pathname.includes("gameplay") ? 'active' : ''}>
                         <a className="g url-link" href="/promotions" title="Promotions">
-                            <img src={PromotionIcon} alt="" className="svg-menu-img-icon" /> Promotions
+                            <img src={PromotionIcon} alt="" className="svg-menu-img-icon hide1" /> Promotions
+                        </a>
+                    </li>
+
+                    <li className={pathname === '/print-matches' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
+                        <a className="g url-link fix-print" href="/print-matches" title="Print Matches">
+                            <span className=" space-icons hide1"><FontAwesomeIcon icon={faPrint}/> </span>Print <span>Matches</span>
                         </a>
                     </li>
                     {/**
@@ -118,9 +137,9 @@ const HeaderNav = (props) => {
                             <span className=" space-icons"><FontAwesomeIcon icon={faQuestionCircle}/> </span> <span className={'hide2'}>Help</span>
                         </a>
                     </li>
-                    <li className={pathname === '/print-matches' ? 'active py-3' : 'fa-border py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
-                        <a className="g url-link fix-print" href="/print-matches" title="Print Matches">
-                            <span className=" space-icons"><FontAwesomeIcon icon={faPrint}/> </span>Print <span className={'hide1'}>Matches</span>
+                    <li className={""}>
+                        <a className="g url-link fix-display" href="#" title="Current Time">
+                            <span className=" space-icons"><FontAwesomeIcon icon={faClock}/> </span> <span className={'hide2'}>{time}</span>
                         </a>
                     </li>
                 </ListGroup>
@@ -133,7 +152,7 @@ const HeaderNav = (props) => {
                         <div className="col-md-10">
                             <input type="text" placeholder={'Start typing to search for team ...'} ref={searchInputRef}
                                    onInput={(event) => fetchMatches(event.target.value)}
-                                   className={'form-control input-field border-0 bg-dark text-white no-border-radius'}/>
+                                   className={'form-control input-field border-0  no-border-radius'}/>
                         </div>
 
                         <button className={'btn text-white -align-right'} onClick={() => dismissSearch()}>
@@ -144,7 +163,7 @@ const HeaderNav = (props) => {
                         className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
                         {matches.map((match, index) => (
                             <a href={`/?search=${match.home_team}`} key={index}>
-                                <li>
+                                <li style={{borderBottom: "1px solid #eee"}}>
                                     {match.home_team}
                                 </li>
                             </a>
