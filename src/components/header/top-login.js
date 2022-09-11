@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react'
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import {Formik, Field, Form} from 'formik';
 import makeRequest from "../utils/fetch-request";
@@ -30,9 +31,9 @@ const HeaderLogin = (props) => {
             toastId: 673738 /* this is hack to prevent multiple toasts */
         }
         if (message.status === 200) {
-            toast.success(`🚀 ${message.message}`, options);
+            toast.success(`${message.message}`, options);
         } else {
-            toast.error(`🦄 ${message.message}`, options);
+            toast.error(`${message.message}`, options);
         }
 
     };
@@ -104,6 +105,7 @@ const HeaderLogin = (props) => {
                             <input type="text"
                                    name="msisdn"
                                    className={`top-login-input-field ${errors.msisdn && 'text-danger'}`}
+                                   style={{width:"100%"}}
                                    data-action="grow"
                                    placeholder={errors.msisdn || "+254........."}
                                    onChange={ev => onFieldChanged(ev)}
@@ -111,7 +113,12 @@ const HeaderLogin = (props) => {
                             />
                             <br/>
                             <span className="sticky-hidden">
-                            <label><input type="checkbox" name="remember" value="1"/>Remember me</label>
+                            <label>
+                               <input type="hidden" name="remember" value="1"/> 
+                                <a className="m-lg-2" href="/verify-account" title="Verify Account">
+                                    <span className="register-label">Already using BETHIPO?, Verify</span>
+                                </a>
+                            </label>
                         </span>
                         </div>
                         <div className="col-5">
@@ -119,6 +126,7 @@ const HeaderLogin = (props) => {
                                    name="password"
                                    className={`top-login-input-field ${errors.password && 'text-danger'} `}
                                    data-action="grow"
+                                   style={{width:"100%"}}
                                    placeholder={errors.password || "Password"}
                                    onChange={ev => onFieldChanged(ev)}
                                    value={values.password}
@@ -154,7 +162,7 @@ const HeaderLogin = (props) => {
 
     return (
         <Container className="top-login-section">
-            <Row className="" style={{float: "right"}}>
+        {/* <Row className="" style={{float: "right"}}>
                 <div className="col-12">
                     <a className="" href="/signup" title="Join now">
                         <span className="register-label">Register now!</span>
@@ -163,10 +171,18 @@ const HeaderLogin = (props) => {
                         <span className="register-label">Verify Account</span>
                     </a>
                 </div>
-            </Row>
-            <Row style={{float: "right"}}>
-                <ToastContainer/>
-                <LoginForm/>
+            </Row> */}
+            <Row style={{marginBottom:"10px"}}>
+                <Col xs={3}className="d-inline-flex justify-content-end" style={{margin:"auto"}}>
+                    <ToastContainer/>
+                    <a className="filter-icon" href="/deposit" title="Join now" style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a"}}>
+                        <span className="register-label">Deposit</span>
+                    </a>
+                    <a className="filter-icon" href="/signup" title="Join now" style={{ fontSize: "16px", fontWeight: "bold"}}>
+                        <span className="register-label">Register now!</span>
+                    </a>
+                </Col>
+                <Col xs={6}><LoginForm/></Col>
             </Row>
         </Container>
     )

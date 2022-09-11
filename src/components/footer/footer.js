@@ -10,7 +10,7 @@ const Footer = (props) => {
         <footer className="footer-custom">
             <div className="row">
                 <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-white">
-                    <h5>HipoBet</h5>
+                    <h5>BETHIPO</h5>
                     <ul>
                         <li className="">
                             BOX 347856-00100, NAIROBI
@@ -21,12 +21,12 @@ const Footer = (props) => {
                             </a>
                         </li>
                         <li className="footer-icon">
-                            <a href="http://facebook.com/BetHipoKenya">
+                            <a href="https://www.facebook.com/BetHipoKenya">
                                 <FontAwesomeIcon icon={faFacebook}/> Facebook
                             </a>
                         </li>
                         <li className="footer-icon">
-                            <a href="https://instagram.com/bethipo.co.ke?igshid=YmMyMTA2M2Y=">
+                            <a href="https://www.instagram.com/bethipokenya">
                                 <FontAwesomeIcon icon={faInstagram}/> Instagram
                             </a>
                         </li>
