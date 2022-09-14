@@ -33,7 +33,7 @@ const Promotions = () => {
                                                 <span><u>Register</u></span>
                                                 <ul>
                                                     <li>
-                                                        Register on sms by sending the word JOIN or BET or Game etc to 29877
+                                                        Register on sms by sending the word JOIN or BET or Game etc to 29400
                                                     </li>
                                                     <li>
                                                         Visit bethipo.co.ke and create an account
