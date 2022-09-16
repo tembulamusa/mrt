@@ -27,7 +27,7 @@ const CarouselLoader = (props) => {
                         style={{display: imageLoaded ? 'block' : 'none'}}
                         src={banner}
                         onLoad={onImageLoaded}
-                        alt="Batnare"
+                        alt="Bethipo"
                         effects="blur"
                     />
                 </Carousel.Item>
