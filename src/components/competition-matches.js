@@ -31,6 +31,8 @@ const CompetitionMatches = (props) => {
     const [limit, setLimit] = useState(50);
     const [shouldFetch, setShouldFetch] = useState(true);
 
+    
+    
 
     const findPostableSlip = () => {
         let betslips = getBetslip() || {};
@@ -40,55 +42,60 @@ const CompetitionMatches = (props) => {
         return values;
     };
 
-    useInterval(async () => {
-        if (!shouldFetch) {
-            return;
-        }
-        setFetching(true)
-        let endpoint = "/v1/sports/competition?id=" 
-            + competitionid + "&page=" + (page || 1) 
-            + "&sport_id="+ sportid + "&category_id="+categoryid;
-        let sub_types = new URL(window.location).searchParams.get('sub_type_id')
-        endpoint += sub_types ? '&sub_type_id=' + sub_types : ''
-        let betslip = findPostableSlip();
-        let method = betslip ? "POST" : "GET";
-        await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
-            if (status == 200) {
-                setMatches(result?.data || result)
-                setShouldFetch(result?.data.length > 0)
-                if (result?.slip_data) {
-                    setUserSlipsValidation(result?.slip_data)
-                }
-                setProducerDown(result?.producer_status === 1);
-                setFetching(false)
-            }
-        });
-    }, 3000);
-
-    const fetchPagedData = useCallback(() => {
+    const fetchData = () => {
         if (!fetching && shouldFetch) {
-            setFetching(true);
+            console.log("Calling fetch data again")
+            setFetching(true)
             let betslip = findPostableSlip();
+            let method = betslip ? "POST" : "GET";
+            let spid = state?.filtersport?.sport_id ?? sportid;
+            console.log()
+            let catid = ( spid != sportid) 
+                ? state?.filtercategory?.category_id ?? 'all' : categoryid;
+
+            let cid = state?.filtercompetition?.competition_id ?? 'all';
+
+            let url = new URL(window.location.href)
+            let search_term = url.searchParams.get('search')
+
             let endpoint = "/v1/sports/competition?id=" 
-                + competitionid + "&page=" + (page || 1) 
-                + "&sport_id="+ sportid + "&category_id="+categoryid;
-            let sub_types = new URL(window.location).searchParams.get('sub_type_id')
-            endpoint += sub_types ? '&sub_type_id=' + sub_types : ''
-            makeRequest({url: endpoint, method: "post", data: betslip}).then(([status, result]) => {
-                setMatches(result?.data || result);
-                setShouldFetch(result?.data.length > 0)
-                if (result?.slip_data) {
-                    setUserSlipsValidation(result?.slip_data)
+                + cid + "&page=" + (page || 1) 
+                + "&sport_id="+ spid + "&category_id="+catid;
+
+            if (search_term !== null) {
+                endpoint += ' &search=' + search_term
+            }
+            endpoint = endpoint.replaceAll(" ", '')
+
+            endpoint += `&sub_type_id=` + (state?.selectedmarkets || url.searchParams.get('sub_type_id') || "1,18,29")
+            console.log("Am going to fetch data from url", endpoint);
+
+            makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
+                if (status == 200) {
+                    setMatches(result?.data || result)
+                    setShouldFetch(result?.data.length > 0)
+                    if (result?.slip_data) {
+                        setUserSlipsValidation(result?.slip_data)
+                    }
+                    setProducerDown(result?.producer_status === 1);
+                    setFetching(false)
                 }
-                setProducerDown(result?.producer_status === 1);
-                setFetching(false);
             });
         }
-    }, []);
+    };
+    useInterval(() => {
+        fetchData();
+    }, 10000);
 
 
     useEffect(() => {
-        fetchPagedData();
+       console.log("This is a shout out since you changed some state")
+       fetchData();
+    }, [state?.filtersport, state?.filtercategory, state?.filtercompetition])
+
+
+    useEffect(() => {
+        fetchData();
         let cachedSlips = getBetslip("betslip");
         if (cachedSlips) {
             dispatch({type: "SET", key: "betslip", payload: cachedSlips});
@@ -96,7 +103,7 @@ const CompetitionMatches = (props) => {
         return () => {
             setMatches(null);
         };
-    }, [fetchPagedData]);
+    }, []);
 
     document.addEventListener('scrollEnd', (event) => {
         if (!fetching) {

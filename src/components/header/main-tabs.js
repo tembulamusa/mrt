@@ -26,7 +26,6 @@ const MainTabs = (props) => {
     const [competitions, setCompetitions] = useState();
     const [state, dispatch] = useContext(Context);
     const {sportid, categoryid, competitionid} = useParams();
-    console.log("Reading params ", sportid, categoryid, competitionid);
     const u_class = tab === 'upcoming' ? "home-tabs-active" : "home-tabs";
     const h_class = (!tab || tab === 'highlights') ? "home-tabs-active" : "home-tabs";
     const t_class = tab === 'tomorrow' ? "home-tabs-active" : "home-tabs";
@@ -54,7 +53,6 @@ const MainTabs = (props) => {
         try {
             cat_image = require(`../../assets/img/flags-1-1/${cat_flag || "default_flag" }.svg`) 
         } catch(error){
-           console.log("Missing image for category ", category_name, error)
        }
 
         return (<Row className="d-flex justify-content-start f-menu-item">
@@ -75,7 +73,8 @@ const MainTabs = (props) => {
                return {
                   sport_id: sport.sport_id,
                   label: getSportOptionLabel(sport.sport_name),
-                  sport_name:sport.sport_name
+                  sport_name:sport.sport_name,
+                  default_display_markets:sport.default_display_markets
                } 
            });
            setSports(sportOptions);
@@ -85,7 +84,6 @@ const MainTabs = (props) => {
     const setCategroyOptions = () => {
        if(selectedSport) {
            let selectedRawSportData = state?.categories?.all_sports.find((sport) => sport.sport_id === selectedSport.sport_id)
-           console.log("This is what wee habe in cate ", selectedRawSportData?.categories);
            const categoryOptions = selectedRawSportData?.categories?.map((category) => {
                return {
                   category_id: category.category_id,
@@ -102,7 +100,6 @@ const MainTabs = (props) => {
     const setCompetitionOptions = () => {
        if(selectedSport.sport_id && selectedCategory) {
            let thisSport = state?.categories?.all_sports.find((sport) => sport.sport_id === selectedSport.sport_id)
-           console.log("This is the sport am working with ", thisSport);
            let selectedRawCompetitionData = thisSport?.categories.find((category) => category.category_id === selectedCategory.category_id)
            const competitionOptions = selectedRawCompetitionData?.competitions?.map((competition) => {
                return {
@@ -129,8 +126,7 @@ const MainTabs = (props) => {
             let _sport = state?.categories?.all_sports.find((sport) => sport.sport_id == sportid)
             _sport && handleSportsSelect(_sport);
             if(categoryid){
-                let _category = _sport.categories.find((category) => category.category_id == categoryid)
-                console.log("Found selected category", _category)
+                let _category = _sport?.categories?.find((category) => category.category_id == categoryid)
                 setSelectedCategory(
                     {
                         category_id:_category.category_id, 
@@ -139,7 +135,7 @@ const MainTabs = (props) => {
                 );
             }
         }
-    }, [state?.categories]);
+    }, []);
 
     const handleSportsSelect = (sport) => {
         const sp = {
@@ -160,7 +156,9 @@ const MainTabs = (props) => {
                 label:getCompetitionOptionLabel(null, true)
             }
         )
+        let subtypes = sport?.default_display_markets;
         dispatch({type:"SET", key:"filtersport", payload:sp});
+        dispatch({type:"SET", key:"selectedmarkets", payload:subtypes});
         dispatch({type:"DEL", key:"filtercompetition"});
         dispatch({type:"DEL", key:"filtercategory"});
     } 
