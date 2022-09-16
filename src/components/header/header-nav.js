@@ -18,6 +18,7 @@ import {faMobile, faCoins} from "@fortawesome/free-solid-svg-icons";
 import HomeIcon from "../../assets/svg/Home.svg";
 import LiveIcon from "../../assets/svg/Live.svg";
 import JackpotIcon from "../../assets/svg/JP.svg";
+import HipoIcon from "../../assets/img/search-icon.png";
 import PromotionIcon from "../../assets/svg/Promotions.svg";
 
 const HeaderNav = (props) => {
@@ -129,7 +130,7 @@ const HeaderNav = (props) => {
                     <li className={pathname === '/print-matches' ? 'spacing-end' : 'spacing-end'}>
                         <a className="g url-link fix-display" href="#" title="Search"
                            onClick={() => showSearchBar()}>
-                            <span className=" space-icons"><FontAwesomeIcon icon={faSearch}/> </span><span className={'hide2'}>Search</span>
+                            <span className=" space-icons"><img  src={HipoIcon} alt="" style={{width:"20px"}} /> </span><span className={'hide2'}>Search</span>
                         </a>
                     </li>
                     <li className={pathname === '/how-to-play' ? 'active' : ''}>

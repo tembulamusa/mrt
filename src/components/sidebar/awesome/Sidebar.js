@@ -90,12 +90,12 @@ const Sidebar = (props) => {
 
     const getSportImageIcon = (sport_name, folder = 'svg', topLeagues = false) => {
 
-        let default_img = 'default_sport'
+        let default_img = 'hipo'
         let sport_image;
         try {
             sport_image = topLeagues ? require(`../../../assets${sport_name}`) : require(`../../../assets/${folder}/${sport_name}.svg`);
         } catch (error) {
-            sport_image = require(`../../../assets/${folder}/${default_img}.svg`);
+            sport_image = require(`../../../assets/${folder}/${default_img}.png`);
         }
         return sport_image
     }
@@ -159,8 +159,8 @@ const Sidebar = (props) => {
                             {competitions?.top_soccer?.map((top_league, index) => (
                                 <MenuItem key={`l_${index}`}
                                           icon={<img
-                                              src={getSportImageIcon(top_league?.flag, 'img/flags-2-1', true)}
-                                              style={{borderRadius: "49%", height: "30px"}}></img>}>
+                                              src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
+                                              style={{borderRadius: "49%", height: "15px"}}></img>}>
                                     <a href={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}?sub_type_id=1,18,29`}>
                                         {top_league?.competition_name}
                                     </a>
@@ -178,7 +178,7 @@ const Sidebar = (props) => {
                                     <PerfectScrollbar >
                                     {competition?.categories.map((country, countryKey) => (
                                             <MenuItem title={country.category_name}
-                                                     icon={<img style={{borderRadius: '50%', height: '30px'}}
+                                                     icon={<img style={{borderRadius: '50%', height: '15px'}}
                                                      src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
                                                      />} key={countryKey} >
 
