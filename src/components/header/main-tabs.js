@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
-
+import {useParams} from 'react-router-dom'
 import {Row, Col, Dropdown, Form} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import MarketFilter from "../filters/MarketFilter";
@@ -25,7 +25,8 @@ const MainTabs = (props) => {
     const [sportCategories, setSportCategories] = useState();
     const [competitions, setCompetitions] = useState();
     const [state, dispatch] = useContext(Context);
-
+    const {sportid, categoryid, competitionid} = useParams();
+    console.log("Reading params ", sportid, categoryid, competitionid);
     const u_class = tab === 'upcoming' ? "home-tabs-active" : "home-tabs";
     const h_class = (!tab || tab === 'highlights') ? "home-tabs-active" : "home-tabs";
     const t_class = tab === 'tomorrow' ? "home-tabs-active" : "home-tabs";
@@ -33,7 +34,7 @@ const MainTabs = (props) => {
     const getSportOptionLabel = (sport_name, showCaret=false) => {
         const sport_image = require(`../../assets/svg/${sport_name}.svg`); 
         return (<Row className="d-flex justify-content-start f-menu-item">
-                    <Col className="col-auto"><img src={sport_image} alt="" style={{width:"14px"}}/> </Col> 
+                    <Col className="col-auto"><img src={sport_image} alt="" style={{width:"30px"}}/> </Col> 
                     <Col className="col-auto">{sport_name}</Col>
                 
                     { showCaret && <Col className="col-auto"><FontAwesomeIcon icon={faCaretDown} /> </Col> }
@@ -57,7 +58,7 @@ const MainTabs = (props) => {
        }
 
         return (<Row className="d-flex justify-content-start f-menu-item">
-                    <Col className="col-auto">{ cat_image && <img src={cat_image} alt="" style={{width:"14px"}}/>  }</Col> 
+                    <Col className="col-auto">{ cat_image && <img src={cat_image} alt="" style={{width:"15px"}}/>  }</Col> 
                     <Col className="col-auto">{category_name || "All Categories" }</Col>
                 
                     { showCaret && <Col className="col-auto"><FontAwesomeIcon icon={faCaretDown} /> </Col> }
@@ -68,7 +69,7 @@ const MainTabs = (props) => {
     const [selectedCategory, setSelectedCategory] = useState({category_id:null, label:getCategoryOptionLabel(null, 'default', true)});
     const [selectedCompetition, setSelectedCompetition] = useState({competition_id:null, label:getCompetitionOptionLabel(null, true)});
 
-    const setSportOptions = useCallback(() => {
+    const setSportOptions = () => {
        if(state?.categories) {
            const sportOptions = state.categories.all_sports.map((sport) => {
                return {
@@ -79,7 +80,7 @@ const MainTabs = (props) => {
            });
            setSports(sportOptions);
        }
-    }, [state?.categories]);
+    };
 
     const setCategroyOptions = () => {
        if(selectedSport) {
@@ -124,7 +125,21 @@ const MainTabs = (props) => {
 
     useEffect(() => {
         setSportOptions() 
-    }, []);
+        if(sportid){
+            let _sport = state?.categories?.all_sports.find((sport) => sport.sport_id == sportid)
+            _sport && handleSportsSelect(_sport);
+            if(categoryid){
+                let _category = _sport.categories.find((category) => category.category_id == categoryid)
+                console.log("Found selected category", _category)
+                setSelectedCategory(
+                    {
+                        category_id:_category.category_id, 
+                        label:getCategoryOptionLabel(_category.category_name, _category.cat_flag, true)
+                    }
+                );
+            }
+        }
+    }, [state?.categories]);
 
     const handleSportsSelect = (sport) => {
         const sp = {
@@ -187,7 +202,7 @@ const MainTabs = (props) => {
                             { selectedSport?.label }
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu variant="default">
+                        <Dropdown.Menu >
                           {
                               sports && sports.map((sport) => { 
                                  return <Dropdown.Item eventKey={sport.sport_id} onClick={() => handleSportsSelect(sport)}>{ sport.label}</Dropdown.Item> 
