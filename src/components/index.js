@@ -35,7 +35,7 @@ const Index = (props) => {
     };
 
 
-    const fetchData = () => {
+    const fetchData = async () => {
         console.log("Calling fetch data again")
         setFetching(true)
         let tab = location.pathname.replace("/", "") || 'highlights';
@@ -73,7 +73,7 @@ const Index = (props) => {
         endpoint += `&sub_type_id=` + (url.searchParams.get('sub_type_id') || "1,18,29")
         console.log("Am going to fetch data from url", endpoint);
 
-        makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
+        await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
                 setMatches(matches?.length > 0 ? {...matches, ...result?.data} : result?.data || result)
                 setFetching(false)
@@ -88,7 +88,7 @@ const Index = (props) => {
 
     useInterval(async () => {
       fetchData();
-    }, 100000);
+    }, 10000); 
 
 
     useEffect(() => {

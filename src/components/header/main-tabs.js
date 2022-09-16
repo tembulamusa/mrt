@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
-
+import {useParams} from 'react-router-dom'
 import {Row, Col, Dropdown, Form} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import MarketFilter from "../filters/MarketFilter";
@@ -25,7 +25,7 @@ const MainTabs = (props) => {
     const [sportCategories, setSportCategories] = useState();
     const [competitions, setCompetitions] = useState();
     const [state, dispatch] = useContext(Context);
-
+    const {sportid, categoryid, competitionid} = useParams();
     const u_class = tab === 'upcoming' ? "home-tabs-active" : "home-tabs";
     const h_class = (!tab || tab === 'highlights') ? "home-tabs-active" : "home-tabs";
     const t_class = tab === 'tomorrow' ? "home-tabs-active" : "home-tabs";
@@ -33,7 +33,7 @@ const MainTabs = (props) => {
     const getSportOptionLabel = (sport_name, showCaret=false) => {
         const sport_image = require(`../../assets/svg/${sport_name}.svg`); 
         return (<Row className="d-flex justify-content-start f-menu-item">
-                    <Col className="col-auto"><img src={sport_image} alt="" style={{width:"14px"}}/> </Col> 
+                    <Col className="col-auto"><img src={sport_image} alt="" style={{width:"30px"}}/> </Col> 
                     <Col className="col-auto">{sport_name}</Col>
                 
                     { showCaret && <Col className="col-auto"><FontAwesomeIcon icon={faCaretDown} /> </Col> }
@@ -53,11 +53,10 @@ const MainTabs = (props) => {
         try {
             cat_image = require(`../../assets/img/flags-1-1/${cat_flag || "default_flag" }.svg`) 
         } catch(error){
-           console.log("Missing image for category ", category_name, error)
        }
 
         return (<Row className="d-flex justify-content-start f-menu-item">
-                    <Col className="col-auto">{ cat_image && <img src={cat_image} alt="" style={{width:"14px"}}/>  }</Col> 
+                    <Col className="col-auto">{ cat_image && <img src={cat_image} alt="" style={{width:"15px"}}/>  }</Col> 
                     <Col className="col-auto">{category_name || "All Categories" }</Col>
                 
                     { showCaret && <Col className="col-auto"><FontAwesomeIcon icon={faCaretDown} /> </Col> }
@@ -68,23 +67,23 @@ const MainTabs = (props) => {
     const [selectedCategory, setSelectedCategory] = useState({category_id:null, label:getCategoryOptionLabel(null, 'default', true)});
     const [selectedCompetition, setSelectedCompetition] = useState({competition_id:null, label:getCompetitionOptionLabel(null, true)});
 
-    const setSportOptions = useCallback(() => {
+    const setSportOptions = () => {
        if(state?.categories) {
            const sportOptions = state.categories.all_sports.map((sport) => {
                return {
                   sport_id: sport.sport_id,
                   label: getSportOptionLabel(sport.sport_name),
-                  sport_name:sport.sport_name
+                  sport_name:sport.sport_name,
+                  default_display_markets:sport.default_display_markets
                } 
            });
            setSports(sportOptions);
        }
-    }, [state?.categories]);
+    };
 
     const setCategroyOptions = () => {
        if(selectedSport) {
            let selectedRawSportData = state?.categories?.all_sports.find((sport) => sport.sport_id === selectedSport.sport_id)
-           console.log("This is what wee habe in cate ", selectedRawSportData?.categories);
            const categoryOptions = selectedRawSportData?.categories?.map((category) => {
                return {
                   category_id: category.category_id,
@@ -101,7 +100,6 @@ const MainTabs = (props) => {
     const setCompetitionOptions = () => {
        if(selectedSport.sport_id && selectedCategory) {
            let thisSport = state?.categories?.all_sports.find((sport) => sport.sport_id === selectedSport.sport_id)
-           console.log("This is the sport am working with ", thisSport);
            let selectedRawCompetitionData = thisSport?.categories.find((category) => category.category_id === selectedCategory.category_id)
            const competitionOptions = selectedRawCompetitionData?.competitions?.map((competition) => {
                return {
@@ -124,6 +122,19 @@ const MainTabs = (props) => {
 
     useEffect(() => {
         setSportOptions() 
+        if(sportid){
+            let _sport = state?.categories?.all_sports.find((sport) => sport.sport_id == sportid)
+            _sport && handleSportsSelect(_sport);
+            if(categoryid){
+                let _category = _sport?.categories?.find((category) => category.category_id == categoryid)
+                setSelectedCategory(
+                    {
+                        category_id:_category.category_id, 
+                        label:getCategoryOptionLabel(_category.category_name, _category.cat_flag, true)
+                    }
+                );
+            }
+        }
     }, []);
 
     const handleSportsSelect = (sport) => {
@@ -145,7 +156,9 @@ const MainTabs = (props) => {
                 label:getCompetitionOptionLabel(null, true)
             }
         )
+        let subtypes = sport?.default_display_markets;
         dispatch({type:"SET", key:"filtersport", payload:sp});
+        dispatch({type:"SET", key:"selectedmarkets", payload:subtypes});
         dispatch({type:"DEL", key:"filtercompetition"});
         dispatch({type:"DEL", key:"filtercategory"});
     } 
@@ -187,7 +200,7 @@ const MainTabs = (props) => {
                             { selectedSport?.label }
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu variant="default">
+                        <Dropdown.Menu >
                           {
                               sports && sports.map((sport) => { 
                                  return <Dropdown.Item eventKey={sport.sport_id} onClick={() => handleSportsSelect(sport)}>{ sport.label}</Dropdown.Item> 
