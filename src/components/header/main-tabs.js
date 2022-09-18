@@ -33,7 +33,7 @@ const MainTabs = (props) => {
     const getSportOptionLabel = (sport_name, showCaret=false) => {
         const sport_image = require(`../../assets/svg/${sport_name}.svg`); 
         return (<Row className="d-flex justify-content-start f-menu-item">
-                    <Col className="col-auto"><img src={sport_image} alt="" style={{width:"30px"}}/> </Col> 
+            {/* <Col className="col-auto"><img src={sport_image} alt="" style={{width:"30px"}}/> </Col> */}
                     <Col className="col-auto">{sport_name}</Col>
                 
                     { showCaret && <Col className="col-auto"><FontAwesomeIcon icon={faCaretDown} /> </Col> }
@@ -56,7 +56,7 @@ const MainTabs = (props) => {
        }
 
         return (<Row className="d-flex justify-content-start f-menu-item">
-                    <Col className="col-auto">{ cat_image && <img src={cat_image} alt="" style={{width:"15px"}}/>  }</Col> 
+            {/*<Col className="col-auto">{ cat_image && <img src={cat_image} alt="" style={{width:"15px"}}/>  }</Col> */}
                     <Col className="col-auto">{category_name || "All Categories" }</Col>
                 
                     { showCaret && <Col className="col-auto"><FontAwesomeIcon icon={faCaretDown} /> </Col> }
@@ -135,7 +135,7 @@ const MainTabs = (props) => {
                 );
             }
         }
-    }, []);
+    }, [state?.categories]);
 
     const handleSportsSelect = (sport) => {
         const sp = {
