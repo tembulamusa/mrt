@@ -71,7 +71,6 @@ const Index = (props) => {
         endpoint = endpoint.replaceAll(" ", '')
 
         endpoint += `&sub_type_id=` + (url.searchParams.get('sub_type_id') || "1,18,29")
-        console.log("Am going to fetch data from url", endpoint);
 
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {

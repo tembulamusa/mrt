@@ -11,12 +11,13 @@ const ProfileMenu = (props) => {
     <>
       {user && (
         <div className="ale ss profile d-flex flex-row row  tablet-design ">
-            <div className="{'mt-1'} col-md-2 span-change d-flex flex-column justify-content-end space-deposit">
+            <div className="{'mt-1'} col-md-2 span-change d-flex flex-column justify-content-start space-deposit">
             <Link
               to={{ pathname: "/deposit" }}
-              className={"btn text-white btn-outline-warning   "}
+              className={"btn   "}
+              style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a", borderRadius:"3px",padding:"10px 30px", width:"max-content"}}
             >
-              <span className="font-tbt overflow-hidden justify-content-center btn-outline-warning rescale">
+              <span className="font-tbt overflow-hidden justify-content-center  rescale">
                <span className=" space-icons"> <FontAwesomeIcon icon={faCoins} /></span> Deposit 
               </span>
             </Link>

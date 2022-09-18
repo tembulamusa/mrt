@@ -20,7 +20,7 @@ const Deposit = (props) => {
 
     const initialValues = {
         amount: '',
-        msisdn: state?.user?.msisdn
+        msisdn: state?.user?.msisdn || ''
     }
 
     const handleSubmit = values => {
@@ -34,6 +34,7 @@ const Deposit = (props) => {
     const validate = values => {
 
         let errors = {}
+        console.log("This os the ofending number ", values.msisdn);
 
         if (!values.msisdn || !values.msisdn.match(/(254|0|)?[71]\d{8}/g)) {
             errors.msisdn = 'Please enter a valid phone number'
@@ -72,12 +73,12 @@ const Deposit = (props) => {
                     <div className="col-md-12">
                         <label>Phone Number</label>
                         <input
-                            readOnly={true}
                             className="text-dark deposit-input form-control input-field"
                             id="msisdn"
                             name="msisdn"
                             type="text"
                             value={values.msisdn}
+                            onChange={ev => onFieldChanged(ev)} 
                             placeholder='Enter Phone Number'
                         />
                         {errors.msisdn && <div className='text-danger'> {errors.msisdn} </div>}
