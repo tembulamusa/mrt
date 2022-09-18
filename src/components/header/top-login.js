@@ -175,7 +175,8 @@ const HeaderLogin = (props) => {
             <Row style={{marginBottom:"10px"}}>
                 <Col xs={3}className="d-inline-flex justify-content-end" style={{margin:"auto"}}>
                     <ToastContainer/>
-                    <a className="filter-icon" href="/deposit" title="Join now" style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a"}}>
+
+                    <a className="filter-icon" href="/deposit" title="Deposit" style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a", padding:"5px 20px"}} >
                         <span className="register-label">Deposit</span>
                     </a>
                     <a className="filter-icon" href="/signup" title="Join now" style={{ fontSize: "16px", fontWeight: "bold"}}>
