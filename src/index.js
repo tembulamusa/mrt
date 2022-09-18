@@ -138,7 +138,7 @@ render((
                 <Route exact path="/promotions" element={<Promotions/>}/>
 
                 <Route exact path="/deposit"
-                       element={<ProtectedRoute><Deposit/> </ProtectedRoute>}/>
+                       element={<Deposit/>}/>
                 <Route exact path="/withdraw"
                        element={<ProtectedRoute><Withdraw/></ProtectedRoute>}/>
                 <Route exact path="/my-bets"
