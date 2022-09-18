@@ -747,7 +747,7 @@ header, li a, .thedate span {
     font-weight:400;
 }
 .matches .top-matches .match-detail button.home-team{
-    background: #fff !important;
+    background: #f9f9f9 !important;
 }
 .matches .top-matches .match-detail button.home-team.picked{
     background: #2c2457 !important;
@@ -823,9 +823,9 @@ header, li a, .thedate span {
 }
 
 .matches .top-matches.header {
-    background: #d1d1d1;
+    background: #e3e3e3;
     padding: 10px;
-    color: #000 !important;
+    color: #781c5d !important;
     font-size: 12px;
     font-family: inherit;
     text-transform: uppercase;
