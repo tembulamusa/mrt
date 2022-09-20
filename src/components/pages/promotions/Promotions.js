@@ -3,9 +3,9 @@ import SideBar from "../../sidebar/awesome/Sidebar";
 import Footer from "../../footer/footer";
 import React from "react";
 
-import twentyPercentDepositBonus from '../../../assets/img/banner/products/CashBack.png'
-import thirtyPercentDailyCashback from '../../../assets/img/banner/products/CashBack.png'
-import seventyPercentMultibetCashback from '../../../assets/img/banner/products/Welcome-Bonus.png'
+import twentyPercentDepositBonus from '../../../assets/img/banner/products/Deposit-Bonus.png'
+import thirtyPercentDailyCashback from '../../../assets/img/banner/products/Lost-MultiBet.png'
+import seventyPercentMultibetCashback from '../../../assets/img/banner/products/Karibu-Bonus.png'
 import karibuBonus from '../../../assets/img/banner/products/Welcome-Bonus.png'
 
 const Promotions = () => {
@@ -26,7 +26,7 @@ const Promotions = () => {
                                 </div>
                                 <div className="col">
                                     <div className={'row  p-2 shadow-sm d-flex justify-content-center'}>
-                                        <div className="col-md-12 shadow-lg">
+                                        <div className="col-6 shadow-lg">
                                             <div className="d-flex flex-column">
                                                 <h5>50 BOB KARIBU BONUS</h5>
                                                 <img src={karibuBonus} className={'rounded'}/>
@@ -52,7 +52,7 @@ const Promotions = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-md-12 shadow-lg">
+                                        <div className="col-6 shadow-lg">
                                             <div className="d-flex flex-column">
                                                 <h5>20% FIRST DEPOSIT BONUS (DEPOSIT UPEWE)</h5>
                                                 <img src={twentyPercentDepositBonus} className={'rounded'}/>
@@ -91,8 +91,10 @@ const Promotions = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                       </div>
+                                       <div className="row"> 
                                         <div className="col-md-12 d-flex flex-row shadow-lg mt-2">
-                                            <div className="col-md-12">
+                                            <div className="col-6">
                                                 <div className="d-flex flex-column">
                                                     <h5>DAILY CASHBACK</h5>
                                                     <img src={thirtyPercentDailyCashback} className={'rounded'}/>
@@ -157,9 +159,9 @@ const Promotions = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-md-12 d-flex flex-row shadow-lg mt-2">
+                                        <div className="col-12 d-flex flex-row shadow-lg mt-2">
 
-                                            <div className="col-md-12">
+                                            <div className="col-6">
                                                 <div className="d-flex flex-column">
                                                     <h5>MULTIBET LOST BONUS</h5>
                                                     <img src={seventyPercentMultibetCashback} className={'rounded'}/>
