@@ -26,7 +26,7 @@ const Promotions = () => {
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <div className={'row  p-3 shadow-sm d-flex justify-content-center'}>
+                                    <div className={'row  p-3 d-flex justify-content-center'}>
                                         <div className="col-6 p-3 shadow-lg promo-pannel">
                                             <div className="d-flex flex-column">
                                                 <h5>HIPO 3000 KARIBU BONUS</h5>
@@ -70,7 +70,7 @@ const Promotions = () => {
                                             </div>
                                         </div>
                                        </div>
-                                       <div className="row p-3 shadow-sm d-flex justify-content-center"> 
+                                       <div className="row p-3  d-flex justify-content-center"> 
                                             <div className="col-6 p-3 shadow-lg promo-pannel">
                                                 <div className="d-flex flex-column">
                                                     <h5>HIPO MSHIPI BONUS</h5>
