@@ -3,10 +3,11 @@ import SideBar from "../../sidebar/awesome/Sidebar";
 import Footer from "../../footer/footer";
 import React from "react";
 
-import twentyPercentDepositBonus from '../../../assets/img/banner/products/Deposit-Bonus.png'
-import thirtyPercentDailyCashback from '../../../assets/img/banner/products/Lost-MultiBet.png'
-import seventyPercentMultibetCashback from '../../../assets/img/banner/products/Karibu-Bonus.png'
 import karibuBonus from '../../../assets/img/banner/products/Welcome-Bonus.png'
+import MshipiBonusImg from '../../../assets/img/banner/products/Mshipi-Bonus.png'
+import hundredPercentDepositBonus from '../../../assets/img/banner/products/Deposit-Bonus.png'
+
+import earlyBirdDailyDepositBonus from '../../../assets/img/banner/products/Deposit-Bonus.png'
 
 const Promotions = () => {
     return (
@@ -25,165 +26,90 @@ const Promotions = () => {
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <div className={'row  p-2 shadow-sm d-flex justify-content-center'}>
-                                        <div className="col-6 shadow-lg">
+                                    <div className={'row  p-3 shadow-sm d-flex justify-content-center'}>
+                                        <div className="col-6 p-3 shadow-lg promo-pannel">
                                             <div className="d-flex flex-column">
                                                 <h5>HIPO 3000 KARIBU BONUS</h5>
                                                 <img src={karibuBonus} className={'rounded'}/>
-                                                <span><u>Register</u></span>
+                                                <span><u>How to get it</u></span>
                                                 <ul>
                                                     <li>
-                                                        Register on sms by sending the word JOIN or BET or Game etc to 29400
-                                                    </li>
-                                                    <li>
-                                                        Visit bethipo.co.ke and create an account
+                                                        Register on sms by sending the word JOIN 29400 or visiting www.bethipo.co.ke and creating account via signup link.
                                                     </li>
                                                 </ul>
                                                 <div className="col-md-12">
                                                     <span><u>Terms and conditions</u></span>
-                                                    <ol>
+                                                    <ul>
 
-                                                        Eligible for new accounts only.
-                                                        <br/>
+                                                        <li>1. This bonus is eligible for new accounts only </li>
+                                                        <li>2. Bonus may not be directly withdrawn</li>
+                                                        <li>3. Redemption of this bonus is similar to all other bonus and bonus rules apply</li>
 
-                                                        Bonus rules apply
-
-                                                    </ol>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-6 shadow-lg">
+                                        <div className="col-6 p-3 shadow-lg promo-pannel">
                                             <div className="d-flex flex-column">
-                                                <h5>20% FIRST DEPOSIT BONUS (DEPOSIT UPEWE)</h5>
-                                                <img src={twentyPercentDepositBonus} className={'rounded'}/>
-                                                <span><u>How to Play</u></span>
+                                                <h5>100% FIRST DEPOSIT HIPO BONUS </h5>
+                                                <img src={hundredPercentDepositBonus} className={'rounded'}/>
+                                                <span><u>How to get it</u></span>
                                                 <ul>
                                                     <li>
-                                                        Deposit KES.50 to 500 get 20% as bonus
-                                                    </li>
-                                                    <li>
-                                                        Deposit 500 and above get ksh.100 free (bonus). i.e. it is
-                                                        capped at Ksh.500. Any
-                                                        amount above 500 bonus issued will be Ksh.100.
+                                                        Deposit KES.50 and above to BETHIPO Paybill 4093333 using your phone number as the account number
                                                     </li>
                                                 </ul>
                                                 <div className="col-md-12">
                                                     <span><u>Terms and conditions</u></span>
-                                                    <ol>
-
-                                                        Promotion is capped at KES.500 max
-                                                        <br/>
-                                                        Any deposit amounts exceeding 500 will only get
-                                                        KES.100
-                                                        <br/>
-
-                                                        The bonus is only to be issued ONCE, per player per
-                                                        day.
-                                                        <br/>
-
-                                                        The bonus is ONLY to be issued on one transaction of
-                                                        KES 50 and above.
-                                                        <br/>
-
-                                                        Bonus rules apply
-
-                                                    </ol>
+                                                    <ul>
+                                                       <li>1. All deposits above Kes 10 are eligible for 100% bonus</li>
+                                                       <li>2. This bonus applies to your first ever deposit only</li>
+                                                       <li>3. The maximum first deposit bonus awardable is KES 500</li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                        </div>
-                                       <div className="row"> 
-                                        <div className="col-12 d-flex flex-row shadow-lg mt-2">
-
-                                            <div className="col-6">
+                                       <div className="row p-3 shadow-sm d-flex justify-content-center"> 
+                                            <div className="col-6 p-3 shadow-lg promo-pannel">
                                                 <div className="d-flex flex-column">
-                                                    <h5>MULTIBET LOST BONUS</h5>
-                                                    <img src={seventyPercentMultibetCashback} className={'rounded'}/>
-                                                    <span><u>How to Play</u></span>
+                                                    <h5>HIPO MSHIPI BONUS</h5>
+                                                    <img src={MshipiBonusImg} className={'rounded'}/>
+                                                    <span><u>How to get it</u></span>
                                                     <ul>
-
-                                                         Place a pre-match Multibet / accumulator of 5 or more
-                                                        selections.
-
-                                                         If your bet is unsuccessful from 1 loss out of the
-                                                        accumulator, we will refund a
-                                                        bonus of a set percentage based on the matrix set on your
-                                                        stake. i.e., The bonus
-                                                        amount is dependent on the number of selections
-
+                                                         <li>You qualify for MSHIPI bonus if you place a bet with 5 or more slips and lose exactly 1 slip</li>
                                                     </ul>
                                                     <div className="col-md-12">
                                                         <span><u>Terms and conditions</u></span>
-                                                        <ol>
+                                                        <ul>
 
-                                                            This offer ONLY applies to returns on pre-match
-                                                            accumulators
-                                                            <br/>
-
-                                                            The maximum bonus that you can receive is KES.500
-                                                            <br/>
-
-                                                            BetHipo may reclaim any bonus amount, Free Bets,
-                                                            shinda points or enhanced
-                                                            payments that have been awarded in error.
-                                                            <br/>
-
-                                                            BetHipo may, at any time, make minor amendments to
-                                                            this promotion to correct
-                                                            typographical errors or to improve on clarity or
-                                                            customer experience and may
-                                                            cancel this promotion for legal or regulatory reasons.
-                                                            <br/>
-
-                                                            Bets placed with bonuses do not apply/qualify for this
-                                                            offer
-                                                            <br/>
-
-                                                            The refund is paid in BONUS and bonus rules apply
-                                                            <br/>
-
-                                                            Jackpot bets will not apply/ be considered for this
-                                                            promotion
-                                                            <br/>
-
-                                                            Voided Bets will not apply/ be considered.
-
-                                                        </ol>
+                                                           <li> Mshipi bonus ONLY applies pre-match bets </li>
+                                                           <li> The refund matrix will vary based on your total slips</li>
+                                                           <li> The refund amount shall be refunded as bonus and bonus terms and condition apply to redeem the award</li>
+                                                        </ul>
                                                     </div>
+                                               </div>
+                                           </div> 
 
+                                            <div className="col-6 p-3 shadow-lg promo-pannel">
+                                                <div className="d-flex flex-column">
+                                                    <h5>HIPO DAILY DEPOSIT BONUS</h5>
+                                                    <img src={earlyBirdDailyDepositBonus} className={'rounded'}/>
+                                                    <span><u>How to get it</u></span>
+                                                    <ul>
+                                                         <li>Make your first deposit of the day to BETHIPO paybill 4093333 account number your mobile number</li>
+                                                    </ul>
                                                     <div className="col-md-12">
-                                                        <span><u>SET AMOUNTS</u></span>
-                                                        <ol>
+                                                        <span><u>Terms and conditions</u></span>
+                                                        <ul>
 
-                                                            Minimum Bet Amount: The minimum betting amount for a single/multi bet is KES.10
-                                                            <br/>
-
-                                                            Maximum Bet Amount: The maximum betting amount for a single/multi bet is KES.20,000
-                                                            <br/>
-
-                                                            Maximum Single Bet Winning: The Single bet winning amount is limited to KES.500,000
-                                                            <br/>
-
-                                                            Maximum Multi bet Winning: The Multi bet winning amount is limited to KES.500,000
-                                                            <br/>
-
-                                                            Maximum Aggregate Winning (maximum payout): The Maximum winnings amount per customer per day is limited to KES.500,000
-                                                            <br/>
-
-                                                            Minimum withdrawal amount is KES.100
-                                                            <br/>
-
-                                                            Maximum withdrawal amount per transaction is KES.20,000
-                                                            <br/>
-
-                                                            Maximum withdrawal per person /per account / per day KES.20,000
-
-                                                        </ol>
+                                                           <li> 1. Applies only to your first deposit of the day</li>
+                                                           <li> 2. 20% of deposit amount is worn as bonus</li>
+                                                           <li> 3. The bonus terms and condition apply to redeem the award</li>
+                                                        </ul>
                                                     </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
+                                               </div>
+                                           </div> 
                                     </div>
                                 </div>
                             </div>

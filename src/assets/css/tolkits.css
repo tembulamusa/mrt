@@ -15638,4 +15638,18 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 	background-color: #902065;
 	border-color: #902065;
 }
-
+.promo-pannel{
+    border:1px solid #bebebe;
+    width:49.0%;
+    margin:0px 5px;
+    border-radius:5px;
+}
+.promo-pannel ul li{
+    list-style:none;
+    padding:5px;
+    display:block;
+}
+.promo-pannel ol li{
+    padding:5px;
+    display:block;
+}
