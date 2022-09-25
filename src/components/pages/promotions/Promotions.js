@@ -28,7 +28,7 @@ const Promotions = () => {
                                     <div className={'row  p-2 shadow-sm d-flex justify-content-center'}>
                                         <div className="col-6 shadow-lg">
                                             <div className="d-flex flex-column">
-                                                <h5>50 BOB KARIBU BONUS</h5>
+                                                <h5>HIPO 3000 KARIBU BONUS</h5>
                                                 <img src={karibuBonus} className={'rounded'}/>
                                                 <span><u>Register</u></span>
                                                 <ul>
@@ -93,72 +93,6 @@ const Promotions = () => {
                                         </div>
                                        </div>
                                        <div className="row"> 
-                                        <div className="col-md-12 d-flex flex-row shadow-lg mt-2">
-                                            <div className="col-6">
-                                                <div className="d-flex flex-column">
-                                                    <h5>DAILY CASHBACK</h5>
-                                                    <img src={thirtyPercentDailyCashback} className={'rounded'}/>
-                                                    <span><u>How to Play</u></span>
-                                                    <ul>
-                                                        <li>
-                                                            Get a 30% cash
-                                                            back which comes as a bonus when you lose their third cash
-                                                            bet (Single bets and
-                                                            multi-bets) with an odd of 2.5 and above
-                                                        </li>
-                                                    </ul>
-                                                    <div className="col-md-12">
-                                                        <span><u>Terms and conditions</u></span>
-                                                        <ol>
-
-                                                            This promotion will apply to your third (2.5 and above
-                                                            odds) cash bet made
-                                                            every day.
-
-                                                            <br/>
-
-                                                             The award in is CASH, which is credited to the
-                                                            customer’s wallet
-                                                            <br/>
-
-
-                                                             The maximum amount issued as a cash back bonus will be
-                                                            KSH 100.
-                                                            <br/>
-
-                                                             Bets with bonus amounts will not be considered for
-                                                            this promotion as they
-                                                            are not cash bets.
-                                                            <br/>
-
-                                                             Jackpot bets will not be considered for this
-                                                            promotion.
-                                                            <br/>
-
-                                                             Voided Bets will be considered as cash refunds.
-                                                            <br/>
-
-                                                             The promotion runs on Monday to Thursday ONLY and WILL
-                                                            NOT be
-                                                            available on FRIDAY, SATURDAY & SUNDAY
-                                                            <br/>
-
-                                                             BetHipo reserves the right to end the promotion at any
-                                                            time without any
-                                                            explanation or notification.
-                                                            <br/>
-
-                                                             BetHipo reserves the right to disqualify any player at
-                                                            any time without being
-                                                            bound to give reasons.
-                                                            <br/>
-
-                                                            Bonus rules apply
-                                                        </ol>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div className="col-12 d-flex flex-row shadow-lg mt-2">
 
                                             <div className="col-6">
