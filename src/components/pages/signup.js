@@ -12,6 +12,7 @@ const Signup = (props) => {
 
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const initialValues = {
         msisdn: '',
@@ -19,14 +20,14 @@ const Signup = (props) => {
     }
 
     const handleSubmit = values => {
+        if(loading) { return ;}
+
+        setLoading(true);
         let endpoint = '/v1/signup';
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
-            setSuccess(status === 200 || status === 201);
-            setMessage(response.message);
-            let timer = setInterval(() => {
-                window.location.href = "/verify-account"
-                clearInterval(timer)
-            }, 3000)
+            setSuccess(response?.success?.status == 200 || response?.success?.status === 201);
+            setMessage(response?.success?.message);
+            setLoading(false);
         })
     }
 
@@ -105,8 +106,9 @@ const Signup = (props) => {
                         <div className="form-group row d-flex justify-content-left mb-4">
                             <div className="col-md-3">
                                 <button type="submit"
-                                        onClick={submitForm}
-                                        className='btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button'>
+                                    className={`btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button`}
+                                    disabled={loading}
+                                    >
                                     Signup
                                 </button>
                             </div>
