@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext, useCallback, useRef, useLayoutEffect} from 'react';
 import {Context} from '../../context/store';
 import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import {
@@ -52,7 +53,7 @@ const EmptyTextRow = (props) => {
 };
 
 const MatchHeaderRow = (props) => {
-    const {live, first_match, jackpot} = props;
+    const {live, first_match, jackpot, fetching} = props;
     //const [state, ]  = useContext(Context);
     const categories = getFromLocalStorage('categories')
     const sport_id = new URL(window.location).searchParams.get('sport_id') || 79
@@ -153,10 +154,15 @@ const MatchHeaderRow = (props) => {
 
     return (
         <Container className="full-mobile sticky-top" style={{position: "sticky"}}>
-            <div className="top-matches d-flex position-sticky sticky-top shadow-lg"
+            <div className="top-matches d-flex position-sticky sticky-top "
                  style={{opacity: "1", top: "100px"}}>
                 <div className="col-sm-2 col-xs-12 pad left-text">
                     <div className="align-self-center col">
+
+                   { fetching && <div className="filter-group-icon" >
+                           <Spinner animation="border" size="sm" variant="secondary" />
+                       </div>
+                   }
         {/* <h3 className="main-heading-1 ">
                             {live && <span className="live-header">LIVE </span> }
                             {!live && <span className="">PREMATCH </span> }
@@ -751,12 +757,15 @@ export const JackpotMatchList = (props) => {
 }
 
 const MatchList = (props) => {
-    const {live, matches, pdown, three_way} = props;
+    const {live, matches, pdown, three_way, fetching} = props;
 
     return (
         <div className="matches full-width">
 
-            {matches && <MatchHeaderRow live={live} first_match={matches ? matches[0] : {}}/>}
+            {matches && <MatchHeaderRow 
+                 live={live} 
+                first_match={matches ? matches[0] : {}} 
+                fetching={fetching}/>}
 
             <Container className="web-element">
                 {matches &&
