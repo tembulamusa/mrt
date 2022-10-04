@@ -20,15 +20,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 const MainTabs = (props) => {
-    const {tab} = props;
+    const {tab, fetching} = props;
     const [sports, setSports] = useState();
     const [sportCategories, setSportCategories] = useState();
     const [competitions, setCompetitions] = useState();
     const [state, dispatch] = useContext(Context);
     const {sportid, categoryid, competitionid} = useParams();
-    const u_class = tab === 'upcoming' ? "home-tabs-active" : "home-tabs";
-    const h_class = (!tab || tab === 'highlights') ? "home-tabs-active" : "home-tabs";
-    const t_class = tab === 'tomorrow' ? "home-tabs-active" : "home-tabs";
+    const [activeTab, setActiveTab] = useState(tab);
 
     const getSportOptionLabel = (sport_name, showCaret=false) => {
         const sport_image = require(`../../assets/svg/${sport_name}.svg`); 
@@ -163,6 +161,11 @@ const MainTabs = (props) => {
         dispatch({type:"DEL", key:"filtercategory"});
     } 
 
+    const setActiveTabSpace = (tab) => {
+        dispatch({type:"SET", key:"active_tab", payload:tab});
+        setActiveTab(tab);
+    }
+
     const handleCategorySelect = (category) => {
         const spc = {
             category_id: category.category_id,
@@ -194,6 +197,19 @@ const MainTabs = (props) => {
     return (
         <div>
             <Row className="full-mobile filter-groups">
+
+                <div className="filter-group-icon">
+                    <button className={`btn-secondary ${activeTab === 'highlights' && 'home-tab-active'}`} 
+                       onClick = {() => setActiveTabSpace('highlights')} >Highlights</button>
+                </div>
+                <div className="filter-group-icon">
+                        <button className={`btn-secondary ${activeTab === 'today' && 'home-tab-active'}`} 
+                            onClick ={() => setActiveTabSpace('today')}>Today's</button>
+                </div>
+                <div className="filter-group-icon">
+                        <button className={`btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
+                            onClick={() => setActiveTabSpace('tomorrow')}>Tomorrow</button>
+                </div>
                 <div className="filter-group-icon">
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
