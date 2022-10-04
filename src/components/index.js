@@ -1,5 +1,12 @@
-import React, {useContext, useEffect, useCallback, useState, useRef} from "react";
-import {useLocation} from 'react-router-dom';
+import React, { 
+    useContext, 
+    useEffect, 
+    useCallback, 
+    useState, 
+    useRef
+} from "react";
+
+import {useLocation, useParams} from 'react-router-dom';
 import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
 import {getBetslip} from './utils/betslip' ;
@@ -17,6 +24,7 @@ const SideBar = React.lazy(() => import('./sidebar/awesome/Sidebar'))
 
 const Index = (props) => {
     const location = useLocation();
+    const {id, sportid, categoryid, competitionid } = useParams();
     const [matches, setMatches] = useState([]);
     const [limit, setLimit] = useState(50);
     const [producerDown, setProducerDown] = useState(false);
@@ -26,6 +34,7 @@ const Index = (props) => {
     const [state, dispatch] = useContext(Context);
     const [fetching, setFetching] = useState(false)
     const homePageRef = useRef()
+    const [subTypes, setSubTypes] = useState("1,18,29");
     const findPostableSlip = () => {
         let betslips = getBetslip() || {};
         var values = Object.keys(betslips).map(function (key) {
@@ -44,7 +53,7 @@ const Index = (props) => {
         let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}` ;
 
         let url = new URL(window.location.href)
-        let sport_id = url.searchParams.get('sport_id')
+        let sport_id = sportid;
 
         if(state?.filtersport) {
             sport_id = state.filtersport.sport_id;
@@ -73,7 +82,7 @@ const Index = (props) => {
         endpoint += "&tab=" + tab;
         endpoint = endpoint.replaceAll(" ", '')
 
-        endpoint += `&sub_type_id=` + (url.searchParams.get('sub_type_id') || "1,18,29")
+        endpoint += `&sub_type_id=` + subTypes
 
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
@@ -94,7 +103,7 @@ const Index = (props) => {
 
 
     useEffect(() => {
-       fetchData();
+        fetchData();
     }, [
         state?.filtersport, 
         state?.filtercategory, 
@@ -103,7 +112,10 @@ const Index = (props) => {
     )
 
     useEffect(() => {
-        checkThreeWay()
+        let url = new URL(window.location);
+        setSubTypes(
+             state?.selectedmarkets ||  (url.searchParams.get('sub_type_id') || "1,18,29")
+        );
         fetchData();
         let cachedSlips = getBetslip("betslip");
         if (cachedSlips) {
@@ -114,12 +126,22 @@ const Index = (props) => {
         };
     }, []);
 
+    useEffect(() => {
+        checkThreeWay()
+    }, [subTypes]);
+
+
+    useEffect(() => {
+        let url = new URL(window.location);
+        setSubTypes(
+             state?.selectedmarkets ||  (url.searchParams.get('sub_type_id') || "1,18,29")
+        );
+    }, [state?.selectedmarkets]);
+
     const listInnerRef = useRef();
 
     const checkThreeWay = () => {
-        let url = new URL(window.location)
-        let sub_types = (url.searchParams.get('sub_type_id') || "1,18,29").split(",")
-        setThreeWay(sub_types.includes("1"))
+        setThreeWay(subTypes.split(",").includes("1"))
     }
 
     document.addEventListener('scrollEnd', (event) => {
@@ -146,6 +168,7 @@ const Index = (props) => {
                                 pdown={producerDown}
                                 three_way={threeWay}
                                 fetching={fetching}
+                                subTypes={subTypes}
                             />
                         </div>
                         <div className={`text-center mt-2 text-white ${fetching ? 'd-block' : 'd-none'}`}>
