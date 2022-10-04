@@ -17,9 +17,7 @@ import './index.css';
 import Store from './context/store';
 
 const Index = React.lazy(() => import('./components/index'));
-const CompetitionsMatches = React.lazy(
-    () => import('./components/competition-matches')
-);
+
 const MatchAllMarkets = React.lazy(() => import('./components/all-markets'));
 const Jackpot = React.lazy(() => import('./components/jackpot'));
 const Live = React.lazy(
@@ -114,9 +112,9 @@ render((
                 <Route exact path="/highlights" element={<Index/>}/>
                 <Route exact path="/upcoming" element={<Index/>}/>
                 <Route exact path="/tomorrow" element={<Index/>}/>
-                <Route exact path="/competition/:id" element={<CompetitionsMatches/>}/>
+                <Route exact path="/competition/:id" element={<Index/>}/>
                 <Route exact path="/competition/:sportid/:categoryid/:competitionid"
-                       element={<CompetitionsMatches/>}/>
+                       element={<Index/>}/>
                 <Route exact path="/match/:id" element={<MatchAllMarkets/>}/>
                 <Route exact path="/match/live/:id" element={<MatchAllMarkets live/>}/>
                 <Route exact path="/jackpot" element={<Jackpot/>}/>

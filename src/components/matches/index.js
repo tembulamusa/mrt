@@ -53,7 +53,15 @@ const EmptyTextRow = (props) => {
 };
 
 const MatchHeaderRow = (props) => {
-    const {live, first_match, jackpot, fetching} = props;
+    const {
+        live, 
+        first_match, 
+        jackpot, 
+        fetching, 
+        three_way, 
+        sub_types
+    } = props;
+
     //const [state, ]  = useContext(Context);
     const categories = getFromLocalStorage('categories')
     const sport_id = new URL(window.location).searchParams.get('sport_id') || 79
@@ -65,36 +73,52 @@ const MatchHeaderRow = (props) => {
     const [marketCols, setMarketCols] = useState(3)
     const [extraMarketDisplays, setExtraMarketDisplays] = useState([])
 
-    const [threeWay, setThreeWay] = useState(false)
-
     const getSelectedMarkets = () => {
 
 
         const markets = [
             {
-                id: "18", name: "Over/Under 2.5", extra_market_cols: 2, extra_markets_display: [
+                id: "18", 
+                name: "Over/Under 2.5", 
+                extra_market_cols: 2, 
+                extra_markets_display: [
                     "Under", "Over"
                 ]
             },
             {
-                id: "10", name: "Double Chance", extra_market_cols: 3, extra_markets_display: [
+                id: "10", 
+                name: "Double Chance", 
+                extra_market_cols: 3, 
+                extra_markets_display: [
                     "1X", "X2", "12"
                 ]
             },
             {
-                id: "29", name: "Both Teams to Score", extra_market_cols: 2, extra_markets_display: [
+                id: "29", 
+                name: "Both Teams to Score", 
+                extra_market_cols: 2, 
+                extra_markets_display: [
                     "NO", "YES"
                 ]
             },
             {
-                id: "219", name: "Winner (incl. overtime)", extra_market_cols: 2, extra_markets_display: [2, 1]
+                id: "219", 
+                name: "Winner (incl. overtime)", 
+                extra_market_cols: 2, 
+                extra_markets_display: [2, 1]
             },
             {
-                id: "186", name: "Winner", extra_market_cols: 2, extra_markets_display: [1, 2]
+                id: "186", 
+                name: "Winner", 
+                extra_market_cols: 2, 
+                extra_markets_display: [1, 2]
             },
 
             {
-                id: "202", name: "1 Set Winner", extra_market_cols: 2, extra_markets_display: [1, 2]
+                id: "202", 
+                name: "1 Set Winner", 
+                extra_market_cols: 2, 
+                extra_markets_display: [1, 2]
             },
             {
                 id: "406",
@@ -115,17 +139,10 @@ const MatchHeaderRow = (props) => {
         ]
 
 
-        let url = new URL(window.location)
-
-        let sub_types = (url.searchParams.get('sub_type_id') || "1,18,29").split(",")
-
-        if (sub_types.includes("1")) {
-            setThreeWay(true)
-        }
-
         let extraMarkets = []
 
-        sub_types.forEach((sub_type) => {
+        console.log("Dealing with sub_types", sub_types, "three way", three_way);
+        sub_types?.split(",")?.forEach((sub_type) => {
             let selectedMarket = markets.filter((market) => Number(market.id) === Number(sub_type))
 
             if (selectedMarket.length > 0) {
@@ -171,7 +188,7 @@ const MatchHeaderRow = (props) => {
                 </div>
                 <div className={'col-2 col-xs-12 match-detail-container'}></div>
                 <div className={'col d-flex flex-row justify-content-between'}>
-                    {threeWay &&
+                    {three_way &&
                         <div className="d-flex flex-row">
                             <div className="d-flex flex-column text-center">
                                 <div className={'bold'}>
@@ -567,12 +584,18 @@ const getUpdatedMatchFromOdds = (props) => {
 }
 
 const MatchRow = (props) => {
-    const {match, jackpot, live, pdown, three_way} = props;
+    const {
+        match, 
+        jackpot, 
+        live, 
+        pdown, 
+        three_way, 
+        sub_types} = props;
+
     let url = new URL(window.location)
     match.market_active = 1
     match.odds.home_odd_active = 1
-    let sub_types = (url.searchParams.get('sub_type_id') || "1,18,29").split(",")
-    const [totalMarkets] = useState(sub_types.length)
+    const [totalMarkets] = useState(sub_types?.split(",")?.length)
     let append = totalMarkets - Object.keys(match?.extra_odds || {}).length - 1
     let loops = []
     for (let i = 0; i < append; i++) {
@@ -757,7 +780,15 @@ export const JackpotMatchList = (props) => {
 }
 
 const MatchList = (props) => {
-    const {live, matches, pdown, three_way, fetching} = props;
+    const {
+        live, 
+        matches, 
+        pdown, 
+        three_way, 
+        fetching, 
+        subTypes
+    } = props;
+    console.log("Match listing found ", subTypes);
 
     return (
         <div className="matches full-width">
@@ -765,12 +796,21 @@ const MatchList = (props) => {
             {matches && <MatchHeaderRow 
                  live={live} 
                 first_match={matches ? matches[0] : {}} 
-                fetching={fetching}/>}
+                fetching={fetching}
+                three_way={three_way}
+                sub_types={subTypes}
+                />}
 
             <Container className="web-element">
                 {matches &&
                     Object.entries(matches).map(([key, match]) => (
-                        <MatchRow match={match} key={key} live={live} pdown={pdown} three_way={three_way}/>
+                        <MatchRow 
+                            match={match} 
+                            key={key} 
+                            live={live} 
+                            pdown={pdown} 
+                            three_way={three_way}
+                            sub_types={subTypes}/>
                     ))
                 }
                 {(matches !== null && matches.length === 0) &&
