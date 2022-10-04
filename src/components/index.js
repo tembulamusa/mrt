@@ -53,7 +53,7 @@ const Index = (props) => {
         let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}` ;
 
         let url = new URL(window.location.href)
-        let sport_id = sportid;
+        let sport_id = sportid ?? 79;
 
         if(state?.filtersport) {
             sport_id = state.filtersport.sport_id;
