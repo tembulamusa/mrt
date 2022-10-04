@@ -41,7 +41,7 @@ const Index = (props) => {
         let tab = location.pathname.replace("/", "") || 'highlights';
         let betslip = findPostableSlip();
         let method = betslip ? "POST" : "GET";
-        let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}&tab=` + tab;
+        let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}` ;
 
         let url = new URL(window.location.href)
         let sport_id = url.searchParams.get('sport_id')
@@ -65,9 +65,12 @@ const Index = (props) => {
             if(state?.filtercompetition) {
                 endpoint += "&competition_id =" + state.filtercompetition.competition_id;
             }
+            if(state?.active_tab) {
+                tab = state?.active_tab;
+            }
         
         }
-
+        endpoint += "&tab=" + tab;
         endpoint = endpoint.replaceAll(" ", '')
 
         endpoint += `&sub_type_id=` + (url.searchParams.get('sub_type_id') || "1,18,29")
@@ -92,7 +95,12 @@ const Index = (props) => {
 
     useEffect(() => {
        fetchData();
-    }, [state?.filtersport, state?.filtercategory, state?.filtercompetition])
+    }, [
+        state?.filtersport, 
+        state?.filtercategory, 
+        state?.filtercompetition, 
+        state?.active_tab]
+    )
 
     useEffect(() => {
         checkThreeWay()
@@ -130,13 +138,14 @@ const Index = (props) => {
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage" ref={homePageRef}>
                             <CarouselLoader/>
-                            <MainTabs tab={location.pathname.replace("/", "")}/>
+                            <MainTabs tab={location.pathname.replace("/", "") || 'highlights'} />
                             {/* <MobileCategories/> */}
                             <MatchList
                                 live={false}
                                 matches={matches}
                                 pdown={producerDown}
                                 three_way={threeWay}
+                                fetching={fetching}
                             />
                         </div>
                         <div className={`text-center mt-2 text-white ${fetching ? 'd-block' : 'd-none'}`}>
