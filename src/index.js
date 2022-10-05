@@ -141,6 +141,7 @@ render((
                        element={<ProtectedRoute><Withdraw/></ProtectedRoute>}/>
                 <Route exact path="/my-bets"
                        element={<ProtectedRoute><MyBets/> </ProtectedRoute>}/>
+                <Route path="*" element={<Index/>}/>
               </Routes>
           </Suspense>
         </BrowserRouter>
