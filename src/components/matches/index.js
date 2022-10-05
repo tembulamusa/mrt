@@ -173,7 +173,7 @@ const MatchHeaderRow = (props) => {
         <Container className="full-mobile sticky-top" style={{position: "sticky"}}>
             <div className="top-matches d-flex position-sticky sticky-top "
                  style={{opacity: "1", top: "100px"}}>
-                <div className="col-sm-2 col-xs-12 pad left-text">
+                <div className="col-sm-2 col-xs-12 pad left-text" key="d5">
                     <div className="align-self-center col">
 
                    { fetching && <div className="filter-group-icon" >
@@ -186,10 +186,10 @@ const MatchHeaderRow = (props) => {
                         </h3> */} 
                     </div>
                 </div>
-                <div className={'col-2 col-xs-12 match-detail-container'}></div>
+                <div className={'col-2 col-xs-12 match-detail-container'} key="d4"></div>
                 <div className={'col d-flex flex-row justify-content-between'}>
                     {three_way &&
-                        <div className="d-flex flex-row">
+                        <div className="d-flex flex-row" key="d3">
                             <div className="d-flex flex-column text-center">
                                 <div className={'bold'}>
                                     3 WAY
@@ -205,7 +205,7 @@ const MatchHeaderRow = (props) => {
                     {!live && !jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
-                                <div className={'d-flex flex-column'}>
+                                <div className={'d-flex flex-column'} key={extra_market.name}>
                                     <span className={'small text-center text-uppercase bold'}>
                                         {extra_market.name}
                                     </span>
@@ -603,7 +603,7 @@ const MatchRow = (props) => {
     }
     return (
         <div className="top-matches d-flex">
-            <div className="col-sm-2 col-xs-12 pad left-text">
+            <div className="col-sm-2 col-xs-12 pad left-text" key="22">
                 {live &&
                     <>
                         <small style={{color: "red"}}> {match?.match_status} </small>
@@ -619,7 +619,7 @@ const MatchRow = (props) => {
                 </div>
 
             </div>
-            <div className="col-2 col-xs-12 match-detail-container">
+            <div className="col-2 col-xs-12 match-detail-container" key="23">
                 <a href={jackpot ? '#' : `/match/${live ? 'live/' + match.parent_match_id : match.match_id}`}>
                     <div className="d-flex flex-column">
                         <div className="compt-detail overflow-ellipsis">
@@ -628,7 +628,7 @@ const MatchRow = (props) => {
                         <div className="compt-teams d-flex flex-column">
                             <div className={'bold'}>
                                 {live && (match?.match_status !== 'ended') && <ColoredCircle color="red"/>}
-                                {match.home_team}
+                                { match.home_team }
                                 <span className="opacity-reduce-txt vs-styling">
                                 {live && match?.score}
                                     {!live && ''}
@@ -642,24 +642,24 @@ const MatchRow = (props) => {
                     </div>
                 </a>
             </div>
-            <div className="col d-flex flex-row justify-content-between">
-                <div className="c-btn-group align-self-center">
+            <div className="col d-flex flex-row justify-content-between" key="24">
+                <div className="c-btn-group align-self-center" key="222">
                     {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot
-                                ? <OddButton match={match} mkt="home_team" live={live} jackpot={jackpot}/>
-                                : <EmptyTextRow odd_key={match?.odd_key}/>) :
+                                ? <OddButton key={`${match?.match_id}-home`} match={match} mkt="home_team" live={live} jackpot={jackpot}/>
+                                : <EmptyTextRow key="a" odd_key={match?.odd_key}/>) :
                             match?.odds?.home_odd ? <EmptyTextRow odd_key={match?.odd_key}/> : ''
                     }
 
                     {match?.odds?.neutral_odd ? ((!pdown && match?.odds?.neutral_odd && match.odds.neutral_odd !== 'NaN' &&
                         match.market_active == 1 && match.odds.neutral_odd_active == 1) || jackpot
-                        ? <OddButton match={match} mkt="draw" live={live} jackpot={jackpot}/>
+                        ? <OddButton key={`${match?.match_id}-draw`} match={match} mkt="draw" live={live} jackpot={jackpot}/>
                         : <EmptyTextRow odd_key={match?.odd_key}/>) : ''
                     }
                     {match?.odds?.away_odd ? (match?.odds?.away_odd && (!pdown && match?.odds?.away_odd && match.odds.away_odd !== 'NaN' &&
                             match.market_active == 1 && match.odds.away_odd_active == 1) || jackpot
-                            ? <OddButton match={match} mkt="away_team" live={live} jackpot={jackpot}/>
+                            ? <OddButton key={`${match?.match_id}-away`} match={match} mkt="away_team" live={live} jackpot={jackpot}/>
                             : <EmptyTextRow odd_key={match?.odd_key}/>) :
                         match?.odds?.away_odd ? <EmptyTextRow odd_key={match?.odd_key}/> : ''
                     }
@@ -668,7 +668,7 @@ const MatchRow = (props) => {
                 {!jackpot && <>
                     {Object.entries(match?.extra_odds || {}).map(([marketName, odds], index) => (
                         marketName !== '' && (
-                            <div className={`c-btn-group m-lg-1 align-self-center`}>
+                            <div className={`c-btn-group m-lg-1 align-self-center`} key={index}>
                                 {
                                     Object.entries(odds || {}).map(([odd_key, odd_data]) => {
                                         return odd_data?.odd_active == 1 && odd_data.market_active == 1 ? (<OddButton
@@ -681,7 +681,7 @@ const MatchRow = (props) => {
                     ))
                     }
                     {!live && loops?.map(() => (
-                        <div className={`c-btn-group align-self-center`}>
+                        <div className={`c-btn-group align-self-center`} key="223">
                             <EmptyTextRow odd_key={match?.odd_key}/>
                             <EmptyTextRow odd_key={match?.odd_key}/>
                         </div>
