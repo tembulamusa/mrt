@@ -155,8 +155,8 @@ const MainTabs = (props) => {
             }
         )
         let subtypes = sport?.default_display_markets;
-        dispatch({type:"SET", key:"filtersport", payload:sp});
         dispatch({type:"SET", key:"selectedmarkets", payload:subtypes});
+        dispatch({type:"SET", key:"filtersport", payload:sp});
         dispatch({type:"DEL", key:"filtercompetition"});
         dispatch({type:"DEL", key:"filtercategory"});
     } 

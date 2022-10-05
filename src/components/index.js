@@ -45,7 +45,6 @@ const Index = (props) => {
 
 
     const fetchData = async () => {
-        console.log("Calling fetch data again")
         setFetching(true)
         let tab = 'highlights';
         let betslip = findPostableSlip();
@@ -53,17 +52,27 @@ const Index = (props) => {
         let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}` ;
 
         let url = new URL(window.location.href)
-        endpoint += "&sport_id = " + (sportid || state?.filtersport?.sport_id || 79);
+        endpoint += "&sport_id = " + (state?.filtersport?.sport_id||sportid || 79);
         let search_term = url.searchParams.get('search')
         endpoint += search_term ? '&search=' + search_term : ""; 
 
-         
-        if(state?.filtercategory ||  categoryid) {
-            endpoint += "&category_id =" + (state?.filtercategory?.category_id || categoryid);
-        }
-        if(state?.filtercompetition || competitionid) {
-            endpoint += "&competition_id =" + (state?.filtercompetition?.competition_id || competitionid);
-        }
+        if(state?.filtersport){
+        
+            if(state?.filtercategory) {
+                endpoint += "&category_id =" + state?.filtercategory?.category_id;
+            }
+            if(state?.filtercompetition ) {
+                endpoint += "&competition_id =" + state?.filtercompetition?.competition_id;
+            }
+        } else {
+        
+            if(categoryid) {
+                endpoint += "&category_id =" + categoryid;
+            }
+            if(competitionid) {
+                endpoint += "&competition_id =" +  competitionid;
+            }
+        } 
         if(state?.active_tab) {
             tab = state?.active_tab;
         }
@@ -72,7 +81,6 @@ const Index = (props) => {
         endpoint = endpoint.replaceAll(" ", '')
 
         endpoint += `&sub_type_id=` + subTypes;
-        console.log("Calling endpoing ", endpoint);
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
                 setMatches(matches?.length > 0 ? {...matches, ...result?.data} : result?.data || result)
@@ -105,11 +113,9 @@ const Index = (props) => {
             setSubTypes(state.selectedmarkets);
         } 
         if(state?.categories) {
-            console.log("Found categories will adjust sub_types for sport ", sportid)
             let spid = Number(sportid || 79);
             let sp = state.categories.all_sports.find((sport) => sport.sport_id === spid);
-            console.log("This is my sport sub_type data ", sp.default_display_markets);
-            setSubTypes(sp.default_display_markets);
+            setSubTypes(state?.selectedmarkets || sp.default_display_markets);
         } 
         let cachedSlips = getBetslip("betslip");
         if (cachedSlips) {
@@ -118,7 +124,7 @@ const Index = (props) => {
         return () => {
             setMatches(null);
         };
-    }, [state?.categories, subTypes]);
+    }, [state?.categories]);
 
     useEffect(() => {
         fetchData();
