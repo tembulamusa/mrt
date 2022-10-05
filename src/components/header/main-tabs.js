@@ -194,6 +194,7 @@ const MainTabs = (props) => {
         setSelectedCompetition(cspc); 
         dispatch({type:"SET", key:"filtercompetition", payload:cspc});
     } 
+
     return (
         <div>
             <Row className="full-mobile filter-groups">
@@ -210,7 +211,7 @@ const MainTabs = (props) => {
                         <button className={`btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
                             onClick={() => setActiveTabSpace('tomorrow')}>Tomorrow</button>
                 </div>
-                <div className="filter-group-icon">
+                <div className="filter-group-icon" key="1">
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
                             { selectedSport?.label }
@@ -219,13 +220,16 @@ const MainTabs = (props) => {
                         <Dropdown.Menu >
                           {
                               sports && sports.map((sport) => { 
-                                 return <Dropdown.Item eventKey={sport.sport_id} onClick={() => handleSportsSelect(sport)}>{ sport.label}</Dropdown.Item> 
+                                 return <Dropdown.Item 
+                                     key={sport.sport_id}
+                                     eventKey={sport.sport_id} 
+                                     onClick={() => handleSportsSelect(sport)}>{ sport.label}</Dropdown.Item> 
                               })
                           }
                         </Dropdown.Menu>
                       </Dropdown>
                 </div>
-                <div className="filter-group-icon">
+                <div className="filter-group-icon" key="2">
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
                             { selectedCategory?.label }
@@ -235,6 +239,7 @@ const MainTabs = (props) => {
                           {
                               sportCategories && sportCategories.map((category) => { 
                                  return <Dropdown.Item 
+                                  key={category.category_id}
                                   eventKey={category.category_id} 
                                   onClick={() => handleCategorySelect(category)}>{ category.label}</Dropdown.Item> 
                               })
@@ -243,7 +248,7 @@ const MainTabs = (props) => {
                       </Dropdown>
                 </div>
 
-                { competitions && <div className="filter-group-icon">
+                { competitions && <div className="filter-group-icon" key="3">
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
                             { selectedCompetition?.label }
@@ -253,6 +258,7 @@ const MainTabs = (props) => {
                           {
                               competitions.map((competition) => { 
                                  return <Dropdown.Item 
+                                  key={competition.competition_id}
                                   eventKey={competition.competition_id} 
                                   onClick={() => handleCompetitionSelect(competition)}>{ competition.label}</Dropdown.Item> 
                               })

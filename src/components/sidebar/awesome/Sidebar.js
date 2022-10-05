@@ -1,5 +1,13 @@
 import React, {useCallback, useEffect, useState, useContext} from 'react';
-import {ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent} from 'react-pro-sidebar';
+import {
+    ProSidebar, 
+    Menu, 
+    MenuItem, 
+    SubMenu, 
+    SidebarHeader, 
+    SidebarContent 
+} from 'react-pro-sidebar';
+
 import 'react-pro-sidebar/dist/css/styles.css';
 import {getFromLocalStorage, setLocalStorage} from "../../utils/local-storage";
 import makeRequest from "../../utils/fetch-request";
@@ -93,7 +101,7 @@ const Sidebar = (props) => {
         let default_img = 'hipo'
         let sport_image;
         try {
-            sport_image = topLeagues ? require(`../../../assets${sport_name}`) : require(`../../../assets/${folder}/${sport_name}.svg`);
+            sport_image = topLeagues ? require(`../../../assets/${sport_name}`) : require(`../../../assets/${folder}/${sport_name}.svg`);
         } catch (error) {
             sport_image = require(`../../../assets/${folder}/${default_img}.png`);
         }
@@ -103,7 +111,6 @@ const Sidebar = (props) => {
     const getDefaultMarketsForSport = (competition) => {
         return competition?.default_display_markets
     }
-
 
     return (
         <div style={{
@@ -159,9 +166,9 @@ const Sidebar = (props) => {
                             {competitions?.top_soccer?.map((top_league, index) => (
                                 <MenuItem key={`l_${index}`}
                                           icon={<img
-                                              src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
-                                              style={{borderRadius: "49%", height: "15px"}}></img>}>
-                                    <a href={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}?sub_type_id=1,18,29`}>
+                                             src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
+                                             style={{borderRadius: "49%", height: "15px"}}></img>}>
+                                   <a href={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}`}>
                                         {top_league?.competition_name}
                                     </a>
                                 </MenuItem>
@@ -182,7 +189,7 @@ const Sidebar = (props) => {
                                                      src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
                                                      />} key={countryKey} >
 
-                                                        <a href={`/competition/${competition.sport_id}/${country.category_id}/all?sub_type_id=${getDefaultMarketsForSport(competition)}`}
+                                                        <a href={`/competition/${competition.sport_id}/${country.category_id}/all`}
                                                            onClick={() => setLocalStorage('active_item', competition.sport_id)}>
                                                             {country.category_name}
                                                         </a>
