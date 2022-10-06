@@ -141,7 +141,6 @@ const MatchHeaderRow = (props) => {
 
         let extraMarkets = []
 
-        console.log("Dealing with sub_types", sub_types, "three way", three_way);
         sub_types?.split(",")?.forEach((sub_type) => {
             let selectedMarket = markets.filter((market) => Number(market.id) === Number(sub_type))
 
@@ -310,11 +309,8 @@ const SideBets = (props) => {
 
 const OddButton = (props) => {
     const {match, mkt, detail, live, jackpot, subType, marketKey} = props
-    // console.log("MKT are ", mkt)
     const [ucn, setUcn] = useState('');
-    // console.log(ucn)
     const [picked, setPicked] = useState('');
-    // console.log("Picked", picked?picked:'na')
     const [oddValue, setOddValue] = useState(null);
 
     const [state, dispatch] = useContext(Context);
@@ -343,8 +339,6 @@ const OddButton = (props) => {
             + (match?.[mkt] || match?.odd_key || 'draw')
         );
         // here
-        // console.log(betslip?.[match.match_id]?.match_id)
-        // console.log(uc)
         if ((betslip?.[match.match_id]?.match_id == match.match_id)
             && uc == betslip?.[match.match_id]?.ucn) {
             setPicked('picked');
@@ -395,9 +389,6 @@ const OddButton = (props) => {
                     + "" + match.sub_type_id
                     + (match?.[mkt] || match?.odd_key || 'draw')
                 );
-                // console.log(uc)
-                //
-                // console.log(state?.[reference])
 
                 if (state?.[reference] === uc) {
                     setPicked('picked')
@@ -444,8 +435,6 @@ const OddButton = (props) => {
             "market_active": market_active,
         }
 
-        // console.log("Slip", slip)
-        // console.log(cstm)
 
         if (cstm === ucn) {
             let betslip;
@@ -513,7 +502,6 @@ const MarketRow = (props) => {
     const MktOddsButton = (props) => {
         const {match, mktodds, live, pdown} = props;
         const fullmatch = {...match, ...mktodds};
-        // console.log("Market odds", fullmatch)
         return (
             !pdown
             && fullmatch?.odd_value !== 'NaN'
@@ -542,7 +530,6 @@ const MarketRow = (props) => {
             </Row>
 
             {markets && markets.map((mkt_odds) => {
-                // console.log(mkt_odds)
                 return (<>
                     <Col className="match-detail" style={{width: width, float: "left"}}>
                         <MktOddsButton
@@ -578,7 +565,6 @@ const getUpdatedMatchFromOdds = (props) => {
     newMatch.special_bet_value = odd_data.special_bet_value;
     delete newMatch['odds']
     delete newMatch['extra_odds']
-    //console.log(newMatch)
     return newMatch;
 
 }
@@ -610,7 +596,7 @@ const MatchRow = (props) => {
                         <br/>
                     </>
                 }
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column" key="20">
                     <span className={'small'}>
                         {(live && match?.match_time) ?
                             <>{`${match.match_time}'`}</> : match?.start_time}
@@ -622,10 +608,10 @@ const MatchRow = (props) => {
             <div className="col-2 col-xs-12 match-detail-container" key="23">
                 <a href={jackpot ? '#' : `/match/${live ? 'live/' + match.parent_match_id : match.match_id}`}>
                     <div className="d-flex flex-column">
-                        <div className="compt-detail overflow-ellipsis">
+                        <div className="compt-detail overflow-ellipsis" key="0034">
                             <small>{match.category} | {match.competition_name}</small>
                         </div>
-                        <div className="compt-teams d-flex flex-column">
+                        <div className="compt-teams d-flex flex-column" key="0035">
                             <div className={'bold'}>
                                 {live && (match?.match_status !== 'ended') && <ColoredCircle color="red"/>}
                                 { match.home_team }
@@ -648,20 +634,20 @@ const MatchRow = (props) => {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot
                                 ? <OddButton key={`${match?.match_id}-home`} match={match} mkt="home_team" live={live} jackpot={jackpot}/>
-                                : <EmptyTextRow key="a" odd_key={match?.odd_key}/>) :
+                                : <EmptyTextRow key={`${match?.match_id}-home`} odd_key={match?.odd_key}/>) :
                             match?.odds?.home_odd ? <EmptyTextRow odd_key={match?.odd_key}/> : ''
                     }
 
                     {match?.odds?.neutral_odd ? ((!pdown && match?.odds?.neutral_odd && match.odds.neutral_odd !== 'NaN' &&
                         match.market_active == 1 && match.odds.neutral_odd_active == 1) || jackpot
                         ? <OddButton key={`${match?.match_id}-draw`} match={match} mkt="draw" live={live} jackpot={jackpot}/>
-                        : <EmptyTextRow odd_key={match?.odd_key}/>) : ''
+                        : <EmptyTextRow okey={`${match?.match_id}-draw`} dd_key={match?.odd_key}/>) : ''
                     }
                     {match?.odds?.away_odd ? (match?.odds?.away_odd && (!pdown && match?.odds?.away_odd && match.odds.away_odd !== 'NaN' &&
                             match.market_active == 1 && match.odds.away_odd_active == 1) || jackpot
                             ? <OddButton key={`${match?.match_id}-away`} match={match} mkt="away_team" live={live} jackpot={jackpot}/>
-                            : <EmptyTextRow odd_key={match?.odd_key}/>) :
-                        match?.odds?.away_odd ? <EmptyTextRow odd_key={match?.odd_key}/> : ''
+                            : <EmptyTextRow key={`${match?.match_id}-away`} odd_key={match?.odd_key}/>) :
+                        match?.odds?.away_odd ? <EmptyTextRow key={`${match?.match_id}-away`} odd_key={match?.odd_key}/> : ''
                     }
                 </div>
 
@@ -788,7 +774,6 @@ const MatchList = (props) => {
         fetching, 
         subTypes
     } = props;
-    console.log("Match listing found ", subTypes);
 
     return (
         <div className="matches full-width">
@@ -813,7 +798,7 @@ const MatchList = (props) => {
                             sub_types={subTypes}/>
                     ))
                 }
-                {(matches !== null && matches.length === 0) &&
+                {(!matches && fetching === false) &&
                     <div className="top-matches row">
                         No events found.
                     </div>
