@@ -101,7 +101,7 @@ const Sidebar = (props) => {
         let default_img = 'hipo'
         let sport_image;
         try {
-            sport_image = topLeagues ? require(`../../../assets/${sport_name}`) : require(`../../../assets/${folder}/${sport_name}.svg`);
+            sport_image = topLeagues ? require(`../../../assets${sport_name}`) : require(`../../../assets/${folder}/${sport_name}.svg`);
         } catch (error) {
             sport_image = require(`../../../assets/${folder}/${default_img}.png`);
         }
