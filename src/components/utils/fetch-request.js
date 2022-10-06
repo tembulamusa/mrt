@@ -58,6 +58,7 @@ const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
         let status = response?.status;
         return [status, result];
     } catch (err) {
+        
         let status = err.response?.status,
             result = err.response?.data;
         return [status, result]

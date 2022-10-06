@@ -121,16 +121,15 @@ const MainTabs = (props) => {
     useEffect(() => {
         setSportOptions() 
         if(sportid){
-            let _sport = state?.categories?.all_sports.find((sport) => sport.sport_id == sportid)
+            let _sport = state?.categories?.all_sports.find((sport) => sport.sport_id === Number(sportid))
             _sport && handleSportsSelect(_sport);
             if(categoryid){
-                let _category = _sport?.categories?.find((category) => category.category_id == categoryid)
-                setSelectedCategory(
-                    {
-                        category_id:_category.category_id, 
-                        label:getCategoryOptionLabel(_category.category_name, _category.cat_flag, true)
-                    }
-                );
+                let _category = _sport?.categories?.find((category) => category.category_id === Number(categoryid))
+                _category && handleCategorySelect(_category);
+                if(competitionid) {
+                    let _competition = _category?.competitions?.find((_c) => _c.competition_id === Number(competitionid));
+                    _competition && handleCompetitionSelect(_competition);
+                }
             }
         }
     }, [state?.categories]);
@@ -159,6 +158,8 @@ const MainTabs = (props) => {
         dispatch({type:"SET", key:"filtersport", payload:sp});
         dispatch({type:"DEL", key:"filtercompetition"});
         dispatch({type:"DEL", key:"filtercategory"});
+        dispatch({type:"SET", key:"filtermenuclicked", payload:true});
+
     } 
 
     const setActiveTabSpace = (tab) => {
@@ -184,6 +185,7 @@ const MainTabs = (props) => {
 
         dispatch({type:"SET", key:"filtercategory", payload:spc});
         dispatch({type:"DEL", key:"filtercompetition"});
+        dispatch({type:"SET", key:"filtermenuclicked", payload:true});
     } 
     const handleCompetitionSelect = (competition) => {
         const cspc = {
@@ -193,6 +195,7 @@ const MainTabs = (props) => {
         }
         setSelectedCompetition(cspc); 
         dispatch({type:"SET", key:"filtercompetition", payload:cspc});
+        dispatch({type:"SET", key:"filtermenuclicked", payload:true});
     } 
 
     return (

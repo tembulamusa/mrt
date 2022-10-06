@@ -26,7 +26,6 @@ const Index = (props) => {
     const location = useLocation();
     const {id, sportid, categoryid, competitionid } = useParams();
 
-    console.log("This are my params for competition ", id, sportid, categoryid, competitionid);
     const [matches, setMatches] = useState([]);
     const [limit, setLimit] = useState(50);
     const [producerDown, setProducerDown] = useState(false);
@@ -58,24 +57,18 @@ const Index = (props) => {
         let search_term = url.searchParams.get('search')
         endpoint += search_term ? '&search=' + search_term : ""; 
 
-        if(state?.filtersport){
         
-            console.log("Found state filtersport", state?.filtersport); 
-            if(state?.filtercategory) {
-                endpoint += "&category_id =" + state?.filtercategory?.category_id;
-            }
-            if(state?.filtercompetition ) {
-                endpoint += "&competition_id =" + state?.filtercompetition?.competition_id;
-            }
-        } else {
-            console.log("Considering to user raw categories since we dont have state") 
-            if(categoryid) {
-                endpoint += "&category_id =" + categoryid;
-            }
-            if(competitionid) {
-                endpoint += "&competition_id =" +  competitionid;
-            }
-        } 
+        if(state?.filtercategory) {
+            endpoint += "&category_id =" + state?.filtercategory?.category_id;
+        } else if(categoryid && !state?.filtermenuclicked === true) {
+            endpoint += "&category_id =" + categoryid;
+        }
+        if(state?.filtercompetition ) {
+            endpoint += "&competition_id =" + state?.filtercompetition?.competition_id;
+        } else if(competitionid && !state?.filtermenuclicked === true) {
+            endpoint += "&competition_id =" +  competitionid;
+        }
+
         if(state?.active_tab) {
             tab = state?.active_tab;
         }
@@ -84,7 +77,6 @@ const Index = (props) => {
         endpoint = endpoint.replaceAll(" ", '')
 
         endpoint += `&sub_type_id=` + subTypes;
-        console.log("Final end point ", endpoint);
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
                 setMatches(matches?.length > 0 ? {...matches, ...result?.data} : result?.data || result)
@@ -114,12 +106,10 @@ const Index = (props) => {
     )
 
     useEffect(() => {
-        console.log("Loaging state as ", state?.selectedmarkets);
         if(state?.selectedmarkets){ 
             setSubTypes(state.selectedmarkets);
         } 
 
-        console.log("categories loaded ", state?.categories);
         if(state?.categories) {
             let spid = Number(sportid || 79);
             let sp = state.categories.all_sports.find((sport) => sport.sport_id === spid);
