@@ -25,6 +25,8 @@ const SideBar = React.lazy(() => import('./sidebar/awesome/Sidebar'))
 const Index = (props) => {
     const location = useLocation();
     const {id, sportid, categoryid, competitionid } = useParams();
+
+    console.log("This are my params for competition ", id, sportid, categoryid, competitionid);
     const [matches, setMatches] = useState([]);
     const [limit, setLimit] = useState(50);
     const [producerDown, setProducerDown] = useState(false);
@@ -58,6 +60,7 @@ const Index = (props) => {
 
         if(state?.filtersport){
         
+            console.log("Found state filtersport", filtersport); 
             if(state?.filtercategory) {
                 endpoint += "&category_id =" + state?.filtercategory?.category_id;
             }
@@ -65,7 +68,7 @@ const Index = (props) => {
                 endpoint += "&competition_id =" + state?.filtercompetition?.competition_id;
             }
         } else {
-        
+            console.log("Considering to user raw categories since we dont have state") 
             if(categoryid) {
                 endpoint += "&category_id =" + categoryid;
             }
@@ -81,6 +84,7 @@ const Index = (props) => {
         endpoint = endpoint.replaceAll(" ", '')
 
         endpoint += `&sub_type_id=` + subTypes;
+        console.log("Final end point ", endpoint);
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
                 setMatches(matches?.length > 0 ? {...matches, ...result?.data} : result?.data || result)
