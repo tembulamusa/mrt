@@ -60,7 +60,7 @@ const Index = (props) => {
 
         if(state?.filtersport){
         
-            console.log("Found state filtersport", filtersport); 
+            console.log("Found state filtersport", state?.filtersport); 
             if(state?.filtercategory) {
                 endpoint += "&category_id =" + state?.filtercategory?.category_id;
             }
