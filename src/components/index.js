@@ -105,13 +105,17 @@ const Index = (props) => {
         state?.filtersport, 
         state?.filtercategory, 
         state?.filtercompetition, 
-        state?.active_tab]
+        state?.active_tab, 
+    ]
     )
 
     useEffect(() => {
+        console.log("Loaging state as ", state?.selectedmarkets);
         if(state?.selectedmarkets){ 
             setSubTypes(state.selectedmarkets);
         } 
+
+        console.log("categories loaded ", state?.categories);
         if(state?.categories) {
             let spid = Number(sportid || 79);
             let sp = state.categories.all_sports.find((sport) => sport.sport_id === spid);
@@ -124,7 +128,7 @@ const Index = (props) => {
         return () => {
             setMatches(null);
         };
-    }, [state?.categories]);
+    }, []);
 
     useEffect(() => {
         fetchData();
