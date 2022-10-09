@@ -49,11 +49,15 @@ const Jackpot = (props) => {
                             <img src={dailyJackpot}/>
                             <Tabs
                                 variant={'tabs'}
-                                defaultActiveKey="home"
+                                defaultActiveKey={matches?.meta.status == 'ACTIVE' ? "home":"results"}
                                 id=""
                                 className="background-primary "
                                 justify>
-                                <Tab eventKey="home" title="Jackpot" className={'background-primary'}>
+                                <Tab eventKey="home" 
+                                  title="Jackpot" 
+                                  className={'background-primary'}
+                                  disabled = {matches?.meta.status == 'INACTIVE'}
+                                  >
                                     {matches?.data?.length > 0 ? (
                                         <>
                                             <JackpotHeader jackpot={matches?.meta}/>
@@ -61,16 +65,20 @@ const Jackpot = (props) => {
                                         </>
                                     ) : (
                                         <div
-                                            className={'col-md-12 text-center background-primary shadow mt-2 p-3'}>
+                                            className={'col-md-12 text-center background-primary  mt-2 p-3'}>
                                             There are no active jackpots at the moment.
                                         </div>
                                     )}
                                 </Tab>
-                                <Tab eventKey="results" title="Results">
+                                <Tab 
+                                   eventKey="results" 
+                                   title="Results"
+                                   disabled = {matches?.meta.status == 'ACTIVE'}
+                                   >
                                     <JackpotHeader jackpot={matches?.meta}/>
                                     <div className="matches full-mobile sticky-top container">
                                         <div
-                                            className="top-matches d-flex position-sticky shadow-lg p-4 mt-5">
+                                            className="top-matches d-flex position-sticky  p-4">
                                             <div className="col-md-3 bold">
                                                 TIME
                                             </div>
@@ -87,7 +95,7 @@ const Jackpot = (props) => {
                                         <div className={'matches full-width'} key={index}>
                                             <Container className="web-element">
                                                 <div
-                                                    className="col-md-12 shadow d-flex flex-row p-2 top-matches">
+                                                    className="col-md-12 d-flex flex-row p-2 top-matches">
                                                     <div className="col-md-3">
                                                         {match?.start_time}
                                                     </div>
