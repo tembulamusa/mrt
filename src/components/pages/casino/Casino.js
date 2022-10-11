@@ -77,14 +77,14 @@ const Casino = (props) => {
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <div className={'row text-white p-2 shadow-sm'}>
+                                    <div className={'row p-2 '}>
                                         {games?.map((game) => (
                                                 <div onClick={() => launchGame(game.game_id)}
-                                                     className="col-md-2 mt-1 d-flex flex-column shadow-sm"
+                                                     className="col-md-2 mt-1 d-flex flex-column "
                                                      key={game.game_id}>
                                                     <LazyLoadImage src={`${game.game_icon}`}
                                                                    className={'virtual-game-image'}/>
-                                                    <p className={'p-2 bold'}>{game.game_name}</p>
+                                                    <p className={'p-2 bold'} style={{color:"#902065"}}>{game.game_name}</p>
                                                 </div>
                                             )
                                         )}

@@ -117,15 +117,16 @@
 }
 
 .casino-category {
-    width: 100%;
-    border-radius: 5px;
-    background-color: #0e131b;
-    padding: 2px;
-    color: white;
-    position: sticky !important;
-    top: 4rem;
-    margin-left: 2px;
-    outline: none !important;
+	width: 100%;
+	background-color: #d4d3dd;
+	padding: 10px;
+	position: sticky !important;
+	margin-left: 2px;
+	outline: none !important;
+	color: #902065;
+	border-radius: ;
+	margin-right: 5px !important;
+	margin-top: 5px !important;
 }
 
 .casino-category:focus {
