@@ -144,7 +144,7 @@ const BetslipSubmitForm = (props) => {
                         clearJackpotSlip();
                         setMessage({
                             status: 201,
-                            message: "Jackpot bet placed successfully."
+                            message: response?.message || response
                         })
                     } else {
                         clearSlip();
