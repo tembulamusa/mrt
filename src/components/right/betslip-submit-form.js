@@ -138,13 +138,14 @@ const BetslipSubmitForm = (props) => {
         makeRequest({url: endpoint, method: method, data: payload, use_jwt: use_jwt})
             .then(([status, response]) => {
                 setMessage(response)
+                console.log("Response message", status, response, response?.message);
                 if (status === 200 || status == 201 || status == 204 || jackpot) {
                     //all is good am be quiet
                     if (jackpot) {
                         clearJackpotSlip();
                         setMessage({
                             status: 201,
-                            message: "Jackpot bet placed successfully."
+                            message: response?.message || response
                         })
                     } else {
                         clearSlip();
