@@ -78,8 +78,7 @@ const Deposit = (props) => {
                             name="msisdn"
                             type="text"
                             value={values.msisdn}
-                            onChange={ev => onFieldChanged(ev)} 
-                            placeholder='Enter Phone Number'
+                            readOnly={true}
                         />
                         {errors.msisdn && <div className='text-danger'> {errors.msisdn} </div>}
                     </div>
