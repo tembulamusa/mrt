@@ -7,11 +7,12 @@ import makeRequest from "../utils/fetch-request";
 import {Context} from '../../context/store';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {setLocalStorage} from '../utils/local-storage';
+import {setLocalStorage, getFromLocalStorage} from '../utils/local-storage';
 
 const HeaderLogin = (props) => {
     const [isLoading, setIsLoading] = useState(null)
     const [message, setMessage] = useState(null);
+    const [user, ] = useState(getFromLocalStorage("user"));
     const {setUser} = props;
 
     const initialValues = {
@@ -173,12 +174,14 @@ const HeaderLogin = (props) => {
                 </div>
             </Row> */}
             <Row style={{marginBottom:"10px"}}>
-                <Col xs={3}className="d-inline-flex justify-content-end" style={{margin:"auto"}}>
+                <Col xs={3}className="d-inline-flex justify-content-center" style={{margin:"auto"}}>
                     <ToastContainer/>
 
-                    <a className="filter-icon" href="/deposit" title="Deposit" style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a", padding:"5px 20px"}} >
-                        <span className="register-label">Deposit</span>
-                    </a>
+                    { user && 
+                        <a className="filter-icon" href="/deposit" title="Deposit" style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a", padding:"5px 20px"}} >
+                                    <span className="register-label">Deposit</span>
+                                </a>
+                    }
                     <a className="filter-icon" href="/signup" title="Join now" style={{ fontSize: "16px", fontWeight: "bold"}}>
                         <span className="register-label">Register now!</span>
                     </a>
