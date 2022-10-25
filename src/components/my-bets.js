@@ -41,7 +41,7 @@ const MyBets = (props) => {
     const fetchData = useCallback(async() => {
         if(isLoading) return;
         setIsLoading(true);
-        let endpoint = "/v1/full/betdetails";
+        let endpoint = "/v1/full/betdetails?limit=";
         makeRequest({url: endpoint, method: "POST", data: null}).then(([status, result]) => {
             dispatch({type: "SET", key: "mybets", payload: result});
             setIsLoading(false);
