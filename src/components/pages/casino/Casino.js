@@ -44,7 +44,7 @@ const Casino = (props) => {
     const launchGame = (game_id) => {
 
         if (user?.token) {
-            return window.location.href = `/gameplay/${game_id}`
+            return window.location.href = `/virtuals/${game_id}`
         }
 
         return showLoginNotification()
