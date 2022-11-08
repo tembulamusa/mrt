@@ -109,7 +109,7 @@ render((
                 <Route exact path="/livescore" element={<LiveScore/>}/>
                 <Route exact path="/casino" element={<Casino/>}/>
                 <Route exact path="/live-casino" element={<LiveCasino/>}/>
-                <Route exact path="/virtuals/index/:game_id" element={<CasinoGamePlay/>}/>
+                <Route exact path="/virtuals/launch/:game_id" element={<CasinoGamePlay/>}/>
                 <Route exact path="/highlights" element={<Index/>}/>
                 <Route exact path="/upcoming" element={<Index/>}/>
                 <Route exact path="/tomorrow" element={<Index/>}/>
