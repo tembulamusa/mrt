@@ -48,7 +48,7 @@ const Casino = (props) => {
         console.log(userState)
 
         if (userState?.token) {
-            return window.location.href = `/virtuals/${game_id}`
+            return window.location.href = `/virtuals/index/${game_id}`
         }
 
         return showLoginNotification()

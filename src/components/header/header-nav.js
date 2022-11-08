@@ -94,18 +94,18 @@ const HeaderNav = (props) => {
                         </a>
                     </li>
                     <li className={pathname === '/virtuals' || pathname.includes("virtuals") ? 'active' : ''}>
-                        <a className="g url-link" href="/virtuals" title="Virtuals">
+                        <a className="g url-link" href="/virtuals/index" title="Virtuals">
                             <span >
                                 <FontAwesomeIcon icon={faLaptop} className="hide1"/> Virtuals
                             </span>
                         </a>
                     </li>
                     {/*<li className={pathname === '/casino' || pathname.includes("virtuals") ? 'active' : ''}>*/}
-                    {/*    <a className="g url-link" href="/casino" title="Casino">*/}
+                    {/*    <a className="g url-link" href="/virtuals/index" title="Casino">*/}
                     {/*        <FontAwesomeIcon icon={faDice}/> Casino*/}
                     {/*    </a>*/}
                     {/*</li>*/}
-                    <li className={pathname === '/promotions' || pathname.includes("virtuals") ? 'active' : ''}>
+                    <li className={pathname === '/promotions' || pathname.includes("promotions") ? 'active' : ''}>
                         <a className="g url-link" href="/promotions" title="Promotions">
                             <img src={PromotionIcon} alt="" className="svg-menu-img-icon hide1" /> Promotions
                         </a>
