@@ -44,7 +44,7 @@ const LiveCasino = (props) => {
     const launchGame = (game_id) => {
 
         if (user?.token) {
-            return window.location.href = `/virtuals/index/${game_id}/1`
+            return window.location.href = `/virtuals/launch/${game_id}/1`
         }
 
         return showLoginNotification()
