@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import SideBar from "../../sidebar/awesome/Sidebar";
 import {getFromLocalStorage, setLocalStorage} from "../../utils/local-storage";
 import Notify from "../../utils/Notify";
+import {Button, ButtonGroup} from "react-bootstrap";
 
 const Casino = (props) => {
 
@@ -41,10 +42,10 @@ const Casino = (props) => {
         Notify(message)
     }
 
-    const launchGame = (game_id) => {
+    const launchGame = (game_id, live=0) => {
 
         if (user?.token) {
-            return window.location.href = `/virtuals/launch/${game_id}`
+            return window.location.href = `/virtuals/launch/${game_id}?live=${live}`
         }
 
         return showLoginNotification()
@@ -78,16 +79,35 @@ const Casino = (props) => {
                                 </div>
                                 <div className="col">
                                     <div className={'row p-2 '}>
-                                        {games?.map((game) => (
-                                                <div onClick={() => launchGame(game.game_id)}
-                                                     className="col-md-2 mt-1 d-flex flex-column "
-                                                     key={game.game_id}>
-                                                    <LazyLoadImage src={`${game.game_icon}`}
-                                                                   className={'virtual-game-image'}/>
-                                                    <p className={'p-2 bold'} style={{color:"#902065"}}>{game.game_name}</p>
-                                                </div>
-                                            )
-                                        )}
+                                       {games?.map((game) => (                 
+                                                <div className={'col-md-2'}>    
+                                                    <div                        
+                                                        className={'mt-1 mb-1 d-flex flex-column shadow-lg'} >
+                                                        <div onClick={() => launchGame(game?.game_id, 1)}
+                                                             className=""       
+                                                             key={game.game_id}>
+                                                            <LazyLoadImage src={`${game.game_icon}`}
+                                                                           className={'virtual-game-image'}/>
+                                                            <p className={'p-2 bold text-elipsis'}>{game?.game_name}</p>
+                                                        </div>                  
+                                                        <div className="overlay shadow-sm row">
+                                                            <ButtonGroup aria-label="Basic example">
+                                                                <Button variant="warning" 
+                                                                        onClick={() => launchGame(game?.game_id)}>
+                                                                    Demo   
+                                                                </Button>       
+                                                                <Button style={{background:'#902065', border:"none"}}
+                                                                        onClick={() => launchGame(game?.game_id, 1)}>
+                                                                    Play Live   
+                                                                </Button>       
+                                                            </ButtonGroup>      
+                                                        </div>                  
+                                                    </div>                      
+                                                </div>                          
+                                                                                
+                                            )                                   
+                                        )}                                      
+
                                     </div>
                                 </div>
                             </div>

@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from "react";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
-import {useParams} from "react-router-dom";
+import { 
+    useParams,
+    useSearchParams
+} from "react-router-dom";
 import makeRequest from "../../utils/fetch-request";
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -10,7 +13,11 @@ import {LazyLoadImage} from "react-lazy-load-image-component";
 import {Stack} from "react-bootstrap";
 
 const GamePlay = (props) => {
-    const {game_id} = useParams()
+    const {game_id } = useParams()
+    const [searchParams, setSearchParams] = useSearchParams();
+    const live = searchParams.get("live");
+    console.log("This are the patams ", game_id, live);
+
 
     const [gameUrl, setGameUrl] = useState('')
 
@@ -35,8 +42,9 @@ const GamePlay = (props) => {
 
     const startGame = async (game_id) => {
 
-        // let endpoint = `/v1/casino/start/game?game-id=${game_id}`
-        let endpoint = `/v1/casino/game/url?game-id=${game_id}`
+        let endpoint = live === '0' 
+            ? `/v1/casino/game/demo-url?game-id=${game_id}` 
+            : `/v1/casino/game/url?game-id=${game_id}`;
 
         let method = "GET"
 
