@@ -96,7 +96,7 @@ const LiveCasino = (props) => {
 
     const initializeDGA = async () => {
         try {
-            let url = "prelive-dga0.pragmaticplaylive.net/ws?key=testKey&stylename=bisl_betnare";
+            let url = "prelive-dga0.pragmaticplaylive.net/ws?key=testKey&stylename=lmntgmng_bethipo";
             window.dga.connect(url)
             // console.log("Connected to DGA Web Socket on PP")
         } catch (e) {
@@ -107,14 +107,14 @@ const LiveCasino = (props) => {
     const getCasinoGames = () => {
         // console.log("DGA connnected", dgaConnected)
         if (dgaConnected) {
-            window.dga.available('ppcdk00000009542')
+            window.dga.available('ppcdk00000010157')
         }
     }
 
     const getGamesForTableKeys = () => {
         // console.log("Table keys are ", typeof tableKeys)
         Object.values(tableKeys).forEach((data, key) => {
-            window.dga.subscribe('ppcdk00000009542', data?.id, 'Ksh')
+            window.dga.subscribe('ppcdk00000010157', data?.id, 'Ksh')
         })
     }
 
@@ -122,7 +122,7 @@ const LiveCasino = (props) => {
         initializeDGA().then(() => {
             initializeDGAEvents()
         })
-        fetchGames()
+        //fetchGames()
     }, [])
 
     useEffect(() => {
@@ -211,7 +211,7 @@ const LiveCasino = (props) => {
                                                             </div>
                                                             <div className="col">
                                                                 <button className={'btn btn-lg col-md-12'} style={{
-                                                                    background: "linear-gradient(to right, #f4512c, #f87b2b 50%, #fb9e29 75%)"
+                                                                    background: "#902065"
                                                                 }}>
                                                                     <strong className={'text-white'}>
                                                                         Play {tableDataItem?.tableName}
