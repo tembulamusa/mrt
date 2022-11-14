@@ -100,6 +100,13 @@ const HeaderNav = (props) => {
                             </span>
                         </a>
                     </li>
+                    <li className={pathname === '/live-casino' || pathname.includes("live-casino") ? 'active' : ''}>
+                        <a className="g url-link" href="/live-casino" title="Live Casino">
+                            <span >
+                                <FontAwesomeIcon icon={faLaptop} className="hide1"/> Live Casino
+                            </span>
+                        </a>
+                    </li>
                     {/*<li className={pathname === '/casino' || pathname.includes("virtuals") ? 'active' : ''}>*/}
                     {/*    <a className="g url-link" href="/virtuals/index" title="Casino">*/}
                     {/*        <FontAwesomeIcon icon={faDice}/> Casino*/}
