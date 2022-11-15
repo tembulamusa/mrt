@@ -155,9 +155,9 @@ const LiveCasino = (props) => {
                                                      onClick={() => launchGame(tableDataItem?.tableId)}>
                                                     <div
                                                         className="col shadow-lg p-2 cursor-pointer virtual-game-container"
-                                                        style={{border: "thin solid gray", borderRadius: "4px"}}>
+                                                        style={{borderRadius: "4px"}}>
                                                         <div className="col text-uppercase text-center bold" style={{
-                                                            color: "#fdb429"
+                                                            color: "#2c2457"
                                                         }}>
                                                             {tableDataItem?.tableName}
                                                         </div>
@@ -170,9 +170,9 @@ const LiveCasino = (props) => {
                                                                     <div className={'col-md-6 flex-row'}>
                                                                         <FontAwesomeIcon icon={faChair}
                                                                                          className={'text-warning'}/>
-                                                                        &nbsp;{tableDataItem?.totalSeatedPlayers} seats
+                                                                        <span style={{color:"#6082B6"}}>&nbsp;{tableDataItem?.totalSeatedPlayers} seats</span>
                                                                     </div>
-                                                                    <div className={'col-md-6 text-end'}>
+                                                                    <div className={'col-md-6 text-end'} style={{color:"#6082B6"}}>
                                                                         <FontAwesomeIcon icon={faCircle}
                                                                                          className={`${tableDataItem?.tableOpen ? 'text-success' : 'text-danger'}`}/>
                                                                         {tableDataItem?.tableOpen ? ' Table Open' : ' Table Closed'}
