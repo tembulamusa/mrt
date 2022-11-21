@@ -61,7 +61,7 @@ const GamePlay = (props) => {
 
         <Stack direction="horizontal" gap={1} style={{overflow: "scroll"}}
                className={'d-flex justify-content-center w-100'}>
-            {
+            { games &&
                 games.map((game, index) => (
                     <LazyLoadImage
                         key={index}
