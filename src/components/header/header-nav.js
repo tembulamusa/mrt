@@ -28,7 +28,7 @@ const HeaderNav = (props) => {
     const [matches, setMatches] = useState([])
     const searchInputRef = useRef(null)
     const [time, setTime] = useState();
-    const domain = window.location.hostname;
+    
 
     useEffect(() => {
         fetchMatches()
@@ -95,7 +95,7 @@ const HeaderNav = (props) => {
                         </a>
                     </li>
 
-                   { domain.includes("test") || domain.includes("localhost") && 
+                   { (window.location.hostname.includes("test") || window.location.hostname.includes("localhost")) && 
                        (
                            <>
                             <li className={pathname === '/virtuals' || pathname.includes("virtuals") ? 'active' : ''}>
