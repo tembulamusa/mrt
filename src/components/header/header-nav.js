@@ -28,7 +28,7 @@ const HeaderNav = (props) => {
     const [matches, setMatches] = useState([])
     const searchInputRef = useRef(null)
     const [time, setTime] = useState();
-    const domain = window.location.host;
+    const domain = window.location.hostname;
 
     useEffect(() => {
         fetchMatches()
