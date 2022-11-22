@@ -98,7 +98,7 @@ const GamePlay = (props) => {
                             </div>
                             {gameUrlLoaded && <>
                                 <iframe className={'mt-3 shadow-lg'}
-                                    src={gameUrl} title="Gadme" width={'100%'} height={'600px'}></iframe>
+                                    src={gameUrl} title="Gadme" width={'100%'} height={'600px'} allowFullScreen={true} webkitAllowFullScreen={true} mozAllowFullScreen={true} ></iframe>
                             </>}
                         </div>
                     </div>
