@@ -48,7 +48,7 @@ const Casino = (props) => {
         console.log(userState)
 
         if (userState?.token) {
-            return window.location.href = `/virtuals/launch/${game_id}`
+            return window.location.href = `/virtuals/launch/${game_id}?live=1`
         }
 
         return showLoginNotification()
@@ -78,7 +78,7 @@ const Casino = (props) => {
                                     </div>
                                 </div>
                                 <div className="col">
-                                    <div className={'row text-white p-2 shadow-sm'}>
+                                    <div className={'row  p-2 m-1'}>
                                         {games?.map((game) => (
                                                 <div onClick={() => launchGame(game.game_id)}
                                                      className="col-md-2 mt-1 d-flex flex-column shadow-sm"

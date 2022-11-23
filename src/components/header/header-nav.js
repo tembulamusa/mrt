@@ -98,10 +98,17 @@ const HeaderNav = (props) => {
                    { (window.location.hostname.includes("test") || window.location.hostname.includes("localhost")) && 
                        (
                            <>
-                            <li className={pathname === '/virtuals' || pathname.includes("virtuals") ? 'active' : ''}>
+                            <li className={pathname === '/virtuals/index' || pathname.includes("virtuals/index") ? 'active' : ''}>
                                 <a className="g url-link" href="/virtuals/index" title="Virtuals">
                                     <span >
                                         <FontAwesomeIcon icon={faLaptop} className="hide1"/> Virtuals
+                                    </span>
+                                </a>
+                            </li>
+                            <li className={pathname === '/virtuals/casino' || pathname.includes("virtuals/casino") ? 'active' : ''}>
+                                <a className="g url-link" href="/virtuals/casino" title="Casino">
+                                    <span >
+                                        <FontAwesomeIcon icon={faLaptop} className="hide1"/> Casino
                                     </span>
                                 </a>
                             </li>
