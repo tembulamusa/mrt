@@ -16,8 +16,8 @@ const WorldCupModal = (props) => {
             dialogClassName="modal-90w world-cup-ad"
             aria-labelledby="contained-modal-title-vcenter">
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        <h3>Win Big with World Cup Bets</h3>
+                    <Modal.Title id="contained-modal-title-vcenter" >
+                        <h3 className="text-center">WIN BIG WITH WORLD CUP BETS</h3>
                     </Modal.Title>
                 </Modal.Header>
 
@@ -29,7 +29,7 @@ const WorldCupModal = (props) => {
                             alt="bethipo" />
                         <Row className="w-100 justify-content-center text-center">
                             <Col>
-                                <h4>Click Here to bet on World cup and win big</h4>
+                                <h4>CLICK HERE TO BET ON WORLD CUP AND WIN BIG</h4>
                             </Col>
                         </Row>
                     </Modal.Body>
