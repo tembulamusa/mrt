@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Modal } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import worldcup from '../assets/img/world_cup.jpg'
+import worldcup from '../assets/img/world_cup.png'
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 
 
