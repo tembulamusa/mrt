@@ -8,9 +8,10 @@ import banner4 from '../../assets/img/banner/products/Mshipi-Bonus.png'
 import banner2 from '../../assets/img/banner/products/Live-Betting.png'
 import banner3 from '../../assets/img/banner/products/Virtuals.png'
 import banner1 from '../../assets/img/banner/products/Welcome-Bonus.png'
+import banner0 from '../../assets/img/banner/products/world_cup_banner.png'
 
 const banners = [
-    banner1, banner2, banner3, banner4, banner5
+    banner0, banner1, banner2, banner3, banner4, banner5
 ]
 
 const CarouselLoader = (props) => {
