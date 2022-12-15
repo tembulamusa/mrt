@@ -337,14 +337,14 @@ const BetslipSubmitForm = (props) => {
                     {!jackpot && <tr className="bet-win-tr hide-on-affix">
                         <td>Possible winnings</td>
                         <td>
-                            KES. <span
+                            TSH. <span
                             id="pos_win">{formatNumber(possibleWin)}</span>
                         </td>
                     </tr>}
 
                     <tr className="bet-win-tr hide-on-affix">
                         <td> Excise Tax (7.5%)</td>
-                        <td>KES. <span id="tax">{formatNumber(exciseTax)}</span></td>
+                        <td>TSH. <span id="tax">{formatNumber(exciseTax)}</span></td>
                     </tr>
                     {jackpot ? (
                         ''
@@ -352,18 +352,18 @@ const BetslipSubmitForm = (props) => {
                         <>
                         <tr className="bet-win-tr hide-on-affix">
                             <td> Withholding (20%)</td>
-                            <td>KES. <span id="tax">{formatNumber(withholdingTax)}</span></td>
+                            <td>TSH. <span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
 
                         <tr className="bet-win-tr hide-on-affix">
                             <td> KIBOKO WIN Bonus</td>
-                            <td>KES. <span id="tax">{formatNumber(withholdingTax)}</span></td>
+                            <td>TSH. <span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
                         </>
                     )}
                     <tr className="bet-win-tr hide-on-affix">
                         <td>{jackpot?'Jackpot Amount':'Net Amount'}</td>
-                        <td>KES. <span
+                        <td>TSH. <span
                             id="net-amount">{formatNumber(jackpot ? jackpotData?.jackpot_amount : netWin + withholdingTax)}</span></td>
                     </tr>
                     <tr>

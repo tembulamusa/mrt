@@ -211,7 +211,7 @@ const LiveCasino = (props) => {
                                                             </div>
                                                             <div className="col">
                                                                 <button className={'btn btn-lg col-md-12'} style={{
-                                                                    background: "#902065"
+                                                                    background: "#C6224E"
                                                                 }}>
                                                                     <strong className={'text-white'}>
                                                                         Play {tableDataItem?.tableName}

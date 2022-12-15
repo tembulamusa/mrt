@@ -31,7 +31,7 @@ const Right = (props) => {
                             <div className="betslip-header">
                     <span className="col-sm-2 bkmrk">
                         <i className="fa fa-bookmark" aria-hidden="true"></i></span>
-                                <span className="col-sm-8 slp">BETSLIP</span>
+                                <span className="col-sm-8 slp">BETSLIP/JAMVI</span>
                                 <span className="col-sm-2 slip-counter"></span>
                             </div>
                         </header>
@@ -52,7 +52,7 @@ const Right = (props) => {
                     <div className="bet alu  block-shadow">
                         <header style={{marginTop: "60px"}}>
                             <div className="betslip-header d-flex justify-content-between">
-                                <span className="col-sm-8 slp">BETSLIP</span>
+                                <span className="col-sm-8 slp">BETSLIP/JAMVI</span>
                                 <span className="col-sm-2 slip-counter d-flex justify-content-center"
                                       title={'Hide BetSlip'} onClick={() => setBetSlipMobile(false)}>
                                     <FontAwesomeIcon icon={faTimes} className={'align-self-center'}/>

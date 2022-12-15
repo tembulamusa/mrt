@@ -732,7 +732,7 @@ export const JackpotHeader = (props) => {
                         <CurrencyFormat
                             value={jackpot?.jackpot_amount}
                             displayType={'text'}
-                            thousandSeparator={true} prefix={'KES'}/>
+                            thousandSeparator={true} prefix={'TSH'}/>
                     </div>
                 </Row>
 

@@ -41,7 +41,7 @@ const Deposit = (props) => {
         }
 
         if (!values.amount || values.amount < 1 || values.amount > 70000) {
-            errors.amount = "Please enter amount between KES 1.00 and KES 70,000.00";
+            errors.amount = "Please enter amount between TSH 1.00 and TSH 70,000.00";
         }
         return errors
     }

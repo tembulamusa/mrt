@@ -96,7 +96,7 @@ const Casino = (props) => {
                                                                         onClick={() => launchGame(game?.game_id)}>
                                                                     Demo   
                                                                 </Button>       
-                                                                <Button style={{background:'#902065', border:"none"}}
+                                                                <Button style={{background:'#C6224E', border:"none"}}
                                                                         onClick={() => launchGame(game?.game_id, 1)}>
                                                                     Play Live   
                                                                 </Button>       
