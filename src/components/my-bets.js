@@ -107,8 +107,8 @@ const MyBets = (props) => {
                 <div className="row">
                     <div className="col">Time { bet.created}</div>
                     <div className="col">Bet ID { bet.bet_id}</div>
-                    <div className="col">Amount KES { bet.bet_amount}</div>
-                    <div className="col">Possible Win KES { bet.possible_win}</div>
+                    <div className="col">Amount TSH { bet.bet_amount}</div>
+                    <div className="col">Possible Win TSH { bet.possible_win}</div>
                     { canCancel == false 
                         ? <div className="col"> Status { betStatus}</div>
                         : cancelBetMarkup() 

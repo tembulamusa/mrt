@@ -12,7 +12,7 @@ import makeRequest from './utils/fetch-request';
 import {getBetslip} from './utils/betslip' ;
 import useInterval from "../hooks/set-interval.hook";
 import {Spinner} from "react-bootstrap";
-import WorldCupModal from './world_cup_modal' ;
+// import WorldCupModal from './world_cup_modal' ;
 
 const Header = React.lazy(() => import('./header/header'));
 const Footer = React.lazy(() => import('./footer/footer'));
@@ -158,7 +158,6 @@ const Index = (props) => {
         <>
             <Header/>
             <div className="amt">
-                {window.location.pathname == '/'?<WorldCupModal />:null}
                 <div className="d-flex flex-row justify-content-between">
                     <SideBar loadCompetitions/>
                     <div className="gz home" style={{width: '100%'}}>

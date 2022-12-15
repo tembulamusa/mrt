@@ -56,15 +56,15 @@ const Promotions = () => {
                                                 <span><u>How to get it</u></span>
                                                 <ul>
                                                     <li>
-                                                        Deposit KES.50 and above to BETHIPO Paybill 4093333 using your phone number as the account number
+                                                        Deposit TSH.50 and above to BETHIPO Paybill 4093333 using your phone number as the account number
                                                     </li>
                                                 </ul>
                                                 <div className="col-md-12">
                                                     <span><u>Terms and conditions</u></span>
                                                     <ul>
-                                                       <li>1. All deposits above Kes 10 are eligible for 100% bonus</li>
+                                                       <li>1. All deposits above Tsh 10 are eligible for 100% bonus</li>
                                                        <li>2. This bonus applies to your first ever deposit only</li>
-                                                       <li>3. The maximum first deposit bonus awardable is KES 500</li>
+                                                       <li>3. The maximum first deposit bonus awardable is Tsh 500</li>
                                                     </ul>
                                                 </div>
                                             </div>

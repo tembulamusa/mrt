@@ -100,7 +100,7 @@ const HeaderLogin = (props) => {
         }
         return (
             <>
-                <Form className="ow og i web-element">
+                <Form className="ow i web-element" style={{marginTop: "10px"}}>
                     <Row>
                         <div className="col-5">
                             <input type="text"
@@ -115,10 +115,8 @@ const HeaderLogin = (props) => {
                             <br/>
                             <span className="sticky-hidden">
                             <label>
-                               <input type="hidden" name="remember" value="1"/> 
-                                <a className="m-lg-2" href="/verify-account" title="Verify Account">
-                                    <span className="register-label">Already using BETHIPO?, Verify</span>
-                                </a>
+                               <input type="checkbox" name="remember" value="1"/> 
+                                Remember Me
                             </label>
                         </span>
                         </div>
@@ -182,8 +180,8 @@ const HeaderLogin = (props) => {
                                     <span className="register-label">Deposit</span>
                                 </a>
                     }
-                    <a className="filter-icon" href="/signup" title="Join now" style={{ fontSize: "16px", fontWeight: "bold"}}>
-                        <span className="register-label">Register now!</span>
+                    <a className="filter-icon" href="/signup" title="Join Now" style={{ fontSize: "16px"}}>
+                        <span className="register-label">Register Now!</span>
                     </a>
                 </Col>
                 <Col xs={6}><LoginForm/></Col>
