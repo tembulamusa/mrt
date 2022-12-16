@@ -15707,3 +15707,9 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 li.pro-sub-menu {
     margin-bottom: 0 !important;
 }
+
+
+.spinner-grow {
+    
+    background-color: #34B3BF !important;
+}
