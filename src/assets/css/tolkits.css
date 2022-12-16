@@ -15633,8 +15633,8 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     border: none;
 }
 
-.btn-secondary:hover{
-  background-color: #613354;
+.btn-secondary:hover {
+    background-color: #00a1d18c;
 }
 .btn-check:active + .btn-secondary, .btn-check:checked + .btn-secondary, .btn-secondary.active, .btn-secondary:active, .show > .btn-secondary.dropdown-toggle {
     background-color: #C6224E;
