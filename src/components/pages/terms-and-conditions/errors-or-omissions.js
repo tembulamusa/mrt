@@ -70,7 +70,7 @@ const ErrorsOrOmissions = () => {
                     </li>
                 </ul>
                 <p>
-                    BetHipo reserves the right to:
+                    Bikosports reserves the right to:
                 </p>
                 <ul>
                     <li>

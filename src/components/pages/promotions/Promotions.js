@@ -34,7 +34,7 @@ const Promotions = () => {
                                                 <span><u>How to get it</u></span>
                                                 <ul>
                                                     <li>
-                                                        Register on sms by sending the word JOIN 29400 or visiting www.bethipo.co.ke and creating account via signup link.
+                                                        Register on sms by sending the word JOIN 29400 or visiting www.bikosports.co.tz and creating account via signup link.
                                                     </li>
                                                 </ul>
                                                 <div className="col-md-12">
@@ -56,7 +56,7 @@ const Promotions = () => {
                                                 <span><u>How to get it</u></span>
                                                 <ul>
                                                     <li>
-                                                        Deposit TSH.50 and above to BETHIPO Paybill 4093333 using your phone number as the account number
+                                                        Deposit TSH.50 and above to Bikosports Paybill 4093333 using your phone number as the account number
                                                     </li>
                                                 </ul>
                                                 <div className="col-md-12">
@@ -97,7 +97,7 @@ const Promotions = () => {
                                                     <img src={earlyBirdDailyDepositBonus} className={'rounded'}/>
                                                     <span><u>How to get it</u></span>
                                                     <ul>
-                                                         <li>Make your first deposit of the day to BETHIPO paybill 4093333 account number your mobile number</li>
+                                                         <li>Make your first deposit of the day to Bikosports paybill 4093333 account number your mobile number</li>
                                                     </ul>
                                                     <div className="col-md-12">
                                                         <span><u>Terms and conditions</u></span>

@@ -18,7 +18,7 @@ const Complaints = () => {
             <AccordionItemPanel className='accordion-item-panel'>
 
                 <p>
-                    BetHipo is committed to provide the best quality of support for our
+                    Bikosports is committed to provide the best quality of support for our
                     players.
                 </p>
                 <p>
@@ -34,7 +34,7 @@ const Complaints = () => {
                     need
                     further escalation, they should contact our customer support agents by
                     email
-                    on customercare@bethipo.com. A customer care representative shall acknowledge
+                    on customercare@bikosports.com. A customer care representative shall acknowledge
                     the
                     receipt of the complaint to the Client in a maximum period of 3 working
                     days.
