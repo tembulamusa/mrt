@@ -11,6 +11,7 @@ const ProfileMenu = (props) => {
     <>
       {user && (
         <div className="ale ss profile d-flex flex-row row  tablet-design ">
+            <div className="col-md-3 profile-spacer"></div>
             <div className="{'mt-1'} col-md-2 span-change d-flex flex-column justify-content-start space-deposit">
             <Link
               to={{ pathname: "/deposit" }}
@@ -23,7 +24,7 @@ const ProfileMenu = (props) => {
             </Link>
           </div>
           
-          <div className="col-md-3  d-flex flex-column right justify-content-end w-change1">
+          <div className="col-md-2  d-flex flex-column right justify-content-end w-change1">
           <div>
               <span className="font-tbt py-2 px-2">Bonus  {formatNumber(user.bonus) || 0} </span>
               </div>
@@ -37,7 +38,7 @@ const ProfileMenu = (props) => {
           </div>
          
 
-          <div className="col-md-3 d-flex flex-column right justify-content-end w-change2">
+          <div className="col-md-2 d-flex flex-column right justify-content-end w-change2">
               <div>
               <span className="font-tbt py-2 flex-wrap">Balance  {formatNumber(user.balance) || 0} </span>
               </div>
@@ -51,7 +52,7 @@ const ProfileMenu = (props) => {
              
           </div>
 
-          <div className="col-md-3 d-flex flex-column nav-option-content w-change2">
+          <div className="col-md-2 d-flex flex-column nav-option-content w-change2">
             <div>
               <span className="font-tbt py-1">
               <span className=" space-icons"><FontAwesomeIcon icon={faUser} /> </span>{user?.msisdn}

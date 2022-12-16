@@ -430,7 +430,7 @@ header, li a, .thedate span {
 
 
 .home-tab-active {
-    background: #2c2457 !important;
+    background: #00a1d18c !important;
 }
 
 .cancel {
@@ -644,9 +644,9 @@ header, li a, .thedate span {
     background: #824571;
     color: #fff;
 }
-.matches .panel-header.primary-bg{
-   background:#eaeaea;
-   color:#781c5d;
+.matches .panel-header.primary-bg {
+    background: #34B3BF;
+    color: #fff;
 }
 .betslipJ .bet-table td {
     padding: 4px;
@@ -734,12 +734,12 @@ header, li a, .thedate span {
 .matches .top-matches .match-detail button.home-team{
     background: #e3e3e3 !important;
 }
-.matches .top-matches .match-detail button.home-team.picked{
-    background: #2c2457 !important;
+.matches .top-matches .match-detail button.home-team.picked {
+    background: #34B3BF !important;
 }
-.matches .top-matches .match-detail button.home-team label:hover, .matches .top-matches .match-detail button.home-team:hover{
-    background: #2c2457 !important;
-    color:#fff !important;
+.matches .top-matches .match-detail button.home-team label:hover, .matches .top-matches .match-detail button.home-team:hover {
+    background: #34B3BF !important;
+    color: #fff !important;
 }
 .match-detail button .label:hover{
     background: #2c2457 !important;
@@ -3884,21 +3884,21 @@ output {
 }
 
 .form-control::-moz-placeholder {
-    color: #999;
+    color: #fff;
     opacity: 0.6;
     font-weight: 100 !important;
     font-family: arial;
 }
 
 .form-control:-ms-input-placeholder {
-    color: #999;
+    color: #fff;
     opacity: 0.6;
     font-weight: 100 !important;
     font-family: arial;
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #999;
+    color: #fff;
     opacity: 0.6;
     font-weight: 100 !important;
     font-family: arial;
