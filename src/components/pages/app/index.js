@@ -29,13 +29,13 @@ const MobileApp = () => {
                             <div
                                 className='col-md-12 primary-bg p-4 text-center d-flex flex-row justify-content-between sticky-top'>
                                 <h4 className="inline-block">
-                                    BetHipo APP
+                                    Bikosports APP
                                 </h4>
 
                                 <DownloadLink
                                     className="btn btn-primary btn-lg mb-5 text-white text-decoration-none"
                                     label="Download App"
-                                    filename="bethipo.apk"
+                                    filename="bikosports.apk"
                                     exportFile={() => getDownloadFile()}
                                 />
                             </div>
