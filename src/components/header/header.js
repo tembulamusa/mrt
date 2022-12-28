@@ -21,6 +21,8 @@ import SidebarMobile from "../sidebar/awesome/SidebarMobile";
 const ProfileMenu = React.lazy(() => import('./profile-menu'));
 const HeaderLogin = React.lazy(() => import('./top-login'));
 const HeaderNav = React.lazy(() => import('./header-nav'));
+const MobileLogin = React.lazy(() => import('./mobile-login-link'));
+const MobileToggleMkts = React.lazy(() => import('./mobile-toggle-markets'));
 
 const Header = (props) => {
     const [user, setUser] = useState(getFromLocalStorage("user"));
@@ -81,23 +83,46 @@ const Header = (props) => {
         <>
             <Navbar expand="md" className="mb-0 ck pc os app-navbar top-nav" fixed="top" variant="dark">
                 <Container fluid className={'d-flex justify-content-between mobile-change'}>
-                    <Navbar.Brand href="/" className="e logo align-self-start" title="Bikosports">
-                        <div className="col-3">
-                            <div>
-                                <LazyLoadImage src={logo} alt="Bikosports" title="Bikosports" effects="blur"/>
+                    <Row>
+                    <div className="col-3">
+                        <Navbar.Brand href="/" className="e logo align-self-start co4" title="Bikosports">
+                            <div className="">
+                                <div>
+                                    <LazyLoadImage src={logo} alt="Bikosports" title="Bikosports" effects="blur"/>
+                                </div>
                             </div>
-                        </div>
-                    </Navbar.Brand>
+                        </Navbar.Brand>
+                    </div>
                     <div className="col-9 change-size" id="navbar-collapse-main">
-                        <div className="col-sm-12 disable-ipad ">
+                        <div className="col-sm-12 disable-ipad d-none d-md-block">
                             {user ? <ProfileMenu user={user}/> : <HeaderLogin setUser={setUser}/>}
+                        </div>
+                        {/*For the mobile*/}
+                        <div className="vissible-mobile d-lg-none right enable-ipad d-lg-none d-md-none">
+                            {user ? <ProfileMenu user={user}/> : <MobileLogin/>}
                         </div>
 
                     </div>
-                   
+                   </Row>
                     <Row className="second-nav ck pc os app-navbar app-header-nav">
                         <HeaderNav/>
+                    <div className="col-sm-3 col-3 vissible-mobile d-lg-none float-end header-navigation" id="header">
+                        {/* Add menus for the mobile*/}
+
+                        <div className="menu-list">
+
+                            <a href="/" className="menu-item active">Home</a>
+                            <a href="/live" className="menu-item live">Live</a>
+                            <a href="/jackpot" className="menu-item">Jackpot</a>
+                            <a href="#" className="menu-item"><MobileToggleMkts /></a>
+                        </div>
+                         
+                        
+                    </div>
+
                     </Row>
+
+
         { /** <Navbar.Offcanvas
                         style={{width: "100% !important", height: "100%"}}
                         className='off-canvas background-primary p-0'

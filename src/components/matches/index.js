@@ -722,19 +722,39 @@ export const JackpotHeader = (props) => {
     return (
         <Container>
             <Row className="top-matches">
-                <Row className="jp-header-text">
+                <Row className="jp-header-text jp-header-element">
                     <div className="jp-header-top">
-                        {jackpot?.type} - {jackpot?.total_games} GAMES {jackpot?.name}
+                        <div classname="title-div">
+                            {jackpot?.type} JACKPOT-  {jackpot?.name}
+                        </div>
+                        
                     </div>
                 </Row>
-                <Row className="jp-header-text mb-2">
-                    <div className="jackpot-amount mt-3">
+                <div className="jp-header-text jp-header-element">
+                            {jackpot?.total_games} GAMES
+                        </div>
+                <Row className="jp-header-text mb-2 jp-header-element">
+                    <div className="jackpot-amount mt">
                         <CurrencyFormat
                             value={jackpot?.jackpot_amount}
                             displayType={'text'}
                             thousandSeparator={true} prefix={'TSH'}/>
                     </div>
                 </Row>
+                <div className="jp-header-element">
+                    <Row>
+                        <div className="col-6 col-sm-6">
+                            Jackpot
+                        </div>
+                        <div className="col-6 col-sm-6">
+                            <Row classname="text-center">
+                                <div className="col-4">1</div>
+                                <div className="col-4">X</div>
+                                <div className="col-4">2</div>
+                            </Row>
+                        </div>
+                    </Row>
+                </div>
 
             </Row>
         </Container>

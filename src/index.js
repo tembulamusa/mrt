@@ -57,6 +57,9 @@ const Deposit = React.lazy(
 const Signup = React.lazy(
     () => import('./components/pages/signup')
 );
+const Login = React.lazy(
+    () => import('./components/pages/login')
+);
 
 const ResetPassword = React.lazy(
     () => import('./components/pages/auth/reset-password')
@@ -131,6 +134,7 @@ render((
                 <Route exact path="/terms-and-conditions" element={<TermsAndConditions/>}/>
                 <Route exact path="/how-to-play" element={<HowToPlay/>}/>
                 <Route exact path="/signup" element={<Signup/>}/>
+                <Route exact path="/login" element={<Login/>}/>
                 <Route exact path="/reset-password" element={<ResetPassword/>}/>
                 <Route exact path="/verify-account" element={<VerifyAccount/>}/>
                 <Route exact path="/app" element={<MobileApp/>}/>
