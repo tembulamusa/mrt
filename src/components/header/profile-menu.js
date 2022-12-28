@@ -66,9 +66,7 @@ const ProfileMenu = (props) => {
               </a>
             </div>
           </div>
-          <div className="col-1 button-toggle space-button">
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${"md"}`} className="px-3 py-3"/>
-          </div>
+          
         
         </div>
       )}

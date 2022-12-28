@@ -71,7 +71,6 @@ const Signup = (props) => {
                         <div className='col-md-6 text-center'>
                             <img src={mpesa} alt=""/>
                         </div>
-                        <hr/>
                         <div className="form-group row d-flex justify-content-center mt-5">
                             <div className="col-md-12">
                                 <label>Mobile Number</label>
