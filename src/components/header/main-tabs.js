@@ -214,43 +214,43 @@ const MainTabs = (props) => {
                         <button className={`btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
                             onClick={() => setActiveTabSpace('tomorrow')}>Tomorrow</button>
                 </div>
-                <div className="filter-group-icon" key="1">
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
-                            { selectedSport?.label }
-                        </Dropdown.Toggle>
 
-                        <Dropdown.Menu >
-                          {
-                              sports && sports.map((sport) => { 
-                                 return <Dropdown.Item 
-                                     key={sport.sport_id}
-                                     eventKey={sport.sport_id} 
-                                     onClick={() => handleSportsSelect(sport)}>{ sport.label}</Dropdown.Item> 
-                              })
-                          }
-                        </Dropdown.Menu>
-                      </Dropdown>
-                </div>
-                <div className="filter-group-icon" key="2">
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
-                            { selectedCategory?.label }
-                        </Dropdown.Toggle>
+                  <div className="filter-group-icon d-none d-md-block" key="1">
+                      <Dropdown>
+                          <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
+                              { selectedSport?.label }
+                          </Dropdown.Toggle>
 
-                        <Dropdown.Menu variant="default">
-                          {
-                              sportCategories && sportCategories.map((category) => { 
-                                 return <Dropdown.Item 
-                                  key={category.category_id}
-                                  eventKey={category.category_id} 
-                                  onClick={() => handleCategorySelect(category)}>{ category.label}</Dropdown.Item> 
-                              })
-                          }
-                        </Dropdown.Menu>
-                      </Dropdown>
-                </div>
+                          <Dropdown.Menu >
+                            {
+                                sports && sports.map((sport) => { 
+                                   return <Dropdown.Item 
+                                       key={sport.sport_id}
+                                       eventKey={sport.sport_id} 
+                                       onClick={() => handleSportsSelect(sport)}>{ sport.label}</Dropdown.Item> 
+                                })
+                            }
+                          </Dropdown.Menu>
+                        </Dropdown>
+                  </div>
+                  <div className="filter-group-icon d-none d-md-block" key="2">
+                      <Dropdown>
+                          <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
+                              { selectedCategory?.label }
+                          </Dropdown.Toggle>
 
+                          <Dropdown.Menu variant="default">
+                            {
+                                sportCategories && sportCategories.map((category) => { 
+                                   return <Dropdown.Item 
+                                    key={category.category_id}
+                                    eventKey={category.category_id} 
+                                    onClick={() => handleCategorySelect(category)}>{ category.label}</Dropdown.Item> 
+                                })
+                            }
+                          </Dropdown.Menu>
+                        </Dropdown>
+                  </div>
                 { competitions && <div className="filter-group-icon" key="3">
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
