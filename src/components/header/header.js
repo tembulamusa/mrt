@@ -83,7 +83,7 @@ const Header = (props) => {
         <>
             <Navbar expand="md" className="mb-0 ck pc os app-navbar top-nav" fixed="top" variant="dark">
                 <Container fluid className={'d-flex justify-content-between mobile-change'}>
-                    <Row>
+                    <Row style={{width: "100%"}}>
                     <div className="col-3">
                         <Navbar.Brand href="/" className="e logo align-self-start co4" title="Bikosports">
                             <div className="">
@@ -99,9 +99,14 @@ const Header = (props) => {
                         </div>
                         {/*For the mobile*/}
                         <div className="vissible-mobile d-lg-none right enable-ipad d-lg-none d-md-none">
-                            {user ? <ProfileMenu user={user}/> : <MobileLogin/>}
+                            {user ? "" : <MobileLogin/>}
                         </div>
 
+                    </div>
+                    { /* Mobile version user profile */}
+                    <div className="vissible-mobile small-mobile d-lg-none d-md-none col-12">
+                        {user ? <ProfileMenu user={user}/> : ""}
+                        
                     </div>
                    </Row>
                     <Row className="second-nav ck pc os app-navbar app-header-nav">
