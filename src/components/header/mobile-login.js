@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react'
+import { useNavigate } from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import {Formik, Field, Form} from 'formik';
@@ -14,6 +15,7 @@ const BodyLogin = (props) => {
     const [isLoading, setIsLoading] = useState(null)
     const [message, setMessage] = useState(null);
     const {setUser} = props;
+    const navigate = useNavigate();
 
     const initialValues = {
         msisdn: "",
@@ -45,7 +47,7 @@ const BodyLogin = (props) => {
 
             if (message.status == 200) {
                 setLocalStorage('user', message.user);
-                setUser(message.user);
+                navigate("/");
             }
 
         }
@@ -63,6 +65,7 @@ const BodyLogin = (props) => {
             setIsLoading(false)
             if (status === 200 || status == 201 || status == 204) {
                 setMessage(response);
+
             } else {
                 let message = {
                     status: status,

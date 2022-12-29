@@ -684,9 +684,10 @@ const MatchRow = (props) => {
                     ))}
                 </>
                 }
-                {!pdown && !jackpot &&
-                    <SideBets match={match} live={live} style={{d: "inline"}}/>}
+                
             </div>
+            {!pdown && !jackpot &&
+                    <SideBets match={match} live={live} style={{}} className="d-block"/>}
 
         </div>
     )
