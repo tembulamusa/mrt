@@ -21,7 +21,7 @@ const ProfileMenu = (props) => {
                <span className=" space-icons"> <FontAwesomeIcon icon={faCoins} /></span> Deposit 
               </span>
             </a>
-              <span className="profile-item">
+              <span className="profile-item no-link">
                 <div className="">Bonus  {formatNumber(user.bonus) || 0} </div>
                 <span className="">Balance  {formatNumber(user.balance) || 0} </span>
               </span>
@@ -40,7 +40,7 @@ const ProfileMenu = (props) => {
                 </span>
               </a>
               <span className="profile-item">
-              <span className=" space-icons"><FontAwesomeIcon icon={faUser} /> </span>{user?.msisdn}
+              <span className="no-link"><span className="space-icons"><FontAwesomeIcon icon={faUser} /> </span>{user?.msisdn}</span>
               <a href="/logout" className="d-block">
                 <span className="">
                 <span className=" space-icons"> <FontAwesomeIcon icon={faLock} /> </span>Logout
