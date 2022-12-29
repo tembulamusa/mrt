@@ -172,7 +172,7 @@ const MatchHeaderRow = (props) => {
         <Container className="full-mobile sticky-top" style={{position: "sticky"}}>
             <div className="top-matches d-flex position-sticky sticky-top "
                  style={{opacity: "1", top: "100px"}}>
-                <div className="col-sm-2 col-xs-12 pad left-text" key="d5">
+                <div className="col-sm-1 col-1 pad left-text" key="d5">
                     <div className="align-self-center col">
 
                    { fetching && <div className="filter-group-icon d-lg-block d-none float-end" >
@@ -591,7 +591,8 @@ const MatchRow = (props) => {
     }
     return (
         <div className="top-matches d-flex">
-            <div className="col-sm-1 col-xs-12 pad left-text" key="22">
+            
+                <div className="col-sm-1 col-xs-12 pad left-text" key="22">
                 {live &&
                     <>
                         <small style={{color: "red"}}> {match?.match_status} </small>
@@ -664,7 +665,7 @@ const MatchRow = (props) => {
                 {!jackpot && <>
                     {Object.entries(match?.extra_odds || {}).map(([marketName, odds], index) => (
                         marketName !== '' && (
-                            <div className={`d-none d-md-block c-btn-group m-lg-1 align-self-center`} key={index}>
+                            <div className={`d-none d-md-flex c-btn-group m-lg-1 align-self-center`} key={index}>
                                 {
                                     Object.entries(odds || {}).map(([odd_key, odd_data]) => {
                                         return odd_data?.odd_active == 1 && odd_data.market_active == 1 ? (<OddButton
@@ -688,7 +689,6 @@ const MatchRow = (props) => {
             </div>
             {!pdown && !jackpot &&
                     <SideBets match={match} live={live} style={{}} className="d-block"/>}
-
         </div>
     )
 
