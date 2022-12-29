@@ -15878,3 +15878,7 @@ li.pro-sub-menu {
 .profile .profile-item:last-child {
     margin-right: 0;
 }
+
+.profile .no-link {
+    opacity: 0.7;
+}
