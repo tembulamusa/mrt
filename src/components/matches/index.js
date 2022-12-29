@@ -175,10 +175,11 @@ const MatchHeaderRow = (props) => {
                 <div className="col-sm-2 col-xs-12 pad left-text" key="d5">
                     <div className="align-self-center col">
 
-                   { fetching && <div className="filter-group-icon" >
+                   { fetching && <div className="filter-group-icon d-lg-block d-none float-end" >
                            <Spinner animation="border" size="sm" variant="secondary" />
                        </div>
                    }
+
         {/* <h3 className="main-heading-1 ">
                             {live && <span className="live-header">LIVE </span> }
                             {!live && <span className="">PREMATCH </span> }
@@ -186,10 +187,11 @@ const MatchHeaderRow = (props) => {
                     </div>
                 </div>
                 <div className={'col-2 col-xs-12 match-detail-container'} key="d4"></div>
+                <div classname="col-4 d-none d-sm-block d-xs-block"></div>
                 <div className={'col d-flex flex-row justify-content-between'}>
                     {three_way &&
-                        <div className="d-flex flex-row" key="d3">
-                            <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-row mobile-right" key="d3">
+                            <div className="d-flex flex-column mobile-right-mkt-type text-center">
                                 <div className={'bold'}>
                                     3 WAY
                                 </div>
@@ -204,7 +206,7 @@ const MatchHeaderRow = (props) => {
                     {!live && !jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
-                                <div className={'d-flex flex-column'} key={extra_market.name}>
+                                <div className={'d-flex flex-column d-none d-md-block'} key={extra_market.name}>
                                     <span className={'small text-center text-uppercase bold'}>
                                         {extra_market.name}
                                     </span>
@@ -225,7 +227,7 @@ const MatchHeaderRow = (props) => {
                         </>
                     )}
                     <div
-                        className="bet-fix events-odd pad undefined align-self-center more-markets-container m-lg-2 col-3">
+                        className="bet-fix events-odd pad undefined align-self-center more-markets-container m-lg-2 col-3 d-md-block d-none">
                         &nbsp;
                     </div>
                 </div>
@@ -589,27 +591,35 @@ const MatchRow = (props) => {
     }
     return (
         <div className="top-matches d-flex">
-            <div className="col-sm-2 col-xs-12 pad left-text" key="22">
+            <div className="col-sm-1 col-xs-12 pad left-text" key="22">
                 {live &&
                     <>
                         <small style={{color: "red"}}> {match?.match_status} </small>
                         <br/>
                     </>
                 }
-                <div className="d-flex flex-column" key="20">
+                
+                <div className="d-flex flex-column d-none d-md-block" key="20">
                     <span className={'small'}>
                         {(live && match?.match_time) ?
                             <>{`${match.match_time}'`}</> : match?.start_time}
                     </span>
                     <>ID: {match?.game_id}</>
                 </div>
-
             </div>
             <div className="col-2 col-xs-12 match-detail-container" key="23">
                 <a href={jackpot ? '#' : `/match/${live ? 'live/' + match.parent_match_id : match.match_id}`}>
                     <div className="d-flex flex-column">
                         <div className="compt-detail overflow-ellipsis" key="0034">
-                            <small>{match.category} | {match.competition_name}</small>
+                            <div className="d-flex flex-column" key="20">
+                                <span className="d-none d-md-block">
+                                    <small>{match.category} | {match.competition_name}</small>
+                                </span>
+                                <span className={'small  d-xs-block d-sm-block d-md-none'}>
+                                {(live && match?.match_time) ?
+                                    <>{`${match.match_time}'`}</> : match?.start_time}
+                                    </span>
+                            </div>
                         </div>
                         <div className="compt-teams d-flex flex-column" key="0035">
                             <div className={'bold'}>
@@ -654,7 +664,7 @@ const MatchRow = (props) => {
                 {!jackpot && <>
                     {Object.entries(match?.extra_odds || {}).map(([marketName, odds], index) => (
                         marketName !== '' && (
-                            <div className={`c-btn-group m-lg-1 align-self-center`} key={index}>
+                            <div className={`d-none d-md-block c-btn-group m-lg-1 align-self-center`} key={index}>
                                 {
                                     Object.entries(odds || {}).map(([odd_key, odd_data]) => {
                                         return odd_data?.odd_active == 1 && odd_data.market_active == 1 ? (<OddButton
