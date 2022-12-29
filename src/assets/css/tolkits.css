@@ -14099,8 +14099,8 @@ fieldset[disabled] .tw.active {
 }
 
 .amt {
-    margin-top: 130px;
-    scroll-margin-top: 140px;
+    /*margin-top: 130px;*/
+    /*scroll-margin-top: 140px;*/
 }
 
 .amu {
@@ -15456,10 +15456,9 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 
 @media only screen and (max-width: 576px) {
     .amt {
-        margin-top: 60px !important;
-        padding-top: 20px !important;
-        /*scroll-margin-top: 140px;*/
-    }
+    margin-top: 70px !important;
+    scroll-margin-top: 140px;
+}
 }
 
 .overflow-ellipsis {
@@ -15796,9 +15795,37 @@ li.pro-sub-menu {
     width: 50%;
 }
 
-
+.mobile-profile-menu a {
+    display: inline-block;
+}
 
 @media (max-width: 640px) {
+   .app-header-nav {
+    padding-left: 4px;
+    margin-top: 30px !important;
+}
+
+.bal {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: -7px;
+    font-weight: bold;
+}
+
+.mobile-profile-menu {
+    padding-bottom: 10px;
+}
+
+.mobile-profile-menu a {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-weight: bold !important;
+}
+
+    .small-mobile btn {
+        padding: 5px !important;
+    }
     .matches .top-matches {
         padding-top: 10px;
         padding-bottom: 3px;
@@ -15840,4 +15867,14 @@ li.pro-sub-menu {
         padding-right: 5px;
         padding-left: 0px;
     }
+}
+
+.profile .profile-item {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: bold !important;
+}
+
+.profile .profile-item:last-child {
+    margin-right: 0;
 }

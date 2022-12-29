@@ -10,65 +10,79 @@ const ProfileMenu = (props) => {
   return (
     <>
       {user && (
-        <div className="ale ss profile d-flex flex-row row  tablet-design ">
-            <div className="col-md-3 profile-spacer"></div>
-            <div className="{'mt-1'} col-md-2 span-change d-flex flex-column justify-content-start space-deposit">
-            <Link
-              to={{ pathname: "/deposit" }}
-              className={"btn   "}
+        <div className="ale ss profile  row  float-end">
+          <div className="d-none d-md-block col-12">
+            <a
+              href="/deposit"
+              className={"btn profile-item"}
               style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a", borderRadius:"3px",padding:"10px 30px", width:"max-content"}}
             >
               <span className="font-tbt overflow-hidden justify-content-center  rescale">
                <span className=" space-icons"> <FontAwesomeIcon icon={faCoins} /></span> Deposit 
               </span>
-            </Link>
-          </div>
-          
-          <div className="col-md-2  d-flex flex-column right justify-content-end w-change1">
-          <div>
-              <span className="font-tbt py-2 px-2">Bonus  {formatNumber(user.bonus) || 0} </span>
-              </div>
-              <div>
-              <Link to={{ pathname: "/my-bets" }} className={"btn text-white w-100 d-content"}>
-                <span className="font-tbt pad-2 ">
-                <span className=" space-icons"><FontAwesomeIcon icon={faCoins} /> </span>My Bets
-                </span>
-              </Link>
-              </div>
-          </div>
+            </a>
+              <span className="profile-item">
+                <div className="">Bonus  {formatNumber(user.bonus) || 0} </div>
+                <span className="">Balance  {formatNumber(user.balance) || 0} </span>
+              </span>
+              
          
 
-          <div className="col-md-2 d-flex flex-column right justify-content-end w-change2">
-              <div>
-              <span className="font-tbt py-2 flex-wrap">Balance  {formatNumber(user.balance) || 0} </span>
-              </div>
-              <div>
-              <Link to={{ pathname: "/withdraw" }} className={"btn text-white w-100 d-content"}>
-                <span className="font-tbt pad-2">
+              <a href="/withdraw" className="profile-item">
+                <span className="">
                 <span className=" space-icons"><FontAwesomeIcon icon={faCoins} /> </span>Withdraw
                 </span>
-              </Link>
-              </div>
+              </a>
              
-          </div>
-
-          <div className="col-md-2 d-flex flex-column nav-option-content w-change2">
-            <div>
-              <span className="font-tbt py-1">
+              <a href={{ pathname: "/my-bets" }} className={"profile-item"}>
+                <span className="">
+                <span className=" space-icons"><FontAwesomeIcon icon={faCoins} /> </span>My Bets
+                </span>
+              </a>
+              <span className="profile-item">
               <span className=" space-icons"><FontAwesomeIcon icon={faUser} /> </span>{user?.msisdn}
-              </span>
-            </div>
-            <div>
-              <a href="/logout">
-                <span className="font-tbt py-1">
+              <a href="/logout" className="d-block">
+                <span className="">
                 <span className=" space-icons"> <FontAwesomeIcon icon={faLock} /> </span>Logout
                 </span>
               </a>
-            </div>
+              </span>
+              
+            
           </div>
-          
-        
+
+
+        {/* Style for the mobile */}
+          <div className="col-sm-12 d-md-none col-lg-none col-sm-block mobile-profile-menu" style={{textAlign:"left"}}>
+            <div className="bal">
+                <span className="" style={{paddingRight: "10px"}}>Biko Bonus  {formatNumber(user.bonus) || 0} </span>
+                <span className="">Balance  {formatNumber(user.balance) || 0} </span>
+            </div>
+
+            <a href="/deposit" className={"btn   "}
+              style={{background:"#39b54a", borderRadius:"3px"}}
+            >
+              <span className="font-tbt overflow-hidden justify-content-center  rescale">
+               <span className=""> <FontAwesomeIcon icon={faCoins} /></span> Deposit 
+              </span>
+            </a>
+
+            <a href="/withdraw">
+                <span className="font-tbt pad-2">
+                <span className=""><FontAwesomeIcon icon={faCoins} /> </span>Withdraw
+                </span>
+              </a>
+            <a href="/my-bets">My Bets</a>
+            <a href="/logout" className="mobile-profile-menu-ietm">
+                <span className="font-tbt py-0">
+                <span className=""> <FontAwesomeIcon icon={faLock} /> </span>Logout
+                </span>
+              </a>
+          </div>
+
         </div>
+
+
       )}
     </>
   );
