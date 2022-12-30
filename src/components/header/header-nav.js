@@ -37,7 +37,7 @@ const HeaderNav = (props) => {
 
     useEffect(() => {
         const timer = setInterval(() => {
-          setTime(new Date().toLocaleString().slice(10,22));
+          setTime(new Date().toLocaleString().slice(12,22));
         }, 1000);
 
         return () => {
