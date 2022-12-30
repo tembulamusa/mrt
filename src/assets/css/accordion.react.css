@@ -55,7 +55,18 @@
     animation: fadein 0.35s ease-in;
 }
 .kumbafu {
-    background: #DED5DB;
+    background: #e2f2f4;
+    color: #000 !important;
+    margin: 0px 0px 1px 0px;
+    width: 100%;
+    padding: 5px;
+    opacity: 0.8;
+    color: #584552;
+}
+
+.kumbafu:nth-child(2n) {
+    background: #fff;
+    color: #000 !important;
     margin: 0px 0px 1px 0px;
     width: 100%;
     padding: 5px;
@@ -63,14 +74,15 @@
     color: #584552;
 }
 .slipheader {
-    background: #B49DAC;
+    background: rgba(52, 179, 191, 0.6);
     padding: 3px;
+    color: #fff;
     font-size: 12px;
 }
 
-.mybet-list{
-    margin:10px;
-    width:-moz-available;
+.mybet-list {
+    margin: 10px 0;
+    width: -moz-available;
 }
 /* -------------------------------------------------- */
 /* ---------------- Animation part ------------------ */

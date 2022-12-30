@@ -22,13 +22,13 @@ const Styles = {
        background:'#22323e !important',
    },
    headers: {
-       background:'#613354',
+       background:'##34B3BF',
        color:'#ffffff',
        padding: '10px 40px 10px',
        fontSize: '12px'
    },
    bet:{
-       background:'#947389',
+       background:'#34B3BF',
        color:'#fff',
        padding: '5px',
    }
@@ -110,7 +110,7 @@ const MyBets = (props) => {
                     <div className="col">Amount TSH { bet.bet_amount}</div>
                     <div className="col">Possible Win TSH { bet.possible_win}</div>
                     { canCancel == false 
-                        ? <div className="col"> Status { betStatus}</div>
+                        ? <div className={`col win-status-${betStatus}`}> { betStatus}</div>
                         : cancelBetMarkup() 
                     }
                 </div>
@@ -152,7 +152,7 @@ const MyBets = (props) => {
                     <div className="col">{ betslip.bet_pick}</div>
                     <div className="col">{ betslip.outcomes}</div>
                     <div className="col">{ betslip.ft_result}</div>
-                    <div className="col">{ betslip.status}</div>
+                    <div className={`col win-status-${betslip.status}`}>{ betslip.status}</div>
                 </div>
             </div>
         )
@@ -160,7 +160,7 @@ const MyBets = (props) => {
 
     const MyBetsList = (props) => {
 		return (
-         <div className="row" >
+         <div className="row" style={{padding: "0 10px",}}>
 			{state?.mybets && state.mybets.map((bet) => (
 				<div className="mybet-list" 
                     key = {bet.bet_id} 
@@ -187,7 +187,7 @@ const MyBets = (props) => {
 
     const PageTitle = () => {
        return (
-            <div className='col-md-12 primary-bg p-4 text-center'>
+            <div className='col-md-12 primary-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
                 <h4 className="inline-block">
                     MY BETS
                 </h4>
