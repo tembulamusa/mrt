@@ -73,10 +73,10 @@
    margin:0px 7px;
 }
 .filter-groups {
-    margin: 5px 0px 5px 0px !important;
-    border-radius: 3px;
+    margin: 5px 0px 0px 0px !important;
+    border-radius: 0px;
     background: #0C3C5A;
-    padding: 0px 0px 0px 5px;
+    padding: 3px 0px 3px 5px;
 }
 .filter-groups .dropdown-menu{
    background:#eaeaea;
@@ -2029,7 +2029,7 @@ events-header {
 }
 
 .home-team {
-    background: rgba(0,0,0, 0.1) !important;
+    background: rgba(52, 179, 191, 0.15)!important;
     color: #2c2457!important;
     font-weight: 100 !important;
 }
@@ -7954,9 +7954,10 @@ ul.sport {
         width: 58.33333333%;
     }
 
-    .gz {
+   .gz {
         width: 100%;
-        margin:10px;
+        margin: 10px;
+        margin-top: 0;
     }
 
     .gv {
@@ -14990,7 +14991,12 @@ img.zoom-img {
 }
 
 .top-matches:nth-child(2n) {
-    background: rgba(0, 0, 0, .1);
+    background: rgba(52, 179, 191, 0.06);
+}
+
+.carousel-item {
+    
+    max-height: 200px !important;
 }
 
 .top-matches:nth-child(2n + 1) {
