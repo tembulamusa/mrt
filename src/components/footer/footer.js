@@ -10,27 +10,11 @@ const Footer = (props) => {
         <footer className="footer-custom">
             <div className="row">
                 <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-white">
-                    <h5>Bikosports</h5>
-                    <ul>
-                        <li className="">
-                            BOX 347856-00100, NAIROBI
-                        </li>
-                        <li className="">
-                            <a href="mailto:customercare@bikosports.co.tz">
-                                <FontAwesomeIcon icon={faEnvelope}/> customercare@bikosports.co.tz
-                            </a>
-                        </li>
-                        <li className="footer-icon">
-                            <a href="https://www.facebook.com/BikosportsKenya">
-                                <FontAwesomeIcon icon={faFacebook}/> Facebook
-                            </a>
-                        </li>
-                        <li className="footer-icon">
-                            <a href="https://www.instagram.com/bikosportskenya">
-                                <FontAwesomeIcon icon={faInstagram}/> Instagram
-                            </a>
-                        </li>
-                    </ul>
+                    <h5>Bikosports, a trade mark of;</h5>
+                    <small className="smoke-white-text" >MOBIBET COMPANY LTD.:TIN: 127-321-361<br/>
+                    Reg. Company N: 118069 Tanzania, Dar es Salaam <br/>
+                    Office Address:45 MIGOMBANI STREET 116,<br/>DAR ES SALAAM<br/>P.O.BOX 3254Tel: 022 222 0100</small>
+                    
                 </div>
                 <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                     <h5>TERMS AND CONDITIONS</h5>
@@ -70,8 +54,11 @@ const Footer = (props) => {
                     <h5>LICENSING</h5>
                     <hr/>
                     <p>
-                        We are licensed and regulated by the Betting Control and Licensing
-                        Board BCLB 0000454
+                        All correspondence to Director General
+                        <div>27th Floor, PSPF Towers, Mission Street <br/>Postal Address: PO Box 1717, Dar es Salaam, TANZANIA</div>
+                    </p>
+                    <p>
+                        Gaming Board of Tanzania Licence Number SBI 000000016
                     </p>
                 </div>
             </div>
