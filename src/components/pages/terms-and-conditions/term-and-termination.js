@@ -17,29 +17,20 @@ const TermAndTermination = () => {
             </AccordionItemHeading>
             <AccordionItemPanel className='accordion-item-panel'>
                 <p>
-                    The term of the Agreement shall be for an indefinite period.
+                   The Company may terminate your account (including your username and password) if we believe that you have breached any of these Terms or any other applicable rules or have acted in a manner inconsistent with the spirit of any of them.
                 </p>
                 <p>
-                    Bikosports shall have the right prior to accepting any bet, temporarily to
-                    suspend or permanently to terminate, the provision of betting services
-                    to a
-                    CLIENT without providing any reason.
+                    You acknowledge that the Company does not have to give you prior notice of any such termination.
                 </p>
                 <p>
-                    Should the CLIENT wish to terminate this Agreement at any time, he/she
-                    may
-                    do so by sending an e-mail notification to the company.
+                    An account temporarily suspended at your request may be reopened and will be subject to the Terms in force at the date of the re-opening.
                 </p>
                 <p>
 
-                    As of termination, the CLIENT shall not be able to carry out new
-                    transactions.
+                    The Company retains the right to exclude Clients from its services. In this case it will refund the residual credit balance in the account. If the account has been closed due to an infringement pursuant to the Terms or to a prohibited behaviour leading to collusion, fraud or whatsoever criminal activity, the residual credit balance may be forfeited. The same procedure will be applied to open bets that result in winnings.
                 </p>
-
                 <p>
-                    The CLIENT may only terminate the agreement by providing written notice
-                    to
-                    the customer support email at customercare@bikosports.com.
+                    Should your account become dormant (defined as a period of 12 (twelve) months of inactivity) the Company reserves the right to charge a monthly administration fee.
                 </p>
             </AccordionItemPanel>
         </AccordionItem>
