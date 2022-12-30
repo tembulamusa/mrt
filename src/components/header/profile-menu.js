@@ -14,8 +14,8 @@ const ProfileMenu = (props) => {
           <div className="d-none d-md-block col-12">
             <a
               href="/deposit"
-              className={"btn profile-item"}
-              style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a", borderRadius:"3px",padding:"10px 30px", width:"max-content"}}
+              className={"btn profile-item btn-primary primary-bg"}
+              style={{ fontSize: "16px", fontWeight: "bold", border:"none", borderRadius:"3px",padding:"10px 30px", width:"max-content"}}
             >
               <span className="font-tbt overflow-hidden justify-content-center  rescale">
                <span className=" space-icons"> <FontAwesomeIcon icon={faCoins} /></span> Deposit 

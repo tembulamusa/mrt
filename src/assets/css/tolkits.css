@@ -15882,3 +15882,20 @@ li.pro-sub-menu {
 .profile .no-link {
     opacity: 0.7;
 }
+
+.small-pad-horizontal {
+    padding-bottom: 2px !important;
+    padding-top: 2px !important;
+}
+
+.win-status-LOST {
+    color: red;
+    opacity: 0.7;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.win-status-WIN,
+.win-status-WON  {
+    color: green;
+}
