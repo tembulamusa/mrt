@@ -15899,3 +15899,13 @@ li.pro-sub-menu {
 .win-status-WON  {
     color: green;
 }
+
+.pad-hor-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.pad-vert-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
