@@ -731,8 +731,10 @@ header, li a, .thedate span {
 .match-detail button .label {
     font-weight:bold;
 }
-.matches .top-matches .match-detail button.home-team{
-    background: #e3e3e3 !important;
+.matches .top-matches .match-detail button.home-team {
+    /* background: #e3e3e3 !important; */
+    padding-right: 10px;
+    border: 1px solid #ddd;
 }
 .matches .top-matches .match-detail button.home-team.picked {
     background: #34B3BF !important;
@@ -810,7 +812,7 @@ header, li a, .thedate span {
 .matches .top-matches.header {
     background: #fff;
     font-weight: bold;
-    padding: 10px;
+    padding: 10px 0 5px;
     color: #2d235a !important;
     font-size: 12px;
     font-family: inherit;
