@@ -29,7 +29,7 @@ const Promotions = () => {
                                     <div className={'row  p-3 d-flex justify-content-center'}>
                                         <div className="col-6 p-3 shadow-lg promo-pannel">
                                             <div className="d-flex flex-column">
-                                                <h5>HIPO 3000 KARIBU BONUS</h5>
+                                                <h5>Biko 3000 KARIBU BONUS</h5>
                                                 <img src={karibuBonus} className={'rounded'}/>
                                                 <span><u>How to get it</u></span>
                                                 <ul>
@@ -51,12 +51,12 @@ const Promotions = () => {
                                         </div>
                                         <div className="col-6 p-3 shadow-lg promo-pannel">
                                             <div className="d-flex flex-column">
-                                                <h5>100% FIRST DEPOSIT HIPO BONUS </h5>
+                                                <h5>100% FIRST DEPOSIT Biko BONUS </h5>
                                                 <img src={hundredPercentDepositBonus} className={'rounded'}/>
                                                 <span><u>How to get it</u></span>
                                                 <ul>
                                                     <li>
-                                                        Deposit TSH.50 and above to Bikosports Paybill 4093333 using your phone number as the account number
+                                                        Deposit TSH.50 and above to Bikosports Paybill 101010 using your phone number as the account number
                                                     </li>
                                                 </ul>
                                                 <div className="col-md-12">
@@ -73,7 +73,7 @@ const Promotions = () => {
                                        <div className="row p-3  d-flex justify-content-center"> 
                                             <div className="col-6 p-3 shadow-lg promo-pannel">
                                                 <div className="d-flex flex-column">
-                                                    <h5>HIPO MSHIPI BONUS</h5>
+                                                    <h5>Biko MSHIPI BONUS</h5>
                                                     <img src={MshipiBonusImg} className={'rounded'}/>
                                                     <span><u>How to get it</u></span>
                                                     <ul>
@@ -93,11 +93,11 @@ const Promotions = () => {
 
                                             <div className="col-6 p-3 shadow-lg promo-pannel">
                                                 <div className="d-flex flex-column">
-                                                    <h5>HIPO DAILY DEPOSIT BONUS</h5>
+                                                    <h5>Biko DAILY DEPOSIT BONUS</h5>
                                                     <img src={earlyBirdDailyDepositBonus} className={'rounded'}/>
                                                     <span><u>How to get it</u></span>
                                                     <ul>
-                                                         <li>Make your first deposit of the day to Bikosports paybill 4093333 account number your mobile number</li>
+                                                         <li>Make your first deposit of the day to Bikosports paybill 101010 account number your mobile number</li>
                                                     </ul>
                                                     <div className="col-md-12">
                                                         <span><u>Terms and conditions</u></span>
