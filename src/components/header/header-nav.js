@@ -155,7 +155,7 @@ const HeaderNav = (props) => {
                         </a>
                     </li>
                     <li className={pathname === '/how-to-play' ? 'active' : ''}>
-                        <a className="g url-link fix-display" href="/how-to-play" title="How to play">
+                        <a className="cg fm ox anl url-link not-selectable" href="/how-to-play" title="How to play">
                             <span className=" space-icons"><FontAwesomeIcon icon={faQuestionCircle}/> </span> <span className={'hide2'}>Help</span>
                         </a>
                     </li>
