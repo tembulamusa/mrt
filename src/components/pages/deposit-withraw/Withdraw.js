@@ -39,8 +39,8 @@ const Withdrawal = (props) => {
             errors.msisdn = 'Please enter a valid phone number'
         }
 
-        if (!values.amount || values.amount < 50 || values.amount > 70000) {
-            errors.amount = "Please enter amount between KES 50 and KES 70, 000";
+        if (!values.amount || values.amount < 1000 || values.amount > 70000) {
+            errors.amount = "Please enter amount between Tsh 1000 and Tsh 70, 000";
         }
         return errors
     }
@@ -115,10 +115,9 @@ const Withdrawal = (props) => {
              <>
                 <label className='header text-info'>Withdrawal Instructions</label>
                 <div className="container">
-                    <div className="row"><div className="col"> 1. Enter the phone M-Pesa phone number to receive the funds.  </div></div>
-                    <div className="row"><div className="col"> 2. Enter the amount you wish to withdraw.</div></div>
-                    <div className="row"><div className="col"> 3. Click on the withdraw funds button.</div></div>
-                    <div className="row"><div className="col"> 4. Check your phone for an M-Pesa Confirmation.</div></div>
+                    <div className="row"><div className="col"> 2. Weka kiwango kisichopungua 1000.</div></div>
+                    <div className="row"><div className="col"> 3. Bonyeza "Withdraw".</div></div>
+                    <div className="row"><div className="col"> 4. Check your phone for a Confirmation.</div></div>
                 </div>
             </>
         );
@@ -136,7 +135,6 @@ const Withdrawal = (props) => {
                 <div className="pt-0">
                     <div className="row">
                         <div className='col-md-7 text-center'>
-                            <img src={mpesa} alt=""/>
                         </div>
                         <hr/>
                         <WithdrawFormFields  onFieldChanged ={ onFieldChanged} values ={values } errors={errors} />
