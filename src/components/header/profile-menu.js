@@ -34,7 +34,7 @@ const ProfileMenu = (props) => {
                 </span>
               </a>
              
-              <a href={{ pathname: "/my-bets" }} className={"profile-item"}>
+              <a href="/my-bets" className={"profile-item"}>
                 <span className="">
                 <span className=" space-icons"><FontAwesomeIcon icon={faCoins} /> </span>My Bets
                 </span>

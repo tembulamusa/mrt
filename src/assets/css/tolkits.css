@@ -502,6 +502,7 @@ header, li a, .thedate span {
     max-width: 100px;
     color: #000;
     padding: 3px;
+    border: 2px solid #4444;
     border-radius: 5.2px;
     text-align: center;
 }
@@ -15383,9 +15384,8 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     background: #ffffff;
 }
 
-.deposit-withdraw-button:hover{
-
-    background:#902065;
+.deposit-withdraw-button:hover {
+    background: #34b3bfcc;
 }
 .input-square {
     border-radius: 0 !important;
@@ -15928,3 +15928,132 @@ li.pro-sub-menu {
 .padded-list {
     padding-left: 2rem;
 }
+
+
+/*Styling for how to*/
+
+
+.circle-border {
+    border-radius: 50%;
+}
+
+.posa {
+    position: absolute;
+}
+
+.counter-badge {
+    width: 25px;
+    height: 25px;
+    left: 2px;
+    top: -10px;
+    z-index: 100;
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.child-box-relative-pos .col-lg-1, 
+.child-box-relative-pos .col-lg-10, 
+.child-box-relative-pos .col-lg-11, 
+.child-box-relative-pos .col-lg-12, 
+.child-box-relative-pos .col-lg-2, 
+.child-box-relative-pos .col-lg-3, 
+.child-box-relative-pos .col-lg-4, 
+.child-box-relative-pos .col-lg-5, 
+.child-box-relative-pos .col-lg-6, 
+.child-box-relative-pos .col-lg-7, 
+.child-box-relative-pos .col-lg-8, 
+.child-box-relative-pos .col-lg-9, 
+.child-box-relative-pos .col-md-1, 
+.child-box-relative-pos .col-md-10, 
+.child-box-relative-pos .col-md-11, 
+.child-box-relative-pos .col-md-12, 
+.child-box-relative-pos .col-md-2, 
+.child-box-relative-pos .col-md-3, 
+.child-box-relative-pos .col-md-4, 
+.child-box-relative-pos .col-md-5, 
+.child-box-relative-pos .col-md-6, 
+.child-box-relative-pos .col-md-7, 
+.child-box-relative-pos .col-md-8, 
+.child-box-relative-pos .col-md-9, 
+.child-box-relative-pos .col-sm-1, 
+.child-box-relative-pos .col-sm-10, 
+.child-box-relative-pos .col-sm-11, 
+.child-box-relative-pos .col-sm-12, 
+.child-box-relative-pos .col-sm-2, 
+.child-box-relative-pos .col-sm-3, 
+.child-box-relative-pos .col-sm-4, 
+.child-box-relative-pos .col-sm-5, 
+.child-box-relative-pos .col-sm-6, 
+.child-box-relative-pos .col-sm-7, 
+.child-box-relative-pos .col-sm-8, 
+.child-box-relative-pos .col-sm-9, 
+.child-box-relative-pos .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+
+}
+.border-radius-2 {
+    border-radius: 2px;
+}
+.pg-0 {
+    padding: 0 !important;
+}
+.pg-3 {
+    padding: 3px !important;
+}
+
+.yellow {
+    background-color: #34b3bfc9;
+    color: #000000;
+}
+.ovh {
+    overflow: hidden;
+}
+
+.center-container {
+    position: relative;
+    min-height: 125px;
+    height: auto;
+}
+.white-background {
+    background-color: rgb(223, 219, 238);
+}
+.centered-content {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    counter-reset: item;
+    width: 100%;
+}
+.center-text {
+    text-align: center;
+}
+.gz h3 {
+    padding: 0 5px;
+}
+.wordwarp {
+    word-wrap: break-word;
+}
+.bold {
+    font-weight: bold;
+}
+.child-box-relative-pos header {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.cap-text {
+    text-transform: uppercase;
+}
+/*End how to*/

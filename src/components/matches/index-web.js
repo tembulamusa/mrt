@@ -724,7 +724,7 @@ export const JackpotHeader = (props) => {
             <Row className="top-matches">
                 <Row className="jp-header-text jp-header-element">
                     <div className="jp-header-top">
-                        <div classname="title-div">
+                        <div className="title-div">
                             {jackpot?.type} JACKPOT-  {jackpot?.name}
                         </div>
                         
@@ -747,7 +747,7 @@ export const JackpotHeader = (props) => {
                             Jackpot
                         </div>
                         <div className="col-6 col-sm-6">
-                            <Row classname="text-center">
+                            <Row className="text-center">
                                 <div className="col-4">1</div>
                                 <div className="col-4">X</div>
                                 <div className="col-4">2</div>

@@ -35,7 +35,7 @@ const Sidebar = (props) => {
     const [competitions, setCompetitions] = useState(props?.competitions);
 
     const fetchData = useCallback(async () => {
-        let cached_competitions = getFromLocalStorage('categories');
+        let cached_competitions; /// = getFromLocalStorage('categories');
         let endpoint = "/v1/categories";
 
         if (!cached_competitions) {
@@ -98,12 +98,12 @@ const Sidebar = (props) => {
 
     const getSportImageIcon = (sport_name, folder = 'svg', topLeagues = false) => {
 
-        let default_img = 'hipo'
+        let default_img = 'default_sport'
         let sport_image;
         try {
             sport_image = topLeagues ? require(`../../../assets${sport_name}`) : require(`../../../assets/${folder}/${sport_name}.svg`);
         } catch (error) {
-            sport_image = require(`../../../assets/${folder}/${default_img}.png`);
+            sport_image = require(`../../../assets/${folder}/${default_img}.svg`);
         }
         return sport_image
     }
