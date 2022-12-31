@@ -123,16 +123,18 @@ const Deposit = (props) => {
                         <div className="col"> 2. Click on the deposit button.</div>
                     </div>
                     <div className="row">
-                        <div className="col"> 3. Check your phone for an M-Pesa Request.</div>
+                        <div className="col"> 3. Check your phone for a Request.</div>
                     </div>
                     <div className="row">
-                        <div className="col"> 4. Enter your M-Pesa Pin to confirm the transaction.</div>
+                        <div className="col"> 4. Enter your Pin to confirm the transaction.</div>
                     </div>
                     <div className="row">
-                        <div className="col"> 5. On successful payment, you will receive an M-Pesa
+                        <div className="col"> 5. On successful payment, you will receive a
                             Confirmation.
                         </div>
                     </div>
+
+                    <a href="/how-to-play" target="_blank" className="btn profile-item btn-primary primary-bg">Bonyeza ili kujaza na simu direct</a>
                 </div>
             </>
         );
@@ -151,7 +153,6 @@ const Deposit = (props) => {
                 <div className="pt-0">
                     <div className="row">
                         <div className='col-md-7 text-center'>
-                            <img src={mpesa} alt=""/>
                         </div>
                         <hr/>
                         <DepositFormFields onFieldChanged={onFieldChanged} values={values} errors={errors}/>
