@@ -95,6 +95,7 @@ const HeaderNav = (props) => {
                         </a>
                     </li>
 
+
                    { (window.location.hostname.includes("test") || window.location.hostname.includes("localhost")) && 
                        (
                            <>
@@ -134,20 +135,46 @@ const HeaderNav = (props) => {
 
                     <li className={pathname === '/print-matches' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
                         <a className="g url-link fix-print" href="/print-matches" title="Print Matches">
-                            <span className=" space-icons hide1"><FontAwesomeIcon icon={faPrint}/> </span>Print <span>Matches</span>
+                            <span className=" space-icons hide1"><FontAwesomeIcon icon={faPrint}/> </span>Print Matches
                         </a>
                     </li>
-                    {/**
-                    <li>
-                        <a className="g url-link" href="/livescore"
-                           title="Live Score">
+
+
+                    {/*Livescore*/}
+
+                    <li className={pathname === '/livescore' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
+                        <a className="g url-link" href="https://goinglive.bikosports.co.tz/livescore"
+                           title="Live Score" target="_blank">
                             <span>
                                 <FontAwesomeIcon icon={faInfo}/> Live Score
                             </span>
                         </a>
                     </li>
-                    **/ 
-                    }
+                    
+                    {/*SMS Lottery*/}
+
+                    <li className={pathname === '/sms-lottery' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
+                        <a className="g url-link" href="https://www.biko.co.tz/sw"
+                           title="Live Score" target="_blank">
+                            <span>
+                                <FontAwesomeIcon icon={faInfo}/> SMS Lottery
+                            </span>
+                        </a>
+                    </li>
+                 
+                   {/*Sports News*/}
+
+                    <li className={pathname === '/blog' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
+                        <a className="g url-link" href="https://blog.bikosports.co.tz/?amount=&loggedOn=0&phone="
+                           title="Live Score" target="_blank">
+                            <span>
+                                <FontAwesomeIcon icon={faMagic}/> Sports News
+                            </span>
+                        </a>
+                    </li>
+                 
+                   
+                   
                     <li className={pathname === '/print-matches' ? 'spacing-end' : 'spacing-end'}>
                         <a className="g url-link fix-display" href="#" title="Search"
                            onClick={() => showSearchBar()}>
@@ -156,7 +183,7 @@ const HeaderNav = (props) => {
                     </li>
                     <li className={pathname === '/how-to-play' ? 'active' : ''}>
                         <a className="cg fm ox anl url-link not-selectable" href="/how-to-play" title="How to play">
-                            <span className=" space-icons"><FontAwesomeIcon icon={faQuestionCircle}/> </span> <span className={'hide2'}>Help</span>
+                            <span className=" space-icons"><FontAwesomeIcon icon={faQuestionCircle}/> </span> <span className={'hide2'}>Jinsi Ya Kucheza</span>
                         </a>
                     </li>
                     <li className={""}>
