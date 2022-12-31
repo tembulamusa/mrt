@@ -75,9 +75,7 @@ const HowToPlay = (props) => {
                                                 <div class="col-xs-12 pg-3 border-radius-2">
                                                     <div class="col-xs-12 white-background center-container pg-0">
                                                                                                                                             <div class="col-xs-12 pg-0 yellow centered-content">
-                                                                    <ol class="">
-                                                                                                                                <li class="bold ">4. Lipa kwa MPESA</li>
-                                                                                                                        </ol>
+                                                                                                                                <span class="bold ">4. Lipa kwa MPESA</span>
                                                                 </div>
                                                                                                                                 </div>
                                                 </div>
