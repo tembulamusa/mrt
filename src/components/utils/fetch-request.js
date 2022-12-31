@@ -1,7 +1,7 @@
 import {setLocalStorage, getFromLocalStorage} from './local-storage';
 
-const ENC_KEY = '2bdVweTeI42s5mkLdYHyklTMxQS5gLA7MDS6FA9cs1uobDXeruACDic0YSU3si04JGZe4Y';
-const BASE_URL = 'https://api.bethipo.co.ke'; // 35.234.140.2:8008
+const ENC_KEY = 'm1XR6ajgepqyhndnasdnahake927382351bdjdqhadklasdgadjasl';
+const BASE_URL = 'http://35.234.140.2:8008'; // 35.234.140.2:8008
 
 const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
 
@@ -38,6 +38,7 @@ const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
     if (token) {
         headers = {...headers, ...{Authorization: "Bearer " + token}}
     }
+    console.log("Sendiing headers ", headers);
 
     try {
         let request = {
