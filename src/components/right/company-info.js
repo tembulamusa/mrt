@@ -1,6 +1,5 @@
 import React from 'react';
 import RightBanner from '../../assets/img/Virtual-side-Banner.png'
-import PayBill from '../../assets/img/PayBill.png'
 
 const CompanyInfo = (props) => {
 
@@ -10,19 +9,22 @@ const CompanyInfo = (props) => {
                 <div className="">
                     <div className="">
                         <div className="col-sm-12 h-30">
-                         <img src={PayBill} alt=" " style={{width:"100%"}}/>
+                         <div className="primary-bg-dark op-8 company-info p-2">
+                            <h4>Company Number</h4>
+                            <h3>101010</h3>
+                         </div>
                         </div>
                         <div className="col-sm-12 h-30 " style={{
                             lineHeight:"20px",
-                            background: "#613354",
+                            background: "#34B3BF",
                             margin: 0, 
                             padding: "10px 5px", 
                             color: "#fff", 
                             fontWeight: "bold",
                             fontSize:"24px"
                         }}>
-                          <p>Customer Care</p>
-                          <p>0742800700 </p>
+                          <p style={{fontSize: "15px"}}>Customer Care</p>
+                          <p>022 222 0100 </p>
                         </div>
                         <div className="col-sm-12">
                             <img src={RightBanner} alt="" className='w-100'/>

@@ -46,7 +46,7 @@ const Jackpot = (props) => {
                     <SideBar loadCompetitions/>
                     <div className="gz home" style={{width: "100%"}}>
                         <div className="homepage">
-                            <img src={dailyJackpot}/>
+                            <img src={dailyJackpot} className="mh-200"/>
                             <Tabs
                                 variant={'tabs'}
                                 defaultActiveKey={matches?.meta.status == 'ACTIVE' ? "home":"results"}

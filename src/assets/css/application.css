@@ -218,14 +218,14 @@ li.bet-option {
 .bet-option-list li {
     padding-bottom: 3px !important;
     padding-top: 0px !important;
-    /* background: #c3c3c3; */
+    background: #fff;
     padding: 4px;
     text-shadow: none;
     border-bottom: 1px solid #bbb;
     overflow: hidden;
     margin: 7px 1px 7px 0px;
     color: #2c2457;
-    opacity: 0.8;
+    opacity: 1;
     line-height: 1.6;
 }
 .bet-cancel {
