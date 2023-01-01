@@ -186,7 +186,7 @@ const MatchHeaderRow = (props) => {
                         </h3> */} 
                     </div>
                 </div>
-                <div className={'col-2 col-xs-12 match-detail-container'} key="d4"></div>
+                <div className={'col-2 d-none d-md-block d-xs-none d-sm-none match-detail-container'} key="d4"></div>
                 <div className="col-4 d-none d-sm-block d-xs-block d-md-none"></div>
                 <div className={'col d-flex flex-row justify-content-between'}>
                     {three_way &&
