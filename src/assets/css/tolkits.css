@@ -15336,12 +15336,15 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 
 .jp-header-text {
     text-align: center;
-    color: #C6224E;
+    color: #fff;
     text-transform: uppercase;
     font-size: 18px;
     font-weight: bold;
 }
-
+.jp-header-element {
+    background: #0c3c5aeb;
+    color: #fff;
+}
 .jp-header-text .jp-header-amount {
     padding: 5px 0;
     font-weight: bold;
@@ -15349,9 +15352,19 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 }
 
 .jp-header-text .jp-header-top {
-    padding: 5px 0 0;
+    padding: 0px 0 0;
+    background: #0c3c5aeb;
+    margin-top: 0px;
+    border-top: 1px solid #fff;
+    color: #fff;
 }
 
+.jp-header-element.row {
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+}
 .btn-square {
     border-radius: 0px !important;
     border: unset !important;
