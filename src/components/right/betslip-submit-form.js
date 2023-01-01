@@ -164,7 +164,7 @@ const BetslipSubmitForm = (props) => {
 
     const updateWinnings = useCallback(() => {
         if (betslip) {
-            let stake_after_tax = Float(stake) / Float(107.5) * 100
+            let stake_after_tax = Float(stake) / 100 * 100
             let ext = Float(stake) - Float(stake_after_tax);
             let raw_possible_win = Float(stake_after_tax) * Float(totalOdds);
             if (jackpot) {
@@ -175,7 +175,7 @@ const BetslipSubmitForm = (props) => {
             }
             let taxable_amount = Float(raw_possible_win) - Float(stake_after_tax);
 
-            let wint = taxable_amount * 0.2;
+            let wint = taxable_amount * 0.1;
             let nw = raw_possible_win - wint;
             setExciseTax(Float(ext, 2));
             setStakeAfterTax(stake_after_tax);
@@ -342,7 +342,7 @@ const BetslipSubmitForm = (props) => {
                         </td>
                     </tr>}
 
-                    <tr className="bet-win-tr hide-on-affix">
+                    <tr className="bet-win-tr hide-on-affix transparent-text">
                         <td> Excise Tax (7.5%)</td>
                         <td>TSH. <span id="tax">{formatNumber(exciseTax)}</span></td>
                     </tr>
@@ -351,7 +351,7 @@ const BetslipSubmitForm = (props) => {
                     ) : (
                         <>
                         <tr className="bet-win-tr hide-on-affix">
-                            <td> Withholding (20%)</td>
+                            <td> Withholding (10%)</td>
                             <td>TSH. <span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
 
