@@ -14939,6 +14939,8 @@ img.zoom-img {
     background: rgba(52, 179, 191, 0.15)!important;
 }
 
+
+
 .logo-sign-inner {
     border: 4px solid #7b2d47;
     width: 45px;
@@ -16101,3 +16103,7 @@ li.pro-sub-menu {
     text-transform: uppercase;
 }
 /*End how to*/
+
+.pro-inner-item:hover a {
+    color: #ffffff !important;
+}
