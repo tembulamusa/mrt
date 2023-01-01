@@ -6994,7 +6994,9 @@ ul.sport {
     .font-tbt {
         font-size: 10px;
     }
-
+    .betslip-body {
+        min-height: 50vh;
+    }
     .navbar-responsive {
         width: 200px;
     }
