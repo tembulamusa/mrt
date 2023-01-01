@@ -14927,11 +14927,16 @@ img.zoom-img {
 .betslip-container-mobile {
     bottom: 0;
     height: 100%;
+    background: #fff;
 }
 
 .bet-slip-footer-toggle {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+}
+
+.btn-disabled.match-detail {
+    background: rgba(52, 179, 191, 0.15)!important;
 }
 
 .logo-sign-inner {
@@ -15465,6 +15470,8 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     background: #fff;
 }
 
+@media(max-width: 640px)
+
 .betslip-container-mobile {
     /*bottom: 0;*/
     /*height: 100%;*/
@@ -15501,6 +15508,11 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     .amt {
     margin-top: 70px !important;
     scroll-margin-top: 140px;
+}
+.betslip-container {
+    
+    z-index: 99999;
+    background: #ffffff;
 }
 }
 
