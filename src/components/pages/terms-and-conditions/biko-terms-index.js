@@ -10,7 +10,7 @@ import React from "react";
 const BikoTermsIndex = () => {
     return (
         <>
-            <div class="panel-body ">
+<div class="panel-body ">
 <h2>TABLE OF CONTENT</h2>
 <ol class="bigger-list padded-list">
     <li>    1. INTRODUCTION</li>
