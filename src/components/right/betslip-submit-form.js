@@ -356,7 +356,7 @@ const BetslipSubmitForm = (props) => {
                         </tr>
 
                         <tr className="bet-win-tr hide-on-affix">
-                            <td> KIBOKO WIN Bonus</td>
+                            <td> biko WIN Bonus</td>
                             <td>TSH. <span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
                         </>

@@ -15470,7 +15470,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     position: sticky !important;
     top: 130px !important;
     /* right: 9px; */
-    max-width: 210px;
+    /*max-width: 210px;*/
     background: #fff;
 }
 
