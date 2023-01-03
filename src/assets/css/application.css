@@ -158,11 +158,13 @@
     border: none;
     padding: 0px;
 }
-
-h4.inline-block{display: inline-block;
+h4.inline-block {
+    display: inline-block;
+    padding: 8px;
     text-align: center;
+    background: rgba(0,0,0,0.5);
     text-transform: uppercase;
-    width:100%;
+    width: 100%;
 }
 
 .side-icon {
