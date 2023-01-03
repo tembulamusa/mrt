@@ -364,7 +364,7 @@ const BetslipSubmitForm = (props) => {
                     <tr className="bet-win-tr hide-on-affix">
                         <td>{jackpot?'Jackpot Amount':'Net Amount'}</td>
                         <td>TSH. <span
-                            id="net-amount">{formatNumber(jackpot ? jackpotData?.jackpot_amount : netWin + withholdingTax)}</span></td>
+                            id="net-amount">{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin + withholdingTax))}</span></td>
                     </tr>
                     <tr>
                         <td>

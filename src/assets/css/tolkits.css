@@ -646,8 +646,10 @@ header, li a, .thedate span {
     color: #fff;
 }
 .matches .panel-header.primary-bg {
-    background: #34B3BF;
+    background: #34b3bf;
     color: #fff;
+    padding-right: 0;
+    padding-left: 0;
 }
 .betslipJ .bet-table td {
     padding: 4px;
