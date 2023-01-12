@@ -22,7 +22,7 @@ const Login = (props) => {
     const FormTitle = () => {
         return (
             <div className='col-md-12 primary-bg p-4 text-center'>
-                <h4 className="inline-block">
+                <h4 className="">
                     Login
                 </h4>
             </div>
@@ -44,11 +44,14 @@ const Login = (props) => {
                     <div className="gz home mt-3">
                         <div className="homepage">
                             <FormTitle/>
+
+                            <div className="row">
                             <div className="col-md-12 mt-2  p-2">
                                 {message && <Alert/>}
                                 <div className="modal-body pb-0" data-backdrop="static">
                                     <BodyLogin/>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>

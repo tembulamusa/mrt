@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
 import makeRequest from "../utils/fetch-request";
 import mpesa from '../../assets/img/mpesa-3.png'
+import { useNavigate } from "react-router-dom";
 
 const Header = React.lazy(() => import('../header/header'));
 const SideBar = React.lazy(() => import('../sidebar/awesome/Sidebar'));
@@ -13,22 +14,29 @@ const Signup = (props) => {
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
     const [loading, setLoading] = useState(false);
-
+    const navigate = useNavigate();
     const initialValues = {
         msisdn: '',
         password: ''
     }
 
     const handleSubmit = values => {
-        if(loading) { return ;}
+        // if(loading) { return ;}
 
         setLoading(true);
         let endpoint = '/v1/signup';
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
             setSuccess(response?.success?.status == 200 || response?.success?.status === 201);
             setMessage(response?.success?.message);
-            setLoading(false);
+            
+
+            if (response?.success?.status == 200 || response?.success?.status === 201) {
+                setLoading(false);
+                setTimeout(navigate('/login'), 7000);
+            }
         })
+
+
     }
 
     const validate = values => {
@@ -64,12 +72,14 @@ const Signup = (props) => {
             let value = ev.target.value;
             setFieldValue(field, value);
         }
+        const loadingContent = function(){
+            return <span className="loading">Registering</span>
+        }
         return (
             <Form>
                 <div className="pt-0">
                     <div className="row">
                         <div className='col-md-6 text-center'>
-                            <img src={mpesa} alt=""/>
                         </div>
                         <div className="form-group row d-flex justify-content-center mt-5">
                             <div className="col-md-12">
@@ -108,8 +118,10 @@ const Signup = (props) => {
                                     className={`btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button`}
                                     disabled={loading}
                                     >
-                                    Signup
+                                    {loading ? loadingContent() : 'Signup'}
                                 </button>
+
+                                <p>Already Have an account!? <a href="/login"><strong>Click here to Login</strong></a></p>
                             </div>
                         </div>
                     </div>
