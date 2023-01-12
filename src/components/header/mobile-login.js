@@ -103,7 +103,7 @@ const BodyLogin = (props) => {
         }
         return (
             <>
-                <Form className="ow og i web-element">
+                <Form className="og i web-element">
                     <Row>
                         <div className="form-group row d-flex justify-content-center mt-3">
                             <label>Mobile Number</label>
@@ -157,8 +157,8 @@ const BodyLogin = (props) => {
                             </a>
                                 
                         <div className="col-sm-2">
-                            <a className="cg " href="/signup" title="Join now" onClick={() => gaEventTracker('Register')}>
-                                <span className="register-la">Register now!</span>
+                            <a className="" href="/signup" title="Join now" onClick={() => gaEventTracker('Register')}>
+                                <span className="register-la">No Account!? Register now!</span>
                             </a>
                         </div>
                     </Row>
