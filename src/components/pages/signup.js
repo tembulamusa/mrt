@@ -32,7 +32,7 @@ const Signup = (props) => {
 
             if (response?.success?.status == 200 || response?.success?.status === 201) {
                 setLoading(false);
-                setTimeout(navigate('/login'), 7000);
+                navigate('/login', {state: {message: response?.success?.message} });
             }
         })
 
