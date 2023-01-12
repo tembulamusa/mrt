@@ -4,6 +4,7 @@ import makeRequest from "../utils/fetch-request";
 import mpesa from '../../assets/img/mpesa-3.png'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { useLocation } from 'react-router-dom';
 
 const Header = React.lazy(() => import('../header/header'));
 const SideBar = React.lazy(() => import('../sidebar/awesome/Sidebar'));
@@ -13,10 +14,11 @@ const BodyLogin = React.lazy(() => import('../header/mobile-login'));
 
 
 const Login = (props) => {
+    // const {state} = useLocation();
+    // const {regMessage} = state;
     const [message, setMessage] = useState(null);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
-
 
     
     const FormTitle = () => {
@@ -48,6 +50,7 @@ const Login = (props) => {
                             <div className="row">
                             <div className="col-md-12 mt-2  p-2">
                                 {message && <Alert/>}
+
                                 <div className="modal-body pb-0" data-backdrop="static">
                                     <BodyLogin/>
                                 </div>
