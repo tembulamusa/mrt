@@ -35,7 +35,7 @@ const Signup = (props) => {
 
         let errors = {}
 
-        if (!values.msisdn || !values.msisdn.match(/(254|0|)?[71]\d{8}/g)) {
+        if (!values.msisdn || !values.msisdn.match(/(255|0|)?[71]\d{8}/g)) {
             errors.msisdn = 'Please enter a valid phone number'
         }
 
@@ -49,7 +49,7 @@ const Signup = (props) => {
     const FormTitle = () => {
         return (
             <div className='col-md-12 primary-bg p-4 text-center'>
-                <h4 className="inline-block">
+                <h4 className="">
                     SIGNUP | CREATE A NEW ACCOUNT
                 </h4>
             </div>
