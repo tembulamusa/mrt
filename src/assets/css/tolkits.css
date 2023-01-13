@@ -430,7 +430,8 @@ header, li a, .thedate span {
 
 
 .home-tab-active {
-    background: #00a1d18c !important;
+    /* background: #00a1d18c !important; */
+    border-bottom: 4px solid #34B3BF!important;
 }
 
 .cancel {
@@ -2077,12 +2078,17 @@ events-header {
 
 .full-mobile.sticky-top {
     border-bottom: 1px solid #dddddd;
+    background: #0C3C5A;
 }
-
-
+.full-mobile.sticky-top .top-matches.header {
+    background: #0C3C5A;
+}
 .mobi .draw {
     color: #fff;
     font-weight: normal !important;
+}
+.white-text {
+    color: #ffffff;
 }
 
 .mobi .home-team {
@@ -2425,7 +2431,7 @@ img {
     text-align: center;
     font-size: 14px;
     font-weight: normal;
-    opacity: 0.7;
+    /* opacity: 0.7; */
 }
 
 .match-detail .picked {
@@ -3228,11 +3234,14 @@ a.dz:focus {
     border-bottom: 1px solid #d4dbe0;
 }
 
-ul,
-ol {
+ul, ol {
     margin-top: 0;
     margin-bottom: 0;
-    padding-left: 0px;
+    padding-left: 12px;
+}
+
+ul {
+    padding-left: 0;
 }
 
 ul ul,
@@ -6873,9 +6882,13 @@ ul.sport {
 
 .e {
     float: left;
-    padding: 3px 15px;
+    padding: 3px 5px;
     font-size: 18px;
     line-height: 22px;
+}
+
+.uppercase {
+
 }
 
 .e:hover,
@@ -15648,7 +15661,29 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 }
 .nav-tabs {
     background: #947389;
-} 
+}
+
+.unstyled-tabs .nav-tabs {
+    background: transparent;
+}
+
+.image-tabs .nav-item .nav-link{
+    padding: 0px;
+    background: transparent !important;
+    border: 4px solid transparent;
+}
+
+.image-tabs .nav-item .nav-link img {
+    height: 55px;
+}
+
+.image-tabs .nav-tabs .nav-item.show .nav-link,
+.image-tabs .nav-tabs .nav-link.active {
+    /*border-color: # !important;*/
+    border: 4px solid #3498db !important;
+}
+
+
 .nav-tabs .nav-link {
     display: block;
     padding: .5rem 1rem;
@@ -16133,4 +16168,39 @@ li.pro-sub-menu {
   to {
     width: 1.25em;    
   }
+}
+
+
+.transparent-buttons .btn-secondary {
+    background: transparent;
+}
+.filter-groups.transparent-buttons {
+    
+    padding: 3px 0px 0px 4px;
+}
+
+.transparent-buttons .filter-group-icon {
+    margin-bottom: 1px;
+}
+
+footer .right-border {
+    border-right: 2px solid rgba(255, 255, 255, 0.3);
+    padding-right: 1px !important;
+}
+
+.left-with-big-pad-desktop {
+    padding-left: 23px !important;
+}
+footer .row {
+    opacity: 0.9;
+}
+@media (max-width: 640px) {
+    footer .right-border {
+        border-right: none;
+        padding-right: inherit;
+    }
+
+    .left-with-big-pad-desktop {
+        padding-left: 10px;
+    }
 }

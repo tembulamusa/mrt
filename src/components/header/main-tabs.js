@@ -200,19 +200,19 @@ const MainTabs = (props) => {
 
     return (
         <div>
-            <Row className="full-mobile filter-groups">
+            <Row className="full-mobile filter-groups transparent-buttons">
 
                 <div className="filter-group-icon">
-                    <button className={`btn-secondary ${activeTab === 'highlights' && 'home-tab-active'}`} 
-                       onClick = {() => setActiveTabSpace('highlights')} >Highlights</button>
+                    <button className={`uppercase btn-secondary ${activeTab === 'highlights' && 'home-tab-active'}`} 
+                       onClick = {() => setActiveTabSpace('highlights')} >Mechi Kali</button>
                 </div>
                 <div className="filter-group-icon">
-                        <button className={`btn-secondary ${activeTab === 'today' && 'home-tab-active'}`} 
-                            onClick ={() => setActiveTabSpace('today')}>Today's</button>
+                        <button className={`uppercase btn-secondary ${activeTab === 'today' && 'home-tab-active'}`} 
+                            onClick ={() => setActiveTabSpace('today')}>Mechi Za Leo</button>
                 </div>
                 <div className="filter-group-icon">
-                        <button className={`btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
-                            onClick={() => setActiveTabSpace('tomorrow')}>Tomorrow</button>
+                        <button className={`uppercase btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
+                            onClick={() => setActiveTabSpace('tomorrow')}>Mechi zijazo</button>
                 </div>
 
                   <div className="filter-group-icon d-none d-md-block" key="1">

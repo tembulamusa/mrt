@@ -169,9 +169,10 @@ const MatchHeaderRow = (props) => {
 
 
     return (
-        <Container className="full-mobile sticky-top" style={{position: "sticky"}}>
-            <div className="top-matches d-flex position-sticky sticky-top "
+        <Container className="live full-mobile sticky-top" style={{position: "sticky"}}>
+            <div className="top-matches header d-flex position-sticky sticky-top "
                  style={{opacity: "1", top: "100px"}}>
+                 {live && <span className="white-text">LIVE </span> }
                 <div className="col-sm-1 col-1 pad left-text" key="d5">
                     <div className="align-self-center col">
 
@@ -260,7 +261,6 @@ const MoreMarketsHeaderRow = (props) => {
                 {live &&
                     <Row className="header-text">
                         <Col style={{
-                            color: "#cc5500",
                             marginBottom: "5px"
                         }}> {match_status === 'Ended' && 'Ended '} {score}</Col>
                     </Row>
@@ -271,7 +271,7 @@ const MoreMarketsHeaderRow = (props) => {
                 {match_status !== 'Ended' &&
                     <Row className="start-time">
                         {live
-                            ? <Col>Live: <span style={{color: "#cc5500"}}>{match_time || match_status}</span></Col>
+                            ? <Col>Live: <span>{match_time || match_status}</span></Col>
                             : <Col>Start: {start_time}</Col>}
 
                         <Col>Game ID: {game_id} </Col>
@@ -525,7 +525,6 @@ const MarketRow = (props) => {
                             marginRight: "5px",
                             opacity: 0.6
                         }}>
-                        <ColoredCircle color="#cc5500"/>
                     </div>
                 }
                 {market_id}

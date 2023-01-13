@@ -44,7 +44,7 @@ const HowToPlay = (props) => {
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage child-box-relative-pos">
                             <div className='col-md-12 primary-bg p-4 text-center'>
-                                <h4 className="inline-block cap-text"> JINSI Ya Kucheza</h4>
+                                <h4 className="inline-blok cap-text"> JINSI Ya Kucheza</h4>
                             </div>
                               <div className="col-md-12 p-2">
                                 <div className="child-box-relative-pos">
