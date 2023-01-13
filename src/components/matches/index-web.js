@@ -258,7 +258,6 @@ const MoreMarketsHeaderRow = (props) => {
                 {live &&
                     <Row className="header-text">
                         <Col style={{
-                            color: "#cc5500",
                             marginBottom: "5px"
                         }}> {match_status === 'Ended' && 'Ended '} {score}</Col>
                     </Row>
@@ -269,7 +268,7 @@ const MoreMarketsHeaderRow = (props) => {
                 {match_status !== 'Ended' &&
                     <Row className="start-time">
                         {live
-                            ? <Col>Live: <span style={{color: "#cc5500"}}>{match_time || match_status}</span></Col>
+                            ? <Col>Live: <span>{match_time || match_status}</span></Col>
                             : <Col>Start: {start_time}</Col>}
 
                         <Col>Game ID: {game_id} </Col>
@@ -523,7 +522,6 @@ const MarketRow = (props) => {
                             marginRight: "5px",
                             opacity: 0.6
                         }}>
-                        <ColoredCircle color="#cc5500"/>
                     </div>
                 }
                 {market_id}

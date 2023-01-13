@@ -10,6 +10,7 @@ const Header = React.lazy(() => import('../../header/header'));
 const Footer = React.lazy(() => import('../../footer/footer'));
 const SideBar = React.lazy(() => import('../../sidebar/awesome/Sidebar'));
 const Right = React.lazy(() => import('../../right/index'));
+const DirectDeposit = React.lazy(() => import('./DirectDeposit'));
 
 
 const Deposit = (props) => {
@@ -56,7 +57,7 @@ const Deposit = (props) => {
     const FormTitle = () => {
         return (
             <div className='col-md-12  p-4 text-center primary-bg'>
-                <h4 className="inline-block">
+                <h4 className="inline-blk">
                     DEPOSIT FUNDS (MOBILE MONEY)
                 </h4>
             </div>
@@ -133,8 +134,6 @@ const Deposit = (props) => {
                             Confirmation.
                         </div>
                     </div>
-
-                    <a href="/how-to-play" target="_blank" className="btn profile-item btn-primary primary-bg">Bonyeza ili kujaza na simu direct</a>
                 </div>
             </>
         );
@@ -195,7 +194,9 @@ const Deposit = (props) => {
                                 <Alert/>
                                 <div className="modal-body pb-0" data-backdrop="static">
                                     <DepositForm/>
+                                    <DirectDeposit />
                                 </div>
+
                             </div>
                         </div>
                     </div>
