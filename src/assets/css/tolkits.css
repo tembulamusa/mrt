@@ -2082,6 +2082,7 @@ events-header {
 }
 .full-mobile.sticky-top .top-matches.header {
     background: #0C3C5A;
+    color: #fff !important;
 }
 .mobi .draw {
     color: #fff;
@@ -2383,7 +2384,7 @@ a {
 
 }
 
-.top-matches a {
+.web-element a {
     color: #2c2457!important;
 }
 
