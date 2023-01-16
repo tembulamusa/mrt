@@ -25,7 +25,7 @@ const Deposit = (props) => {
     }
 
     const handleSubmit = values => {
-        let endpoint = '/stk/deposit';
+        let endpoint = '/v1/stk/deposit';
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
             setSuccess(status === 200 || status === 201);
             setMessage(response);
