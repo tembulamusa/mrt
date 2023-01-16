@@ -24,11 +24,14 @@ const Withdrawal = (props) => {
     }
 
     const handleSubmit = values => {
-        let endpoint = '/withdraw';
-        makeRequest({url: endpoint, method: 'POST', data: {user:values}, use_jwt:true}).then(([status, response]) => {
+        let endpoint = '/v1/withdraw';
+        console.log("The endpoint is here");
+        makeRequest({url: endpoint, method: 'POST', data: {"amount":values.amount, "msisdn":values.msisdn}, use_jwt:false}).then(([status, response]) => {
             setSuccess(status === 200 || status === 201);
             setMessage(response);
         })
+
+        console.log("Made a request");
     }
 
     const validate = values => {
@@ -48,7 +51,7 @@ const Withdrawal = (props) => {
     const FormTitle = () => {
        return (
             <div className='col-md-12 primary-bg p-4 text-center'>
-                <h4 className="inline-block">
+                <h4 className="inline-blok">
                     WITHDRAW FUNDS (MOBILE MONEY)
                 </h4>
             </div>
