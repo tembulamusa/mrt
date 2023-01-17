@@ -81,7 +81,7 @@ const BodyLogin = (props) => {
 
         let errors = {}
 
-        if (!values.msisdn || !values.msisdn.match(/(254|0|)?[71]\d{8}/g)) {
+        if (!values.msisdn || !values.msisdn.match(/(255|0|)?\d{9}/g)) {
             errors.msisdn = 'Invalid phone number'
         }
 
@@ -115,7 +115,7 @@ const BodyLogin = (props) => {
                                     name="msisdn"
                                     type="text"
                                     data-action="grow"
-                                    placeholder={errors.msisdn || "+254........."}
+                                    placeholder={errors.msisdn || "+255........."}
                                     onChange={ev => onFieldChanged(ev)}
                                 />
                                 {errors.msisdn && <div className='text-danger'> {errors.msisdn} </div>}
