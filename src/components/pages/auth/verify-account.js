@@ -1,6 +1,8 @@
 import React, {useRef, useState} from 'react';
 import {Formik, Form} from 'formik';
 import makeRequest from "../../utils/fetch-request";
+import { useLocation } from 'react-router-dom'
+
 
 const Header = React.lazy(() => import('../../header/header'));
 const SideBar = React.lazy(() => import('../../sidebar/awesome/Sidebar'));
@@ -13,8 +15,12 @@ const VerifyAccount = (props) => {
     const [message, setMessage] = useState(null);
     const verifyRef = useRef()
 
+    const location = useLocation()
+    const { phone } = location.state
+
+
     const initialValues = {
-        mobile: '',
+        mobile: phone,
         code: ''
     }
 
@@ -68,7 +74,7 @@ const VerifyAccount = (props) => {
     const FormTitle = () => {
         return (
             <div className='col-md-12 primary-bg p-4 text-center'>
-                <h4 className="inline-block">
+                <h4 className="inlne-block">
                     VERIFY YOUR PHONE NUMBER
                 </h4>
             </div>
@@ -92,10 +98,10 @@ const VerifyAccount = (props) => {
                                 <div className="row">
                                 <div className="col-md-12">
                                     <span className=''>
-                                        Didn't receive code? Resend OTP  &nbsp;
+                                        Je Umepata namba ya Uthibitisho!?, Bonyeza ili Kutuma Tena  &nbsp;
                                     </span>
                                     <button onClick={() => resendOTP()} type={"button"}
-                                            className='btn btn-primary btn-sm'>Resend OTP
+                                            className='btn btn-primary btn-sm'>Bonyeza Hapa
                                     </button>
                                 </div>
                                 </div>
@@ -108,6 +114,7 @@ const VerifyAccount = (props) => {
                                             id="mobile"
                                             name="mobile"
                                             type="text"
+                                            disabled="disabled"
                                             placeholder='Phone number'
                                             onChange={ev => onFieldChanged(ev)}
                                         />
@@ -120,7 +127,7 @@ const VerifyAccount = (props) => {
 
                         <div className="form-group row d-flex  mt-5">
                             <div className="col-md-12">
-                                <label>Code (OTP)</label>
+                                <label>Namba Ya Uthibitisho (OTP)</label>
                                 <input
                                     value={values.code}
                                     className="text-dark deposit-input form-control col-md-12 input-field"

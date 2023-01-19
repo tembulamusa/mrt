@@ -32,7 +32,7 @@ const Signup = (props) => {
 
             if (response?.success?.status == 200 || response?.success?.status === 201) {
                 setLoading(false);
-                navigate('/login', {state: {message: response?.success?.message} });
+                navigate('/verify-account', {state: {phone: values.msisdn} });
             }
         })
 
