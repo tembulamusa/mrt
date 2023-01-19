@@ -1,11 +1,12 @@
-import React, {useState, useContext, useEffect, useCallback} from 'react';
+import React, {useState, useContext} from 'react';
 import QuickLogin from './quick-login';
 import CompanyInfo from './company-info';
-import {Context} from '../../context/store';
 import BetSlip from './betslip';
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faUser, faLock, faCoins, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faShare } from "@fortawesome/free-solid-svg-icons";
+import ShareModal from "../sharemodal";
+import { Context } from "../../context/store";
 
 
 const AlertMessage = (props) => {
@@ -20,8 +21,13 @@ const AlertMessage = (props) => {
 }
 
 const Right = (props) => {
+    const [state, dispatch] = useContext(Context);
     const {jackpot, betslipValidationData, jackpotData} = props;
-    const [betSlipMobile, setBetSlipMobile] = useState(false)
+    const [betSlipMobile, setBetSlipMobile] = useState(false);
+
+    const showShareModalDialog = () => {
+        dispatch({type:"SET", key:"showsharemodal", payload:true})
+    }
 
     return (
         <div className="col-md-3 gn betslip-container sticky-top">
@@ -33,9 +39,11 @@ const Right = (props) => {
                             <div className="betslip-header">
                     <span className="col-sm-2 bkmrk">
                         <i className="fa fa-bookmark" aria-hidden="true"></i></span>
-                                <span className="col-sm-8 slp">BETSLIP/JAMVI</span>
-                                (<span className="col-sm-2 slip-counter"></span>)
-                                <span className="col-sm-2 float-end share-btn btn btn-light" style={{marginTop:"4px"}}><span><FontAwesomeIcon icon={faShare} /></span><span>Share</span></span>
+                                <span className="col-sm-8 slp">BETSLIP/JAMVI </span>
+                                <span className="col-sm-2 slip-counter">(0)</span>
+                                <span className="col-sm-2 float-end share-btn btn btn-light" 
+                                   style={{marginTop:"4px",width:"fit-content"}}
+                                   onClick = {showShareModalDialog} ><span><FontAwesomeIcon icon={faShare} /> </span><span>Share</span></span>
                             </div>
                         </header>
                         <button id="slip-button-close" type="button" className="close mobi" aria-hidden="true">×

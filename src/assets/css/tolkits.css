@@ -15771,22 +15771,6 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     background: #000000ba;
 }
 
-.world-cup-ad {
-    margin-top: 10%;
-    background: transparent;
-
-}
-
-.world-cup-ad .modal-body {
-    padding:0;
-    background: transparent;
-}
-
-.world-cup-ad .modal-content {
-    background: transparent;
-}
-
-
 .pro-sidebar {
     color: #adadad;
     height: 100%;

@@ -1,10 +1,9 @@
-import React, {useState, useEffect, useContext, useCallback} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import {Formik, Field, Form} from 'formik';
 import makeRequest from "../utils/fetch-request";
-import {Context} from '../../context/store';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {setLocalStorage, getFromLocalStorage} from '../utils/local-storage';

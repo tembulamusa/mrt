@@ -20,6 +20,7 @@ import LiveIcon from "../../assets/svg/Live.svg";
 import JackpotIcon from "../../assets/svg/JP.svg";
 import HipoIcon from "../../assets/img/search-icon.png";
 import PromotionIcon from "../../assets/svg/Promotions.svg";
+import ShareModal from "../sharemodal";
 
 const HeaderNav = (props) => {
     const [state,] = useContext(Context);
@@ -67,6 +68,7 @@ const HeaderNav = (props) => {
         setSearching(false)
         setMatches([])
     }
+
     return (
         <>
             <Container id="navbar-collapse-main"
@@ -220,6 +222,9 @@ const HeaderNav = (props) => {
                     </div>
                 </ListGroup>
             </Container>
+          
+
+          <ShareModal shown={state?.showsharemodal === true} />
         </>
     )
 
