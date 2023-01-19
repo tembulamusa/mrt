@@ -56,7 +56,7 @@ const ResetPassword = (props) => {
 
         let errors = {}
 
-        if (!values.mobile || !values.mobile.match(/(254|0|)?[71]\d{8}/g)) {
+        if (!values.mobile || !values.mobile.match(/(\+?255|0|)?\d{9}/g)) {
             errors.mobile = 'Please enter a valid phone number'
         }
 
@@ -93,7 +93,7 @@ const ResetPassword = (props) => {
     const FormTitle = () => {
         return (
             <div className='col-md-12 primary-bg p-4 text-center'>
-                <h4 className="inline-block">
+                <h4 className="inline-blck">
                     RECOVER YOUR ACCOUNT
                 </h4>
             </div>

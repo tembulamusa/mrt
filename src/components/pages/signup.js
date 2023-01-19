@@ -43,7 +43,7 @@ const Signup = (props) => {
 
         let errors = {}
 
-        if (!values.msisdn || !values.msisdn.match(/(255|0|)?[71]\d{8}/g)) {
+        if (!values.msisdn || !values.msisdn.match(/(\+?255|0|)?\d{9}/g)) {
             errors.msisdn = 'Please enter a valid phone number'
         }
 
