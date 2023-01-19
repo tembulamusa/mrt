@@ -5,6 +5,8 @@ import {Context} from '../../context/store';
 import BetSlip from './betslip';
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faUser, faLock, faCoins, faShare } from "@fortawesome/free-solid-svg-icons";
+
 
 const AlertMessage = (props) => {
     return (
@@ -32,7 +34,8 @@ const Right = (props) => {
                     <span className="col-sm-2 bkmrk">
                         <i className="fa fa-bookmark" aria-hidden="true"></i></span>
                                 <span className="col-sm-8 slp">BETSLIP/JAMVI</span>
-                                <span className="col-sm-2 slip-counter"></span>
+                                (<span className="col-sm-2 slip-counter"></span>)
+                                <span className="col-sm-2 float-end share-btn btn btn-light" style={{marginTop:"4px"}}><span><FontAwesomeIcon icon={faShare} /></span><span>Share</span></span>
                             </div>
                         </header>
                         <button id="slip-button-close" type="button" className="close mobi" aria-hidden="true">×
