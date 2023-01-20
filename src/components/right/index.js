@@ -10,6 +10,7 @@ import { Context } from "../../context/store";
 
 
 const AlertMessage = (props) => {
+    // const betslipLength = len(BetSlip);
     return (
         <div className={`alert alert-dismissible ${props.classname}`} role='alert'>
             <button type='button' className='close' data-dismiss='alert' aria-label='Close'><span
@@ -44,6 +45,7 @@ const Right = (props) => {
                                 <span className="col-sm-2 float-end share-btn btn btn-light" 
                                    style={{marginTop:"4px",width:"fit-content"}}
                                    onClick = {showShareModalDialog} ><span><FontAwesomeIcon icon={faShare} /> </span><span>Share</span></span>
+
                             </div>
                         </header>
                         <button id="slip-button-close" type="button" className="close mobi" aria-hidden="true">×
