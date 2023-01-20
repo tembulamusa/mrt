@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
+import {useParams} from 'react-router-dom';
 import BetslipSubmitForm from './betslip-submit-form';
 import {Context} from '../../context/store';
 import {
@@ -8,8 +9,12 @@ import {
     getJackpotBetslip,
 } from '../utils/betslip';
 
+import {
+    setLocalStorage
+} from '../utils/local-storage';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import CompanyInfo from "./company-info";
+import makeRequest from '../utils/fetch-request';
 
 const clean_rep = (str) => {
     str = str.replace(/[^A-Za-z0-9\-]/g, '');
@@ -21,8 +26,28 @@ const BetSlip = (props) => {
     const [betslipKey, setBetslipKey] = useState("betslip");
     const [betslipsData, setBetslipsData] = useState(null);
     const [state, dispatch] = useContext(Context);
+    const { code } = useParams();
 
     const [totalOdds, setTotalOdds] = useState(1);
+
+    const fetchSharedBetslip = useCallback((code) => {
+        let endpoint = "/v1/share?code=" + code
+        makeRequest({url: endpoint, method: "GET", data: null}).then(([status, result]) => {
+            if (status == 200) {
+               //load betslip
+                if(result?.betslip) {
+                    setLocalStorage("betslip",result?.betslip);
+                    setBetslipsData(result?.betslip);
+                }
+            }
+        });
+    }, [code])
+
+    useEffect(() => {
+        if(code){
+            fetchSharedBetslip(code);
+        }
+    }, [fetchSharedBetslip])
 
     //initial betslip loading
     const loadBetslip = useCallback(() => {

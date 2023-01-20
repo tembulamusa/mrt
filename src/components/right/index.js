@@ -25,6 +25,7 @@ const Right = (props) => {
     const [state, dispatch] = useContext(Context);
     const {jackpot, betslipValidationData, jackpotData} = props;
     const [betSlipMobile, setBetSlipMobile] = useState(false);
+    console.log("reading betslip from right side", state?.betslip)
 
     const showShareModalDialog = () => {
         dispatch({type:"SET", key:"showsharemodal", payload:true})
@@ -41,10 +42,10 @@ const Right = (props) => {
                     <span className="col-sm-2 bkmrk">
                         <i className="fa fa-bookmark" aria-hidden="true"></i></span>
                                 <span className="col-sm-8 slp">BETSLIP/JAMVI </span>
-                                <span className="col-sm-2 slip-counter">(0)</span>
-                                <span className="col-sm-2 float-end share-btn btn btn-light" 
+                                <span className="col-sm-2 slip-counter">({ Object.keys(state?.betslip).length })</span>
+                                {Object.keys(state?.betslip).length > 0 && (<span className="col-sm-2 float-end share-btn btn btn-light" 
                                    style={{marginTop:"4px",width:"fit-content"}}
-                                   onClick = {showShareModalDialog} ><span><FontAwesomeIcon icon={faShare} /> </span><span>Share</span></span>
+                                   onClick = {showShareModalDialog} ><span><FontAwesomeIcon icon={faShare} /> </span><span>Share</span></span>) }
 
                             </div>
                         </header>
