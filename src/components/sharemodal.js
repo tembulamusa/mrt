@@ -13,6 +13,7 @@ import "../App.css";
 
 const ShareModal = (props) => {
     const betslip = getBetslip();
+    console.log("Sharing this betslip ", betslip);
     const user = getFromLocalStorage("user");
     const app_name = "desktop-web";
     const [ipv4, setIpv4] = useState(null);
@@ -25,12 +26,13 @@ const ShareModal = (props) => {
         let endpoint = "/v1/share";
 
         let payload = {
-            slip: betslip,
+            betslip: betslip,
             ip_address: ipv4,
             app:app_name,
             msisdn:user?.msisdn,
             profile_id:user?.profile_id
         }
+        console.log("Posting my sghare bet data", payload);
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {
                 setShareId(result.code);

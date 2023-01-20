@@ -108,6 +108,7 @@ render((
             <Suspense fallback={<div>&nbsp;</div>}>
               <Routes>
                 <Route exact path="/" element={<Index/>}/>
+                <Route exact path="/share/:code" element={<Index/>}/>
                 <Route exact path="/virtuals" element={<Casino/>}/>
                 <Route exact path="/virtuals/index" element={<Virtuals />}/>
                 <Route exact path="/virtuals/casino" element={<Casino />}/>

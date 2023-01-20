@@ -26,7 +26,6 @@ const SideBar = React.lazy(() => import('./sidebar/awesome/Sidebar'))
 const Index = (props) => {
     const location = useLocation();
     const {id, sportid, categoryid, competitionid } = useParams();
-
     const [matches, setMatches] = useState([]);
     const [limit, setLimit] = useState(50);
     const [producerDown, setProducerDown] = useState(false);
