@@ -40,20 +40,12 @@ const Right = (props) => {
                             <div className="betslip-header">
                     <span className="col-sm-2 bkmrk">
                         <i className="fa fa-bookmark" aria-hidden="true"></i></span>
-<<<<<<< HEAD
                                 <span className="col-sm-8 slp">BETSLIP/JAMVI </span>
                                 <span className="col-sm-2 slip-counter">(0)</span>
                                 <span className="col-sm-2 float-end share-btn btn btn-light" 
                                    style={{marginTop:"4px",width:"fit-content"}}
                                    onClick = {showShareModalDialog} ><span><FontAwesomeIcon icon={faShare} /> </span><span>Share</span></span>
-=======
-                                <span className="col-sm-8 slp">BETSLIP/JAMVI</span>
-                                (<span className="col-sm-2 slip-counter"></span>)
-                                <span className="col-sm-2 float-end share-btn btn btn-light" style={{marginTop:"4px", display:"table"}}>
-                                    <span style={{display:"table-cell", paddingRight:"4px"}}><FontAwesomeIcon icon={faShare} /></span>
-                                    <span style={{display:"table-cell"}}>Share</span>
-                                </span>
->>>>>>> 996fa03 (Edit reset password)
+
                             </div>
                         </header>
                         <button id="slip-button-close" type="button" className="close mobi" aria-hidden="true">×
