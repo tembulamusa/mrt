@@ -14,6 +14,10 @@ const BodyLogin = React.lazy(() => import('../header/mobile-login'));
 
 
 const Login = (props) => {
+    const location = useLocation()
+    const { preLoginMessage } = location.state
+    const { mobileNumber } = location.state
+
     // const {state} = useLocation();
     // const {regMessage} = state;
     const [message, setMessage] = useState(null);
@@ -31,12 +35,16 @@ const Login = (props) => {
         )
     }
 
-   
+    const PreLogAlert = (props) => {
+        let c = preLoginMessage?"success" : "danger";
+        return (<div role="alert" className={`fade alert alert-${c} show`}>{preLoginMessage}</div>);
+    }   
     const Alert = (props) => {
         let c = success ? 'success' : 'danger';
         return (<div role="alert" className={`fade alert alert-${c} show`}>{message}</div>);
 
     };
+
     return (
         <React.Fragment>
             <Header/>
@@ -49,10 +57,11 @@ const Login = (props) => {
 
                             <div className="row">
                             <div className="col-md-12 mt-2  p-2">
+                                {preLoginMessage && <PreLogAlert/>}
                                 {message && <Alert/>}
 
                                 <div className="modal-body pb-0" data-backdrop="static">
-                                    <BodyLogin/>
+                                    <BodyLogin />
                                 </div>
                             </div>
                             </div>
