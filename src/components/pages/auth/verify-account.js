@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Formik, Form} from 'formik';
 import makeRequest from "../../utils/fetch-request";
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 
 const Header = React.lazy(() => import('../../header/header'));
@@ -10,7 +11,7 @@ const Right = React.lazy(() => import('../../right/index'));
 const Footer = React.lazy(() => import('../../footer/footer'));
 
 const VerifyAccount = (props) => {
-
+    const navigate = useNavigate();
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
     const verifyRef = useRef()
@@ -30,12 +31,18 @@ const VerifyAccount = (props) => {
             setSuccess(status === 200 || status === 201)
             setMessage(response.success ? response.success.message : response.error.message);
             response.success ? setSuccess(true) : setSuccess(false)
-            if(success) {
-                let timer = setInterval(() => {
-                    clearInterval(timer)
-                    window.location.href = "/"
-                }, 3000)
+            if (response?.success?.status == 200 || response?.success?.status === 201) {
+                // setLoading(false);
+                setTimeout(navigate('/'), 3000);
+                
             }
+
+            // if(success) {
+            //     let timer = setInterval(() => {
+            //         clearInterval(timer)
+            //         window.location.href = "/"
+            //     }, 3000)
+            // }
         }).catch((err) => {
             console.log(err)
         })
@@ -45,7 +52,7 @@ const VerifyAccount = (props) => {
 
         let errors = {}
 
-        if (!values.mobile || !values.mobile.match(/(254|0|)?[71]\d{8}/g)) {
+        if (!values.mobile || !values.mobile.match(/(\+?255|0|)?\d{9}/g)) {
             errors.mobile = 'Please enter a valid phone number'
         }
 
