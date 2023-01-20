@@ -28,7 +28,7 @@ const Deposit = (props) => {
         let endpoint = '/v1/stk/deposit';
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
             setSuccess(status === 200 || status === 201);
-            setMessage(response);
+            setMessage(response?.message);
         })
     }
 
@@ -37,7 +37,7 @@ const Deposit = (props) => {
         let errors = {}
         console.log("This os the ofending number ", values.msisdn);
 
-        if (!values.msisdn || !values.msisdn.match(/(254|0|)?[71]\d{8}/g)) {
+        if (!values.msisdn || !values.msisdn.match(/(255|0|)?\d{9}/g)) {
             errors.msisdn = 'Please enter a valid phone number'
         }
 

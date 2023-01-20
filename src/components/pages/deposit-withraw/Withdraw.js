@@ -26,7 +26,9 @@ const Withdrawal = (props) => {
     const handleSubmit = values => {
         let endpoint = '/v1/withdraw';
         console.log("The endpoint is here");
-        makeRequest({url: endpoint, method: 'POST', data: {"amount":values.amount, "msisdn":values.msisdn}, use_jwt:false}).then(([status, response]) => {
+        let user = state?.user;
+        user.amount = values.amount;
+        makeRequest({url: endpoint, method: 'POST', data: {"amount":values.amount, "msisdn":values.msisdn, "user":user}, use_jwt:true}).then(([status, response]) => {
             setSuccess(status === 200 || status === 201);
             setMessage(response);
         })
@@ -38,7 +40,7 @@ const Withdrawal = (props) => {
 
         let errors = {}
 
-        if (!values.msisdn || !values.msisdn.match(/(254|0|)?[71]\d{8}/g) ) {
+        if (!values.msisdn || !values.msisdn.match(/(255|0|)?\d{9}/g) ) {
             errors.msisdn = 'Please enter a valid phone number'
         }
 
