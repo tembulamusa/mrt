@@ -33,7 +33,7 @@ const ShareModal = (props) => {
         }
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {
-                setShareId(result.sharable_code);
+                setShareId(result.code);
             } else {
                 setShareMessage("Could not create share code, please try again");
             }
