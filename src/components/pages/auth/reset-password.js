@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
 import makeRequest from "../../utils/fetch-request";
+import { useNavigate } from "react-router-dom";
 
 const Header = React.lazy(() => import('../../header/header'));
 const SideBar = React.lazy(() => import('../../sidebar/awesome/Sidebar'));
@@ -8,7 +9,7 @@ const Right = React.lazy(() => import('../../right/index'));
 const Footer = React.lazy(() => import('../../footer/footer'));
 
 const ResetPassword = (props) => {
-
+    const navigate = useNavigate();
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
     const [otp_sent, setOtpSent] = useState(false)
@@ -45,10 +46,11 @@ const ResetPassword = (props) => {
             setMessage(response.error ? response.error.message : response.success.message);
             response.error ? setSuccess(false) : setSuccess(true)
 
-            let timer = setInterval(() => {
-                clearInterval(timer)
-                window.location.href = "/"
-            }, 3000)
+            if (status == 200 || status === 201) {
+                // setLoading(false);
+                setTimeout(navigate('/login', {state: {preLoginMessage: response.success.message, mobileNumber:values.mobile} }), 3000);
+                
+            }
         })
     }
 
