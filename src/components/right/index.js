@@ -42,8 +42,8 @@ const Right = (props) => {
                     <span className="col-sm-2 bkmrk">
                         <i className="fa fa-bookmark" aria-hidden="true"></i></span>
                                 <span className="col-sm-8 slp">BETSLIP/JAMVI </span>
-                                <span className="col-sm-2 slip-counter">({ Object.keys(state?.betslip).length })</span>
-                                {Object.keys(state?.betslip).length > 0 && (<span className="col-sm-2 float-end share-btn btn btn-light" 
+                                <span className="col-sm-2 slip-counter">({ Object.keys(state?.betslip||{}).length })</span>
+                                {Object.keys(state?.betslip||{}).length > 0 && (<span className="col-sm-2 float-end share-btn btn btn-light" 
                                    style={{marginTop:"4px",width:"fit-content"}}
                                    onClick = {showShareModalDialog} ><span><FontAwesomeIcon icon={faShare} /> </span><span>Share</span></span>) }
 

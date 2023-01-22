@@ -7,7 +7,19 @@ import {
     SidebarHeader, 
     SidebarContent 
 } from 'react-pro-sidebar';
-
+import {
+    faSearch,
+    faPrint,
+    faQuestionCircle,
+    faTimes,
+    faLaptop,
+    faClock,
+    faMagnet,
+    faHome,
+    faDiamond,
+    faMagic, faInfo, faChessBoard, faDice
+} from '@fortawesome/free-solid-svg-icons'
+import {faMobile, faCoins} from "@fortawesome/free-solid-svg-icons";
 import 'react-pro-sidebar/dist/css/styles.css';
 import {getFromLocalStorage, setLocalStorage} from "../../utils/local-storage";
 import makeRequest from "../../utils/fetch-request";
@@ -16,6 +28,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import {Context} from '../../../context/store';
+import HomeIcon from "../../../assets/svg/Home.svg";
+import LiveIcon from "../../../assets/svg/Live.svg";
+import JackpotIcon from "../../../assets/svg/JP.svg";
+import HipoIcon from "../../../assets/img/search-icon.png";
+import PromotionIcon from "../../../assets/svg/Promotions.svg";
+import ShareModal from "../../sharemodal";
 
 const Sidebar = (props) => {
 
@@ -23,6 +41,7 @@ const Sidebar = (props) => {
     const [toggled, setToggled] = useState(false)
     const [sport, setSport] = useState(79)
     const [, dispatch] = useContext(Context);
+    const pathname = window.location.pathname;
 
     const handleCollapsedChange = (checked) => {
         setCollapsed(checked);
@@ -118,7 +137,7 @@ const Sidebar = (props) => {
             overflow: 'scroll initial',
             zIndex: 10,
             // marginRight: '2px',
-            top: "130px"
+            top: "95px"
         }}
              className={`vh-100 text-white sticky-top d-none d-md-block up`}>
             <ProSidebar
@@ -160,6 +179,58 @@ const Sidebar = (props) => {
                 <SidebarContent>
                     <Menu iconShape="circle">
 
+                        <div className="base-submenu uppercase">
+                            <MenuItem className={pathname === '/' ? "active" : ''}>
+                                <a href="/" title="Home">
+                                <FontAwesomeIcon icon={faHome} className="hide1"/> Home
+                                </a>
+                            </MenuItem>
+
+                            <MenuItem className={`live-game ${pathname === '/live' ? 'active' : ''}`}>
+                                <a href="/live"
+                                   title="Live"><FontAwesomeIcon icon={faMobile} className="hide1"/>Live</a>
+                            </MenuItem>
+
+                            <MenuItem className={`${pathname === '/highlights' ? 'active' : ''}`}>
+                                <a href="/highlights"
+                                   title="Highlights"><FontAwesomeIcon icon={faMobile} className="hide1"/>Mechi Kali</a>
+                            </MenuItem>
+                            <MenuItem className={`${pathname === '/jackpot' ? 'active' : ''}`}>
+                                <a href="/jackpot"
+                                   title="Jackpot"><FontAwesomeIcon icon={faMobile} className="hide1"/>Jackpot</a>
+                            </MenuItem>
+                            <MenuItem className={`${pathname === '/app' ? 'active' : ''}`}>
+                                <a href="/app"
+                                   title="Mobile App">
+                                   <FontAwesomeIcon icon={faMobile} className="hide1"/>Mobile App
+                                </a>
+                            </MenuItem>
+                            <MenuItem className={`${pathname === '/how-to-play' ? 'active' : ''}`}>
+                                <a href="/how-to-play"
+                                   title="Jinsi Ya Kucheza">
+                                   <FontAwesomeIcon icon={faMobile} className="hide1"/>Jinsi Ya Kucheza
+                                   </a>
+                            </MenuItem>
+                            <MenuItem className={`${pathname === '/how-to-play' ? 'active' : ''}`}>
+                                <a href="/how-to-play"
+                                   title="Lipa Hapa">
+                                   <FontAwesomeIcon icon={faCoins} className="hide1"/>Lipa Hapa
+                                </a>
+                            </MenuItem>
+                            <MenuItem className={`${pathname === '/lottery' ? 'active' : ''}`}>
+                                <a href="https://www.biko.co.tz/sw"
+                                   title="Live">
+                                   <FontAwesomeIcon icon={faDice} className="hide1"/>Cheza Biko SMS Lottery
+                                </a>
+                            </MenuItem>
+                            <MenuItem className={`${pathname === '/news' ? 'active' : ''}`}>
+                                <a href="https://blog.bikosports.co.tz/?amount=&loggedOn=0&phone="
+                                   title="Live">
+                                   <FontAwesomeIcon icon={faMobile} className="hide1"/>Sports news
+                                </a>
+                            </MenuItem>
+                        </div>
+
                         <SubMenu title={'Top Leagues'} defaultOpen={true}
                            icon={<img style={{borderRadius: '50%', height: '30px'}}
                                     src={getSportImageIcon("Soccer")}/>} >
@@ -174,6 +245,7 @@ const Sidebar = (props) => {
                                 </MenuItem>
                             ))}
                         </SubMenu>
+
                         {competitions?.all_sports.map((competition, index) => (
 
                             <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id) && index !== 0}

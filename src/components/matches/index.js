@@ -287,13 +287,17 @@ const SideBets = (props) => {
     const [picked,] = useState();
 
     return (
+    <>
+        <div>
         <div
             className={`bet-fix events-odd pad ${picked} align-self-center more-markets-container m-lg-2`}>
             {(match?.side_bets > 1) && <>
                 <a className="side" title={'More Markets'}
                    href={`/match/${live ? 'live/' : ''}${
                        live ? match.parent_match_id : match?.match_id}`
-                   }>+{match.side_bets}
+                   }><span className="text-tertiary">+{match.side_bets}</span>
+                <div className="normal-font-weight dark-text">Markets</div>
+
                 </a>
                 { /**
                    <a className="side"
@@ -305,6 +309,8 @@ const SideBets = (props) => {
                 **/ }
             </>}
         </div>
+        </div>
+        </>
     )
 
 }
@@ -556,6 +562,14 @@ const ColoredCircle = ({color}) => {
     ) : null;
 };
 
+const MarketsWordMount = (props) => {
+    return (
+        <>
+            <span>Markets</span>
+        </>
+    )
+}
+
 const getUpdatedMatchFromOdds = (props) => {
     const {match, marketName, odd_key, odd_data} = props;
     let newMatch = {...match, ...odd_data};
@@ -591,7 +605,7 @@ const MatchRow = (props) => {
     return (
         <div className="top-matches d-flex">
             
-                <div className="col-sm-1 col-xs-12 pad left-text" key="22">
+                <div className="col-sm-2 col-xs-12 pad left-text" key="22">
                 {live &&
                     <>
                         <small style={{color: "red"}}> {match?.match_status} </small>
@@ -599,22 +613,23 @@ const MatchRow = (props) => {
                     </>
                 }
                 
-                <div className="d-flex flex-column d-none d-md-block" key="20">
-                    <span className={'small'}>
+                <div className="d-flex flex-column d-none d-md-block bold dark-text" key="20">
+                    <div className={'small'}>
                         {(live && match?.match_time) ?
                             <>{`${match.match_time}'`}</> : match?.start_time}
-                    </span>
-                    <>ID: {match?.game_id}</>
+                    </div>
+                    {/*<>ID: {match?.game_id}</>*/}
+                    <div className="d-none d-md-block">
+                    <small>{match.category} | {match.competition_name}</small>
+                    </div>
                 </div>
             </div>
             <div className="col-2 col-xs-12 match-detail-container" key="23">
                 <a href={jackpot ? '#' : `/match/${live ? 'live/' + match.parent_match_id : match.match_id}`}>
                     <div className="d-flex flex-column">
-                        <div className="compt-detail overflow-ellipsis" key="0034">
+                        <div className="compt-detail overflow-ellipsi" key="0034">
                             <div className="d-flex flex-column" key="20">
-                                <span className="d-none d-md-block">
-                                    <small>{match.category} | {match.competition_name}</small>
-                                </span>
+                                
                                 <span className={'small  d-xs-block d-sm-block d-md-none'}>
                                 {(live && match?.match_time) ?
                                     <>{`${match.match_time}'`}</> : match?.start_time}
@@ -628,7 +643,7 @@ const MatchRow = (props) => {
                                 <span className="opacity-reduce-txt vs-styling">
                                 {live && match?.score}
                                     {!live && ''}
-                            </span>
+                            VS </span>
                             </div>
                             <div className={'bold'}>
                                 {match.away_team}
@@ -687,7 +702,9 @@ const MatchRow = (props) => {
                 
             </div>
             {!pdown && !jackpot &&
-                    <SideBets match={match} live={live} style={{}} className="d-block"/>}
+                    <SideBets match={match} live={live} style={{}} className="d-block"/>
+                    
+                }
         </div>
     )
 

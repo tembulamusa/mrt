@@ -9,7 +9,7 @@
 	.st3{fill:#F04B3D;}
 	.st4{fill:none;}
 	.st5{enable-background:new    ;}
-	.st6{fill:#FFFFFF;}
+	.st6{fill:currentColor;}
 </style>
 <rect x="247.45" y="-445.52" class="st0" width="179.22" height="32.26"/>
 <rect x="247.44" y="-402.12" class="st1" width="179.22" height="32.26"/>

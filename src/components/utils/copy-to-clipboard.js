@@ -30,7 +30,7 @@ const ClipboardCopy = ({ copyText }) => {
           <input type="text" className="disabled" style={{width:"100%"}} value={copyText} readOnly />
       </div>
       <div className="col-2">
-          <button onClick={handleCopyClick} style = {{background:"#0c3c5a", color:"#fff"}}>
+          <button onClick={handleCopyClick} style = {{background:"#0c3c5a", color:"#fff", padding: "2px 10px"}}>
             <span>{isCopied ? 'Copied!' : 'Copy'}</span>
           </button>
       </div>

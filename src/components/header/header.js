@@ -1,5 +1,6 @@
 import React, {useEffect, useCallback, useState, useContext, useRef} from 'react';
 import {useNavigate} from "react-router-dom"
+import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
@@ -9,7 +10,16 @@ import {ToastContainer} from 'react-toastify';
 import makeRequest from '../utils/fetch-request';
 import {setLocalStorage} from '../utils/local-storage';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
+import {
+    faSearch,
+    faPrint,
+    faQuestionCircle,
+    faTimes,
+    faLaptop,
+    faClock,
+    faMagnet,
+    faMagic, faInfo, faChessBoard, faDice
+} from '@fortawesome/free-solid-svg-icons'
 import logo from '../../assets/img/logo.png';
 import {Navbar, Nav, Offcanvas} from "react-bootstrap";
 import SideBar from "../sidebar/awesome/Sidebar";
@@ -17,9 +27,11 @@ import {Menu, MenuItem, ProSidebar, SidebarContent, SidebarHeader, SubMenu} from
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import SidebarMobile from "../sidebar/awesome/SidebarMobile";
+import ShareModal from "../sharemodal";
 
 const ProfileMenu = React.lazy(() => import('./profile-menu'));
 const HeaderLogin = React.lazy(() => import('./top-login'));
+const HeaderMenuToggle = React.lazy(() => import('./menu-toggle'));
 const HeaderNav = React.lazy(() => import('./header-nav'));
 const MobileLogin = React.lazy(() => import('./mobile-login-link'));
 const MobileToggleMkts = React.lazy(() => import('./mobile-toggle-markets'));
@@ -30,8 +42,51 @@ const Header = (props) => {
     const history = useNavigate();
     const containerRef = useRef();
     const {current} = containerRef;
+    const [state,] = useContext(Context);
+    const pathname = window.location.pathname;
+    const [searching, setSearching] = useState(false)
+    const [matches, setMatches] = useState([])
+    const searchInputRef = useRef(null)
+    const [time, setTime] = useState();
+    
+
+    useEffect(() => {
+        fetchMatches()
+    }, [searching])
 
 
+    useEffect(() => {
+        const timer = setInterval(() => {
+          setTime(new Date().toLocaleString().slice(12,22));
+        }, 1000);
+
+        return () => {
+          clearInterval(timer);
+        };
+      }, []);
+
+    const fetchMatches = async (search) => {
+        if (search && search.length >= 3) {
+            let method = "POST"
+            let endpoint = "/v1/matches?page=" + (1) + `&limit=${10}&search=${search}`;
+            await makeRequest({url: endpoint, method: method, data: []}).then(([status, result]) => {
+                if (status === 200) {
+                    setMatches(result?.data || result)
+                }
+            });
+        }
+
+    };
+
+    const showSearchBar = () => {
+        setSearching(true)
+        // searchInputRef.current.focus()
+    }
+
+    const dismissSearch = () => {
+        setSearching(false)
+        setMatches([])
+    }
     const NotifyToastContaner = () => {
         return <ToastContainer
             position="top-right"
@@ -93,15 +148,39 @@ const Header = (props) => {
                             </div>
                         </Navbar.Brand>
                     </div>
-                    <div className="col-9 change-size" id="navbar-collapse-main">
-                        <div className="col-sm-12 disable-ipad d-none d-md-block">
-                            {user ? <ProfileMenu user={user}/> : <HeaderLogin setUser={setUser}/>}
-                        </div>
-                        {/*For the mobile*/}
-                        <div className="vissible-mobile d-lg-none right enable-ipad d-lg-none d-md-none">
-                            {user ? "" : <MobileLogin/>}
-                        </div>
+                    <div className="col-8 change-size pt-4" id="navbar-collapse-main">
+                        <div className="row">
+                            <div id="navbar-collapse-main"
+                                       className={`col-8 fadeIn header-menu d-flex justify-content-center`}>
+                                            <input type="text" placeholder="Search for Events and Tournaments" ref={searchInputRef}
+                                                   onInput={(event) => fetchMatches(event.target.value)}
+                                                   className={'form-control input-field border-0  no-border-radius'}/>
+                                        
+                                    <div
+                                        className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
+                                        {matches.map((match, index) => (
+                                            <a href={`/?search=${match.home_team}`} key={index}>
+                                                <li style={{borderBottom: "1px solid #eee"}}>
+                                                    {match.home_team}
+                                                </li>
+                                            </a>
+                                        ))}
+                                    </div>
+                            </div>
 
+
+                            <div className="col-sm-12 col-md-4 disable-ipad d-none d-md-block">
+                                {user ? <ProfileMenu user={user}/> : 
+                                <div className="top-login float-end">
+                                <a href="/login" className="cg login-button btn width-auto">Login</a>
+                                <a href="/signup" className="btn btn-primary">Register</a>
+                                </div>}
+                            </div>
+                            {/*For the mobile*/}
+                            <div className="vissible-mobile d-lg-none right enable-ipad d-lg-none d-md-none">
+                                {user ? "" : <MobileLogin/>}
+                            </div>
+                    </div>
                     </div>
                     { /* Mobile version user profile */}
                     <div className="vissible-mobile small-mobile d-lg-none d-md-none col-12">
@@ -109,8 +188,11 @@ const Header = (props) => {
                         
                     </div>
                    </Row>
+
+                   {/*
                     <Row className="second-nav ck pc os app-navbar app-header-nav">
-                        <HeaderNav/>
+                */}
+                        {/*<HeaderNav/>*/}
                     <div className="col-sm-3 col-3 vissible-mobile d-lg-none float-end header-navigation" id="header">
                         {/* Add menus for the mobile*/}
 
@@ -124,9 +206,11 @@ const Header = (props) => {
                          
                         
                     </div>
-
+                    {/*
                     </Row>
+                */}
 
+                <HeaderMenuToggle />
 
         { /** <Navbar.Offcanvas
                         style={{width: "100% !important", height: "100%"}}
@@ -149,6 +233,9 @@ const Header = (props) => {
                     </Navbar.Offcanvas> */}
                 </Container>
             </Navbar>
+
+          <ShareModal shown={state?.showsharemodal === true} />
+
         </>
 
     )

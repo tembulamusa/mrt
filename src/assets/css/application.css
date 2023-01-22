@@ -61,7 +61,7 @@
 .app-navbar .form-control {
   border: 1px solid #636363;
   /* background: rgba; */
-  border-radius: 3px !important;
+  /*border-radius: 3px !important;*/
   /* height: 31px; */
   font-weight: 100;
 }
