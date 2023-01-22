@@ -11,7 +11,7 @@
 	.st5{fill:none;}
 	.st6{fill:#EE212E;}
 	.st7{fill:#ED1C24;}
-	.st8{fill:#FFFFFF;}
+	.st8{fill:currentColor;}
 	.st9{fill-rule:evenodd;clip-rule:evenodd;fill:#606161;}
 </style>
 <g>
@@ -31,13 +31,13 @@
 <rect x="162.62" y="-360.53" class="st3" width="179.22" height="32.26"/>
 <rect x="162.63" y="-317.13" class="st4" width="179.22" height="32.26"/>
 <rect x="201.67" y="-435.82" class="st5" width="130.9" height="16.85"/>
-<text transform="matrix(1 0 0 1 201.6741 -425.8565)" style="fill:#F2F2F2; font-family:'DINPro'; font-size:14px;">#902065</text>
+<text transform="matrix(1 0 0 1 201.6741 -425.8565)" style="fill:currentColor; font-family:'DINPro'; font-size:14px;">currentColor</text>
 <rect x="199.12" y="-392.42" class="st5" width="133.45" height="16.85"/>
-<text transform="matrix(1 0 0 1 199.1209 -382.4533)" style="fill:#F2F2F2; font-family:'DINPro'; font-size:14px;">#2C2457</text>
+<text transform="matrix(1 0 0 1 199.1209 -382.4533)" style="fill:currentColor; font-family:'DINPro'; font-size:14px;">currentColor</text>
 <rect x="199.12" y="-349.92" class="st5" width="133.45" height="16.85"/>
-<text transform="matrix(1 0 0 1 199.1209 -339.9549)" style="fill:#F2F2F2; font-family:'DINPro'; font-size:14px;">#F8A944</text>
+<text transform="matrix(1 0 0 1 199.1209 -339.9549)" style="fill:currentColor; font-family:'DINPro'; font-size:14px;">currentColor</text>
 <rect x="199.12" y="-307.42" class="st5" width="127.8" height="16.85"/>
-<text transform="matrix(1 0 0 1 199.1209 -297.4565)" style="fill:#F2F2F2; font-family:'DINPro'; font-size:14px;">#F1493C</text>
+<text transform="matrix(1 0 0 1 199.1209 -297.4565)" style="fill:currentColor; font-family:'DINPro'; font-size:14px;">currentColor</text>
 <g>
 	<path class="st0" d="M-62.86,30.06c0.59-1.39-0.06-3-1.45-3.59c-0.34-0.14-0.7-0.22-1.07-0.22c-1.1,0-2.09,0.66-2.52,1.67
 		c-0.29,0.67-0.29,1.42-0.02,2.1c0.27,0.68,0.8,1.21,1.47,1.5c0.34,0.14,0.7,0.22,1.07,0.22C-64.28,31.73-63.29,31.07-62.86,30.06

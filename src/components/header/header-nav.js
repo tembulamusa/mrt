@@ -61,7 +61,7 @@ const HeaderNav = (props) => {
 
     const showSearchBar = () => {
         setSearching(true)
-        searchInputRef.current.focus()
+        // searchInputRef.current.focus()
     }
 
     const dismissSearch = () => {

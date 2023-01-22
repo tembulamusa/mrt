@@ -419,7 +419,7 @@ header, li a, .thedate span {
 }
 
 .top-login-input-field::placeholder {
-    color: gray;
+    /*color: gray;*/
 }
 
 
@@ -870,15 +870,13 @@ header, li a, .thedate span {
 }
 
 .top-matches div {
-	/* display: block; */
-	/* overflow: auto; */
-	/* padding: 0px; */
-	/* min-height: 35px; */
-	/* height: auto; */
-	/* margin-right: ; */
-	padding-right: 15px;
+    /* display: block; */
+    /* overflow: auto; */
+    /* padding: 0px; */
+    /* min-height: 35px; */
+    /* height: auto; */
+    padding-right: 5px;
 }
-
 .top-matches div:last-child {
     padding-right:0;
 }
@@ -924,17 +922,16 @@ header, li a, .thedate span {
 }
 
 .top-matches .side {
-    padding: 2px 8px 2px 5px;
+    padding: 12px 8px 2px 5px;
     outline-style: none;
     outline: none;
     text-align: center;
     float: right;
     font-size: 12px;
-    height: 30px;
-    line-height: 25px;
+    height: 36px;
+    line-height: 13px;
     border-radius: 2px;
-    font-weight:bold;
-
+    font-weight: bold;
 }
 
 button {
@@ -1178,21 +1175,21 @@ button {
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: #fff;
+    /*color: #fff;*/
 }
 
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #fff;
+    /*color: #fff;*/
     opacity: 1;
 }
 
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #fff;
+    /*color: #fff;*/
     opacity: 1;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #fff;
+    /*color: #fff;*/
 }
 
 .thedate {
@@ -1968,10 +1965,14 @@ events-header {
 }
 
 .opacity-reduce-txt.vs-styling {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
     font-size: 10px;
-    color: rgb(105, 129, 154);
+    /* color: rgb(105, 129, 154); */
+}
+
+.dark-text {
+    color: #000;
 }
 
 .std-side-pads {
@@ -2054,17 +2055,19 @@ events-header {
     font-weight: bold !important;
 }
 
-.matches .top-matches {
-    background: #fff;
-    padding-top: 10px;
+.web-element.container .top-matches {
+    background: rgba(52, 179, 191, 0.06);
+    padding-top: 4px;
+    border: 1px solid rgba(52, 179, 191, 0.3);
     padding-bottom: 3px;
     margin-bottom: 0px;
     padding-left: 10px;
     padding-right: 10px;
+    border-radius: 7px;
     font-weight: normal;
     color: #797979;
     font-size: 12px;
-    margin:0px;
+    margin: 8px 0;
 }
 
 .mobi #search-event {
@@ -3904,21 +3907,21 @@ output {
 }
 
 .form-control::-moz-placeholder {
-    color: #fff;
+    /*color: #fff;*/
     opacity: 0.6;
     font-weight: 100 !important;
     font-family: arial;
 }
 
 .form-control:-ms-input-placeholder {
-    color: #fff;
+    /*color: #fff;*/
     opacity: 0.6;
     font-weight: 100 !important;
     font-family: arial;
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #fff;
+    /*color: #fff;*/
     opacity: 0.6;
     font-weight: 100 !important;
     font-family: arial;
@@ -5930,19 +5933,24 @@ tbody.collapse.in {
 .dropdown-menu {
     position: absolute;
     top: 100%;
-    left: 0;
+    /* left: 0; */
+    right: 0;
     z-index: 1000;
     display: none;
-    float: left;
+    /* float: left; */
     min-width: 160px;
     padding: 5px 0;
     margin: 2px 0 0;
     list-style: none;
     font-size: 14px;
     text-align: left;
-    background-color: #26408A;
+    background-color: #fff;
     border-radius: 0;
     background-clip: padding-box;
+}
+
+.btn-top-menu-btn {
+    color: #fff !important;
 }
 
 .dropdown-menu.eg {
@@ -7707,8 +7715,8 @@ ul.sport {
     }
 
     .amt {
-        margin-top: 130px !important;
-        scroll-margin-top: 140px;
+        margin-top: 95px !important;
+        scroll-margin-top: 97px;
     }
 }
 
@@ -15296,8 +15304,9 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 }
 
 .home-team.disabled, .disabled, .draw.disabled, .away_team.disabled, .market-butt.disabled {
-    background-color: #999999 !important;
+    background-color: rgba(52, 179, 191, 0.2);
     color: #000 !important;
+    border: 1px solid rgba(52, 179, 191, 0.3);
 }
 
 .live-stats {
@@ -15486,9 +15495,9 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 }
 .betslip-container {
     position: sticky !important;
-    top: 130px !important;
+    top: 95px !important;
     /* right: 9px; */
-    /*max-width: 210px;*/
+    /* max-width: 210px; */
     background: #fff;
 }
 
@@ -15616,9 +15625,10 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 .c-btn-group > .c-btn {
     border-radius: 0;
     border: none;
-    border-right: 1px solid #bababa;
+    /* border-right: 1px solid #bababa; */
     width: 50px !important;
     height: 35px !important;
+    margin-right: 4px;
     line-height: 30px;
 }
 .c-btn-group > .c-btn:last-child {
@@ -16190,4 +16200,103 @@ footer .row {
     .left-with-big-pad-desktop {
         padding-left: 10px;
     }
+}
+
+svg:hover {
+  fill: red !important;
+}
+
+.st6 {
+    color: red !important;
+}
+
+.base-submenu svg path {
+    color: #34B3BF;
+}
+
+.base-submenu .svg-inline--fa {
+    /*width: 0.625em;*/
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.pro-sidebar .pro-menu .pro-menu-item.active {
+    color: #fff !important;
+    background: #34B3BF;
+}
+
+.pro-sidebar .pro-menu .pro-menu-item.active a,
+.pro-sidebar .pro-menu .pro-menu-item:hover a {
+    color: #fff !important;
+    background: #34B3BF;
+}
+.pro-sidebar .pro-menu .pro-menu-item.active svg path,
+.pro-sidebar .pro-menu .pro-menu-item:hover svg path {
+    color: #fff !important;
+    /*background: #34B3BF;*/
+}
+
+.pro-sidebar .pro-menu .base-submenu .pro-menu-item {
+    font-size: 15px;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+::placeholder {
+    /*color: black;*/
+    /*opacity: 1;*/
+}
+
+.form-control ::placeholder {
+   color: #000 !important;
+}
+
+.width-auto {
+    width: auto;
+}
+
+.top-login .btn {
+    width: 100px;
+    height: 34px;
+    line-height: 26px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.header-menu .input-field {
+    height: 35px !important;
+    max-width: 530px;
+    border-radius: 15px;
+}
+
+.dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: auto;
+    right: 0;
+    margin-top: var(--bs-dropdown-spacer);
+}
+
+.small, small {
+    font-size: 9px;
+}
+
+.web-element a {
+    color: #34B3BF!important;
+}
+
+.normal-font-weight {
+    font-weight: 400;
+}
+
+.text-tertiary {
+    color: #C6224E !important;
+}
+
+.resp-sharing-button__link {
+    text-decoration: none;
+    color: #fff;
+    margin: 0.5em auto;
+    margin-left: 0;
 }
