@@ -10,75 +10,28 @@ const ProfileMenu = (props) => {
   return (
     <>
       {user && (
-        <div className="ale ss profile  row  float-end">
+        <div className="profile  row top-profile">
           <div className="d-none d-md-block col-12">
-            <a
-              href="/deposit"
-              className={"btn profile-item btn-primary primary-bg"}
-              style={{ fontSize: "16px", fontWeight: "bold", border:"none", borderRadius:"3px",padding:"10px 30px", width:"max-content"}}
-            >
-              <span className="font-tbt overflow-hidden justify-content-center  rescale">
-               <span className=" space-icons"> <FontAwesomeIcon icon={faCoins} /></span> Deposit 
-              </span>
-            </a>
-              <span className="profile-item no-link">
-                <div className="">Bonus  {formatNumber(user.bonus) || 0} </div>
-                <span className="">Balance  {formatNumber(user.balance) || 0} </span>
-              </span>
-              
-         
-
-              <a href="/withdraw" className="profile-item">
-                <span className="">
-                <span className=" space-icons"><FontAwesomeIcon icon={faCoins} /> </span>Withdraw
-                </span>
-              </a>
-             
-              <a href="/my-bets" className={"profile-item"}>
-                <span className="">
-                <span className=" space-icons"><FontAwesomeIcon icon={faCoins} /> </span>My Bets
-                </span>
-              </a>
-              <span className="profile-item">
-              <span className="no-link"><span className="space-icons"><FontAwesomeIcon icon={faUser} /> </span>{user?.msisdn}</span>
-              <a href="/logout" className="d-block">
-                <span className="">
-                <span className=" space-icons"> <FontAwesomeIcon icon={faLock} /> </span>Logout
-                </span>
-              </a>
-              </span>
-              
             
-          </div>
-
-
-        {/* Style for the mobile */}
-          <div className="col-sm-12 d-md-none col-lg-none col-sm-block mobile-profile-menu" style={{textAlign:"left"}}>
-            <div className="bal">
-                <span className="" style={{paddingRight: "10px"}}>Biko Bonus  {formatNumber(user.bonus) || 0} </span>
-                <span className="">Balance  {formatNumber(user.balance) || 0} </span>
-            </div>
-
-            <a href="/deposit" className={"btn   "}
-              style={{background:"#39b54a", borderRadius:"3px"}}
-            >
-              <span className="font-tbt overflow-hidden justify-content-center  rescale">
-               <span className=""> <FontAwesomeIcon icon={faCoins} /></span> Deposit 
-              </span>
-            </a>
-
-            <a href="/withdraw">
-                <span className="font-tbt pad-2">
-                <span className=""><FontAwesomeIcon icon={faCoins} /> </span>Withdraw
-                </span>
-              </a>
-            <a href="/my-bets">My Bets</a>
-            <a href="/logout" className="mobile-profile-menu-ietm">
-                <span className="font-tbt py-0">
-                <span className=""> <FontAwesomeIcon icon={faLock} /> </span>Logout
-                </span>
-              </a>
-          </div>
+              <div className="row uppercase">
+                <div className="col-3 right-bordered-col">
+                  <FontAwesomeIcon icon={faUser} className="profile-icon float-end"/>
+                </div>
+                <div className="col-3 right-bordered-col">
+                  <div className="cream-text">User Profile</div>
+                  {user?.msisdn}
+                </div>
+                <div className="col-3 right-bordered-col">
+                  <div className="cream-text">A/C Balance</div>
+                  Tsh. {formatNumber(user.balance) || 0}
+                </div>
+                <div className="col-3">
+                  <div className="cream-text">Bonus</div>
+                  Tsh. {formatNumber(user.bonus) || 0}
+                </div>
+                
+              </div>
+          </div>         
 
         </div>
 

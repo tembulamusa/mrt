@@ -251,12 +251,14 @@ const MoreMarketsHeaderRow = (props) => {
         match_status
     } = props;
 
+    const datetime = new Date();
+    
     return (
         <Container className="mt-2">
-            <div className="panel-header primary-bg">
+            <div className="panel-header match-detail-header">
 
-                <h4 className="inline-block">
-                    {home_team} <small> - </small> {away_team}
+                <h4 className="inline-block text-center">
+                    <span className="uppercase text-uppercase">{home_team}</span> <small> vs </small> {away_team}
                 </h4>
                 {live &&
                     <Row className="header-text">
@@ -272,9 +274,10 @@ const MoreMarketsHeaderRow = (props) => {
                     <Row className="start-time">
                         {live
                             ? <Col>Live: <span>{match_time || match_status}</span></Col>
-                            : <Col>Start: {start_time}</Col>}
+                            : <Col className="left-text small-text weight-500">{start_time.slice(-8)} <div>{start_time.slice(0, -8)}</div></Col>
+                        }
 
-                        <Col>Game ID: {game_id} </Col>
+                        <Col></Col>
                     </Row>
                 }
             </div>
@@ -521,8 +524,8 @@ const MarketRow = (props) => {
     }
 
     return (
-        <div className="top-matches match">
-            <Row className="top-matches header">
+        <div className="top-matches match sidebet-detail">
+            <Row className="top-matches header detail-title">
                 {live &&
                     <div
                         style={{

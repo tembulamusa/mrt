@@ -78,8 +78,9 @@
     background: #0C3C5A;
     padding: 3px 0px 3px 5px;
 }
-.filter-groups .dropdown-menu{
-   background:#eaeaea;
+.filter-groups .dropdown-menu {
+    /* background: #eaeaea; */
+    opacity: 0.95;
 }
 
 .filter-icon {
@@ -722,23 +723,26 @@ header, li a, .thedate span {
 }
 
 .matches .top-matches .match-detail button {
-	cursor: pointer;
-	float: left;
-	min-width: 100%;
-	margin-right: 0px;
-	border-radius: 0px !important;
-	text-align: left;
-	margin-bottom: 10px;
-	height: 40px;
+    cursor: pointer;
+    float: left;
+    min-width: 100%;
+    margin-right: 0px;
+    border-radius: 7px !important;
+    text-align: left;
+    margin-bottom: 10px;
+    height: 40px;
+}
+.match-detail button .label {
+    font-weight: 500;
 }
 
-.match-detail button .label {
-    font-weight:bold;
+.match-detail button .label.odd-value {
+    font-weight: 700;
 }
 .matches .top-matches .match-detail button.home-team {
     /* background: #e3e3e3 !important; */
     padding-right: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(52, 179, 191, 0.3);
 }
 .matches .top-matches .match-detail button.home-team.picked {
     background: #34B3BF !important;
@@ -748,7 +752,7 @@ header, li a, .thedate span {
     color: #fff !important;
 }
 .match-detail button .label:hover{
-    background: #2c2457 !important;
+    /*background: #2c2457 !important;*/
     color:#fff !important;
 }
 .match-detail button .label:hover, .match-detail button.picked .label {
@@ -1689,7 +1693,7 @@ header {
 
 .profile {
     margin-right: 0 !important;
-    text-align: right;
+    /*text-align: right;*/
     color: #f9f9f9;
     font-weight: 600;
 }
@@ -5944,7 +5948,7 @@ tbody.collapse.in {
     list-style: none;
     font-size: 14px;
     text-align: left;
-    background-color: #fff;
+    background-color: #0C3C5A;
     border-radius: 0;
     background-clip: padding-box;
 }
@@ -7165,7 +7169,7 @@ ul.sport {
     }
 
     .amt {
-        padding-top: 90px !important;
+        padding-top: 62px !important;
     }
 
     .shrink-header .icon-holder img {
@@ -7715,9 +7719,9 @@ ul.sport {
     }
 
     .amt {
-        margin-top: 95px !important;
-        scroll-margin-top: 97px;
-    }
+    margin-top: 84px !important;
+    scroll-margin-top: 97px;
+}
 }
 
 @media (min-width: 1260px) {
@@ -12216,7 +12220,7 @@ fieldset[disabled] .tw.active {
 }
 
 .dropdown-menu {
-    padding: 10px 0;
+    padding: 10px 0px 0;
 }
 
 .dropdown-menu > li > a {
@@ -15495,12 +15499,11 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 }
 .betslip-container {
     position: sticky !important;
-    top: 95px !important;
+    top: 84px !important;
     /* right: 9px; */
     /* max-width: 210px; */
     background: #fff;
 }
-
 @media(max-width: 640px)
 
 .betslip-container-mobile {
@@ -15748,9 +15751,10 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     background-color: #C6224E;
     border-color: #902065;
 }
-.dropdown-item{
-    border-bottom: 1px solid #f3f3f3;
+.dropdown-item {
+    border-bottom: 1px solid #ffffff4a;
     width: 250px;
+    color: #fff;
 }
 .dropdown-menu.dropdown-menu-default {
 }
@@ -16227,8 +16231,25 @@ svg:hover {
 
 .pro-sidebar .pro-menu .pro-menu-item.active a,
 .pro-sidebar .pro-menu .pro-menu-item:hover a {
-    color: #fff !important;
+    /*color: #fff !important;
+    background: #34B3BF;*/
+}
+
+.pro-menu-item:hover, .pro-menu-item:active a {
     background: #34B3BF;
+    color: #ffffff; 
+}
+
+.small-box-content {
+    border: 1px solid rgba(52, 179, 191, 0.3);
+    padding: 8px;
+    background: rgba(52, 179, 191, 0.06);
+    border-radius: 10px;
+    line-height: 1.5;
+}
+a:hover {
+    color: inherit !important;
+    color: #fff;
 }
 .pro-sidebar .pro-menu .pro-menu-item.active svg path,
 .pro-sidebar .pro-menu .pro-menu-item:hover svg path {
@@ -16274,6 +16295,7 @@ svg:hover {
 .dropdown-menu[data-bs-popper] {
     top: 100%;
     left: auto;
+    opacity: 0.98;
     right: 0;
     margin-top: var(--bs-dropdown-spacer);
 }
@@ -16299,4 +16321,64 @@ svg:hover {
     color: #fff;
     margin: 0.5em auto;
     margin-left: 0;
+}
+
+.top-profile {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.profile-icon {
+    font-size: 25px;
+}
+
+.cream-text {
+    color: #FDDA0D;
+}
+
+.right-bordered-col {
+    flex: 0 0 auto;
+    width: 25%;
+    border-right: 1px solid rgba(255, 255, 255,0.25);
+}
+
+.dark-primary-text {
+    color: #34B3BF;
+    /* font-weight: 500; */
+    /* font-weight: bold; */
+}
+
+.game-type {
+    font-weight: 400;
+    font-size: 11px;
+}
+
+
+.top-matches.header.detail-title {
+    background: transparent;
+    border: none;
+    padding-bottom: 1px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.web-element.container .top-matches.sidebet-detail {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.match-detail-header {
+    background: rgba(52, 179, 191, 0.2);
+    border: 1px solid rgba(52, 179, 191, 0.3);
+}
+
+.small-text {
+    font-size: 11px;
+    line-height: 1.3;
+    
+}
+
+.weight-500 {
+    font-weight: 500;
 }

@@ -143,20 +143,24 @@ const BodyLogin = (props) => {
                             <input type="hidden" name="ref" value="{props.refURL}"/>
                         </div>
                         
-                        <span className="">
-                            <label><input type="checkbox" name="remember" value="1"/>Remember me</label>
-                        </span>
-                        <button className="btn btn-primary" type="submit" style={{marginTop: "10px",
-                        padding: "5px", maxWidth: "100px", fontSize: "14px"}}>
+                        
+                        <button className={`btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button full-width`}
+                                    disabled={isLoading}>
                                 {isLoading ? <span>Logging In ...</span> : <span>Login</span>}
                                 </button>
+                        
+                        
+                        <div className="col-md-6">
+                            <label><input type="checkbox" name="remember" value="1"/>Remember me</label>
+                        </div>
 
-                        <a href="/reset-password" title="Reset password"
+                        <div className="col-md-6"><a href="/reset-password" title="Reset password"
                                onClick={() => gaEventTracker('Reset Password')}>
-                                <span className="">Forgot Password?</span>
-                            </a>
-                                
-                        <div className="col-sm-2">
+                                <span className="float-end bold" style={{color:"#000"}}>Forgot Password?</span>
+                            </a></div>
+                        
+                        <hr/>
+                        <div className="small-box-content">
                             <a className="" href="/signup" title="Join now" onClick={() => gaEventTracker('Register')}>
                                 <span className="register-la">No Account!? Register now!</span>
                             </a>

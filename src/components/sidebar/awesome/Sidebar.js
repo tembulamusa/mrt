@@ -137,7 +137,7 @@ const Sidebar = (props) => {
             overflow: 'scroll initial',
             zIndex: 10,
             // marginRight: '2px',
-            top: "95px"
+            top: "84px"
         }}
              className={`vh-100 text-white sticky-top d-none d-md-block up`}>
             <ProSidebar
@@ -188,16 +188,16 @@ const Sidebar = (props) => {
 
                             <MenuItem className={`live-game ${pathname === '/live' ? 'active' : ''}`}>
                                 <a href="/live"
-                                   title="Live"><FontAwesomeIcon icon={faMobile} className="hide1"/>Live</a>
+                                   title="Live"><FontAwesomeIcon icon={faClock} className="hide1"/>Live Now</a>
                             </MenuItem>
 
                             <MenuItem className={`${pathname === '/highlights' ? 'active' : ''}`}>
                                 <a href="/highlights"
-                                   title="Highlights"><FontAwesomeIcon icon={faMobile} className="hide1"/>Mechi Kali</a>
+                                   title="Highlights"><FontAwesomeIcon icon={faChessBoard} className="hide1"/>Mechi Kali</a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/jackpot' ? 'active' : ''}`}>
                                 <a href="/jackpot"
-                                   title="Jackpot"><FontAwesomeIcon icon={faMobile} className="hide1"/>Jackpot</a>
+                                   title="Jackpot"><FontAwesomeIcon icon={faMagic} className="hide1"/>Jackpot</a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/app' ? 'active' : ''}`}>
                                 <a href="/app"
@@ -208,7 +208,7 @@ const Sidebar = (props) => {
                             <MenuItem className={`${pathname === '/how-to-play' ? 'active' : ''}`}>
                                 <a href="/how-to-play"
                                    title="Jinsi Ya Kucheza">
-                                   <FontAwesomeIcon icon={faMobile} className="hide1"/>Jinsi Ya Kucheza
+                                   <FontAwesomeIcon icon={faQuestionCircle} className="hide1"/>Jinsi Ya Kucheza
                                    </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/how-to-play' ? 'active' : ''}`}>
@@ -226,12 +226,12 @@ const Sidebar = (props) => {
                             <MenuItem className={`${pathname === '/news' ? 'active' : ''}`}>
                                 <a href="https://blog.bikosports.co.tz/?amount=&loggedOn=0&phone="
                                    title="Live">
-                                   <FontAwesomeIcon icon={faMobile} className="hide1"/>Sports news
+                                   <FontAwesomeIcon icon={faInfo} className="hide1"/>Sports news
                                 </a>
                             </MenuItem>
                         </div>
 
-                        <SubMenu title={'Top Leagues'} defaultOpen={true}
+                        <SubMenu title={'Top Leagues'}
                            icon={<img style={{borderRadius: '50%', height: '30px'}}
                                     src={getSportImageIcon("Soccer")}/>} >
                             {competitions?.top_soccer?.map((top_league, index) => (

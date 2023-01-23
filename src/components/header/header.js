@@ -139,6 +139,12 @@ const Header = (props) => {
             <Navbar expand="md" className="mb-0 ck pc os app-navbar top-nav" fixed="top" variant="dark">
                 <Container fluid className={'d-flex justify-content-between mobile-change'}>
                     <Row style={{width: "100%"}}>
+
+                    {/* Mobile top */}
+
+                    <div className="col-12 d-md-none d-flex">
+                    Mobile menu
+                    </div>
                     <div className="col-3">
                         <Navbar.Brand href="/" className="e logo align-self-start co4" title="Bikosports">
                             <div className="">
@@ -148,10 +154,10 @@ const Header = (props) => {
                             </div>
                         </Navbar.Brand>
                     </div>
-                    <div className="col-8 change-size pt-4" id="navbar-collapse-main">
+                    <div className="col-9 change-size pt-3" id="navbar-collapse-main">
                         <div className="row">
                             <div id="navbar-collapse-main"
-                                       className={`col-8 fadeIn header-menu d-flex justify-content-center`}>
+                                       className={`col-7 fadeIn header-menu d-none d-md-flex justify-content-center`}>
                                             <input type="text" placeholder="Search for Events and Tournaments" ref={searchInputRef}
                                                    onInput={(event) => fetchMatches(event.target.value)}
                                                    className={'form-control input-field border-0  no-border-radius'}/>
@@ -169,7 +175,7 @@ const Header = (props) => {
                             </div>
 
 
-                            <div className="col-sm-12 col-md-4 disable-ipad d-none d-md-block">
+                            <div className="col-sm-12 col-md-5 disable-ipd d-md-block">
                                 {user ? <ProfileMenu user={user}/> : 
                                 <div className="top-login float-end">
                                 <a href="/login" className="cg login-button btn width-auto">Login</a>
@@ -177,9 +183,7 @@ const Header = (props) => {
                                 </div>}
                             </div>
                             {/*For the mobile*/}
-                            <div className="vissible-mobile d-lg-none right enable-ipad d-lg-none d-md-none">
-                                {user ? "" : <MobileLogin/>}
-                            </div>
+                            
                     </div>
                     </div>
                     { /* Mobile version user profile */}
@@ -197,10 +201,6 @@ const Header = (props) => {
                         {/* Add menus for the mobile*/}
 
                         <div className="menu-list">
-
-                            <a href="/" className="menu-item active">Home</a>
-                            <a href="/live" className="menu-item live">Live</a>
-                            <a href="/jackpot" className="menu-item">Jackpot</a>
                             <a href="#" className="menu-item"><MobileToggleMkts /></a>
                         </div>
                          
@@ -210,7 +210,7 @@ const Header = (props) => {
                     </Row>
                 */}
 
-                <HeaderMenuToggle />
+                <span className="d-none d-md-flex">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</span>
 
         { /** <Navbar.Offcanvas
                         style={{width: "100% !important", height: "100%"}}

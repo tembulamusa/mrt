@@ -44,9 +44,9 @@ const TermsAndConditions = (props) => {
                     <SideBar loadCompetitions/>
                     <div className="gz home">
                         <div className="homepage">
-                            <div className='col-md-12 primary-bg p-4'>
+                            <div className='col-md-12 primary-bg p-2'>
                                 <h4 className="inline-block">
-                                    GENERAL TERMS AND CONDITIONS
+                                    BIKO SPORTS TERMS AND CONDITIONS
                                 </h4>
                             </div>
 

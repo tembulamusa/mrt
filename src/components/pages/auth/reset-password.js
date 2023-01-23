@@ -160,8 +160,8 @@ const ResetPassword = (props) => {
                     <div className="row">
                         <hr/>
                         <div className="col-md-12">
+                            <div className="form-group row d-flex justify-content-center mt-5">
                             <div className="col-md-12">
-                                <div className="form-group row d-flex justify-content-center mt-5">
                                     <label>OTP</label>
                                     <input
                                         value={values.code}
@@ -178,7 +178,7 @@ const ResetPassword = (props) => {
                                 </div>
                             </div>
                             <div className="form-group row d-flex justify-content-center mt-5">
-                                <div className="col-md-12">
+                                <div className="col-md-6">
                                     <label>Password</label>
                                     <input
                                         value={values.password}
@@ -193,9 +193,7 @@ const ResetPassword = (props) => {
                                         {errors.password}
                                     </div>}
                                 </div>
-                            </div>
-                            <div className="form-group row d-flex justify-content-center mt-5">
-                                <div className="col-md-12">
+                                <div className="col-md-6">
                                     <label>Confirm Password</label>
                                     <input
                                         value={values.repeat_password}

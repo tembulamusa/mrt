@@ -177,16 +177,14 @@ const BetSlip = (props) => {
                                     <input id={slip.match_id} type="submit" value="X"
                                            onClick={() => handledRemoveSlip(slip)}/>
                                 </div>
-                                <div className="bet-value">
-                                    <b>
+                                <div className="bet-value game-type row">
+                                    
                                         {<span style={{
                                             float: "left",
                                             width: "auto",
-                                            fontWeight: "bold"
                                         }}>{slip.sport_name},&nbsp;</span>}
                                         {slip.bet_type === 0 && ' Pre-match'}
                                         {slip.bet_type === 1 && ' Live'}
-                                    </b>
                                 </div>
                                 <div className="row">
                                     <div className="bet-value">{`${slip.home_team} - ${slip.away_team}`}
@@ -195,15 +193,15 @@ const BetSlip = (props) => {
                                 </div>
                                 <div className="row">
                                     <div className="bet-value">
-                                        Market - {slip.odd_type}
+                                        <span className="dark-primary-text">{slip.odd_type}</span>
                                     </div>
                                 </div>
-                                <div className="bet-pick"><b>Your Pick - {slip.bet_pick}
+                                <div className="bet-pick">Pick: {slip.bet_pick}
                                     <span className="bet-odd">{slip.odd_value}
                                         {slip.odd_value === 1 &&
                                             (<span style={{color: "#cc0000", fontSize: "11px", display: "block"}}>Market Disabled</span>)
                                         }
-                            </span></b>
+                            </span>
                                 </div>
                                 <div className="row">
                                     <div className="warn">{slip?.comment} </div>
