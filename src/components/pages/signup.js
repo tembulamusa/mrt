@@ -50,15 +50,22 @@ const Signup = (props) => {
         if (!values.password || values.password.length < 4) {
             errors.password = "Please enter four or more characters for password";
         }
+        if (!values.repeat_password) {
+            errors.repeat_password = "Please enter your password confirmation"
+        }
+
+        if (values.password !== values.repeat_password) {
+            errors.repeat_password = "The passwords do not match. Please enter the password you entered above."
+        }
 
         return errors
     }
 
     const FormTitle = () => {
         return (
-            <div className='col-md-12 primary-bg p-4 text-center'>
+            <div className='col-md-12 primary-bg p-2 text-center'>
                 <h4 className="">
-                    SIGNUP | CREATE A NEW ACCOUNT
+                    JISAJILI BIKOSPORTS
                 </h4>
             </div>
         )
@@ -73,13 +80,20 @@ const Signup = (props) => {
             setFieldValue(field, value);
         }
         const loadingContent = function(){
-            return <span className="loading">Registering</span>
+            return <span className="loading">subiria sajili</span>
         }
         return (
             <Form>
                 <div className="pt-0">
                     <div className="row">
-                        <div className='col-md-6 text-center'>
+                        <div className='col-12 text-cente'>
+                        <h4>Karibu BIKOSPORTS</h4>
+                        <div className="small-box-content">
+                        Jaza maelezo yote yanayohitajika, ikiwemo namba ya simu na nenosiri (password). Bofya na hakikisha kuwa umesoma na kukubali kanuni, na
+                        umetimiza umri wa miaka 18.
+                        Bofya kitufe cha “Jisajili”. Utapokea ujumbe mfupi (sms) wenye namba ya uhakiki (verification code) yako. Ili kukamilisha usajili wako, fuata
+                        maelekezo ya kutuma namba ya uhakiki ili akaunti mpya na wallet viwezeshwe kwa ajili ya matumizi.
+                        </div>
                         </div>
                         <div className="form-group row d-flex justify-content-center mt-5">
                             <div className="col-md-12">
@@ -98,7 +112,7 @@ const Signup = (props) => {
                         </div>
 
                         <div className="form-group row d-flex justify-content-center mt-5">
-                            <div className="col-md-12">
+                            <div className="col-md-6">
                                 <label>Password</label>
                                 <input
                                     value={values.password}
@@ -111,17 +125,34 @@ const Signup = (props) => {
                                 />
                                 {errors.password && <div className='text-danger'> {errors.password} </div>}
                             </div>
+
+                            <div className="col-md-6">
+                                    <label>Confirm Password</label>
+                                    <input
+                                        value={values.repeat_password}
+                                        className="text-dark deposit-input form-control col-md-12 input-field"
+                                        id="confirm_password"
+                                        name="repeat_password"
+                                        type="password"
+                                        placeholder='Password'
+                                        onChange={ev => onFieldChanged(ev)}
+                                    />
+                                    {errors.repeat_password &&
+                                        <div className='text-danger'>
+                                            {errors.repeat_password}
+                                        </div>}
+                                </div>
                         </div>
                         <div className="form-group row d-flex justify-content-left mb-4">
-                            <div className="col-md-3">
+                            <div className="col-md-12">
                                 <button type="submit"
-                                    className={`btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button`}
+                                    className={`btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button full-width`}
                                     disabled={loading}
                                     >
                                     {loading ? loadingContent() : 'Signup'}
                                 </button>
-
-                                <p>Already Have an account!? <a href="/login"><strong>Click here to Login</strong></a></p>
+                                <hr/>
+                                <p className="small-box-content">Already Have an account!? <a href="/login"><strong>Click here to Login</strong></a></p>
                             </div>
                         </div>
                     </div>

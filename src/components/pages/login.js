@@ -15,8 +15,12 @@ const BodyLogin = React.lazy(() => import('../header/mobile-login'));
 
 const Login = (props) => {
     const location = useLocation()
-    const { preLoginMessage } = location.state
-    const { mobileNumber } = location.state
+    const preLoginMessage = null
+    const mobileNumber = null
+    if (location.state) {
+        const { preLoginMessage } = location.state
+        const { mobileNumber } = location.state
+    }
 
     // const {state} = useLocation();
     // const {regMessage} = state;
