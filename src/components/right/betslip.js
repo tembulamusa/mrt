@@ -188,7 +188,7 @@ const BetSlip = (props) => {
                                         {slip.bet_type === 1 && ' Live'}
                                 </div>
                                 <div className="row">
-                                    <div className="bet-value">{`${slip.home_team} - ${slip.away_team}`}
+                                    <div className="bet-value">{`${slip.home_team} vs ${slip.away_team}`}
                                         <br/><span className="sp_sport"></span>
                                     </div>
                                 </div>
