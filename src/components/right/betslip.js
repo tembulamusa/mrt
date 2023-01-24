@@ -38,6 +38,7 @@ const BetSlip = (props) => {
                 if(result?.betslip) {
                     setLocalStorage("betslip",result?.betslip);
                     setBetslipsData(result?.betslip);
+                    dispatch({type: "SET", key: betslipKey, payload: result?.betslip});
                 }
             }
         });

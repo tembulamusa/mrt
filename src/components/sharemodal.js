@@ -25,6 +25,7 @@ const ShareModal = (props) => {
     const createSharableBet = useCallback(async () => {
         let endpoint = "/v1/share";
 
+   
         let payload = {
             betslip: betslip,
             ip_address: ipv4,
@@ -57,7 +58,7 @@ const ShareModal = (props) => {
     }, [ipAddress])
 
     useEffect(() => {
-        if(state?.showsharemodal === true) {
+        if(state?.showsharemodal === true && betslip) {
             createSharableBet();
         }
     }, [state?.showsharemodal])
