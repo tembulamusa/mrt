@@ -10,13 +10,17 @@ import {toast} from 'react-toastify';
 import publicIp from 'public-ip';
 import makeRequest from '../utils/fetch-request';
 import 'react-toastify/dist/ReactToastify.css';
-
+import PostBet from "../PostBet"
 import {
     Formik,
     Form as FormikForm,
     useFormikContext,
     Field
 } from 'formik';
+
+import { 
+    setLocalStorage,
+} from '../utils/local-storage';
 
 const Float = (equation, precision = 4) => {
     return Math.round(equation * (10 ** precision)) / (10 ** precision);
@@ -38,6 +42,7 @@ const BetslipSubmitForm = (props) => {
     const [netWin, setNetWin] = useState(0);
 
     const [betslipKey, setBetslipKey] = useState("betslip");
+    const [showMoreOptions, setShowMoreOptions] = useState(false);
 
     useEffect(() => {
         if (jackpot) {
@@ -139,7 +144,13 @@ const BetslipSubmitForm = (props) => {
             .then(([status, response]) => {
                 setMessage(response)
                 if (status === 200 || status == 201 || status == 204 || jackpot) {
+                    
                     //all is good am be quiet
+                    const current_betslip = getBetslip();
+                    setLocalStorage('old_betslip', current_betslip, 1*60*60*1000);
+
+                    setShowMoreOptions(true);
+
                     if (jackpot) {
                         clearJackpotSlip();
                         setMessage({
@@ -289,8 +300,15 @@ const BetslipSubmitForm = (props) => {
                 }
             }
 
-            return (<FormikForm name="betslip-submit-form">
+            const savedBetSlip = getBetslip();
+
+            return (
+                <FormikForm name="betslip-submit-form">
+                
                 <Alert/>
+
+                {showMoreOptions && <PostBet betSlip = {savedBetSlip} />}
+
                 <table className="bet-table">
                     <tbody>
                     {!jackpot && <tr className="hide-on-affix">

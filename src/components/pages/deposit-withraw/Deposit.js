@@ -41,8 +41,8 @@ const Deposit = (props) => {
             errors.msisdn = 'Please enter a valid phone number'
         }
 
-        if (!values.amount || values.amount < 1 || values.amount > 70000) {
-            errors.amount = "Please enter amount between TSH 1.00 and TSH 70,000.00";
+        if (!values.amount || values.amount < 1000 || values.amount > 70000) {
+            errors.amount = "Please enter amount between TSH 1000.00 and TSH 70,000.00";
         }
         return errors
     }

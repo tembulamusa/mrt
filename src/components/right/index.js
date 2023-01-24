@@ -8,7 +8,6 @@ import { faShare } from "@fortawesome/free-solid-svg-icons";
 import ShareModal from "../sharemodal";
 import { Context } from "../../context/store";
 
-
 const AlertMessage = (props) => {
     // const betslipLength = len(BetSlip);
     return (
