@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Formik, Form} from 'formik';
 import makeRequest from "../utils/fetch-request";
 import mpesa from '../../assets/img/mpesa-3.png'
@@ -15,12 +15,18 @@ const BodyLogin = React.lazy(() => import('../header/mobile-login'));
 
 const Login = (props) => {
     const location = useLocation()
-    const preLoginMessage = null
-    const mobileNumber = null
-    if (location.state) {
-        const { preLoginMessage } = location.state
-        const { mobileNumber } = location.state
-    }
+    const [preMsg, setpreMsg] = useState();
+    const [mobileNo, setmobileNo] = useState();
+
+    useEffect(()=>{
+
+        if(location?.state){
+            let { preLoginMessage,  mobileNumber} = location.state
+            setpreMsg(preLoginMessage);
+            setmobileNo(mobileNumber);
+        }
+
+    }, [])
 
     // const {state} = useLocation();
     // const {regMessage} = state;
@@ -40,8 +46,8 @@ const Login = (props) => {
     }
 
     const PreLogAlert = (props) => {
-        let c = preLoginMessage?"success" : "danger";
-        return (<div role="alert" className={`fade alert alert-${c} show`}>{preLoginMessage}</div>);
+        let c = preMsg?"success" : "danger";
+        return (<div role="alert" className={`fade alert alert-${c} show`}>{preMsg}</div>);
     }   
     const Alert = (props) => {
         let c = success ? 'success' : 'danger';
@@ -61,7 +67,7 @@ const Login = (props) => {
 
                             <div className="row">
                             <div className="col-md-12 mt-2  p-2">
-                                {preLoginMessage && <PreLogAlert/>}
+                                {preMsg && <PreLogAlert/>}
                                 {message && <Alert/>}
 
                                 <div className="modal-body pb-0" data-backdrop="static">
