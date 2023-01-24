@@ -20,6 +20,7 @@ import {
 
 import { 
     setLocalStorage,
+    removeItem,
 } from '../utils/local-storage';
 
 const Float = (equation, precision = 4) => {
@@ -150,6 +151,14 @@ const BetslipSubmitForm = (props) => {
                     setLocalStorage('old_betslip', current_betslip, 1*60*60*1000);
 
                     setShowMoreOptions(true);
+
+                    setTimeout(
+                        function(){
+                            removeItem("old_betslip");
+                            setShowMoreOptions(false);
+                        }, 
+
+                    15000);
 
                     if (jackpot) {
                         clearJackpotSlip();
@@ -307,7 +316,7 @@ const BetslipSubmitForm = (props) => {
                 
                 <Alert/>
 
-                {showMoreOptions && <PostBet betSlip = {savedBetSlip} />}
+                {showMoreOptions && <PostBet/>}
 
                 <table className="bet-table">
                     <tbody>
