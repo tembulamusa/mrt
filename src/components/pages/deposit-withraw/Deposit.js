@@ -86,7 +86,7 @@ const Deposit = (props) => {
                 </div>
                 <div className="form-group row d-flex justify-content-center mt-5">
                     <div className="col-md-12">
-                        <label>Amount to Deposit</label>
+                        <label style={{width:"100%"}}>Amount to Deposit <span className="float-end">Min. 1000</span></label>
                         <input
                             onChange={ev => onFieldChanged(ev)}
                             className="text-dark deposit-input form-control col-md-12 input-field"
