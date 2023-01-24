@@ -205,14 +205,14 @@ const Sidebar = (props) => {
                                    <FontAwesomeIcon icon={faMobile} className="hide1"/>Mobile App
                                 </a>
                             </MenuItem>
-                            <MenuItem className={`${pathname === '/how-to-play' ? 'active' : ''}`}>
-                                <a href="/how-to-play"
+                            <MenuItem className={`${pathname === '/help' ? 'active' : ''}`}>
+                                <a href="/help"
                                    title="Jinsi Ya Kucheza">
                                    <FontAwesomeIcon icon={faQuestionCircle} className="hide1"/>Jinsi Ya Kucheza
                                    </a>
                             </MenuItem>
-                            <MenuItem className={`${pathname === '/how-to-play' ? 'active' : ''}`}>
-                                <a href="/how-to-play"
+                            <MenuItem className={`${pathname === '/deposit' ? 'active' : ''}`}>
+                                <a href="/deposit"
                                    title="Lipa Hapa">
                                    <FontAwesomeIcon icon={faCoins} className="hide1"/>Lipa Hapa
                                 </a>

@@ -55,6 +55,8 @@ const Index = (props) => {
         let url = new URL(window.location.href)
         endpoint += "&sport_id = " + (state?.filtersport?.sport_id||sportid || 79);
         let search_term = url.searchParams.get('search')
+
+        //console.log("fetching data with search ", search_term);
         endpoint += search_term ? '&search=' + search_term : ""; 
 
         
@@ -74,7 +76,7 @@ const Index = (props) => {
         }
         
         endpoint += "&tab=" + tab;
-        endpoint = endpoint.replaceAll(" ", '')
+        //endpoint = endpoint.replaceAll(" ", '')
 
         endpoint += `&sub_type_id=` + subTypes;
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
