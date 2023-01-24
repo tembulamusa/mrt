@@ -7172,6 +7172,10 @@ ul.sport {
         padding-top: 62px !important;
     }
 
+    .base-submenu {
+        padding-bottom: 2px solid #000000;
+    }
+
     .shrink-header .icon-holder img {
         display: none;
     }
@@ -16244,7 +16248,7 @@ svg:hover {
     border: 1px solid rgba(52, 179, 191, 0.3);
     padding: 8px;
     background: rgba(52, 179, 191, 0.06);
-    border-radius: 10px;
+    border-radius: 5px;
     line-height: 1.5;
 }
 a:hover {
