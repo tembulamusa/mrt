@@ -155,10 +155,12 @@ const BetslipSubmitForm = (props) => {
                     setTimeout(
                         function(){
                             removeItem("old_betslip");
+                            removeItem("betslip");
                             setShowMoreOptions(false);
+                            setMessage(null)
                         }, 
 
-                    15000);
+                    60000);
 
                     if (jackpot) {
                         clearJackpotSlip();
