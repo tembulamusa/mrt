@@ -61,7 +61,7 @@ const Sidebar = (props) => {
     const [competitions, setCompetitions] = useState(props?.competitions);
 
     const fetchData = useCallback(async () => {
-        let cached_competitions; /// = getFromLocalStorage('categories');
+        let cached_competitions; //=  getFromLocalStorage('categories');
         let endpoint = "/v1/categories";
 
         if (!cached_competitions) {
@@ -72,6 +72,7 @@ const Sidebar = (props) => {
 
             if (c_status === 200) {
                 setCompetitions(c_result);
+               console.log("Cached competitions", cached_competitions)
                 setLocalStorage('categories', c_result);
                 dispatch({type:"SET", key:"categories", payload:c_result});
             } else {
@@ -83,6 +84,7 @@ const Sidebar = (props) => {
         }
 
     }, []);
+
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -259,14 +261,22 @@ const Sidebar = (props) => {
                         <SubMenu className="left-menu-item-1" title={'Top Countries'}
                            icon={<img style={{borderRadius: '50%', height: '30px'}}
                                     src={getSportImageIcon("Soccer")}/>} >
+                            { competitions?.top_countries.map((country, index) => (
 
+                                <MenuItem title={country.category_name}
+                                     icon={<img style={{borderRadius: '50%', height: '15px'}}
+                                     src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
+                                     />} key={index} >
+
+                                        <a href={`/competition/${country.sport_id}/${country.category_id}/all`}
+                                           onClick={() => setLocalStorage('active_item', country.sport_id)}>
+                                            {country.category_name}
+                                        </a>
+                                </MenuItem>
+                             
+                            ))}
                         </SubMenu>
 
-                        <SubMenu className="left-menu-item-1" title={'Tournaments'}
-                           icon={<img style={{borderRadius: '50%', height: '30px'}}
-                                    src={getSportImageIcon("Soccer")}/>} >
-
-                        </SubMenu>
 
                         <SubMenu className="left-menu-item-1" title={'Other Sports(A-Z)'}
                            icon={<img style={{borderRadius: '50%', height: '30px'}}
