@@ -301,10 +301,10 @@ li.bet-option {
 .bet-type{font-size: 12px}
 
 .place-bet-btn {
-    background: red;
+    background: #c6224e;
     color: #fff;
     border: none;
-    padding: 5px 10px;
+    padding: 7px 10px;
     font-size: 11px;
 }
 
@@ -316,9 +316,10 @@ li.bet-option {
 }
 
 .place-bet-btn.primary, .place_bet_button, #place_bet_button {
-    background: #fbd702 !important;
-    color: #000;
-    border-radius: 2px;
+    background: #34B3BF !important;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 7px 12px;
 }
 
 .social-icons{
