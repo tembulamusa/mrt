@@ -16388,10 +16388,65 @@ a:hover {
 }
 
 .post-bet-more-action li {
-    font-size: 13px;
+    font-size: 15px;
     border-bottom: 1px solid #34b3bf33;
     color: #000000;
-    padding-top: 2px !important;
+    padding-top: 3px !important;
     font-weight: 500;
-    padding-bottom: 7px !important;
+    padding-bottom: 9px !important;
+}
+
+.std2-block {
+    background: rgba(52,179,191,.06);
+}
+
+.transparent-li li {
+    background: transparent;
+    border-bottom: 1px solid #34b3bf33;
+}
+
+.primary-color-std {
+    color: #34B3BF!important;
+}
+
+.primary-color-dark {
+    color: #0C3C5A;
+}
+
+.share-links .social-icons {
+    font-size: 24px;
+    padding-top: 0;
+    line-height: 0;
+}
+.social-icons .fa {
+    margin-right: 5px;
+}
+.slip-share-icon {
+    margin-left: 10px;
+}
+.share-links .fa-facebook {
+    color: blue;
+}
+
+.share-links .fa-twitter {
+    color: #34ccff;
+}
+.weight-400 {
+    font-weight: 400;
+}
+
+.black-text {
+    color: #000000;
+}
+.text-right {
+    text-align: right;
+}
+.rebet-btn {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 100%;
+    background: #115078;
+    padding:5px;
+    text-align: center;
 }

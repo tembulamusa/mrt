@@ -224,7 +224,7 @@ li.bet-option {
     padding: 4px;
     text-shadow: none;
     position: relative;
-    border-bottom: 1px solid #bbb;
+    border-bottom: 1px solid rgba(52, 179, 191, 0.3);
     overflow: hidden;
     margin: 7px 1px 7px 0px;
     color: #2c2457;
