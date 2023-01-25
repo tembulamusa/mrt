@@ -324,13 +324,13 @@ const BetslipSubmitForm = (props) => {
                     <tbody>
                     {!jackpot && <tr className="hide-on-affix">
                         <td>TOTAL ODDS</td>
-                        <td>
-                            <b>{Float(totalOdds, 2)}</b>
+                        <td style={{textAlign:"right"}}>
+                            {Float(totalOdds, 2)}
 
                         </td>
                     </tr>}
 
-                    <tr id="odd-change-text">
+                    <tr id="odd-change-text" style={{borderBottom:"1px solid #cccc"}}>
                         <td colSpan="2">
                             <label className="checkbox">
 
@@ -345,8 +345,10 @@ const BetslipSubmitForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Stake</td>
-                        <td>
+                        <td colspan="2" style={{paddingTop:"10px", fontSize:"18px"}}>Stake</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style={{paddingTop:"10px"}}>
                             <div id="betting">
                                 {jackpot ?
                                     jackpotData?.bet_amount :
