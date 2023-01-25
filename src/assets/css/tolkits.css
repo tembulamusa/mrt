@@ -501,9 +501,10 @@ header, li a, .thedate span {
 }
 
 #betting input {
-    max-width: 100%;
+    /* max-width: 100px; */
     color: #000;
     padding: 3px;
+    width: 100%;
     border: 2px solid #4444;
     border-radius: 5.2px;
     text-align: center;
@@ -898,9 +899,10 @@ header, li a, .thedate span {
 }
 
 .bet-table {
+    box-shadow: 0px 3px 1px transparent, 0px -1px 3px #dddddd;
     border-top: 1px solid #cccc;
+    -webkit-box-shadow: 0px 3px 1px transparent, 0px -1px 3px #dddddd;
 }
-
 .matches .top-matches .events-odd {
     background: transparent;
 }
@@ -15396,13 +15398,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     color: #FFC428;
 }
 
-.company-info h4 {
-    font-size: 15px;
-}
-.company-info h3 {
-    font-size: 35px;
-    font-weight: bold;
-}
+
 .primary-bg-dark {
     background: #0C3C5A;
     color: #fff;
@@ -16447,4 +16443,55 @@ a:hover {
     background: #115078;
     padding:5px;
     text-align: center;
+}
+
+.pro-menu-item.active a {
+    color: #ffffff !important;
+}
+
+
+.bet-win-tr td:last-child {
+    text-align: right;
+}
+
+.right-content {
+    /*text-align: right;*/
+}
+
+.bet-win-tr {
+    font-weight: 500;
+}
+
+.company-info {
+    background: #34b3bf;
+    color: #ffffff;
+    font-weight: 500;
+    /*padpx;*/
+    border-radius: 5px;
+}
+
+.contact-info .info-guide {
+    font-size: 15px !important;
+}
+
+.contact-info .contact {
+    font-size: 20px;
+}
+
+.company-info h4 {
+    font-size: 13px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: 1;
+    padding-top: 10px;
+}
+.company-info h3 {
+    font-size: 34px;
+    margin-top: 2px;
+    font-weight: bold;
+    padding-bottom: 6px;
+}
+
+.secondary-red-bg {
+    background: #c6224e;
 }

@@ -398,13 +398,13 @@ const BetslipSubmitForm = (props) => {
                             id="net-amount">{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin + withholdingTax))}</span></td>
                     </tr>
                     <tr>
-                        <td>
+                        <td className="">
                             <button className="place-bet-btn"
                                     type="button"
                                     onClick={() => handleRemoveAll()}>REMOVE ALL
                             </button>
                         </td>
-                        <td>
+                        <td className="text-right">
                             <SubmitButton id="place_bet_button"
                                           disabled={jackpot && Object.entries(betslip || []).length != JSON.stringify(jackpotData?.total_games)}
                                           className="place-bet-btn bold"
