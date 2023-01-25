@@ -29,8 +29,15 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import {Context} from '../../../context/store';
 import HomeIcon from "../../../assets/svg/Home.svg";
-import LiveIcon from "../../../assets/svg/Live.svg";
-import JackpotIcon from "../../../assets/svg/JP.svg";
+import JackpotIcon from "../../../assets/svg/JACKPOT.svg";
+import LiveIcon from "../../../assets/svg/LIVENOW.svg";
+import MobileAppIcon from "../../../assets/svg/MOBILEAPP.svg";
+import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
+import LotteryIcon from "../../../assets/svg/LOTTERY.svg";
+import MostLikedIcon from "../../../assets/svg/MOSTLIKEDOPTIONS.svg";
+// import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
+import DepositIcon from "../../../assets/svg/DEPOSIT.svg";
+import HOWToPlayIcon from "../../../assets/svg/how-to-play.svg";
 import HipoIcon from "../../../assets/img/search-icon.png";
 import PromotionIcon from "../../../assets/svg/Promotions.svg";
 import ShareModal from "../../sharemodal";
@@ -188,50 +195,52 @@ const Sidebar = (props) => {
 
                             <MenuItem className={`live-game ${pathname === '/live' ? 'active' : ''}`}>
                                 <a href="/live"
-                                   title="Live"><FontAwesomeIcon icon={faClock} className="hide1"/>Live Now</a>
+                                   title="Live"><img src={LiveIcon} alt="" className="svg-menu-img-icon hide1" />Live Now</a>
                             </MenuItem>
 
                             <MenuItem className={`${pathname === '/highlights' ? 'active' : ''}`}>
                                 <a href="/highlights"
-                                   title="Highlights"><FontAwesomeIcon icon={faChessBoard} className="hide1"/>Mechi Kali</a>
-                            </MenuItem>
+                                   title="Highlights"><img src={MostLikedIcon} alt="" className="svg-menu-img-icon hide1" />Mechi Kali</a>
+                            </MenuItem> 
                             <MenuItem className={`${pathname === '/jackpot' ? 'active' : ''}`}>
                                 <a href="/jackpot"
-                                   title="Jackpot"><FontAwesomeIcon icon={faMagic} className="hide1"/>Jackpot</a>
+                                   title="Jackpot"><img src={JackpotIcon} alt="" className="svg-menu-img-icon hide1" />Jackpot</a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/app' ? 'active' : ''}`}>
                                 <a href="/app"
                                    title="Mobile App">
-                                   <FontAwesomeIcon icon={faMobile} className="hide1"/>Mobile App
+                                   <img src={MobileAppIcon} alt="" className="svg-menu-img-icon hide1" />Mobile App
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/help' ? 'active' : ''}`}>
                                 <a href="/help"
                                    title="Jinsi Ya Kucheza">
-                                   <FontAwesomeIcon icon={faQuestionCircle} className="hide1"/>Jinsi Ya Kucheza
+                                   <img src={HOWToPlayIcon} alt="" className="svg-menu-img-icon hide1" />Jinsi Ya Kucheza
                                    </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/deposit' ? 'active' : ''}`}>
                                 <a href="/deposit"
                                    title="Lipa Hapa">
-                                   <FontAwesomeIcon icon={faCoins} className="hide1"/>Lipa Hapa
+                                   <img src={DepositIcon} alt="" className="svg-menu-img-icon hide1" />Lipa Hapa
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/lottery' ? 'active' : ''}`}>
                                 <a href="https://www.biko.co.tz/sw"
                                    title="Live">
-                                   <FontAwesomeIcon icon={faDice} className="hide1"/>Cheza Biko SMS Lottery
+                                   <img src={LotteryIcon} alt="" className="svg-menu-img-icon hide1" />Cheza Biko SMS Lottery
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/news' ? 'active' : ''}`}>
                                 <a href="https://blog.bikosports.co.tz/?amount=&loggedOn=0&phone="
-                                   title="Live">
-                                   <FontAwesomeIcon icon={faInfo} className="hide1"/>Sports news
+                                   title="Live Score">
+                                   <img src={LivescoreIcon} alt="" className="svg-menu-img-icon hide1" />Sports news
                                 </a>
                             </MenuItem>
                         </div>
 
-                        <SubMenu title={'Top Leagues'}
+                        <div className="left-menu">
+                            
+                            <SubMenu className="left-menu-item-1" title={'Top Leagues'}
                            icon={<img style={{borderRadius: '50%', height: '30px'}}
                                     src={getSportImageIcon("Soccer")}/>} >
                             {competitions?.top_soccer?.map((top_league, index) => (
@@ -246,31 +255,50 @@ const Sidebar = (props) => {
                             ))}
                         </SubMenu>
 
-                        {competitions?.all_sports.map((competition, index) => (
 
-                            <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id) && index !== 0}
-                                     icon={<img style={{borderRadius: '50%', height: '30px'}}
-                                                src={getSportImageIcon(competition.sport_name)}/>}
-                                     key={index}>
-                            {/* <SubMenu title={'Countries'}
-                                         style={{maxHeight: '300px', overflowY: 'auto', overflowX: 'hidden'}}> */}
-                                    <PerfectScrollbar >
-                                    {competition?.categories.map((country, countryKey) => (
-                                            <MenuItem title={country.category_name}
-                                                     icon={<img style={{borderRadius: '50%', height: '15px'}}
-                                                     src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
-                                                     />} key={countryKey} >
+                        <SubMenu className="left-menu-item-1" title={'Top Countries'}
+                           icon={<img style={{borderRadius: '50%', height: '30px'}}
+                                    src={getSportImageIcon("Soccer")}/>} >
 
-                                                        <a href={`/competition/${competition.sport_id}/${country.category_id}/all`}
-                                                           onClick={() => setLocalStorage('active_item', competition.sport_id)}>
-                                                            {country.category_name}
-                                                        </a>
-                                            </MenuItem>
-                                    ))}
-                                    </PerfectScrollbar >
-                            { /* </SubMenu> */}
-                            </SubMenu>
-                        ))}
+                        </SubMenu>
+
+                        <SubMenu className="left-menu-item-1" title={'Tournaments'}
+                           icon={<img style={{borderRadius: '50%', height: '30px'}}
+                                    src={getSportImageIcon("Soccer")}/>} >
+
+                        </SubMenu>
+
+                        <SubMenu className="left-menu-item-1" title={'Other Sports(A-Z)'}
+                           icon={<img style={{borderRadius: '50%', height: '30px'}}
+                                    src={getSportImageIcon("Soccer")}/>} >
+                            {competitions?.all_sports.map((competition, index) => (
+
+                                <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id) && index !== 0}
+                                         icon={<img style={{borderRadius: '50%', height: '30px'}}
+                                                    src={getSportImageIcon(competition.sport_name)}/>}
+                                         key={index}>
+                                {/* <SubMenu title={'Countries'}
+                                             style={{maxHeight: '300px', overflowY: 'auto', overflowX: 'hidden'}}> */}
+                                        <PerfectScrollbar >
+                                        {competition?.categories.map((country, countryKey) => (
+                                                <MenuItem title={country.category_name}
+                                                         icon={<img style={{borderRadius: '50%', height: '15px'}}
+                                                         src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
+                                                         />} key={countryKey} >
+
+                                                            <a href={`/competition/${competition.sport_id}/${country.category_id}/all`}
+                                                               onClick={() => setLocalStorage('active_item', competition.sport_id)}>
+                                                                {country.category_name}
+                                                            </a>
+                                                </MenuItem>
+                                        ))}
+                                        </PerfectScrollbar >
+                                { /* </SubMenu> */}
+                                </SubMenu>
+                            ))}
+                        </SubMenu>
+
+                    </div>
                     </Menu>
                 </SidebarContent>
             </ProSidebar>
