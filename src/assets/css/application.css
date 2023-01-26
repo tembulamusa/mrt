@@ -233,24 +233,20 @@ li.bet-option {
     line-height: 1.6;
 }
 .bet-cancel {
-    /* float: right; */
     position: absolute;
     left: 0;
     height: 100%;
     width: 8%;
-    background: rgba(52, 179, 191, 0.25);
-    color: 0;
-    top: -5px;
-    color: #fff;
+    background: #f1f1f1;
 }
 
 .bet-cancel input {
     background: transparent;
     border: none;
-    color: #000;
+    color: #5b585a;
     height: 100%;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 .capitalize {

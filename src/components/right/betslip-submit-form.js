@@ -23,6 +23,11 @@ import {
     removeItem,
 } from '../utils/local-storage';
 
+import Airtel from '../../assets/img/payment_logos/airtel2.PNG'
+import Mpesa from '../../assets/img/payment_logos/mpesa2.PNG'
+import Tigo from '../../assets/img/payment_logos/tigo2.PNG'
+import Halo from '../../assets/img/payment_logos/halo2.PNG'
+
 const Float = (equation, precision = 4) => {
     return Math.round(equation * (10 ** precision)) / (10 ** precision);
 }
@@ -45,6 +50,11 @@ const BetslipSubmitForm = (props) => {
     const [betslipKey, setBetslipKey] = useState("betslip");
     const [showMoreOptions, setShowMoreOptions] = useState(false);
 
+    const [payLaterNumber, setPaylaterNumber] = useState();
+    const [betAmount, setBetAmount] = useState();
+    const [betId, setBetId] = useState();
+    const [mno, setMno] = useState("TIGO PESA");
+
     useEffect(() => {
         if (jackpot) {
             setBetslipKey("jackpotbetslip");
@@ -61,8 +71,118 @@ const BetslipSubmitForm = (props) => {
         setIpv4(ip);
     }, [ipv4]);
 
-    const Alert = (props) => {
-        let c = message?.status == 201 ? 'success' : 'danger';
+
+    const handlePhoneNumberChange = (event) => {
+
+        setPaylaterNumber(event.target.value)
+    
+    }
+
+
+    const handleSubmitPayLaterRequest = () => {
+
+        const values = {
+            amount: betAmount,
+            msisdn: payLaterNumber
+        }
+
+        let endpoint = '/v1/stk/deposit';
+        makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
+            setMessage(response?.message);
+        })
+    }
+
+    const CompleteBetPaymentMarkup = (props) => {
+
+       const SetMNOName = (nt) => {
+           let op;
+           switch(nt){
+              case "tigo":
+                   op="TIGO PESA";
+                   break;
+              case "voda":
+                   op="MPESA";
+                   break;
+              case "aitel":
+                   op="AIRTEL";
+                   break;
+              case "halo":
+                   op="HALO PESA";
+                   break;
+              default:
+                   op = "TIGO PESA"; 
+                   break;
+           }
+           setMno(op);
+       }
+
+       useEffect(() => {
+           if(props?.message) {
+                let reg = props.message.match(/(?:kumbukumbu No. (\d+),)/);
+                setBetId(reg && reg[0]);
+                let reg2 = props.message.match(/(?:Kiasi ulichobet TZS(\d+),)/);
+                setBetAmount(reg2 && reg2[0]);
+           }
+       }, [])
+
+       return (
+         <div className="container lipia">
+            <div className="row mb-3">
+               <div className="col-12 mb-2 " style={{fontSize:"16px"}}>
+                    <strong>Pay via Direct PAYBILL</strong>
+               </div>
+               <div className="col-12" style={{fontSize:"16px"}}>
+                    TSH {betAmount}
+               </div>
+           </div>
+            <div className="row mb-3 pt-2 pb-3" style={{background:"#e5f7fc"}}>
+               <div className="col-12">
+                    Lipia kukamilisha bet yako
+               </div>
+           </div>
+            <div className="row mb-3">
+               <div className="col-12">
+                    Select payment method
+               </div>
+               <div className="col-12">
+                    <ul className="row">
+                      <li className="col" onClick={() => SetMNOName("tigo") }><img style={{width: "60px"}} src={Tigo} alt="Tigo"/></li>
+                      <li className="col" onClick={() => SetMNOName("voda") } ><img style={{width: "60px"}} src={Mpesa} alt="Mpesa"/></li>
+                      <li className="col" onClick={() => SetMNOName("airtel") }><img style={{width: "60px"}} src={Airtel} alt="Airtel"/></li>
+                      <li className="col" onClick={() => SetMNOName("halo") }><img style={{width: "60px"}} src={Halo} alt="Halotel"/></li>
+                    </ul>
+               </div>
+           </div>
+
+            <div className="row mb-3">
+               <div className="col-12">
+                    <strong>Enter your {mno} Phone Numbet</strong>
+               </div>
+           </div>
+            <div className="row">
+               <div className="col-12 " id="betting">
+                    <input name="phone_number" 
+                      className="bet-select" 
+                      type="text" value="" 
+                      placeholder="Phone number" 
+                      style={{color:"#666666"}}
+                      onChange={handlePhoneNumberChange} />
+               </div>
+           </div>
+            <div className="row">
+               <div className="col-12">
+                    <button className="place_bet_button" 
+                         style={{marginTop:"10px", width:"100%", marginBottom:"10px"}}
+                         onClick={handleSubmitPayLaterRequest}> PAY NOW </button>
+               </div>
+           </div>
+        </div> 
+       ) 
+    
+    }
+
+    const PlaceBetResponseInfo = (props) => {
+        let c = message?.status == 201 || message?.status == 202 ? 'success' : 'danger';
         let x_style = {
             float: "right",
             display: "block",
@@ -71,12 +191,14 @@ const BetslipSubmitForm = (props) => {
             cursor: "pointer",
             padding: "3px"
         }
-        return (<>{message?.status &&
-            <div role="alert"
-                 className={`fade alert alert-${c} show alert-dismissible`}>
-                {message.message}
-                <span aria-hidden="true" style={x_style} onClick={() => setMessage(null)}>&times;</span>
-            </div>}
+        return (<>{message && (<> { message?.status == 201 ? 
+                (<div role="alert"
+                     className={`fade alert alert-${c} show alert-dismissible`}>
+                    {message.message}
+                    <span aria-hidden="true" style={x_style} onClick={() => setMessage(null)}>&times;</span>
+                </div>) : <CompleteBetPaymentMarkup  message={message?.message} /> }  </>)
+               
+        }
         </>);
 
     };
@@ -92,6 +214,7 @@ const BetslipSubmitForm = (props) => {
         let slipHasOddsChange = false;
 
         let jackpotMessage = 'jp'
+        let live_bet = false;
 
         for (let slip of bs) {
             if (jackpot) {
@@ -101,11 +224,23 @@ const BetslipSubmitForm = (props) => {
                 && slip.prev_odds != slip.odd_value
                 && values.accept_all_odds_change === false) {
                 slipHasOddsChange = true;
-                break;
+                if(!values.accept_all_odds_change){
+                    break;
+                }
+            }
+            if(slip.live_bet === 1){
+                live_bet = true;
             }
         }
 
-        if (slipHasOddsChange === true) {
+
+        if (!values.user_id && live_bet) {
+            setMessage({status: 400, message: "Kndly login to place live Bet"});
+            setSubmitting(false);
+            return false;
+        }
+
+        if (slipHasOddsChange === true && !values.accept_all_odds_change) {
             setMessage({
                 status: 400,
                 message: "Slip has events with changed odds, tick "
@@ -126,8 +261,8 @@ const BetslipSubmitForm = (props) => {
             endCustomerIP: ipv4,
             channelID: 'web',
             slip: bs,
-            account: 1,
-            msisdn: state?.user?.msisdn,
+            account: values.user_id ? 1: 0,
+            msisdn: state?.user?.msisdn ||"255000000000",
             accept_all_odds_change: values.accept_all_odds_change
         };
         let endpoint = '/bet';
@@ -144,7 +279,7 @@ const BetslipSubmitForm = (props) => {
         makeRequest({url: endpoint, method: method, data: payload, use_jwt: use_jwt})
             .then(([status, response]) => {
                 setMessage(response)
-                if (status === 200 || status == 201 || status == 204 || jackpot) {
+                if (status === 200 || status == 201 || status == 202 || jackpot) {
                     
                     //all is good am be quiet
                     const current_betslip = getBetslip();
@@ -152,7 +287,7 @@ const BetslipSubmitForm = (props) => {
 
                     setShowMoreOptions(true);
 
-                    setTimeout(
+                   setTimeout(
                         function(){
                             removeItem("old_betslip");
                             removeItem("betslip");
@@ -165,7 +300,7 @@ const BetslipSubmitForm = (props) => {
                     if (jackpot) {
                         clearJackpotSlip();
                         setMessage({
-                            status: 201,
+                            status: status,
                             message: response?.message || response
                         })
                     } else {
@@ -176,7 +311,7 @@ const BetslipSubmitForm = (props) => {
                 } else {
                     let qmessage = {
                         status: status,
-                        message: response?.message || "Error attempting to login"
+                        message: response?.message || "Could not place bet."
                     };
                     setMessage(qmessage);
                 }
@@ -249,11 +384,6 @@ const BetslipSubmitForm = (props) => {
 
         let errors = {}
 
-        if (!values.user_id) {
-            errors.user_id = 'Kindly login to proceed';
-            setMessage({status: 400, message: errors.user_id});
-            return errors;
-        }
 
         if (!values.bet_amount || values.bet_amount < 1) {
             errors.bet_amount = 'Enter valid bet amount';
@@ -273,6 +403,7 @@ const BetslipSubmitForm = (props) => {
         str = str.replace(/[^A-Za-z0-9\-]/g, '');
         return str.replace(/-+/g, '-');
     }
+
 
     const SubmitButton = (props) => {
         const {title, disabled, ...rest} = props;
@@ -316,7 +447,7 @@ const BetslipSubmitForm = (props) => {
             return (
                 <FormikForm name="betslip-submit-form">
                 
-                <Alert/>
+                <PlaceBetResponseInfo />
 
                 {showMoreOptions && <PostBet/>}
 
@@ -345,10 +476,10 @@ const BetslipSubmitForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style={{paddingTop:"10px", fontSize:"18px"}}>Stake</td>
+                        <td colSpan="2" style={{paddingTop:"10px", fontSize:"18px"}}>Stake</td>
                     </tr>
                     <tr>
-                        <td colspan="2" style={{paddingTop:"10px"}}>
+                        <td colSpan="2" style={{paddingTop:"10px"}}>
                             <div id="betting">
                                 {jackpot ?
                                     jackpotData?.bet_amount :
