@@ -292,6 +292,7 @@ const BetslipSubmitForm = (props) => {
                             removeItem("old_betslip");
                             removeItem("betslip");
                             setShowMoreOptions(false);
+                            setBetslipsData(null);
                             setMessage(null)
                         }, 
 
