@@ -24,7 +24,6 @@ const Right = (props) => {
     const [state, dispatch] = useContext(Context);
     const {jackpot, betslipValidationData, jackpotData} = props;
     const [betSlipMobile, setBetSlipMobile] = useState(false);
-    console.log("reading betslip from right side", state?.betslip)
 
     const showShareModalDialog = () => {
         dispatch({type:"SET", key:"showsharemodal", payload:true})
