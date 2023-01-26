@@ -16523,3 +16523,63 @@ li.left-menu-item-1 >.pro-inner-item {
     max-width: 25px;
     margin-right: 5px;
 }
+
+.jackpot-entry {
+
+}
+
+.yellow-bg-2 {
+    background: #e9cd38;
+    color: black;
+}
+
+.black-text-shadow {
+    text-shadow: 0 1px 2px #fff;
+    font-weight: bold;
+}
+
+.btn-primary-dark {
+
+}
+
+.btn-primary.deposit-withdraw-button:hover {
+    background: #0C3C5A;
+    opacity: 0.9;
+}
+.deposit-withdraw-button.secondary-red-bg:hover {
+    background: #c6224e;
+    opacity: 0.9;
+}
+
+
+
+.menu-type-tabs {
+
+}
+
+.background-primary.menu-type-tabs {
+
+}
+
+.background-primary.menu-type-tabs .nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    border: none;
+    background: #0C3C5A;
+    color: #fff;
+    border-radius: none !important;
+    border-top-right-radius: none;
+    border-top-left-radius: none;
+}
+
+.background-primary.menu-type-tabs {
+    background: #0C3C5A;
+
+}
+
+.nav-tabs.menu-type-tabs .nav-item.show .nav-link, .nav-tabs.menu-type-tabs .nav-link.active {
+    background-color: #0C3C5A;
+    color: white;
+    border: none !important;
+    border-bottom: 5px solid #34b3bf!important;
+}
