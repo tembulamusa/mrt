@@ -2615,7 +2615,7 @@ footer a {
 .footer-custom ul li {
     color: whitesmoke;
     text-decoration: none;
-    opacity: 0.75;
+    /*opacity: 0.75;*/
 }
 
 .footer-custom ul li a {
@@ -2630,6 +2630,7 @@ footer a {
     font-size: 15px;
     background: #A9A9A9;
 }
+
 
 .footer-info {
     font-family: 'GothamBook', sans-serif;
@@ -16672,4 +16673,26 @@ li.left-menu-item-1 >.pro-inner-item {
 .btn-primary-bg {
     background: #34B3BF !important;
     color: #fff !important;
+}
+
+.footer-custom .over-eighteen {
+    background: #C6224E;
+    height: 45px;
+    width: 45px;
+    padding: 10px;
+    line-height: 27px;
+    display: block;
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 100%;
+}
+
+.footer-custom a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-custom .reduced-opacity {
+    opacity: 0.7;
 }
