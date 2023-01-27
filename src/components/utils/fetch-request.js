@@ -56,7 +56,6 @@ const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
 
         const response = await fetch(url, request);
         let result= await (response.json() ||  response.text());
-         
         let status = response?.status;
         return [status, result];
     } catch (err) {

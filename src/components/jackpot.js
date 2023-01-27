@@ -9,6 +9,12 @@ import dailyJackpot from '../assets/img/banner/jackpots/DailyJackpot.png'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Container from "react-bootstrap/Container";
+import {
+    removeFromSlip,
+    getBetslip,
+    clearSlip,
+    clearJackpotSlip, formatNumber
+} from './utils/betslip';
 
 const Right = React.lazy(() => import('./right/index'));
 
@@ -29,6 +35,7 @@ const Jackpot = (props) => {
         makeRequest({url: match_endpoint, method: "get", data: null}).then(
             ([m_status, m_result]) => {
                 if (m_status === 200) {
+                    clearJackpotSlip();
 
                 if (jpType == "jp"){
                     setDailyJPMatches(m_result);
@@ -61,6 +68,9 @@ const Jackpot = (props) => {
 
     };
 
+    const clickBetBtn = () => {
+        autoClickableBet.current.click();
+    }
 
     const EmptyJackpotPageMarkup = (props) => {
         return (
@@ -85,6 +95,23 @@ const Jackpot = (props) => {
             </div>
             )
     }
+
+    const JackpotFooter = () => {
+        return (
+            <div className="jackpot-footer">
+                <div className="row">
+                    <div className="col-3"><button className=" place-bet-btn btn" id="delete-btn">Remove All</button></div>
+                    <div className="col-3">
+                        Picks <span></span>/<span className="" id="total-games"></span><button className="btn btn-auto-pick">Auto Pick</button>
+                    </div>
+                    <div className="col-3">Stake <span id="jp-stake" className="bold">5.00</span></div>
+                    <div className="col-3">
+                    <button onClick={clickBetBtn} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
+                </div>
+            </div>
+        )
+    }
+
     const JackpotsListing = () => {
         return (
             <div className="jackpots">
@@ -121,6 +148,8 @@ const Jackpot = (props) => {
                                 <>  
                                     <JackpotsHeader />
                                     <JackpotMatchList matches={weeklyJPMatches}/>
+                                    <JackpotFooter />
+
                                 </>
                             ) : ( showEmptyWeeklyJackpot? (
                                     <div className={'col-md-12 text-center background-primary  mt-2 p-3'}>
@@ -166,6 +195,7 @@ const Jackpot = (props) => {
                                 <>  
                                     <JackpotsHeader />
                                     <JackpotMatchList matches={dailyJPMatches}/>
+                                    <JackpotFooter />
                                 </>
                             ) : ( showEmptyDailyJackpot? (
                                     <div className={'col-md-12 text-center background-primary  mt-2 p-3'}>

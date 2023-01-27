@@ -2066,7 +2066,7 @@ events-header {
     margin-bottom: 0px;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 7px;
+    border-radius: 4px;
     font-weight: normal;
     color: #797979;
     font-size: 12px;
@@ -16181,16 +16181,11 @@ li.pro-sub-menu {
     margin-bottom: 1px;
 }
 
-footer .right-border {
-    border-right: 2px solid rgba(255, 255, 255, 0.3);
-    padding-right: 1px !important;
-}
-
 .left-with-big-pad-desktop {
     padding-left: 23px !important;
 }
 footer .row {
-    opacity: 0.9;
+    /*opacity: 0.9;*/
 }
 @media (max-width: 640px) {
     footer .right-border {
@@ -16647,4 +16642,34 @@ li.left-menu-item-1 >.pro-inner-item {
     height: 35px !important;
     margin-right: 20px;
     line-height: 30px;
+}
+.btn-auto-pick {
+    border: 1px solid rgba(52, 179, 191, 1) !important;
+    border-radius: 7px;
+    margin-left: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.jackpot-footer {
+    padding: 13px 10px;
+    /* border-top: 1px solid rgba(52, 179, 191, 0.2); */
+    background: rgba(52, 179, 191, 0.1);
+    margin-top: -9px;
+    z-index: 999;
+    position: relative;
+}
+
+.jackpot-footer .btn {
+    padding: 7px 20px;
+    font-weight: 700;
+}
+
+.btn-primary-bg {
+
+}
+
+.btn-primary-bg {
+    background: #34B3BF !important;
+    color: #fff !important;
 }
