@@ -257,17 +257,15 @@ const Jackpot = (props) => {
             <Tab eventKey="rules" 
               title=" RULES" 
               className={'background-primary'}
-              disabled = {matches?.meta.status == 'INACTIVE'}
               >
                 {matches?.data?.length > 0 ? (
-                    <>
-                        <JackpotHeader jackpot={matches?.meta}/>
-                        <JackpotMatchList matches={matches}/>
-                    </>
+                    <div className="h-100 text-center">
+                        <h4>You'll be notified of any changes in the rules</h4>
+                    </div>
                 ) : (
                     <div
                         className={'col-md-12 text-center background-primary  mt-2 p-3'}>
-                        There are no active jackpots at the moment.
+                        You'll be notified of any new rules.
                     </div>
                 )}
             </Tab>
