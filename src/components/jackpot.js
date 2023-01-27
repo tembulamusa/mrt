@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback, useState} from "react";
+import React, {useEffect, useCallback, useState, useContext} from "react";
 
 import Header from './header/header';
 import Footer from './footer/footer';
@@ -13,8 +13,11 @@ import {
     removeFromSlip,
     getBetslip,
     clearSlip,
-    clearJackpotSlip, formatNumber
+    clearJackpotSlip, 
+    formatNumber,
+    addToJackpotSlip
 } from './utils/betslip';
+import {Context} from '../context/store';
 
 const Right = React.lazy(() => import('./right/index'));
 
@@ -28,6 +31,8 @@ const Jackpot = (props) => {
     const [disabledWeekly, setDisabledWeekly] = useState(false);
     const [disabledDaily, setDisabledDaily] = useState(false);
     const [currentJackpot, setCurrentJackpot] = useState(null);
+
+    const [, dispatch] = useContext(Context);
 
     const fetchData = (jpType) => {
         let match_endpoint = `/v1/matches/jackpot?key=${jpType}`;
@@ -69,6 +74,53 @@ const Jackpot = (props) => {
     };
 
 
+    const AutoPickAllMatches = () => {
+ 
+        const clean = (_str) => {
+            _str = _str.replace(/[^A-Za-z0-9\-]/g, '');                                 
+            return _str.replace(/-+/g, '-'); 
+        }
+
+        const randomPick = (min, max) => {
+            return Math.floor(min + Math.random()*(max - min + 1));
+        }
+
+        if(matches) {
+            let betslip;
+
+            Object.entries(matches?.data).map(([key, match]) => {
+               let reference = match.match_id + "_selected";
+               let pick = randomPick(1, 3);
+               let pickedValue = (pick === 1 ? match.home_team : (pick ===  2 ? 'draw': match.away_team));
+               let oddValue = (pick === 1 ? match.odds.home_odd : (pick ===  2 ? match.odds.neutral_odd: match.odds.away_odd));
+               let cstm = clean(match.match_id + "" + 1 + pickedValue );
+
+               let slip = {                                                            
+                    "match_id": match.match_id,                                                    
+                    "parent_match_id": match.parent_match_id,                                            
+                    "special_bet_value": '',                                           
+                    "sub_type_id": 1,                                                
+                    "bet_pick":  pickedValue,  
+                    "odd_value": oddValue,
+                    "home_team": match.home_team,                                             
+                    "away_team": match.away_team,                                             
+                    "bet_type": "jackpot",                                               
+                    "odd_type": "3",                                               
+                    "sport_name": "soccer",                                           
+                    "live": 0,                                                       
+                    "ucn": cstm,                                                        
+                    "market_active": 1,                                     
+                }                                                           
+                console.log("Picking betslip ", slip);
+                betslip = addToJackpotSlip(slip);                                   
+
+                dispatch({type: "SET", key: reference, payload: cstm});         
+            })
+            dispatch({type: "SET", key: "jackpotbetslip", payload: betslip});        
+        }
+    }
+
+
     const EmptyJackpotPageMarkup = (props) => {
         return (
             <div>
@@ -99,7 +151,10 @@ const Jackpot = (props) => {
                 <div className="row">
                     <div className="col-3"><button className=" place-bet-btn btn" id="delete-btn">Remove All</button></div>
                     <div className="col-3">
-                        Picks <span></span>/<span className="" id="total-games"></span><button className="btn btn-auto-pick">Auto Pick</button>
+                        Picks <span></span>/<span className="" id="total-games"></span>
+                        <button 
+                            onClick={() => AutoPickAllMatches()}
+                            className="btn btn-auto-pick">Auto Pick</button>
                     </div>
                     <div className="col-3">Stake <span id="jp-stake" className="bold">5.00</span></div>
                     <div className="col-3">
