@@ -69,7 +69,7 @@ const Jackpot = (props) => {
     };
 
     const clickBetBtn = () => {
-        autoClickableBet.current.click();
+        // autoClickableBet.current.click();
     }
 
     const EmptyJackpotPageMarkup = (props) => {
