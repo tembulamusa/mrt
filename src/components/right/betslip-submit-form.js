@@ -56,7 +56,7 @@ const BetslipSubmitForm = (props) => {
     const [betId, setBetId] = useState();
     const [mno, setMno] = useState("TIGO PESA");
     const [payLaterBusy, setPayLaterBusy] = useState(false);
-
+    
     useEffect(() => {
         if (jackpot) {
             setBetslipKey("jackpotbetslip");
@@ -225,7 +225,11 @@ const BetslipSubmitForm = (props) => {
 
         let slipHasOddsChange = false;
 
-        let jackpotMessage = 'jp'
+        let jackpotMessage = ''
+        if (jackpot) {
+                jackpotMessage += jackpotData?.jp_key
+        }
+
         let live_bet = false;
 
         for (let slip of bs) {
@@ -279,7 +283,7 @@ const BetslipSubmitForm = (props) => {
         };
         let endpoint = '/bet';
         let method = "GET"
-        let use_jwt = !jackpot
+        let use_jwt = jackpot
         if (jackpot) {
             payload.message = jackpotMessage
             payload.jackpot_id = jackpotData?.jackpot_event_id
@@ -290,13 +294,12 @@ const BetslipSubmitForm = (props) => {
 
         makeRequest({url: endpoint, method: method, data: payload, use_jwt: use_jwt})
             .then(([status, response]) => {
-                setMessage(response)
-                if (status === 200 || status == 201 || status == 202 || jackpot) {
-                    
+                console.log("Place be reponse as is ", response, status)
+                if (status === 200 || status == 201 || status == 202 ) {
+                    setMessage(response)
                     //all is good am be quiet
                     const current_betslip = getBetslip();
                     setLocalStorage('old_betslip', current_betslip, 1*60*60*1000);
-
                     setShowMoreOptions(true);
 
                    setTimeout(
@@ -311,14 +314,9 @@ const BetslipSubmitForm = (props) => {
                     60000);
 
                     if (jackpot) {
+                        setShowMoreOptions(false);
                         clearJackpotSlip();
-                        setMessage({
-                            status: status,
-                            message: response?.message || response
-                        })
-                    } else {
-                        clearSlip();
-                    }
+                    } 
                     setBetslipsData(null);
                     dispatch({type: "SET", key: jackpot ? 'jackpotbetslip' : 'betslip', payload: {}});
                 } else {
@@ -326,6 +324,7 @@ const BetslipSubmitForm = (props) => {
                         status: status,
                         message: response?.message || "Could not place bet."
                     };
+                    console.log("Message on not 200",qmessage )
                     setMessage(qmessage);
                 }
                 setSubmitting(false);
@@ -422,7 +421,7 @@ const BetslipSubmitForm = (props) => {
         const {title, disabled, ...rest} = props;
         const {isSubmitting} = useFormikContext();
         return (
-            <button type="submit" {...rest} className={`${disabled ? 'disabled' : ''} place-bet-btn bold`}
+            <button ref="autoClickableBet" type="submit" {...rest} className={`${disabled ? 'disabled' : ''} place-bet-btn bold`}
                     id='place_bet_button'
                     disabled={isSubmitting || disabled}>{isSubmitting ? " WAIT ... " : title}</button>
         );
