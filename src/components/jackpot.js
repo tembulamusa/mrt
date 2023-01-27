@@ -68,9 +68,6 @@ const Jackpot = (props) => {
 
     };
 
-    const clickBetBtn = () => {
-        // autoClickableBet.current.click();
-    }
 
     const EmptyJackpotPageMarkup = (props) => {
         return (
@@ -106,7 +103,7 @@ const Jackpot = (props) => {
                     </div>
                     <div className="col-3">Stake <span id="jp-stake" className="bold">5.00</span></div>
                     <div className="col-3">
-                    <button onClick={clickBetBtn} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
+                    <button className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
                 </div>
             </div>
         )
