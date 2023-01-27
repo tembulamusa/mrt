@@ -37,7 +37,8 @@ const Jackpot = (props) => {
                     setWeeklyJPMatches(false);
                     setShowEmptyWeeklyJackpot(false)
                     setDisabledWeekly(false);
-                    setCurrentJackpot(dailyJPMatches);
+                    // setCurrentJackpot(dailyJPMatches);
+                    setMatches(m_result);
                 } else if (jpType == "wjp") {
                     setWeeklyJPMatches(m_result);
                     setShowEmptyWeeklyJackpot(true);
@@ -45,7 +46,8 @@ const Jackpot = (props) => {
                     setDailyJPMatches(false);
                     setShowEmptyDailyJackpot(false)
                     setDisabledDaily(false);
-                    setCurrentJackpot(weeklyJPMatches);
+                    // setCurrentJackpot(weeklyJPMatches);
+                    setMatches(m_result);
                 } else {
                     setMatches(m_result);
                 }
@@ -361,14 +363,10 @@ const Jackpot = (props) => {
                     <div className="gz home" style={{width: "100%"}}>
                         <div className="homepage">
                             <JackpotTabs />
-                            {
-                                matches 
-                                ? <JackpotPageMarkup /> 
-                                : <EmptyJackpotPageMarkup />
-                            }
+                            
                         </div>
                     </div>
-                    <Right jackpot={true} jackpotData={currentJackpot?.meta}/>
+                    <Right jackpot={true} jackpotData={matches?.meta}/>
                 </div>
             </div>
             <Footer/>
