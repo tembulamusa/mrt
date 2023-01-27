@@ -16627,7 +16627,9 @@ li.left-menu-item-1 >.pro-inner-item {
     display: flex;
 }
 
-
+.h-100 {
+    min-height: 100px;
+}
 .remove-last-element .jp-header-element:last-child {
     display: none;
 }
