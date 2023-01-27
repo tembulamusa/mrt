@@ -167,9 +167,9 @@ const Jackpot = (props) => {
                                     <JackpotsHeader />
                                     <JackpotMatchList matches={dailyJPMatches}/>
                                 </>
-                            ) : ( showEmptyWeeklyJackpot? (
+                            ) : ( showEmptyDailyJackpot? (
                                     <div className={'col-md-12 text-center background-primary  mt-2 p-3'}>
-                                        There are no active Weekly jackpots at the moment.
+                                        There are no active Daily jackpots at the moment.
                                     </div>) : ("") 
                                 
                             )}
@@ -183,85 +183,7 @@ const Jackpot = (props) => {
         )
     }
 
-    const JackpotPageMarkup = (props) => {
-        return (
-        <Tabs
-            variant={'tabs'}
-            defaultActiveKey={matches?.meta.status == 'ACTIVE' ? "home":"results"}
-            id=""
-            className="background-primary"
-            justify>
-            <Tab eventKey="home" 
-              title="Jackpot" 
-              className={'background-primary'}
-              disabled = {matches?.meta.status == 'INACTIVE'}
-              >
-                {matches?.data?.length > 0 ? (
-                    <>
-                        <JackpotHeader jackpot={matches?.meta}/>
-                        <JackpotMatchList matches={matches}/>
-                    </>
-                ) : (
-                    <div
-                        className={'col-md-12 text-center background-primary  mt-2 p-3'}>
-                        There are no active jackpots at the moment.
-                    </div>
-                )}
-            </Tab>
-            <Tab 
-               eventKey="results" 
-               title="Results"
-               disabled = {matches?.meta.status == 'ACTIVE'}
-               >
-                <JackpotHeader jackpot={matches?.meta}/>
-                <div className="matches full-mobile sticky-top container">
-                    <div
-                        className="top-matches d-flex position-sticky  p-4">
-                        <div className="col-md-3 bold">
-                            TIME
-                        </div>
-                        <div className="col-md-6 bold">
-                            MATCH
-                        </div>
-                        <div className="col-md-3 bold">
-                            OUTCOME
-                        </div>
-                    </div>
-                </div>
-
-                {matches?.data.map((match, index) => (
-                    <div className={'matches full-width'} key={index}>
-                        <Container className="web-element">
-                            <div
-                                className="col-md-12 d-flex flex-row p-2 top-matches">
-                                <div className="col-md-3">
-                                    {match?.start_time}
-                                </div>
-                                <div className="col-md-6 d-flex flex-column">
-                                    <div className={'small'}>
-                                        {match?.category} | {match?.competition_name}
-                                    </div>
-                                    <div>
-                                        <div className={'bold'}>
-                                            {match?.home_team}
-                                        </div>
-                                        <div className={'bold'}>
-                                            {match?.away_team}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-3">
-                                    {match?.outcome || '-'}
-                                </div>
-                            </div>
-                        </Container>
-                    </div>
-                ))}
-            </Tab>
-        </Tabs>
-        )
-
-    }
+    
     const JackpotTabs = () => {
         return (
             <Tabs
@@ -281,24 +203,25 @@ const Jackpot = (props) => {
 
             <Tab 
                eventKey="results" 
-               title="RESULT"
-               disabled = {matches?.meta.status == 'ACTIVE'}
+               title="RESULTS"
                >
-                <JackpotHeader jackpot={matches?.meta}/>
-                <div className="matches full-mobile sticky-top container">
-                    <div
-                        className="top-matches d-flex position-sticky  p-4">
-                        <div className="col-md-3 bold">
-                            TIME
-                        </div>
-                        <div className="col-md-6 bold">
-                            MATCH
-                        </div>
-                        <div className="col-md-3 bold">
-                            OUTCOME
+                <div className="jp-results remove-last-element">
+                    <JackpotHeader jackpot={matches?.meta}/>
+                    <div className="matches full-mobile sticky-top container">
+                        <div
+                            className="top-matches d-flex position-sticky  p-4">
+                            <div className="col-md-3 bold">
+                                TIME
+                            </div>
+                            <div className="col-md-6 bold">
+                                MATCH
+                            </div>
+                            <div className="col-md-3 bold">
+                                OUTCOME
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>    
 
                 {matches?.data.map((match, index) => (
                     <div className={'matches full-width'} key={index}>
