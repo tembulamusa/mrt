@@ -56,7 +56,7 @@ const BetslipSubmitForm = (props) => {
     const [betId, setBetId] = useState();
     const [mno, setMno] = useState("TIGO PESA");
     const [payLaterBusy, setPayLaterBusy] = useState(false);
-    
+
     useEffect(() => {
         if (jackpot) {
             setBetslipKey("jackpotbetslip");
@@ -421,7 +421,7 @@ const BetslipSubmitForm = (props) => {
         const {title, disabled, ...rest} = props;
         const {isSubmitting} = useFormikContext();
         return (
-            <button ref="autoClickableBet" type="submit" {...rest} className={`${disabled ? 'disabled' : ''} place-bet-btn bold`}
+            <button type="submit" {...rest} className={`${disabled ? 'disabled' : ''} place-bet-btn bold`}
                     id='place_bet_button'
                     disabled={isSubmitting || disabled}>{isSubmitting ? " WAIT ... " : title}</button>
         );
