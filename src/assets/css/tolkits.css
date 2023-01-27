@@ -16622,6 +16622,17 @@ li.left-menu-item-1 >.pro-inner-item {
     padding: 7px;
 }
 
+.jp-header-element .text-center {
+    display: flex;
+}
+
+.h-100 {
+    min-height: 100px;
+}
+.remove-last-element .jp-header-element:last-child {
+    display: none;
+}
+
 .jp-pick-type {
     width: 100px;
     display: inline-block;
