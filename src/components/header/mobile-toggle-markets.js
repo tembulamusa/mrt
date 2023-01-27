@@ -12,7 +12,7 @@ function MobileToggleMkts() {
   const handleShow = () => setShow(true);
 
   return (
-    <span class="d-lg-none d-md-none d-sm-block d-lg-none d-md-none">
+    <span className="d-lg-none d-md-none d-sm-block d-lg-none d-md-none">
       <Button variant="toggle-menu" onClick={handleShow}>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand`} />
       </Button>

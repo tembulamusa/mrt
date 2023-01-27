@@ -8,7 +8,8 @@ const SearchBar = (props) => {
               <form name="search" action="" method="post">                         
                   <div className="col-sm-3">Search events</div>
                       <div className="col-sm-6">
-                          <input type="text" name="keyword" 
+                          <input type="text" 
+                             name="keyword" 
                              className="form-control" 
                              data-action="grow" 
                              placeholder="Team, Competition or Game ID" />

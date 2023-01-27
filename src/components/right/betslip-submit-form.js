@@ -50,8 +50,9 @@ const BetslipSubmitForm = (props) => {
     const [betslipKey, setBetslipKey] = useState("betslip");
     const [showMoreOptions, setShowMoreOptions] = useState(false);
 
-    const [payLaterNumber, setPaylaterNumber] = useState();
+    const [payLaterNumber, setPaylaterNumber] = useState("");
     const [betAmount, setBetAmount] = useState();
+    const [dummySave , setDummySave] = useState();
     const [betId, setBetId] = useState();
     const [mno, setMno] = useState("TIGO PESA");
 
@@ -75,6 +76,7 @@ const BetslipSubmitForm = (props) => {
     const handlePhoneNumberChange = (event) => {
 
         setPaylaterNumber(event.target.value)
+        console.log(event.target.value);
     
     }
 
@@ -117,13 +119,23 @@ const BetslipSubmitForm = (props) => {
        }
 
        useEffect(() => {
-           if(props?.message) {
-                let reg = props.message.match(/(?:kumbukumbu No. (\d+),)/);
-                setBetId(reg && reg[0]);
-                let reg2 = props.message.match(/(?:Kiasi ulichobet TZS(\d+),)/);
-                setBetAmount(reg2 && reg2[0]);
+           console.log("Reading message ", message)
+           if(message && message.status == 202) {
+                let match= /(kumbukumbu No. (\d+),)/.exec(message.message);
+                let match2 = /(Kiasi ulichobet TZS (\d+(?:.00)),)/.exec(message.message);
+                console.log("Tried to get amount form ", message?.message, "and found", match2, match[2])
+                if(match){
+                    let betId = match[2];
+                    console.log("Reading betid", betId)
+                    setBetId(betId);
+                }
+                if(match2){
+                    let ba = match2[2];
+                    console.log("Reading betid", ba)
+                    setBetAmount(ba);
+                }
            }
-       }, [])
+       }, [message?.message])
 
        return (
          <div className="container lipia">
@@ -135,7 +147,8 @@ const BetslipSubmitForm = (props) => {
                     TSH {betAmount}
                </div>
            </div>
-            <div className="row mb-3 pt-2 pb-3" style={{background:"#e5f7fc"}}>
+            <div className="row mb-3 pt-2 pb-3" style={{background:"#e5f7fc", 
+                fontWeight:"500", textTransform:"capitalize"}}>
                <div className="col-12">
                     Lipia kukamilisha bet yako
                </div>
@@ -156,17 +169,20 @@ const BetslipSubmitForm = (props) => {
 
             <div className="row mb-3">
                <div className="col-12">
-                    <strong>Enter your {mno} Phone Numbet</strong>
+                    <strong>Enter your {mno} Phone Number </strong>
                </div>
            </div>
             <div className="row">
-               <div className="col-12 " id="betting">
-                    <input name="phone_number" 
-                      className="bet-select" 
-                      type="text" value="" 
-                      placeholder="Phone number" 
-                      style={{color:"#666666"}}
-                      onChange={handlePhoneNumberChange} />
+                       <div className="col-12 " id="betting">
+                            <input 
+                    name="phone_number" 
+                    className="bet-select" 
+                    type="text" 
+                    defaultValue={payLaterNumber} 
+                    placeholder="Phone number" 
+                    style={{color:"#666666"}}
+                    onBlur={ (e) => setPaylaterNumber(e.target.value) }
+        />
                </div>
            </div>
             <div className="row">
@@ -191,12 +207,13 @@ const BetslipSubmitForm = (props) => {
             cursor: "pointer",
             padding: "3px"
         }
-        return (<>{message && (<> { message?.status == 201 ? 
-                (<div role="alert"
+        return (<>{message && (<> { message?.status == 202 ? 
+                 <CompleteBetPaymentMarkup  /> 
+                 : (<div role="alert"
                      className={`fade alert alert-${c} show alert-dismissible`}>
                     {message.message}
                     <span aria-hidden="true" style={x_style} onClick={() => setMessage(null)}>&times;</span>
-                </div>) : <CompleteBetPaymentMarkup  message={message?.message} /> }  </>)
+                </div>)  }  </>)
                
         }
         </>);
@@ -461,7 +478,6 @@ const BetslipSubmitForm = (props) => {
 
                         </td>
                     </tr>}
-
                     <tr id="odd-change-text" style={{borderBottom:"1px solid #cccc"}}>
                         <td colSpan="2">
                             <label className="checkbox">

@@ -61,13 +61,13 @@ const Footer = (props) => {
                     </ul>
                     <hr/>
                     <h5>LICENSING</h5>
-                    <p>
+                    <div>
                         All correspondence to Director General
                         <div>27th Floor, PSPF Towers, Mission Street <br/>Postal Address: PO Box 1717, Dar es Salaam, TANZANIA</div>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         Gaming Board of Tanzania Licence Number SBI 000000016
-                    </p>
+                    </div>
                 </div>
                 <div className="col-xs-12 col-sm-6 col-md-8 col-lg-8 left-with-big-pad-desktop">
                     <div className="row">
@@ -100,9 +100,9 @@ const Footer = (props) => {
                                 <div className="text-center">
                                     <img style={{width: "100%", maxWidth: "250px"}} src={Gbt} alt="Logo"/>
                                 </div>
-                                <p className="text-center">All correspondence to Director General
+                                <div className="text-center">All correspondence to Director General
                                 <div>27th Floor, PSPF Towers, Mission Street <br/>Postal Address: PO Box 1717, Dar es Salaam, TANZANIA</div>
-                                </p>
+                                </div>
                         </div>
 
                         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center" style={{marginTop:"0"}}>
@@ -111,14 +111,14 @@ const Footer = (props) => {
                                 </div>
                                 All correspondence to Director General
                         <div>27th Floor, PSPF Towers, Mission Street <br/>Postal Address: PO Box 1717, Dar es Salaam, TANZANIA</div>
-                        <p>
+                        <div>
                             Gaming Board of Tanzania Licence Number SBI 000000016
-                        </p>
+                        </div>
                             <img style={{width: "100%", maxWidth: "250px"}} src={logo} alt="Logo"/>
-                            <p/>   
-                            <p/>   
-                            <p><img style={{width: "100%", maxWidth: "50px"}} src={Eighteen} alt="Logo"/></p>
-                            <p>Please play responsibly. This site is open only to persons over the age of 18 years</p>
+                            <div/>   
+                            <div/>   
+                            <div><img style={{width: "100%", maxWidth: "50px"}} src={Eighteen} alt="Logo"/></div>
+                            <div>Please play responsibly. This site is open only to persons over the age of 18 years</div>
                         </div>
                     </div>
                 </div>
