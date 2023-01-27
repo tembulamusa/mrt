@@ -55,6 +55,7 @@ const BetslipSubmitForm = (props) => {
     const [dummySave , setDummySave] = useState();
     const [betId, setBetId] = useState();
     const [mno, setMno] = useState("TIGO PESA");
+    const [payLaterBusy, setPayLaterBusy] = useState(false);
 
     useEffect(() => {
         if (jackpot) {
@@ -74,23 +75,21 @@ const BetslipSubmitForm = (props) => {
 
 
     const handlePhoneNumberChange = (event) => {
-
         setPaylaterNumber(event.target.value)
-        console.log(event.target.value);
-    
     }
 
 
     const handleSubmitPayLaterRequest = () => {
-
         const values = {
             amount: betAmount,
             msisdn: payLaterNumber
         }
-
         let endpoint = '/v1/stk/deposit';
+        setPayLaterBusy(true);
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
-            setMessage(response?.message);
+            setMessage({status:status, "message": response?.message});
+            setPayLaterBusy(false);
+            setShowMoreOptions(false);
         })
     }
 
@@ -119,26 +118,22 @@ const BetslipSubmitForm = (props) => {
        }
 
        useEffect(() => {
-           console.log("Reading message ", message)
            if(message && message.status == 202) {
                 let match= /(kumbukumbu No. (\d+),)/.exec(message.message);
                 let match2 = /(Kiasi ulichobet TZS (\d+(?:.00)),)/.exec(message.message);
-                console.log("Tried to get amount form ", message?.message, "and found", match2, match[2])
                 if(match){
                     let betId = match[2];
-                    console.log("Reading betid", betId)
                     setBetId(betId);
                 }
                 if(match2){
                     let ba = match2[2];
-                    console.log("Reading betid", ba)
                     setBetAmount(ba);
                 }
            }
        }, [message?.message])
 
        return (
-         <div className="container lipia">
+         <div className="container lipia ">
             <div className="row mb-3">
                <div className="col-12 mb-2 " style={{fontSize:"16px"}}>
                     <strong>Pay via Direct PAYBILL</strong>
@@ -187,9 +182,9 @@ const BetslipSubmitForm = (props) => {
            </div>
             <div className="row">
                <div className="col-12">
-                    <button className="place_bet_button" 
+                    <button className="place_bet_button" disabled = {payLaterBusy &&  "disabled" } 
                          style={{marginTop:"10px", width:"100%", marginBottom:"10px"}}
-                         onClick={handleSubmitPayLaterRequest}> PAY NOW </button>
+                         onClick={() => handleSubmitPayLaterRequest()}> { payLaterBusy === false ? "PAY NOW" : "WAIT ..."} </button>
                </div>
            </div>
         </div> 
@@ -198,7 +193,7 @@ const BetslipSubmitForm = (props) => {
     }
 
     const PlaceBetResponseInfo = (props) => {
-        let c = message?.status == 201 || message?.status == 202 ? 'success' : 'danger';
+        let c = message?.status == 201 || message?.status == 200 ? 'success' : 'danger';
         let x_style = {
             float: "right",
             display: "block",
@@ -434,8 +429,11 @@ const BetslipSubmitForm = (props) => {
     };
 
     return (
-
-        <Formik
+        <>
+        <PlaceBetResponseInfo />
+        { showMoreOptions 
+         ?  <PostBet/>
+         : <Formik
             initialValues={initialValues}
             onSubmit={handlePlaceBet}
             validate={validate}
@@ -465,9 +463,7 @@ const BetslipSubmitForm = (props) => {
             return (
                 <FormikForm name="betslip-submit-form">
                 
-                <PlaceBetResponseInfo />
 
-                {showMoreOptions && <PostBet/>}
 
                 <table className="bet-table">
                     <tbody>
@@ -582,6 +578,9 @@ const BetslipSubmitForm = (props) => {
                 />
             </FormikForm>)
         }}
-        </Formik>)
+        </Formik>
+        } // show more options toggle
+        </>
+    )
 }
 export default React.memo(BetslipSubmitForm);
