@@ -5,6 +5,9 @@ import {
 } from './local-storage';
 
 export const addToSlip = (slip) => {
+    //Reve any othe betslips
+    removeItem('old_betslip');
+
     let current_slip = getFromLocalStorage('betslip');
     if(current_slip){
         current_slip[slip.match_id] = slip;
