@@ -164,7 +164,7 @@ const BetSlip = (props) => {
 
     return (
         <div className="bet-body text-white">
-            <div className="flow betslip-body" style={{maxHeight: "50vh", overflowY: "auto"}}>
+            <div className="flow betslip-body" style={{maxHeight: "35vh", overflowY: "auto"}}>
                 <ul>
                     {Object.entries(betslipsData || {}).map(([match_id, slip]) => {
                         let odd = slip.odd_value;
@@ -178,15 +178,7 @@ const BetSlip = (props) => {
                                     <input id={slip.match_id} type="submit" value="X"
                                            onClick={() => handledRemoveSlip(slip)}/>
                                 </div>
-                                <div className="bet-value game-type row">
-                                    
-                                        {<span style={{
-                                            float: "left",
-                                            width: "auto",
-                                        }}>{slip.sport_name},&nbsp;</span>}
-                                        {slip.bet_type === 0 && ' Pre-match'}
-                                        {slip.bet_type === 1 && ' Live'}
-                                </div>
+                                
                                 <div className="row">
                                     <div className="bet-value">{`${slip.home_team} vs ${slip.away_team}`}
                                         <br/><span className="sp_sport"></span>

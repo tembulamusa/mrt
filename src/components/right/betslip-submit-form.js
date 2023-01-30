@@ -282,7 +282,7 @@ const BetslipSubmitForm = (props) => {
             accept_all_odds_change: values.accept_all_odds_change
         };
         let endpoint = '/bet';
-        let method = "GET"
+        let method = "POST"
         let use_jwt = jackpot
         if (jackpot) {
             payload.message = jackpotMessage
@@ -322,7 +322,8 @@ const BetslipSubmitForm = (props) => {
                 } else {
                     let qmessage = {
                         status: status,
-                        message: response?.message || "Could not place bet."
+                        message: response?.message || "Could not place bet.",
+
                     };
                     console.log("Message on not 200",qmessage )
                     setMessage(qmessage);

@@ -2865,9 +2865,10 @@ nav .mobi {
     background: #999999;
     opacity: 0.7;
 }
-
 .bet-option .row .warn {
     color: #a12000;
+    font-size: 10px;
+    font-weight: 500;
 }
 
 .bet-option form {
@@ -16695,4 +16696,23 @@ li.left-menu-item-1 >.pro-inner-item {
 
 .footer-custom .reduced-opacity {
     opacity: 0.7;
+}
+
+.btn-primary, .btn-primary:hover {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #34B3BF !important;
+    --bs-btn-border-color: #34B3BF;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #34B3BF;
+    --bs-btn-hover-border-color: #34B3BF;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    color: #fff !important;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px
+    rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
 }
