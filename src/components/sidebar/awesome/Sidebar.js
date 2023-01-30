@@ -34,6 +34,9 @@ import LiveIcon from "../../../assets/svg/LIVENOW.svg";
 import MobileAppIcon from "../../../assets/svg/MOBILEAPP.svg";
 import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
 import LotteryIcon from "../../../assets/svg/LOTTERY.svg";
+import Others from "../../../assets/svg/others.svg";
+import TopLeagues from "../../../assets/svg/top-leagues.svg";
+import Flag from "../../../assets/svg/flag.svg";
 import MostLikedIcon from "../../../assets/svg/MOSTLIKEDOPTIONS.svg";
 // import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
 import DepositIcon from "../../../assets/svg/DEPOSIT.svg";
@@ -243,8 +246,7 @@ const Sidebar = (props) => {
                         <div className="left-menu">
                             
                             <SubMenu className="left-menu-item-1" title={'Top Leagues'}
-                           icon={<img style={{borderRadius: '50%', height: '30px'}}
-                                    src={getSportImageIcon("Soccer")}/>} >
+                           icon={<img src={TopLeagues} alt="" className="svg-menu-img-icon hide1" />} >
                             {competitions?.top_soccer?.map((top_league, index) => (
                                 <MenuItem key={`l_${index}`}
                                           icon={<img
@@ -259,8 +261,10 @@ const Sidebar = (props) => {
 
 
                         <SubMenu className="left-menu-item-1" title={'Top Countries'}
-                           icon={<img style={{borderRadius: '50%', height: '30px'}}
-                                    src={getSportImageIcon("Soccer")}/>} >
+                           icon={<img src={Flag} alt="" className="svg-menu-img-icon hide1" />} >
+
+
+
                             { competitions?.top_countries.map((country, index) => (
 
                                 <MenuItem title={country.category_name}
@@ -279,8 +283,7 @@ const Sidebar = (props) => {
 
 
                         <SubMenu className="left-menu-item-1" title={'Other Sports(A-Z)'}
-                           icon={<img style={{borderRadius: '50%', height: '30px'}}
-                                    src={getSportImageIcon("Soccer")}/>} >
+                           icon={<img src={Others} alt="" className="svg-menu-img-icon hide1" />} >
                             {competitions?.all_sports.map((competition, index) => (
 
                                 <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id) && index !== 0}
