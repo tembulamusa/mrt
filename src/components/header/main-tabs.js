@@ -215,61 +215,8 @@ const MainTabs = (props) => {
                             onClick={() => setActiveTabSpace('tomorrow')}>Mechi zijazo</button>
                 </div>
 
-                  <div className="filter-group-icon d-none d-md-block" key="1">
-                      <Dropdown>
-                          <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
-                              { selectedSport?.label }
-                          </Dropdown.Toggle>
-
-                          <Dropdown.Menu >
-                            {
-                                sports && sports.map((sport) => { 
-                                   return <Dropdown.Item 
-                                       key={sport.sport_id}
-                                       eventKey={sport.sport_id} 
-                                       onClick={() => handleSportsSelect(sport)}>{ sport.label}</Dropdown.Item> 
-                                })
-                            }
-                          </Dropdown.Menu>
-                        </Dropdown>
-                  </div>
-                  <div className="filter-group-icon d-none d-md-block" key="2">
-                      <Dropdown>
-                          <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
-                              { selectedCategory?.label }
-                          </Dropdown.Toggle>
-
-                          <Dropdown.Menu variant="default">
-                            {
-                                sportCategories && sportCategories.map((category) => { 
-                                   return <Dropdown.Item 
-                                    key={category.category_id}
-                                    eventKey={category.category_id} 
-                                    onClick={() => handleCategorySelect(category)}>{ category.label}</Dropdown.Item> 
-                                })
-                            }
-                          </Dropdown.Menu>
-                        </Dropdown>
-                  </div>
-                { competitions && <div className="filter-group-icon" key="3">
-                    <Dropdown>
-                        <Dropdown.Toggle id="dropdown-custom-components" variant="secondary" >
-                            { selectedCompetition?.label }
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu variant="default">
-                          {
-                              competitions.map((competition) => { 
-                                 return <Dropdown.Item 
-                                  key={competition.competition_id}
-                                  eventKey={competition.competition_id} 
-                                  onClick={() => handleCompetitionSelect(competition)}>{ competition.label}</Dropdown.Item> 
-                              })
-                          }
-                        </Dropdown.Menu>
-                      </Dropdown>
-                </div> 
-               }
+                  
+                
             </Row>
         </div>
     )

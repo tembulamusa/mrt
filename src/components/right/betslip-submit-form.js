@@ -510,35 +510,35 @@ const BetslipSubmitForm = (props) => {
                         <td colSpan="2"></td>
                     </tr>
                     {!jackpot && <tr className="bet-win-tr hide-on-affix">
-                        <td>Possible winnings</td>
+                        <td>Possible winnings(TSH)</td>
                         <td>
-                            TSH. <span
+                            <span
                             id="pos_win">{formatNumber(possibleWin)}</span>
                         </td>
                     </tr>}
 
                     <tr className="bet-win-tr hide-on-affix transparent-text">
-                        <td> Excise Tax (7.5%)</td>
-                        <td>TSH. <span id="tax">{formatNumber(exciseTax)}</span></td>
+                        <td> Excise Tax (7.5% TSH)</td>
+                        <td><span id="tax">{formatNumber(exciseTax)}</span></td>
                     </tr>
                     {jackpot ? (
                         ''
                     ) : (
                         <>
                         <tr className="bet-win-tr hide-on-affix">
-                            <td> Withholding (10%)</td>
-                            <td>TSH. <span id="tax">{formatNumber(withholdingTax)}</span></td>
+                            <td> Withholding 10%(TSH)</td>
+                            <td><span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
 
                         <tr className="bet-win-tr hide-on-affix">
-                            <td> biko WIN Bonus</td>
-                            <td>TSH. <span id="tax">{formatNumber(withholdingTax)}</span></td>
+                            <td> biko WIN Bonus(TSH)</td>
+                            <td><span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
                         </>
                     )}
                     <tr className="bet-win-tr hide-on-affix">
-                        <td>{jackpot?'Jackpot Amount':'Net Amount'}</td>
-                        <td>TSH. <span
+                        <td>{jackpot?'Jackpot Amount':'Net Amount'}(TSH)</td>
+                        <td><span
                             id="net-amount">{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin + withholdingTax))}</span></td>
                     </tr>
                     <tr>
