@@ -302,13 +302,12 @@ li.bet-option {
 .bet-type{font-size: 12px}
 
 .place-bet-btn {
-    background: #c6224e;
+    background: #c6224e !important;
     color: #fff;
     border: none;
     padding: 7px 10px;
     font-size: 11px;
 }
-
 .jp-matches .events-odd {
     background: #0c153b;
     text-transform: uppercase;
