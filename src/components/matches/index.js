@@ -173,7 +173,7 @@ const MatchHeaderRow = (props) => {
             <div className="top-matches header d-flex position-sticky sticky-top "
                  style={{opacity: "1", top: "100px"}}>
                  {live && <span className="white-text">LIVE </span> }
-                <div className="col-sm-1 col-1 pad left-text" key="d5">
+                <div className="col-sm-2 col-1 pad left-text" key="d5">
                     <div className="align-self-center col">
 
                    { fetching && <div className="filter-group-icon d-lg-block d-none float-end" >
@@ -291,7 +291,7 @@ const SideBets = (props) => {
 
     return (
     <>
-        <div>
+        <div className="col d-flex flex-row justify-content-between">
         <div
             className={`bet-fix events-odd pad ${picked} align-self-center more-markets-container m-lg-2`}>
             {(match?.side_bets > 1) && <>
@@ -299,6 +299,7 @@ const SideBets = (props) => {
                    href={`/match/${live ? 'live/' : ''}${
                        live ? match.parent_match_id : match?.match_id}`
                    }><span className="text-tertiary">+{match.side_bets}</span>
+
                 <div className="normal-font-weight dark-text">Markets</div>
 
                 </a>

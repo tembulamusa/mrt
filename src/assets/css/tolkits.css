@@ -16276,9 +16276,10 @@ a:hover {
 .top-login .btn {
     width: 100px;
     height: 34px;
-    line-height: 26px;
+    line-height: 27px;
     margin-left: 10px;
     font-weight: bold;
+    color: #fff !important;
 }
 .header-menu .input-field {
     height: 35px !important;
@@ -16718,11 +16719,11 @@ li.left-menu-item-1 >.pro-inner-item {
 }
 
 
-.web-element .top-matches .c-btn-group.align-self-center {
+.web-element .top-matches .c-btn-group {
     display: inline-flex;
     /* border: 1px solid red; */
     overflow: hidden;
     border-radius: 4px;
     padding-right: 0 !important;
-    margin-left: -4% !important;
+    margin-left: 1% !important;
 }
