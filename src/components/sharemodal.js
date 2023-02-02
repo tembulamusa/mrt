@@ -8,38 +8,42 @@ import makeRequest from './utils/fetch-request';
 import {getFromLocalStorage} from './utils/local-storage'; 
 import publicIp from 'public-ip';
 import { Context } from "../context/store"
+import { ShimmerTitle, ShimmerTable } from "react-shimmer-effects";
 
 import "../App.css";
 
 const ShareModal = (props) => {
-    const betslip = getBetslip();
-    console.log("Sharing this betslip ", betslip);
     const user = getFromLocalStorage("user");
     const app_name = "desktop-web";
     const [ipv4, setIpv4] = useState(null);
     const [shareId, setShareId] = useState();
     const [shareMessage, setShareMessage] = useState();
     const [state, dispatch] = useContext(Context);
+    const [doneShare, setDoneShare] = useState(false);
+
     console.log("This is my context", state);
 
     const createSharableBet = useCallback(async () => {
         let endpoint = "/v1/share";
-
-   
+        setDoneShare(false);
+        let betslip = getBetslip();
+        let sharedSlip = betslip || state?.betslip;
+        console.log("This is the betslip", betslip, state?.betslip);
         let payload = {
-            betslip: betslip,
+            betslip: sharedSlip ,
             ip_address: ipv4,
             app:app_name,
             msisdn:user?.msisdn,
             profile_id:user?.profile_id
         }
-        console.log("Posting my sghare bet data", payload);
+        console.log("Posting my share bet data", payload);
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {
                 setShareId(result.code);
             } else {
                 setShareMessage("Could not create share code, please try again");
             }
+            setDoneShare(true);
         });
     }, []);
 
@@ -58,7 +62,7 @@ const ShareModal = (props) => {
     }, [ipAddress])
 
     useEffect(() => {
-        if(state?.showsharemodal === true && betslip) {
+        if(state?.showsharemodal === true) {
             createSharableBet();
         }
     }, [state?.showsharemodal])
@@ -75,6 +79,11 @@ const ShareModal = (props) => {
                      <Modal.Header closeButton className="primary-bg">
                       <Modal.Title>Share bet</Modal.Title>
                     </Modal.Header>
+                    { doneShare === false ? (
+                        <div>
+                            <ShimmerTitle line={2} gap={10} variant="secondary" /> 
+                            <ShimmerTable row={2} col={3} />
+                        </div> ) : (
                     <Modal.Body>
                         <div className="row mb-3">
                             <div className="col-12"> Share the love, tell your friend to bet on this bet</div>
@@ -116,6 +125,7 @@ const ShareModal = (props) => {
                         <h5 className="mt-3"> Copy Code </h5>
                         <ClipboardCopy copyText={shareId} />
                     </Modal.Body>
+                 ) }
             </Modal>
         </>
     )

@@ -19,13 +19,14 @@ const HeaderMenuToggle = (props) => {
       <Dropdown.Menu>
 
 
-        <Dropdown.Item href="/my-account">My Account</Dropdown.Item>
-        <Dropdown.Item href="/my-bets">My Bets</Dropdown.Item>
-        <Dropdown.Item href="/deposit">Deposit</Dropdown.Item>
-        <Dropdown.Item href="/withdraw">Withdrawal</Dropdown.Item>          
-        <Dropdown.Item href="/app">Download App</Dropdown.Item>
-        <Dropdown.Item href="/how-to-play">Help</Dropdown.Item>
-        <Dropdown.Item href="/logout">Logout</Dropdown.Item>
+        <Dropdown.Item href="/my-account">MY ACCOUNT</Dropdown.Item>
+        <Dropdown.Item href="/my-bets">MY BETS</Dropdown.Item>
+        <Dropdown.Item href="/deposit">DEPOSIT</Dropdown.Item>
+        <Dropdown.Item href="/withdraw">WITHDRAW</Dropdown.Item>          
+        <Dropdown.Item href="/transactions">TRANSACTIONS</Dropdown.Item>          
+        <Dropdown.Item href="/app">DOWNLOAD APP</Dropdown.Item>
+        <Dropdown.Item href="/how-to-play">HELP</Dropdown.Item>
+        <Dropdown.Item href="/logout">LOGOUT</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     </>
