@@ -249,7 +249,7 @@ const Sidebar = (props) => {
                                 <MenuItem key={`l_${index}`}
                                           icon={<img
                                              src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
-                                             style={{borderRadius: "49%", height: "15px"}}></img>}>
+                                             style={{borderRadius: "10%", height: "15px"}}></img>}>
                                    <a href={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}`}>
                                         {top_league?.competition_name}
                                     </a>
@@ -265,8 +265,8 @@ const Sidebar = (props) => {
                             { competitions?.top_countries.map((country, index) => (
 
                                 <MenuItem title={country.category_name}
-                                     icon={<img style={{borderRadius: '50%', height: '15px'}}
-                                     src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
+                                     icon={<img style={{borderRadius: '10%', height: '15px'}}
+                                     src={getSportImageIcon(country.flag_icon, 'img/flags-1-1')}
                                      />} key={index} >
 
                                         <a href={`/competition/${country.sport_id}/${country.category_id}/all`}
@@ -283,7 +283,7 @@ const Sidebar = (props) => {
                             {competitions?.all_sports.map((competition, index) => (
 
                                 <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id) && index !== 0}
-                                         icon={<img style={{borderRadius: '50%', height: '30px'}}
+                                         icon={<img style={{borderRadius: '10%', height: '30px'}}
                                                     src={getSportImageIcon(competition.sport_name)}/>}
                                          key={index}>
                                 {/* <SubMenu title={'Countries'}
@@ -291,7 +291,7 @@ const Sidebar = (props) => {
                                         <PerfectScrollbar >
                                         {competition?.categories.map((country, countryKey) => (
                                                 <MenuItem title={country.category_name}
-                                                         icon={<img style={{borderRadius: '50%', height: '15px'}}
+                                                         icon={<img style={{borderRadius: '10%', height: '15px'}}
                                                          src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
                                                          />} key={countryKey} >
 
