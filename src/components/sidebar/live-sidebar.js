@@ -43,8 +43,8 @@ const LiveSideBar = (props) => {
                 overflow: 'scroll initial',
                 zIndex: 10,
                 marginRight: '2px',
-                top: "100px",
-                marginTop: "10px"
+                top: "80px",
+                marginTop: "0px"
             }}
                  className={`vh-100 sticky-top d-none d-md-block up`}>
                 <ProSidebar
