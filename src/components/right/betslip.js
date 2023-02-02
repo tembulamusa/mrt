@@ -29,6 +29,7 @@ const BetSlip = (props) => {
     const { code } = useParams();
 
     const [totalOdds, setTotalOdds] = useState(1);
+    const [inputShareCode, setInputShareCode] = useState();
 
     const fetchSharedBetslip = useCallback((code) => {
         let endpoint = "/v1/share?code=" + code
@@ -43,6 +44,17 @@ const BetSlip = (props) => {
             }
         });
     }, [code])
+
+
+   const handleCodeInputChange = (event) => {
+       setInputShareCode(event.target.value);
+    };
+
+    const loadBetslipFromCode = () => {
+        if(inputShareCode) {
+            fetchSharedBetslip(inputShareCode); 
+        }
+    }
 
     useEffect(() => {
         if(code){
@@ -166,6 +178,15 @@ const BetSlip = (props) => {
         <div className="bet-body text-white">
             <div className="flow betslip-body" style={{maxHeight: "35vh", overflowY: "auto"}}>
                 <ul>
+                    { !betslipsData || Object.keys(betslipsData).length === 0 &&
+                       <li className="bet-option hide-on-affix" key="no-slip-ai"
+                          style={{height:"30px",margin:"10px 10px 10px 5px", borderBottom:"none", padding:"0px 2px"}}>
+                            <input  type="text" name="sharecode"  placeholder="Enter share code"  
+                                onChange={handleCodeInputChange}
+                                style={{border:"1px solid #ddd", borderRadius:"2px", margin:"0px 4px 0px 0px", width:"66%",height:"30px"}}/>
+                            <button className="btn-default biko-bg" style={{height:"30px"}} onClick={loadBetslipFromCode}>Load Slip</button>
+                       </li>
+                    } 
                     {Object.entries(betslipsData || {}).map(([match_id, slip]) => {
                         let odd = slip.odd_value;
                         let no_odd_bg = odd === 1 ? '#f29f7a' : '';
