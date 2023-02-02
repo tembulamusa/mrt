@@ -190,8 +190,7 @@ const Sidebar = (props) => {
                 */}
                 <SidebarContent>
                     <Menu iconShape="circle">
-
-                        <div className="base-submenu uppercase">
+                        <div className=" left-menu base-submenu uppercase">
                             <MenuItem className={pathname === '/' ? "active" : ''}>
                                 <a href="/" title="Home">
                                 <FontAwesomeIcon icon={faHome} className="hide1"/> Home
@@ -245,8 +244,7 @@ const Sidebar = (props) => {
 
                         <div className="left-menu">
                             
-                            <SubMenu className="left-menu-item-1" title={'Top Leagues'}
-                           icon={<img src={TopLeagues} alt="" className="svg-menu-img-icon hide1" />} >
+                            <SubMenu className="left-menu-item-1" title={'Top Leagues'} >
                             {competitions?.top_soccer?.map((top_league, index) => (
                                 <MenuItem key={`l_${index}`}
                                           icon={<img
@@ -260,8 +258,7 @@ const Sidebar = (props) => {
                         </SubMenu>
 
 
-                        <SubMenu className="left-menu-item-1" title={'Top Countries'}
-                           icon={<img src={Flag} alt="" className="svg-menu-img-icon hide1" />} >
+                        <SubMenu className="left-menu-item-1" title={'Top Countries'}>
 
 
 
@@ -282,8 +279,7 @@ const Sidebar = (props) => {
                         </SubMenu>
 
 
-                        <SubMenu className="left-menu-item-1" title={'Other Sports(A-Z)'}
-                           icon={<img src={Others} alt="" className="svg-menu-img-icon hide1" />} >
+                        <SubMenu className="left-menu-item-1" title={'Other Sports(A-Z)'} >
                             {competitions?.all_sports.map((competition, index) => (
 
                                 <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id) && index !== 0}

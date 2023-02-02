@@ -139,7 +139,7 @@ const BetslipSubmitForm = (props) => {
                     <strong>Pay via Direct PAYBILL</strong>
                </div>
                <div className="col-12" style={{fontSize:"16px"}}>
-                    TSH {betAmount}
+                    TZS {betAmount}
                </div>
            </div>
             <div className="row mb-3 pt-2 pb-3" style={{background:"#e5f7fc", 
@@ -250,8 +250,8 @@ const BetslipSubmitForm = (props) => {
         }
 
 
-        if (!values.user_id && live_bet) {
-            setMessage({status: 400, message: "Kndly login to place live Bet"});
+        if (!values.user_id) {
+            setMessage({status: 400, message: "Kndly login to place bet"});
             setSubmitting(false);
             return false;
         }
@@ -510,36 +510,32 @@ const BetslipSubmitForm = (props) => {
                         <td colSpan="2"></td>
                     </tr>
                     {!jackpot && <tr className="bet-win-tr hide-on-affix">
-                        <td>Possible winnings(TSH)</td>
+                        <td>Possible winnings (TZS)</td>
                         <td>
                             <span
                             id="pos_win">{formatNumber(possibleWin)}</span>
                         </td>
                     </tr>}
 
-                    <tr className="bet-win-tr hide-on-affix transparent-text">
-                        <td> Excise Tax (7.5% TSH)</td>
-                        <td><span id="tax">{formatNumber(exciseTax)}</span></td>
-                    </tr>
                     {jackpot ? (
                         ''
                     ) : (
                         <>
                         <tr className="bet-win-tr hide-on-affix">
-                            <td> Withholding 10%(TSH)</td>
+                            <td> Tax 10% (TZS)</td>
                             <td><span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
 
                         <tr className="bet-win-tr hide-on-affix">
-                            <td> biko WIN Bonus(TSH)</td>
+                            <td> Bonge Bonus (TZS)</td>
                             <td><span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
                         </>
                     )}
                     <tr className="bet-win-tr hide-on-affix">
-                        <td>{jackpot?'Jackpot Amount':'Net Amount'}(TSH)</td>
+                        <td><strong>{jackpot?'Jackpot Amount':'Net Amount'} (TZS) </strong></td>
                         <td><span
-                            id="net-amount">{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin + withholdingTax))}</span></td>
+                            id="net-amount"><strong>{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin + withholdingTax))}</strong></span></td>
                     </tr>
                     <tr>
                         <td className="">

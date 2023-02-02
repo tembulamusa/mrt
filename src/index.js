@@ -85,6 +85,7 @@ const CasinoGamePlay = React.lazy(() => import('./components/pages/casino/GamePl
 
 const Promotions = React.lazy(() => import('./components/pages/promotions/Promotions'))
 const Help = React.lazy(() => import('./components/pages/Help'))
+const Transactions = React.lazy(() => import('./components/pages/transactions'))
 
 const LiveScore = React.lazy(() => import('./components/pages/livescore/LiveScore'))
 
@@ -144,6 +145,8 @@ render((
                 <Route exact path="/print-matches" element={<PrintMatches/>}/>
                 <Route exact path="/promotions" element={<Promotions/>}/>
                 <Route exact path="/help" element={<Help/>}/>
+                <Route exact path="/transactions" 
+                    element={<ProtectedRoute><Transactions/> </ProtectedRoute>}/>
 
                 <Route exact path="/deposit"
                        element={<ProtectedRoute><Deposit/></ProtectedRoute>}/>
