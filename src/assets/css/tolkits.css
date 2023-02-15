@@ -16837,6 +16837,11 @@ li.left-menu-item-1 >.pro-inner-item {
         .bet-item .col {
             font-size: 10px;
         }
+
+        .jp-pick-type {
+           
+            width: 33.3%;
+        }
     }
 
 
