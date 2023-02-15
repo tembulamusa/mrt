@@ -35,6 +35,7 @@ const HeaderMenuToggle = React.lazy(() => import('./menu-toggle'));
 const HeaderNav = React.lazy(() => import('./header-nav'));
 const MobileLogin = React.lazy(() => import('./mobile-login-link'));
 const MobileToggleMkts = React.lazy(() => import('./mobile-toggle-markets'));
+const MobileMenu = React.lazy(() => import('./mobile-menu'));
 
 const Header = (props) => {
     const [user, setUser] = useState(getFromLocalStorage("user"));
@@ -137,14 +138,15 @@ const Header = (props) => {
     return (
         <>
             <Navbar expand="md" className="mb-0 ck pc os app-navbar top-nav" fixed="top" variant="dark">
-                <Container fluid className={'d-flex justify-content-between mobile-change'}>
-                    <Row style={{width: "100%"}}>
+                <div className={''}>
+                    <Row style={{width: "100%",}} className="mobile-row-custom-full">
 
                     {/* Mobile top */}
 
-                    <div className="col-12 d-md-none d-flex">
-                    Mobile menu
+                    <div className="col-12 d-sm-flex d-md-none d-flex pr-0">
+                        <MobileMenu />
                     </div>
+
                     <div className="col-3">
                         <Navbar.Brand href="/" className="e logo align-self-start co4" title="Bikosports">
                             <div className="">
@@ -200,9 +202,7 @@ const Header = (props) => {
                     <div className="col-sm-3 col-3 vissible-mobile d-lg-none float-end header-navigation" id="header">
                         {/* Add menus for the mobile*/}
 
-                        <div className="menu-list">
-                            <a href="#" className="menu-item"><MobileToggleMkts /></a>
-                        </div>
+                        
                          
                         
                     </div>
@@ -231,7 +231,7 @@ const Header = (props) => {
                             <SidebarMobile/>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas> */}
-                </Container>
+                </div>
             </Navbar>
 
           <ShareModal shown={state?.showsharemodal === true} />
