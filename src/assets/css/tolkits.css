@@ -16780,7 +16780,15 @@ li.left-menu-item-1 >.pro-inner-item {
         }
 
         .web-element.container .top-matches {
-            padding-left: 0px;
+            padding-left: 5px;
+        }
+
+        .mobile-top-custom-pad {
+            padding-left: 10%;
+        }
+
+        .match-detail-container {
+            width: 33% !important;
         }
     }
 
