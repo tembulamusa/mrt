@@ -189,10 +189,7 @@ const Header = (props) => {
                     </div>
                     </div>
                     { /* Mobile version user profile */}
-                    <div className="vissible-mobile small-mobile d-lg-none d-md-none col-12">
-                        {user ? <ProfileMenu user={user}/> : ""}
-                        
-                    </div>
+                    
                    </Row>
 
                    {/*

@@ -11,21 +11,21 @@ const ProfileMenu = (props) => {
     <>
       {user && (
         <div className="profile  row top-profile">
-          <div className="d-none d-md-block col-12">
+          <div className="d-md-block col-12">
             
               <div className="row uppercase">
-                <div className="col-3 right-bordered-col">
+                <div className="col-3 d-none d-md-block right-bordered-col">
                   <FontAwesomeIcon icon={faUser} className="profile-icon float-end"/>
                 </div>
-                <div className="col-3 right-bordered-col">
+                <div className="col-3 col-sm-5 mobile-right-cols right-bordered-col">
                   <div className="cream-text">User Profile</div>
                   {user?.msisdn}
                 </div>
-                <div className="col-3 right-bordered-col">
+                <div className="col-3 col-sm-5 mobile-right-cols right-bordered-col">
                   <div className="cream-text">A/C Balance</div>
                   Tsh. {formatNumber(user.balance) || 0}
                 </div>
-                <div className="col-3">
+                <div className="col-3 d-none d-md-block">
                   <div className="cream-text">Bonus</div>
                   Tsh. {formatNumber(user.bonus) || 0}
                 </div>
