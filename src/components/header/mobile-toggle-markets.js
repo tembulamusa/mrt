@@ -4,6 +4,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import SidebarMobile from "../sidebar/awesome/SidebarMobile";
 import SideBar from "../sidebar/awesome/Sidebar";
 import Navbar from 'react-bootstrap/Navbar';
+import { FaBars, FaUserAlt } from "react-icons/fa";
 
 function MobileToggleMkts() {
   const [show, setShow] = useState(false);
@@ -13,9 +14,11 @@ function MobileToggleMkts() {
 
   return (
     <span className="d-lg-none d-md-none d-sm-block d-lg-none d-md-none">
+
       <Button variant="toggle-menu" onClick={handleShow}>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand`} />
+        <div><FaBars size={25} /></div>
       </Button>
+        sports
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>

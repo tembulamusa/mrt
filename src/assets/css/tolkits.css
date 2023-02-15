@@ -16739,3 +16739,52 @@ li.left-menu-item-1 >.pro-inner-item {
 .pro-sidebar .pro-menu .pro-sub-menu.open > .pro-inner-item:focus {
     color: #fff !important;
 }
+
+
+@media only screen and (max-device-width: 480px) {
+       /* styles for mobile browsers smaller than 480px; (iPhone) */
+       .app-navbar .e img {
+            max-width: 100px !important;
+        }
+
+        .mobile-row-custom-full {
+            --bs-gutter-x:0.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pro-sidebar {
+            width: 100% !important;
+        }
+
+        .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item {
+            
+            align-items: center;
+            padding: 1px 35px 10px 10px !important;
+        }
+
+        .react-slidedown {
+           
+            padding-top: 5px;
+        }
+    }
+
+.top-nav-mobile {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding-bottom: 9px;
+    margin-bottom: 7px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.top-nav-mobile .btn {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0;
+}
+
+.top-nav-mobile a {
+    color: rgba(255,255,255, 0.85);
+}
+

@@ -1,8 +1,8 @@
 import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaUserAlt } from "react-icons/fa";
 import Dropdown from 'react-bootstrap/Dropdown';
-import { faUser, faLock, faCoins } from "@fortawesome/free-solid-svg-icons";
+import {faLock, faCoins } from "@fortawesome/free-solid-svg-icons";
 import { formatNumber } from "../utils/betslip";
 
 const HeaderMenuToggle = (props) => {
@@ -12,7 +12,7 @@ const HeaderMenuToggle = (props) => {
     <>
       <Dropdown>
       <Dropdown.Toggle variant="top-menu-btn" id="dropdown-basic">
-        <div><FaBars size={25} /></div>
+        <div><FaUserAlt size={25} /></div>
         Menu
       </Dropdown.Toggle>
 

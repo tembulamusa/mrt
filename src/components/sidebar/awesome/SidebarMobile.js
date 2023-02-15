@@ -11,6 +11,7 @@ const SidebarMobile = (props) => {
             image={false}>
             <SidebarContent>
                 <Menu iconShape="circle">
+                
                     {competitions?.all_sports?.map((competition, index) => (
                         <SubMenu title={competition.sport_name}
                                  icon={<img style={{borderRadius: '50%', height: '25px'}}
