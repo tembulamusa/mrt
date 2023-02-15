@@ -16804,6 +16804,11 @@ li.left-menu-item-1 >.pro-inner-item {
             font-weight: bold;
             font-size: 10px;
         }
+
+        .mobile-right-cols {
+            width: 48%;
+            text-align: right;
+        }
     }
 
 .top-nav-mobile {
