@@ -5,7 +5,7 @@ const ClipboardCopy = ({ copyText }) => {
 
   const copyTextToClipboard = async (text) => {
     if ('clipboard' in navigator) {
-      return await navigator.clipboard.writeText(text);
+      return await navigator.clipboard.write(text);
     } else {
       return document.execCommand('copy', true, text);
     }
@@ -17,7 +17,7 @@ const ClipboardCopy = ({ copyText }) => {
         setIsCopied(true);
         setTimeout(() => {
           setIsCopied(false);
-        }, 1500);
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);
