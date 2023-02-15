@@ -71,7 +71,7 @@ const Transactions = (props) => {
                                             <div className="small-box-content">
                                             { transactions &&
                                                 Object.entries(transactions).map(([key, tr]) => ( 
-                                                    <div className="row" key={key}>
+                                                    <div className="row item-row" key={key}>
                                                         <div className="col">{tr.created}</div>
                                                         <div className="col">{tr.description}</div>
                                                         <div className="col">{tr.amount}</div>
