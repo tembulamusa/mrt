@@ -16842,6 +16842,15 @@ li.left-menu-item-1 >.pro-inner-item {
            
             width: 33.3%;
         }
+
+        .match-detail-container {
+            margin-right: 8px;
+        }
+
+        .jackpot-body .c-btn-group > .c-btn {
+            
+            margin-right: 10px;
+        }
     }
 
 
