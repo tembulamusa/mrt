@@ -138,7 +138,7 @@ const Header = (props) => {
     return (
         <>
             <Navbar expand="md" className="mb-0 ck pc os app-navbar top-nav" fixed="top" variant="dark">
-                <div className={''}>
+                <div className={'d-flex justify-content-between mobile-change container-fluid'}>
                     <Row style={{width: "100%",}} className="mobile-row-custom-full">
 
                     {/* Mobile top */}
