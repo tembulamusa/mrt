@@ -244,7 +244,7 @@ const MatchHeaderRow = (props) => {
 
                     <div className="d-sm-flex d-md-none" style={{width:"100%", textAlign:"right", paddingRight:"5px"}}>
                      <div className="row">
-                        <div className="col-12"><div className="row"><div className="col-3 center-text">1</div> <div className="col-3  center-text"> X </div><div className="col-3  center-text"> 2</div></div></div>
+                        <div className="col-12 mobile-top-custom-pad"><div className="row"><div className="col-3 center-text">1</div> <div className="col-3  center-text"> X </div><div className="col-3  center-text"> 2</div></div></div>
                      </div>
                  </div>
             </div>
@@ -285,16 +285,7 @@ const MoreMarketsHeaderRow = (props) => {
                 <Row className="header-text">
                     <Col>{category} {competition}</Col>
                 </Row>
-                {match_status !== 'Ended' &&
-                    <Row className="start-time">
-                        {live
-                            ? <Col>Live: <span>{match_time || match_status}</span></Col>
-                            : <Col className="left-text small-text weight-500">{start_time.slice(-8)} <div>{start_time.slice(0, -8)}</div></Col>
-                        }
-
-                        <Col></Col>
-                    </Row>
-                }
+                
             </div>
         </Container>
     )
@@ -624,7 +615,7 @@ const MatchRow = (props) => {
     return (
         <div className="top-matches d-flex">
             
-                <div className="col-sm-2 col-xs-12 pad left-text" key="22">
+                <div className="col-sm-2 col-xs-12 pad d-none d-md-block left-text" key="22">
                 {live &&
                     <>
                         <small style={{color: "red"}}> {match?.match_status} </small>
@@ -632,7 +623,7 @@ const MatchRow = (props) => {
                     </>
                 }
                 
-                <div className="d-flex flex-column d-none d-md-block bold dark-text" key="20">
+                <div className="d-flex flex-column bold dark-text" key="20">
                     <div className={'small'}>
                         {(live && match?.match_time) ?
                             <>{`${match.match_time}'`}</> : match?.start_time}
