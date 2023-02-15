@@ -16809,8 +16809,40 @@ li.left-menu-item-1 >.pro-inner-item {
             width: 48%;
             text-align: right;
         }
+
+        .gz.home {
+            width: 100%;
+        }
+
+        .mobile-width-100 {
+            width: 100%;
+        }
+
+        .mt-5 {
+            margin-top: 1.5rem;
+        }
+
+        .btn-lg{
+            font-size: 16px;
+        }
+        .mybet-list {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        .kumbafu .col {
+            font-size: 10px;
+        }
+
+        .bet-item .col {
+            font-size: 10px;
+        }
     }
 
+
+.item-row {
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+}
 .top-nav-mobile {
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);

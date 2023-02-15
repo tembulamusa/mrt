@@ -105,7 +105,7 @@ const Withdrawal = (props) => {
             <div className="form-group row d-flex justify-content-left mb-4">
                 <div className="col-md-3">
                     <button
-                        className='btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button'>
+                        className='btn btn-lg btn-primary mt-5 mobile-width-100 col-md-12 deposit-withdraw-button'>
                         Withdraw
                     </button>
                 </div>

@@ -94,7 +94,7 @@ const ResetPassword = (props) => {
 
     const FormTitle = () => {
         return (
-            <div className='col-md-12 primary-bg p-4 text-center'>
+            <div className='col-md-12 primary-bg p-2 text-center'>
                 <h4 className="inline-blck">
                     RECOVER YOUR ACCOUNT
                 </h4>
