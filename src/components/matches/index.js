@@ -173,15 +173,10 @@ const MatchHeaderRow = (props) => {
             <div className="top-matches header d-flex position-sticky sticky-top "
                  style={{opacity: "1", top: "100px"}}>
 
-                 <div className="d-sm-flex d-md-none">
-                     <div className="row">
-                        <div className="col-12">1 X 2</div>
-                     </div>
-                 </div>
+                 
 
-                 <div className="d-none d-md-flex">
                  {live && <span className="white-text">LIVE </span> }
-                <div className="col-sm-1 col-1 pad left-text" key="d5">
+                <div className="d-sm-none d-md-block col-sm-1 col-1 pad left-text" key="d5">
                     <div className="align-self-center col">
 
                    { fetching && <div className="filter-group-icon d-lg-block d-none float-end" >
@@ -198,11 +193,11 @@ const MatchHeaderRow = (props) => {
                 <div className={'col-2 d-none d-md-block d-xs-none d-sm-none match-detail-container'} key="d4"></div>
                 <div className="col-4 d-none d-sm-block d-xs-block d-md-none"></div>
                 
-                <div className={'col-7 d-flex flex-row justify-content-between'}>
+                <div className={'d-none d-md-flex col-7 flex-row justify-content-between'}>
                     <div className="row">
                     
                     {three_way &&
-                        <div className="col-5" key="d3">
+                        <div className="col-5 " key="d3">
                             <div className="d-flex flex-column mobile-right-mkt-type text-center">
                                 <div className={'bold'}>
                                     3 WAY
@@ -246,7 +241,12 @@ const MatchHeaderRow = (props) => {
                         className="col-2">
                         &nbsp;
                     </div>
-                    </div>
+
+                    <div className="d-sm-flex d-md-none" style={{width:"100%", textAlign:"right", paddingRight:"5px"}}>
+                     <div className="row">
+                        <div className="col-12"><div className="row"><div className="col-3 center-text">1</div> <div className="col-3  center-text"> X </div><div className="col-3  center-text"> 2</div></div></div>
+                     </div>
+                 </div>
             </div>
         </Container>
     )
