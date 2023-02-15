@@ -36,7 +36,6 @@ const EmptyTextRow = (props) => {
                  width: "100%",
                  height: "30px",
                  padding: "2px",
-                 color: "#fff",
                  background: "#d7d7d7",
                  opacity: 1
              }}>

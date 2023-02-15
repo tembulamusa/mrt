@@ -16790,6 +16790,20 @@ li.left-menu-item-1 >.pro-inner-item {
         .match-detail-container {
             width: 33% !important;
         }
+
+
+        .jackpot-body h4, 
+        .jackpot-body h3 {
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+       .jackpot-body p {
+            margin: 0 0 7px;
+            line-height: 1.4;
+            font-weight: bold;
+            font-size: 10px;
+        }
     }
 
 .top-nav-mobile {
