@@ -16767,6 +16767,17 @@ li.left-menu-item-1 >.pro-inner-item {
            
             padding-top: 5px;
         }
+        .filter-group-icon {
+            width: 100%;
+            
+            max-width: 33.3%;
+        }
+
+        .btn-secondary {
+            
+            font-size: 10px;
+            font-weight: bold;
+        }
     }
 
 .top-nav-mobile {
