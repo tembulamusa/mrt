@@ -178,7 +178,7 @@ const BetSlip = (props) => {
         <div className="bet-body text-white">
             <div className="flow betslip-body" style={{maxHeight: "35vh", overflowY: "auto"}}>
                 <ul>
-                    { !betslipsData || Object.keys(betslipsData).length === 0 &&
+                    { Object.keys(betslipsData || {}).length === 0 &&
                        <li className="bet-option hide-on-affix" key="no-slip-ai"
                           style={{height:"30px",margin:"10px 10px 10px 5px", borderBottom:"none", padding:"0px 2px"}}>
                             <input  type="text" name="sharecode"  placeholder="Enter share code"  
