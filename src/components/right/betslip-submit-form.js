@@ -328,6 +328,7 @@ const BetslipSubmitForm = (props) => {
 
                     };
                     console.log("Message on not 200",qmessage )
+                    //dispatch({type:"SET", key:"showloginmodal", payload:true});
                     setMessage(qmessage);
                 }
                 setSubmitting(false);

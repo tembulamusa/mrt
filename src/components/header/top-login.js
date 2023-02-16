@@ -8,6 +8,7 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {setLocalStorage, getFromLocalStorage} from '../utils/local-storage';
 
+
 const HeaderLogin = (props) => {
     const [isLoading, setIsLoading] = useState(null)
     const [message, setMessage] = useState(null);
@@ -89,62 +90,63 @@ const HeaderLogin = (props) => {
     }
 
 
-    const MyLoginForm = (props) => {
-        const {isValid, errors, values, submitForm, setFieldValue} = props;
+  const MyLoginForm = (props) => {
+    const {isValid, errors, values, submitForm, setFieldValue} = props;
 
-        const onFieldChanged = (ev) => {
-            let field = ev.target.name;
-            let value = ev.target.value;
-            setFieldValue(field, value);
-        }
-        return (
-            <>
-                <Form className="ow i web-element" style={{marginTop: "10px"}}>
-                    <Row>
-                        <div className="col-5">
-                            <input type="text"
-                                   name="msisdn"
-                                   className={`top-login-input-field ${errors.msisdn && 'text-danger'}`}
-                                   style={{width:"100%"}}
-                                   data-action="grow"
-                                   placeholder={errors.msisdn || "+254........."}
-                                   onChange={ev => onFieldChanged(ev)}
-                                   value={values.msisdn}
-                            />
-                            <br/>
-                            <span className="sticky-hidden">
-                            <label>
-                               <input type="checkbox" name="remember" value="1"/> 
-                                Remember Me
-                            </label>
-                        </span>
-                        </div>
-                        <div className="col-5">
-                            <input type="password"
-                                   name="password"
-                                   className={`top-login-input-field ${errors.password && 'text-danger'} `}
-                                   data-action="grow"
-                                   style={{width:"100%"}}
-                                   placeholder={errors.password || "Password"}
-                                   onChange={ev => onFieldChanged(ev)}
-                                   value={values.password}
-                            />
-                            <br/>
-                            <input type="hidden" name="ref" value="{props.refURL}"/>
-                            <a href="/reset-password" title="Reset password">
-                                <span className="sticky-hidden">Forgot Password?</span>
-                            </a>
-                        </div>
-                        <div className="col-sm-2">
-                            <button className="cg login-button btn" type="submit">
-                                {isLoading ? <span>Login ..</span> : <span>Login</span>}
-                            </button>
-                        </div>
-                    </Row>
-                </Form>
-            </>
-        );
+    const onFieldChanged = (ev) => {
+        let field = ev.target.name;
+        let value = ev.target.value;
+        setFieldValue(field, value);
     }
+    return (
+        <>
+            <Form className="ow i web-element" style={{marginTop: "10px"}}>
+                <Row>
+                    <div className="col-5">
+                        <input type="text"
+                               name="msisdn"
+                               className={`top-login-input-field ${errors.msisdn && 'text-danger'}`}
+                               style={{width:"100%"}}
+                               data-action="grow"
+                               placeholder={errors.msisdn || "+254........."}
+                               onChange={ev => onFieldChanged(ev)}
+                               value={values.msisdn}
+                        />
+                        <br/>
+                        <span className="sticky-hidden">
+                        <label>
+                           <input type="checkbox" name="remember" value="1"/> 
+                            Remember Me
+                        </label>
+                    </span>
+                    </div>
+                    <div className="col-5">
+                        <input type="password"
+                               name="password"
+                               className={`top-login-input-field ${errors.password && 'text-danger'} `}
+                               data-action="grow"
+                               style={{width:"100%"}}
+                               placeholder={errors.password || "Password"}
+                               onChange={ev => onFieldChanged(ev)}
+                               value={values.password}
+                        />
+                        <br/>
+                        <input type="hidden" name="ref" value="{props.refURL}"/>
+                        <a href="/reset-password" title="Reset password">
+                            <span className="sticky-hidden">Forgot Password?</span>
+                        </a>
+                    </div>
+                    <div className="col-sm-2">
+                        <button className="cg login-button btn" type="submit">
+                            <span>Login</span>
+                        </button>
+                    </div>
+                </Row>
+            </Form>
+        </>
+    );
+}
+
 
     const LoginForm = (props) => {
         return (
