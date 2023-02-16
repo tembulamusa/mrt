@@ -16,6 +16,7 @@ const BodyLogin = (props) => {
     const [message, setMessage] = useState(null);
     const {setUser} = props;
     const navigate = useNavigate();
+    const [state, dispatch] = useContext(Context);
 
     const initialValues = {
         msisdn: "",
@@ -64,8 +65,8 @@ const BodyLogin = (props) => {
 
             setIsLoading(false)
             if (status === 200 || status == 201 || status == 204) {
+                dispatch({type:"SET", key:"showloginmodal", payload:false})
                 setMessage(response);
-
             } else {
                 let message = {
                     status: status,
@@ -103,7 +104,7 @@ const BodyLogin = (props) => {
         }
         return (
             <>
-                <Form className="og i web-element">
+                <Form className="i web-element">
                     <Row>
                         <div className="form-group row d-flex justify-content-center mt-3">
                             <label>Mobile Number</label>
