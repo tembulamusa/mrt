@@ -200,7 +200,7 @@ const MainTabs = (props) => {
 
     return (
         <div>
-            <Row className="full-mobile filter-groups transparent-buttons">
+            <div className="full-mobile filter-groups transparent-buttons">
 
                 <div className="filter-group-icon">
                     <button className={`uppercase btn-secondary ${activeTab === 'highlights' && 'home-tab-active'}`} 
@@ -214,10 +214,15 @@ const MainTabs = (props) => {
                         <button className={`uppercase btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
                             onClick={() => setActiveTabSpace('tomorrow')}>Mechi zijazo</button>
                 </div>
+                
+                <div className="filter-group-icon">
+                        <button className={`uppercase btn-secondary ${activeTab === 'live' && 'home-tab-active'}`}
+                            onClick={() => setActiveTabSpace('live')}>Live Now</button>
+                </div>
 
                   
                 
-            </Row>
+            </div>
         </div>
     )
 

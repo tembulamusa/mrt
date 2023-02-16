@@ -190,7 +190,7 @@ const Sidebar = (props) => {
                 */}
                 <SidebarContent>
                     <Menu iconShape="circle">
-                        <div className=" left-menu base-submenu uppercase">
+                        <div className=" left-menu base-submenu uppercase bold">
                             <MenuItem className={pathname === '/' ? "active" : ''}>
                                 <a href="/" title="Home">
                                 <FontAwesomeIcon icon={faHome} className="hide1"/> Home
@@ -199,7 +199,7 @@ const Sidebar = (props) => {
 
                             <MenuItem className={`live-game ${pathname === '/live' ? 'active' : ''}`}>
                                 <a href="/live"
-                                   title="Live"><img src={LiveIcon} alt="" className="svg-menu-img-icon hide1" />Live Now</a>
+                                   title="Live" className="red-color"><img src={LiveIcon} alt="" className="svg-menu-img-icon hide1" />Live Now</a>
                             </MenuItem>
 
                             <MenuItem className={`${pathname === '/highlights' ? 'active' : ''}`}>

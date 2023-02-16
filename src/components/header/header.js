@@ -20,6 +20,8 @@ import {
     faMagnet,
     faMagic, faInfo, faChessBoard, faDice
 } from '@fortawesome/free-solid-svg-icons'
+import { FaSearch } from "react-icons/fa";
+
 import logo from '../../assets/img/logo.png';
 import {Navbar, Nav, Offcanvas} from "react-bootstrap";
 import SideBar from "../sidebar/awesome/Sidebar";
@@ -159,10 +161,11 @@ const Header = (props) => {
                     <div className="col-9 change-size pt-3" id="navbar-collapse-main">
                         <div className="row">
                             <div id="navbar-collapse-main"
-                                       className={`col-7 fadeIn header-menu d-none d-md-flex justify-content-center`}>
+                                       className={`col-7 fadeIn header-menu d-none d-md-flex justify-content-center relative-pos`}>
                                             <input type="text" placeholder="Search for Events and Tournaments" ref={searchInputRef}
                                                    onInput={(event) => fetchMatches(event.target.value)}
                                                    className={'form-control input-field border-0  no-border-radius'}/>
+                                                   <span className="top-search-icon"><FaSearch size={15}/></span>
                                         
                                     <div
                                         className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
