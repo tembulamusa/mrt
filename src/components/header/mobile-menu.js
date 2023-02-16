@@ -37,7 +37,10 @@ const MobileMenu = (props) => {
           </a>
         </div>
 
-        <div className="col-2 capitalize"><HeaderMenuToggle /></div>
+        <div className="col-2 capitalize">
+          <HeaderMenuToggle />
+          Menu
+        </div>
       </div>
       </div>
     </>
