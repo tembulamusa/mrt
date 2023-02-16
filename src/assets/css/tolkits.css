@@ -168,7 +168,7 @@ html {
 body {
     font-size: 14px;
     line-height: 1.8;
-    background: rgba(52,179,191,.15);
+    /*background: rgba(52,179,191,.15);*/
 }
 article,
 aside,
@@ -16170,12 +16170,13 @@ li.pro-sub-menu {
     background: transparent;
 }
 .filter-groups.transparent-buttons {
-    
     padding: 3px 0px 0px 4px;
+    text-align: center;
 }
 
 .transparent-buttons .filter-group-icon {
     margin-bottom: 1px;
+    display: inline-block;
 }
 
 .left-with-big-pad-desktop {
@@ -16876,3 +16877,16 @@ li.left-menu-item-1 >.pro-inner-item {
     color: rgba(255,255,255, 0.85);
 }
 
+.red-color, a.red-color, .pro-sidebar .pro-menu a.red-color {
+    
+    color: red !important;
+}
+
+.top-search-icon {
+    position: absolute;
+    right: 43px;
+    top: 2px;
+    opacity: 0.5;
+}
+
+.relative-pos {position: relative;}
