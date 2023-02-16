@@ -27,6 +27,7 @@ import Airtel from '../../assets/img/payment_logos/airtel2.PNG'
 import Mpesa from '../../assets/img/payment_logos/mpesa2.PNG'
 import Tigo from '../../assets/img/payment_logos/tigo2.PNG'
 import Halo from '../../assets/img/payment_logos/halo2.PNG'
+import LoginModal from "../loginmodal";
 
 const Float = (equation, precision = 4) => {
     return Math.round(equation * (10 ** precision)) / (10 ** precision);
@@ -252,6 +253,7 @@ const BetslipSubmitForm = (props) => {
 
         if (!values.user_id) {
             setMessage({status: 400, message: "Kndly login to place bet"});
+            dispatch({type:"SET", key:"showloginmodal", payload:true})
             setSubmitting(false);
             return false;
         }
@@ -430,6 +432,7 @@ const BetslipSubmitForm = (props) => {
 
     return (
         <>
+         <LoginModal />
         <PlaceBetResponseInfo />
         { showMoreOptions 
          ?  <PostBet/>
