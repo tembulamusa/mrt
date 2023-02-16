@@ -252,7 +252,7 @@ const BetslipSubmitForm = (props) => {
 
 
         if (!values.user_id) {
-            setMessage({status: 400, message: "Kndly login to place bet"});
+            setMessage({status: 400, message: "Kindly login to place bet"});
             dispatch({type:"SET", key:"showloginmodal", payload:true})
             setSubmitting(false);
             return false;
@@ -542,13 +542,13 @@ const BetslipSubmitForm = (props) => {
                             id="net-amount"><strong>{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin + withholdingTax))}</strong></span></td>
                     </tr>
                     <tr>
-                        <td className="">
+                        <td className="" width="50%">
                             <button className="place-bet-btn"
                                     type="button"
                                     onClick={() => handleRemoveAll()}>REMOVE ALL
                             </button>
                         </td>
-                        <td className="text-right">
+                        <td className="">
                             <SubmitButton id="place_bet_button"
                                           disabled={jackpot && Object.entries(betslip || []).length != JSON.stringify(jackpotData?.total_games)}
                                           className="place-bet-btn bold"
