@@ -598,7 +598,7 @@ const getUpdatedMatchFromOdds = (props) => {
 const PosterBanner = () => {
 
     return (
-        <div>
+        <div className="poster-image">
            <img src={PosterImage} />
         </div>
     )
