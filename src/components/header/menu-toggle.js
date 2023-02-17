@@ -24,7 +24,7 @@ const HeaderMenuToggle = (props) => {
         <Dropdown.Item href="/withdraw">WITHDRAW</Dropdown.Item>          
         {user?<Dropdown.Item href="/transactions">TRANSACTIONS</Dropdown.Item>:""}          
         <Dropdown.Item href="/app">DOWNLOAD APP</Dropdown.Item>
-        <Dropdown.Item href="/how-to-play">HELP</Dropdown.Item>
+        <Dropdown.Item href="/help">HELP</Dropdown.Item>
         {user?<Dropdown.Item href="/logout">LOGOUT</Dropdown.Item>:<Dropdown.Item href="/login">Login</Dropdown.Item>}
       </Dropdown.Menu>
     </Dropdown>

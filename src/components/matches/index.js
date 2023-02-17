@@ -17,6 +17,7 @@ import {LazyLoadImage} from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import padlock from '../../assets/img/padlock.png';
+import PosterImage from '../../assets/img/banner/products/Daily-JackPot.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChartLine, faFire} from "@fortawesome/free-solid-svg-icons";
 import {getFromLocalStorage} from "../utils/local-storage";
@@ -593,11 +594,22 @@ const getUpdatedMatchFromOdds = (props) => {
 
 }
 
+
+const PosterBanner = () => {
+
+    return (
+        <div>
+           <img src={PosterImage} />
+        </div>
+    )
+}
+
 const MatchRow = (props) => {
     const {
         match, 
         jackpot, 
-        live, 
+        live,
+        counter, 
         pdown, 
         three_way, 
         sub_types} = props;
@@ -611,7 +623,14 @@ const MatchRow = (props) => {
     for (let i = 0; i < append; i++) {
         loops.push(i)
     }
+
     return (
+
+    <>
+
+
+
+        {jackpot ? '' : live ? '' : counter == 13 ? <PosterBanner /> : ''}
         <div className="top-matches d-flex">
             
                 <div className="col-sm-2 col-xs-12 pad d-none d-md-block left-text" key="22">
@@ -625,7 +644,7 @@ const MatchRow = (props) => {
                 <div className="d-flex flex-column bold dark-text" key="20">
                     <div className={'small'}>
                         {(live && match?.match_time) ?
-                            <>{`${match.match_time}'`}</> : match?.start_time}
+                            <>{`${match.match_time}`}</> : match?.start_time}
                     </div>
                     {/*<>ID: {match?.game_id}</>*/}
                     <div className="d-none d-md-block">
@@ -641,7 +660,7 @@ const MatchRow = (props) => {
                                 
                                 <span className={'small  d-xs-block d-sm-block d-md-none'}>
                                 {(live && match?.match_time) ?
-                                    <>{`${match.match_time}'`}</> : match?.start_time}
+                                    <>{`${match.match_time}`}</> : match?.start_time}
                                     </span>
                             </div>
                         </div>
@@ -715,6 +734,8 @@ const MatchRow = (props) => {
                     
                 }
         </div>
+
+        </>
     )
 
 }
@@ -830,6 +851,7 @@ const MatchList = (props) => {
         fetching, 
         subTypes
     } = props;
+    const counter = 0;
 
     return (
         <div className="matches full-width">
@@ -847,13 +869,17 @@ const MatchList = (props) => {
                     Object.entries(matches).map(([key, match]) => (
                         <MatchRow 
                             match={match} 
-                            key={key} 
+                            key={key}
+                            counter = {key} 
                             live={live} 
                             pdown={pdown} 
                             three_way={three_way}
                             sub_types={subTypes}/>
+
+                        
                     ))
                 }
+
                 {(!matches && fetching === false) &&
                     <div className="top-matches row">
                         No events found.
