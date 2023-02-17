@@ -211,7 +211,7 @@ const Header = (props) => {
                     </Row>
                 */}
 
-                <span className="d-none d-md-flex">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</span>
+                <span className="d-none d-md-flex"><div className="">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</div><div className="text-white">Menu</div></span>
 
         { /** <Navbar.Offcanvas
                         style={{width: "100% !important", height: "100%"}}

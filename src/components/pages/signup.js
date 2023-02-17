@@ -63,7 +63,7 @@ const Signup = (props) => {
 
     const FormTitle = () => {
         return (
-            <div className='col-md-12 primary-bg p-2 text-center'>
+            <div className='col-md-12 biko-bg p-2 text-center'>
                 <h4 className="">
                     JISAJILI BIKOSPORTS
                 </h4>
