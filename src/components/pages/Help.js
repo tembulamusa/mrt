@@ -43,8 +43,8 @@ const Help = (props) => {
                     <SideBar loadCompetitions/>
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage child-box-relative-pos">
-                            <div className='col-md-12 primary-bg p-2 text-cente'>
-                                <h4 className="inline-blok cap-tex">Help</h4>
+                            <div className='col-md-12 biko-bg p-2'>
+                                <h4 className="inline-blok cap-text center-text">Help</h4>
                             </div>
 
                             <div className="card">
