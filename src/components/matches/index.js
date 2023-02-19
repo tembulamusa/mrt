@@ -176,7 +176,7 @@ const MatchHeaderRow = (props) => {
                  
 
                  {live && <span className="white-text">LIVE </span> }
-                <div className="d-sm-none d-md-block col-sm-1 col-1 pad left-text" key="d5">
+                <div className="d-sm-none d-md-block pad left-text col-sm-2 col-xs-12 pad d-none" key="d5">
                     <div className="align-self-center col">
 
                    { fetching && <div className="filter-group-icon d-lg-block d-none float-end" >
@@ -184,28 +184,21 @@ const MatchHeaderRow = (props) => {
                        </div>
                    }
 
-        {/* <h3 className="main-heading-1 ">
-                            {live && <span className="live-header">LIVE </span> }
-                            {!live && <span className="">PREMATCH </span> }
-                        </h3> */} 
                     </div>
                 </div>
                 <div className={'col-2 d-none d-md-block d-xs-none d-sm-none match-detail-container'} key="d4"></div>
-                <div className="col-4 d-none d-sm-block d-xs-block d-md-none"></div>
                 
-                <div className={'d-none d-md-flex col-7 flex-row justify-content-between'}>
-                    <div className="row">
-                    
+                <div className={'col d-flex flex-row justify-content-between'}>
                     {three_way &&
-                        <div className="col-5 " key="d3">
-                            <div className="d-flex flex-column mobile-right-mkt-type text-center">
-                                <div className={'bold'}>
+                        <div className=" align-self-center" style={{ width:"37%", color:"#fff",textAlign:"center", paddingLeft:"0",paddingRight:"0"  }} key="d3">
+                            <div className="d-flex flex-column mobile-right-mkt-type">
+                                <div className={'bold align-self-center'}>
                                     3 WAY
                                 </div>
-                                <div className={'c-btn-group align-self-end'}>
-                                    <a className="c-btn-header">1</a>
-                                    <a className="c-btn-header">X</a>
-                                    <a className="c-btn-header">2</a>
+                                <div className="row">
+                                    <div className="col-4 align-self-center">1</div>
+                                    <div className="col-4 align-self-center">X</div>
+                                    <div className="col-4 align-self-center">2</div>
                                 </div>
                             </div>
                         </div>
@@ -214,37 +207,39 @@ const MatchHeaderRow = (props) => {
                     {!live && !jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
-                                <div className={'col-3'} key={extra_market.name}>
-                                    <span className={'small text-center text-uppercase bold'}>
+                                <div className={'d-flex flex-column mobile-right-mkt-type'} key={extra_market.name} style={{width:"25%"}}>
+                                    <div className={'bold align-self-center'}>
                                         {extra_market.name}
-                                    </span>
-                                    <div className={'c-btn-group'}>
-                                        <a className="c-btn-header">
+                                    </div>
+                                    <div className={'row'}>
+                                        <div className="col text-center">
                                             {(extra_market.extra_markets_display[0])}
-                                        </a>
-                                        <a className="c-btn-header">
+                                        </div>
+                                        <div className="col text-center">
                                             {(extra_market.extra_markets_display[1])}
-                                        </a>
+                                        </div>
                                         {extra_market?.extra_market_cols > 2 &&
-                                            <a className={`c-btn-header`}>
+                                            <div className={`col text-center`}>
                                                 {(extra_market.extra_markets_display[2])}
-                                            </a>}
+                                            </div>}
                                     </div>
                                 </div>
                             ))}
                         </>
                     )}
                     
-                  </div>  
+                <div className="col d-flex flex-row justify-content-between"> &nbsp; </div>
                 </div>
-                <div
-                        className="col-2">
-                        &nbsp;
-                    </div>
 
                     <div className="d-sm-flex d-md-none" style={{width:"100%", textAlign:"right", paddingRight:"5px"}}>
                      <div className="row">
-                        <div className="col-12 mobile-top-custom-pad"><div className="row"><div className="col-3 center-text">1</div> <div className="col-3  center-text"> X </div><div className="col-3  center-text"> 2</div></div></div>
+                        <div className="col-12 mobile-top-custom-pad">
+                          <div className="row">
+                              <div className="col-3 center-text">1</div>
+                              <div className="col-3  center-text"> X </div>
+                              <div className="col-3  center-text"> 2</div>
+                           </div>
+                       </div>
                      </div>
                  </div>
             </div>
@@ -309,14 +304,7 @@ const SideBets = (props) => {
                 <div className="normal-font-weight dark-text">Markets</div>
 
                 </a>
-                { /**
-                   <a className="side"
-                   href=#
-                   target={"_blank"}
-                   title={'View Stats'}>
-                    <FontAwesomeIcon icon={faChartLine}/>
-                </a>
-                **/ }
+
             </>}
         </div>
         </div>
@@ -682,7 +670,7 @@ const MatchRow = (props) => {
                 </a>
             </div>
             <div className="col d-flex flex-row justify-content-between" key="24">
-                <div className="c-btn-group align-self-center" key="222">
+                <div className="c-btn-group align-self-center" key="222" style={{width:"37%"}}>
                     {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot
@@ -707,7 +695,7 @@ const MatchRow = (props) => {
                 {!jackpot && <>
                     {Object.entries(match?.extra_odds || {}).map(([marketName, odds], index) => (
                         marketName !== '' && (
-                            <div className={`d-none d-md-flex c-btn-group m-lg-1 align-self-center`} key={index}>
+                            <div className={`d-none d-md-flex c-btn-group m-lg-1 align-self-center`} style={{width:"25%"}}key={index}>
                                 {
                                     Object.entries(odds || {}).map(([odd_key, odd_data]) => {
                                         return odd_data?.odd_active == 1 && odd_data.market_active == 1 ? (<OddButton
@@ -728,11 +716,11 @@ const MatchRow = (props) => {
                 </>
                 }
                 
-            </div>
             {!pdown && !jackpot &&
                     <SideBets match={match} live={live} style={{}} className="d-block"/>
                     
                 }
+            </div>
         </div>
 
         </>
