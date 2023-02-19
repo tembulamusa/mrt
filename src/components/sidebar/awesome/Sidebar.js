@@ -41,7 +41,6 @@ import MostLikedIcon from "../../../assets/svg/MOSTLIKEDOPTIONS.svg";
 // import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
 import DepositIcon from "../../../assets/svg/DEPOSIT.svg";
 import HOWToPlayIcon from "../../../assets/svg/how-to-play.svg";
-import HipoIcon from "../../../assets/img/search-icon.png";
 import PromotionIcon from "../../../assets/svg/Promotions.svg";
 import ShareModal from "../../sharemodal";
 

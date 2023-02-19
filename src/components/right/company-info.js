@@ -23,7 +23,7 @@ const CompanyInfo = (props) => {
                             </div>
                         </div>
                         <div className="col-sm-12">
-                            <img src={RightBanner} alt="" className='w-100'/>
+        { /**  <img src={RightBanner} alt="" className='w-100'/> **/ }
                         </div>
                     </div>
                 </div>

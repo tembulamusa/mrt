@@ -18,7 +18,6 @@ import {faMobile, faCoins} from "@fortawesome/free-solid-svg-icons";
 import HomeIcon from "../../assets/svg/Home.svg";
 import LiveIcon from "../../assets/svg/Live.svg";
 import JackpotIcon from "../../assets/svg/JP.svg";
-import HipoIcon from "../../assets/img/search-icon.png";
 import PromotionIcon from "../../assets/svg/Promotions.svg";
 import ShareModal from "../sharemodal";
 

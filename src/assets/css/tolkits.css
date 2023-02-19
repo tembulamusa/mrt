@@ -16504,7 +16504,7 @@ li.left-menu-item-1 >.pro-inner-item {
     margin-bottom: 4px !important;
     background: rgba(52, 179, 191, 0.06);
     font-weight: 500;
-    border: 1px solid rgba(52, 179, 191, 0.3);
+    border: 2px solid #34b3bf;
     text-transform: uppercase;
     border-radius: 5px;
 }
@@ -16728,6 +16728,13 @@ li.left-menu-item-1 >.pro-inner-item {
 .biko-bg {
     background:#115078;
     color:#fff;
+}
+.biko-blue, .biko-blue:hover {
+   background:#34b3bf;
+   color:#fff;
+   line-height:30px;
+   font-weight:400;
+   text-transform:uppercase;
 }
 
 .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item {

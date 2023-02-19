@@ -146,10 +146,10 @@ const Signup = (props) => {
                         <div className="form-group row d-flex justify-content-left mb-4">
                             <div className="col-md-12">
                                 <button type="submit"
-                                    className={`btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button full-width biko-bg`}
+                                    className={`btn btn-lg biko-blue mt-5 col-md-12 full-width`}
                                     disabled={loading}
                                     >
-                                    {loading ? loadingContent() : 'Register'}
+                                    {loading ? loadingContent() : 'REGISTER'}
                                 </button>
                                 <hr/>
                                 <p className="small-box-content">Already Have an account!? <a href="/login"><strong>Click here to Login</strong></a></p>
