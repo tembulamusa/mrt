@@ -216,8 +216,8 @@ const MainTabs = (props) => {
                 </div>
                 
                 <div className="filter-group-icon">
-                        <button className={`uppercase btn-secondary ${activeTab === 'live' && 'home-tab-active'}`}
-                            onClick={() => setActiveTabSpace('live')}>Live Now</button>
+                        <a style={{color:"#ffffff !important"}} href="/live" className={`uppercase btn-secondary ${activeTab === 'live' && 'home-tab-active'}`}
+                            onClick={() => setActiveTabSpace('live')}>Live Now</a>
                 </div>
 
                   
