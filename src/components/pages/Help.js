@@ -18,10 +18,6 @@ import {AccordionButton} from "react-bootstrap";
 import Index from '../../assets/img/payment_logos/index.png'
 import Mpesa from '../../assets/img/payment_logos/mpesa-logo.png'
 import Tigo from '../../assets/img/payment_logos/tigo_pesa.png'
-import AccountSelect from '../../assets/img/screenshots/account-selection.png'
-import PickGame from '../../assets/img/screenshots/pick-game.png'
-import PickedGame from '../../assets/img/screenshots/picked-game.png'
-import SUccessfulBet from '../../assets/img/screenshots/successful-bet.png'
 
 const Header = React.lazy(() => import('../header/header'));
 const Footer = React.lazy(() => import('../footer/footer'));

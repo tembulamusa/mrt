@@ -307,6 +307,7 @@ li.bet-option {
     border: none;
     padding: 7px 10px;
     font-size: 11px;
+    width:100%;
 }
 .jp-matches .events-odd {
     background: #0c153b;

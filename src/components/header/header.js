@@ -166,7 +166,7 @@ const Header = (props) => {
                                             <input type="text" placeholder="Search for Events and Tournaments" ref={searchInputRef}
                                                    onInput={(event) => fetchMatches(event.target.value)}
                                                    className={'form-control input-field border-0  no-border-radius'}/>
-                                                   <span className="top-search-icon"><FaSearch size={15}/></span>
+                                                   <span className="top-search-icon" style={{margin:"3px 10px"}}><FaSearch size={21}/></span>
                                         
                                     <div
                                         className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
@@ -211,7 +211,7 @@ const Header = (props) => {
                     </Row>
                 */}
 
-                <span className="d-none d-md-flex"><div className="">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</div><div className="text-white">Menu</div></span>
+                <span className="d-none d-md-flex ml-1"><div className="">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</div></span>
 
         { /** <Navbar.Offcanvas
                         style={{width: "100% !important", height: "100%"}}

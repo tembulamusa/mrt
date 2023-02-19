@@ -145,7 +145,7 @@ const BodyLogin = (props) => {
                         </div>
                         
                         
-                        <button className={`btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button full-width`}
+                        <button className={`btn btn-lg biko-blue mt-5 col-md-12 full-width`}
                                     disabled={isLoading}>
                                 {isLoading ? <span>Logging In ...</span> : <span>Login</span>}
                                 </button>
