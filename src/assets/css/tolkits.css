@@ -15559,13 +15559,10 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 }
 
 .match-detail-container {
-    width: 22% !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-right: 5%;
-    /*max-width: 20% !important;*/
-    /*margin-right: 2% !important;*/
+    margin-right: 20px;
 }
 
 .odd-button {
@@ -15632,8 +15629,6 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 .c-btn-group > .c-btn {
     border-radius: 0;
     border: none;
-    /* border-right: 1px solid #bababa; */
-    width: 50px !important;
     height: 35px !important;
     margin-right: 4px;
     line-height: 30px;
