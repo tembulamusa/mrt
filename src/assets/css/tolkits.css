@@ -16902,10 +16902,9 @@ li.left-menu-item-1 >.pro-inner-item {
 
 .relative-pos {position: relative;}
 
-
 body {
     margin: 0;
-    font-family: aller,Arial, Helvetica;
+    font-family: aller,Arial, Helvetica !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
