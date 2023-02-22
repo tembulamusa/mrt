@@ -21,7 +21,6 @@ const ShareModal = (props) => {
     const [state, dispatch] = useContext(Context);
     const [doneShare, setDoneShare] = useState(false);
 
-    console.log("This is my context", state);
 
     const createSharableBet = useCallback(async () => {
         let endpoint = "/v1/share";

@@ -11,6 +11,7 @@ import {
     addToJackpotSlip,
     getBetslip
 } from '../utils/betslip';
+import {removeItem } from '../utils/local-storage';
 
 import CurrencyFormat from 'react-currency-format';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
@@ -441,6 +442,7 @@ const OddButton = (props) => {
             "market_active": market_active,
         }
 
+        removeItem('old_betslip');
 
         if (cstm === ucn) {
             let betslip;
@@ -459,6 +461,7 @@ const OddButton = (props) => {
             }
             dispatch({type: "SET", key: betslip_key, payload: betslip});
         }
+        
     };
 
     return (
@@ -587,7 +590,7 @@ const PosterBanner = () => {
 
     return (
         <div className="poster-image">
-           <img src={PosterImage} />
+           <img height="250px" src={PosterImage} />
         </div>
     )
 }
@@ -618,7 +621,7 @@ const MatchRow = (props) => {
 
 
 
-        {jackpot ? '' : live ? '' : counter == 13 ? <PosterBanner /> : ''}
+        {jackpot ? '' : live ? '' : (counter > 0 && counter % 20 == 0)  ? <PosterBanner /> : ''}
         <div className="top-matches d-flex">
             
                 <div className="col-sm-2 col-xs-12 pad d-none d-md-block left-text" key="22">
@@ -629,14 +632,14 @@ const MatchRow = (props) => {
                     </>
                 }
                 
-                <div className="d-flex flex-column bold dark-text" key="20">
+                <div className="d-flex flex-column bold match-cl-desc" key="20">
                     <div className={'small'}>
                         {(live && match?.match_time) ?
                             <>{`${match.match_time}`}</> : match?.start_time}
                     </div>
                     {/*<>ID: {match?.game_id}</>*/}
                     <div className="d-none d-md-block">
-                    <small>{match.category} | {match.competition_name}</small>
+                    <small>{match.category} <br/>{match.competition_name}</small>
                     </div>
                 </div>
             </div>
@@ -656,10 +659,7 @@ const MatchRow = (props) => {
                             <div className={'bold'}>
                                 {live && (match?.match_status !== 'ended') && <ColoredCircle color="red"/>}
                                 { match.home_team }
-                                <span className="opacity-reduce-txt vs-styling">
-                                {live && match?.score}
-                                    {!live && ''}
-                            VS </span>
+                                 { live && <span className="opacity-reduce-txt vs-styling"> {match?.score} </span> }
                             </div>
                             <div className={'bold'}>
                                 {match.away_team}
@@ -708,7 +708,7 @@ const MatchRow = (props) => {
                     ))
                     }
                     {!live && loops?.map(() => (
-                        <div className={`c-btn-group align-self-center`} key="223">
+                        <div className={`c-btn-group align-self-center`} key="223" style={{width:"25%"}}>
                             <EmptyTextRow odd_key={match?.odd_key}/>
                             <EmptyTextRow odd_key={match?.odd_key}/>
                         </div>

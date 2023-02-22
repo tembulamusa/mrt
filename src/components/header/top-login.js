@@ -138,7 +138,7 @@ const HeaderLogin = (props) => {
                     </div>
                     <div className="col-sm-2">
                         <button className="cg login-button btn" type="submit">
-                            <span>Login</span>
+                            <span>LOGIN</span>
                         </button>
                     </div>
                 </Row>
@@ -178,7 +178,7 @@ const HeaderLogin = (props) => {
 
                     { user && 
                         <a className="filter-icon" href="/deposit" title="Deposit" style={{ fontSize: "16px", fontWeight: "bold", background:"#39b54a", padding:"5px 20px"}} >
-                                    <span className="register-label">Deposit</span>
+                                    <span className="register-label">DEPOSIT</span>
                                 </a>
                     }
                     <a className="filter-icon" href="/signup" title="Join Now" style={{ fontSize: "16px"}}>
