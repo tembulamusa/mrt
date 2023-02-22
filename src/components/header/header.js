@@ -184,8 +184,8 @@ const Header = (props) => {
                             <div className="col-sm-12 col-md-5 disable-ipd d-md-block">
                                 {user ? <ProfileMenu user={user}/> : 
                                 <div className="top-login float-end">
-                                <a href="/login" className="cg login-button btn width-auto">Login</a>
-                                <a href="/signup" className="cg btn btn-primary width-auto">Register</a>
+                                <a href="/login" className="cg login-button btn width-auto">LOGIN</a>
+                                <a href="/signup" className="cg btn btn-primary width-auto">REGISTER</a>
                                 </div>}
                             </div>
                             {/*For the mobile*/}

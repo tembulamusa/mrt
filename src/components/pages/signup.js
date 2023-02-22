@@ -87,7 +87,7 @@ const Signup = (props) => {
                 <div className="pt-0">
                     <div className="row">
                         <div className='col-12 text-cente'>
-                        <h4>Karibu BIKOSPORTS</h4>
+                        <h4>KARIBU BIKOSPORTS</h4>
                         <div className="small-box-content">
                         Jaza maelezo yote yanayohitajika, ikiwemo namba ya simu na nenosiri (password). Bofya na hakikisha kuwa umesoma na kukubali kanuni, na
                         umetimiza umri wa miaka 18.
@@ -152,7 +152,7 @@ const Signup = (props) => {
                                     {loading ? loadingContent() : 'REGISTER'}
                                 </button>
                                 <hr/>
-                                <p className="small-box-content">Already Have an account!? <a href="/login"><strong>Click here to Login</strong></a></p>
+                                <p className="small-box-content">Already Have an account!? <a href="/login"><strong className="biko-pink-color">Click here to Login</strong></a></p>
                             </div>
                         </div>
                     </div>

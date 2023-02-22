@@ -94,7 +94,7 @@ const ResetPassword = (props) => {
 
     const FormTitle = () => {
         return (
-            <div className='col-md-12 primary-bg p-2 text-center'>
+            <div className='col-md-12 biko-bg p-2 text-center'>
                 <h4 className="inline-blck">
                     RECOVER YOUR ACCOUNT
                 </h4>
@@ -131,11 +131,11 @@ const ResetPassword = (props) => {
                         </div>
 
                         <div className="form-group row d-flex justify-content-left mb-4">
-                            <div className="col-md-3">
+                            <div className="col-md-12">
                                 <button type="submit"
                                         onClick={submitForm}
-                                        className='btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button'>
-                                    Send OTP
+                                        className='btn btn-lg biko-blue mt-5 col-md-12 full-width'>
+                                    THIBITISHA
                                 </button>
                             </div>
                         </div>
@@ -158,18 +158,17 @@ const ResetPassword = (props) => {
             <Form className={`${otp_sent ? 'd-block' : 'd-none'}`}>
                 <div className="pt-0">
                     <div className="row">
-                        <hr/>
                         <div className="col-md-12">
-                            <div className="form-group row d-flex justify-content-center mt-5">
+                            <div className="form-group row d-flex justify-content-center">
                             <div className="col-md-12">
-                                    <label>OTP</label>
+                                    <label>Code</label>
                                     <input
                                         value={values.code}
                                         className="text-dark deposit-input form-control col-md-12 input-field"
                                         id="otp"
                                         name="code"
                                         type="text"
-                                        placeholder='OTP'
+                                        placeholder='code'
                                         onChange={ev => onFieldChanged(ev)}
                                     />
                                     {errors.code && <div className='text-danger'>
@@ -210,17 +209,18 @@ const ResetPassword = (props) => {
                                         </div>}
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="form-group row d-flex justify-content-left mb-4">
-                            <div className="col-md-3">
+                        <div className="form-group row d-flex justify-content-center mt-1">
+                            <div className="col-md-12">
                                 <button type="submit"
                                         onClick={submitForm}
-                                        className='btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button'>
+                                        className='btn btn-lg  mt-5 biko-blue full-width'>
                                     Reset Password
                                 </button>
                             </div>
                         </div>
+                        </div>
+
                     </div>
                 </div>
             </Form>

@@ -163,7 +163,7 @@ const BodyLogin = (props) => {
                         <hr/>
                         <div className="small-box-content">
                             <a className="" href="/signup" title="Join now" onClick={() => gaEventTracker('Register')}>
-                                <span className="register-la">No Account!? Register now!</span>
+                                <span className="register-la">No Account? <span className="biko-pink-color">Register now!</span></span>
                             </a>
                         </div>
                     </Row>
