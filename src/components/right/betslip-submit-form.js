@@ -21,6 +21,7 @@ import {
 import { 
     setLocalStorage,
     removeItem,
+    getFromLocalStorage
 } from '../utils/local-storage';
 
 import Airtel from '../../assets/img/payment_logos/airtel2.PNG'
@@ -221,6 +222,13 @@ const BetslipSubmitForm = (props) => {
         ipAddress();
     }, [ipAddress])
 
+    useEffect(() => {
+        
+        let obs = getFromLocalStorage('old_betslip');
+        if(!obs){
+            setShowMoreOptions(false);
+        }
+    }, [state?.betslip])
 
     const handlePlaceBet = useCallback((values,
                                         {setSubmitting, resetForm, setStatus, setErrors}) => {
@@ -457,7 +465,7 @@ const BetslipSubmitForm = (props) => {
          <LoginModal />
         <PlaceBetResponseInfo />
         { showMoreOptions 
-         ?  <PostBet/>
+         ?  <PostBet />
          : <Formik
             initialValues={initialValues}
             onSubmit={handlePlaceBet}
