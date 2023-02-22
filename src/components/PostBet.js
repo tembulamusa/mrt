@@ -40,9 +40,6 @@ const PostBet = (props) => {
 		window.location.reload();
 	}
 
-    const directShare = (code) => {
-       
-    }
 
     const ipAddress = useCallback(async () => {
         let ip = await publicIp.v4({
@@ -58,7 +55,22 @@ const PostBet = (props) => {
         ipAddress();
     }, [ipAddress])
 
-    const createSharableBet = async () => {
+    const loadSocialPage = (code) => {
+       if(sharebleCode){
+           let waUrl = "https://api.whatsapp.com/send?text=I%20placed%20this%20bet%20on%2035.189.72.196/.%20Cheki%20mkeka%20wangu%20na%20ubeti.%20https://35.189.72.196/share/"+sharebleCode;
+           let  fbUrl = "https://facebook.com/sharer/sharer.php?u=http://35.189.72.196/share/"+sharebleCode;
+           let ttUrl = "https://twitter.com/intent/tweet/?text=I%20placed%20this%20bet%20on%20http://35.189.72.196/.%20Cheki%20mkeka%20wangu%20na%20ubeti&amp;url=http://35.189.72.196/share/"+sharebleCode;
+           if(code === 'fb'){
+		       window.open(fbUrl,   '_blank', 'noreferrer');
+           } else if (code === 'wa') {
+		       window.open(waUrl,   '_blank', 'noreferrer');
+           } else if(code === 'tt'){
+		       window.open(ttUrl,   '_blank', 'noreferrer');
+           }
+       }
+    }
+
+    const createSharableBet = async (social) => {
         let endpoint = "/v1/share";
         setDoneShare(false);
         let betslip =  getFromLocalStorage('old_betslip');
@@ -76,14 +88,15 @@ const PostBet = (props) => {
             console.log("Restult of share is ", result.code)
             if(status === 200) {
                 setSharebleCode(result.code);
+                if(social) {
+                    loadSocialPage(social)
+                }
             } else {
                 setSharebleCode("N/A");
             }
             setDoneShare(true);
         });
     }
-
-
 
 	const showShareModalDialog = () => {
 		const oldBetslip = getFromLocalStorage('old_betslip');
@@ -103,13 +116,13 @@ const PostBet = (props) => {
                     <div className="row post-bet-option">
 					    <div onClick={createSharableBet} className="col-12 ">CREATE CODE<span className="biko-pink-color" style={{float:"right"}}>{sharebleCode}</span></div>
                     </div>
-					<div onClick={showShareModalDialog} className="row post-bet-option">
+					<div className="row post-bet-option">
 					<div className="col-6 ">SHARE BET</div>
 					 <div className="share-links col-6 center-text text-center">
 				      <div className="social-icons center-text text-center">
-							<FontAwesomeIcon onClick={directShare('fb')}  icon={faFacebook} className="slip-share-icon col-4"/>
-							<FontAwesomeIcon onClick={directShare('wa')} icon={faWhatsapp} className="slip-share-icon col-4"/>
-							<FontAwesomeIcon onClick={directShare('tt')} icon={faTwitter} className="slip-share-icon  col-4"/>
+							<FontAwesomeIcon onClick={() => createSharableBet('fb')}  icon={faFacebook} className="slip-share-icon col-4"/>
+							<FontAwesomeIcon onClick={() => createSharableBet('wa')} icon={faWhatsapp} className="slip-share-icon col-4"/>
+							<FontAwesomeIcon onClick={() => createSharableBet('tt')} icon={faTwitter} className="slip-share-icon  col-4"/>
 							
                        </div>
 					 </div>

@@ -11,6 +11,7 @@ import {
     addToJackpotSlip,
     getBetslip
 } from '../utils/betslip';
+import {removeItem } from '../utils/local-storage';
 
 import CurrencyFormat from 'react-currency-format';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
@@ -441,6 +442,7 @@ const OddButton = (props) => {
             "market_active": market_active,
         }
 
+        removeItem('old_betslip');
 
         if (cstm === ucn) {
             let betslip;
@@ -459,6 +461,7 @@ const OddButton = (props) => {
             }
             dispatch({type: "SET", key: betslip_key, payload: betslip});
         }
+        
     };
 
     return (
