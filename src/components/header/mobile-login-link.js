@@ -7,9 +7,9 @@ const MobileLogin = (props) => {
     	<>
     	<div className="right-text reg-login" style={{padding: '20px'}}>
 
-    	<a href="/login" className="bold white-text" style={{paddingRight: '20px', color:'#ffffff'}}>Login</a>
+    	<a href="/login" className="bold white-text" style={{paddingRight: '20px', color:'#ffffff'}}>LOGIN</a>
     	
-    		<a className="cg login-button signup-btn btn" href="/signup">Register</a>
+    		<a className="cg login-button signup-btn btn" href="/signup">REGISTER</a>
     	</div>
     	</>
 	)

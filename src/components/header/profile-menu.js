@@ -14,20 +14,15 @@ const ProfileMenu = (props) => {
           <div className="d-md-block col-12">
             
               <div className="row uppercase">
-                <div className="col-3 d-none d-md-block right-bordered-col">
-                  <FontAwesomeIcon icon={faUser} className="profile-icon float-end"/>
+                <div className="col-4 d-none d-md-block">
+                  &nbsp;
                 </div>
-                <div className="col-3 col-sm-5 mobile-right-cols right-bordered-col">
-                  <div className="cream-text">User Profile</div>
-                  {user?.msisdn}
-                </div>
-                <div className="col-3 col-sm-5 mobile-right-cols right-bordered-col">
-                  <div className="cream-text">A/C Balance</div>
+                <div className="col-4 col-sm-4 mobile-right-cols">
+                  <div className="cream-text">ACCOUNT BALANCE</div>
                   Tsh. {formatNumber(user.balance) || 0}
                 </div>
-                <div className="col-3 d-none d-md-block">
-                  <div className="cream-text">Bonus</div>
-                  Tsh. {formatNumber(user.bonus) || 0}
+                <div className="col-4 d-none d-md-block">
+                    <a href="/deposit" className="cg biko-blue  btn " style={{width:"100%"}}>DEPOSIT</a>
                 </div>
                 
               </div>

@@ -925,7 +925,7 @@ header, li a, .thedate span {
     outline: none;
     text-transform: uppercase;
     font-size: 10px;
-    font-weight: 100;
+    font-weight: normal;
     padding: 2px;
 }
 
@@ -1092,7 +1092,6 @@ button {
 
 .theodds {
     padding: 0;
-    font-weight: 400;
 }
 
 .slip-counter {
@@ -2039,6 +2038,8 @@ events-header {
 .compt-teams {
     font-size: 12px;
     text-transform: uppercase !important;
+    color: #000;
+    opacity:0.8;
 }
 
 .matches .top-matches button {
@@ -2048,8 +2049,8 @@ events-header {
 
 .home-team {
     background: rgba(52, 179, 191, 0.15)!important;
-    color: #2c2457!important;
-    font-weight: 100 !important;
+    color: #2c2457 !important; 
+    /*color: #000 !important;*/
 }
 .away-team {
     background: #c91d56 !important;
@@ -2398,7 +2399,9 @@ a {
 .web-element a {
     color: #2c2457!important;
 }
-
+.match-cl-desc {
+   color:#2c2457;
+}
 .one_game_wrapper.top-matches a {
     color: #6C6A6A;
 }
@@ -15051,7 +15054,7 @@ img.zoom-img {
 
 .carousel-item {
     
-    max-height: 300px !important;
+    max-height: 250px !important;
 }
 
 .top-matches:nth-child(2n + 1) {
@@ -15270,7 +15273,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     margin-bottom: 0;
 }
 .pro-sidebar .pro-menu a{
-    color:#666 !important;
+    color:#000 !important;
 }
 
 
@@ -16284,7 +16287,6 @@ a:hover {
 }
 .header-menu .input-field {
     height: 35px !important;
-    max-width: 530px;
     border-radius: 15px;
 }
 
@@ -16356,6 +16358,7 @@ a:hover {
     padding-bottom: 1px;
     margin-bottom: 0;
     font-weight: bold;
+    padding:0px;
 }
 
 .web-element.container .top-matches.sidebet-detail {
@@ -16737,6 +16740,9 @@ li.left-menu-item-1 >.pro-inner-item {
    text-transform:uppercase;
 }
 
+.biko-pink-color, a.biko-pink-color, a.biko-pink-color:hover, .biko-pink-color:hover{
+    color:#c6224e;
+}
 .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item {
     position: relative;
     display: flex;
@@ -16895,7 +16901,7 @@ li.left-menu-item-1 >.pro-inner-item {
 
 .top-search-icon {
     position: absolute;
-    right: 43px;
+    right: 5px;
     top: 2px;
     opacity: 0.5;
 }
@@ -16917,4 +16923,18 @@ body {
 
 .mobile-right-mkt-type {
     font-size: 10px;
+}
+.filter-group-icon.live-icon:hover{
+   color:red;
+}
+.post-bet-details{
+    color:#000;
+    text-transform:uppercase;
+}
+.post-bet-option {
+  background: rgba(52, 179, 191, 0.06);
+  border: 1px solid rgba(52, 179, 191, 0.3);
+  margin: 5px 0px;
+  border-radius: 3px;
+  padding: 5px;
 }

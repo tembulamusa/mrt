@@ -12,7 +12,6 @@ const LoginModal = (props) => {
     const user = getFromLocalStorage("user");
     const app_name = "desktop-web";
     const [state, dispatch] = useContext(Context);
-    console.log("This is my context", state);
 
     return (
         <>

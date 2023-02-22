@@ -57,6 +57,8 @@ const BetslipSubmitForm = (props) => {
     const [betId, setBetId] = useState();
     const [mno, setMno] = useState("TIGO PESA");
     const [payLaterBusy, setPayLaterBusy] = useState(false);
+    const [bongeBonus, setBongeBonus] = useState(0.00);
+    const [bongeCentage, setBongeCentage] = useState(0.00);
 
     useEffect(() => {
         if (jackpot) {
@@ -296,7 +298,6 @@ const BetslipSubmitForm = (props) => {
 
         makeRequest({url: endpoint, method: method, data: payload, use_jwt: use_jwt})
             .then(([status, response]) => {
-                console.log("Place be reponse as is ", response, status)
                 if (status === 200 || status == 201 || status == 202 ) {
                     setMessage(response)
                     //all is good am be quiet
@@ -304,20 +305,21 @@ const BetslipSubmitForm = (props) => {
                     setLocalStorage('old_betslip', current_betslip, 1*60*60*1000);
                     setShowMoreOptions(true);
 
-                   setTimeout(
+                  /* setTimeout(
                         function(){
                             removeItem("old_betslip");
-                            removeItem("betslip");
                             setShowMoreOptions(false);
                             setBetslipsData(null);
                             setMessage(null)
                         }, 
 
-                    60000);
+                    60000); */
 
                     if (jackpot) {
                         setShowMoreOptions(false);
                         clearJackpotSlip();
+                    } else {
+                        clearSlip();    
                     } 
                     setBetslipsData(null);
                     dispatch({type: "SET", key: jackpot ? 'jackpotbetslip' : 'betslip', payload: {}});
@@ -327,19 +329,29 @@ const BetslipSubmitForm = (props) => {
                         message: response?.message || "Could not place bet.",
 
                     };
-                    console.log("Message on not 200",qmessage )
-                    //dispatch({type:"SET", key:"showloginmodal", payload:true});
                     setMessage(qmessage);
                 }
                 setSubmitting(false);
             })
     });
 
+
+
     const updateWinnings = useCallback(() => {
-        if (betslip) {
+        if (betslip) {            
+            let win_matrix = {
+               3:3,4:5,5:10,6:15,7:20,8:25,9:30,10:35,11:40,12:45,13:50,14:55,15:60,16:65,17:70,18:80,19:90,20:100
+            } 
+            let total_games = Object.keys(betslip).length;
+
             let stake_after_tax = Float(stake) / 100 * 100
             let ext = Float(stake) - Float(stake_after_tax);
             let raw_possible_win = Float(stake_after_tax) * Float(totalOdds);
+            let centage = win_matrix?.[total_games] || 0.00 
+
+            let bongeBonus = raw_possible_win * centage/100;
+            raw_possible_win += bongeBonus || 0;
+
             if (jackpot) {
                 raw_possible_win = jackpotData?.jackpot_amount
             }
@@ -347,7 +359,6 @@ const BetslipSubmitForm = (props) => {
                 raw_possible_win = 500000
             }
             let taxable_amount = Float(raw_possible_win) - Float(stake_after_tax);
-
             let wint = taxable_amount * 0.1;
             let nw = raw_possible_win - wint;
             setExciseTax(Float(ext, 2));
@@ -355,12 +366,17 @@ const BetslipSubmitForm = (props) => {
             setNetWin(Float(nw, 2));
             setPossibleWin(Float(raw_possible_win, 2));
             setWithholdingTax(Float(wint, 2));
+            setBongeBonus(Float(bongeBonus, 2));
+            setBongeCentage(Math.round(centage));
+
         } else {
             setNetWin(0);
             setWithholdingTax(0);
             setExciseTax(0);
             setPossibleWin(0);
             setStakeAfterTax(0);
+            setBongeBonus(0.00);
+            setBongeCentage(0);
         }
         if (message && message.status > 299) {
             setMessage(null);
@@ -369,7 +385,7 @@ const BetslipSubmitForm = (props) => {
 
     const handleRemoveAll = useCallback(() => {
         let betslips = getBetslip();
-        Object.entries(betslips).map(([match_id, match]) => {
+        Object.entries(betslips || {}).map(([match_id, match]) => {
             removeFromSlip(match_id);
             let match_selector = match.match_id + "_selected";
             let ucn = clean_rep(
@@ -389,7 +405,7 @@ const BetslipSubmitForm = (props) => {
     }, [updateWinnings]);
 
     const initialValues = {
-        bet_amount: jackpot ? jackpotData?.bet_amount : 100,
+        bet_amount: jackpot ? jackpotData?.bet_amount : 1000,
         accept_all_odds_change: true,
         user_id: state?.user?.profile_id,
         total_games: totalGames,
@@ -408,6 +424,11 @@ const BetslipSubmitForm = (props) => {
         }
         if (!betslip || Object.keys(betslip).length === 0) {
             errors.user_id = "No betlip selected";
+            setMessage({status: 400, message: errors.user_id});
+            return errors;
+        }
+        if (!betslip || Object.keys(betslip).length > 30) {
+            errors.user_id = "Too many bets, please reduce number of games on your betslip";
             setMessage({status: 400, message: errors.user_id});
             return errors;
         }
@@ -526,12 +547,11 @@ const BetslipSubmitForm = (props) => {
                     ) : (
                         <>
                         <tr className="bet-win-tr hide-on-affix">
-                            <td> Tax 10% (TZS)</td>
-                            <td><span id="tax">{formatNumber(withholdingTax)}</span></td>
+                            <td> Bonge Bonus { bongeCentage }% (TZS)</td>
+                            <td><span id="tax">{formatNumber(bongeBonus)}</span></td>
                         </tr>
-
                         <tr className="bet-win-tr hide-on-affix">
-                            <td> Bonge Bonus (TZS)</td>
+                            <td> Tax 10% (TZS)</td>
                             <td><span id="tax">{formatNumber(withholdingTax)}</span></td>
                         </tr>
                         </>
@@ -539,7 +559,7 @@ const BetslipSubmitForm = (props) => {
                     <tr className="bet-win-tr hide-on-affix">
                         <td><strong>{jackpot?'Jackpot Amount':'Net Amount'} (TZS) </strong></td>
                         <td><span
-                            id="net-amount"><strong>{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin + withholdingTax))}</strong></span></td>
+                            id="net-amount"><strong>{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin, 2))}</strong></span></td>
                     </tr>
                     <tr>
                         <td className="" width="50%">
