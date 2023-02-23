@@ -183,12 +183,12 @@ const BetSlip = (props) => {
                           style={{height:"30px",margin:"10px 0px 5px 0px", borderBottom:"none", padding:"0px 2px"}}>
                          <div className="row" style={{margin:0}}>
                             <div className="col-9" style={{padding:0}}>
-                            <input  type="text" name="sharecode"  placeholder="Code"  
+                            <input  type="text" name="sharecode"  placeholder=""  
                                 onChange={handleCodeInputChange}
                                 style={{border:"1px solid #ddd", borderRadius:"2px", margin:"0px 4px 0px 0px", width:"99%",height:"30px"}}/>
                             </div>
                             <div className="col-3" style={{padding:0}}>
-                                <button className="btn-default biko-blue" style={{width:"100%", padding:"0px", fontSize:"10px"}} onClick={loadBetslipFromCode}>Load Slip</button>
+                                <button className="btn-default biko-blue" style={{width:"100%", padding:"0px", fontSize:"10px"}} onClick={loadBetslipFromCode}>ENTER CODE</button>
                             </div>
                           </div>
                        </li>

@@ -41,8 +41,9 @@ const MyBets = (props) => {
     const fetchData = useCallback(async() => {
         if(isLoading) return;
         setIsLoading(true);
-        let endpoint = "/v1/full/betdetails?limit=";
+        let endpoint = "/v1/mybets?limit=";
         makeRequest({url: endpoint, method: "POST", data: null}).then(([status, result]) => {
+            console.log(result);
             dispatch({type: "SET", key: "mybets", payload: result});
             setIsLoading(false);
         });
@@ -105,20 +106,59 @@ const MyBets = (props) => {
         }
 
         return (
-            <div className={`container`} style={Styles.bet} key={bet.bet_id}>
+            <div className={`container`}  key={bet.bet_id}>
                 <div className="row">
-                    <div className="col">Time { bet.created}</div>
-                    <div className="col">Bet ID { bet.bet_id}</div>
-                    <div className="col">Amount TSH { bet.bet_amount}</div>
-                    <div className="col">Possible Win TSH { bet.possible_win}</div>
-                    { canCancel == false 
-                        ? <div className={`col win-status-${betStatus}`}> { betStatus}</div>
-                        : cancelBetMarkup() 
-                    }
+                  <div className="col-5">
+                    <div className="col-6">
+                      <div className="row">
+                        <div className="col-4">DATE </div>
+                        <div className="col-8">{ bet.created}</div>
+                      </div>
+                      <div className="row">
+                        <div className="col">BET ID</div>
+                        <div className="col"><strong>{ bet.bet_id}</strong></div>
+                      </div>
+                      <div className="row">
+                        <div className="col">GAMES </div>
+                        <div className="col">{ bet.total_matches}</div>
+                      </div>
+                   </div>
+                  </div>
+                  <div className="col-5">
+
+                      <div className="row">
+                        <div className="col">ODDS</div>
+                        <div className="col">{ bet.total_odd}</div>
+                     </div>
+                      <div className="row">
+                        <div className="col">STAKE TZS </div>
+                        <div className="col">{ bet.bet_amount}</div>
+                     </div>
+                      <div className="row">
+                          <div className="col">POSSIBLE WIN TSH</div>
+                          <div className="col"><strong>{ bet.possible_win}</strong></div>
+                      </div>
+                 </div>
+                   <div className="col-2">
+                       <div className="row"> 
+                         <div className="col">
+                        { canCancel == false 
+                            ? <div className={`win-status-${bet.status.toLowerCase()}`}> { bet.status.charAt(0).toUpperCase() + bet.status.slice(1).toLowerCase()}</div>
+                            : cancelBetMarkup() 
+                        }
+                        </div>
+                      </div>
+                       <div className="row"> 
+                            <div className="col">
+                            <div className={`win-status-cancelled`}> Betslip </div>
+                           </div>
+                      </div>
+                 </div>
                 </div>
             </div>
         );
     }
+
 
     const BetslipHeader = () => {
         
@@ -162,6 +202,7 @@ const MyBets = (props) => {
 
     const MyBetsList = (props) => {
 		return (
+         <>
          <div className="row" style={{padding: "0 10px",}}>
 			{state?.mybets && state.mybets.map((bet) => (
 				<div className="mybet-list" 
@@ -171,25 +212,17 @@ const MyBets = (props) => {
 					<div className="bet-item">
 							<BetItem bet={bet}  key={bet.id}/>
 					</div>
-                     <BetslipHeader />
-					{  bet.betslip?.map((betslip) => (
-                         <BetslipItem 
-                            betslip={betslip}  
-                            key={betslip.bet_slip_id}
-                         />  
-                       ))
-                    }
-                    { isLoading && <p>Loading ... </p>}
 				</div>
 			))}
 		</div>
+          </>
 	    );
 
     }
 
     const PageTitle = () => {
        return (
-            <div className='col-md-12 primary-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
+            <div className='col-md-12 biko-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
                 <h4 className="inline-block">
                     MY BETS
                 </h4>

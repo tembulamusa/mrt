@@ -73,7 +73,7 @@ const Right = (props) => {
 
     const BongeBetMarkupMessage = () => {
         return (
-          <div className="bonge-bonus" style={{padding:"5px", background:"yellow", marginTop:"3px"}} >
+          <div className="bonge-bonus" style={{padding:"5px", background:"#fbd702", marginTop:"3px"}} >
             <div className="" >
                 <div className="" id="bonus-centage-advice" style={{fontWeight:"100"}}>{bongeBonusMessage}</div> 
             </div>

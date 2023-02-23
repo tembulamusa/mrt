@@ -223,8 +223,8 @@ const Sidebar = (props) => {
                             </MenuItem>
                             <MenuItem className={`${pathname === '/deposit' ? 'active' : ''}`}>
                                 <a href="/deposit"
-                                   title="Lipa Hapa">
-                                   <img src={DepositIcon} alt="" className="svg-menu-img-icon hide1" />Lipa Hapa
+                                   title="DEPOSIT">
+                                   <img src={DepositIcon} alt="" className="svg-menu-img-icon hide1" />DEPOSIT
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/lottery' ? 'active' : ''}`}>
