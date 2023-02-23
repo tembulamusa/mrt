@@ -219,9 +219,6 @@ header, li a, .thedate span {
     padding-left: 0;
 }
 
-.mybets a {
-    color: #1E3948 !important;
-}
 
 .gothb {
     font-family: "GothamBold";
@@ -16507,7 +16504,7 @@ li.left-menu-item-1 >.pro-inner-item {
     margin-bottom: 4px !important;
     background: rgba(52, 179, 191, 0.06);
     font-weight: 500;
-    border: 2px solid #34b3bf;
+    border: 1px solid #34b3bf;
     text-transform: uppercase;
     border-radius: 5px;
 }
@@ -16901,7 +16898,7 @@ li.left-menu-item-1 >.pro-inner-item {
 
 .top-search-icon {
     position: absolute;
-    right: 5px;
+    right: 10px;
     top: 2px;
     opacity: 0.5;
 }
@@ -16931,10 +16928,33 @@ body {
     color:#000;
     text-transform:uppercase;
 }
-.post-bet-option {
+.post-bet-option, .bet-item{
   background: rgba(52, 179, 191, 0.06);
   border: 1px solid rgba(52, 179, 191, 0.3);
   margin: 5px 0px;
   border-radius: 3px;
   padding: 5px;
 }
+
+.bet-item{
+ font-size:12px !important;
+ font-family:roboto;
+ font-weight:200;
+}
+.win-status-pending, .win-status-lost, .win-status-cancelled, .win-status-won{
+   background:#34b3bf;
+   width:fit-content;
+   color:#fff;
+   font-size:12px;
+   padding:2px 5px;
+   margin:3px;
+}
+.win-status-lost {
+background:#c6224e;
+}
+.win-status-cancelled {
+background:#999;
+}
+.win-status-won {
+ background:green;
+ }

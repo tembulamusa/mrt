@@ -1,6 +1,6 @@
 import {setLocalStorage, getFromLocalStorage} from './local-storage';
 
-const ENC_KEY = 'm1XR6ajgepqyhndnasdnahake927382351bdjdqhadklasdgadjasl';
+const ENC_KEY = 'm1XR6ajgepqyh^7&21012G$%%_q90)hte====';
 const BASE_URL = 'http://35.234.140.2:8008'; // 35.234.140.2:8008
 
 const makeRequest = async ({url, method, data = null, use_jwt = false}) => {

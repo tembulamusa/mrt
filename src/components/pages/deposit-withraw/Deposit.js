@@ -35,14 +35,12 @@ const Deposit = (props) => {
     const validate = values => {
 
         let errors = {}
-        console.log("This os the ofending number ", values.msisdn);
-
         if (!values.msisdn || !values.msisdn.match(/(255|0|)?\d{9}/g)) {
             errors.msisdn = 'Please enter a valid phone number'
         }
 
-        if (!values.amount || values.amount < 100 || values.amount > 500000) {
-            errors.amount = "Please enter amount between TSH 100.00 and TSH 500,000.00";
+        if (!values.amount || values.amount < 300 || values.amount > 500000) {
+            errors.amount = "Weka  kuanzia TZS 300.00 hadi TZS 500,000.00";
         }
         return errors
     }
@@ -56,7 +54,7 @@ const Deposit = (props) => {
 
     const FormTitle = () => {
         return (
-            <div className='col-md-12  p-4 text-center primary-bg'>
+            <div className='col-md-12  p-4 text-center biko-bg'>
                 <h4 className="inline-blk">
                     DEPOSIT FUNDS (MOBILE MONEY)
                 </h4>
@@ -86,7 +84,7 @@ const Deposit = (props) => {
                 </div>
                 <div className="form-group row d-flex justify-content-center mt-5">
                     <div className="col-md-12">
-                        <label style={{width:"100%"}}>Amount to Deposit <span className="float-end">Min. 1000</span></label>
+                        <label style={{width:"100%"}}>Amount to Deposit <span className="float-end">Min. 300</span></label>
                         <input
                             onChange={ev => onFieldChanged(ev)}
                             className="text-dark deposit-input form-control col-md-12 input-field"
@@ -100,9 +98,9 @@ const Deposit = (props) => {
                     </div>
                 </div>
                 <div className="form-group row d-flex justify-content-left mb-4">
-                    <div className="col-md-3">
+                    <div className="col-md-12">
                         <button
-                            className='btn btn-lg btn-primary mt-5 mobile-width-100 col-md-12 deposit-withdraw-button'>
+                            className='btn btn-lg biko-blue mt-5 mobile-width-100 col-md-12 full-width'>
                             Deposit
                         </button>
                     </div>
@@ -115,7 +113,7 @@ const Deposit = (props) => {
     const PaymentInstructions = (props) => {
         return (
             <>
-                <label className='text-info'>Deposit Instructions</label>
+                <label className='text-black'>DEPOSIT INSTRUCTIONS</label>
                 <div className="container">
                     <div className="row">
                         <div className="col"> 1. Enter the amount you want to deposit.</div>
