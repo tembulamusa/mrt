@@ -14,14 +14,14 @@ const ProfileMenu = (props) => {
           <div className="d-md-block col-12">
             
               <div className="row uppercase">
-                <div className="col-4 d-none d-md-block">
+                <div className="col-6 d-none d-md-block">
                   &nbsp;
                 </div>
-                <div className="col-4 col-sm-4 mobile-right-cols">
-                  <div className="cream-text">ACCOUNT BALANCE</div>
-                  Tsh. {formatNumber(user.balance) || 0}
+                <div className="col-3 col-sm-3 mobile-right-cols">
+                  <div className="cream-text">BALANCE</div>
+                  <span style={{fontSize:"16px"}}>TZS {formatNumber(user.balance) || 0}</span>
                 </div>
-                <div className="col-4 d-none d-md-block">
+                <div className="col-3 d-none d-md-block">
                     <a href="/deposit" className="cg biko-blue  btn " style={{width:"100%"}}>DEPOSIT</a>
                 </div>
                 

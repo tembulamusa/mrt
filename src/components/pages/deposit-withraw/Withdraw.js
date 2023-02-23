@@ -44,15 +44,15 @@ const Withdrawal = (props) => {
             errors.msisdn = 'Please enter a valid phone number'
         }
 
-        if (!values.amount || values.amount < 100 || values.amount > 600000) {
-            errors.amount = "Please enter amount between TZS 100 and Tsh 600, 000";
+        if (!values.amount || values.amount < 1000 || values.amount > 600000) {
+            errors.amount = "Unaweza kutoa kuanzia TZS 1000 hadi TZS 600, 000";
         }
         return errors
     }
 
     const FormTitle = () => {
        return (
-            <div className='col-md-12 primary-bg p-4 text-center'>
+            <div className='col-md-12 biko-bg p-4 text-center'>
                 <h4 className="inline-blok">
                     WITHDRAW FUNDS (MOBILE MONEY)
                 </h4>
@@ -103,9 +103,9 @@ const Withdrawal = (props) => {
                 </div>
             </div>
             <div className="form-group row d-flex justify-content-left mb-4">
-                <div className="col-md-3">
+                <div className="col-md-12">
                     <button
-                        className='btn btn-lg btn-primary mt-5 mobile-width-100 col-md-12 deposit-withdraw-button'>
+                        className='btn btn-lg biko-blue mt-5 mobile-width-100 col-md-12 full-width'>
                         Withdraw
                     </button>
                 </div>
@@ -118,7 +118,7 @@ const Withdrawal = (props) => {
     const PaymentInstructions = (props) => {
          return (
              <>
-                <label className='header text-info'>Withdrawal Instructions</label>
+                <label className='header text-black'>WITHDRAWAL INSTRUCTIONS</label>
                 <div className="container">
                     <div className="row"><div className="col"> 2. Weka kiwango kisichopungua 1000.</div></div>
                     <div className="row"><div className="col"> 3. Bonyeza "Withdraw".</div></div>
