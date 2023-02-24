@@ -76,6 +76,7 @@ const MainTabs = (props) => {
                } 
            });
            setSports(sportOptions);
+           console.log(" I have Sports Options Here : ", sportOptions);
        }
     };
 
@@ -91,6 +92,7 @@ const MainTabs = (props) => {
                } 
            });
            setSportCategories(categoryOptions);
+           console.log(" I have Sport Categories here: " + categoryOptions); 
        }
     };
 
@@ -166,7 +168,6 @@ const MainTabs = (props) => {
         dispatch({type:"SET", key:"active_tab", payload:tab});
         setActiveTab(tab);
     }
-
     const handleCategorySelect = (category) => {
         const spc = {
             category_id: category.category_id,
@@ -214,7 +215,6 @@ const MainTabs = (props) => {
                         <button className={`uppercase btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
                             onClick={() => setActiveTabSpace('tomorrow')}>Mechi zijazo</button>
                 </div>
-                
                 <div className="filter-group-icon">
                         <button className={`uppercase btn-secondary ${activeTab === 'live' && 'home-tab-active'}`}
                             onClick={() => setActiveTabSpace('live')}>Live Now</button>

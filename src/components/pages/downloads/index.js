@@ -28,6 +28,7 @@ export default function MatchesList() {
         setLoaded(false)
         let method = 'POST'
         let endpoint = "/v1/matches?page=" + (1) + `&limit=${events}&tab=` + section + '&sub_type_id=1,10,29,18';
+        console.log(" Beginning to query matches ");
         await makeRequest({url: endpoint, method: method, data: []}).then(([status, result]) => {
             if (status == 200) {
                 setMatches(result?.data || result)
@@ -35,6 +36,7 @@ export default function MatchesList() {
                     setLoaded(true)
                 }
             }
+            console.log(" Requested Endpoint " + endpoint);
         });
     }
 
