@@ -2603,7 +2603,7 @@ footer a {
 
 
 .bkmrk, .slp {
-    padding: 8px 0 6px 15px;
+    padding: 10px 0 10px 15px;
 }
 
 .bkmrk {
@@ -7181,9 +7181,10 @@ ul.sport {
         font-size: 20px;
         padding: 0 5px;
         display: inline-block;
-        margin: -5px -1px -5px;
+        margin: 5px -1px 0px;
         border-radius: 100px;
         width: 30px;
+        height: 30px;
     }
 
     #slip-holder {
