@@ -7076,7 +7076,7 @@ ul.sport {
         font-size: 10px;
     }
     .betslip-body {
-        min-height: 50vh;
+        min-height: 40vh;
     }
     .navbar-responsive {
         width: 200px;
@@ -15873,12 +15873,12 @@ li.pro-sub-menu {
     }
 
     .mobile-btn-sm {
-    padding: 1px;
-    max-width: 100px;
-    width: 100% !important;
-    float: right;
-    font-size: 10px;
-}
+        padding: 1px;
+        max-width: 100px;
+        width: 100% !important;
+        float: right;
+        font-size: 10px;
+    }
 
     .full-width {
         width: 100% !important;
