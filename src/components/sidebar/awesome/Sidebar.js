@@ -39,7 +39,7 @@ import TopLeagues from "../../../assets/svg/top-leagues.svg";
 import Flag from "../../../assets/svg/flag.svg";
 import MostLikedIcon from "../../../assets/svg/MOSTLIKEDOPTIONS.svg";
 // import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
-import DepositIcon from "../../../assets/svg/deposit.svg";
+import DepositIcon from "../../../assets/svg/DEPOSIT.svg";
 import HOWToPlayIcon from "../../../assets/svg/how-to-play.svg";
 import PromotionIcon from "../../../assets/svg/Promotions.svg";
 import ShareModal from "../../sharemodal";
