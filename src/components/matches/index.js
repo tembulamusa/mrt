@@ -189,7 +189,7 @@ const MatchHeaderRow = (props) => {
                 </div>
                 <div className={'col-2 d-none d-md-block d-xs-none d-sm-none match-detail-container'} key="d4"></div>
                 
-                <div className={'col d-flex flex-row justify-content-between'}>
+                <div className={'col d-flex d-none d-md-flex flex-row justify-content-between'}>
                     {three_way &&
                         <div className=" align-self-center" style={{ width:"37%", color:"#fff",textAlign:"center", paddingLeft:"0",paddingRight:"0"  }} key="d3">
                             <div className="d-flex flex-column mobile-right-mkt-type">
@@ -234,8 +234,10 @@ const MatchHeaderRow = (props) => {
 
                     <div className="d-sm-flex d-md-none" style={{width:"100%", textAlign:"right", paddingRight:"5px"}}>
                      <div className="row">
-                        <div className="col-12 mobile-top-custom-pad">
+                        <div className="col-3"></div>
+                        <div className="col mobile-top-custom-pad">
                           <div className="row">
+                        
                               <div className="col-3 center-text">1</div>
                               <div className="col-3  center-text"> X </div>
                               <div className="col-3  center-text"> 2</div>
@@ -670,7 +672,7 @@ const MatchRow = (props) => {
                 </a>
             </div>
             <div className="col d-flex flex-row justify-content-between" key="24">
-                <div className="c-btn-group align-self-center" key="222" style={{width:"37%"}}>
+                <div className="c-btn-group align-self-center" key="222" style={{}}>
                     {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot

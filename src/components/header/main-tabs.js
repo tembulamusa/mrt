@@ -206,7 +206,7 @@ const MainTabs = (props) => {
 
                 <div className="filter-group-icon">
                     <button className={`uppercase btn-secondary ${activeTab === 'highlights' && 'home-tab-active'}`} 
-                       onClick = {() => setActiveTabSpace('highlights')} ><div style={{display:"flex", marginLeft:"5px"}}><div style={{width:"20px", height:"20px", marginRight:"5px"}}><img src={MostLikedIcon} alt="" /> </div> <div>Mechi Kali</div></div></button>
+                       onClick = {() => setActiveTabSpace('highlights')} ><div style={{display:"flex", marginLeft:"0px"}}><div style={{width:"20px", height:"20px", marginRight:"5px"}}><img src={MostLikedIcon} alt="" /> </div> <div>Mechi Kali</div></div></button>
                 </div>
                 <div className="filter-group-icon">
                         <button className={`uppercase btn-secondary ${activeTab === 'today' && 'home-tab-active'}`} 
