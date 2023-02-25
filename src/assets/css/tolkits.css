@@ -7,6 +7,10 @@ src: url("../fonts/Aller_Bd.ttf");
 
 }
 
+.web-width-37 {
+    width: 37%;
+}
+
 .pro-sidebar {
     color:#000 !important;
 }
@@ -7032,6 +7036,9 @@ ul.sport {
     }
 
     .three-way {
+        width: 100%;
+    }
+    .mobile-width-100 {
         width: 100%;
     }
 

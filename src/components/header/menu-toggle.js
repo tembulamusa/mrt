@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import {faLock, faCoins } from "@fortawesome/free-solid-svg-icons";
 import { formatNumber } from "../utils/betslip";
 
-import depositIcon from "../../assets/svg/deposit.svg"
+import depositIcon from "../../assets/svg/DEPOSIT.svg"
 import withdrawIcon from "../../assets/svg/withdraw.svg"
 import appIcon from "../../assets/svg/download-app.svg"
 import helpIcon from "../../assets/svg/help.svg"
