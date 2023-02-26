@@ -150,7 +150,7 @@ const Sidebar = (props) => {
             // marginRight: '2px',
             top: "84px"
         }}
-             className={`vh-100 text-white sticky-top d-none d-md-block up`}>
+             className={`vh-100 text-white sticky-top up`}>
             <ProSidebar
 
                 style={{backgroundColor: '#16202c !important'}}
@@ -192,51 +192,51 @@ const Sidebar = (props) => {
                         <div className=" left-menu base-submenu uppercase bold">
                             <MenuItem className={pathname === '/' ? "active" : ''}>
                                 <a href="/" title="Home">
-                                <FontAwesomeIcon icon={faHome} className="hide1"/> Home
+                                <FontAwesomeIcon icon={faHome} className="hi"/> Home
                                 </a>
                             </MenuItem>
 
                             <MenuItem className={`live-game ${pathname === '/live' ? 'active' : ''}`}>
                                 <a href="/live"
-                                   title="Live" className="red-color"><img src={LiveIcon} alt="" className="svg-menu-img-icon hide1" />Live Now</a>
+                                   title="Live" className="red-color"><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1" />Live Now</a>
                             </MenuItem>
 
                             <MenuItem className={`${pathname === '/highlights' ? 'active' : ''}`}>
                                 <a href="/highlights"
-                                   title="Highlights"><img src={MostLikedIcon} alt="" className="svg-menu-img-icon hide1" />Mechi Kali</a>
+                                   title="Highlights"><img src={MostLikedIcon} alt="" className="svg-menu-img-icon " />Mechi Kali</a>
                             </MenuItem> 
                             <MenuItem className={`${pathname === '/jackpot' ? 'active' : ''}`}>
                                 <a href="/jackpot"
-                                   title="Jackpot"><img src={JackpotIcon} alt="" className="svg-menu-img-icon hide1" />Jackpot</a>
+                                   title="Jackpot"><img src={JackpotIcon} alt="" className="svg-menu-img-icon " />Jackpot</a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/app' ? 'active' : ''}`}>
                                 <a href="/app"
                                    title="Mobile App">
-                                   <img src={MobileAppIcon} alt="" className="svg-menu-img-icon hide1" />Mobile App
+                                   <img src={MobileAppIcon} alt="" className="svg-menu-img-icon " />Mobile App
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/help' ? 'active' : ''}`}>
                                 <a href="/help"
                                    title="Jinsi Ya Kucheza">
-                                   <img src={HOWToPlayIcon} alt="" className="svg-menu-img-icon hide1" />Jinsi Ya Kucheza
+                                   <img src={HOWToPlayIcon} alt="" className="svg-menu-img-icon " />Jinsi Ya Kucheza
                                    </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/deposit' ? 'active' : ''}`}>
                                 <a href="/deposit"
                                    title="DEPOSIT">
-                                   <img src={DepositIcon} alt="" className="svg-menu-img-icon hide1" />DEPOSIT
+                                   <img src={DepositIcon} alt="" className="svg-menu-img-icon " />DEPOSIT
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/lottery' ? 'active' : ''}`}>
                                 <a href="https://www.biko.co.tz/sw"
                                    title="Live">
-                                   <img src={LotteryIcon} alt="" className="svg-menu-img-icon hide1" />Cheza Biko SMS Lottery
+                                   <img src={LotteryIcon} alt="" className="svg-menu-img-icon" />Cheza Biko SMS Lottery
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/news' ? 'active' : ''}`}>
                                 <a href="https://blog.bikosports.co.tz/?amount=&loggedOn=0&phone="
                                    title="Live Score">
-                                   <img src={LivescoreIcon} alt="" className="svg-menu-img-icon hide1" />Sports news
+                                   <img src={LivescoreIcon} alt="" className="svg-menu-img-icon " />Sports news
                                 </a>
                             </MenuItem>
                         </div>
