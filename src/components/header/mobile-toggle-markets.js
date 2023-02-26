@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import SidebarMobile from "../sidebar/awesome/SidebarMobile";
+import Sidebar from "../sidebar/awesome/Sidebar";
 import SideBar from "../sidebar/awesome/Sidebar";
 import Navbar from 'react-bootstrap/Navbar';
 import { FaBars, FaUserAlt } from "react-icons/fa";
@@ -22,11 +22,11 @@ function MobileToggleMkts() {
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Games</Offcanvas.Title>
+          <Offcanvas.Title className="h2">Games</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
 
-          <SidebarMobile/>
+          <Sidebar/>
 
 
 

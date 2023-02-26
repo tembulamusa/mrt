@@ -7076,6 +7076,12 @@ ul.sport {
     padding-left: 7px;
     border: 1px solid rgba(255,255,255,0.35);
 }
+
+.carousel-item img {
+    height: 100% !important;
+}
+
+
 }
 
 @media (max-width: 640px), (max-width: 574px) {
@@ -17067,4 +17073,14 @@ background:#999;
 
 .mobile-search-input-div .autocomplete-box {
     min-width: 98%;
+}
+.offcanvas-header {
+    /* background: #0C3C5A; */
+    color: #ffffff;
+    background: rgba(52, 179, 191, 1);
+}
+
+.offcanvas-title {
+   
+    font-size: 15px;
 }
