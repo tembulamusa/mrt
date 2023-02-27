@@ -17060,6 +17060,9 @@ background:#999;
     color: #fff !important;
     padding: 5px 7px !important;
 }
+.poster-image img {
+    height: auto;
+}
 }
 
 .primary-text-color {
