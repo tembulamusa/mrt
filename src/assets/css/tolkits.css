@@ -17063,6 +17063,28 @@ background:#999;
 .poster-image img {
     height: auto;
 }
+
+.nav-item {
+    font-size: 12px;
+}
+
+.top-nav-mobile {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding-bottom: 5px;
+    font-size: 10px;
+    margin-bottom: 3px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.top-nav-mobile svg {
+    max-width: 15px;
+}
+
+.jackpot-mobile-width-85 {
+    width: 85%;
+}
 }
 
 .primary-text-color {

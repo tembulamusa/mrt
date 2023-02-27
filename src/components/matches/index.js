@@ -689,7 +689,7 @@ const MatchRow = (props) => {
                 </a>
             </div>
             <div className="col d-flex flex-row justify-content-between" key="24">
-                <div className={`c-btn-group align-self-center mobile-width-100 mobile-85-to-70 web-width-37 ${(live) ?'live-width-85':''}`} key="222" style={{}}>
+                <div className={`c-btn-group align-self-center mobile-width-100 mobile-85-to-70 web-width-37 ${(jackpot) ?'jackpot-mobile-width-85':''} ${(live) ?'live-width-85':''}`} key="222" style={{}}>
                     {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot
