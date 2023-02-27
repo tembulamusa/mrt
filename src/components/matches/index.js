@@ -288,7 +288,7 @@ const MoreMarketsHeaderRow = (props) => {
             <div className="panel-header match-detail-header">
 
                 <h4 className="inline-block text-center">
-                    <span className="uppercase text-uppercase">{home_team}</span> <small> vs </small> {away_team}
+                    <div className="uppercase text-uppercase mb-3">{home_team}</div> <div>{away_team}</div>
                 </h4>
                 {live &&
                     <Row className="header-text">
@@ -609,7 +609,7 @@ const PosterBanner = () => {
 
     return (
         <div className="poster-image">
-           <img height="250px" src={PosterImage} />
+           <img src={PosterImage} />
         </div>
     )
 }
