@@ -36,7 +36,7 @@ const Help = (props) => {
             <Header/>
             <div className="amt">
                 <div className="d-flex flex-row justify-content-between">
-                    <SideBar loadCompetitions/>
+                    <div className="d-md-block d-none"><SideBar loadCompetitions/></div>
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage child-box-relative-pos">
                             <div className='col-md-12 biko-bg p-2'>
