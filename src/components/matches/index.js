@@ -287,8 +287,8 @@ const MoreMarketsHeaderRow = (props) => {
         <Container className="mt-2">
             <div className="panel-header match-detail-header">
 
-                <h4 className="inline-block text-center">
-                    <div className="uppercase text-uppercase mb-3">{home_team}</div> <div>{away_team}</div>
+                <h4 className="inline-block row">
+                    <div className="mobile-font-10 center-text mb-2">{start_time}</div><div className="col9 mobile-font-13 center-text uppercase text-uppercase"><div className="mb-3">{home_team}</div><div>{away_team}</div></div>
                 </h4>
                 {live &&
                     <Row className="header-text">
