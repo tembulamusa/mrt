@@ -940,7 +940,7 @@ header, li a, .thedate span {
     outline: none;
     text-align: center;
     float: right;
-    font-size: 12px;
+    font-size: 10px;
     height: 36px;
     line-height: 13px;
     border-radius: 2px;
@@ -16866,8 +16866,7 @@ li.left-menu-item-1 >.pro-inner-item {
         }
 
         .btn-secondary {
-            
-            font-size: 10px;
+            font-size: 9px;
             font-weight: bold;
         }
 
@@ -16908,6 +16907,10 @@ li.left-menu-item-1 >.pro-inner-item {
 
         .mobile-width-100 {
             width: 100%;
+        }
+
+        .mobile-85-to-70 {
+            width: 74%;
         }
 
         .mt-5 {
@@ -17045,11 +17048,11 @@ background:#999;
 
 .filter-group-icon .btn-secondary {
     
-    padding: 5px 8px;
+    padding: 5px 3px;
 }
 
 .top-login .btn {
-    width: 100px;
+    width: 90px;
     height: 27px;
     font-size: 10px !important;
     margin-left: 10px;
