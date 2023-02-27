@@ -11,6 +11,8 @@ import highlightsIconSvg from "../../assets/svg/toggle-off-icon.svg"
 import { faCaretDown} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {Context} from '../../context/store';
+import LiveIcon from "../../assets/svg/LIVENOW.svg";
+import MostLikedIcon from "../../assets/svg/MOSTLIKEDOPTIONS.svg";
 
 
 import {
@@ -205,7 +207,7 @@ const MainTabs = (props) => {
 
                 <div className="filter-group-icon">
                     <button className={`uppercase btn-secondary ${activeTab === 'highlights' && 'home-tab-active'}`} 
-                       onClick = {() => setActiveTabSpace('highlights')} >Mechi Kali</button>
+                       onClick = {() => setActiveTabSpace('highlights')} ><div style={{display:"flex", marginLeft:"5px"}}><div style={{width:"20px", height:"20px", marginRight:"5px"}}><img src={MostLikedIcon} alt="" /> </div> <div>Mechi Kali</div></div></button>
                 </div>
                 <div className="filter-group-icon">
                         <button className={`uppercase btn-secondary ${activeTab === 'today' && 'home-tab-active'}`} 
@@ -215,9 +217,10 @@ const MainTabs = (props) => {
                         <button className={`uppercase btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
                             onClick={() => setActiveTabSpace('tomorrow')}>Mechi zijazo</button>
                 </div>
-                <div className="filter-group-icon">
-                        <button className={`uppercase btn-secondary ${activeTab === 'live' && 'home-tab-active'}`}
-                            onClick={() => setActiveTabSpace('live')}>Live Now</button>
+                
+                <div className="filter-group-icon live-icon">
+                        <a style={{color:"red"}} href="/live" className={`uppercase btn-secondary ${activeTab === 'live' && 'home-tab-active'}`} style={{padding:"0"}}
+                            onClick={() => setActiveTabSpace('live')}><div style={{display:"flex", marginLeft:"5px", color:"red"}}><div style={{width:"20px", height:"20px", marginRight:"5px"}}><img src={LiveIcon} alt="" /></div> <div>Live Now</div></div></a>
                 </div>
 
                   

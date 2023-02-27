@@ -219,9 +219,6 @@ header, li a, .thedate span {
     padding-left: 0;
 }
 
-.mybets a {
-    color: #1E3948 !important;
-}
 
 .gothb {
     font-family: "GothamBold";
@@ -925,7 +922,7 @@ header, li a, .thedate span {
     outline: none;
     text-transform: uppercase;
     font-size: 10px;
-    font-weight: 100;
+    font-weight: normal;
     padding: 2px;
 }
 
@@ -1092,7 +1089,6 @@ button {
 
 .theodds {
     padding: 0;
-    font-weight: 400;
 }
 
 .slip-counter {
@@ -2039,6 +2035,8 @@ events-header {
 .compt-teams {
     font-size: 12px;
     text-transform: uppercase !important;
+    color: #000;
+    opacity:0.8;
 }
 
 .matches .top-matches button {
@@ -2048,8 +2046,8 @@ events-header {
 
 .home-team {
     background: rgba(52, 179, 191, 0.15)!important;
-    color: #2c2457!important;
-    font-weight: 100 !important;
+    color: #2c2457 !important; 
+    /*color: #000 !important;*/
 }
 .away-team {
     background: #c91d56 !important;
@@ -2398,7 +2396,9 @@ a {
 .web-element a {
     color: #2c2457!important;
 }
-
+.match-cl-desc {
+   color:#2c2457;
+}
 .one_game_wrapper.top-matches a {
     color: #6C6A6A;
 }
@@ -15051,7 +15051,7 @@ img.zoom-img {
 
 .carousel-item {
     
-    max-height: 230px !important;
+    max-height: 250px !important;
 }
 
 .top-matches:nth-child(2n + 1) {
@@ -15270,7 +15270,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     margin-bottom: 0;
 }
 .pro-sidebar .pro-menu a{
-    color:#666 !important;
+    color:#000 !important;
 }
 
 
@@ -15559,13 +15559,10 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 }
 
 .match-detail-container {
-    width: 22% !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-right: 5%;
-    /*max-width: 20% !important;*/
-    /*margin-right: 2% !important;*/
+    margin-right: 20px;
 }
 
 .odd-button {
@@ -15632,8 +15629,6 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 .c-btn-group > .c-btn {
     border-radius: 0;
     border: none;
-    /* border-right: 1px solid #bababa; */
-    width: 50px !important;
     height: 35px !important;
     margin-right: 4px;
     line-height: 30px;
@@ -16289,7 +16284,6 @@ a:hover {
 }
 .header-menu .input-field {
     height: 35px !important;
-    max-width: 530px;
     border-radius: 15px;
 }
 
@@ -16361,6 +16355,7 @@ a:hover {
     padding-bottom: 1px;
     margin-bottom: 0;
     font-weight: bold;
+    padding:0px;
 }
 
 .web-element.container .top-matches.sidebet-detail {
@@ -16509,7 +16504,7 @@ li.left-menu-item-1 >.pro-inner-item {
     margin-bottom: 4px !important;
     background: rgba(52, 179, 191, 0.06);
     font-weight: 500;
-    border: 1px solid rgba(52, 179, 191, 0.3);
+    border: 1px solid #34b3bf;
     text-transform: uppercase;
     border-radius: 5px;
 }
@@ -16734,7 +16729,17 @@ li.left-menu-item-1 >.pro-inner-item {
     background:#115078;
     color:#fff;
 }
+.biko-blue, .biko-blue:hover {
+   background:#34b3bf;
+   color:#fff;
+   line-height:30px;
+   font-weight:400;
+   text-transform:uppercase;
+}
 
+.biko-pink-color, a.biko-pink-color, a.biko-pink-color:hover, .biko-pink-color:hover{
+    color:#c6224e;
+}
 .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item {
     position: relative;
     display: flex;
@@ -16893,17 +16898,16 @@ li.left-menu-item-1 >.pro-inner-item {
 
 .top-search-icon {
     position: absolute;
-    right: 43px;
+    right: 10px;
     top: 2px;
     opacity: 0.5;
 }
 
 .relative-pos {position: relative;}
 
-
 body {
     margin: 0;
-    font-family: aller,Arial, Helvetica;
+    font-family: aller,Arial, Helvetica !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -16912,3 +16916,45 @@ body {
 .top-matches .left-text {
     padding-right: 5px;
 }
+
+
+.mobile-right-mkt-type {
+    font-size: 10px;
+}
+.filter-group-icon.live-icon:hover{
+   color:red;
+}
+.post-bet-details{
+    color:#000;
+    text-transform:uppercase;
+}
+.post-bet-option, .bet-item{
+  background: rgba(52, 179, 191, 0.06);
+  border: 1px solid rgba(52, 179, 191, 0.3);
+  margin: 5px 0px;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.bet-item{
+ font-size:12px !important;
+ font-family:roboto;
+ font-weight:200;
+}
+.win-status-pending, .win-status-lost, .win-status-cancelled, .win-status-won{
+   background:#34b3bf;
+   width:fit-content;
+   color:#fff;
+   font-size:12px;
+   padding:2px 5px;
+   margin:3px;
+}
+.win-status-lost {
+background:#c6224e;
+}
+.win-status-cancelled {
+background:#999;
+}
+.win-status-won {
+ background:green;
+ }

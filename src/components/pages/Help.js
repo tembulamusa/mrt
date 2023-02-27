@@ -18,10 +18,6 @@ import {AccordionButton} from "react-bootstrap";
 import Index from '../../assets/img/payment_logos/index.png'
 import Mpesa from '../../assets/img/payment_logos/mpesa-logo.png'
 import Tigo from '../../assets/img/payment_logos/tigo_pesa.png'
-import AccountSelect from '../../assets/img/screenshots/account-selection.png'
-import PickGame from '../../assets/img/screenshots/pick-game.png'
-import PickedGame from '../../assets/img/screenshots/picked-game.png'
-import SUccessfulBet from '../../assets/img/screenshots/successful-bet.png'
 
 const Header = React.lazy(() => import('../header/header'));
 const Footer = React.lazy(() => import('../footer/footer'));
@@ -43,8 +39,8 @@ const Help = (props) => {
                     <SideBar loadCompetitions/>
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage child-box-relative-pos">
-                            <div className='col-md-12 primary-bg p-2 text-cente'>
-                                <h4 className="inline-blok cap-tex">Help</h4>
+                            <div className='col-md-12 biko-bg p-2'>
+                                <h4 className="inline-blok cap-text center-text">Help</h4>
                             </div>
 
                             <div className="card">

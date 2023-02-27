@@ -1,6 +1,6 @@
 import {setLocalStorage, getFromLocalStorage} from './local-storage';
 
-const ENC_KEY = 'm1XR6ajgepqyhndnasdnahake927382351bdjdqhadklasdgadjasl';
+const ENC_KEY = 'm1XR6ajgepqyh^7&21012G$%%_q90)hte====';
 const BASE_URL = 'http://35.234.140.2:8008'; // 35.234.140.2:8008
 
 const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
@@ -18,10 +18,8 @@ const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
         }
     }
     let jwt = null;
-    console.log("Fetch request function", use_jwt)
 
     if (use_jwt) {
-        console.log("Using jwt")
         const sign = require('jwt-encode');
         const payload = {
             ...data,
@@ -30,7 +28,6 @@ const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
         jwt = sign(payload, ENC_KEY);
 
         url += (url.match(/\?/g) ? '&' : '?') + 'token=' + jwt;
-        console.log("Using jwt final utl", url)
         data = null;
     } else {
         headers = {...headers, ...{"content-type": "application/json"}}
@@ -41,7 +38,6 @@ const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
     if (token) {
         headers = {...headers, ...{Authorization: "Bearer " + token}}
     }
-    console.log("Sending headers ", headers);
 
     try {
         let request = {

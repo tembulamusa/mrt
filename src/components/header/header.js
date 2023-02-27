@@ -166,7 +166,7 @@ const Header = (props) => {
                                             <input type="text" placeholder="Search for Events and Tournaments" ref={searchInputRef}
                                                    onInput={(event) => fetchMatches(event.target.value)}
                                                    className={'form-control input-field border-0  no-border-radius'}/>
-                                                   <span className="top-search-icon"><FaSearch size={15}/></span>
+                                                   <span className="top-search-icon" style={{margin:"3px 10px"}}><FaSearch size={21}/></span>
                                         
                                     <div
                                         className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
@@ -184,8 +184,8 @@ const Header = (props) => {
                             <div className="col-sm-12 col-md-5 disable-ipd d-md-block">
                                 {user ? <ProfileMenu user={user}/> : 
                                 <div className="top-login float-end">
-                                <a href="/login" className="cg login-button btn width-auto">Login</a>
-                                <a href="/signup" className="cg btn btn-primary width-auto">Register</a>
+                                <a href="/login" className="cg login-button btn width-auto">LOGIN</a>
+                                <a href="/signup" className="cg btn btn-primary width-auto">REGISTER</a>
                                 </div>}
                             </div>
                             {/*For the mobile*/}
@@ -211,7 +211,7 @@ const Header = (props) => {
                     </Row>
                 */}
 
-                <span className="d-none d-md-flex">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</span>
+                <span className="d-none d-md-flex ml-1"><div className="">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</div></span>
 
         { /** <Navbar.Offcanvas
                         style={{width: "100% !important", height: "100%"}}

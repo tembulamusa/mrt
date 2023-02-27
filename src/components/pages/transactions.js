@@ -53,7 +53,7 @@ const Transactions = (props) => {
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage child-box-relative-pos">
                             <div className='col-md-12 biko-bg p-2 text-cente'>
-                                <h4 className="inline-blok cap-tex">My Transactions 
+                                <h4 className="inline-blok cap-tex">MY TRANSACTIONS
                                <span style={{float:"right", fontSize:"14px", fontWeight:"normal"}}>As at <Moment format="DD/MM/YYYY HH:mm">{currentDate}</Moment> </span></h4>
                             </div>
 

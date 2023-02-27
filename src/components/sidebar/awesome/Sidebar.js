@@ -41,7 +41,6 @@ import MostLikedIcon from "../../../assets/svg/MOSTLIKEDOPTIONS.svg";
 // import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
 import DepositIcon from "../../../assets/svg/DEPOSIT.svg";
 import HOWToPlayIcon from "../../../assets/svg/how-to-play.svg";
-import HipoIcon from "../../../assets/img/search-icon.png";
 import PromotionIcon from "../../../assets/svg/Promotions.svg";
 import ShareModal from "../../sharemodal";
 
@@ -224,8 +223,8 @@ const Sidebar = (props) => {
                             </MenuItem>
                             <MenuItem className={`${pathname === '/deposit' ? 'active' : ''}`}>
                                 <a href="/deposit"
-                                   title="Lipa Hapa">
-                                   <img src={DepositIcon} alt="" className="svg-menu-img-icon hide1" />Lipa Hapa
+                                   title="DEPOSIT">
+                                   <img src={DepositIcon} alt="" className="svg-menu-img-icon hide1" />DEPOSIT
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/lottery' ? 'active' : ''}`}>

@@ -37,7 +37,7 @@ const Login = (props) => {
     
     const FormTitle = () => {
         return (
-            <div className='col-md-12 biko-bg p-4 text-center'>
+            <div className='col-md-12 biko-bg p-2 text-center'>
                 <h4 className="">
                     Login
                 </h4>

@@ -194,7 +194,6 @@ h4.inline-block {
 }
 .theodds{
     font-size: 15px;
-    font-weight: 400;
 }
 .betslip {
     padding: 5px;
@@ -307,6 +306,7 @@ li.bet-option {
     border: none;
     padding: 7px 10px;
     font-size: 11px;
+    width:100%;
 }
 .jp-matches .events-odd {
     background: #0c153b;

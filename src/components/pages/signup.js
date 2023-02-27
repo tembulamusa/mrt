@@ -63,7 +63,7 @@ const Signup = (props) => {
 
     const FormTitle = () => {
         return (
-            <div className='col-md-12 primary-bg p-2 text-center'>
+            <div className='col-md-12 biko-bg p-2 text-center'>
                 <h4 className="">
                     JISAJILI BIKOSPORTS
                 </h4>
@@ -87,7 +87,7 @@ const Signup = (props) => {
                 <div className="pt-0">
                     <div className="row">
                         <div className='col-12 text-cente'>
-                        <h4>Karibu BIKOSPORTS</h4>
+                        <h4>KARIBU BIKOSPORTS</h4>
                         <div className="small-box-content">
                         Jaza maelezo yote yanayohitajika, ikiwemo namba ya simu na nenosiri (password). Bofya na hakikisha kuwa umesoma na kukubali kanuni, na
                         umetimiza umri wa miaka 18.
@@ -146,13 +146,13 @@ const Signup = (props) => {
                         <div className="form-group row d-flex justify-content-left mb-4">
                             <div className="col-md-12">
                                 <button type="submit"
-                                    className={`btn btn-lg btn-primary mt-5 col-md-12 deposit-withdraw-button full-width`}
+                                    className={`btn btn-lg biko-blue mt-5 col-md-12 full-width`}
                                     disabled={loading}
                                     >
-                                    {loading ? loadingContent() : 'Signup'}
+                                    {loading ? loadingContent() : 'REGISTER'}
                                 </button>
                                 <hr/>
-                                <p className="small-box-content">Already Have an account!? <a href="/login"><strong>Click here to Login</strong></a></p>
+                                <p className="small-box-content">Already Have an account!? <a href="/login"><strong className="biko-pink-color">Click here to Login</strong></a></p>
                             </div>
                         </div>
                     </div>

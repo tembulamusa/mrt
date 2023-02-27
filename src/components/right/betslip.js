@@ -180,11 +180,17 @@ const BetSlip = (props) => {
                 <ul>
                     { Object.keys(betslipsData || {}).length === 0 &&
                        <li className="bet-option hide-on-affix" key="no-slip-ai"
-                          style={{height:"30px",margin:"10px 10px 10px 5px", borderBottom:"none", padding:"0px 2px"}}>
-                            <input  type="text" name="sharecode"  placeholder="Enter share code"  
+                          style={{height:"30px",margin:"10px 0px 5px 0px", borderBottom:"none", padding:"0px 2px"}}>
+                         <div className="row" style={{margin:0}}>
+                            <div className="col-9" style={{padding:0}}>
+                            <input  type="text" name="sharecode"  placeholder=""  
                                 onChange={handleCodeInputChange}
-                                style={{border:"1px solid #ddd", borderRadius:"2px", margin:"0px 4px 0px 0px", width:"66%",height:"30px"}}/>
-                            <button className="btn-default biko-bg" style={{height:"30px"}} onClick={loadBetslipFromCode}>Load Slip</button>
+                                style={{border:"1px solid #ddd", borderRadius:"2px", margin:"0px 4px 0px 0px", width:"99%",height:"30px"}}/>
+                            </div>
+                            <div className="col-3" style={{padding:0}}>
+                                <button className="btn-default biko-blue" style={{width:"100%", padding:"0px", fontSize:"10px"}} onClick={loadBetslipFromCode}>ENTER CODE</button>
+                            </div>
+                          </div>
                        </li>
                     } 
                     {Object.entries(betslipsData || {}).map(([match_id, slip]) => {
