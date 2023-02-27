@@ -17084,3 +17084,11 @@ background:#999;
    
     font-size: 15px;
 }
+
+.live-width-85 {
+    width: 85%;
+}
+
+.mobile-85-to-70.live-width-85 {
+    width: 70%;
+}
