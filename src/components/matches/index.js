@@ -176,7 +176,12 @@ const MatchHeaderRow = (props) => {
 
                  
 
-                 {live && <span className="white-text">LIVE </span> }
+                 {live && 
+                    <div className="row white-text">
+                         <div className="col"> LIVE</div>
+
+                    </div> 
+                 }
                 <div className="d-sm-none d-md-block pad left-text col-sm-2 col-xs-12 pad d-none" key="d5">
                     <div className="align-self-center col">
 
@@ -205,6 +210,8 @@ const MatchHeaderRow = (props) => {
                         </div>
                     }
 
+                    
+
                     {!live && !jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
@@ -229,7 +236,17 @@ const MatchHeaderRow = (props) => {
                         </>
                     )}
                     
-                <div className="col d-flex flex-row justify-content-between"> &nbsp; </div>
+                <div className="col d-flex flex-row justify-content-between"> &nbsp; 
+
+                {live && 
+                                <div className="row float-end" style={{width:"100%"}}>
+                                    <div className="col-3 center-text">1</div>
+                                    <div className="col-3 center-text">X</div>
+                                    <div className="col-3 center-text">2</div>
+                                </div>
+                            
+                    }
+                </div>
                 </div>
 
                     <div className="d-sm-flex d-md-none" style={{width:"100%", textAlign:"right", paddingRight:"5px"}}>
@@ -304,7 +321,7 @@ const SideBets = (props) => {
                        live ? match.parent_match_id : match?.match_id}`
                    }><span className="text-tertiary">+{match.side_bets}</span>
 
-                <div className="normal-font-weight dark-text">Markets</div>
+                <div className="normal-font-weight dark-text uppercase">More</div>
 
                 </a>
 
@@ -672,7 +689,7 @@ const MatchRow = (props) => {
                 </a>
             </div>
             <div className="col d-flex flex-row justify-content-between" key="24">
-                <div className="c-btn-group align-self-center mobile-width-100 web-width-37" key="222" style={{}}>
+                <div className={`c-btn-group align-self-center mobile-width-100 mobile-85-to-70 web-width-37 ${(live) ?'live-width-85':''}`} key="222" style={{}}>
                     {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot
