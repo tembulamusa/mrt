@@ -7,6 +7,10 @@ src: url("../fonts/Aller_Bd.ttf");
 
 }
 
+.web-width-37 {
+    width: 37%;
+}
+
 .pro-sidebar {
     color:#000 !important;
 }
@@ -282,6 +286,10 @@ header, li a, .thedate span {
     border-radius: 5px;
     position: relative;
     box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+}
+.header-menu .input-field {
+    height: 35px !important;
+    border-radius: 15px;
 }
 
 .search-input input {
@@ -932,7 +940,7 @@ header, li a, .thedate span {
     outline: none;
     text-align: center;
     float: right;
-    font-size: 12px;
+    font-size: 10px;
     height: 36px;
     line-height: 13px;
     border-radius: 2px;
@@ -2443,7 +2451,7 @@ img {
     text-align: center;
     font-size: 14px;
     font-weight: normal;
-    /* opacity: 0.7; */
+     opacity: 0.7; 
 }
 
 .match-detail .picked {
@@ -2595,7 +2603,7 @@ footer a {
 
 
 .bkmrk, .slp {
-    padding: 8px 0 6px 15px;
+    padding: 10px 0 10px 15px;
 }
 
 .bkmrk {
@@ -7014,7 +7022,9 @@ ul.sport {
         margin-top: 100px;
     }
 }
-
+.three-way {
+    width: 37%;
+}
 @media (max-width: 574px) {
     .mobile-change {
         /*display: grid !important;*/
@@ -7024,6 +7034,54 @@ ul.sport {
     .app-header-nav {
         margin-top: -4px !important;
     }
+
+    .three-way {
+        width: 100%;
+    }
+    .mobile-width-100 {
+        width: 100%;
+    }
+
+    .c-btn-group > .c-btn {
+    border-radius: 0;
+    border: none;
+    height: 35px !important;
+    margin-right: 4px;
+    line-height: 30px;
+    width: 55px !important;
+}
+
+.mobile-search-input-div {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: #0C3C5A;
+    height: 45px;
+    top: 7px;
+    /* padding: 3px !important; */
+}
+
+.mobile-search-input-div .input-field {
+    height: 30px !important;
+    border-radius: 8px;
+    color: black !important;
+    /* margin-right: 10px !important; */
+}
+
+.mobile-search-input-div {
+    z-index: 999;
+}
+
+.search-close-btn {
+    padding-right: 7px;
+    padding-left: 7px;
+    border: 1px solid rgba(255,255,255,0.35);
+}
+
+.carousel-item img {
+    height: 100% !important;
+}
+
+
 }
 
 @media (max-width: 640px), (max-width: 574px) {
@@ -7031,7 +7089,7 @@ ul.sport {
         font-size: 10px;
     }
     .betslip-body {
-        min-height: 50vh;
+        min-height: 40vh;
     }
     .navbar-responsive {
         width: 200px;
@@ -7129,9 +7187,10 @@ ul.sport {
         font-size: 20px;
         padding: 0 5px;
         display: inline-block;
-        margin: -5px -1px -5px;
+        margin: 5px -1px 0px;
         border-radius: 100px;
         width: 30px;
+        height: 30px;
     }
 
     #slip-holder {
@@ -7163,7 +7222,7 @@ ul.sport {
     }
 
     .e.logo {
-        padding: 8px 5px !important;
+        padding: 8px 0px !important;
     }
 
     .second-nav {
@@ -15543,9 +15602,9 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 
 
 @media only screen and (max-width: 576px) {
-    .amt {
-    margin-top: 70px !important;
-    scroll-margin-top: 140px;
+  .amt {
+    margin-top: 57px !important;
+    scroll-margin-top: 135px;
 }
 .betslip-container {
     
@@ -15827,6 +15886,14 @@ li.pro-sub-menu {
 
     }
 
+    .mobile-btn-sm {
+        padding: 1px;
+        max-width: 100px;
+        width: 100% !important;
+        float: right;
+        font-size: 10px;
+    }
+
     .full-width {
         width: 100% !important;
     }
@@ -15898,6 +15965,16 @@ li.pro-sub-menu {
    .app-header-nav {
     padding-left: 4px;
     margin-top: 30px !important;
+}
+
+.top-login .btn {
+    width: 100px;
+    height: 27px;
+    font-size: 10px !important;
+    margin-left: 10px;
+    font-weight: 300;
+    color: #fff !important;
+    padding: 5px 7px !important;
 }
 
 .bal {
@@ -16282,10 +16359,7 @@ a:hover {
     color: #fff !important;
     padding:5px 10px !important;
 }
-.header-menu .input-field {
-    height: 35px !important;
-    border-radius: 15px;
-}
+
 
 .dropdown-menu[data-bs-popper] {
     top: 100%;
@@ -16782,15 +16856,17 @@ li.left-menu-item-1 >.pro-inner-item {
            
             padding-top: 5px;
         }
-        .filter-group-icon {
+       .filter-group-icon {
             width: 100%;
-            
-            max-width: 33.3%;
+            max-width: 25%;
+        }
+
+        .transparent-buttons .filter-group-icon:first-child .btn-secondary {
+            padding-left: 0px;
         }
 
         .btn-secondary {
-            
-            font-size: 10px;
+            font-size: 9px;
             font-weight: bold;
         }
 
@@ -16831,6 +16907,10 @@ li.left-menu-item-1 >.pro-inner-item {
 
         .mobile-width-100 {
             width: 100%;
+        }
+
+        .mobile-85-to-70 {
+            width: 74%;
         }
 
         .mt-5 {
@@ -16958,3 +17038,89 @@ background:#999;
 .win-status-won {
  background:green;
  }
+/*FOr mobile version*/
+
+@media (max-width: 640px) {
+   .app-header-nav {
+    padding-left: 4px;
+    margin-top: 30px !important;
+}
+
+.filter-group-icon .btn-secondary {
+    
+    padding: 5px 3px;
+}
+
+.top-login .btn {
+    width: 90px;
+    height: 27px;
+    font-size: 10px !important;
+    margin-left: 10px;
+    font-weight: 300;
+    color: #fff !important;
+    padding: 5px 7px !important;
+}
+.poster-image img {
+    height: auto;
+}
+
+.nav-item {
+    font-size: 12px;
+}
+
+.top-nav-mobile {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding-bottom: 5px;
+    font-size: 10px;
+    margin-bottom: 3px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.top-nav-mobile svg {
+    max-width: 15px;
+}
+
+.jackpot-mobile-width-85 {
+    width: 85%;
+}
+}
+
+.primary-text-color {
+    color: black !important;
+}
+
+.search-result-item {
+
+}
+
+.search-result-item li {
+    justify-content: left;
+}
+
+.mobile-search-input-div .autocomplete-box {
+    min-width: 98%;
+}
+.offcanvas-header {
+    /* background: #0C3C5A; */
+    color: #ffffff;
+    background: rgba(52, 179, 191, 1);
+}
+
+.offcanvas-title {
+   
+    font-size: 15px;
+}
+
+.live-width-85 {
+    width: 85%;
+}
+
+.mobile-85-to-70.live-width-85 {
+    width: 70%;
+}
+
+.mobile-font-10 {
+    font-size: 10px;
+}
