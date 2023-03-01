@@ -172,9 +172,7 @@ const MatchHeaderRow = (props) => {
     return (
         <Container className="live full-mobile sticky-top" style={{position: "sticky"}}>
             <div className="top-matches header d-flex position-sticky sticky-top "
-                 style={{opacity: "1", top: "100px"}}>
-
-                 
+                 style={{opacity: "1", top: "100px", paddingLeft:"5px"}}>
 
                  {live && 
                     <div className="row white-text">
@@ -209,9 +207,6 @@ const MatchHeaderRow = (props) => {
                             </div>
                         </div>
                     }
-
-                    
-
                     {!live && !jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
@@ -635,11 +630,7 @@ const MatchRow = (props) => {
     }
 
     return (
-
     <>
-
-
-
         {jackpot ? '' : live ? '' : (counter > 0 && counter % 20 == 0)  ? <PosterBanner /> : ''}
         <div className="top-matches d-flex">
             
@@ -665,7 +656,7 @@ const MatchRow = (props) => {
             <div className="col-2 col-xs-12 match-detail-container" key="23">
                 <a href={jackpot ? '#' : `/match/${live ? 'live/' + match.parent_match_id : match.match_id}`}>
                     <div className="d-flex flex-column">
-                        <div className="compt-detail overflow-ellipsi" key="0034">
+                        <div className="compt-deta overflow-ellipsi" key="0034">
                             <div className="d-flex flex-column" key="20">
                                 
                                 <span className={'small  d-xs-block d-sm-block d-md-none'}>
