@@ -172,7 +172,7 @@ const MatchHeaderRow = (props) => {
     return (
         <Container className="live full-mobile sticky-top" style={{position: "sticky"}}>
             <div className="top-matches header d-flex position-sticky sticky-top "
-                 style={{opacity: "1", top: "100px", paddingLeft:"50px"}}>
+                 style={{opacity: "1", top: "100px", paddingLeft:"5px"}}>
 
                  
 
