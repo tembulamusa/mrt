@@ -57,9 +57,9 @@ const PostBet = (props) => {
 
     const loadSocialPage = (code) => {
        if(sharebleCode){
-           let waUrl = "https://api.whatsapp.com/send?text=I%20placed%20this%20bet%20on%2035.189.72.196/.%20Cheki%20mkeka%20wangu%20na%20ubeti.%20https://35.189.72.196/share/"+sharebleCode;
-           let  fbUrl = "https://facebook.com/sharer/sharer.php?u=http://35.189.72.196/share/"+sharebleCode;
-           let ttUrl = "https://twitter.com/intent/tweet/?text=I%20placed%20this%20bet%20on%20http://35.189.72.196/.%20Cheki%20mkeka%20wangu%20na%20ubeti&amp;url=http://35.189.72.196/share/"+sharebleCode;
+           let waUrl = "https://api.whatsapp.com/send?text=I%20placed%20this%20bet%20on%20bikosports.co.tz/.%20Cheki%20mkeka%20wangu%20na%20ubeti.%20https://bikosports.co.tz/share/"+sharebleCode;
+           let  fbUrl = "https://facebook.com/sharer/sharer.php?u=https://bikosports.co.tz/share/"+sharebleCode;
+           let ttUrl = "https://twitter.com/intent/tweet/?text=I%20placed%20this%20bet%20on%20https://bikosports.co.tz/.%20Cheki%20mkeka%20wangu%20na%20ubeti&amp;url=https://bikosports.co.tz/share/"+sharebleCode;
            if(code === 'fb'){
 		       window.open(fbUrl,   '_blank', 'noreferrer');
            } else if (code === 'wa') {
