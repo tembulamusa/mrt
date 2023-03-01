@@ -10,6 +10,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import {Context} from '../../context/store';
 import {getFromLocalStorage, setLocalStorage} from "../utils/local-storage";
+import LiveIcon from "../../assets/svg/LIVENOW.svg";
 
 import {
     faSearch,
@@ -120,31 +121,39 @@ const fetchMatches = async (search) => {
     <>
     <div className="top-nav-mobile">
       <div className="row">
-        <div className="col-2 capitalize">
+        <div className="col-2 uppercase">
             
         <MobileToggleMkts />
 
         </div>
-        <div className="col-3 capitalize">
 
-        <a href = "/jackpot"><div><FaTrophy size={25} /></div></a>
-        Jackpots
-
+        <div className="col-2 uppercase red-color">
+            <a href = "/live" className="red-color"><div><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1 width-30px" /></div></a>
+            live
         </div>
-        <div className="col-3 capitalize" onClick={() => showSearchBar()}>
+
+        <div className="col-2 uppercase">
+            <a href = "/jackpot"><div><FaTrophy size={25} /></div></a>
+            Jackpots
+        </div>
+
+        
+
+        <div className="col-2 uppercase" onClick={() => showSearchBar()}>
 
           <div><FaSearch size={25}/></div>
           Search
           <span className={'hide2'}>Search</span>
         </div>
-        <div className="col-2 capitalize">
+
+        <div className="col-2 uppercase">
           <a href="/betslip">
-          <div><FaClipboard size={25}/></div>
+            <div className="relative-pos"><FaClipboard size={25}/><span className="top-slip-counter purple-bg">{ Object.keys(state?.betslip||{}).length }</span></div>
           Slip
           </a>
         </div>
 
-        <div className="col-2 capitalize">
+        <div className="col-2 uppercase">
           <HeaderMenuToggle />
           Menu
         </div>
