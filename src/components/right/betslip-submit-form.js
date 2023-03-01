@@ -42,7 +42,7 @@ const BetslipSubmitForm = (props) => {
     const [message, setMessage] = useState(null);
     const [state, dispatch] = useContext(Context);
 
-    const [stake, setStake] = useState(100);
+    const [stake, setStake] = useState(1000);
     const [stakeAfterTax, setStakeAfterTax] = useState(0);
     const [exciseTax, setExciseTax] = useState(0);
     const [withholdingTax, setWithholdingTax] = useState(0);
@@ -352,7 +352,7 @@ const BetslipSubmitForm = (props) => {
             } 
             let total_games = Object.keys(betslip).length;
 
-            let stake_after_tax = Float(stake) / 100 * 100
+            let stake_after_tax = Float(stake);
             let ext = Float(stake) - Float(stake_after_tax);
             let raw_possible_win = Float(stake_after_tax) * Float(totalOdds);
             let centage = win_matrix?.[total_games] || 0.00 
