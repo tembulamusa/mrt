@@ -940,7 +940,7 @@ header, li a, .thedate span {
     outline: none;
     text-align: center;
     float: right;
-    font-size: 12px;
+    font-size: 10px;
     height: 36px;
     line-height: 13px;
     border-radius: 2px;
@@ -7025,26 +7025,15 @@ ul.sport {
 .three-way {
     width: 37%;
 }
-.width-30px {
-    width: 30px;
-}
-
-.relative-pos {
-    position: relative;
-}
 @media (max-width: 574px) {
     .mobile-change {
         /*display: grid !important;*/
         /*grid-template-columns: [col-1]100px[col2]50px[col-end];*/
     }
 
-    .unlogged-mobile-spacer-height {
-        height: 16px;
-    }
     .app-header-nav {
         margin-top: -4px !important;
     }
-}
 
     .three-way {
         width: 100%;
@@ -15863,14 +15852,6 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     position: relative;
     z-index: 1009;
 }
-.betslip-container {
-    
-    z-index: 99999;
-    background: #ffffff;
-}
-}
-
-.overflow-ellipsis {
 
 .pro-sidebar .pro-menu .pro-menu-item {
     font-size: 13px !important;
@@ -16294,6 +16275,7 @@ footer .row {
     .left-with-big-pad-desktop {
         padding-left: 10px;
     }
+}
 
 svg:hover {
   fill: #34b3bf !important;
@@ -16422,7 +16404,6 @@ a:hover {
 .cream-text {
     color: #FDDA0D;
 }
-/*End how to*/
 
 .right-bordered-col {
     flex: 0 0 auto;
@@ -16480,14 +16461,6 @@ a:hover {
     font-weight: 500;
     padding-bottom: 9px !important;
 }
-footer .row {
-    /*opacity: 0.9;*/
-}
-@media (max-width: 640px) {
-    footer .right-border {
-        border-right: none;
-        padding-right: inherit;
-    }
 
 .std2-block {
     background: rgba(52,179,191,.06);
@@ -16702,18 +16675,6 @@ li.left-menu-item-1 >.pro-inner-item {
 .lipia ul {
     padding-left: 10px;
 
-.company-info h4 {
-    font-size: 13px;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    line-height: 1;
-    padding-top: 10px;
-}
-.company-info h3 {
-    font-size: 34px;
-    margin-top: 2px;
-    font-weight: bold;
-    padding-bottom: 6px;
 }
 
 .jackpot-body .matches {
@@ -16747,7 +16708,6 @@ li.left-menu-item-1 >.pro-inner-item {
     display: inline-block;
 }
 
-.jackpot-entry {
 
 .jackpot-body .c-btn-group > .c-btn {
     border-radius: 0;
@@ -17113,9 +17073,9 @@ background:#999;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center;
     padding-bottom: 5px;
-    font-size: 9px;
+    font-size: 10px;
     margin-bottom: 3px;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .top-nav-mobile svg {
@@ -17163,21 +17123,4 @@ background:#999;
 
 .mobile-font-10 {
     font-size: 10px;
-}
-
-
-.purple-bg {
-    background: #C6224E !important;
-    color: #ffffff;
-}
-
-.top-slip-counter {
-    display: block;
-    position: absolute;
-    top: 0;
-    line-height: 20px;
-    right: 0%;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
 }

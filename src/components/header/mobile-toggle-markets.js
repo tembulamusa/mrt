@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-<<<<<<< HEAD
-import SidebarMobile from "../sidebar/awesome/SidebarMobile";
-=======
 import Sidebar from "../sidebar/awesome/Sidebar";
->>>>>>> 2e3687246efd44c770b90f72b47b91b4297829e7
 import SideBar from "../sidebar/awesome/Sidebar";
 import Navbar from 'react-bootstrap/Navbar';
 import { FaBars, FaUserAlt } from "react-icons/fa";
