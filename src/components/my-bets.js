@@ -108,7 +108,7 @@ const MyBets = (props) => {
         return (
             <div className={`container`}  key={bet.bet_id}>
                 <div className="row">
-                  <div className="col-6">
+                  <div className="col-5">
                     <div className="col-6">
                       <div className="row">
                         <div className="col-4">DATE </div>
@@ -124,7 +124,7 @@ const MyBets = (props) => {
                       </div>
                    </div>
                   </div>
-                  <div className="col-6">
+                  <div className="col-5">
 
                       <div className="row">
                         <div className="col">ODDS</div>
@@ -139,24 +139,20 @@ const MyBets = (props) => {
                           <div className="col"><strong>{ bet.possible_win}</strong></div>
                       </div>
                  </div>
-                   <div className="row">
-                         <div className="col-1">
+                   <div className="col-2">
+                       <div className="row"> 
+                         <div className="col">
                         { canCancel == false 
                             ? <div className={`win-status-${bet.status.toLowerCase()}`}> { bet.status.charAt(0).toUpperCase() + bet.status.slice(1).toLowerCase()}</div>
                             : cancelBetMarkup() 
                         }
                         </div>
-                        <div className="col-1">
+                      </div>
+                       <div className="row"> 
+                            <div className="col">
                             <div className={`win-status-cancelled`}> Betslip </div>
-                       </div>
-
-                        <div className="col-1">
-                            <div className={`win-status-cancelled`}> Rebet </div>
-                       </div>
-
-                        <div className="col-1">
-                            <div className={`win-status-cancelled`}> Share </div>
-                       </div>
+                           </div>
+                      </div>
                  </div>
                 </div>
             </div>
@@ -238,7 +234,7 @@ const MyBets = (props) => {
             <Header user={state?.user}/>
             <div className="amt">
                 <div className="d-flex flex-row justify-content-between">
-                    <SideBar loadCompetitions/>
+                    <div className="d-md-block d-none"><SideBar loadCompetitions/></div>
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage">
                             <CarouselLoader/>

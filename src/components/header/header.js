@@ -194,8 +194,8 @@ const Header = (props) => {
                                 </div>}
                             </div>
                             {/*For the mobile*/}
-                            
-                    </div>
+                        </div>
+                        <div className={!user?"unlogged-mobile-spacer-height":""}></div>
                     </div>
                     { /* Mobile version user profile */}
                     

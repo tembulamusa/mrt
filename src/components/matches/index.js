@@ -172,11 +172,14 @@ const MatchHeaderRow = (props) => {
     return (
         <Container className="live full-mobile sticky-top" style={{position: "sticky"}}>
             <div className="top-matches header d-flex position-sticky sticky-top "
-                 style={{opacity: "1", top: "100px"}}>
+                 style={{opacity: "1", top: "100px", paddingLeft:"5px"}}>
 
-                 
+                 {live && 
+                    <div className="row white-text">
+                         <div className="col"> LIVE</div>
 
-                 {live && <span className="white-text">LIVE </span> }
+                    </div> 
+                 }
                 <div className="d-sm-none d-md-block pad left-text col-sm-2 col-xs-12 pad d-none" key="d5">
                     <div className="align-self-center col">
 
@@ -189,7 +192,7 @@ const MatchHeaderRow = (props) => {
                 </div>
                 <div className={'col-2 d-none d-md-block d-xs-none d-sm-none match-detail-container'} key="d4"></div>
                 
-                <div className={'col d-flex flex-row justify-content-between'}>
+                <div className={'col d-flex d-none d-md-flex flex-row justify-content-between'}>
                     {three_way &&
                         <div className=" align-self-center" style={{ width:"37%", color:"#fff",textAlign:"center", paddingLeft:"0",paddingRight:"0"  }} key="d3">
                             <div className="d-flex flex-column mobile-right-mkt-type">
@@ -204,7 +207,6 @@ const MatchHeaderRow = (props) => {
                             </div>
                         </div>
                     }
-
                     {!live && !jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
@@ -229,13 +231,25 @@ const MatchHeaderRow = (props) => {
                         </>
                     )}
                     
-                <div className="col d-flex flex-row justify-content-between"> &nbsp; </div>
+                <div className="col d-flex flex-row justify-content-between"> &nbsp; 
+
+                {live && 
+                                <div className="row float-end" style={{width:"100%"}}>
+                                    <div className="col-3 center-text">1</div>
+                                    <div className="col-3 center-text">X</div>
+                                    <div className="col-3 center-text">2</div>
+                                </div>
+                            
+                    }
+                </div>
                 </div>
 
                     <div className="d-sm-flex d-md-none" style={{width:"100%", textAlign:"right", paddingRight:"5px"}}>
                      <div className="row">
-                        <div className="col-12 mobile-top-custom-pad">
+                        <div className="col-3"></div>
+                        <div className="col mobile-top-custom-pad">
                           <div className="row">
+                        
                               <div className="col-3 center-text">1</div>
                               <div className="col-3  center-text"> X </div>
                               <div className="col-3  center-text"> 2</div>
@@ -268,8 +282,8 @@ const MoreMarketsHeaderRow = (props) => {
         <Container className="mt-2">
             <div className="panel-header match-detail-header">
 
-                <h4 className="inline-block text-center">
-                    <span className="uppercase text-uppercase">{home_team}</span> <small> vs </small> {away_team}
+                <h4 className="inline-block row">
+                    <div className="mobile-font-10 center-text mb-2">{start_time}</div><div className="col9 mobile-font-13 center-text uppercase text-uppercase"><div className="mb-3">{home_team}</div><div>{away_team}</div></div>
                 </h4>
                 {live &&
                     <Row className="header-text">
@@ -302,7 +316,7 @@ const SideBets = (props) => {
                        live ? match.parent_match_id : match?.match_id}`
                    }><span className="text-tertiary">+{match.side_bets}</span>
 
-                <div className="normal-font-weight dark-text">Markets</div>
+                <div className="normal-font-weight dark-text uppercase">More</div>
 
                 </a>
 
@@ -590,7 +604,7 @@ const PosterBanner = () => {
 
     return (
         <div className="poster-image">
-           <img height="250px" src={PosterImage} />
+           <img src={PosterImage} />
         </div>
     )
 }
@@ -616,11 +630,7 @@ const MatchRow = (props) => {
     }
 
     return (
-
     <>
-
-
-
         {jackpot ? '' : live ? '' : (counter > 0 && counter % 20 == 0)  ? <PosterBanner /> : ''}
         <div className="top-matches d-flex">
             
@@ -646,7 +656,7 @@ const MatchRow = (props) => {
             <div className="col-2 col-xs-12 match-detail-container" key="23">
                 <a href={jackpot ? '#' : `/match/${live ? 'live/' + match.parent_match_id : match.match_id}`}>
                     <div className="d-flex flex-column">
-                        <div className="compt-detail overflow-ellipsi" key="0034">
+                        <div className="compt-deta overflow-ellipsi" key="0034">
                             <div className="d-flex flex-column" key="20">
                                 
                                 <span className={'small  d-xs-block d-sm-block d-md-none'}>
@@ -670,7 +680,7 @@ const MatchRow = (props) => {
                 </a>
             </div>
             <div className="col d-flex flex-row justify-content-between" key="24">
-                <div className="c-btn-group align-self-center" key="222" style={{width:"37%"}}>
+                <div className={`c-btn-group align-self-center mobile-width-100 mobile-85-to-70 web-width-37 ${(jackpot) ?'jackpot-mobile-width-85':''} ${(live) ?'live-width-85':''}`} key="222" style={{}}>
                     {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot
