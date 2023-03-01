@@ -665,7 +665,7 @@ const MatchRow = (props) => {
             <div className="col-2 col-xs-12 match-detail-container" key="23">
                 <a href={jackpot ? '#' : `/match/${live ? 'live/' + match.parent_match_id : match.match_id}`}>
                     <div className="d-flex flex-column">
-                        <div className="compt-detail overflow-ellipsi" key="0034">
+                        <div className="compt-deta overflow-ellipsi" key="0034">
                             <div className="d-flex flex-column" key="20">
                                 
                                 <span className={'small  d-xs-block d-sm-block d-md-none'}>
