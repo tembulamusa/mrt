@@ -14,10 +14,11 @@ function MobileToggleMkts() {
 
   return (
     <span className="d-lg-none d-md-none d-sm-block d-lg-none d-md-none">
-
-      <Button variant="toggle-menu" onClick={handleShow}>
-        <div><FaBars size={25} /></div>
-      </Button>
+      <div>
+        <Button variant="toggle-menu" onClick={handleShow}>
+          <div><FaBars size={25} /></div>
+        </Button>
+      </div>
         sports
 
       <Offcanvas show={show} onHide={handleClose}>
@@ -25,11 +26,7 @@ function MobileToggleMkts() {
           <Offcanvas.Title className="h2">Games</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-
           <Sidebar/>
-
-
-
         </Offcanvas.Body>
       </Offcanvas>
     </span>

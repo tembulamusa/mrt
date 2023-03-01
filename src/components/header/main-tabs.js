@@ -168,7 +168,6 @@ const MainTabs = (props) => {
         dispatch({type:"SET", key:"active_tab", payload:tab});
         setActiveTab(tab);
     }
-
     const handleCategorySelect = (category) => {
         const spc = {
             category_id: category.category_id,
