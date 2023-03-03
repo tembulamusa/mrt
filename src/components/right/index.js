@@ -22,8 +22,8 @@ const AlertMessage = (props) => {
 
 const Right = (props) => {
     const [state, dispatch] = useContext(Context);
-    const {jackpot, betslipValidationData, jackpotData} = props;
-    const [betSlipMobile, setBetSlipMobile] = useState(false);
+    const {jackpot, betslipValidationData, jackpotData, showSLip} = props;
+    const [betSlipMobile, setBetSlipMobile] = useState(showSLip);
     const [bongeBonusMessage, setBongeBonusMessage] = useState('Chagua mechi 3 au zaidi uweze kupata Bonge Bonus');
 
 

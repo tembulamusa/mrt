@@ -31,7 +31,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import SidebarMobile from "../sidebar/awesome/SidebarMobile";
 import ShareModal from "../sharemodal";
-import useInterval from "../../hooks/set-interval.hook";
 
 const ProfileMenu = React.lazy(() => import('./profile-menu'));
 const HeaderLogin = React.lazy(() => import('./top-login'));
@@ -54,10 +53,6 @@ const Header = (props) => {
     const searchInputRef = useRef(null)
     const [time, setTime] = useState();
     
-    useInterval(async () => {
-      updateUserOnHistory();
-    }, 10000); 
-
 
     useEffect(() => {
         fetchMatches()
@@ -165,6 +160,7 @@ const Header = (props) => {
                         </Navbar.Brand>
                     </div>
                     <div className="col-9 change-size pt-3" id="navbar-collapse-main">
+
                         <div className="row">
                             <div id="navbar-collapse-main"
                                        className={`col-7 fadeIn header-menu d-none d-md-flex justify-content-center relative-pos`}>
@@ -194,6 +190,7 @@ const Header = (props) => {
                                 </div>}
                             </div>
                             {/*For the mobile*/}
+                            
                         </div>
                         <div className={!user?"unlogged-mobile-spacer-height":""}></div>
                     </div>
