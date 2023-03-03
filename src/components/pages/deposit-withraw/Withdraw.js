@@ -17,6 +17,7 @@ const Withdrawal = (props) => {
    
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
+    const [submitting, setSubmitting] = useState(false);
 
     const initialValues = {
         amount: '',
@@ -25,12 +26,14 @@ const Withdrawal = (props) => {
 
     const handleSubmit = values => {
         let endpoint = '/v1/withdraw';
-        console.log("The endpoint is here");
+        if(submitting === true) return false;
+        setSubmitting(true);
         let user = state?.user;
         user.amount = values.amount;
         makeRequest({url: endpoint, method: 'POST', data: {"amount":values.amount, "msisdn":values.msisdn, "user":user}, use_jwt:true}).then(([status, response]) => {
             setSuccess(status === 200 || status === 201);
             setMessage(response);
+            setSubmitting(false);
         })
 
         console.log("Made a request");
@@ -106,7 +109,7 @@ const Withdrawal = (props) => {
                 <div className="col-md-12">
                     <button
                         className='btn btn-lg biko-blue mt-5 mobile-width-100 col-md-12 full-width'>
-                        Withdraw
+                       { submitting === true ?  "Wait" : "Withdraw" }
                     </button>
                 </div>
             </div>
