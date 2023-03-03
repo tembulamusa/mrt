@@ -119,7 +119,7 @@ const ShareModal = (props) => {
                         <hr/>
 
                         <h5> Copy Link </h5>
-                        <ClipboardCopy copyText={`https://bikosports.co.tz/share/${shareId}` } />
+                        <ClipboardCopy copyText={`https://bikosports.co.tz/betslip/share/${shareId}` } />
                                 
                         <h5 className="mt-3"> Copy Code </h5>
                         <ClipboardCopy copyText={shareId} />
