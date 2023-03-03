@@ -174,6 +174,8 @@ const MatchHeaderRow = (props) => {
             <div className="top-matches header d-flex position-sticky sticky-top "
                  style={{opacity: "1", top: "100px", paddingLeft:"5px"}}>
 
+                 
+
                  {live && 
                     <div className="row white-text">
                          <div className="col"> LIVE</div>
@@ -207,6 +209,9 @@ const MatchHeaderRow = (props) => {
                             </div>
                         </div>
                     }
+
+                    
+
                     {!live && !jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
@@ -630,7 +635,11 @@ const MatchRow = (props) => {
     }
 
     return (
+
     <>
+
+
+
         {jackpot ? '' : live ? '' : (counter > 0 && counter % 20 == 0)  ? <PosterBanner /> : ''}
         <div className="top-matches d-flex">
             

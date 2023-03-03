@@ -7025,12 +7025,22 @@ ul.sport {
 .three-way {
     width: 37%;
 }
+.width-30px {
+    width: 30px;
+}
+
+.relative-pos {
+    position: relative;
+}
 @media (max-width: 574px) {
     .mobile-change {
         /*display: grid !important;*/
         /*grid-template-columns: [col-1]100px[col2]50px[col-end];*/
     }
 
+    .unlogged-mobile-spacer-height {
+        height: 16px;
+    }
     .app-header-nav {
         margin-top: -4px !important;
     }
@@ -17073,9 +17083,9 @@ background:#999;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center;
     padding-bottom: 5px;
-    font-size: 10px;
+    font-size: 9px;
     margin-bottom: 3px;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .top-nav-mobile svg {
@@ -17123,4 +17133,21 @@ background:#999;
 
 .mobile-font-10 {
     font-size: 10px;
+}
+
+
+.purple-bg {
+    background: #C6224E !important;
+    color: #ffffff;
+}
+
+.top-slip-counter {
+    display: block;
+    position: absolute;
+    top: 0;
+    line-height: 20px;
+    right: 0%;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
 }
