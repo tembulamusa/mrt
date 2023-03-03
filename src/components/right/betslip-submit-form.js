@@ -348,7 +348,7 @@ const BetslipSubmitForm = (props) => {
     const updateWinnings = useCallback(() => {
         if (betslip) {            
             let win_matrix = {
-               3:3,4:5,5:10,6:15,7:20,8:25,9:30,10:35,11:40,12:45,13:50,14:55,15:60,16:65,17:70,18:80,19:90,20:100
+               3:3,4:5,5:10,6:15,7:20,8:25,9:30,10:35,11:40,12:45,13:50,14:55
             } 
             let total_games = Object.keys(betslip).length;
 
@@ -363,8 +363,8 @@ const BetslipSubmitForm = (props) => {
             if (jackpot) {
                 raw_possible_win = jackpotData?.jackpot_amount
             }
-            if (raw_possible_win > 500000 && !jackpot) {
-                raw_possible_win = 500000
+            if (raw_possible_win > 50000000 && !jackpot) {
+                raw_possible_win = 50000000
             }
             let taxable_amount = Float(raw_possible_win) - Float(stake_after_tax);
             let wint = taxable_amount * 0.1;

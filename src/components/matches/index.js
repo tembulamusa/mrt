@@ -30,12 +30,13 @@ const clean = (_str) => {
 }
 
 const EmptyTextRow = (props) => {
-    const {odd_key, classname} = props;
+    const {odd_key, classname, live} = props;
 
     return (
         <div className={`${classname} btn btn-disabled match-detail col c-btn`}
              style={{
                  width: "100%",
+                 minWidth: live ? "100px" : "100%",
                  height: "30px",
                  padding: "2px",
                  background: "#d7d7d7",
@@ -536,7 +537,7 @@ const MarketRow = (props) => {
             && fullmatch.odd_active == 1
         )
             ? <OddButton match={fullmatch} detail mkt={"detail"} live={live}/>
-            : <EmptyTextRow odd_key={fullmatch?.odd_key}/>;
+            : <EmptyTextRow odd_key={fullmatch?.odd_key} live />;
     }
 
     return (
@@ -693,19 +694,19 @@ const MatchRow = (props) => {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot
                                 ? <OddButton key={`${match?.match_id}-home`} match={match} mkt="home_team" live={live} jackpot={jackpot}/>
-                                : <EmptyTextRow key={`${match?.match_id}-home`} odd_key={match?.odd_key}/>) :
+                                : <EmptyTextRow key={`${match?.match_id}-home`} odd_key={match?.odd_key} live ={live}/>) :
                             match?.odds?.home_odd ? <EmptyTextRow odd_key={match?.odd_key}/> : ''
                     }
 
                     {match?.odds?.neutral_odd ? ((!pdown && match?.odds?.neutral_odd && match.odds.neutral_odd !== 'NaN' &&
                         match.market_active == 1 && match.odds.neutral_odd_active == 1) || jackpot
                         ? <OddButton key={`${match?.match_id}-draw`} match={match} mkt="draw" live={live} jackpot={jackpot}/>
-                        : <EmptyTextRow okey={`${match?.match_id}-draw`} dd_key={match?.odd_key}/>) : ''
+                        : <EmptyTextRow okey={`${match?.match_id}-draw`} dd_key={match?.odd_key} live ={live}/>) : ''
                     }
                     {match?.odds?.away_odd ? (match?.odds?.away_odd && (!pdown && match?.odds?.away_odd && match.odds.away_odd !== 'NaN' &&
                             match.market_active == 1 && match.odds.away_odd_active == 1) || jackpot
                             ? <OddButton key={`${match?.match_id}-away`} match={match} mkt="away_team" live={live} jackpot={jackpot}/>
-                            : <EmptyTextRow key={`${match?.match_id}-away`} odd_key={match?.odd_key}/>) :
+                            : <EmptyTextRow key={`${match?.match_id}-away`} odd_key={match?.odd_key} live={live}/>) :
                         match?.odds?.away_odd ? <EmptyTextRow key={`${match?.match_id}-away`} odd_key={match?.odd_key}/> : ''
                     }
                 </div>
