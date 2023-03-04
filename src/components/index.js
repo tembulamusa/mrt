@@ -93,7 +93,7 @@ const Index = (props) => {
     };
 
     useInterval(async () => {
-      fetchData();
+      //fetchData();
     }, 10000); 
 
 
