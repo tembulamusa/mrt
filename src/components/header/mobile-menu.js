@@ -69,55 +69,6 @@ const fetchMatches = async (search) => {
         setMatches([])
     }
 
-    // The competitions menu
-
-    const [sport, setSport] = useState(79)
-    const [competitions, setCompetitions] = useState(props?.competitions);
-
-    const fetchData = useCallback(async () => {
-        let cached_competitions = getFromLocalStorage('categories');
-        let endpoint = "/v1/categories";
-
-        if (!cached_competitions) {
-            const [competition_result] = await Promise.all([
-                makeRequest({url: endpoint, method: "get", data: null}),
-            ]);
-            let [c_status, c_result] = competition_result
-
-            if (c_status === 200) {
-                setCompetitions(c_result);
-                setLocalStorage('categories', c_result);
-            } else {
-                fetchData()
-            }
-        } else {
-            setCompetitions(cached_competitions);
-        }
-
-    }, []);
-
-    useEffect(() => {
-        const abortController = new AbortController();
-        fetchData();
-
-        return () => {
-            abortController.abort();
-        };
-    }, [fetchData]);
-
-
-    const updateMenubarState = () => {
-        let sport_id = (new URL(window.location.href).searchParams.get('sport_id'))
-        if (sport_id === null && window.location.pathname === '/') {
-            sport_id = 79
-        }
-        setSport(sport_id)
-    }
-
-    const getActiveSport = (matchId) => {
-        return (Number(sport) === Number(matchId))
-
-    }
     function showBetslipFromTopMenu() {
         console.log(" Executinig showBetslipFromTopMenu ")
         return(
