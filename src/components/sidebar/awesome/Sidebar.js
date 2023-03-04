@@ -63,7 +63,7 @@ const Sidebar = (props) => {
     const [competitions, setCompetitions] = useState(props?.competitions);
 
     const fetchData = useCallback(async () => {
-        let cached_competitions; //=  getFromLocalStorage('categories');
+        let cached_competitions =  getFromLocalStorage('categories');
         let endpoint = "/v1/categories";
 
         if (!cached_competitions) {
