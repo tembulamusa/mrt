@@ -188,7 +188,7 @@ const Jackpot = (props) => {
                                 <button onClick={() => fetchData("wjp")}
                                     disabled={disabledWeekly}
                                     className="bold mt-2 btn-lg btn btn-primary deposit-withdraw-button secondary-red-bg uppercase btn-play-jackpot btn-weekly full-width">
-                                    Play for TSH. 5
+                                    Play for TSH. 1000
                                 </button>
                             </div>
                         </div>
@@ -234,7 +234,7 @@ const Jackpot = (props) => {
                                 <button onClick={() => fetchData("jp")}
                                     disabled={disabledDaily}
                                     className="mt-2 btn-lg btn btn-primary bold deposit-withdraw-button uppercase btn-play-jackpot btn-daily full-width">
-                                    Play for TSH. 5
+                                    Play for TSH. 250
                                 </button>
                             </div>
                         </div>
