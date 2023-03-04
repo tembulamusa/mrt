@@ -94,7 +94,7 @@ const Index = (props) => {
 
     useInterval(async () => {
       fetchData();
-    }, 10000); 
+    }, 20000); 
 
 
     useEffect(() => {
