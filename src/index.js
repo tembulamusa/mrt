@@ -26,6 +26,9 @@ const Live = React.lazy(
 const MyBets = React.lazy(
     () => import('./components/my-bets')
 );
+const MyBetDetails = React.lazy(
+    () => import('./components/my-bets-details')
+);
 const HowToPlay = React.lazy(
     () => import('./components/pages/HowToPlay')
 );
@@ -155,6 +158,8 @@ render((
                        element={<ProtectedRoute><Withdraw/></ProtectedRoute>}/>
                 <Route exact path="/my-bets"
                        element={<ProtectedRoute><MyBets/> </ProtectedRoute>}/>
+                <Route exact path="/my-bet-detail/:betid"
+                       element={<ProtectedRoute><MyBetDetails /> </ProtectedRoute>}/>
                 <Route path="*" element={<Index/>}/>
               </Routes>
           </Suspense>

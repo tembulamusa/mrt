@@ -1,15 +1,8 @@
 import React, {useContext, useEffect, useState, useCallback} from "react";
 import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemButton,
-    AccordionItemHeading,
-    AccordionItemPanel,
-} from 'react-accessible-accordion';
-
-import '../assets/css/accordion.react.css';
+import { useParams} from 'react-router-dom';
+import { getFromLocalStorage} from './utils/local-storage';
 
 const Header = React.lazy(()=>import('./header/header'));
 const Footer = React.lazy(()=>import('./footer/footer'));
@@ -34,21 +27,32 @@ const Styles = {
    }
 };
 
-const MyBets = (props) => {
+const MyBetDetails = (props) => {
     const [state, dispatch] = useContext(Context);
     const [isLoading, setIsLoading] = useState(false);
+    const { betid } = useParams();
+    const [betData, setBetData] = useState();
+    const [betSlipData, setBetSlipData] = useState();
 
     const fetchData = useCallback(async() => {
         if(isLoading) return;
         setIsLoading(true);
-        let endpoint = "/v1/mybets?limit=";
-        makeRequest({url: endpoint, method: "POST", data: null}).then(([status, result]) => {
-            console.log(result);
-            dispatch({type: "SET", key: "mybets", payload: result});
+        let endpoint = "/v1/betdetails";
+        let user = getFromLocalStorage('user');
+        let params = {
+            bet_id:betid,
+            token:user?.token
+        }
+        console.log("fetch data for bet details", params);
+
+        makeRequest({url: endpoint, method: "POST", data: params}).then(([status, result]) => {
+            setBetData(result?.meta?.bet_info)
+            setBetSlipData(result?.data)
+            console.log("You yu", result?.meta);
             setIsLoading(false);
         });
 
-    }, []);
+    }, [state?.user]);
 
     useEffect(() => {
        fetchData();
@@ -56,7 +60,7 @@ const MyBets = (props) => {
 
     const BetItemHeader = (props) => {
         return (
-            <div className={`container`} style={Styles.headers}>
+            <div className={`Styles.container`} >
                 <div className="row">
                     <div className="col">CREATED</div>
                     <div className="col">ID</div>
@@ -69,16 +73,36 @@ const MyBets = (props) => {
             </div>
         );
     }
+
+    const getBetStatus = (status) => {
+        let st =  "pending";
+        switch(status){
+           case 3:
+                st = "lost";
+                break;
+            case 5:
+                st = "won";
+                break;
+            case 24:
+                st = "cancelled";
+                break;
+            default:
+                st="pending";
+                break
+
+        }
+        return st;
+    }
     const BetItem = (props) => {
         const { bet } = props;
 
-        const [betStatus, setBetStatus] = useState(bet.status_desc);
-        const [canCancel, setCanCancel] = useState(bet.can_cancel === 1);
+        const [betStatus, setBetStatus] = useState(bet?.status_desc);
+        const [canCancel, setCanCancel] = useState(bet?.can_cancel === 1);
 
         const cancelBet = () => {
             let endpoint = '/bet-cancel';
             let data = {
-                    bet_id:bet.bet_id,
+                    bet_id:bet?.bet_id,
                     cancel_code:101,
                     user:state?.user,
             }
@@ -90,6 +114,7 @@ const MyBets = (props) => {
                 }
             });
         };
+
 
         const cancelBetMarkup = () => {
             return (
@@ -106,7 +131,7 @@ const MyBets = (props) => {
         }
 
         return (
-            <div className={`container`}  key={bet.bet_id}>
+            <div className="bet-item m-2"  key={bet?.bet_id}>
                 <div className="row">
                   <div className="col-5">
                     <div className="col-6">
@@ -143,15 +168,10 @@ const MyBets = (props) => {
                        <div className="row"> 
                          <div className="col">
                         { canCancel == false 
-                            ? <div className={`win-status-${bet.status.toLowerCase()}`}> { bet.status.charAt(0).toUpperCase() + bet.status.slice(1).toLowerCase()}</div>
+                            ? <div className={`win-status-${ getBetStatus(bet.status)}`}> { getBetStatus(bet.status).charAt(0).toUpperCase() + getBetStatus(bet?.status).slice(1).toLowerCase()}</div>
                             : cancelBetMarkup() 
                         }
                         </div>
-                      </div>
-                       <div className="row"> 
-                            <div className="col">
-                            <div className={`win-status-cancelled`}> Betslip </div>
-                           </div>
                       </div>
                  </div>
                 </div>
@@ -192,41 +212,20 @@ const MyBets = (props) => {
                     <div className="col">{ betslip.market}</div>
                     <div className="col">{ betslip.odd_value}</div>
                     <div className="col">{ betslip.bet_pick}</div>
-                    <div className="col">{ betslip.outcomes}</div>
-                    <div className="col">{ betslip.ft_result}</div>
-                    <div className={`col win-status-${betslip.status}`}>{ betslip.status}</div>
+                    <div className="col">{ betslip.winning_outcome}</div>
+                    <div className="col">{ betslip.result}</div>
+                    <div className="col bold">{ getBetStatus(betslip?.status)}</div>
                 </div>
             </div>
         )
     }
 
-    const MyBetsList = (props) => {
-		return (
-         <>
-         <div className="row" style={{padding: "0 10px",}}>
-			{state?.mybets && state.mybets.map((bet) => (
-				<div className="mybet-list" 
-                    key = {bet.bet_id} 
-                    uuid = { bet.bet_id }
-					>
-					<div className="bet-item">
-                        <a href={`/my-bet-detail/${bet.bet_id}`} >
-							<BetItem bet={bet}  key={bet.id}/>
-                        </a>
-					</div>
-				</div>
-			))}
-		</div>
-          </>
-	    );
-
-    }
 
     const PageTitle = () => {
        return (
             <div className='col-md-12 biko-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
                 <h4 className="inline-block">
-                    MY BETS
+                    BET DETAILS { betid }
                 </h4>
             </div>
        )
@@ -234,22 +233,26 @@ const MyBets = (props) => {
     return (
         <>
             <Header user={state?.user}/>
-            <div className="amt">
+           <div className="amt">
                 <div className="d-flex flex-row justify-content-between">
                     <div className="d-md-block d-none"><SideBar loadCompetitions/></div>
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage">
                             <CarouselLoader/>
                             <PageTitle />
-                            <MyBetsList  />
+                            { betData && <BetItem bet={betData} />  }
+                            <div className="bet-item m-2">
+                                { betData && <strong><BetslipHeader /> </strong>}
+                                { betSlipData && betSlipData.map((betslip, index) => <BetslipItem betslip={betslip}/> ) }
+                            </div>
                         </div>
                     </div>
                     <Right/>
                 </div>
-            </div>
+            </div> 
             <Footer/>
         </>
     )
 }
 
-export default MyBets
+export default MyBetDetails
