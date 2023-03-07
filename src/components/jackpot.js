@@ -127,7 +127,12 @@ const Jackpot = (props) => {
 
 
     const placeBetClicked = () => {
-        // document.getElement; 
+        dispatch({type: "SET", key: "jpbetpressed", payload: true});
+    }
+
+
+    const removeAllClicked = () => {
+        dispatch({type: "SET", key: "jpbetremoveall", payload: true});
     }
 
     const EmptyJackpotPageMarkup = (props) => {
@@ -159,7 +164,7 @@ const Jackpot = (props) => {
         return (
             <div className="jackpot-footer">
                 <div className="row">
-                    <div className="col-3"><button className=" place-bet-btn btn" id="delete-btn">Remove All</button></div>
+                    <div className="col-3"><button onClick={() => removeAllClicked()} className=" place-bet-btn btn uppercase" id="delete-btn" style={{color:"#ffffff !important"}}>Remove All</button></div>
                     <div className="col-3">
                         Picks <span></span>/<span className="" id="total-games"></span>
                         <button 
