@@ -299,6 +299,7 @@ const BetslipSubmitForm = (props) => {
         if (jackpot) {
             payload.message = jackpotMessage
             payload.jackpot_id = jackpotData?.jackpot_event_id
+            payload.app_name = "web"
             payload.slip = ''
             endpoint = "/jp/bet"
             method = "POST"
