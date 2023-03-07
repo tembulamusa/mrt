@@ -145,7 +145,8 @@ const Jackpot = (props) => {
             )
     }
 
-    const JackpotFooter = () => {
+    const JackpotFooter = (props) => {
+        const {jackpot} = props
         return (
             <div className="jackpot-footer">
                 <div className="row">
@@ -156,7 +157,7 @@ const Jackpot = (props) => {
                             onClick={() => AutoPickAllMatches()}
                             className="btn btn-auto-pick">Auto Pick</button>
                     </div>
-                    <div className="col-3">Stake <span id="jp-stake" className="bold">5.00</span></div>
+                    <div className="col-3">Stake <span id="jp-stake" className="bold">{jackpot.bet_amount}</span></div>
                     <div className="col-3">
                     <button className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
                 </div>
@@ -200,7 +201,7 @@ const Jackpot = (props) => {
                                 <>  
                                     <JackpotsHeader />
                                     <JackpotMatchList matches={weeklyJPMatches}/>
-                                    <JackpotFooter />
+                                    <JackpotFooter jackpot={weeklyJPMatches?.meta}/>
 
                                 </>
                             ) : ( showEmptyWeeklyJackpot? (
@@ -247,7 +248,7 @@ const Jackpot = (props) => {
                                 <>  
                                     <JackpotsHeader />
                                     <JackpotMatchList matches={dailyJPMatches}/>
-                                    <JackpotFooter />
+                                    <JackpotFooter jackpot={dailyJPMatches?.meta}/>
                                 </>
                             ) : ( showEmptyDailyJackpot? (
                                     <div className={'col-md-12 text-center background-primary  mt-2 p-3'}>
@@ -365,7 +366,7 @@ const Jackpot = (props) => {
                     <div className="d-md-block d-none"><SideBar loadCompetitions/></div>
                     <div className="gz home" style={{width: "100%"}}>
                         <div className="homepage">
-                            <JackpotTabs />
+                            <JackpotTabs jackpotData={matches?.meta}/>
                             
                         </div>
                     </div>
