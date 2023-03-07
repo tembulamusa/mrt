@@ -122,7 +122,7 @@ const Jackpot = (props) => {
 
 
     const placeBetClicked = () => {
-        dispatch({type: "SET", key: "jackpotbetslip", payload: betslip}); 
+        // document.getElement; 
     }
 
     const EmptyJackpotPageMarkup = (props) => {
