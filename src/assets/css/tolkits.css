@@ -17151,3 +17151,18 @@ background:#999;
     height: 20px;
     border-radius: 100%;
 }
+
+
+
+@media only screen and (min-device-width: 960px) {
+       /* styles for mobile browsers smaller than 480px; (iPhone) */
+       
+       .match-detail-container {
+            width: 25%;
+        }
+
+        .web-width-37.jackpot-mobile-width-85 {
+            width: auto;
+        }
+
+    }
