@@ -2,5 +2,14 @@
   "appId": "com.bikosports.android",
   "appName": "Bikosports",
   "webDir": "build",
-  "bundledWebRuntime": false
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "backgroundColor": "#ffffff",
+      "imagePath": "resources/splash.png",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    }
+  }
 }
