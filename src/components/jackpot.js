@@ -121,6 +121,10 @@ const Jackpot = (props) => {
     }
 
 
+    const placeBetClicked = () => {
+        dispatch({type: "SET", key: "jackpotbetslip", payload: betslip}); 
+    }
+
     const EmptyJackpotPageMarkup = (props) => {
         return (
             <div>
@@ -159,7 +163,7 @@ const Jackpot = (props) => {
                     </div>
                     <div className="col-3">Stake <span id="jp-stake" className="bold">{jackpot.bet_amount}</span></div>
                     <div className="col-3">
-                    <button className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
+                    <button onClick={() => placeBetClicked()} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
                 </div>
             </div>
         )
