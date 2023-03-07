@@ -31,10 +31,13 @@ const Jackpot = (props) => {
     const [disabledWeekly, setDisabledWeekly] = useState(false);
     const [disabledDaily, setDisabledDaily] = useState(false);
     const [currentJackpot, setCurrentJackpot] = useState(null);
+    const [loadingJp, setLoadingJp] = useState(false);
+    const [loadingDj, setLoadingDj] = useState(false);
 
     const [, dispatch] = useContext(Context);
 
     const fetchData = (jpType) => {
+        jpType ==='wjp' ? setLoadingJp(true) :  setLoadingDj(true);
         let match_endpoint = `/v1/matches/jackpot?key=${jpType}`;
 
         makeRequest({url: match_endpoint, method: "get", data: null}).then(
@@ -64,6 +67,8 @@ const Jackpot = (props) => {
                     setMatches(m_result);
                 }
 
+                setLoadingJp(false);
+                setLoadingDj(false);
                 
             } else {
                 setMessage("An error occurred");
@@ -121,6 +126,10 @@ const Jackpot = (props) => {
     }
 
 
+    const placeBetClicked = () => {
+        // document.getElement; 
+    }
+
     const EmptyJackpotPageMarkup = (props) => {
         return (
             <div>
@@ -159,7 +168,7 @@ const Jackpot = (props) => {
                     </div>
                     <div className="col-3">Stake <span id="jp-stake" className="bold">{jackpot.bet_amount}</span></div>
                     <div className="col-3">
-                    <button className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
+                    <button onClick={() => placeBetClicked()} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
                 </div>
             </div>
         )
@@ -191,6 +200,10 @@ const Jackpot = (props) => {
                                     className="bold mt-2 btn-lg btn btn-primary deposit-withdraw-button secondary-red-bg uppercase btn-play-jackpot btn-weekly full-width">
                                     Play for TSH. 1000
                                 </button>
+                                { loadingJp && 
+                                    <div className="spinner-border spinner-border-sm" style={{background:"#e3e3e3 !important", width:"10px"}}role="status">
+                                 <span className="sr-only">Loading...</span></div> 
+                                }
                             </div>
                         </div>
                     </div>
@@ -237,6 +250,10 @@ const Jackpot = (props) => {
                                     className="mt-2 btn-lg btn btn-primary bold deposit-withdraw-button uppercase btn-play-jackpot btn-daily full-width">
                                     Play for TSH. 250
                                 </button>
+                                { loadingDj && 
+                                    <div className="spinner-border spinner-border-sm" style={{background:"#e3e3e3 !important", width:"10px"}}role="status">
+                                 <span className="sr-only">Loading...</span></div> 
+                                }
                             </div>
                         </div>
                     </div>

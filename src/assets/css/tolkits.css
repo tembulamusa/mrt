@@ -17166,3 +17166,14 @@ background:#999;
         }
 
     }
+
+
+.less-games {
+    font-size: 10px;
+    color: red;
+}
+
+#place_bet_button.disabled {
+    background: #34B3BF !important;
+    opacity: 0.5;
+}

@@ -299,6 +299,7 @@ const BetslipSubmitForm = (props) => {
         if (jackpot) {
             payload.message = jackpotMessage
             payload.jackpot_id = jackpotData?.jackpot_event_id
+            payload.app_name = "web"
             payload.slip = ''
             endpoint = "/jp/bet"
             method = "POST"
@@ -570,6 +571,11 @@ const BetslipSubmitForm = (props) => {
                             id="net-amount"><strong>{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin, 2))}</strong></span></td>
                     </tr>
                     <tr>
+                        <td colSpan="12">{ jackpot && Object.entries(betslip || []).length != JSON.stringify(jackpotData?.total_games) ? (
+                                <span className="less-games">Please select all {jackpotData?.total_games} games to bet
+                                </span>) : ('')}</td>
+                    </tr>
+                    <tr>
                         <td className="" width="50%">
                             <button className="place-bet-btn"
                                     type="button"
@@ -577,6 +583,7 @@ const BetslipSubmitForm = (props) => {
                             </button>
                         </td>
                         <td className="">
+                                                       
                             <SubmitButton id="place_bet_button"
                                           disabled={jackpot && Object.entries(betslip || []).length != JSON.stringify(jackpotData?.total_games)}
                                           className="place-bet-btn bold"
