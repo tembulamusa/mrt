@@ -22,7 +22,7 @@ const AlertMessage = (props) => {
 
 const Right = (props) => {
     const [state, dispatch] = useContext(Context);
-    const {jackpot, betslipValidationData, jackpotData, showSLip} = props;
+    const {jackpot, betslipValidationData, jackpotData, showSLip, showBetSlipFromTop} = props;
     const [betSlipMobile, setBetSlipMobile] = useState(showSLip);
     const [bongeBonusMessage, setBongeBonusMessage] = useState('Chagua mechi 3 au zaidi uweze kupata Bonge Bonus');
 
@@ -112,7 +112,7 @@ const Right = (props) => {
                 <CompanyInfo/>
             </div>
             <div
-                className={`fixed-bottom text-white d-block d-md-none shadow-lg betslip-container-mobile ${betSlipMobile ? 'd-block' : 'd-none'}`}>
+                className={`fixed-bottom text-white d-block d-md-none shadow-lg betslip-container-mobile ${betSlipMobile ? 'd-block' : 'd-none'}`} onClick={showBetSlipFromTop}>
                 <div className="bet-option-list sticky-top" id=''>
                     <div className="bet alu  block-shadow">
                         <header style={{marginTop: "15px"}}>
