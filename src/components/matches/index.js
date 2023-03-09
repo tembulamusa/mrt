@@ -289,13 +289,19 @@ const MoreMarketsHeaderRow = (props) => {
             <div className="panel-header match-detail-header">
 
                 <h4 className="inline-block row">
-                    <div className="mobile-font-10 center-text mb-2">{start_time}</div><div className="col9 mobile-font-13 center-text uppercase text-uppercase"><div className="mb-3">{home_team}</div><div>{away_team}</div></div>
+                    <div className="mobile-font-10 center-text mb-2">{start_time}</div>
+                     <div className="row mobile-font-13 center-text uppercase text-uppercase">
+                        <div className="col-5 mb-3">{home_team}</div>
+                        <div className="col-2">VS </div> 
+                        <div className="col-5">{away_team}</div>
+                     </div>
                 </h4>
                 {live &&
                     <Row className="header-text">
                         <Col style={{
-                            marginBottom: "5px"
-                        }}> {match_status === 'Ended' && 'Ended '} {score}</Col>
+                            marginBottom: "5px",
+                            color:"red",
+                        }}> {match_status} {match_time} <br/>{score}</Col>
                     </Row>
                 }
                 <Row className="header-text">
@@ -753,14 +759,11 @@ export const MarketList = (props) => {
 
     return (
         <div className="matches full-width">
-            {!matchwithmarkets
-                ? <div className="top-matches">Event not available for betting.</div>
-                : <MoreMarketsHeaderRow
+                <MoreMarketsHeaderRow
                     {...matchwithmarkets?.data?.match}
                     score={matchwithmarkets?.data?.match?.score}
                     live={live}
                 />
-            }
             <Container className="web-element">
                 {Object.entries(matchwithmarkets?.data?.odds || {}).map(([mkt_id, markets]) => {
                     return <MarketRow

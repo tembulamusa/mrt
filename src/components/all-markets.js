@@ -43,7 +43,11 @@ const MatchAllMarkets = (props) => {
         let method = betslip ? "POST" : "GET";
 
 		makeRequest({url:endpoint, method:method, data:betslip}).then(([_status, response]) => {
-			setMatchWithMarkets(response?.data || response );
+            let api_response = response?.data || response;
+            if(api_response) {
+			    setMatchWithMarkets(api_response );
+            }
+            console.log("Received reponse fro live API ", response?.data, response)
             if(response?.slip_data) {
                 setUserSlipsValidation(response?.slip_data);
             }
