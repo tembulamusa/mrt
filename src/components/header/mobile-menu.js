@@ -11,7 +11,8 @@ import Container from 'react-bootstrap/Container';
 import {Context} from '../../context/store';
 import {getFromLocalStorage, setLocalStorage} from "../utils/local-storage";
 import LiveIcon from "../../assets/svg/LIVENOW.svg";
-import Right from '../right';
+import Right from "../right";
+
 
 import {
     faSearch,
@@ -36,9 +37,7 @@ const MobileMenu = (props) => {
   const [searching, setSearching] = useState(false)
   const searchInputRef = useRef(null)
   const [matches, setMatches] = useState([])
-  const [betSlipMobile, setBetSlipMobile] = useState(false);
-  const [showTopSlip, setShowBetSlip] = useState(true);
-
+  const [showTopSlip, setShowBetSlip] = useState(false);
 
   useEffect(() => {
         fetchMatches()
@@ -63,22 +62,20 @@ const fetchMatches = async (search) => {
         searchInputRef.current.focus()
         gaEventTracker('Clicked on Search')
     }
-
     const dismissSearch = () => {
         setSearching(false)
         setMatches([])
     }
-
-    function showBetslipFromTopMenu() {
-        console.log(" Executinig showBetslipFromTopMenu ")
-        return(
-            <Right showSLip={ showTopSlip }/>
-        )
+    const showBetSlipFromTop = ()=> {
+        console.log(" trying to render the betslip");
+        setShowBetSlip(!showTopSlip);
+        console.log(" State of Variable : " + showTopSlip);
     }
-
-
   return (
     <>
+    <div>
+       { showTopSlip ? <Right showSLip={showTopSlip} showBetSlipFromTop={showBetSlipFromTop}/> : null } 
+    </div>
     <div className="top-nav-mobile">
       <div className="row">
         <div className="col-2 uppercase">
@@ -106,10 +103,10 @@ const fetchMatches = async (search) => {
           <span className={'hide2'}>Search</span>
         </div>
 
-        <div className="col-2 uppercase" onClick={ ()=> {showBetslipFromTopMenu()}} >
+        <div className="col-2 uppercase" onClick={showBetSlipFromTop} >
             <div className="relative-pos" ><FaClipboard size={25} /><span className="top-slip-counter purple-bg">{ Object.keys(state?.betslip||{}).length }</span></div>
           Slip
-
+          {showTopSlip && <Right />}
         </div>
 
         <div className="col-2 uppercase">

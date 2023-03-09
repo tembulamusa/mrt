@@ -1,10 +1,13 @@
-import React, {useState, useEffect, useContext, useCallback, useMemo} from 'react';
+import React, {useState, useEffect, useContext, useCallback, useMemo, useRef} from 'react';
 import {Context} from '../../context/store';
 import {
     removeFromSlip,
     getBetslip,
     clearSlip,
-    clearJackpotSlip, formatNumber
+    clearJackpotSlip, 
+    formatNumber,
+    getJackpotBetslip,
+    removeFromJackpotSlip
 } from '../utils/betslip';
 import {toast} from 'react-toastify';
 import publicIp from 'public-ip';
@@ -38,6 +41,7 @@ const Float = (equation, precision = 4) => {
 const BetslipSubmitForm = (props) => {
 
     const {jackpot, totalGames, totalOdds, betslip, setBetslipsData, jackpotData} = props;
+
     const [ipv4, setIpv4] = useState(null);
     const [message, setMessage] = useState(null);
     const [state, dispatch] = useContext(Context);
@@ -60,12 +64,14 @@ const BetslipSubmitForm = (props) => {
     const [payLaterBusy, setPayLaterBusy] = useState(false);
     const [bongeBonus, setBongeBonus] = useState(0.00);
     const [bongeCentage, setBongeCentage] = useState(0.00);
+    const formRef = useRef()
+    const removeRef = useRef()
 
     useEffect(() => {
-        if (jackpot) {
+        if (jackpot === true) {
             setBetslipKey("jackpotbetslip");
         }
-    }, [jackpot])
+    }, [])
 
     const ipAddress = useCallback(async () => {
         let ip = await publicIp.v4({
@@ -230,6 +236,22 @@ const BetslipSubmitForm = (props) => {
         }
     }, [state?.betslip])
 
+    useEffect(() => {
+        if(state?.jpbetpressed === true){
+             if (formRef.current) {
+                formRef.current.handleSubmit()
+                dispatch({type: "SET", key: "jpbetpressed", payload: false});
+              }
+        }
+    }, [state?.jpbetpressed])
+
+    useEffect(() => {
+        if(state?.jpbetremoveall === true){
+                handleRemoveAll();
+                dispatch({type: "SET", key: "jpbetremoveall", payload: false});
+                      }
+    }, [state?.jpbetremoveall])
+
     const handlePlaceBet = useCallback((values,
                                         {setSubmitting, resetForm, setStatus, setErrors}) => {
         let bs = Object.values(betslip || []);
@@ -393,9 +415,15 @@ const BetslipSubmitForm = (props) => {
     }, [betslip, stake, totalOdds]);
 
     const handleRemoveAll = useCallback(() => {
-        let betslips = getBetslip();
+        let betslips = !jackpot ? getBetslip() : getJackpotBetslip();
+        console.log("remoce all ", jackpot, betslips);
+
         Object.entries(betslips || {}).map(([match_id, match]) => {
-            removeFromSlip(match_id);
+            if(!jackpot) {
+                removeFromSlip(match_id) 
+            } else {  
+                removeFromJackpotSlip(match_id);
+            }
             let match_selector = match.match_id + "_selected";
             let ucn = clean_rep(
                 match.match_id
@@ -405,7 +433,11 @@ const BetslipSubmitForm = (props) => {
 
             dispatch({type: "SET", key: match_selector, payload: "remove." + ucn});
         });
-        dispatch({type: "SET", key: "betslip", payload: {}});
+        if(jackpot){
+            dispatch({type: "SET", key:"jackpotbetslip" , payload: {}});
+        } else {
+            dispatch({type: "SET", key:"betslip" , payload: {}});
+        }
         setMessage(null);
     }, []);
 
@@ -474,6 +506,7 @@ const BetslipSubmitForm = (props) => {
             validateOnChange={false}
             validateOnBlur={false}
             enableReinitialize={true}
+            innerRef={formRef}
         >{(props) => {
 
             const {isValid, errors, values, submitForm, setFieldValue} = props;
