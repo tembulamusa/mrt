@@ -116,7 +116,6 @@ const Jackpot = (props) => {
                     "ucn": cstm,                                                        
                     "market_active": 1,                                     
                 }                                                           
-                console.log("Picking betslip ", slip);
                 betslip = addToJackpotSlip(slip);                                   
 
                 dispatch({type: "SET", key: reference, payload: cstm});         
@@ -192,11 +191,11 @@ const Jackpot = (props) => {
 
                             <div className="col-4">
                                 <h4 className="uppercase">Biko weekly jackpot</h4>
-                                <p className="more-info-text detail-text">Pick 17 games, Prizes from correct 13</p>
+                                <p className="more-info-text detail-text uppercase">Pick 17 games, Prizes from correct 13</p>
                             </div>
 
                             <div className="col-4">
-                                <h4>30/01/2023 4.00 PM</h4>
+                              { weeklyJPMatches && <h4> BETTING CLOSES ON <br/><span style={{opacity:"0.7"}}> {weeklyJPMatches?.meta?.bet_stop}</span> </h4> }
                             </div>
 
                             <div className="col-12">
@@ -241,11 +240,11 @@ const Jackpot = (props) => {
 
                             <div className="col-4">
                                 <h4 className="uppercase black-text-shadow">Biko Daily jackpot</h4>
-                                <p className="bold more-info-text detail-text">Pick 13 games, Prizes from correct 8</p>
+                                <p className="bold more-info-text detail-text uppercase">Pick 13 games, Prizes from correct 8</p>
                             </div>
 
                             <div className="col-4 black-text-shadow">
-                                <h4>29/01/2023  4.00PM</h4>
+                              { dailyJPMatches && <h4> BETTING CLOSES ON <br/><span style={{opacity:"0.7"}}> {dailyJPMatches?.meta?.bet_stop}</span> </h4> }
                             </div>
 
                             <div className="col-12">

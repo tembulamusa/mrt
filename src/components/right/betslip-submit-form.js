@@ -416,7 +416,6 @@ const BetslipSubmitForm = (props) => {
 
     const handleRemoveAll = useCallback(() => {
         let betslips = !jackpot ? getBetslip() : getJackpotBetslip();
-        console.log("remoce all ", jackpot, betslips);
 
         Object.entries(betslips || {}).map(([match_id, match]) => {
             if(!jackpot) {

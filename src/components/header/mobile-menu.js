@@ -54,9 +54,7 @@ const fetchMatches = async (search) => {
                 }
             });
         }
-
     };
-
     const showSearchBar = () => {
         setSearching(true)
         searchInputRef.current.focus()
