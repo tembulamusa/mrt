@@ -22,6 +22,8 @@ import PosterImage from '../../assets/img/banner/products/Daily-JackPot.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChartLine, faFire} from "@fortawesome/free-solid-svg-icons";
 import {getFromLocalStorage} from "../utils/local-storage";
+import Moment from 'react-moment';
+import moment from 'moment';
 
 
 const clean = (_str) => {
@@ -862,6 +864,7 @@ const MatchList = (props) => {
         subTypes
     } = props;
     const counter = 0;
+    let start_time = null;
 
     return (
         <div className="matches full-width">
@@ -876,18 +879,30 @@ const MatchList = (props) => {
 
             <Container className="web-element">
                 {matches &&
-                    Object.entries(matches).map(([key, match]) => (
-                        <MatchRow 
-                            match={match} 
-                            key={key}
-                            counter = {key} 
-                            live={live} 
-                            pdown={pdown} 
-                            three_way={three_way}
-                            sub_types={subTypes}/>
-
-                        
-                    ))
+                    Object.entries(matches).map(([key, match]) => {
+                        let this_match_time = moment(match.start_time).format("YYYY-MM-DD");
+                        console.log("comparing ", this_match_time, start_time);
+                        let output = ( 
+                            <>
+                            {
+                                (start_time === null ||  this_match_time != start_time) 
+                                &&  <div className="top-matches d-flex dat-row"><Moment format="dddd, MMMM Do YYYY">{start_time || this_match_time}</Moment></div>
+                            }
+                            <MatchRow 
+                                    match={match} 
+                                    key={key}
+                                    counter = {key} 
+                                    live={live} 
+                                    pdown={pdown} 
+                                    three_way={three_way}
+                                    sub_types={subTypes}/>
+                            </> 
+                        )
+                        start_time = this_match_time;
+                        return output; 
+                    }
+                    
+                    )
                 }
 
                 {(!matches && fetching === false) &&
