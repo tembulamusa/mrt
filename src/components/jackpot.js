@@ -240,7 +240,7 @@ const Jackpot = (props) => {
 
                             <div className="col-4">
                                 <h4 className="uppercase black-text-shadow">Biko Daily jackpot</h4>
-                                <p className="bold more-info-text detail-text uppercase">Pick 13 games, Prizes from correct 8</p>
+                                <p className="bold more-info-text detail-text uppercase">Pick 13 games, Prizes from correct 10</p>
                             </div>
 
                             <div className="col-4 black-text-shadow">
