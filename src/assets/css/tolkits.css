@@ -17031,13 +17031,22 @@ body {
  font-family:roboto;
  font-weight:200;
 }
+
+.bet-item a:hover {
+    text-decoration: none;
+color: #3f9ad1 !important;
+}
+.bet-item:hover{
+ border: 2px solid rgba(52, 179, 191, 0.3)
+ }
 .win-status-pending, .win-status-lost, .win-status-cancelled, .win-status-won{
    background:#34b3bf;
    width:fit-content;
    color:#fff;
-   font-size:12px;
-   padding:2px 5px;
+   font-size:10px;
+   padding:2px 10px;
    margin:3px;
+   border-radius:3px;
 }
 .win-status-lost {
 background:#c6224e;
@@ -17047,6 +17056,13 @@ background:#999;
 }
 .win-status-won {
  background:green;
+ }
+
+.mybet-header{
+   cursor:pointer;
+ }
+ .mybet-header.active{
+     border-bottom: 5px solid #34b3bf;
  }
 /*FOr mobile version*/
 

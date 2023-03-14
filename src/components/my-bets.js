@@ -37,18 +37,19 @@ const Styles = {
 const MyBets = (props) => {
     const [state, dispatch] = useContext(Context);
     const [isLoading, setIsLoading] = useState(false);
+    const [loadedBetStaus, setLoadedBetStatus] = useState("all")
+    const [mybets, setMybets] = useState(null);
 
     const fetchData = useCallback(async() => {
         if(isLoading) return;
         setIsLoading(true);
-        let endpoint = "/v1/mybets?limit=";
+        let endpoint = "/v1/mybets?status="+loadedBetStaus+"&limit=";
         makeRequest({url: endpoint, method: "POST", data: null}).then(([status, result]) => {
-            console.log(result);
-            dispatch({type: "SET", key: "mybets", payload: result});
+            setMybets(result);
             setIsLoading(false);
         });
 
-    }, []);
+    }, [loadedBetStaus]);
 
     useEffect(() => {
        fetchData();
@@ -73,7 +74,7 @@ const MyBets = (props) => {
         const { bet } = props;
 
         const [betStatus, setBetStatus] = useState(bet.status_desc);
-        const [canCancel, setCanCancel] = useState(bet.can_cancel === 1);
+        const [canCancel, setCanCancel] = useState(false);
 
         const cancelBet = () => {
             let endpoint = '/bet-cancel';
@@ -91,12 +92,23 @@ const MyBets = (props) => {
             });
         };
 
+        useEffect(() => {
+            if(bet){
+                let bet_time = new Date(bet.created).getTime();
+                var currentDate = new Date().getTime();
+                let diff =  currentDate - bet_time;
+                if(diff/1000/60 < 20){
+                    setCanCancel(true);
+                }
+            }
+        }, [])
+
         const cancelBetMarkup = () => {
             return (
                 <div className="col">
                     <button
                          title="Cancel Bet"
-                         className="col btn btn-sm place-bet-btn "
+                         className="col win-status-cancel "
                          onClick={()=> cancelBet()} 
                          >
                          Cancel
@@ -109,7 +121,7 @@ const MyBets = (props) => {
             <div className={`container`}  key={bet.bet_id}>
                 <div className="row">
                   <div className="col-5">
-                    <div className="col-6">
+                    <div className="col-12">
                       <div className="row">
                         <div className="col-4">DATE </div>
                         <div className="col-8">{ bet.created}</div>
@@ -142,16 +154,9 @@ const MyBets = (props) => {
                    <div className="col-2">
                        <div className="row"> 
                          <div className="col">
-                        { canCancel == false 
-                            ? <div className={`win-status-${bet.status.toLowerCase()}`}> { bet.status.charAt(0).toUpperCase() + bet.status.slice(1).toLowerCase()}</div>
-                            : cancelBetMarkup() 
-                        }
+                            <div className={`uppercase win-status-${bet.status.toLowerCase()}`}> { bet.status.charAt(0).toUpperCase() + bet.status.slice(1).toLowerCase()}</div>
+                           { canCancel === true && cancelBetMarkup() }
                         </div>
-                      </div>
-                       <div className="row"> 
-                            <div className="col">
-                            <div className={`win-status-cancelled`}> Betslip </div>
-                           </div>
                       </div>
                  </div>
                 </div>
@@ -204,7 +209,7 @@ const MyBets = (props) => {
 		return (
          <>
          <div className="row" style={{padding: "0 10px",}}>
-			{state?.mybets && state.mybets.map((bet) => (
+			{mybets && mybets.map((bet) => (
 				<div className="mybet-list" 
                     key = {bet.bet_id} 
                     uuid = { bet.bet_id }
@@ -216,6 +221,7 @@ const MyBets = (props) => {
 					</div>
 				</div>
 			))}
+            {!mybets?.length && <div className="col-12 bet-item h-4">No bets found</div>}
 		</div>
           </>
 	    );
@@ -225,9 +231,29 @@ const MyBets = (props) => {
     const PageTitle = () => {
        return (
             <div className='col-md-12 biko-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
-                <h4 className="inline-block">
-                    MY BETS
+                <h4 className="inline-block col-12">
+                    MY BET HISTORY
                 </h4>
+                <div className="row">
+                    <div className="container p-0 flex">
+                        <div className={`col-3 mybet-header ${loadedBetStaus === "all" ? "active": ""}`} 
+                           onClick={ () => setLoadedBetStatus("all") } >
+                           ALL
+                        </div>
+                        <div className={`col-3 mybet-header ${loadedBetStaus  === "pending" ? "active": ""}`}
+                           onClick={ () => setLoadedBetStatus("pending") } >
+                          PENDING
+                        </div>
+                        <div className={`col-3 mybet-header ${loadedBetStaus  === "settled" ? "active": ""}`}
+                           onClick={ () => setLoadedBetStatus("settled") } >
+                          SETTLED
+                        </div>
+                        <div className={`col-3 mybet-header ${loadedBetStaus  === "jackpot" ? "active": "" }`}
+                           onClick={ () => setLoadedBetStatus("jackpot") } >
+                          JACKPOT
+                        </div>
+                     </div>
+                </div>
             </div>
        )
     }
