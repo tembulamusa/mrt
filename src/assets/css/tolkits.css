@@ -1175,7 +1175,7 @@ button {
 }
 
 .bet {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .betslip-mobi {
@@ -17176,4 +17176,7 @@ background:#999;
 #place_bet_button.disabled {
     background: #34B3BF !important;
     opacity: 0.5;
+}
+.bet > td {
+    padding: 5px
 }

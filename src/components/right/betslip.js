@@ -20,6 +20,7 @@ const clean_rep = (str) => {
     str = str.replace(/[^A-Za-z0-9\-]/g, '');
     return str.replace(/-+/g, '-');
 }
+export const TotalOddsContext = React.createContext();
 
 const BetSlip = (props) => {
     const {jackpot, betslipValidationData, jackpotData} = props;
@@ -44,6 +45,14 @@ const BetSlip = (props) => {
             }
         });
     }, [code])
+
+    function ProvideTtalOdds( { children } ){
+        const[otherstate, otherdispatch] = useState(totalOdds);
+
+        return(<TotalOddsContext.Provider value={{ otherstate, otherdispatch }}>
+        { children }
+        </TotalOddsContext.Provider>)
+    }
 
 
    const handleCodeInputChange = (event) => {
