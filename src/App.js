@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import ProvideTotalOdds from "./components/right/betslip"
+import Right from "./components/right/betslip"
+import Betslip from "./components/right"
 
 function App() {
   return (
@@ -18,6 +21,11 @@ function App() {
           Learn React
         </a>
       </header>
+      <ProvideTotalOdds>
+        <Right/>
+        <Betslip />
+
+      </ProvideTotalOdds>
     </div>
   );
 }
