@@ -16076,7 +16076,10 @@ li.pro-sub-menu {
     font-size: 12px;
     font-weight: bold;
 }
-
+.win-status-cancel, .btn.win-status-cancel:hover{
+   background:#9a9a9a;
+   color:#fff;
+}
 .win-status-WIN,
 .win-status-WON  {
     color: green;

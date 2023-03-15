@@ -99,13 +99,15 @@ const MyBetDetails = (props) => {
         const [betStatus, setBetStatus] = useState(bet?.status_desc);
         const [canCancel, setCanCancel] = useState(bet?.can_cancel === 1);
 
-        const cancelBet = () => {
+        const cancelBet = (e) => {
+            e.preventDefault();
             let endpoint = '/bet-cancel';
             let data = {
                     bet_id:bet?.bet_id,
                     cancel_code:101,
                     user:state?.user,
             }
+            console.log("Called cancel on bet", bet?.bet_id)
             makeRequest({url: endpoint, method: "POST", data: data, use_jwt:true}).then(([status, result]) => {
                 if(status === 201){
                    setBetStatus('CANCELED');
@@ -121,8 +123,8 @@ const MyBetDetails = (props) => {
                 <div className="col">
                     <button
                          title="Cancel Bet"
-                         className="col btn btn-sm place-bet-btn "
-                         onClick={()=> cancelBet()} 
+                         className="col btn win-status-cancel"
+                         onClick={(e) => cancelBet(e)} 
                          >
                          Cancel
                     </button>
@@ -167,10 +169,8 @@ const MyBetDetails = (props) => {
                    <div className="col-2">
                        <div className="row"> 
                          <div className="col">
-                        { canCancel == false 
-                            ? <div className={`win-status-${ getBetStatus(bet.status)}`}> { getBetStatus(bet.status).charAt(0).toUpperCase() + getBetStatus(bet?.status).slice(1).toLowerCase()}</div>
-                            : cancelBetMarkup() 
-                        }
+                        <div className={`win-status-${ getBetStatus(bet.status)}`}> { getBetStatus(bet.status).charAt(0).toUpperCase() + getBetStatus(bet?.status).slice(1).toLowerCase()}</div>
+                        { canCancel && cancelBetMarkup() }
                         </div>
                       </div>
                  </div>
@@ -221,7 +221,7 @@ const MyBetDetails = (props) => {
        return (
             <div className='col-md-12 biko-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
                 <h4 className="inline-block">
-                    BET DETAILS { betid } <span style={{float:"right"}}><small><FontAwesomeIcon icon={faBackward} /> BACK</small></span>
+                    BET DETAILS { betid } <span style={{float:"right"}}><a href="/my-bets"><small><FontAwesomeIcon icon={faBackward} /> BACK</small></a></span>
                 </h4>
             </div>
        )
