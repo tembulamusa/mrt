@@ -134,7 +134,6 @@ src: url("../fonts/Aller_Bd.ttf");
     margin-left: 2px;
     outline: none !important;
     color: #fff;
-    border-radius: ;
     margin-right: 5px !important;
     margin-top: 5px !important;
 }
@@ -1777,7 +1776,7 @@ events-header {
 
 
 .neutral .mobi-odd {
-    color:;
+    
 }
 
 .helpline {
@@ -15577,7 +15576,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     /* max-width: 210px; */
     background: #fff;
 }
-@media(max-width: 640px)
+@media(max-width: 640px){
 
 .betslip-container-mobile {
     /*bottom: 0;*/
@@ -15608,6 +15607,7 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
 
 .hover-none:hover {
     background-color: unset !important;
+}
 }
 
 
@@ -15876,8 +15876,6 @@ li.pro-sub-menu {
     
     background-color: #34B3BF !important;
 }
-
-
 @media (max-width: 640px) {
        .top-nav .login-button {
         color: #ffffff;
@@ -17151,9 +17149,6 @@ background:#999;
     height: 20px;
     border-radius: 100%;
 }
-
-
-
 @media only screen and (min-device-width: 960px) {
        /* styles for mobile browsers smaller than 480px; (iPhone) */
        
@@ -17177,6 +17172,7 @@ background:#999;
     background: #34B3BF !important;
     opacity: 0.5;
 }
-.bet > td {
-    padding: 5px
+.web-element.container .top-matches.dat-row {
+   background:#115078;
+   color:#fff;
 }
