@@ -36,7 +36,6 @@ const Withdrawal = (props) => {
             setSubmitting(false);
         })
 
-        console.log("Made a request");
     }
 
     const validate = values => {

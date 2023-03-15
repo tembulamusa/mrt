@@ -75,7 +75,6 @@ const PostBet = (props) => {
         setDoneShare(false);
         let betslip =  getFromLocalStorage('old_betslip');
         let sharedSlip = betslip || state?.betslip;
-        console.log("This is the betslip", betslip, state?.betslip);
         let payload = {
             betslip: sharedSlip ,
             ip_address: ipv4,
@@ -83,9 +82,7 @@ const PostBet = (props) => {
             msisdn:user?.msisdn,
             profile_id:user?.profile_id
         }
-        console.log("Posting my share bet data", payload);
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
-            console.log("Restult of share is ", result.code)
             if(status === 200) {
                 setSharebleCode(result.code);
                 if(social) {

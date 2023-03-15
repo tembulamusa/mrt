@@ -65,9 +65,7 @@ const fetchMatches = async (search) => {
         setMatches([])
     }
     const showBetSlipFromTop = ()=> {
-        console.log(" trying to render the betslip");
         setShowBetSlip(!showTopSlip);
-        console.log(" State of Variable : " + showTopSlip);
     }
   return (
     <>

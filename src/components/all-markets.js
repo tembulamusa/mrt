@@ -47,7 +47,6 @@ const MatchAllMarkets = (props) => {
             if(api_response) {
 			    setMatchWithMarkets(api_response );
             }
-            console.log("Received reponse fro live API ", response?.data, response)
             if(response?.slip_data) {
                 setUserSlipsValidation(response?.slip_data);
             }

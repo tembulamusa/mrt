@@ -56,7 +56,6 @@ const Index = (props) => {
         endpoint += "&sport_id = " + (state?.filtersport?.sport_id||sportid || 79);
         let search_term = url.searchParams.get('search')
 
-        //console.log("fetching data with search ", search_term);
         endpoint += search_term ? '&search=' + search_term : ""; 
 
         

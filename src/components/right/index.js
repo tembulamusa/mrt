@@ -27,16 +27,12 @@ const Right = (props) => {
     const [bongeBonusMessage, setBongeBonusMessage] = useState('Chagua mechi 3 au zaidi uweze kupata Bonge Bonus');
     const [betslip] = useState(Object.keys(state?.betslip || {}).length);
     const [total_odds, setTotalOdds] = useState(1.0);
-    // const { otherstate, otherdispatch } = React.useContext(TotalOddsContext);
-
-    // console.log(" This is some other state", otherstate.t_odds);
    
     const calculateOdds = () => {
         let result = 1;
         for (let key in state?.betslip) {
         result *= parseFloat(state?.betslip[key].odd_value);
         result = Math.round(result * 100) / 100;
-        console.log(" Here is some stuff ", result);
         setTotalOdds(result);
         }
     }

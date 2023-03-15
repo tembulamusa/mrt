@@ -27,7 +27,6 @@ const ShareModal = (props) => {
         setDoneShare(false);
         let betslip = getBetslip();
         let sharedSlip = betslip || state?.betslip;
-        console.log("This is the betslip", betslip, state?.betslip);
         let payload = {
             betslip: sharedSlip ,
             ip_address: ipv4,
@@ -35,7 +34,6 @@ const ShareModal = (props) => {
             msisdn:user?.msisdn,
             profile_id:user?.profile_id
         }
-        console.log("Posting my share bet data", payload);
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {
                 setShareId(result.code);

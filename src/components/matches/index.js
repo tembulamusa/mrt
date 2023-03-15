@@ -881,7 +881,6 @@ const MatchList = (props) => {
                 {matches &&
                     Object.entries(matches).map(([key, match]) => {
                         let this_match_time = moment(match.start_time).format("YYYY-MM-DD");
-                        console.log("comparing ", this_match_time, start_time);
                         let output = ( 
                             <>
                             {

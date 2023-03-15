@@ -52,11 +52,9 @@ const LiveCasino = (props) => {
 
     const initializeDGAEvents = async () => {
         window.dga.onWsError = (err) => {
-            // console.log("Error connecting DGA ws socket", err)
             setDgaConnected(false)
         }
         window.dga.onConnect = () => {
-            // console.log("Successfully Connected DGA ws socket")
             setDgaConnected(true)
         }
         window.dga.onMessage = (data) => {
@@ -69,13 +67,10 @@ const LiveCasino = (props) => {
                     }
                     dataResult.push(result)
                 })
-                // console.log("Table result is ", dataResult)
                 setTableKeys(dataResult)
             } else {
                 let localData = tableData
-                // console.log(data)
                 let index = tableData.findIndex((item) => item.tableId === data?.tableId)
-                // console.log("Index found as ", index)
                 if (index !== -1) {
                     // exists, updating request received...
                     localData[index] = data
@@ -89,7 +84,6 @@ const LiveCasino = (props) => {
                 }
                 setTableData([...localData])
 
-                console.log(localData)
             }
         }
     }
@@ -98,21 +92,17 @@ const LiveCasino = (props) => {
         try {
             let url = "prelive-dga0.pragmaticplaylive.net/ws?key=testKey&stylename=lmntgmng_bikosports";
             window.dga.connect(url)
-            // console.log("Connected to DGA Web Socket on PP")
         } catch (e) {
-            // console.log("Error connecting to DGA Web Socket ", e)
         }
     }
 
     const getCasinoGames = () => {
-        // console.log("DGA connnected", dgaConnected)
         if (dgaConnected) {
             window.dga.available('ppcdk00000010157')
         }
     }
 
     const getGamesForTableKeys = () => {
-        // console.log("Table keys are ", typeof tableKeys)
         Object.values(tableKeys).forEach((data, key) => {
             window.dga.subscribe('ppcdk00000010157', data?.id, 'Ksh')
         })
@@ -134,7 +124,6 @@ const LiveCasino = (props) => {
     }, [tableKeys])
 
     useEffect(() => {
-        // console.log("Table Data changed", tableData)
     }, [tableData])
 
 
