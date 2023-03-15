@@ -27,10 +27,8 @@ const Transactions = (props) => {
     const fetchTransactions = () => {
         let endpoint = "/v1/mytransactions";
         let payload = {token:state?.user?.token}
-        console.log(payload)
         makeRequest({url: endpoint, method: 'POST', data: payload}).then(([status, response]) => {
             setTransactions(response);
-            console.log("Found trx result", status, response);
         })
     }
     useEffect(() => {

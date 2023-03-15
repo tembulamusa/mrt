@@ -3,6 +3,8 @@ import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
 import { useParams} from 'react-router-dom';
 import { getFromLocalStorage} from './utils/local-storage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faBackward} from "@fortawesome/free-solid-svg-icons";
 
 const Header = React.lazy(()=>import('./header/header'));
 const Footer = React.lazy(()=>import('./footer/footer'));
@@ -43,12 +45,10 @@ const MyBetDetails = (props) => {
             bet_id:betid,
             token:user?.token
         }
-        console.log("fetch data for bet details", params);
 
         makeRequest({url: endpoint, method: "POST", data: params}).then(([status, result]) => {
             setBetData(result?.meta?.bet_info)
             setBetSlipData(result?.data)
-            console.log("You yu", result?.meta);
             setIsLoading(false);
         });
 
@@ -99,13 +99,15 @@ const MyBetDetails = (props) => {
         const [betStatus, setBetStatus] = useState(bet?.status_desc);
         const [canCancel, setCanCancel] = useState(bet?.can_cancel === 1);
 
-        const cancelBet = () => {
+        const cancelBet = (e) => {
+            e.preventDefault();
             let endpoint = '/bet-cancel';
             let data = {
                     bet_id:bet?.bet_id,
                     cancel_code:101,
                     user:state?.user,
             }
+            console.log("Called cancel on bet", bet?.bet_id)
             makeRequest({url: endpoint, method: "POST", data: data, use_jwt:true}).then(([status, result]) => {
                 if(status === 201){
                    setBetStatus('CANCELED');
@@ -121,8 +123,8 @@ const MyBetDetails = (props) => {
                 <div className="col">
                     <button
                          title="Cancel Bet"
-                         className="col btn btn-sm place-bet-btn "
-                         onClick={()=> cancelBet()} 
+                         className="col btn win-status-cancel"
+                         onClick={(e) => cancelBet(e)} 
                          >
                          Cancel
                     </button>
@@ -167,10 +169,8 @@ const MyBetDetails = (props) => {
                    <div className="col-2">
                        <div className="row"> 
                          <div className="col">
-                        { canCancel == false 
-                            ? <div className={`win-status-${ getBetStatus(bet.status)}`}> { getBetStatus(bet.status).charAt(0).toUpperCase() + getBetStatus(bet?.status).slice(1).toLowerCase()}</div>
-                            : cancelBetMarkup() 
-                        }
+                        <div className={`win-status-${ getBetStatus(bet.status)}`}> { getBetStatus(bet.status).charAt(0).toUpperCase() + getBetStatus(bet?.status).slice(1).toLowerCase()}</div>
+                        { canCancel && cancelBetMarkup() }
                         </div>
                       </div>
                  </div>
@@ -184,14 +184,12 @@ const MyBetDetails = (props) => {
         
         return (
             <div className={`container slipheader`} >
-                <div className="row">
+                <div className="row uppercase mb-2">
                     <div className="col">Start</div>
-                    <div className="col">Home</div>
-                    <div className="col">Away</div>
+                    <div className="col">Game</div>
                     <div className="col">MKT</div>
                     <div className="col">Odds</div>
                     <div className="col">Pick</div>
-                    <div className="col">Outcome</div>
                     <div className="col">FT</div>
                     <div className="col">Status</div>
                 </div>
@@ -204,17 +202,15 @@ const MyBetDetails = (props) => {
 
 		
         return (
-            <div className={`container kumbafu`}  key={betslip.game_id}>
+            <div className={`container kumbafu`}  key={betslip.game_id} style={{borderBottom:"1px solid #b9e6ea", minHeight:"50px"}}>
                 <div className="row">
                     <div className="col">{ betslip.start_time}</div>
-                    <div className="col">{ betslip.home_team}</div>
-                    <div className="col">{ betslip.away_team}</div>
+                    <div className="col">{ betslip.home_team} vs {betslip?.away_team}</div>
                     <div className="col">{ betslip.market}</div>
                     <div className="col">{ betslip.odd_value}</div>
                     <div className="col">{ betslip.bet_pick}</div>
-                    <div className="col">{ betslip.winning_outcome}</div>
                     <div className="col">{ betslip.result}</div>
-                    <div className="col bold">{ getBetStatus(betslip?.status)}</div>
+                    <div className="col bold">{ getBetStatus(betslip?.status).charAt(0).toUpperCase()}</div>
                 </div>
             </div>
         )
@@ -225,7 +221,7 @@ const MyBetDetails = (props) => {
        return (
             <div className='col-md-12 biko-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
                 <h4 className="inline-block">
-                    BET DETAILS { betid }
+                    BET DETAILS { betid } <span style={{float:"right"}}><a href="/my-bets"><small><FontAwesomeIcon icon={faBackward} /> BACK</small></a></span>
                 </h4>
             </div>
        )
@@ -241,7 +237,7 @@ const MyBetDetails = (props) => {
                             <CarouselLoader/>
                             <PageTitle />
                             { betData && <BetItem bet={betData} />  }
-                            <div className="bet-item m-2">
+                            <div className="bet-item m-2 mb-5">
                                 { betData && <strong><BetslipHeader /> </strong>}
                                 { betSlipData && betSlipData.map((betslip, index) => <BetslipItem betslip={betslip}/> ) }
                             </div>

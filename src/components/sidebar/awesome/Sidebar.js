@@ -74,7 +74,6 @@ const Sidebar = (props) => {
 
             if (c_status === 200) {
                 setCompetitions(c_result);
-               console.log("Cached competitions", cached_competitions)
                 setLocalStorage('categories', c_result);
                 dispatch({type:"SET", key:"categories", payload:c_result});
             } else {

@@ -445,7 +445,7 @@ const BetslipSubmitForm = (props) => {
     }, [updateWinnings]);
 
     const initialValues = {
-        bet_amount: jackpot ? jackpotData?.bet_amount : 1000,
+        bet_amount: jackpot ? jackpotData?.bet_amount : stake,
         accept_all_odds_change: true,
         user_id: state?.user?.profile_id,
         total_games: totalGames,

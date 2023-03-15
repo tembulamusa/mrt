@@ -32,19 +32,11 @@ const VerifyAccount = (props) => {
             setMessage(response.success ? response.success.message : response.error.message);
             response.success ? setSuccess(true) : setSuccess(false)
             if (response?.success?.status == 200 || response?.success?.status === 201) {
-                // setLoading(false);
                 setTimeout(navigate('/'), 3000);
                 
             }
 
-            // if(success) {
-            //     let timer = setInterval(() => {
-            //         clearInterval(timer)
-            //         window.location.href = "/"
-            //     }, 3000)
-            // }
         }).catch((err) => {
-            console.log(err)
         })
     }
 

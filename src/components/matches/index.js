@@ -881,12 +881,11 @@ const MatchList = (props) => {
                 {matches &&
                     Object.entries(matches).map(([key, match]) => {
                         let this_match_time = moment(match.start_time).format("YYYY-MM-DD");
-                        console.log("comparing ", this_match_time, start_time);
                         let output = ( 
                             <>
                             {
                                 (start_time === null ||  this_match_time != start_time) 
-                                &&  <div className="top-matches d-flex dat-row"><Moment format="dddd, MMMM Do YYYY">{start_time || this_match_time}</Moment></div>
+                                &&  <div className="top-matches d-flex dat-row"><Moment format="dddd, MMMM Do YYYY">{this_match_time}</Moment> {start_time}</div>
                             }
                             <MatchRow 
                                     match={match} 

@@ -1,15 +1,13 @@
 import React, {useContext, useEffect, useState, useCallback} from "react";
 import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faRecycle, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {
-    Accordion,
-    AccordionItem,
-    AccordionItemButton,
-    AccordionItemHeading,
-    AccordionItemPanel,
-} from 'react-accessible-accordion';
+    getFromLocalStorage,
+    setLocalStorage
+} from './utils/local-storage'; 
 
-import '../assets/css/accordion.react.css';
 
 const Header = React.lazy(()=>import('./header/header'));
 const Footer = React.lazy(()=>import('./footer/footer'));
@@ -37,18 +35,19 @@ const Styles = {
 const MyBets = (props) => {
     const [state, dispatch] = useContext(Context);
     const [isLoading, setIsLoading] = useState(false);
+    const [loadedBetStaus, setLoadedBetStatus] = useState("all")
+    const [mybets, setMybets] = useState(null);
 
     const fetchData = useCallback(async() => {
         if(isLoading) return;
         setIsLoading(true);
-        let endpoint = "/v1/mybets?limit=";
+        let endpoint = "/v1/mybets?status="+loadedBetStaus+"&limit=";
         makeRequest({url: endpoint, method: "POST", data: null}).then(([status, result]) => {
-            console.log(result);
-            dispatch({type: "SET", key: "mybets", payload: result});
+            setMybets(result);
             setIsLoading(false);
         });
 
-    }, []);
+    }, [loadedBetStaus]);
 
     useEffect(() => {
        fetchData();
@@ -72,10 +71,14 @@ const MyBets = (props) => {
     const BetItem = (props) => {
         const { bet } = props;
 
-        const [betStatus, setBetStatus] = useState(bet.status_desc);
-        const [canCancel, setCanCancel] = useState(bet.can_cancel === 1);
+        const [betStatus, setBetStatus] = useState(bet.status);
+        const [canCancel, setCanCancel] = useState(false);
+        const [canSharenRebet, setCanSharenRebet] = useState(bet?.sharable);
+        const [betslipActionMessage, setBetslipActionMessage] = useState();
 
-        const cancelBet = () => {
+
+        const cancelBet = (e) => {
+            e.preventDefault();
             let endpoint = '/bet-cancel';
             let data = {
                     bet_id:bet.bet_id,
@@ -84,32 +87,95 @@ const MyBets = (props) => {
             }
             makeRequest({url: endpoint, method: "POST", data: data, use_jwt:true}).then(([status, result]) => {
                 if(status === 201){
-                   setBetStatus('CANCELED');
                    setCanCancel(false);
+                   setBetslipActionMessage(result?.message);
 
                 }
             });
         };
 
-        const cancelBetMarkup = () => {
+        useEffect(() => {
+            if(bet){
+                let bet_time = new Date(bet.created).getTime();
+                var currentDate = new Date().getTime();
+                let diff =  currentDate - bet_time;
+                if(diff/1000/60 < 20){
+                    setCanCancel(true);
+                }
+            }
+        }, [])
+
+        const CancelBetMarkup = () => {
             return (
-                <div className="col">
-                    <button
-                         title="Cancel Bet"
-                         className="col btn btn-sm place-bet-btn "
-                         onClick={()=> cancelBet()} 
-                         >
-                         Cancel
-                    </button>
-                </div>
-            )
+                <button className="share-btn btn btn-light uppercase" 
+                style={{marginTop: "4px", width:"fit-content", background:"#c6224e", color:"#fff"}}
+                onClick={(e)=> cancelBet(e)} 
+                >
+                   <span> <FontAwesomeIcon icon={faTimes} /> 
+                  </span>
+                  <span> Cancel</span>
+                </button>
+            ) 
         }
 
+        const showShareModalDialog = (e) => {
+            e.preventDefault();
+            let endpoint = "/v1/share?bet_id="+bet.bet_id;
+            makeRequest({url: endpoint, method: "GET", data: null, use_jwt:false}).then(([status, result]) => {
+                if(status === 200){
+                   setLocalStorage('betslip', result?.betslip, 1*60*60*1000);
+                   dispatch({type:"SET", key:"showsharemodal", payload:true})
+                }
+            });
+
+        }
+
+        const rebetFromMyBetslip = (e) => {
+            e.preventDefault();
+                   setBetslipActionMessage("tsahdnklsa,d;smafkmdslf,;ds");
+            let endpoint = "/v1/share?bet_id="+bet.bet_id;
+            makeRequest({url: endpoint, method: "GET", data: null, use_jwt:false}).then(([status, result]) => {
+                if(status === 200){
+                   setLocalStorage('betslip', result?.betslip, 1*60*60*1000);
+                   dispatch({type:"SET", key:"betslip", payload:result?.betslip})
+                   setBetslipActionMessage("Betslip loaded successfully");
+                }
+            });
+        }
+
+        const ShareMarkup = () => {
+            return (
+                <button className="share-btn btn btn-light uppercase" 
+                style={{marginTop: "4px", width:"fit-content", background:"#0C3C5A", color:"#fff"}}
+                onClick={(e) => showShareModalDialog(e)}>
+                   <span>
+                     <svg aria-hidden="true" focusable="false" 
+                         data-prefix="fas" data-icon="share" className="svg-inline--fa fa-share fa-w-16 " 
+                         role="img" 
+                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                          <path fill="currentColor" d="M503.691 189.836L327.687 37.851C312.281 24.546 288 35.347 288 56.015v80.053C127.371 137.907 0 170.1 0 322.326c0 61.441 39.581 122.309 83.333 154.132 13.653 9.931 33.111-2.533 28.077-18.631C66.066 312.814 132.917 274.316 288 272.085V360c0 20.7 24.3 31.453 39.687 18.164l176.004-152c11.071-9.562 11.086-26.753 0-36.328z"></path></svg> 
+                  </span>
+                  <span> Share</span>
+                </button>) 
+        
+        }
+        const RebetMarkup = () => {
+            return (
+                <button 
+                   className="share-btn btn btn-light uppercase" 
+                   style={{marginTop: "4px", width:"fit-content", background:"green", color:"#fff"}}
+                   onClick={(e) => rebetFromMyBetslip(e)} >
+                   <span> <FontAwesomeIcon icon={faRecycle} /> 
+                  </span>
+                  <span> Rebet</span>
+                </button>) 
+        
+        }
         return (
             <div className={`container`}  key={bet.bet_id}>
                 <div className="row">
-                  <div className="col-5">
-                    <div className="col-6">
+                  <div className="col-6">
+                    <div className="col-12">
                       <div className="row">
                         <div className="col-4">DATE </div>
                         <div className="col-8">{ bet.created}</div>
@@ -139,22 +205,29 @@ const MyBets = (props) => {
                           <div className="col"><strong>{ bet.possible_win}</strong></div>
                       </div>
                  </div>
-                   <div className="col-2">
-                       <div className="row"> 
-                         <div className="col">
-                        { canCancel == false 
-                            ? <div className={`win-status-${bet.status.toLowerCase()}`}> { bet.status.charAt(0).toUpperCase() + bet.status.slice(1).toLowerCase()}</div>
-                            : cancelBetMarkup() 
-                        }
-                        </div>
-                      </div>
-                       <div className="row"> 
-                            <div className="col">
-                            <div className={`win-status-cancelled`}> Betslip </div>
-                           </div>
-                      </div>
+             </div>
+             <div className="row"> 
+                   <div className="col-auto">
+                            <div className={`uppercase win-status-${betStatus.toLowerCase()}`}> { betStatus }</div>
+                   </div>
+                   { canSharenRebet !== 0 && !bet.jackpot_bet_id  &&
+                        <>
+                            <div className="col-auto">
+                                <div className="uppercsae"> <ShareMarkup /> </div>
+                            </div>
+                            <div className="col-auto">
+                                <div className="uppercase"><RebetMarkup /> </div> 
+                            </div>
+                        </>
+                      
+                    }
+                    
+                    { canCancel === true && <div className="col-auto"><div className="uppercase">  <CancelBetMarkup /> </div></div> }
                  </div>
-                </div>
+            { betslipActionMessage && <div className="row">
+                    <div className="col-auto" style={{color:"red"}}>{betslipActionMessage}  </div>
+                  </div> 
+            }
             </div>
         );
     }
@@ -204,7 +277,7 @@ const MyBets = (props) => {
 		return (
          <>
          <div className="row" style={{padding: "0 10px",}}>
-			{state?.mybets && state.mybets.map((bet) => (
+			{mybets && mybets.map((bet) => (
 				<div className="mybet-list" 
                     key = {bet.bet_id} 
                     uuid = { bet.bet_id }
@@ -216,6 +289,7 @@ const MyBets = (props) => {
 					</div>
 				</div>
 			))}
+            {!mybets?.length && <div className="col-12 bet-item h-4">No bets found</div>}
 		</div>
           </>
 	    );
@@ -225,9 +299,29 @@ const MyBets = (props) => {
     const PageTitle = () => {
        return (
             <div className='col-md-12 biko-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
-                <h4 className="inline-block">
-                    MY BETS
+                <h4 className="inline-block col-12">
+                    MY BET HISTORY
                 </h4>
+                <div className="row">
+                    <div className="container p-0 flex">
+                        <div className={`col-3 mybet-header ${loadedBetStaus === "all" ? "active": ""}`} 
+                           onClick={ () => setLoadedBetStatus("all") } >
+                           ALL
+                        </div>
+                        <div className={`col-3 mybet-header ${loadedBetStaus  === "pending" ? "active": ""}`}
+                           onClick={ () => setLoadedBetStatus("pending") } >
+                          PENDING
+                        </div>
+                        <div className={`col-3 mybet-header ${loadedBetStaus  === "settled" ? "active": ""}`}
+                           onClick={ () => setLoadedBetStatus("settled") } >
+                          SETTLED
+                        </div>
+                        <div className={`col-3 mybet-header ${loadedBetStaus  === "jackpot" ? "active": "" }`}
+                           onClick={ () => setLoadedBetStatus("jackpot") } >
+                          JACKPOT
+                        </div>
+                     </div>
+                </div>
             </div>
        )
     }

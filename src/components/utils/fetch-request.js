@@ -1,6 +1,6 @@
 import {setLocalStorage, getFromLocalStorage} from './local-storage';
 
-const ENC_KEY = 'm1XR6ajgepqyh^7&21012G$%%_q90)hte====';
+const ENC_KEY = 'm1XR6ajgepqyh';
 const BASE_URL = 'https://bikoapi.bikosports.co.tz'; // 35.234.140.2:8008
 
 const makeRequest = async ({url, method, data = null, use_jwt = false}) => {

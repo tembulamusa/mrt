@@ -20,7 +20,6 @@ const ClipboardCopy = ({ copyText }) => {
         }, 3000);
       })
       .catch((err) => {
-        console.log(err);
       });
   }
 
