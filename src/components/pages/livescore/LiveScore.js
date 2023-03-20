@@ -6,7 +6,7 @@ const LiveScore = () => {
     return (
         <>
             <Header/>
-            <div className="amt">
+            <div className="amt" style={{marginTop:"70px"}}>
                 <div className="d-flex flex-row">
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage">
@@ -18,7 +18,7 @@ const LiveScore = () => {
                                     </h5>
                                 </div>
                                 <div className="col">
-                                    <div className={'row text-white p-2 shadow-sm'}>
+                                    <div className={'row '}>
                                         <div className="col-md-12 d-flex flex-row shadow-lg p-3">
                                             <div className="col-md-12">
                                                 <div className="d-flex flex-column">
