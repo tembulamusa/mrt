@@ -42,6 +42,7 @@ import MostLikedIcon from "../../../assets/svg/MOSTLIKEDOPTIONS.svg";
 import DepositIcon from "../../../assets/svg/deposit.svg";
 import HOWToPlayIcon from "../../../assets/svg/how-to-play.svg";
 import PromotionIcon from "../../../assets/svg/Promotions.svg";
+import CircleSvg from "../../../assets/img/circle.svg";
 import ShareModal from "../../sharemodal";
 
 const Sidebar = (props) => {
@@ -212,6 +213,13 @@ const Sidebar = (props) => {
                                 <a href="/app"
                                    title="Mobile App">
                                    <img src={MobileAppIcon} alt="" className="svg-menu-img-icon " />Mobile App
+                                </a>
+                            </MenuItem>
+
+                            <MenuItem className={`${pathname === '/livescore' ? 'active' : ''}`}>
+                                <a href="/livescore"
+                                   title="Live Score">
+                                   <img style={{opacity:"0.5", height:"15px", padding:"0px 5px"}} src={CircleSvg} alt="" className="svg-menu-img-icon " />Live Score
                                 </a>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/help' ? 'active' : ''}`}>
