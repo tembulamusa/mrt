@@ -20,7 +20,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import padlock from '../../assets/img/padlock.png';
 import PosterImage from '../../assets/img/banner/products/Daily-JackPot.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChartLine, faFire} from "@fortawesome/free-solid-svg-icons";
+import {faChartLine, faFire, faHeart, faBolt} from "@fortawesome/free-solid-svg-icons";
 import {getFromLocalStorage} from "../utils/local-storage";
 import Moment from 'react-moment';
 import moment from 'moment';
@@ -695,7 +695,23 @@ const MatchRow = (props) => {
                             <div className={'bold'}>
                                 {match.away_team}
                             </div>
-
+                                { match.priority > 10000000 
+                                    &&  <span style={{marginLeft:"10px", color:"#f0530e", position:"absolute", right:"0px"}}>
+                                        <FontAwesomeIcon icon={faFire} className={'align-self-center'} />
+                                    </span>  
+                                }
+                                {
+                                    (match.priority < 10000000 && match.priority > 1000000 && match.parent_match_id %5 == 0) 
+                                        && <span style={{marginLeft:"10px", color:"red", position:"absolute", right:"0px"}}>
+                                           <FontAwesomeIcon icon={faHeart} className={'align-self-center'} />
+                                        </span>  
+                                }
+                                {
+                                    (match.priority < 10000000 && match.priority > 100000 && match.parent_match_id %3 == 0) 
+                                        && <span style={{marginLeft:"10px", color:"green", position:"absolute", right:"15px"}}>
+                                           <FontAwesomeIcon icon={faBolt} className={'align-self-center'} />
+                                        </span>  
+                                }
                         </div>
                     </div>
                 </a>
