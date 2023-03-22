@@ -37,8 +37,6 @@ const Right = (props) => {
         }
     }
 
-
-
     const showShareModalDialog = () => {
         dispatch({ type: "SET", key: "showsharemodal", payload: true })
     }
@@ -77,7 +75,7 @@ const Right = (props) => {
         }
         setBongeBonusMessage(bonusAdvice);
     }
-
+    
     useEffect(() => {
         calculateOdds();
         updateBongeBonusMessage();

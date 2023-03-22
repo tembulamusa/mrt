@@ -52,10 +52,8 @@ const BetslipSubmitForm = (props) => {
     const [withholdingTax, setWithholdingTax] = useState(0);
     const [possibleWin, setPossibleWin] = useState(0);
     const [netWin, setNetWin] = useState(0);
-
     const [betslipKey, setBetslipKey] = useState("betslip");
     const [showMoreOptions, setShowMoreOptions] = useState(false);
-
     const [payLaterNumber, setPaylaterNumber] = useState("");
     const [betAmount, setBetAmount] = useState();
     const [dummySave , setDummySave] = useState();
@@ -555,7 +553,7 @@ const BetslipSubmitForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td colSpan="2" style={{paddingTop:"10px", fontSize:"18px"}}>Stake</td>
+                        <td colSpan="2" style={{paddingTop:"10px", fontSize:"18px"}}>Stake : </td>
                     </tr>
                     <tr>
                         <td colSpan="2" style={{paddingTop:"10px"}}>

@@ -15,7 +15,8 @@ import {
     clearSlip,
     clearJackpotSlip, 
     formatNumber,
-    addToJackpotSlip
+    addToJackpotSlip,
+    getJackpotBetslip
 } from './utils/betslip';
 import {Context} from '../context/store';
 
@@ -33,8 +34,10 @@ const Jackpot = (props) => {
     const [currentJackpot, setCurrentJackpot] = useState(null);
     const [loadingJp, setLoadingJp] = useState(false);
     const [loadingDj, setLoadingDj] = useState(false);
-
     const [, dispatch] = useContext(Context);
+    const [state, ] = useContext(Context);
+    const [showBetSlip, setShowBetSlip] = useState(false);
+
 
     const fetchData = (jpType) => {
         jpType ==='wjp' ? setLoadingJp(true) :  setLoadingDj(true);
@@ -127,8 +130,8 @@ const Jackpot = (props) => {
 
     const placeBetClicked = () => {
         dispatch({type: "SET", key: "jpbetpressed", payload: true});
+        setShowBetSlip(true);
     }
-
 
     const removeAllClicked = () => {
         dispatch({type: "SET", key: "jpbetremoveall", payload: true});
@@ -159,20 +162,25 @@ const Jackpot = (props) => {
     }
 
     const JackpotFooter = (props) => {
+        console.log(" This is some Slip here", state?.betslip);
+        console.log(" What do I have here, " , dailyJPMatches?.total_games);
         const {jackpot} = props
         return (
             <div className="jackpot-footer">
                 <div className="row">
                     <div className="col-3"><button onClick={() => removeAllClicked()} className=" place-bet-btn btn uppercase" id="delete-btn" style={{color:"#ffffff !important"}}>Remove All</button></div>
                     <div className="col-3">
-                        Picks <span></span>/<span className="" id="total-games"></span>
+                        <span></span> <span className="" id="total-games"></span>
                         <button 
                             onClick={() => AutoPickAllMatches()}
                             className="btn btn-auto-pick">Auto Pick</button>
                     </div>
                     <div className="col-3">Stake <span id="jp-stake" className="bold">{jackpot.bet_amount}</span></div>
-                    <div className="col-3">
-                    <button onClick={() => placeBetClicked()} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button></div>
+                    
+                    {jackpot && Object.keys(state?.betslip || []).length == (dailyJPMatches?.total_games) ? (
+                                <div className="col-3">
+                                <button onClick={() => placeBetClicked()} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">Place bet</button>
+                                </div>) : ('')}
                 </div>
             </div>
         )
@@ -391,8 +399,11 @@ const Jackpot = (props) => {
                             
                         </div>
                     </div>
-                    <Right jackpot={true} jackpotData={matches?.meta}/>
+                   { showBetSlip ? <Right jackpot={true} jackpotData={matches?.meta} /> : null }
                 </div>
+                <div className="col-12">
+                        <p> This is some text </p>
+                    </div>
             </div>
             <Footer/>
         </>

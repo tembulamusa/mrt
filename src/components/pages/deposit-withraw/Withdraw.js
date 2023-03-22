@@ -14,7 +14,6 @@ const Footer = React.lazy(()=>import('../../footer/footer'));
 const Withdrawal = (props) => {
     //todo get the phone number from logged in user ....
     const [state, dispatch] = useContext(Context);
-   
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
     const [submitting, setSubmitting] = useState(false);
