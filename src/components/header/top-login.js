@@ -162,16 +162,6 @@ const HeaderLogin = (props) => {
 
     return (
         <Container className="top-login-section">
-        {/* <Row className="" style={{float: "right"}}>
-                <div className="col-12">
-                    <a className="" href="/signup" title="Join now">
-                        <span className="register-label">Register now!</span>
-                    </a>
-                    <a className="m-lg-2 badge bg-success" href="/verify-account" title="Verify Account">
-                        <span className="register-label">Verify Account</span>
-                    </a>
-                </div>
-            </Row> */}
             <Row style={{marginBottom:"10px"}}>
                 <Col xs={3}className="d-inline-flex justify-content-center" style={{margin:"auto"}}>
                     <ToastContainer/>

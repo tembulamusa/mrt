@@ -22,11 +22,11 @@ const AlertMessage = (props) => {
 
 const Right = (props) => {
     const [state, dispatch] = useContext(Context);
-    const { jackpot, betslipValidationData, jackpotData, showSLip, showBetSlipFromTop } = props;
-    const [betSlipMobile, setBetSlipMobile] = useState(showSLip);
+    const { jackpot, betslipValidationData, jackpotData,showBetSlipFromTop } = props;
     const [bongeBonusMessage, setBongeBonusMessage] = useState('Chagua mechi 3 au zaidi uweze kupata Bonge Bonus');
     const [betslip] = useState(Object.keys(state?.betslip || {}).length);
     const [total_odds, setTotalOdds] = useState(1.0);
+    const [showAppSlipPage, setShowAppSlipPage] = useState(false);
    
     const calculateOdds = () => {
         let result = 1;
@@ -75,12 +75,30 @@ const Right = (props) => {
         }
         setBongeBonusMessage(bonusAdvice);
     }
+
+
+    const RemoveShowAppBetslipPage = () => {
+    
+        dispatch({ type: "DEL", key: "jpbetpressed" });
+        dispatch({type: "DEL", key: "betslippressedfromabove"});
+        setShowAppSlipPage(false);
+    
+    }
     
     useEffect(() => {
         calculateOdds();
         updateBongeBonusMessage();
     }, [state?.betslip])
 
+
+    useEffect(() => {
+        if(state?.jpbetpressed || state?.betslippressedfromabove) {
+            setShowAppSlipPage(true);
+        } else {
+           RemoveShowAppBetslipPage();
+        } 
+    
+    }, [state?.jpbetpressed, state?.betslippressedfromabove])
 
     const BongeBetMarkupMessage = () => {
         return (
@@ -113,7 +131,7 @@ const Right = (props) => {
                         <button id="slip-button-close" type="button" className="close mobi" aria-hidden="true">×
                         </button>
                         <div id="betslip" className="betslip">
-                            {bongeBonusMessage && <BongeBetMarkupMessage />}
+                            { bongeBonusMessage && <BongeBetMarkupMessage /> }
                             <BetSlip jackpot={jackpot} betslipValidationData={betslipValidationData}
                                 jackpotData={jackpotData} />
                         </div>
@@ -123,20 +141,20 @@ const Right = (props) => {
                 <CompanyInfo />
             </div>
             <div
-                className={`fixed-bottom text-white d-block d-md-none shadow-lg betslip-container-mobile ${betSlipMobile ? 'd-block' : 'd-none'}`} onClick={showBetSlipFromTop}>
+                className={`fixed-bottom text-white d-md-none shadow-lg betslip-container-mobile ${showAppSlipPage ? 'd-block' : 'd-none'}`} onClick={showBetSlipFromTop}>
                 <div className="bet-option-list sticky-top" id=''>
                     <div className="bet alu  block-shadow">
                         <header style={{ marginTop: "15px" }}>
                             <div className="betslip-header d-flex justify-content-between">
                                 <span className="col-sm-8 slp">BETSLIP/JAMVI</span>
                                 <span className="col-sm-2 slip-counter d-flex justify-content-center"
-                                    title={'Hide BetSlip'} onClick={() => setBetSlipMobile(false)}>
+                                    title={'Hide BetSlip'} onClick={() => RemoveShowAppBetslipPage() }>
                                     <FontAwesomeIcon icon={faTimes} className={'align-self-center'} />
                                 </span>
                             </div>
                         </header>
                         <div id="betslip" className="betslip">
-                            <BetSlip jackpot={jackpot} betslipValidationData={betslipValidationData} />
+                            <BetSlip jackpot={jackpot} betslipValidationData={betslipValidationData} jackpotData={jackpotData}/>
                         </div>
                         <QuickLogin />
                     </div>
@@ -144,8 +162,8 @@ const Right = (props) => {
             </div>
 
             <div
-                className={`${betSlipMobile ? 'd-none' : 'd-block'} d-block d-md-none fixed-bottom text-center text-white bg-info bet-slip-footer-toggle`}
-                onClick={() => setBetSlipMobile(true)}>
+                className={`${(showAppSlipPage ||jackpot == true)? 'd-none' : 'd-block'} fixed-bottom text-center text-white bg-info bet-slip-footer-toggle`}
+                onClick={() => setShowAppSlipPage(true)}>
                 <div>
                     <table
                         style={{ borderTop: '1px solid #ffffff61', position: 'fixed', bottom: '0', padding: '5px', backgroundColor: '#0C3C5A', maxWidth: '768px', width: "100%", color: "black" }}

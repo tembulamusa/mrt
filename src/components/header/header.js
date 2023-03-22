@@ -147,7 +147,7 @@ const Header = (props) => {
                     {/* Mobile top */}
 
                     <div className="col-12 d-sm-flex d-md-none d-flex pr-0">
-                        <MobileMenu />
+                        <MobileMenu  user={user}/>
                     </div>
 
                     <div className="col-3">

@@ -41,7 +41,6 @@ const Float = (equation, precision = 4) => {
 const BetslipSubmitForm = (props) => {
 
     const {jackpot, totalGames, totalOdds, betslip, setBetslipsData, jackpotData} = props;
-
     const [ipv4, setIpv4] = useState(null);
     const [message, setMessage] = useState(null);
     const [state, dispatch] = useContext(Context);
@@ -176,7 +175,7 @@ const BetslipSubmitForm = (props) => {
                </div>
            </div>
             <div className="row">
-                       <div className="col-12 " id="betting">
+                       <div className="col-12 " id="betting" style={{textAlign:"right"}}>
                             <input 
                     name="phone_number" 
                     className="bet-select" 
@@ -432,6 +431,8 @@ const BetslipSubmitForm = (props) => {
         });
         if(jackpot){
             dispatch({type: "SET", key:"jackpotbetslip" , payload: {}});
+            dispatch({type: "DEL", key: "jpbetpressed"});
+            dispatch({type: "DEL", key: "betslippressedfromabove"});
         } else {
             dispatch({type: "SET", key:"betslip" , payload: {}});
         }
@@ -553,10 +554,8 @@ const BetslipSubmitForm = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td colSpan="2" style={{paddingTop:"10px", fontSize:"18px"}}>Stake : </td>
-                    </tr>
-                    <tr>
-                        <td colSpan="2" style={{paddingTop:"10px"}}>
+                        <td  style={{paddingTop:"10px", fontSize:"18px"}}>Stake : </td>
+                        <td  style={{paddingTop:"10px"}}>
                             <div id="betting">
                                 {jackpot ?
                                     jackpotData?.bet_amount :
@@ -601,7 +600,7 @@ const BetslipSubmitForm = (props) => {
                             id="net-amount"><strong>{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin, 2))}</strong></span></td>
                     </tr>
                     <tr>
-                        <td colSpan="12">{ jackpot && Object.entries(betslip || []).length != JSON.stringify(jackpotData?.total_games) ? (
+                        <td colSpan="2">{ jackpot && Object.entries(betslip || []).length != JSON.stringify(jackpotData?.total_games) ? (
                                 <span className="less-games">Please select all {jackpotData?.total_games} games to bet
                                 </span>) : ('')}</td>
                     </tr>

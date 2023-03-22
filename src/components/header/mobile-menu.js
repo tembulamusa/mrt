@@ -11,7 +11,6 @@ import Container from 'react-bootstrap/Container';
 import {Context} from '../../context/store';
 import {getFromLocalStorage, setLocalStorage} from "../utils/local-storage";
 import LiveIcon from "../../assets/svg/LIVENOW.svg";
-import Right from "../right";
 
 
 import {
@@ -21,29 +20,27 @@ import {
     faTimes,
     faLaptop,
     faMagnet,
-    faMagic, faInfo, faChessBoard, faDice
+    faMagic, faInfo, faChessBoard, faDice, faHome
 } from '@fortawesome/free-solid-svg-icons'
 import makeRequest from "../utils/fetch-request";
 
-// const VissibleItemsMobile = React.lazy(() => import('./mobile-menu/vissible-items'));
 const HeaderMenuToggle = React.lazy(() => import('./menu-toggle'));
 const MobileToggleMkts = React.lazy(() => import('./mobile-toggle-markets'));
 
 const MobileMenu = (props) => {
   const { user } = props;
   const gaEventTracker = useAnalyticsEventTracker('Navigation');
-  const [state,] = useContext(Context);
+  const [state, dispatch] = useContext(Context);
   const pathname = window.location.pathname;
   const [searching, setSearching] = useState(false)
   const searchInputRef = useRef(null)
   const [matches, setMatches] = useState([])
-  const [showTopSlip, setShowBetSlip] = useState(false);
 
   useEffect(() => {
         fetchMatches()
-    }, [searching])
+  }, [searching])
 
-const fetchMatches = async (search) => {
+  const fetchMatches = async (search) => {
         if (search && search.length >= 3) {
             gaEventTracker('Searching')
             let method = "POST"
@@ -54,62 +51,69 @@ const fetchMatches = async (search) => {
                 }
             });
         }
-    };
-    const showSearchBar = () => {
-        setSearching(true)
-        searchInputRef.current.focus()
-        gaEventTracker('Clicked on Search')
-    }
-    const dismissSearch = () => {
-        setSearching(false)
-        setMatches([])
-    }
-    const showBetSlipFromTop = ()=> {
-        setShowBetSlip(!showTopSlip);
-    }
+   };
+   const showSearchBar = () => {
+       setSearching(true)
+       searchInputRef.current.focus()
+       gaEventTracker('Clicked on Search')
+   }
+   const dismissSearch = () => {
+       setSearching(false)
+       setMatches([])
+   }
+
+   const showAppBetslipPageFromTop = () => {
+        dispatch({type: "SET", key: "betslippressedfromabove", payload: true});
+   }
+
   return (
     <>
-    <div>
-       { showTopSlip ? <Right showSLip={showTopSlip} showBetSlipFromTop={showBetSlipFromTop}/> : null } 
-    </div>
     <div className="top-nav-mobile">
       <div className="row">
-        <div className="col-2 uppercase">
-            
-        <MobileToggleMkts />
+        <div className="col-6 row">
+            <div className="col-3 uppercase">
+                <a href = "/"><div>
+                                <FontAwesomeIcon icon={faHome} style={{fontSize:"25px"}} />
+                 </div></a>
+                Home
+            </div>
+            <div className="col-3 uppercase">
+                
+            <MobileToggleMkts />
 
+            </div>
+
+            <div className="col-3 uppercase red-color">
+                <a href = "/live" className="red-color"><div><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1 width-30px" /></div></a>
+                live
+            </div>
+
+            <div className="col-3 uppercase">
+                <a href = "/jackpot"><div><FaTrophy size={25} /></div></a>
+                Jackpots
+            </div>
         </div>
+        <div className="col-6 row"> 
+            <div className="col-3">&nbsp;</div>
+            <div className="col-3 uppercase" onClick={() => showSearchBar()}>
 
-        <div className="col-2 uppercase red-color">
-            <a href = "/live" className="red-color"><div><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1 width-30px" /></div></a>
-            live
+              <div><FaSearch size={25}/></div>
+              Search
+              <span className={'hide2'}>Search</span>
+            </div>
+
+            <div className="col-3 uppercase" onClick={showAppBetslipPageFromTop} >
+                <div className="relative-pos" ><FaClipboard size={25} />
+                  <span className="top-slip-counter purple-bg">{ Object.keys(state?.betslip||{}).length ||  Object.keys(state?.jackpotbetslip||{}).length}</span>
+                </div>
+                Slip
+            </div>
+
+            <div className="col-3 uppercase">
+              <HeaderMenuToggle user={user}/>
+              PROFILE
+            </div>
         </div>
-
-        <div className="col-2 uppercase">
-            <a href = "/jackpot"><div><FaTrophy size={25} /></div></a>
-            Jackpots
-        </div>
-
-        
-
-        <div className="col-2 uppercase" onClick={() => showSearchBar()}>
-
-          <div><FaSearch size={25}/></div>
-          Search
-          <span className={'hide2'}>Search</span>
-        </div>
-
-        <div className="col-2 uppercase" onClick={showBetSlipFromTop} >
-            <div className="relative-pos" ><FaClipboard size={25} /><span className="top-slip-counter purple-bg">{ Object.keys(state?.betslip||{}).length }</span></div>
-          Slip
-          {showTopSlip && <Right />}
-        </div>
-
-        <div className="col-2 uppercase">
-          <HeaderMenuToggle />
-          Menu
-        </div>
-
 
         <Container id="navbar-collapse-main"
                        className={`high-first-z-index fadeIn mobile-search-input-div header-menu d-flex justify-content-center px-4 ${searching ? 'd-block' : 'd-none'}`}>
@@ -121,7 +125,7 @@ const fetchMatches = async (search) => {
                                    className={'form-control input-field border-0 full-width text-white no-border-radius'}/>
                         </div>
 
-                        <button className={'btn text-white -align-right search-close-btn'} onClick={() => dismissSearch()}>
+                        <button className={'btn text-white -align-right search-close-btn'} style={{marignLeft:"10px", borderRadius:"5px"}} onClick={() => dismissSearch()}>
                             <FontAwesomeIcon icon={faTimes}/> Close
                         </button>
                     </div>

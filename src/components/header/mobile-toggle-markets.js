@@ -19,7 +19,7 @@ function MobileToggleMkts() {
           <div><FaBars size={25} /></div>
         </Button>
       </div>
-        sports
+        Menu
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
