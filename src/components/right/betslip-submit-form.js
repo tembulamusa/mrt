@@ -282,7 +282,7 @@ const BetslipSubmitForm = (props) => {
 
         if (!values.user_id) {
             setMessage({status: 400, message: "Kindly login to place bet"});
-            //dispatch({type:"SET", key:"showloginmodal", payload:true})
+            dispatch({type:"SET", key:"showloginmodal", payload:true})
             setSubmitting(false);
             return false;
         }

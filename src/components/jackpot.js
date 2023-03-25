@@ -46,7 +46,6 @@ const Jackpot = (props) => {
             ([m_status, m_result]) => {
                 if (m_status === 200) {
                     clearJackpotSlip();
-
                 if (jpType == "jp"){
                     setDailyJPMatches(m_result);
                     setShowEmptyDailyJackpot(true);
