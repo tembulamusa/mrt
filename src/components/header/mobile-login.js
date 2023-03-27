@@ -66,6 +66,7 @@ const BodyLogin = (props) => {
             setIsLoading(false)
             if (status === 200 || status == 201 || status == 204) {
                 dispatch({type:"SET", key:"showloginmodal", payload:false})
+                dispatch({type:"SET", key:"user", payload:response?.user})
                 setMessage(response);
             } else {
                 let message = {

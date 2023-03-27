@@ -5,10 +5,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 import {Context} from '../../context/store';
-import {getFromLocalStorage} from '../utils/local-storage';
+import {getFromLocalStorage, setLocalStorage} from '../utils/local-storage';
 import {ToastContainer} from 'react-toastify';
 import makeRequest from '../utils/fetch-request';
-import {setLocalStorage} from '../utils/local-storage';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import {
     faSearch,
@@ -42,11 +41,10 @@ const MobileMenu = React.lazy(() => import('./mobile-menu'));
 
 const Header = (props) => {
     const [user, setUser] = useState(getFromLocalStorage("user"));
-    const [, dispatch] = useContext(Context);
+    const [state, dispatch] = useContext(Context);
     const history = useNavigate();
     const containerRef = useRef();
     const {current} = containerRef;
-    const [state,] = useContext(Context);
     const pathname = window.location.pathname;
     const [searching, setSearching] = useState(false)
     const [matches, setMatches] = useState([])
@@ -136,6 +134,15 @@ const Header = (props) => {
     useEffect(() => {
         updateUserOnLogin()
     }, [updateUserOnLogin])
+
+
+    useEffect(() => {
+        if(state?.user){
+           setUser(state?.user);
+           setLocalStorage('user', state?.user);
+        }
+    
+    }, [state?.user])
 
     const expand = "md"
     return (
