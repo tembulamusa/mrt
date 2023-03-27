@@ -52,22 +52,22 @@ const Index = (props) => {
         let method = betslip ? "POST" : "GET";
         let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}` ;
 
+
         let url = new URL(window.location.href)
-        endpoint += "&sport_id = " + (state?.filtersport?.sport_id||sportid || 79);
+        endpoint += "&sport_id=" + (state?.filtersport?.sport_id||sportid || 79);
         let search_term = url.searchParams.get('search')
 
         endpoint += search_term ? '&search=' + search_term : ""; 
-
         
         if(state?.filtercategory) {
-            endpoint += "&category_id =" + state?.filtercategory?.category_id;
+            endpoint += "&category_id=" + state?.filtercategory?.category_id;
         } else if(categoryid && !state?.filtermenuclicked === true) {
-            endpoint += "&category_id =" + categoryid;
+            endpoint += "&category_id=" + categoryid;
         }
         if(state?.filtercompetition ) {
-            endpoint += "&competition_id =" + state?.filtercompetition?.competition_id;
+            endpoint += "&competition_id=" + state?.filtercompetition?.competition_id;
         } else if(competitionid && !state?.filtermenuclicked === true) {
-            endpoint += "&competition_id =" +  competitionid;
+            endpoint += "&competition_id=" +  competitionid;
         }
 
         if(state?.active_tab) {

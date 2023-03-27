@@ -36,40 +36,46 @@ const Jackpot = (props) => {
     const [loadingDj, setLoadingDj] = useState(false);
     const [state, dispatch] = useContext(Context);
     const [showAppBeslip, setShowAppBetslip] = useState(false);
+    const [activeDTab, setActiveDTab] = useState("home");
 
 
     const fetchData = (jpType) => {
-        jpType ==='wjp' ? setLoadingJp(true) :  setLoadingDj(true);
+        (jpType ==='wjp'  && activeDTab === 'home')? setLoadingJp(true) :  setLoadingDj(true);
         let match_endpoint = `/v1/matches/jackpot?key=${jpType}`;
 
         makeRequest({url: match_endpoint, method: "get", data: null}).then(
             ([m_status, m_result]) => {
                 if (m_status === 200) {
                     clearJackpotSlip();
-                if (jpType == "jp"){
-                    setDailyJPMatches(m_result);
-                    setShowEmptyDailyJackpot(true);
-                    setDisabledDaily(true);
-                    setWeeklyJPMatches(false);
-                    setShowEmptyWeeklyJackpot(false)
-                    setDisabledWeekly(false);
-                    // setCurrentJackpot(dailyJPMatches);
-                    setMatches(m_result);
-                } else if (jpType == "wjp") {
-                    setWeeklyJPMatches(m_result);
-                    setShowEmptyWeeklyJackpot(true);
-                    setDisabledWeekly(true);
-                    setDailyJPMatches(false);
-                    setShowEmptyDailyJackpot(false)
-                    setDisabledDaily(false);
-                    // setCurrentJackpot(weeklyJPMatches);
-                    setMatches(m_result);
+                if (activeDTab === "home") {
+                    if (jpType == "jp"){
+                        setDailyJPMatches(m_result);
+                        setShowEmptyDailyJackpot(true);
+                        setDisabledDaily(true);
+                        setWeeklyJPMatches(false);
+                        setShowEmptyWeeklyJackpot(false)
+                        setDisabledWeekly(false);
+                        // setCurrentJackpot(dailyJPMatches);
+                        setMatches(m_result);
+                    } else if (jpType == "wjp") {
+                        setWeeklyJPMatches(m_result);
+                        setShowEmptyWeeklyJackpot(true);
+                        setDisabledWeekly(true);
+                        setDailyJPMatches(false);
+                        setShowEmptyDailyJackpot(false)
+                        setDisabledDaily(false);
+                        // setCurrentJackpot(weeklyJPMatches);
+                        setMatches(m_result);
+                    } else {
+                        setMatches(m_result);
+
+                    }
+                    setLoadingJp(false);
+                    setLoadingDj(false);
                 } else {
                     setMatches(m_result);
                 }
 
-                setLoadingJp(false);
-                setLoadingDj(false);
                 
             } else {
                 setMessage("An error occurred");
@@ -143,6 +149,7 @@ const Jackpot = (props) => {
            }
        }
     }, [state?.betslippressedfromabove])
+
 
     useEffect(() => {
        if(!state?.jpbetpressed){
@@ -299,12 +306,25 @@ const Jackpot = (props) => {
 
     
     const JackpotTabs = () => {
+
+
+        const handleTabOnClick = (e) => {
+        
+            console.log("Jp clicked resutls", e);
+            setActiveDTab("results");
+
+            if(!matches && e === "results") {
+               fetchData("jp");
+            }
+        }
+
         return (
             <Tabs
             variant={'tabs'}
-            defaultActiveKey={"home"}
+            defaultActiveKey={activeDTab}
             id=""
             className="background-primary menu-type-tabs"
+            onSelect={(e) => handleTabOnClick(e)}
             justify>
 
             <Tab eventKey="home" 

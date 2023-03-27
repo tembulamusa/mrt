@@ -38,20 +38,25 @@ import Others from "../../../assets/svg/others.svg";
 import TopLeagues from "../../../assets/svg/top-leagues.svg";
 import Flag from "../../../assets/svg/flag.svg";
 import MostLikedIcon from "../../../assets/svg/MOSTLIKEDOPTIONS.svg";
-// import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
 import DepositIcon from "../../../assets/svg/deposit.svg";
 import HOWToPlayIcon from "../../../assets/svg/how-to-play.svg";
 import PromotionIcon from "../../../assets/svg/Promotions.svg";
 import CircleSvg from "../../../assets/img/circle.svg";
 import ShareModal from "../../sharemodal";
+import {useLocation, useParams} from 'react-router-dom';
 
 const Sidebar = (props) => {
 
+    const {id, sportid, categoryid, competitionid } = useParams();
     const [collapsed, setCollapsed] = useState(false)
     const [toggled, setToggled] = useState(false)
     const [sport, setSport] = useState(79)
     const [, dispatch] = useContext(Context);
     const pathname = window.location.pathname;
+    const [topLeagesOpen, setTopLeagesOpen] = useState(false);
+    const [topCountriesOpen, setTopContriesOpen] = useState(false);
+    const [otherSportsOpem, setOtherSportsOpen] = useState(false);
+
 
     const handleCollapsedChange = (checked) => {
         setCollapsed(checked);
@@ -87,6 +92,14 @@ const Sidebar = (props) => {
 
     }, []);
 
+
+    useEffect(()=> {
+        if(competitions?.top_soccer) {
+            setTopLeagesOpen(
+               competitions?.top_soccer?.filter((tl) => tl.competition_id == competitionid).length > 0
+            )
+        }
+    }, [competitions?.top_soccer]);
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -158,35 +171,6 @@ const Sidebar = (props) => {
                 onToggle={handleToggleSidebar}
                 collapsed={collapsed}
                 toggled={toggled}>
-        {/** <SidebarHeader>
-                    <div
-                        style={{
-                            padding: '5px',
-                            textTransform: 'uppercase',
-                            fontWeight: 'bold',
-                            fontSize: 14,
-                            letterSpacing: '1px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                        }}>
-                        <div className="d-flex justify-content-end">
-
-                            <span onClick={() => setCollapsed(!collapsed)} className={'cursor-pointer'}>
-                               {collapsed ? (
-                                   <>
-                                       Show <FontAwesomeIcon icon={faArrowRight}/>
-                                   </>
-                               ) : (
-                                   <>
-                                       <FontAwesomeIcon icon={faArrowLeft}/> Hide
-                                   </>
-                               )}
-                            </span>
-                        </div>
-                    </div>
-                </SidebarHeader>
-                */}
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <div className=" left-menu base-submenu uppercase bold">
@@ -250,8 +234,8 @@ const Sidebar = (props) => {
 
                         <div className="left-menu">
                             
-                            <SubMenu className="left-menu-item-1" title={'Top Leagues'} >
-                            {competitions?.top_soccer?.map((top_league, index) => (
+                            <SubMenu className={`left-menu-item-1`} title={'Top Leagues'} >
+                            {competitions?.top_soccer?.map((top_league, index) =>  (
                                 <MenuItem key={`l_${index}`}
                                           icon={<img
                                              src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}

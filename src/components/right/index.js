@@ -162,28 +162,34 @@ const Right = (props) => {
             </div>
 
             <div
-                className={`${(showAppSlipPage ||jackpot == true)? 'd-none' : 'd-block'} fixed-bottom text-center text-white bg-info bet-slip-footer-toggle`}
+                className={`${(showAppSlipPage ||jackpot == true)? 'd-none' : 'd-block'} fixed-bottom text-center text-white bg-info bet-slip-footer-toggle d-md-none`}
                 onClick={() => setShowAppSlipPage(true)}>
                 <div>
                     <table
                         style={{ borderTop: '1px solid #ffffff61', position: 'fixed', bottom: '0', padding: '5px', backgroundColor: '#0C3C5A', maxWidth: '768px', width: "100%", color: "black" }}
-                        class="full-width" >
+                        className="full-width" >
+                        <tbody>
                         <tr>
                             <td style={{ width: "100%", colspan: "3" }}>
-                                <table class="bet" style={{ background: 'yellow', width: "100%" }} >
+                                <table className="bet" style={{ background: 'yellow', width: "100%" }} >
+                                    <tbody>
                                     <tr>
                                         <td style={{ fontSize: "12px", width: "100%" }} id="bonus-advise-message"> { bongeBonusMessage }</td>
                                     </tr>
+                                   </tbody>
                                 </table>
 
                             </td>
                         </tr>
                         <tr>
                             <td style={{ fontSize: "12px", color: "white" }}>
+                             <table>
+                              <tbody>
+                              <tr>
                                 <td  style={{ width:"25%"}}>
                                     <span> <a href="/betslip" style={{ textDecoration: "none", color: "unset", padding: "10px 5px", borderRadius: "4px" }} >
                                         <span style={{ color: "#fff", paddingRight:"5px" }} >BETSLIP</span>
-                                        <span style={{ backgroundColor: "#c6224e", color: "#ffffff", padding: "3px 6px", borderRadius: "224px", borderTop: "0.8px solid #ffffff61", fontSize: "10px" }} id="betslip-count-footer" class="betslip--count slip-counter"
+                                        <span style={{ backgroundColor: "#c6224e", color: "#ffffff", padding: "3px 6px", borderRadius: "224px", borderTop: "0.8px solid #ffffff61", fontSize: "10px" }} id="betslip-count-footer" className="betslip--count slip-counter"
                                         > ({Object.keys(state?.betslip || {}).length}) </span>
                                     </a>
                                     </span>
@@ -191,12 +197,16 @@ const Right = (props) => {
 
                                 <td style= {{ width:"25%", color:"white", fontSize:"12px", borderRadius:"4px", textAlign:"center" }}> ODDS: <span id="total_odd"> {total_odds} </span> </td>
                                 <td style= {{ width:"25%",  fontSize:"12px", padding:"1px", textAlign:"center", paddingLeft:"2rem"}}>
-                                    <span style={{ width: "25%" }}> <p class="dark-gray success-btn btn-primary-light pl-2 pr-2 btn uppercase w-500" 
+                                    <span style={{ width: "25%" }}> <p className="dark-gray success-btn btn-primary-light pl-2 pr-2 btn uppercase w-500" 
                                     style={{ margin: "5px 0", fontSize: "12px", cursor: "pointer", fontWeight: "500", background:"#34b3bf", 
                                     textTransform: "uppercase", paddingLeft:".5rem !important", color:"#fff", }} >BET NOW</p> </span>
                                 </td>
+                               </tr>
+                               </tbody>
+                             </table>
                             </td>
                         </tr>
+                       </tbody>
                     </table>
                 </div>
 

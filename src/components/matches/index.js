@@ -905,7 +905,7 @@ const MatchList = (props) => {
                             <>
                             {
                                 (start_time === null ||  this_match_time != start_time) 
-                                &&  <div className="top-matches d-flex dat-row"><Moment format="dddd, MMMM Do YYYY">{this_match_time}</Moment> {start_time}</div>
+                                &&  <div className="top-matches d-flex dat-row" key={`c${key}`}><Moment format="dddd, MMMM Do YYYY">{this_match_time}</Moment> {start_time}</div>
                             }
                             <MatchRow 
                                     match={match} 
