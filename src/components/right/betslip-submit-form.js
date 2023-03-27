@@ -27,6 +27,7 @@ import {
     getFromLocalStorage
 } from '../utils/local-storage';
 
+
 import Airtel from '../../assets/img/payment_logos/airtel2.PNG'
 import Mpesa from '../../assets/img/payment_logos/mpesa2.PNG'
 import Tigo from '../../assets/img/payment_logos/tigo2.PNG'
@@ -37,14 +38,11 @@ const Float = (equation, precision = 4) => {
     return Math.round(equation * (10 ** precision)) / (10 ** precision);
 }
 
-
 const BetslipSubmitForm = (props) => {
-
     const {jackpot, totalGames, totalOdds, betslip, setBetslipsData, jackpotData} = props;
     const [ipv4, setIpv4] = useState(null);
     const [message, setMessage] = useState(null);
     const [state, dispatch] = useContext(Context);
-
     const [stake, setStake] = useState(1000);
     const [stakeAfterTax, setStakeAfterTax] = useState(0);
     const [exciseTax, setExciseTax] = useState(0);
@@ -273,7 +271,7 @@ const BetslipSubmitForm = (props) => {
                 if(!values.accept_all_odds_change){
                     break;
                 }
-            }
+            }   
             if(slip.live_bet === 1){
                 live_bet = true;
             }
