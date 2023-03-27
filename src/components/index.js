@@ -9,7 +9,7 @@ import React, {
 import {useLocation, useParams} from 'react-router-dom';
 import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
-import {getBetslip} from './utils/betslip' ;
+import {getBetslip} from './utils/betslip';
 import useInterval from "../hooks/set-interval.hook";
 import {Spinner} from "react-bootstrap";
 // import WorldCupModal from './world_cup_modal' ;
