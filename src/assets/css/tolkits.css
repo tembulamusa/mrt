@@ -938,7 +938,7 @@ header, li a, .thedate span {
     outline-style: none;
     outline: none;
     text-align: center;
-    float: right;
+    float: left;
     font-size: 10px;
     height: 36px;
     line-height: 13px;
@@ -1980,6 +1980,7 @@ events-header {
     padding-right: 5px;
     font-size: 10px;
     /* color: rgb(105, 129, 154); */
+    float:right;
 }
 
 .dark-text {
@@ -16452,6 +16453,7 @@ a:hover {
 .match-detail-header {
     background: rgba(52, 179, 191, 0.2);
     border: 1px solid rgba(52, 179, 191, 0.3);
+    margin:10px 10px 0;
 }
 
 .small-text {
@@ -17169,17 +17171,17 @@ background:#999;
     border-radius: 100%;
 }
 @media only screen and (min-device-width: 960px) {
-       /* styles for mobile browsers smaller than 480px; (iPhone) */
-       
-       .match-detail-container {
-            width: 25%;
-        }
-
-        .web-width-37.jackpot-mobile-width-85 {
-            width: auto;
-        }
-
+   /* styles for mobile browsers smaller than 480px; (iPhone) */
+   
+   .match-detail-container {
+        width: 25%;
     }
+
+    .web-width-37.jackpot-mobile-width-85 {
+        width: auto;
+    }
+
+}
 
 
 .less-games {
@@ -17195,3 +17197,28 @@ background:#999;
    background:#115078;
    color:#fff;
 }
+
+.widgets{
+    height:400px;
+    margin: 10px 15px 0;
+    border: 1px solid #a5dee3;
+    border-radius: 2px;
+}
+.sr-bb .sr-lmt-plus__comp-padding{
+    padding-bottom:49.672%;
+}
+.sr-bb .sr-lmt-pitch-soccer__container{
+    padding-bottom:49.672%;
+
+}
+.sr-lmt-plus.sr-lmt-plus--double-single .sr-lmt-plus__comp-wrapper.srm-double{
+    padding-bottom:49.672%;
+}
+@media only screen and (max-device-width: 960px) {
+
+.widgets{
+    height:288px;
+}
+}
+
+

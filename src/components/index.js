@@ -6,7 +6,7 @@ import React, {
     useRef
 } from "react";
 
-import {useLocation, useParams} from 'react-router-dom';
+import {useLocation, useParams, useSearchParams} from 'react-router-dom';
 import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
 import {getBetslip} from './utils/betslip';
@@ -23,6 +23,7 @@ const MatchList = React.lazy(() => import('./matches/index'));
 const Right = React.lazy(() => import('./right/index'));
 const SideBar = React.lazy(() => import('./sidebar/awesome/Sidebar'))
 
+
 const Index = (props) => {
     const location = useLocation();
     const {id, sportid, categoryid, competitionid } = useParams();
@@ -36,6 +37,9 @@ const Index = (props) => {
     const [fetching, setFetching] = useState(false)
     const homePageRef = useRef()
     const [subTypes, setSubTypes] = useState("1,18,29");
+    const [currentTab, setCurrentTab] =useState('highlights');
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const findPostableSlip = () => {
         let betslips = getBetslip() || {};
         var values = Object.keys(betslips).map(function (key) {
@@ -47,7 +51,6 @@ const Index = (props) => {
 
     const fetchData = async () => {
         setFetching(true)
-        let tab = 'highlights';
         let betslip = findPostableSlip();
         let method = betslip ? "POST" : "GET";
         let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}` ;
@@ -69,12 +72,8 @@ const Index = (props) => {
         } else if(competitionid && !state?.filtermenuclicked === true) {
             endpoint += "&competition_id=" +  competitionid;
         }
-
-        if(state?.active_tab) {
-            tab = state?.active_tab;
-        }
         
-        endpoint += "&tab=" + tab;
+        endpoint += "&tab=" + currentTab;
         //endpoint = endpoint.replaceAll(" ", '')
 
         endpoint += `&sub_type_id=` + subTypes;
@@ -107,6 +106,15 @@ const Index = (props) => {
     )
 
     useEffect(() => {
+        let t = searchParams.get('tab');
+
+        if(state?.active_tab) {
+            setCurrentTab(state?.active_tab);
+        } else if (t) {
+            dispatch({type: "SET", key: "active_tab", payload: t});
+            setCurrentTab(t);
+        }
+
         if(state?.selectedmarkets){ 
             setSubTypes(state.selectedmarkets);
         } 
@@ -163,7 +171,7 @@ const Index = (props) => {
                     <div className="gz home" style={{width: '100%'}}>
                         <div className="homepage" ref={homePageRef}>
                             <CarouselLoader/>
-                            <MainTabs tab={location.pathname.replace("/", "") || 'highlights'} />
+                            <MainTabs tab={currentTab} />
                             {/* <MobileCategories/> */}
                             <MatchList
                                 live={false}

@@ -24,6 +24,7 @@ import {faChartLine, faFire, faHeart, faBolt} from "@fortawesome/free-solid-svg-
 import {getFromLocalStorage} from "../utils/local-storage";
 import Moment from 'react-moment';
 import moment from 'moment';
+import "../../assets/css/betradar-match-tracker.css";
 
 
 const clean = (_str) => {
@@ -65,6 +66,7 @@ const MatchHeaderRow = (props) => {
         three_way, 
         sub_types
     } = props;
+
 
     //const [state, ]  = useContext(Context);
     const categories = getFromLocalStorage('categories')
@@ -180,7 +182,7 @@ const MatchHeaderRow = (props) => {
                  
 
                  {live && 
-                    <div className="row white-text">
+                    <div className="white-text">
                          <div className="col"> LIVE</div>
 
                     </div> 
@@ -215,7 +217,7 @@ const MatchHeaderRow = (props) => {
 
                     
 
-                    {!live && !jackpot && extraMarketDisplays.length > 0 && (
+                    {!jackpot && extraMarketDisplays.length > 0 && (
                         <>
                             {extraMarketDisplays?.map((extra_market) => (
                                 <div className={'d-flex flex-column mobile-right-mkt-type'} key={extra_market.name} style={{width:"25%"}}>
@@ -239,32 +241,9 @@ const MatchHeaderRow = (props) => {
                         </>
                     )}
                     
-                <div className="col d-flex flex-row justify-content-between"> &nbsp; 
-
-                {live && 
-                                <div className="row float-end" style={{width:"100%"}}>
-                                    <div className="col-3 center-text">1</div>
-                                    <div className="col-3 center-text">X</div>
-                                    <div className="col-3 center-text">2</div>
-                                </div>
-                            
-                    }
-                </div>
+                <div className="col d-flex flex-row justify-content-between"> &nbsp;</div>
                 </div>
 
-                    <div className="d-sm-flex d-md-none" style={{width:"100%", textAlign:"right", paddingRight:"5px"}}>
-                     <div className="row">
-                        <div className="col-3"></div>
-                        <div className="col mobile-top-custom-pad">
-                          <div className="row">
-                        
-                              <div className="col-3 center-text">1</div>
-                              <div className="col-3  center-text"> X </div>
-                              <div className="col-3  center-text"> 2</div>
-                           </div>
-                       </div>
-                     </div>
-                 </div>
             </div>
         </Container>
     )
@@ -290,7 +269,7 @@ const MoreMarketsHeaderRow = (props) => {
         <Container className="mt-2">
             <div className="panel-header match-detail-header">
 
-                <h4 className="inline-block row">
+        {/*  <h4 className="inline-block row">
                     <div className="mobile-font-10 center-text mb-2">{start_time}</div>
                      <div className="row mobile-font-13 center-text uppercase text-uppercase">
                         <div className="col-5 mb-3">{home_team}</div>
@@ -306,8 +285,9 @@ const MoreMarketsHeaderRow = (props) => {
                         }}> {match_status} {match_time} <br/>{score}</Col>
                     </Row>
                 }
-                <Row className="header-text">
-                    <Col>{category} {competition}</Col>
+                */}
+                <Row className="header-text" style={{textAlign:"left"}}>
+                    <Col>{category} {competition} - All Markets</Col>
                 </Row>
                 
             </div>
@@ -318,19 +298,33 @@ const MoreMarketsHeaderRow = (props) => {
 const SideBets = (props) => {
     const {match, live} = props;
     const [picked,] = useState();
+    const [noOdds, setNoOdds] = useState(false);
+
+    const startsIn = () => {
+        let tdiff = moment(match?.start_time).diff(moment(), 'minutes');
+        if(tdiff > 60) {
+            return 'Starts at ' + match?.start_time;
+        }
+        return 'Starts in ' + tdiff + " minutes";
+    }
+
+    useEffect(() => {
+        setNoOdds(Object.keys(match?.odds|| {}).length === 0 )
+    }, [])
 
     return (
     <>
         <div className="col d-flex flex-row justify-content-between">
+        { (noOdds && !match?.side_bets || match?.side_bets == 0) && <div className="col">&nbsp;</div> }
         <div
-            className={`bet-fix events-odd pad ${picked} align-self-center more-markets-container m-lg-2`}>
-            {(match?.side_bets > 1) && <>
+            className={`events-odd pad ${picked} align-self-center more-markets-container m-lg-2`}>
+            {(match?.side_bets> 1 || live) && <>
                 <a className="side" title={'More Markets'}
-                   href={`/match/${live ? 'live/' : ''}${
-                       live ? match.parent_match_id : match?.match_id}`
-                   }><span className="text-tertiary">+{match.side_bets}</span>
+                   href={`/match/${(live && !noOdds) ? 'live/' : ''}${
+                       (live && !noOdds ) ? match.parent_match_id : match?.pre_match_id}`
+                   }><span className="text-tertiary" style={{textAlign:"right"}}>{ (!noOdds && match?.side_bets > 1 ) && ` + ${match.side_bets}`} {noOdds && startsIn() }</span>
 
-                <div className="normal-font-weight dark-text uppercase">More</div>
+                 { (!noOdds && match?.side_bets) && <div className="normal-font-weight dark-text uppercase">More</div> }
 
                 </a>
                 <a href={ `https://s5.sir.sportradar.com/betradar/en/match/${match?.parent_match_id}`} className="side stats" 
@@ -636,9 +630,11 @@ const MatchRow = (props) => {
         three_way, 
         sub_types} = props;
 
+    const hasNoOdds = () => {
+       return Object.keys(match?.odds || {}).length === 0;
+    }
+
     let url = new URL(window.location)
-    match.market_active = 1
-    match.odds.home_odd_active = 1
     const [totalMarkets] = useState(sub_types?.split(",")?.length)
     let append = totalMarkets - Object.keys(match?.extra_odds || {}).length - 1
     let loops = []
@@ -656,7 +652,7 @@ const MatchRow = (props) => {
         <div className="top-matches d-flex">
             
                 <div className="col-sm-2 col-xs-12 pad d-none d-md-block left-text" key="22">
-                {live &&
+                {(live && !hasNoOdds() ) &&
                     <>
                         <small style={{color: "red"}}> {match?.match_status} </small>
                         <br/>
@@ -675,7 +671,7 @@ const MatchRow = (props) => {
                 </div>
             </div>
             <div className="col-2 col-xs-12 match-detail-container" key="23">
-                <a href={jackpot ? '#' : `/match/${live ? 'live/' + match.parent_match_id : match.match_id}`}>
+                <a href={jackpot ? '#' : `/match/${live && !hasNoOdds() ? 'live/' + match.parent_match_id : match.pre_match_id}`}>
                     <div className="d-flex flex-column">
                         <div className="compt-deta overflow-ellipsi" key="0034">
                             <div className="d-flex flex-column" key="20">
@@ -688,13 +684,15 @@ const MatchRow = (props) => {
                         </div>
                         <div className="compt-teams d-flex flex-column" key="0035">
                             <div className={'bold'}>
-                                {live && (match?.match_status !== 'ended') && <ColoredCircle color="red"/>}
+                                
                                 { match.home_team }
-                                 { live && <span className="opacity-reduce-txt vs-styling"> {match?.score} </span> }
+                                 { (live && !hasNoOdds()) && <span className="opacity-reduce-txt vs-styling"> { match?.score?.split(":")[0]} </span> }
                             </div>
                             <div className={'bold'}>
                                 {match.away_team}
+                                { (live && !hasNoOdds()) && <span className="opacity-reduce-txt vs-styling"> { match?.score?.split(":")[1]} </span> }
                             </div>
+                            <div></div>
                                 { match.priority > 10000000 
                                     &&  <span style={{marginLeft:"10px", color:"#f0530e", position:"absolute", right:"0px"}}>
                                         <FontAwesomeIcon icon={faFire} className={'align-self-center'} />
@@ -712,12 +710,13 @@ const MatchRow = (props) => {
                                            <FontAwesomeIcon icon={faBolt} className={'align-self-center'} />
                                         </span>  
                                 }
+                           { (match?.live_match ) && <div style={{fontSize:"10px", fontWeight:"normal", color:"red", textTransform:"none"}}>+ Live</div> }
                         </div>
                     </div>
                 </a>
             </div>
             <div className="col d-flex flex-row justify-content-between" key="24">
-                <div className={`c-btn-group align-self-center mobile-width-100 mobile-85-to-70 web-width-37 ${(jackpot) ?'jackpot-mobile-width-85':''} ${(live) ?'live-width-85':''}`} key="222" style={{}}>
+                <div className={`c-btn-group align-self-center mobile-width-100 mobile-85-to-70 web-width-37 ${(jackpot) ?'jackpot-mobile-width-85':''}`} key={match?.parent_match_id} style={{}}>
                     {
                         match?.odds?.home_odd ? (match?.odds?.home_odd && (!pdown && match?.odds?.home_odd && match.odds.home_odd !== 'NaN' &&
                                 match.market_active == 1 && match.odds.home_odd_active == 1) || jackpot
@@ -741,7 +740,7 @@ const MatchRow = (props) => {
 
                 {!jackpot && <>
                     {Object.entries(match?.extra_odds || {}).map(([marketName, odds], index) => (
-                        marketName !== '' && (
+                        (
                             <div className={`d-none d-md-flex c-btn-group m-lg-1 align-self-center`} style={{width:"25%"}}key={index}>
                                 {
                                     Object.entries(odds || {}).map(([odd_key, odd_data]) => {
@@ -777,15 +776,16 @@ const MatchRow = (props) => {
 
 export const MarketList = (props) => {
 
-    const {live, matchwithmarkets, pdown} = props;
+    const {live, matchwithmarkets, pdown, hideLocalHeader} = props;
 
     return (
         <div className="matches full-width">
-                <MoreMarketsHeaderRow
+        { <MoreMarketsHeaderRow
                     {...matchwithmarkets?.data?.match}
                     score={matchwithmarkets?.data?.match?.score}
                     live={live}
                 />
+        }
             <Container className="web-element">
                 {Object.entries(matchwithmarkets?.data?.odds || {}).map(([mkt_id, markets]) => {
                     return <MarketRow
@@ -874,6 +874,53 @@ export const JackpotMatchList = (props) => {
     )
 }
 
+export const LiveMatchTracker = (props) => {
+    const { matchid, setHideLocalHeader } = props;
+    let url = "https://widgets.sir.sportradar.com/697e93551b60e2cb46fbcaca262ebaf1/widgetloader"
+    let selector = 'body';
+
+    const loadScript = useCallback(() => {
+        const element = document.querySelector(selector);
+        const script = document.createElement('script');
+        script.src = url;
+        script.type = 'text/javascript';
+        script.dataSrLanguage = "en";
+        script.async = true;
+        element.appendChild(script)
+        return () => {
+          element.removeChild(script)
+        }
+    }, [])
+
+    useEffect(() => {
+        if(matchid) {
+           loadScript();
+           setHideLocalHeader(true);
+        }
+    }, [matchid])
+    
+
+   if(!matchid) {
+       return null; 
+   }
+
+   return (
+       <div className="widgets" >
+         <div className="sr-widget sr-widget-1" 
+           data-sr-widget="match.lmtPlus" 
+           data-sr-match-id={matchid}
+           data-sr-show-odds="true"
+           data-sr-layout="double"
+           data-sr-scoreboard ="enable" 
+           data-sr-momentum = "disable" 
+           data-sr-tabs-position="top"
+           data-sr-logo-link="https://bikosports.co.tz"
+           ></div> 
+        
+        
+    </div>)
+
+}
 const MatchList = (props) => {
     const {
         live, 

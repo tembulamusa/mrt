@@ -1,5 +1,5 @@
 import React, {useEffect, useCallback, useState, useContext, useRef} from 'react';
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useSearchParams} from "react-router-dom"
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -50,14 +50,12 @@ const Header = (props) => {
     const [matches, setMatches] = useState([])
     const searchInputRef = useRef(null)
     const [time, setTime] = useState();
+    const [searchText, setSearchText] = useState();
+    const [searchParams, setSearchParams] = useSearchParams();
     
-
     useEffect(() => {
-        fetchMatches()
-    }, [searching])
-
-
-    useEffect(() => {
+        let s = searchParams.get('search');
+        setSearchText(s);
         const timer = setInterval(() => {
           setTime(new Date().toLocaleString().slice(12,22));
         }, 1000);
@@ -69,8 +67,9 @@ const Header = (props) => {
 
     const fetchMatches = async (search) => {
         if (search && search.length >= 3) {
+            setSearchText(search);
             let method = "POST"
-            let endpoint = "/v1/matches?page=" + (1) + `&limit=${10}&search=${search}`;
+            let endpoint = "/v1/matches?tab=upcoming&page=" + (1) + `&limit=${10}&search=${search}`;
             await makeRequest({url: endpoint, method: method, data: []}).then(([status, result]) => {
                 if (status === 200) {
                     setMatches(result?.data || result)
@@ -171,7 +170,7 @@ const Header = (props) => {
                         <div className="row">
                             <div id="navbar-collapse-main"
                                        className={`col-7 fadeIn header-menu d-none d-md-flex justify-content-center relative-pos`}>
-                                            <input type="text" placeholder="Search for Events and Tournaments" ref={searchInputRef}
+                                            <input type="text" placeholder={searchText || "Search for Events and Tournaments"} ref={searchInputRef}
                                                    onInput={(event) => fetchMatches(event.target.value)}
                                                    className={'form-control input-field border-0  no-border-radius'}/>
                                                    <span className="top-search-icon" style={{margin:"3px 10px"}}><FaSearch size={21}/></span>
@@ -179,7 +178,7 @@ const Header = (props) => {
                                     <div
                                         className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
                                         {matches.map((match, index) => (
-                                            <a href={`/?search=${match.home_team}`} key={index}>
+                                            <a href={`/?tab=upcoming&search=${match.home_team}`} key={index}>
                                                 <li style={{borderBottom: "1px solid #eee"}}>
                                                     {match.home_team}
                                                 </li>

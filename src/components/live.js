@@ -20,7 +20,8 @@ const Live = (props) => {
     const [matches, setMatches] = useState();
     const [state, dispatch] = useContext(Context);
     const {spid} = useParams();
-
+    const [threeWay, setThreeWay] = useState(false);
+    const [subTypes, setSubTypes] = useState("1,18,29");
     const [producerDown, setProducerDown] = useState(false);
     const location = useLocation();
     const [userSlipsValidation, setUserSlipsValidation] = useState();
@@ -33,8 +34,11 @@ const Live = (props) => {
         return values;
     };
 
+    const [markets, setMarkets]  = useState("1,18,29");
+
     useInterval(async () => {
         let endpoint = "/v1/matches/live";
+        endpoint += "?sub_type_id=" + markets;
         if (spid) {
             endpoint += "?spid=" + spid;
         }
@@ -51,11 +55,22 @@ const Live = (props) => {
         });
     }, 2000);
 
+    const checkThreeWay = () => {
+        setThreeWay(subTypes.split(",").includes("1"))
+    }
+    useEffect(() => {
+        checkThreeWay()
+    }, [subTypes]);
+
     const fetchData = useCallback(async () => {
         let endpoint = "/v1/matches/live";
+        endpoint += "?sub_type_id=" + markets;
+
         if (spid) {
-            endpoint += "?spid=" + spid;
+            endpoint += "&spid=" + spid;
         }
+
+       
         let betslip = findPostableSlip();
         let method = betslip ? "POST" : "GET";
         const [match_result] = await Promise.all([
@@ -92,8 +107,8 @@ const Live = (props) => {
                     <LiveSideBar/>
                     <div className="gz home" style={{width:"100%"}}>
                         <div className="homepage">
-                            <CarouselLoader/>
-                            {matches && <MatchList live matches={matches} pdown={producerDown}/>}
+                            <CarouselLoader />
+                            {matches && <MatchList live matches={matches} pdown={producerDown} subTypes={subTypes} three_way={threeWay}/>}
                         </div>
                     </div>
                     <Right betslipValidationData={userSlipsValidation}/>

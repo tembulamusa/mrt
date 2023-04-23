@@ -10,7 +10,7 @@ import makeRequest from "./utils/fetch-request";
 import useInterval from "../hooks/set-interval.hook";
 import { getBetslip } from './utils/betslip' ;
 
-import { MarketList } from './matches/index';
+import { MarketList, LiveMatchTracker } from './matches/index';
 
 const Header = React.lazy(()=>import('./header/header'));
 const Footer = React.lazy(()=>import('./footer/footer'));
@@ -26,6 +26,7 @@ const MatchAllMarkets = (props) => {
 
     const params = useParams();
     const [isLoading, setIsLoading] = useState(false);
+    const [hideLocalHeader, setHideLocalHeader] = useState(false);
 
     const findPostableSlip = () => {
         let betslips = getBetslip() || {};
@@ -87,9 +88,12 @@ const MatchAllMarkets = (props) => {
                    <div className="d-md-block d-none"><SideBar loadCompetitions /></div>
                    <div className="gz home"  style={{width:'100%'}}>
                        <div className="homepage">
+                     <LiveMatchTracker matchid={matchwithmarkets?.data?.match?.parent_match_id} setHideLocalHeader = {setHideLocalHeader}/>
                     <MarketList live={live}  
                         matchwithmarkets={matchwithmarkets} 
-                        pdown={producerDown} />
+                        pdown={producerDown} 
+                        hideLocalHeader={hideLocalHeader}
+                     />
                 </div> 
             </div>  
             <Right betslipValidationData={userSlipsValidation} />
