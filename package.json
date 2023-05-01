@@ -29,6 +29,7 @@
     "jwt-encode": "^1.0.1",
     "mini-css-extract-plugin": "^2.7.2",
     "moment": "^2.29.4",
+    "object-hash": "^3.0.0",
     "process": "^0.11.10",
     "public-ip": "^5.0.0",
     "react": "^17.0.2",

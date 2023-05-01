@@ -5,11 +5,6 @@ import { useLocation } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 
 
-const Header = React.lazy(() => import('../../header/header'));
-const SideBar = React.lazy(() => import('../../sidebar/awesome/Sidebar'));
-const Right = React.lazy(() => import('../../right/index'));
-const Footer = React.lazy(() => import('../../footer/footer'));
-
 const VerifyAccount = (props) => {
     const navigate = useNavigate();
     const [success, setSuccess] = useState(false);
@@ -175,25 +170,13 @@ const VerifyAccount = (props) => {
 
     return (
         <React.Fragment>
-            <Header/>
-            <div className="amt">
-                <div className="d-flex flex-row justify-content-between">
-                   <div className="d-md-block d-none"><SideBar loadCompetitions /></div>
-                    <div className="gz home">
-                        <div className="homepage">
-                            <FormTitle/>
-                            <div className="col-md-12 mt-2  p-2">
-                                {message && <Alert/>}
-                                <div className="modal-body pb-0" data-backdrop="static">
-                                    <VerifyAccountForm/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <Right/>
+            <FormTitle/>
+            <div className="col-md-12 mt-2  p-2">
+                {message && <Alert/>}
+                <div className="modal-body pb-0" data-backdrop="static">
+                    <VerifyAccountForm/>
                 </div>
             </div>
-            <Footer/>
         </React.Fragment>
     );
 }

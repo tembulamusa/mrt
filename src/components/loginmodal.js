@@ -5,7 +5,7 @@ import {getFromLocalStorage} from './utils/local-storage';
 import { Context } from "../context/store"
 import "../App.css";
 
-const BodyLogin = React.lazy(() => import('./header/mobile-login'));
+import BodyLogin from './header/mobile-login';
 
 
 const LoginModal = (props) => {

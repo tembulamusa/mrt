@@ -753,8 +753,8 @@ const MatchRow = (props) => {
                         )
                     ))
                     }
-                    {!live && loops?.map(() => (
-                        <div className={`c-btn-group align-self-center`} key="223" style={{width:"25%"}}>
+                    {!live && loops?.map((indx) => (
+                        <div className={`c-btn-group align-self-center`} key={`223-${indx}`} style={{width:"25%"}}>
                             <EmptyTextRow odd_key={match?.odd_key}/>
                             <EmptyTextRow odd_key={match?.odd_key}/>
                         </div>

@@ -7,6 +7,7 @@ import {Navbar} from "react-bootstrap";
 
 const ProfileMenu = (props) => {
   const { user } = props;
+
   return (
     <>
       {user && (
@@ -25,7 +26,7 @@ const ProfileMenu = (props) => {
                   <span style={{fontSize:"14px"}}>TZS {formatNumber(user.balance) || 0}</span>
                 </div>
                 <div className="col-3 d-n d-md-block">
-                    <a href="/deposit" className="cg biko-blue  btn mobile-btn-sm" style={{width:"100%"}}>DEPOSIT</a>
+                    <Link to="/deposit" className="cg biko-blue  btn mobile-btn-sm" style={{width:"100%"}}>DEPOSIT</Link>
                 </div>
                 
               </div>

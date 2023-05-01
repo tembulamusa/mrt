@@ -43,7 +43,7 @@ import HOWToPlayIcon from "../../../assets/svg/how-to-play.svg";
 import PromotionIcon from "../../../assets/svg/Promotions.svg";
 import CircleSvg from "../../../assets/img/circle.svg";
 import ShareModal from "../../sharemodal";
-import {useLocation, useParams} from 'react-router-dom';
+import {useLocation, useParams, Link} from 'react-router-dom';
 
 const Sidebar = (props) => {
 
@@ -175,48 +175,48 @@ const Sidebar = (props) => {
                     <Menu iconShape="circle">
                         <div className=" left-menu base-submenu uppercase bold">
                             <MenuItem className={pathname === '/' ? "active" : ''}>
-                                <a href="/" title="Home">
+                                <Link to="/" title="Home">
                                 <FontAwesomeIcon icon={faHome} className="hi"/> Home
-                                </a>
+                                </Link>
                             </MenuItem>
 
                             <MenuItem className={`live-game ${pathname === '/live' ? 'active' : ''}`}>
-                                <a href="/live"
-                                   title="Live" className="red-color"><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1" />Live Now</a>
+                                <Link to="/live"
+                                   title="Live" className="red-color"><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1" />Live Now</Link>
                             </MenuItem>
 
                             <MenuItem className={`${pathname === '/highlights' ? 'active' : ''}`}>
-                                <a href="/highlights"
-                                   title="Highlights"><img src={MostLikedIcon} alt="" className="svg-menu-img-icon " />Mechi Kali</a>
+                                <Link to="/highlights"
+                                   title="Highlights"><img src={MostLikedIcon} alt="" className="svg-menu-img-icon " />Mechi Kali</Link>
                             </MenuItem> 
                             <MenuItem className={`${pathname === '/jackpot' ? 'active' : ''}`}>
-                                <a href="/jackpot"
-                                   title="Jackpot"><img src={JackpotIcon} alt="" className="svg-menu-img-icon " />Jackpot</a>
+                                <Link to="/jackpot"
+                                   title="Jackpot"><img src={JackpotIcon} alt="" className="svg-menu-img-icon " />Jackpot</Link>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/app' ? 'active' : ''}`}>
-                                <a href="/app"
+                                <Link to="/app"
                                    title="Mobile App">
                                    <img src={MobileAppIcon} alt="" className="svg-menu-img-icon " />Mobile App
-                                </a>
+                                </Link>
                             </MenuItem>
 
                             <MenuItem className={`${pathname === '/livescore' ? 'active' : ''}`}>
-                                <a href="/livescore"
+                                <Link to="/livescore"
                                    title="Live Score">
                                    <img style={{opacity:"0.5", height:"15px", padding:"0px 5px"}} src={CircleSvg} alt="" className="svg-menu-img-icon " />Live Score
-                                </a>
+                                </Link>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/help' ? 'active' : ''}`}>
-                                <a href="/help"
+                                <Link to="/help"
                                    title="Jinsi Ya Kucheza">
                                    <img src={HOWToPlayIcon} alt="" className="svg-menu-img-icon " />Jinsi Ya Kucheza
-                                   </a>
+                                   </Link>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/deposit' ? 'active' : ''}`}>
-                                <a href="/deposit"
+                                <Link to="/deposit"
                                    title="DEPOSIT">
                                    <img src={DepositIcon} alt="" className="svg-menu-img-icon " />DEPOSIT
-                                </a>
+                                </Link>
                             </MenuItem>
                             <MenuItem className={`${pathname === '/lottery' ? 'active' : ''}`}>
                                 <a href="https://www.biko.co.tz/sw"
@@ -240,9 +240,9 @@ const Sidebar = (props) => {
                                           icon={<img
                                              src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
                                              style={{borderRadius: "10%", height: "15px"}}></img>}>
-                                   <a href={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}`}>
+                                   <Link to={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}`}>
                                         {top_league?.competition_name}
-                                    </a>
+                                    </Link>
                                 </MenuItem>
                             ))}
                         </SubMenu>
@@ -259,10 +259,10 @@ const Sidebar = (props) => {
                                      src={getSportImageIcon(country.flag_icon, 'img/flags-1-1')}
                                      />} key={index} >
 
-                                        <a href={`/competition/${country.sport_id}/${country.category_id}/all`}
+                                        <Link to={`/competition/${country.sport_id}/${country.category_id}/all`}
                                            onClick={() => setLocalStorage('active_item', country.sport_id)}>
                                             {country.category_name}
-                                        </a>
+                                        </Link>
                                 </MenuItem>
                              
                             ))}
@@ -285,10 +285,10 @@ const Sidebar = (props) => {
                                                          src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
                                                          />} key={countryKey} >
 
-                                                            <a href={`/competition/${competition.sport_id}/${country.category_id}/all`}
+                                                            <Link to={`/competition/${competition.sport_id}/${country.category_id}/all`}
                                                                onClick={() => setLocalStorage('active_item', competition.sport_id)}>
                                                                 {country.category_name}
-                                                            </a>
+                                                            </Link>
                                                 </MenuItem>
                                         ))}
                                         </PerfectScrollbar >

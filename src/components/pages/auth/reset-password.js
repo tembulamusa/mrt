@@ -3,10 +3,6 @@ import {Formik, Form} from 'formik';
 import makeRequest from "../../utils/fetch-request";
 import { useNavigate } from "react-router-dom";
 
-const Header = React.lazy(() => import('../../header/header'));
-const SideBar = React.lazy(() => import('../../sidebar/awesome/Sidebar'));
-const Right = React.lazy(() => import('../../right/index'));
-const Footer = React.lazy(() => import('../../footer/footer'));
 
 const ResetPassword = (props) => {
     const navigate = useNavigate();
@@ -258,26 +254,14 @@ const ResetPassword = (props) => {
 
     return (
         <React.Fragment>
-            <Header/>
-            <div className="amt">
-                <div className="d-flex flex-row justify-content-between">
-                    <div className="d-md-block d-none"><SideBar loadCompetitions /></div>
-                    <div className="gz home">
-                        <div className="homepage">
-                            <FormTitle/>
-                            <div className="col-md-12 mt-2 p-2">
-                                {message && <Alert/>}
-                                <div className="modal-body pb-0" data-backdrop="static">
-                                    <OptForm/>
-                                    <PasswordResetForm/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <Right/>
+            <FormTitle/>
+            <div className="col-md-12 mt-2 p-2">
+                {message && <Alert/>}
+                <div className="modal-body pb-0" data-backdrop="static">
+                    <OptForm/>
+                    <PasswordResetForm/>
                 </div>
             </div>
-            <Footer/>
         </React.Fragment>
     );
 }

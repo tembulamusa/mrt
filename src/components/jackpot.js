@@ -1,8 +1,5 @@
 import React, {useEffect, useCallback, useState, useContext} from "react";
 
-import Header from './header/header';
-import Footer from './footer/footer';
-import SideBar from './sidebar/awesome/Sidebar';
 import {JackpotMatchList, JackpotHeader} from './matches/index';
 import makeRequest from "./utils/fetch-request";
 import dailyJackpot from '../assets/img/banner/jackpots/DailyJackpot.png'
@@ -20,7 +17,6 @@ import {
 } from './utils/betslip';
 import {Context} from '../context/store';
 
-const Right = React.lazy(() => import('./right/index'));
 
 const Jackpot = (props) => {
     const [matches, setMatches] = useState(null);
@@ -37,7 +33,6 @@ const Jackpot = (props) => {
     const [state, dispatch] = useContext(Context);
     const [showAppBeslip, setShowAppBetslip] = useState(false);
     const [activeDTab, setActiveDTab] = useState("home");
-
 
     const fetchData = (jpType) => {
         (jpType ==='wjp'  && activeDTab === 'home')? setLoadingJp(true) :  setLoadingDj(true);
@@ -157,6 +152,11 @@ const Jackpot = (props) => {
             setShowAppBetslip(false);
        }
     }, [state?.jpbetpressed])
+
+    useEffect(() => {
+        dispatch({type: "SET", key: "jackpotpage", payload: true});         
+        dispatch({type: "SET", key: "jackpotmeta", payload: matches?.meta});         
+    }, [matches]);
 
     const JackpotsHeader = () => {
         return (
@@ -411,23 +411,7 @@ const Jackpot = (props) => {
 
     return (
         <>
-            <Header/>
-            <div className="amt">
-                <div className="d-flex flex-row justify-content-between">
-                    <div className="d-md-block d-none"><SideBar loadCompetitions/></div>
-                    <div className="gz home" style={{width: "100%"}}>
-                        <div className="homepage">
-                            <JackpotTabs jackpotData={matches?.meta}/>
-                            
-                        </div>
-                    </div>
-                   {  <Right 
-                        jackpot={true} 
-                       jackpotData={matches?.meta} 
-                       />}
-                </div>
-            </div>
-            <Footer/>
+            <JackpotTabs jackpotData={matches?.meta}/>
         </>
     )
 }

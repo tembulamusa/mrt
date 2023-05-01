@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import {Row, Col, Dropdown, Form} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import MarketFilter from "../filters/MarketFilter";
@@ -23,12 +23,12 @@ import {
 
 const MainTabs = (props) => {
     const {tab, fetching} = props;
+    console.log("Main tabs reading tabs", tab);
     const [sports, setSports] = useState();
     const [sportCategories, setSportCategories] = useState();
     const [competitions, setCompetitions] = useState();
     const [state, dispatch] = useContext(Context);
     const {sportid, categoryid, competitionid} = useParams();
-    const [activeTab, setActiveTab] = useState(tab);
 
     const getSportOptionLabel = (sport_name, showCaret=false) => {
         const sport_image = require(`../../assets/svg/${sport_name}.svg`); 
@@ -164,10 +164,6 @@ const MainTabs = (props) => {
 
     } 
 
-    const setActiveTabSpace = (tab) => {
-        dispatch({type:"SET", key:"active_tab", payload:tab});
-        setActiveTab(tab);
-    }
     const handleCategorySelect = (category) => {
         const spc = {
             category_id: category.category_id,
@@ -198,31 +194,39 @@ const MainTabs = (props) => {
         dispatch({type:"SET", key:"filtercompetition", payload:cspc});
         dispatch({type:"SET", key:"filtermenuclicked", payload:true});
     } 
-
+    
     return (
         <div>
             <div className="full-mobile filter-groups transparent-buttons">
 
                 <div className="filter-group-icon">
-                    <button className={`uppercase btn-secondary ${activeTab === 'highlights' && 'home-tab-active'}`} 
-                       onClick = {() => setActiveTabSpace('highlights')} ><div style={{display:"flex", marginLeft:"0px"}}><div style={{width:"20px", height:"20px", marginRight:"3px"}}><img src={MostLikedIcon} alt="" /> </div> <div>Mechi Kali</div></div></button>
+                    <Link  to="/highlights"className={`uppercase btn-secondary ${tab === 'highlights' && 'home-tab-active'}`} >
+                           <div style={{display:"flex", marginLeft:"0px"}}><div style={{width:"20px", height:"20px", marginRight:"3px"}}>
+                           <img src={MostLikedIcon} alt="" /> </div> <div>Mechi Kali </div></div>
+                   </Link>
                 </div>
                 <div className="filter-group-icon">
-                        <button className={`uppercase btn-secondary ${activeTab === 'today' && 'home-tab-active'}`} 
-                            onClick ={() => setActiveTabSpace('today')}>Mechi Za Leo</button>
+                        <Link to ="/upcoming" className={`uppercase btn-secondary ${tab === 'upcoming' && 'home-tab-active'}`} 
+                            >Mechi Za Leo 
+                       </Link>
                 </div>
                 <div className="filter-group-icon">
-                        <button className={`uppercase btn-secondary ${activeTab === 'tomorrow' && 'home-tab-active'}`}
-                            onClick={() => setActiveTabSpace('tomorrow')}>Mechi zijazo</button>
+                        <Link to="/tomorrow" className={`uppercase btn-secondary ${tab === 'tomorrow' && 'home-tab-active'}`}
+                            >Mechi zijazo 
+                      </Link>
                 </div>
                 
                 <div className="filter-group-icon live-icon">
-                        <a style={{color:"red"}} href="/live" className={`uppercase btn-secondary ${activeTab === 'live' && 'home-tab-active'}`} style={{padding:"0"}}
-                            onClick={() => setActiveTabSpace('live')}><div style={{display:"flex", marginLeft:"5px", color:"red"}}><div style={{width:"20px", height:"20px", marginRight:"5px"}}><img src={LiveIcon} alt="" /></div> <div>Live Now</div></div></a>
+                        <Link style={{color:"red"}} to="/live" className={`uppercase btn-secondary ${tab === 'live' && 'home-tab-active'}`} style={{padding:"0", display:"block", paddingRight:"10px"}}
+                            >
+                               <div style={{display:"flex", marginLeft:"5px", color:"red"}}>
+                                <div style={{width:"20px", height:"20px", marginRight:"5px"}}>
+                                  <img src={LiveIcon} alt="" />
+                               </div> 
+                             <div>Live Now</div>
+                         </div>
+                     </Link>
                 </div>
-
-                  
-                
             </div>
         </div>
     )

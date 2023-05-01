@@ -3,7 +3,7 @@ import React, {
     useEffect, 
     useCallback, 
     useState, 
-    useRef
+    useRef,
 } from "react";
 
 import {useLocation, useParams, useSearchParams} from 'react-router-dom';
@@ -14,17 +14,16 @@ import useInterval from "../hooks/set-interval.hook";
 import {Spinner} from "react-bootstrap";
 // import WorldCupModal from './world_cup_modal' ;
 
-const Header = React.lazy(() => import('./header/header'));
-const Footer = React.lazy(() => import('./footer/footer'));
-// const SideBar = React.lazy(()=>import('./sidebar/sidebar'));
-const CarouselLoader = React.lazy(() => import('./carousel/index'));
-const MainTabs = React.lazy(() => import('./header/main-tabs'));
-const MatchList = React.lazy(() => import('./matches/index'));
-const Right = React.lazy(() => import('./right/index'));
-const SideBar = React.lazy(() => import('./sidebar/awesome/Sidebar'))
+// import SideBar from './sidebar/sidebar';
+import CarouselLoader from './carousel/index';
+import MainTabs from './header/main-tabs';
+import MatchList from './matches/index';
+import { ShimmerTable } from "react-shimmer-effects";
 
 
 const Index = (props) => {
+    const { tab } = props;
+    console.log("Called with tab params ", tab);
     const location = useLocation();
     const {id, sportid, categoryid, competitionid } = useParams();
     const [matches, setMatches] = useState([]);
@@ -32,14 +31,13 @@ const Index = (props) => {
     const [producerDown, setProducerDown] = useState(false);
     const [threeWay, setThreeWay] = useState(false);
     const [page, setPage] = useState(1);
-    const [userSlipsValidation, setUserSlipsValidation] = useState();
     const [state, dispatch] = useContext(Context);
     const [fetching, setFetching] = useState(false)
-    const homePageRef = useRef()
     const [subTypes, setSubTypes] = useState("1,18,29");
-    const [currentTab, setCurrentTab] =useState('highlights');
+    const [currentTab, setCurrentTab] =useState();
     const [searchParams, setSearchParams] = useSearchParams();
 
+    //console.log("State are in index", state);
     const findPostableSlip = () => {
         let betslips = getBetslip() || {};
         var values = Object.keys(betslips).map(function (key) {
@@ -75,14 +73,15 @@ const Index = (props) => {
         
         endpoint += "&tab=" + currentTab;
         //endpoint = endpoint.replaceAll(" ", '')
-
         endpoint += `&sub_type_id=` + subTypes;
+        console.log("Poiling matches for ", endpoint);
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
                 setMatches(matches?.length > 0 ? {...matches, ...result?.data} : result?.data || result)
+                console.log("Fund results from call ", result?.data)
                 setFetching(false)
                 if (result?.slip_data) {
-                    setUserSlipsValidation(result?.slip_data)
+                    dispatch({type: "SET", key: "betslipvalidationdata", payload: result?.slip_data});
                 }
                 setProducerDown(result?.producer_status === 1);
             }
@@ -94,36 +93,21 @@ const Index = (props) => {
       fetchData();
     }, 20000); 
 
+    useEffect(() => {
+        console.log("Received active tab based on props ", tab);
+        if(tab) {
+            dispatch({type: "SET", key: "active_tab", payload: tab});
+        }
+    }, [ tab])
 
     useEffect(() => {
-        fetchData();
-    }, [
-        state?.filtersport, 
-        state?.filtercategory, 
-        state?.filtercompetition, 
-        state?.active_tab, 
-    ]
-    )
-
-    useEffect(() => {
-        let t = searchParams.get('tab');
-
+        console.log("Received active tab ", state?.active_tab);
         if(state?.active_tab) {
             setCurrentTab(state?.active_tab);
-        } else if (t) {
-            dispatch({type: "SET", key: "active_tab", payload: t});
-            setCurrentTab(t);
         }
+    }, [ state?.active_tab])
 
-        if(state?.selectedmarkets){ 
-            setSubTypes(state.selectedmarkets);
-        } 
-
-        if(state?.categories) {
-            let spid = Number(sportid || 79);
-            let sp = state.categories.all_sports.find((sport) => sport.sport_id === spid);
-            setSubTypes(state?.selectedmarkets || sp.default_display_markets);
-        } 
+    useEffect(() => {
         let cachedSlips = getBetslip("betslip");
         if (cachedSlips) {
             dispatch({type: "SET", key: "betslip", payload: cachedSlips});
@@ -134,8 +118,11 @@ const Index = (props) => {
     }, []);
 
     useEffect(() => {
+        console.log("Calling fetchdata again")
+        setMatches(null);
+        setFetching(false);
         fetchData();
-    }, [subTypes]);
+    }, [state?.active_tab]);
 
     useEffect(() => {
         checkThreeWay()
@@ -164,32 +151,17 @@ const Index = (props) => {
 
     return (
         <>
-            <Header/>
-            <div className="amt">
-                <div className="d-flex flex-row justify-content-between">
-                    <div className="d-md-block d-none"><SideBar loadCompetitions/></div>
-                    <div className="gz home" style={{width: '100%'}}>
-                        <div className="homepage" ref={homePageRef}>
-                            <CarouselLoader/>
-                            <MainTabs tab={currentTab} />
-                            {/* <MobileCategories/> */}
-                            <MatchList
-                                live={false}
-                                matches={matches}
-                                pdown={producerDown}
-                                three_way={threeWay}
-                                fetching={fetching}
-                                subTypes={subTypes}
-                            />
-                        </div>
-                        <div className={`text-center mt-2 text-white ${fetching ? 'd-block' : 'd-none'}`}>
-                            <Spinner animation={'grow'} size={'lg'}/>
-                        </div>
-                    </div>
-                    <Right betslipValidationData={userSlipsValidation}/>
-                </div>
-            </div>
-            <Footer/>
+            <CarouselLoader/>
+            <MainTabs tab={currentTab} />
+            {!matches && <ShimmerTable row={5} col={5} /> }
+            <MatchList
+                live={false}
+                matches={matches}
+                pdown={producerDown}
+                three_way={threeWay}
+                fetching={fetching}
+                subTypes={subTypes}
+            />
         </>
     )
 }

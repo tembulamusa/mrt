@@ -1,5 +1,6 @@
 // import React, {useContext, useEffect, useCallback, useState, useRef} from "react";
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
 
 const MobileLogin = (props) => {
 
@@ -7,9 +8,9 @@ const MobileLogin = (props) => {
     	<>
     	<div className="right-text reg-login" style={{padding: '20px'}}>
 
-    	<a href="/login" className="bold white-text" style={{paddingRight: '20px', color:'#ffffff'}}>LOGIN</a>
+    	    <Link to="/login" className="bold white-text" style={{paddingRight: '20px', color:'#ffffff'}}>LOGIN</Link>
     	
-    		<a className="cg login-button signup-btn btn" href="/signup">REGISTER</a>
+    		<Link className="cg login-button signup-btn btn" to="/signup">REGISTER</Link>
     	</div>
     	</>
 	)

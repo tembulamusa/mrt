@@ -2,18 +2,17 @@ import React, {useContext, useLayoutEffect, useEffect, useCallback, useState, us
 import {useLocation, useParams} from 'react-router-dom';
 import makeRequest from './utils/fetch-request';
 import {getJackpotBetslip, getBetslip} from './utils/betslip' ;
+import MainTabs from './header/main-tabs';
 
 import matches from "./utils/fetch-request";
 import useInterval from "../hooks/set-interval.hook";
 import {Context} from '../context/store';
 
-const Header = React.lazy(() => import('./header/header'));
-const Footer = React.lazy(() => import('./footer/footer'));
-const LiveSideBar = React.lazy(() => import('./sidebar/live-sidebar'));
-const CarouselLoader = React.lazy(() => import('./carousel/index'));
-const SearchBar = React.lazy(() => import('./header/search-bar'));
-const MatchList = React.lazy(() => import('./matches/index'));
-const Right = React.lazy(() => import('./right/index'));
+import LiveSideBar from './sidebar/live-sidebar';
+import CarouselLoader from './carousel/index';
+import SearchBar from './header/search-bar';
+import MatchList from './matches/index';
+import { ShimmerTable } from "react-shimmer-effects";
 
 
 const Live = (props) => {
@@ -101,20 +100,10 @@ const Live = (props) => {
 
     return (
         <>
-            <Header/>
-            <div className="amt">
-                <div className="d-flex flex-row justify-content-between">
-                    <LiveSideBar/>
-                    <div className="gz home" style={{width:"100%"}}>
-                        <div className="homepage">
-                            <CarouselLoader />
-                            {matches && <MatchList live matches={matches} pdown={producerDown} subTypes={subTypes} three_way={threeWay}/>}
-                        </div>
-                    </div>
-                    <Right betslipValidationData={userSlipsValidation}/>
-                </div>
-            </div>
-            <Footer/>
+            <CarouselLoader />
+            <MainTabs tab={"live"} />
+            {!matches && <ShimmerTable row={5} col={5} /> }
+            {matches && <MatchList live matches={matches} pdown={producerDown} subTypes={subTypes} three_way={threeWay}/>}
         </>
     )
 }

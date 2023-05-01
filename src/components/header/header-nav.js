@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState, useRef} from 'react';
+import { Link } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import {Context} from '../../context/store';
@@ -76,24 +77,25 @@ const HeaderNav = (props) => {
                 <ListGroup as="ul" xs="12" horizontal className="nav navbar-nav og d-flex ale ss  col-lg-12 col-md-12 col-sm-12 change-display">
                     
                     <li className={pathname === '/' ? "active" : ''}>
-                        <a className="cg fm ox anl url-link not-selectable " href="/" title="Home"><img src={HomeIcon} alt=""  className="svg-menu-img-icon hide1" /> Home</a>
+                        <Link className="cg fm ox anl url-link not-selectable " to="/" title="Home">
+                        <img src={HomeIcon} alt=""  className="svg-menu-img-icon hide1" /> Home</Link>
                     </li>
                     <li>
-                        <a className={`g url-link live-game ${pathname === '/live' ? 'active' : ''}`} href="/live"
-                           title="Live"><img src={LiveIcon} alt="" className="svg-menu-img-icon hide1" />Live</a>
+                        <Link className={`g url-link live-game ${pathname === '/live' ? 'active' : ''}`} to="/live"
+                           title="Live"><img src={LiveIcon} alt="" className="svg-menu-img-icon hide1" />Live</Link>
                     </li>
 
                     <li className={pathname === '/jackpot' ? 'active' : ''}>
-                        <a className="cg fm ox anl url-link" href="/jackpot" title="Jackpot">
+                        <Link className="cg fm ox anl url-link" to="/jackpot" title="Jackpot">
                             <img src={JackpotIcon} alt="" className="svg-menu-img-icon hide1" /> Jackpot
-                        </a>
+                        </Link>
                     </li>
                     <li className={pathname === '/app' ? 'active' : ''}>
-                        <a className="g url-link" href="/app" title="App">
+                        <Link className="g url-link" to="/app" title="App">
                             <span>
                                 <FontAwesomeIcon icon={faMobile} className="hide1"/> APP
                             </span>
-                        </a>
+                        </Link>
                     </li>
 
 
@@ -101,25 +103,25 @@ const HeaderNav = (props) => {
                        (
                            <>
                             <li className={pathname === '/virtuals/index' || pathname.includes("virtuals/index") ? 'active' : ''}>
-                                <a className="g url-link" href="/virtuals/index" title="Virtuals">
+                                <Link className="g url-link" to="/virtuals/index" title="Virtuals">
                                     <span >
                                         <FontAwesomeIcon icon={faLaptop} className="hide1"/> Virtuals
                                     </span>
-                                </a>
+                                </Link>
                             </li>
                             <li className={pathname === '/virtuals/casino' || pathname.includes("virtuals/casino") ? 'active' : ''}>
-                                <a className="g url-link" href="/virtuals/casino" title="Casino">
+                                <Link className="g url-link" to="/virtuals/casino" title="Casino">
                                     <span >
                                         <FontAwesomeIcon icon={faLaptop} className="hide1"/> Casino
                                     </span>
-                                </a>
+                                </Link>
                             </li>
                             <li className={pathname === '/livecasino' || pathname.includes("livecasino") ? 'active' : ''}>
-                                <a className="g url-link" href="/livecasino" title="Live Casino">
+                                <Link className="g url-link" to="/livecasino" title="Live Casino">
                                     <span >
                                         <FontAwesomeIcon icon={faLaptop} className="hide1"/> Live Casino
                                     </span>
-                                </a>
+                                </Link>
                             </li>
                         </> )
                    }
@@ -129,27 +131,27 @@ const HeaderNav = (props) => {
                     {/*    </a>*/}
                     {/*</li>*/}
                     <li className={pathname === '/promotions' || pathname.includes("promotions") ? 'active' : ''}>
-                        <a className="g url-link" href="/promotions" title="Promotions">
+                        <Link className="g url-link" to="/promotions" title="Promotions">
                             <img src={PromotionIcon} alt="" className="svg-menu-img-icon hide1" /> Promotions
-                        </a>
+                        </Link>
                     </li>
 
                     <li className={pathname === '/print-matches' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
-                        <a className="g url-link fix-print" href="/print-matches" title="Print Matches">
+                        <Link className="g url-link fix-print" to="/print-matches" title="Print Matches">
                             <span className=" space-icons hide1"><FontAwesomeIcon icon={faPrint}/> </span>Print Matches
-                        </a>
+                        </Link>
                     </li>
 
 
                     {/*Livescore*/}
 
                     <li className={pathname === '/livescore' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
-                        <a className="g url-link" href="https://goinglive.bikosports.co.tz/livescore"
+                        <Link className="g url-link" to="/livescore"
                            title="Live Score" target="_blank">
                             <span>
                                 <FontAwesomeIcon icon={faInfo}/> Live Score
                             </span>
-                        </a>
+                        </Link>
                     </li>
                     
                     {/*SMS Lottery*/}
@@ -183,9 +185,9 @@ const HeaderNav = (props) => {
                         </a>
                     </li>
                     <li className={pathname === '/how-to-play' ? 'active' : ''}>
-                        <a className="cg fm ox anl url-link not-selectable" href="/how-to-play" title="How to play">
+                        <Link className="cg fm ox anl url-link not-selectable" to="/how-to-play" title="How to play">
                             <span className=" space-icons"><FontAwesomeIcon icon={faQuestionCircle}/> </span> <span className={'hide2'}>Jinsi Ya Kucheza</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className={""}>
                         <a className="g url-link fix-display" href="#" title="Current Time">
@@ -212,11 +214,11 @@ const HeaderNav = (props) => {
                     <div
                         className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
                         {matches.map((match, index) => (
-                            <a href={`/?search=${match.home_team}`} key={index}>
+                            <Link href={`/?search=${match.home_team}`} key={index}>
                                 <li style={{borderBottom: "1px solid #eee"}}>
                                     {match.home_team}
                                 </li>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </ListGroup>

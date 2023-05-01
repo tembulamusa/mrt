@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext, useCallback, useMemo, useRef} from 'react';
 import {Context} from '../../context/store';
+import hash from 'object-hash';
 import {
     removeFromSlip,
     getBetslip,
@@ -331,16 +332,6 @@ const BetslipSubmitForm = (props) => {
                     setLocalStorage('old_betslip', current_betslip, 1*60*60*1000);
                     setShowMoreOptions(true);
 
-                  /* setTimeout(
-                        function(){
-                            removeItem("old_betslip");
-                            setShowMoreOptions(false);
-                            setBetslipsData(null);
-                            setMessage(null)
-                        }, 
-
-                    60000); */
-
                     if (jackpot) {
                         setShowMoreOptions(false);
                         clearJackpotSlip();
@@ -348,7 +339,10 @@ const BetslipSubmitForm = (props) => {
                         clearSlip();    
                     } 
                     setBetslipsData(null);
+                    var _hash = hash(payload);
                     dispatch({type: "SET", key: jackpot ? 'jackpotbetslip' : 'betslip', payload: {}});
+                    dispatch({type: "SET", key: "refreshbalance", payload: _hash});
+                    console.log("Thsis is my hash", _hash)
                 } else {
                     let qmessage = {
                         status: status,

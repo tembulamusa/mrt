@@ -2,6 +2,7 @@ import React,  {
     useLayoutEffect, 
     useState,
     useCallback,
+    useContext,
 } from "react";
 import { useParams } from 'react-router-dom';
 
@@ -9,13 +10,10 @@ import { useParams } from 'react-router-dom';
 import makeRequest from "./utils/fetch-request";
 import useInterval from "../hooks/set-interval.hook";
 import { getBetslip } from './utils/betslip' ;
+import {Context} from '../context/store';
 
 import { MarketList, LiveMatchTracker } from './matches/index';
 
-const Header = React.lazy(()=>import('./header/header'));
-const Footer = React.lazy(()=>import('./footer/footer'));
-const SideBar = React.lazy(()=>import('./sidebar/awesome/Sidebar'));
-const Right = React.lazy(()=>import('./right/index'));
 
 const MatchAllMarkets = (props) => {
     const [page, setPage] = useState(1);
@@ -27,6 +25,7 @@ const MatchAllMarkets = (props) => {
     const params = useParams();
     const [isLoading, setIsLoading] = useState(false);
     const [hideLocalHeader, setHideLocalHeader] = useState(false);
+    const [, dispatch] = useContext(Context);
 
     const findPostableSlip = () => {
         let betslips = getBetslip() || {};
@@ -49,7 +48,7 @@ const MatchAllMarkets = (props) => {
 			    setMatchWithMarkets(api_response );
             }
             if(response?.slip_data) {
-                setUserSlipsValidation(response?.slip_data);
+                dispatch({type: "SET", key: "betslipvalidationdata", payload: response?.slip_data});
             }
             setProducerDown(response?.producer_status === 1);
 		});                                                                     
@@ -82,24 +81,12 @@ const MatchAllMarkets = (props) => {
 
    return (
        <>
-        <Header />
-           <div className="amt">
-               <div className="d-flex flex-row justify-content-between">
-                   <div className="d-md-block d-none"><SideBar loadCompetitions /></div>
-                   <div className="gz home"  style={{width:'100%'}}>
-                       <div className="homepage">
-                     <LiveMatchTracker matchid={matchwithmarkets?.data?.match?.parent_match_id} setHideLocalHeader = {setHideLocalHeader}/>
-                    <MarketList live={live}  
-                        matchwithmarkets={matchwithmarkets} 
-                        pdown={producerDown} 
-                        hideLocalHeader={hideLocalHeader}
-                     />
-                </div> 
-            </div>  
-            <Right betslipValidationData={userSlipsValidation} />
-          </div>
-        </div>
-       <Footer />
+         <LiveMatchTracker matchid={matchwithmarkets?.data?.match?.parent_match_id} setHideLocalHeader = {setHideLocalHeader}/>
+        <MarketList live={live}  
+            matchwithmarkets={matchwithmarkets} 
+            pdown={producerDown} 
+            hideLocalHeader={hideLocalHeader}
+         />
        </>
    )
 }

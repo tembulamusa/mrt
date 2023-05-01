@@ -6,11 +6,7 @@ import mpesa from '../../../assets/img/mpesa.png'
 import {Context} from '../../../context/store';
 import {getBetslip} from '../../utils/betslip'
 
-const Header = React.lazy(() => import('../../header/header'));
-const Footer = React.lazy(() => import('../../footer/footer'));
-const SideBar = React.lazy(() => import('../../sidebar/awesome/Sidebar'));
-const Right = React.lazy(() => import('../../right/index'));
-const DirectDeposit = React.lazy(() => import('./DirectDeposit'));
+import DirectDeposit from './DirectDeposit';
 
 
 const Deposit = (props) => {
@@ -181,27 +177,15 @@ const Deposit = (props) => {
 
     return (
         <React.Fragment>
-            <Header/>
-            <div className="amt">
-                <div className="d-flex flex-row justify-content-between">
-                   <div className="d-md-block d-none"> <SideBar loadCompetitions/></div>
-                    <div className="gz home" style={{width: '100%'}}>
-                        <div className="homepage">
-                            <FormTitle/>
-                            <div className="col-md-12 mt-2  p-2">
-                                <Alert/>
-                                <div className="modal-body pb-0" data-backdrop="static">
-                                    <DepositForm/>
-                                    <DirectDeposit />
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <Right/>
+            <FormTitle/>
+            <div className="col-md-12 mt-2  p-2">
+                <Alert/>
+                <div className="modal-body pb-0" data-backdrop="static">
+                    <DepositForm/>
+                    <DirectDeposit />
                 </div>
+
             </div>
-            <Footer/>
         </React.Fragment>
     )
 

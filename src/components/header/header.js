@@ -1,5 +1,5 @@
-import React, {useEffect, useCallback, useState, useContext, useRef} from 'react';
-import {useNavigate, useSearchParams} from "react-router-dom"
+import React, {useEffect, useCallback, useState, useContext, useRef, Suspense} from 'react';
+import {useNavigate, useSearchParams, Link} from "react-router-dom"
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -44,7 +44,6 @@ const Header = (props) => {
     const [state, dispatch] = useContext(Context);
     const history = useNavigate();
     const containerRef = useRef();
-    const {current} = containerRef;
     const pathname = window.location.pathname;
     const [searching, setSearching] = useState(false)
     const [matches, setMatches] = useState([])
@@ -81,7 +80,6 @@ const Header = (props) => {
 
     const showSearchBar = () => {
         setSearching(true)
-        // searchInputRef.current.focus()
     }
 
     const dismissSearch = () => {
@@ -102,6 +100,7 @@ const Header = (props) => {
         />
     };
     const updateUserOnHistory = useCallback(() => {
+        console.log("Attempting to update user balance on updateUserOnHistory" );
         if (!user) {
             return false;
         }
@@ -111,41 +110,31 @@ const Header = (props) => {
         }
         makeRequest({url: endpoint, method: "post", data: udata}).then(([_status, response]) => {
             if (_status == 200) {
+                console.log("Received balance ", response)
                 let u = {...user, ...response.user};
+                dispatch({type: "SET", key: "user", payload: u});
                 setLocalStorage('user', u);
                 setUser(u)
-                dispatch({type: "SET", key: "user", payload: user});
             }
         });
 
-    }, [current]);
-
-    const updateUserOnLogin = useCallback(() => {
-        dispatch({type: "SET", key: "user", payload: user});
-    }, [user?.msisdn, user?.balance]);
+    }, [state?.refreshbalance]);
 
 
     useEffect(() => {
         updateUserOnHistory()
     }, [updateUserOnHistory])
 
-
     useEffect(() => {
-        updateUserOnLogin()
-    }, [updateUserOnLogin])
-
-
-    useEffect(() => {
-        if(state?.user){
-           setUser(state?.user);
-           setLocalStorage('user', state?.user);
-        }
+       console.log("Header reading changed user", state?.user); 
+       setUser(state?.user);
+       setLocalStorage('user', state?.user);
     
     }, [state?.user])
 
     const expand = "md"
     return (
-        <>
+        <Suspense fallback={<div></div>} >
             <Navbar expand="md" className="mb-0 ck pc os app-navbar top-nav" fixed="top" variant="dark">
                 <div className={'d-flex justify-content-between mobile-change container-fluid'}>
                     <Row style={{width: "100%",}} className="mobile-row-custom-full">
@@ -157,7 +146,7 @@ const Header = (props) => {
                     </div>
 
                     <div className="col-3">
-                        <Navbar.Brand href="/" className="e logo align-self-start co4" title="Bikosports">
+                        <Navbar.Brand as={Link} to="/" className="e logo align-self-start co4" title="Bikosports">
                             <div className="">
                                 <div>
                                     <LazyLoadImage src={logo2} alt="Bikosports" title="Bikosports" effects="blur"/>
@@ -178,11 +167,11 @@ const Header = (props) => {
                                     <div
                                         className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
                                         {matches.map((match, index) => (
-                                            <a href={`/?tab=upcoming&search=${match.home_team}`} key={index}>
+                                            <Link href={`/?tab=upcoming&search=${match.home_team}`} key={index}>
                                                 <li style={{borderBottom: "1px solid #eee"}}>
                                                     {match.home_team}
                                                 </li>
-                                            </a>
+                                            </Link>
                                         ))}
                                     </div>
                             </div>
@@ -191,8 +180,8 @@ const Header = (props) => {
                             <div className="col-sm-12 col-md-5 disable-ipd d-md-block">
                                 {user ? <ProfileMenu user={user}/> : 
                                 <div className="top-login float-end">
-                                <a href="/login" className="cg login-button btn width-auto">LOGIN</a>
-                                <a href="/signup" className="cg btn btn-primary width-auto">REGISTER</a>
+                                <Link to="/login" className="cg login-button btn width-auto">LOGIN</Link>
+                                <Link to="/signup" className="cg btn btn-primary width-auto">REGISTER</Link>
                                 </div>}
                             </div>
                             {/*For the mobile*/}
@@ -245,7 +234,7 @@ const Header = (props) => {
 
           <ShareModal shown={state?.showsharemodal === true} />
 
-        </>
+        </Suspense>
 
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link, NavLink} from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { FaBars, FaUserAlt, FaUser } from "react-icons/fa";
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -29,16 +30,19 @@ const HeaderMenuToggle = (props) => {
 
         {user && 
             <>
-                <Dropdown.Item href="/my-bets"><img style={{width:"15px", marginRight:"10px"}} src={mybetsIcon} alt="" />MY BETS</Dropdown.Item>
-                <Dropdown.Item href="/deposit" ><img style={{width:"15px", marginRight:"10px"}} src={depositIcon} alt="" />DEPOSIT</Dropdown.Item>
-                <Dropdown.Item href="/withdraw"><img style={{width:"15px", marginRight:"10px"}} src={withdrawIcon} alt="" />WITHDRAW</Dropdown.Item>          
-                <Dropdown.Item href="/transactions"><img style={{width:"15px", marginRight:"10px"}} src={transactionsIcon} alt="" />TRANSACTIONS</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/my-bets" ><img style={{width:"15px", marginRight:"10px"}} src={mybetsIcon} alt="" />MY BETS</Dropdown.Item>
+                <Dropdown.Item   as={Link} to="/deposit"><img style={{width:"15px", marginRight:"10px"}} src={depositIcon} alt="" />DEPOSIT</Dropdown.Item>
+                <Dropdown.Item  as={Link} to="/withdraw"><img style={{width:"15px", marginRight:"10px"}} src={withdrawIcon} alt="" />WITHDRAW</Dropdown.Item>   
+                <Dropdown.Item  as={Link} to="/transactions"><img style={{width:"15px", marginRight:"10px"}} src={transactionsIcon} alt="" />TRANSACTIONS</Dropdown.Item>
             </>
         }
 
-        <Dropdown.Item href="/app"><img style={{width:"15px", marginRight:"10px"}} src={appIcon} alt="" />DOWNLOAD APP</Dropdown.Item>
-        <Dropdown.Item href="/help"><img style={{width:"15px", marginRight:"10px"}} src={helpIcon} alt="" />HELP</Dropdown.Item>
-        {user?<Dropdown.Item href="/logout"><img style={{width:"15px", marginRight:"10px"}} src={logoutIcon} alt="" />LOGOUT</Dropdown.Item>:<Dropdown.Item href="/login"><img style={{width:"15px", marginRight:"10px"}} src={logoutIcon} alt="" />Login</Dropdown.Item>}
+        <Dropdown.Item  as={Link} to="/app"><img style={{width:"15px", marginRight:"10px"}} src={appIcon} alt="" />DOWNLOAD APP</Dropdown.Item>
+        <Dropdown.Item  as={Link} to="/help"><img style={{width:"15px", marginRight:"10px"}} src={helpIcon} alt="" />HELP</Dropdown.Item>
+        { user 
+            ? <Dropdown.Item  as={Link} to="/logout"><img style={{width:"15px", marginRight:"10px"}} src={logoutIcon} alt="" />LOGOUT</Dropdown.Item>
+            : <Dropdown.Item  as={Link} to="/login"><img style={{width:"15px", marginRight:"10px"}} src={logoutIcon} alt="" />LOGIN</Dropdown.Item>
+        }
       </Dropdown.Menu>
     </Dropdown>
     </>

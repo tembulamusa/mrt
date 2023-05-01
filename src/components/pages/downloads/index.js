@@ -6,10 +6,6 @@ import Select from 'react-select'
 import {Card, Tab, Tabs} from "react-bootstrap";
 import {formatNumber} from "../../utils/betslip";
 
-const Header = React.lazy(() => import('../../header/header'));
-const SideBar = React.lazy(() => import('../../sidebar/awesome/Sidebar'));
-const Footer = React.lazy(() => import('../../footer/footer'));
-const Right = React.lazy(() => import('../../right/index'));
 
 export default function MatchesList() {
     const [matches, setMatches] = useState([]);
@@ -92,62 +88,50 @@ export default function MatchesList() {
 
     return (
         <>
-            <Header/>
-            <div className="amt">
-                <div className="d-flex flex-row justify-content-between">
-                    <SideBar loadCompetitions/>
-                    <div className="gz home" style={{width:"100%"}}>
-                        <div className="homepage">
-                            <div className='col-md-12 primary-bg p-4 text-center'>
-                                <h4 className="inline-block">
-                                    <span className="fa fa-chevron-left"></span>
-                                    DOWNLOAD MATCHES
-                                </h4>
-                            </div>
-                            <div className="col-md-12 text-center vh-100">
-                                <Tabs
-                                    variant={'tabs'}
-                                    defaultActiveKey="matches"
-                                    onSelect={(k) => fetchActiveTabMatches(k)}
-                                    className="background-primary"
-                                    justify>
-                                    <Tab eventKey="matches" title="Grab your favorite games in printable format here. Bikosports provides the the best competitie odds for you to take advantage of in all areas of betting" className={'background-primary shadow p-5'}
-                                         style={{}}>
-                                        <div className="col-md-12 d-flex flex-column p-2">
-        {/* <div className="col-md-12 text-start p-2">
-                                                <label htmlFor="" className={''}>Select Section</label>
-                                                <Select options={sectionOptions}
-                                                        value={sectionOptions.filter(obj => obj.value === section)}
-                                                        onChange={handleSectionChange}/>
-                                            </div> */}
-                                            <div className="col-md-12 text-start p-2">
-                                                <label htmlFor="" className={''}>Select Number of Games</label>
-                                                <Select options={totalEventOptions}
-                                                        value={totalEventOptions.filter(obj => obj.value === events)}
-                                                        onChange={handleEventsChange}/>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-12 mt-5 text-start">
-                                            <PDFDownloadLink
-                                                className={`btn login-button text-white btn-lg col-1 ${loaded ? '' : 'disabled'}`}
-                                                style={{width: "150px", border: "none", padding: "3px", marginLeft:"10px"}}
-                                                document={<PdfDocument matches={matches} jackpot={isJackpot}
-                                                                       title={title}/>}
-                                                fileName="matches.pdf">
-                                                {({blob, url, loading, error}) =>
-                                                    loading ? "Preparing Document..." : "Download Matches"
-                                                }
-                                            </PDFDownloadLink>
-                                        </div>
-                                    </Tab>
-                                </Tabs>
+            <div className='col-md-12 primary-bg p-4 text-center'>
+                <h4 className="inline-block">
+                    <span className="fa fa-chevron-left"></span>
+                    DOWNLOAD MATCHES
+                </h4>
+            </div>
+            <div className="col-md-12 text-center vh-100">
+                <Tabs
+                    variant={'tabs'}
+                    defaultActiveKey="matches"
+                    onSelect={(k) => fetchActiveTabMatches(k)}
+                    className="background-primary"
+                    justify>
+                    <Tab eventKey="matches" title="Grab your favorite games in printable format here. Bikosports provides the the best competitie odds for you to take advantage of in all areas of betting" className={'background-primary shadow p-5'}
+                         style={{}}>
+                        <div className="col-md-12 d-flex flex-column p-2">
+{/* <div className="col-md-12 text-start p-2">
+                                <label htmlFor="" className={''}>Select Section</label>
+                                <Select options={sectionOptions}
+                                        value={sectionOptions.filter(obj => obj.value === section)}
+                                        onChange={handleSectionChange}/>
+                            </div> */}
+                            <div className="col-md-12 text-start p-2">
+                                <label htmlFor="" className={''}>Select Number of Games</label>
+                                <Select options={totalEventOptions}
+                                        value={totalEventOptions.filter(obj => obj.value === events)}
+                                        onChange={handleEventsChange}/>
                             </div>
                         </div>
-                    </div>
-                    <Right/>
-                </div>
+                        <div className="col-md-12 mt-5 text-start">
+                            <PDFDownloadLink
+                                className={`btn login-button text-white btn-lg col-1 ${loaded ? '' : 'disabled'}`}
+                                style={{width: "150px", border: "none", padding: "3px", marginLeft:"10px"}}
+                                document={<PdfDocument matches={matches} jackpot={isJackpot}
+                                                       title={title}/>}
+                                fileName="matches.pdf">
+                                {({blob, url, loading, error}) =>
+                                    loading ? "Preparing Document..." : "Download Matches"
+                                }
+                            </PDFDownloadLink>
+                        </div>
+                    </Tab>
+                </Tabs>
             </div>
-            <Footer/>
         </>
     )
 }

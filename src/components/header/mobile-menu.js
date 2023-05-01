@@ -24,8 +24,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import makeRequest from "../utils/fetch-request";
 
-const HeaderMenuToggle = React.lazy(() => import('./menu-toggle'));
-const MobileToggleMkts = React.lazy(() => import('./mobile-toggle-markets'));
+import HeaderMenuToggle from './menu-toggle';
+import MobileToggleMkts from './mobile-toggle-markets';
 
 const MobileMenu = (props) => {
   const { user } = props;

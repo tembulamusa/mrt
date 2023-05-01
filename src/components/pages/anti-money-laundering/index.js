@@ -7,51 +7,40 @@ import {
     AccordionItemPanel,
 } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
-const Header = React.lazy(()=>import('../../header/header'));
-const Footer = React.lazy(()=>import('../../footer/footer'));
-const Right = React.lazy(()=>import('../../right/index'));
-const SideBar = React.lazy(()=>import('../../sidebar/awesome/Sidebar'));
 
 const AntiMoneyLaundering = () => {
     return (
         <>
-            <Header/>
-            <div className="amt">
-                <div className="d-flex flex-row justify-content-between">
-                    <SideBar loadCompetitions/>
-                    <div className="gz home">
-                        <div className="homepage">
-       
-<div className='col-md-12 primary-bg p-4'>          
+        <div className='col-md-12 primary-bg p-4'>          
         <h4 className="inline-block">                   
-            ANTI-MONEY LAUNDERING POLICY               
+        ANTI-MONEY LAUNDERING POLICY               
         </h4>                                           
-    </div>                                              
-    <div className="col-md-12 p-5"> 
+        </div>                                              
+        <div className="col-md-12 p-5"> 
 
-    <h1>Purpose</h1>
-    <p>The purpose of this policy is to prohibit and actively prevent money laundering and any activity that facilitates money laundering or the funding of terrorist or criminal activities within Bikosports by complying with all applicable requirements under the Proceeds of Crime and Anti-Money Laundering (Amendment) Act of Kenya, 2017 and its implementing regulations.</p>
+        <h1>Purpose</h1>
+        <p>The purpose of this policy is to prohibit and actively prevent money laundering and any activity that facilitates money laundering or the funding of terrorist or criminal activities within Bikosports by complying with all applicable requirements under the Proceeds of Crime and Anti-Money Laundering (Amendment) Act of Kenya, 2017 and its implementing regulations.</p>
 
-    <p>The scope of this process applies to all who use Bikosports ’s money remittance services as well as Bikosports ’s employees.</p>
+        <p>The scope of this process applies to all who use Bikosports ’s money remittance services as well as Bikosports ’s employees.</p>
 
-    <h1>Objectives</h1>
-    <p>The objectives of this AML policy include:</p>
-    <ol>
+        <h1>Objectives</h1>
+        <p>The objectives of this AML policy include:</p>
+        <ol>
         <li>1. Enable Bikosports to identify, assess, monitor, manage and mitigate the risks associated with money laundering and financing of terrorism.</li>
         <li>2. Create awareness to Bikosports ’s employees, clients and other stakeholders with regard to AML.</li>
         <li>Ensure compliance with Kenyan laws and regulations on AML.</li>
-    </ol>
-    <h1>Policies</h1>
-    <p><strong>Definition of Money Laundering</strong></p>
-    <p>a) Money laundering is generally defined as engaging in acts designed to conceal or disguise the true origins of criminally derived proceeds so that the proceeds appear to have derived from legitimate origins or constitute legitimate assets.</p>
-    <p>b) Terrorist financing may not involve the proceeds of criminal conduct, but rather an attempt to conceal either the origin of the funds or their intended use, which could be for criminal purposes.</p>
+        </ol>
+        <h1>Policies</h1>
+        <p><strong>Definition of Money Laundering</strong></p>
+        <p>a) Money laundering is generally defined as engaging in acts designed to conceal or disguise the true origins of criminally derived proceeds so that the proceeds appear to have derived from legitimate origins or constitute legitimate assets.</p>
+        <p>b) Terrorist financing may not involve the proceeds of criminal conduct, but rather an attempt to conceal either the origin of the funds or their intended use, which could be for criminal purposes.</p>
     <h1>Bikosports’s AML Approach</h1>
     <p>a) In order to ensure that Bikosports does not promote ML/TF activities, the company is keen to foster and promote the following culture of compliance including:</p>
     <ul>
     <li>Establishing a system of internal controls and policies and procedures to assure ongoing compliance with AML requirements; </li>
     <li>Ensuring independent testing of AML compliance, of a scope and frequency that matches the money laundering and terrorist financing risks present;</li>
     <li>Training staff, as warranted for individual jobs, in the identification of unusual financial transactions or suspicious activities, in the recording and aggregation of currency
-    transactions, and all legal requirements and Bikosports’s compliance policies and procedures; and </li>
+transactions, and all legal requirements and Bikosports’s compliance policies and procedures; and </li>
     <li>Designating an individual or individuals responsible for assuring day-to-day AML compliance within Bikosports.</li>
     <li>Carrying out regular monitoring and review exercises to ensure AML compliance</li>
     </ul>
@@ -73,7 +62,7 @@ const AntiMoneyLaundering = () => {
     <h1>KYC</h1>
 
     <p>a) Bikosports will endeavor to request and verify original identification documents from all its individual customers/suppliers before facilitating any registration, deposit or withdrawal
-    transactions.</p>
+transactions.</p>
     <p>b) Bikosports will endeavor to request and verify original registration documents from all its corporate customers before facilitating any registration, deposit or withdrawal transactions including but not limited to:</p>
     <p>
     • Certificate of registration or incorporation <br/>
@@ -96,16 +85,10 @@ const AntiMoneyLaundering = () => {
     <h1>Training and Awareness</h1>
     <p>a) Bikosports will regularly carry out regular training and awareness sessions to its employees and suppliers with regard to AML.</p>
     <p>b) Bikosports will endeavor to inform potential and current clients, suppliers and stakeholders of its standpoint on AML.</p>
- 
-                         </div> 
-                        </div>
-                    </div>
-                    <Right/>
-                </div>
-            </div>
-            <Footer/>
-        </>
-    )
+
+    </div> 
+    </>
+)
 }
 
 export default AntiMoneyLaundering
