@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext, useCallback, useRef, useLayoutEffect} from 'react';
+import { Link } from 'react-router-dom';
 import {Context} from '../../context/store';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
@@ -319,14 +320,14 @@ const SideBets = (props) => {
         <div
             className={`events-odd pad ${picked} align-self-center more-markets-container m-lg-2`}>
             {(match?.side_bets> 1 || live) && <>
-                <a className="side" title={'More Markets'}
-                   href={`/match/${(live && !noOdds) ? 'live/' : ''}${
-                       (live && !noOdds ) ? match.parent_match_id : match?.pre_match_id}`
+                <Link className="side" title={'More Markets'}
+                   to={`/match/${(live && !noOdds) ? 'live/' : ''}${
+                       (live && !noOdds ) ? match.parent_match_id : match?.pre_match_id || match.match_id}`
                    }><span className="text-tertiary" style={{textAlign:"right"}}>{ (!noOdds && match?.side_bets > 1 ) && ` + ${match.side_bets}`} {noOdds && startsIn() }</span>
 
                  { (!noOdds && match?.side_bets) && <div className="normal-font-weight dark-text uppercase">More</div> }
 
-                </a>
+                </Link>
                 <a href={ `https://s5.sir.sportradar.com/betradar/en/match/${match?.parent_match_id}`} className="side stats" 
                      target={"_blank"} 
                     title="Stats" style={{padding:"10px 0px", fontSize:"16px"}} >
