@@ -342,7 +342,6 @@ const BetslipSubmitForm = (props) => {
                     var _hash = hash(payload);
                     dispatch({type: "SET", key: jackpot ? 'jackpotbetslip' : 'betslip', payload: {}});
                     dispatch({type: "SET", key: "refreshbalance", payload: _hash});
-                    console.log("Thsis is my hash", _hash)
                 } else {
                     let qmessage = {
                         status: status,

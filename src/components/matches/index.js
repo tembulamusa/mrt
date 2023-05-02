@@ -320,14 +320,14 @@ const SideBets = (props) => {
         <div
             className={`events-odd pad ${picked} align-self-center more-markets-container m-lg-2`}>
             {(match?.side_bets> 1 || live) && <>
-                <Link className="side" title={'More Markets'}
-                   to={`/match/${(live && !noOdds) ? 'live/' : ''}${
+                <a className="side" title={'More Markets'}
+                   href={`/match/${(live && !noOdds) ? 'live/' : ''}${
                        (live && !noOdds ) ? match.parent_match_id : match?.pre_match_id || match.match_id}`
                    }><span className="text-tertiary" style={{textAlign:"right"}}>{ (!noOdds && match?.side_bets > 1 ) && ` + ${match.side_bets}`} {noOdds && startsIn() }</span>
 
                  { (!noOdds && match?.side_bets) && <div className="normal-font-weight dark-text uppercase">More</div> }
 
-                </Link>
+                </a>
                 <a href={ `https://s5.sir.sportradar.com/betradar/en/match/${match?.parent_match_id}`} className="side stats" 
                      target={"_blank"} 
                     title="Stats" style={{padding:"10px 0px", fontSize:"16px"}} >
@@ -672,7 +672,7 @@ const MatchRow = (props) => {
                 </div>
             </div>
             <div className="col-2 col-xs-12 match-detail-container" key="23">
-                <a href={jackpot ? '#' : `/match/${live && !hasNoOdds() ? 'live/' + match.parent_match_id : match.pre_match_id}`}>
+                <Link href={jackpot ? '#' : `/match/${live && !hasNoOdds() ? 'live/' + match.parent_match_id : match.pre_match_id || match.match_id}`}>
                     <div className="d-flex flex-column">
                         <div className="compt-deta overflow-ellipsi" key="0034">
                             <div className="d-flex flex-column" key="20">
@@ -714,7 +714,7 @@ const MatchRow = (props) => {
                            { (match?.live_match ) && <div style={{fontSize:"10px", fontWeight:"normal", color:"red", textTransform:"none"}}>+ Live</div> }
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
             <div className="col d-flex flex-row justify-content-between" key="24">
                 <div className={`c-btn-group align-self-center mobile-width-100 mobile-85-to-70 web-width-37 ${(jackpot) ?'jackpot-mobile-width-85':''}`} key={match?.parent_match_id} style={{}}>
@@ -891,14 +891,14 @@ export const LiveMatchTracker = (props) => {
         return () => {
           element.removeChild(script)
         }
-    }, [])
+    }, [matchid])
 
     useEffect(() => {
         if(matchid) {
            loadScript();
            setHideLocalHeader(true);
         }
-    }, [matchid])
+    }, [loadScript])
     
 
    if(!matchid) {

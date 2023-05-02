@@ -59,7 +59,6 @@ const Logout = () => {
     let navigate = useNavigate();
 
     const [state, dispatch] = useContext(Context);
-    console.log("navigate out on logout 12121")
     const out = useCallback(() => {
         localStorage.clear();
         dispatch({type: "DEL", key: "user"});

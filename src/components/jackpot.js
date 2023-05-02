@@ -310,7 +310,6 @@ const Jackpot = (props) => {
 
         const handleTabOnClick = (e) => {
         
-            console.log("Jp clicked resutls", e);
             setActiveDTab("results");
 
             if(!matches && e === "results") {

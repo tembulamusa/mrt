@@ -23,7 +23,6 @@ import {
 
 const MainTabs = (props) => {
     const {tab, fetching} = props;
-    console.log("Main tabs reading tabs", tab);
     const [sports, setSports] = useState();
     const [sportCategories, setSportCategories] = useState();
     const [competitions, setCompetitions] = useState();

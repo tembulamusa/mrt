@@ -11,6 +11,7 @@ import makeRequest from "./utils/fetch-request";
 import useInterval from "../hooks/set-interval.hook";
 import { getBetslip } from './utils/betslip' ;
 import {Context} from '../context/store';
+import { ShimmerTable } from "react-shimmer-effects";
 
 import { MarketList, LiveMatchTracker } from './matches/index';
 
@@ -80,13 +81,18 @@ const MatchAllMarkets = (props) => {
     }, [fetchPagedData]);
 
    return (
-       <>
-         <LiveMatchTracker matchid={matchwithmarkets?.data?.match?.parent_match_id} setHideLocalHeader = {setHideLocalHeader}/>
-        <MarketList live={live}  
-            matchwithmarkets={matchwithmarkets} 
-            pdown={producerDown} 
-            hideLocalHeader={hideLocalHeader}
-         />
+       <> 
+       {!matchwithmarkets && <ShimmerTable row={20} col={5} /> }
+       <LiveMatchTracker matchid={matchwithmarkets?.data?.match?.parent_match_id} setHideLocalHeader = {setHideLocalHeader}/>
+       { matchwithmarkets && 
+           <>
+            <MarketList live={live}  
+                matchwithmarkets={matchwithmarkets} 
+                pdown={producerDown} 
+                hideLocalHeader={hideLocalHeader}
+             />
+           </>
+       }
        </>
    )
 }

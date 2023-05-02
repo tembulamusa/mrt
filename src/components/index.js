@@ -23,7 +23,6 @@ import { ShimmerTable } from "react-shimmer-effects";
 
 const Index = (props) => {
     const { tab } = props;
-    console.log("Called with tab params ", tab);
     const location = useLocation();
     const {id, sportid, categoryid, competitionid } = useParams();
     const [matches, setMatches] = useState([]);
@@ -37,7 +36,6 @@ const Index = (props) => {
     const [currentTab, setCurrentTab] =useState();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    //console.log("State are in index", state);
     const findPostableSlip = () => {
         let betslips = getBetslip() || {};
         var values = Object.keys(betslips).map(function (key) {
@@ -74,11 +72,9 @@ const Index = (props) => {
         endpoint += "&tab=" + currentTab;
         //endpoint = endpoint.replaceAll(" ", '')
         endpoint += `&sub_type_id=` + subTypes;
-        console.log("Poiling matches for ", endpoint);
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
                 setMatches(matches?.length > 0 ? {...matches, ...result?.data} : result?.data || result)
-                console.log("Fund results from call ", result?.data)
                 setFetching(false)
                 if (result?.slip_data) {
                     dispatch({type: "SET", key: "betslipvalidationdata", payload: result?.slip_data});
@@ -94,14 +90,12 @@ const Index = (props) => {
     }, 20000); 
 
     useEffect(() => {
-        console.log("Received active tab based on props ", tab);
         if(tab) {
             dispatch({type: "SET", key: "active_tab", payload: tab});
         }
     }, [ tab])
 
     useEffect(() => {
-        console.log("Received active tab ", state?.active_tab);
         if(state?.active_tab) {
             setCurrentTab(state?.active_tab);
         }
@@ -118,7 +112,6 @@ const Index = (props) => {
     }, []);
 
     useEffect(() => {
-        console.log("Calling fetchdata again")
         setMatches(null);
         setFetching(false);
         fetchData();

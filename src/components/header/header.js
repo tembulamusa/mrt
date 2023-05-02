@@ -100,7 +100,6 @@ const Header = (props) => {
         />
     };
     const updateUserOnHistory = useCallback(() => {
-        console.log("Attempting to update user balance on updateUserOnHistory" );
         if (!user) {
             return false;
         }
@@ -110,7 +109,6 @@ const Header = (props) => {
         }
         makeRequest({url: endpoint, method: "post", data: udata}).then(([_status, response]) => {
             if (_status == 200) {
-                console.log("Received balance ", response)
                 let u = {...user, ...response.user};
                 dispatch({type: "SET", key: "user", payload: u});
                 setLocalStorage('user', u);
@@ -126,7 +124,6 @@ const Header = (props) => {
     }, [updateUserOnHistory])
 
     useEffect(() => {
-       console.log("Header reading changed user", state?.user); 
        setUser(state?.user);
        setLocalStorage('user', state?.user);
     

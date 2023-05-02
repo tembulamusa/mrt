@@ -103,7 +103,6 @@ const MyBetDetails = (props) => {
                     cancel_code:101,
                     user:state?.user,
             }
-            console.log("Called cancel on bet", bet?.bet_id)
             makeRequest({url: endpoint, method: "POST", data: data, use_jwt:true}).then(([status, result]) => {
                 if(status === 201){
                    setBetStatus('CANCELED');
