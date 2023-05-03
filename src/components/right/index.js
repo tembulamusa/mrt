@@ -187,11 +187,12 @@ const Right = (props) => {
                               <tbody>
                               <tr>
                                 <td  style={{ width:"25%"}}>
-                                    <span> <a href="/betslip" style={{ textDecoration: "none", color: "unset", padding: "10px 5px", borderRadius: "4px" }} >
+                                    <span> 
+                                     <div style={{ textDecoration: "none", color: "unset", padding: "10px 5px", borderRadius: "4px" }} >
                                         <span style={{ color: "#fff", paddingRight:"5px" }} >BETSLIP</span>
                                         <span style={{ backgroundColor: "#c6224e", color: "#ffffff", padding: "3px 6px", borderRadius: "224px", borderTop: "0.8px solid #ffffff61", fontSize: "10px" }} id="betslip-count-footer" className="betslip--count slip-counter"
                                         > ({Object.keys(state?.betslip || {}).length}) </span>
-                                    </a>
+                                    </div>
                                     </span>
                                 </td>
 
