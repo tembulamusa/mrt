@@ -15815,7 +15815,9 @@ li a.live-game.active:hover, .navbar-nav li a.live-game.active:hover, li a.live-
     line-height: 24px;
     border: none;
 }
-
+.btn-download:hover {
+   color:#fff !important;
+}
 .btn-secondary:hover {
     background-color: #00a1d18c;
 }

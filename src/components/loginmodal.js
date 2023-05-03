@@ -21,12 +21,9 @@ const LoginModal = (props) => {
             dialogClassName="modal-90w popover-login-modal"
             aria-labelledby="contained-modal-title-vcenter">
                      <Modal.Header closeButton className="primary-bg">
-                      <Modal.Title>BIKO SIGNIN</Modal.Title>
+                      <Modal.Title>BIKOSPORTS SIGNIN</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <div className="row mb-3">
-                            <div className="col-12"> BIKO ACCOUNT LOGIN </div>
-                        </div>
                         <BodyLogin />
                     </Modal.Body>
             </Modal>

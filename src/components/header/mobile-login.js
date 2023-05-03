@@ -58,6 +58,7 @@ const BodyLogin = (props) => {
     }, [message])
 
     useEffect(() => {
+        console.log("Calling dispatch iset");
         dispatchUser();
     }, [dispatchUser]);
 
@@ -104,6 +105,7 @@ const BodyLogin = (props) => {
         const onFieldChanged = (ev) => {
             let field = ev.target.name;
             let value = ev.target.value;
+            console.log("Setting ", field , " to ", value);
             setFieldValue(field, value);
         }
         return (
@@ -121,7 +123,7 @@ const BodyLogin = (props) => {
                                     type="text"
                                     data-action="grow"
                                     placeholder={errors.msisdn || "+255........."}
-                                    onChange={ev => onFieldChanged(ev)}
+                                    onChange={(ev) => onFieldChanged(ev)}
                                 />
                                 {errors.msisdn && <div className='text-danger'> {errors.msisdn} </div>}
 
@@ -140,7 +142,7 @@ const BodyLogin = (props) => {
                                     type="password"
                                     data-action="grow"
                                     placeholder={errors.password || "Password"}
-                                    onChange={ev => onFieldChanged(ev)}
+                                    onChange={(ev) => onFieldChanged(ev)}
                                 />
 
                                 {errors.password && <div className='text-danger'> {errors.password} </div>}
