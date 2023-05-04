@@ -7056,43 +7056,43 @@ ul.sport {
     }
 
     .c-btn-group > .c-btn {
-    border-radius: 0;
-    border: none;
-    height: 35px !important;
-    margin-right: 4px;
-    line-height: 30px;
-    width: 55px !important;
-}
+        border-radius: 0;
+        border: none;
+        height: 35px !important;
+        margin-right: 4px;
+        line-height: 30px;
+        width: 55px !important;
+    }
 
-.mobile-search-input-div {
-    position: absolute;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: #0C3C5A;
-    height: 45px;
-    top: 7px;
-    /* padding: 3px !important; */
-}
+    .mobile-search-input-div {
+        position: absolute;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: #0C3C5A;
+        height: 45px;
+        top: 7px;
+        /* padding: 3px !important; */
+    }
 
-.mobile-search-input-div .input-field {
-    height: 30px !important;
-    border-radius: 8px;
-    color: black !important;
-    /* margin-right: 10px !important; */
-}
+    .mobile-search-input-div .input-field {
+        height: 30px !important;
+        border-radius: 8px;
+        color: black !important;
+        /* margin-right: 10px !important; */
+    }
 
-.mobile-search-input-div {
-    z-index: 999;
-}
+    .mobile-search-input-div {
+        z-index: 999;
+    }
 
-.search-close-btn {
-    padding-right: 7px;
-    padding-left: 7px;
-    border: 1px solid rgba(255,255,255,0.35);
-}
+    .search-close-btn {
+        padding-right: 7px;
+        padding-left: 7px;
+        border: 1px solid rgba(255,255,255,0.35);
+    }
 
-.carousel-item img {
-    height: 100% !important;
-}
+    .carousel-item img {
+        height: 100% !important;
+    }
 
 
 }
@@ -7100,9 +7100,6 @@ ul.sport {
 @media (max-width: 640px), (max-width: 574px) {
     .font-tbt {
         font-size: 10px;
-    }
-    .betslip-body {
-        min-height: 40vh;
     }
     .navbar-responsive {
         width: 200px;
@@ -7132,10 +7129,6 @@ ul.sport {
         align-items: center;
     }
 
-    /* .change-size {
-      display: grid;
-      grid-template-columns: [col1] 1fr [col2] 50px [col-end];
-    } */
     .w-change1 {
         width: 20%;
     }
@@ -7184,9 +7177,6 @@ ul.sport {
         padding: 0 !important;
     }
 
-    .top-matches div {
-        min-height: 26px;
-    }
 
     .home-tabs .main-header,
     .home-tabs-active .main-header {

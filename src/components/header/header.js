@@ -36,7 +36,6 @@ const HeaderLogin = React.lazy(() => import('./top-login'));
 const HeaderMenuToggle = React.lazy(() => import('./menu-toggle'));
 const HeaderNav = React.lazy(() => import('./header-nav'));
 const MobileLogin = React.lazy(() => import('./mobile-login-link'));
-const MobileToggleMkts = React.lazy(() => import('./mobile-toggle-markets'));
 const MobileMenu = React.lazy(() => import('./mobile-menu'));
 
 const Header = (props) => {

@@ -1,5 +1,5 @@
 import React, {useCallback, useContext, useEffect, useState, useRef} from 'react';
-
+import { Link } from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { FaBars, FaTrophy, FaSearch, FaClipboard } from "react-icons/fa";
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -25,7 +25,6 @@ import {
 import makeRequest from "../utils/fetch-request";
 
 import HeaderMenuToggle from './menu-toggle';
-import MobileToggleMkts from './mobile-toggle-markets';
 
 const MobileMenu = (props) => {
   const { user } = props;
@@ -72,24 +71,29 @@ const MobileMenu = (props) => {
       <div className="row">
         <div className="col-6 row">
             <div className="col-3 uppercase">
-                <a href = "/"><div>
-                                <FontAwesomeIcon icon={faHome} style={{fontSize:"25px"}} />
-                 </div></a>
+                <Link to = "/"><div>
+                    <FontAwesomeIcon icon={faHome} style={{fontSize:"25px"}} />
+                 </div>
+               </Link>
                 Home
             </div>
             <div className="col-3 uppercase">
-                
-            <MobileToggleMkts />
+                <Link to="/mobile-menu" >
+                   <div><FaBars size={25} /></div>
+                </Link>
+                Menu
 
             </div>
 
             <div className="col-3 uppercase red-color">
-                <a href = "/live" className="red-color"><div><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1 width-30px" /></div></a>
+                <Link to="/live" className="red-color">
+                  <div><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1 width-30px" /></div>
+                </Link>
                 live
             </div>
 
             <div className="col-3 uppercase">
-                <a href = "/jackpot"><div><FaTrophy size={25} /></div></a>
+                <Link to = "/jackpot"><div><FaTrophy size={25} /></div></Link>
                 Jackpots
             </div>
         </div>
@@ -102,10 +106,11 @@ const MobileMenu = (props) => {
               <span className={'hide2'}>Search</span>
             </div>
 
-            <div className="col-3 uppercase" onClick={showAppBetslipPageFromTop} >
-                <div className="relative-pos" ><FaClipboard size={25} />
+            <div className="col-3 uppercase"  >
+                <Link to="/mobile-betslip" className="relative-pos" >
+                  <FaClipboard size={25} />
                   <span className="top-slip-counter purple-bg">{ Object.keys(state?.betslip||{}).length ||  Object.keys(state?.jackpotbetslip||{}).length}</span>
-                </div>
+                </Link>
                 Slip
             </div>
 
@@ -145,8 +150,6 @@ const MobileMenu = (props) => {
       </div>
 
       </div>
-
-
     </>
   );
 }

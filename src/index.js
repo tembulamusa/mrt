@@ -6,7 +6,7 @@ import {
     BrowserRouter,
     Route,
     Routes,
-    useNavigate,
+    useNavigate
 } from 'react-router-dom'
 
 import reportWebVitals from './reportWebVitals';
@@ -54,6 +54,7 @@ import Footer from './components/footer/footer';
 import MatchList from './components/matches/index';
 import Right from './components/right/index';
 import SideBar from './components/sidebar/awesome/Sidebar';
+import MobileMainMenu from './components/header/mobile-main-menu';
 
 const Logout = () => {
     let navigate = useNavigate();
@@ -74,6 +75,8 @@ const Logout = () => {
 const App = () => {
 
     const [state, ] = useContext(Context);
+    console.log("Loaction is hers", window.location.pathname);
+
     return ( 
             <BrowserRouter>
                 <Header/>
@@ -116,6 +119,15 @@ const App = () => {
                                 <Route exact path="/reset-password" element={<ResetPassword/>}/>
                                 <Route exact path="/verify-account" element={<VerifyAccount/>}/>
                                 <Route exact path="/app" element={<MobileApp/>}/>
+                                <Route exact path="/mobile-menu" element={<MobileMainMenu />} />
+                                <Route exact path="/mobile-betslip" 
+                                    element={
+                                        <Right 
+                                            betslipValidationData={state?.betslipvalidationdata} 
+                                            jackpot={state?.jackpotpage} 
+                                            jackpotData={state?.jackpotmeta}
+                                            mobileslip />
+                                    } />
                                 <Route exact path="/logout" element={<Logout/>}/>
                                 <Route exact path="/print-matches" element={<PrintMatches/>}/>
                                 <Route exact path="/promotions" element={<Promotions/>}/>
@@ -135,7 +147,10 @@ const App = () => {
                               </Routes>
                             </div>
                         </div>
-                        <Right betslipValidationData={state?.betslipvalidationdata} jackpot={state?.jackpotpage} jackpotData={state?.jackpotmeta}/>
+                       { !window.location.pathname?.startsWith('/mobile') && <Right 
+                            betslipValidationData={state?.betslipvalidationdata} 
+                            jackpot={state?.jackpotpage} 
+                            jackpotData={state?.jackpotmeta}/>  }
                     </div>
                 </div>
                 <Footer/>

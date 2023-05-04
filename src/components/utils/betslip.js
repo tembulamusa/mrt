@@ -49,7 +49,9 @@ export const addToJackpotSlip = (slip) => {
 
 export const removeFromJackpotSlip = (match_id) => {
    let current_slip = getFromLocalStorage('jackpotbetslip');
-   delete current_slip[match_id];
+   if(current_slip) {
+      delete current_slip[match_id];
+   }
    setLocalStorage('jackpotbetslip', current_slip, 1*60*60*1000);
    return current_slip;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import QuickLogin from './quick-login';
 import CompanyInfo from './company-info';
 import BetSlip from './betslip';
@@ -22,7 +23,7 @@ const AlertMessage = (props) => {
 
 const Right = (props) => {
     const [state, dispatch] = useContext(Context);
-    const { jackpot, betslipValidationData, jackpotData,showBetSlipFromTop } = props;
+    const { jackpot, betslipValidationData, jackpotData,showBetSlipFromTop, mobileslip } = props;
     const [bongeBonusMessage, setBongeBonusMessage] = useState('Chagua mechi 3 au zaidi uweze kupata Bonge Bonus');
     const [betslip] = useState(Object.keys(state?.betslip || {}).length);
     const [total_odds, setTotalOdds] = useState(1.0);
@@ -112,7 +113,7 @@ const Right = (props) => {
 
     return (
         <div className="col-md-3 gn betslip-container sticky-top">
-            <div className=" betslip-container d-none d-md-block">
+            <div className={`betslip-container ${mobileslip ? '' : 'd-none d-md-block'}` } >
                 {props?.message && <AlertMessage classname={props.classname} message={props.message} />}
                 <div className="bet-option-list sticky-top" id=''>
                     <div className="bet alu block-shadow">
@@ -140,31 +141,8 @@ const Right = (props) => {
                 </div>
                 <CompanyInfo />
             </div>
-            <div
-                className={`fixed-bottom text-white d-md-none shadow-lg betslip-container-mobile ${showAppSlipPage ? 'd-block' : 'd-none'}`} onClick={showBetSlipFromTop}>
-                <div className="bet-option-list sticky-top" id=''>
-                    <div className="bet alu  block-shadow">
-                        <header style={{ marginTop: "15px" }}>
-                            <div className="betslip-header d-flex justify-content-between">
-                                <span className="col-sm-8 slp">BETSLIP/JAMVI</span>
-                                <span className="col-sm-2 slip-counter d-flex justify-content-center"
-                                    title={'Hide BetSlip'} onClick={() => RemoveShowAppBetslipPage() }>
-                                    <FontAwesomeIcon icon={faTimes} className={'align-self-center'} />
-                                </span>
-                            </div>
-                        </header>
-                        <div id="betslip" className="betslip">
-                            <BetSlip jackpot={jackpot} betslipValidationData={betslipValidationData} jackpotData={jackpotData}/>
-                        </div>
-                        <QuickLogin />
-                    </div>
-                </div>
-            </div>
-
-            <div
-                className={`${(showAppSlipPage ||jackpot == true)? 'd-none' : 'd-block'} fixed-bottom text-center text-white bg-info bet-slip-footer-toggle d-md-none`}
-                onClick={() => setShowAppSlipPage(true)}>
-                <div>
+            <Link  to="/mobile-betslip" 
+                className={`${(showAppSlipPage ||jackpot == true)? 'd-none' : 'd-block'} fixed-bottom text-center text-white bg-info bet-slip-footer-toggle d-md-none`} >
                     <table
                         style={{ borderTop: '1px solid #ffffff61', position: 'fixed', bottom: '0', padding: '5px', backgroundColor: '#0C3C5A', maxWidth: '768px', width: "100%", color: "black" }}
                         className="full-width" >
@@ -190,7 +168,15 @@ const Right = (props) => {
                                     <span> 
                                      <div style={{ textDecoration: "none", color: "unset", padding: "10px 5px", borderRadius: "4px" }} >
                                         <span style={{ color: "#fff", paddingRight:"5px" }} >BETSLIP</span>
-                                        <span style={{ backgroundColor: "#c6224e", color: "#ffffff", padding: "3px 6px", borderRadius: "224px", borderTop: "0.8px solid #ffffff61", fontSize: "10px" }} id="betslip-count-footer" className="betslip--count slip-counter"
+                                        <span 
+                                          style={{ backgroundColor: "#c6224e", 
+                                                  color: "#ffffff", 
+                                                  padding: "3px 6px", 
+                                                  borderRadius: "224px", 
+                                                  borderTop: "0.8px solid #ffffff61", 
+                                                  fontSize: "10px" }} 
+                                           id="betslip-count-footer" 
+                                           className="betslip--count slip-counter"
                                         > ({Object.keys(state?.betslip || {}).length}) </span>
                                     </div>
                                     </span>
@@ -209,9 +195,7 @@ const Right = (props) => {
                         </tr>
                        </tbody>
                     </table>
-                </div>
-
-            </div>
+            </Link>
         </div>
     )
 }

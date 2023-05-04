@@ -46,7 +46,7 @@ import ShareModal from "../../sharemodal";
 import {useLocation, useParams, Link} from 'react-router-dom';
 
 const Sidebar = (props) => {
-
+    const { mobile }  = props
     const {id, sportid, categoryid, competitionid } = useParams();
     const [collapsed, setCollapsed] = useState(false)
     const [toggled, setToggled] = useState(false)
@@ -63,6 +63,7 @@ const Sidebar = (props) => {
     };
 
     const handleToggleSidebar = (value) => {
+        console.log("Thos is a real toggle not", value);
         setToggled(value);
     };
 
@@ -155,6 +156,11 @@ const Sidebar = (props) => {
         return competition?.default_display_markets
     }
 
+    const toggleSideCollapsed = useCallback(() => {
+       console.log("Toggle side bar collapsed === ", collapsed);
+       setCollapsed(collapsed => !collapsed)
+     }, [ setCollapsed ])
+
     return (
         <div style={{
             display: 'flex',
@@ -163,13 +169,14 @@ const Sidebar = (props) => {
             // marginRight: '2px',
             top: "84px"
         }}
-             className={`vh-100 text-white sticky-top up`}>
+             className={`text-white sticky-top up`}>
             <ProSidebar
 
                 style={{backgroundColor: '#16202c !important'}}
                 image={false}
                 onToggle={handleToggleSidebar}
                 collapsed={collapsed}
+                onClick={toggleSideCollapsed}
                 toggled={toggled}>
                 <SidebarContent>
                     <Menu iconShape="circle">
@@ -182,7 +189,8 @@ const Sidebar = (props) => {
 
                             <MenuItem className={`live-game ${pathname === '/live' ? 'active' : ''}`}>
                                 <Link to="/live"
-                                   title="Live" className="red-color"><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1" />Live Now</Link>
+                                   title="Live" 
+                                   className="red-color"><img src={LiveIcon} alt="" className="svg-menu-img-icon hi1" />Live Now</Link>
                             </MenuItem>
 
                             <MenuItem className={`${pathname === '/highlights' ? 'active' : ''}`}>
@@ -249,11 +257,7 @@ const Sidebar = (props) => {
 
 
                         <SubMenu className="left-menu-item-1" title={'Top Countries'}>
-
-
-
                             { competitions?.top_countries.map((country, index) => (
-
                                 <MenuItem title={country.category_name}
                                      icon={<img style={{borderRadius: '10%', height: '15px'}}
                                      src={getSportImageIcon(country.flag_icon, 'img/flags-1-1')}

@@ -693,7 +693,6 @@ const MatchRow = (props) => {
                                 {match.away_team}
                                 { (live && !hasNoOdds()) && <span className="opacity-reduce-txt vs-styling"> { match?.score?.split(":")[1]} </span> }
                             </div>
-                            <div></div>
                                 { match.priority > 10000000 
                                     &&  <span style={{marginLeft:"10px", color:"#f0530e", position:"absolute", right:"0px"}}>
                                         <FontAwesomeIcon icon={faFire} className={'align-self-center'} />
