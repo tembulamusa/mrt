@@ -69,7 +69,8 @@ const Index = (props) => {
             endpoint += "&competition_id=" +  competitionid;
         }
         
-        endpoint += "&tab=" + currentTab;
+        let tab = url.searchParams.get('tab')
+        endpoint += "&tab=" + currentTab || tab;
         //endpoint = endpoint.replaceAll(" ", '')
         endpoint += `&sub_type_id=` + subTypes;
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {

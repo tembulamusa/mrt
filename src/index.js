@@ -75,7 +75,6 @@ const Logout = () => {
 const App = () => {
 
     const [state, ] = useContext(Context);
-    console.log("Loaction is hers", window.location.pathname);
 
     return ( 
             <BrowserRouter>
@@ -124,7 +123,7 @@ const App = () => {
                                     element={
                                         <Right 
                                             betslipValidationData={state?.betslipvalidationdata} 
-                                            jackpot={state?.jackpotpage} 
+                                            jackpot={window.location.pathname.startsWith('/jackpot') || Object.entries(state?.jackpotbetslip || []).length > 0} 
                                             jackpotData={state?.jackpotmeta}
                                             mobileslip />
                                     } />

@@ -58,7 +58,6 @@ const BodyLogin = (props) => {
     }, [message])
 
     useEffect(() => {
-        console.log("Calling dispatch iset");
         dispatchUser();
     }, [dispatchUser]);
 
@@ -105,7 +104,6 @@ const BodyLogin = (props) => {
         const onFieldChanged = (ev) => {
             let field = ev.target.name;
             let value = ev.target.value;
-            console.log("Setting ", field , " to ", value);
             setFieldValue(field, value);
         }
         return (

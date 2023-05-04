@@ -245,7 +245,7 @@ const BetslipSubmitForm = (props) => {
         if(state?.jpbetremoveall === true){
                 handleRemoveAll();
                 dispatch({type: "SET", key: "jpbetremoveall", payload: false});
-                      }
+        }
     }, [state?.jpbetremoveall])
 
     const handlePlaceBet = useCallback((values,
@@ -420,13 +420,11 @@ const BetslipSubmitForm = (props) => {
 
             dispatch({type: "SET", key: match_selector, payload: "remove." + ucn});
         });
-        if(jackpot){
-            dispatch({type: "SET", key:"jackpotbetslip" , payload: {}});
-            dispatch({type: "DEL", key: "jpbetpressed"});
-            dispatch({type: "DEL", key: "betslippressedfromabove"});
-        } else {
-            dispatch({type: "SET", key:"betslip" , payload: {}});
-        }
+        dispatch({type: "SET", key:"jackpotbetslip", payload:{}});
+        dispatch({type: "DEL", key: "jpbetpressed"});
+        dispatch({type: "DEL", key: "jackpotmeta"});
+        dispatch({type: "DEL", key: "betslippressedfromabove"});
+        dispatch({type: "SET", key:"betslip", "payload":{}});
         setMessage(null);
     }, []);
 
@@ -591,8 +589,8 @@ const BetslipSubmitForm = (props) => {
                             id="net-amount"><strong>{formatNumber(jackpot ? jackpotData?.jackpot_amount : Float(netWin, 2))}</strong></span></td>
                     </tr>
                     <tr>
-                        <td colSpan="2">{ jackpot && Object.entries(betslip || []).length != JSON.stringify(jackpotData?.total_games) ? (
-                                <span className="less-games">Please select all {jackpotData?.total_games} games to bet
+                        <td colSpan="2">{ jackpot && Object.entries(state?.jackpotbetslip || []).length  != JSON.stringify(jackpotData?.total_games) ? (
+                                <span className="less-games">Please select all {jackpotData?.total_games} games to bet 
                                 </span>) : ('')}</td>
                     </tr>
                     <tr>

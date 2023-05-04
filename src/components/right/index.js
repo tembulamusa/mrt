@@ -129,10 +129,8 @@ const Right = (props) => {
 
                             </div>
                         </header>
-                        <button id="slip-button-close" type="button" className="close mobi" aria-hidden="true">×
-                        </button>
                         <div id="betslip" className="betslip">
-                            { bongeBonusMessage && <BongeBetMarkupMessage /> }
+                            { (!jackpot && bongeBonusMessage) && <BongeBetMarkupMessage /> }
                             <BetSlip jackpot={jackpot} betslipValidationData={betslipValidationData}
                                 jackpotData={jackpotData} />
                         </div>
@@ -142,7 +140,7 @@ const Right = (props) => {
                 <CompanyInfo />
             </div>
             <Link  to="/mobile-betslip" 
-                className={`${(showAppSlipPage ||jackpot == true)? 'd-none' : 'd-block'} fixed-bottom text-center text-white bg-info bet-slip-footer-toggle d-md-none`} >
+                className={`${(window.location.pathname.startsWith('/mobi') ||jackpot == true)? 'd-none' : 'd-block'} fixed-bottom text-center text-white bg-info bet-slip-footer-toggle d-md-none`} >
                     <table
                         style={{ borderTop: '1px solid #ffffff61', position: 'fixed', bottom: '0', padding: '5px', backgroundColor: '#0C3C5A', maxWidth: '768px', width: "100%", color: "black" }}
                         className="full-width" >

@@ -129,7 +129,6 @@ const Jackpot = (props) => {
 
     const placeBetClicked = (jpdata) => {
         dispatch({type: "SET", key: "jpbetpressed", payload: jpdata});
-        setShowAppBetslip(true);
     }
     
 
@@ -186,8 +185,8 @@ const Jackpot = (props) => {
                             onClick={() => AutoPickAllMatches()}
                             className="btn btn-auto-pick">Auto Pick</button>
                     </div>
-                    <div className="col-3">Stake <span id="jp-stake" className="bold">{jackpot.bet_amount}</span></div>
-                    <div className="col-3">
+                    <div className="col-3">STAKE <span id="jp-stake" className="bold">{jackpot.bet_amount}</span></div>
+                    <div className="col-3 d-none d-md-block">
                         <button onClick={() => placeBetClicked(jackpot)} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">BET NOW</button>
                     </div>
                 </div>

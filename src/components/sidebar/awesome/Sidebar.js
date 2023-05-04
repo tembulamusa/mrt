@@ -63,7 +63,6 @@ const Sidebar = (props) => {
     };
 
     const handleToggleSidebar = (value) => {
-        console.log("Thos is a real toggle not", value);
         setToggled(value);
     };
 
@@ -157,7 +156,6 @@ const Sidebar = (props) => {
     }
 
     const toggleSideCollapsed = useCallback(() => {
-       console.log("Toggle side bar collapsed === ", collapsed);
        setCollapsed(collapsed => !collapsed)
      }, [ setCollapsed ])
 

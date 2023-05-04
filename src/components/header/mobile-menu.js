@@ -35,15 +35,11 @@ const MobileMenu = (props) => {
   const searchInputRef = useRef(null)
   const [matches, setMatches] = useState([])
 
-  useEffect(() => {
-        fetchMatches()
-  }, [searching])
-
   const fetchMatches = async (search) => {
         if (search && search.length >= 3) {
             gaEventTracker('Searching')
             let method = "POST"
-            let endpoint = "/v1/matches?page=" + (1) + `&limit=${10}&search=${search}`;
+            let endpoint = "/v1/matches?tab=upcoming&page=" + (1) + `&limit=${10}&search=${search}`;
             await makeRequest({url: endpoint, method: method, data: []}).then(([status, result]) => {
                 if (status === 200) {
                     setMatches(result?.data || result)
@@ -130,7 +126,8 @@ const MobileMenu = (props) => {
                                    className={'form-control input-field border-0 full-width text-white no-border-radius'}/>
                         </div>
 
-                        <button className={'btn text-white -align-right search-close-btn'} style={{marignLeft:"10px", borderRadius:"5px"}} onClick={() => dismissSearch()}>
+                        <button className={'btn text-white -align-right search-close-btn'} 
+                            style={{border: "none", margin: "0px 10px 0px 5px", color: "red !important"}} onClick={() => dismissSearch()}>
                             <FontAwesomeIcon icon={faTimes}/> Close
                         </button>
                     </div>
@@ -138,7 +135,7 @@ const MobileMenu = (props) => {
                         className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}
                         onClick={() => gaEventTracker('View Search Results')}>
                         {matches.map((match, index) => (
-                            <a href={`/?search=${match.home_team}`} key={index} className="primary-text-color search-result-item">
+                            <a href={`/?tab=upcoming&search=${match.home_team}`} key={index} className="primary-text-color search-result-item">
                                 <li>
                                     {match.home_team}
                                 </li>
