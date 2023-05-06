@@ -35,7 +35,7 @@ const MatchAllMarkets = (props) => {
         });
         return values;
     };
-    useInterval(() => {
+    const { reset, stop } = useInterval(() => {
 		let endpoint = live 
 			? "/v1/matches/live?id="+params.id
 			: "/v1/matches?id="+params.id;
@@ -57,13 +57,14 @@ const MatchAllMarkets = (props) => {
 
 
     const fetchPagedData =useCallback(async() => {
+
         if(!isLoading && !isNaN(+params.id)) {
             setIsLoading(true);
             let betslip = findPostableSlip();
             let endpoint = live 
                 ? "/v1/matches/live?id="+params.id
                 : "/v1/matches?id="+params.id;
-
+            reset();
             await makeRequest({url: endpoint, method: "POST", data: betslip}).then(([status, result]) => {
                 setMatchWithMarkets(result?.data|| result)
                 setProducerDown(result?.producer_status === 1);
@@ -76,7 +77,7 @@ const MatchAllMarkets = (props) => {
         const abortController = new AbortController();                          
         fetchPagedData();
         return () => {                                                          
-            abortController.abort();                                            
+            return stop();
         };                                                                      
     }, [fetchPagedData]);
 

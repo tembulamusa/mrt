@@ -86,7 +86,7 @@ const Index = (props) => {
 
     };
 
-    useInterval(async () => {
+    const { reset, stop } = useInterval(async () => {
       fetchData();
     }, 20000); 
 
@@ -99,6 +99,7 @@ const Index = (props) => {
     useEffect(() => {
         if(state?.active_tab) {
             setCurrentTab(state?.active_tab);
+            reset();
         }
     }, [ state?.active_tab])
 
@@ -108,14 +109,17 @@ const Index = (props) => {
             dispatch({type: "SET", key: "betslip", payload: cachedSlips});
         }
         return () => {
+            stop();
             setMatches(null);
         };
     }, []);
 
     useEffect(() => {
+        reset();
         setMatches(null);
         setFetching(false);
         fetchData();
+        return () => setMatches(null);
     }, [state?.active_tab]);
 
     useEffect(() => {

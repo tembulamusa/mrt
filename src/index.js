@@ -75,13 +75,15 @@ const Logout = () => {
 const App = () => {
 
     const [state, ] = useContext(Context);
-
+    console.log("Refereshing APp from routes based ...");
     return ( 
             <BrowserRouter>
                 <Header/>
                 <div className="amt">
                     <div className="d-flex flex-row justify-content-between">
-                        <div className="d-md-block d-none"><SideBar loadCompetitions/></div>
+                        <div className="d-md-block d-none">
+                            <SideBar loadCompetitions/>
+                        </div>
                         <div className="gz home" style={{width: '100%'}}>
                             <div className="homepage">
                               <Routes>
@@ -156,7 +158,9 @@ const App = () => {
             </BrowserRouter>
     )
 }
+
 const container = document.getElementById("app");
+
 render((
     <Store>
         <App />

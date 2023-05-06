@@ -99,6 +99,7 @@ const Sidebar = (props) => {
                competitions?.top_soccer?.filter((tl) => tl.competition_id == competitionid).length > 0
             )
         }
+        return () => setTopLeagesOpen(false)
     }, [competitions?.top_soccer]);
 
     useEffect(() => {
@@ -106,7 +107,7 @@ const Sidebar = (props) => {
         fetchData();
 
         return () => {
-            abortController.abort();
+            setCompetitions(null);
         };
     }, [fetchData]);
 

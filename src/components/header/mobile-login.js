@@ -18,7 +18,7 @@ const BodyLogin = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [state, dispatch] = useContext(Context);
-
+    console.log("Body login called again ", props)
     const initialValues = {
         msisdn: "",
         password: ""
@@ -44,6 +44,7 @@ const BodyLogin = (props) => {
     };
 
     const dispatchUser = useCallback(() => {
+        console.log("Tryinig to dipatch user ", message);
         if (message !== null) {
             Notify(message);
 

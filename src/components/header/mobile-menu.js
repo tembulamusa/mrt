@@ -11,6 +11,7 @@ import Container from 'react-bootstrap/Container';
 import {Context} from '../../context/store';
 import {getFromLocalStorage, setLocalStorage} from "../utils/local-storage";
 import LiveIcon from "../../assets/svg/LIVENOW.svg";
+import {getBetslip} from '../utils/betslip';
 
 
 import {
@@ -60,6 +61,14 @@ const MobileMenu = (props) => {
    const showAppBetslipPageFromTop = () => {
         dispatch({type: "SET", key: "betslippressedfromabove", payload: true});
    }
+   useEffect(() => {
+       if(!state?.betslip) {
+            let cachedSlips = getBetslip("betslip");
+            if (cachedSlips) {
+                dispatch({type: "SET", key: "betslip", payload: cachedSlips});
+            }
+       }
+   }, []);
 
   return (
     <>

@@ -35,7 +35,7 @@ const Live = (props) => {
 
     const [markets, setMarkets]  = useState("1,18,29");
 
-    useInterval(async () => {
+    const { reset, stop } = useInterval(async () => {
         let endpoint = "/v1/matches/live";
         endpoint += "?sub_type_id=" + markets;
         if (spid) {
@@ -94,6 +94,7 @@ const Live = (props) => {
             dispatch({type: "SET", key: "betslip", payload: cachedSlips});
         }
         return () => {
+            stop();
             setMatches(null);
         };
     }, [fetchData]);

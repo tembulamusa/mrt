@@ -1502,12 +1502,25 @@ header {
     line-height: 17px;
 }
 
+.matches-header-text-1x2 {
+    width:37%;
+    color:#fff;
+    text-align:center;
+    padding-left:0;
+    padding-right:0;  
+} 
 
-@media (max-width: 640px) {
+@media (max-width: 512px) {
     .match button {
         width: 100% !important;
         max-width: 100% !important;
     }
+}
+@media (max-width: 640px) {
+    .matches-header-text-1x2 {
+        width: 73% !important;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -15965,37 +15978,37 @@ li.pro-sub-menu {
 
 @media (max-width: 640px) {
    .app-header-nav {
-    padding-left: 4px;
-    margin-top: 30px !important;
-}
+        padding-left: 4px;
+        margin-top: 30px !important;
+    }
 
-.top-login .btn {
-    width: 100px;
-    height: 27px;
-    font-size: 10px !important;
-    margin-left: 10px;
-    font-weight: 300;
-    color: #fff !important;
-    padding: 5px 7px !important;
-}
+    .top-login .btn {
+        width: 100px;
+        height: 27px;
+        font-size: 10px !important;
+        margin-left: 10px;
+        font-weight: 300;
+        color: #fff !important;
+        padding: 5px 7px !important;
+    }
 
-.bal {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-    margin-top: -7px;
-    font-weight: bold;
-}
+    .bal {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        margin-top: -7px;
+        font-weight: bold;
+    }
 
-.mobile-profile-menu {
-    padding-bottom: 10px;
-}
+    .mobile-profile-menu {
+        padding-bottom: 10px;
+    }
 
-.mobile-profile-menu a {
-    padding-right: 10px;
-    padding-left: 10px;
-    font-weight: bold !important;
-}
+    .mobile-profile-menu a {
+        padding-right: 10px;
+        padding-left: 10px;
+        font-weight: bold !important;
+    }
 
     .small-mobile btn {
         padding: 5px !important;
@@ -16035,7 +16048,6 @@ li.pro-sub-menu {
         width: fit-content;
         color: #fff;
         z-index: 1200;
-        color: #000;
         text-align: left;
         margin: 5px 0px;
         padding-right: 5px;
@@ -17213,5 +17225,4 @@ background:#999;
     height:288px;
 }
 }
-
 

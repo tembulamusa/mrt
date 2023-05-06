@@ -15,7 +15,7 @@ const Login = (props) => {
     const [mobileNo, setmobileNo] = useState();
 
     useEffect(()=>{
-
+        console.log("Refeshing login page again ....");
         if(location?.state){
             let { preLoginMessage,  mobileNumber} = location.state
             setpreMsg(preLoginMessage);
