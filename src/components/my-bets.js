@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState, useCallback} from "react";
+import { Link } from 'react-router-dom';
 import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -280,9 +281,9 @@ const MyBets = (props) => {
                     uuid = { bet.bet_id }
 					>
 					<div className="bet-item">
-                        <a href={`/my-bet-detail/${bet.bet_id}`} >
+                        <Link to={`/my-bet-detail/${bet.bet_id}`} >
 							<BetItem bet={bet}  key={bet.id}/>
-                        </a>
+                        </Link>
 					</div>
 				</div>
 			))}

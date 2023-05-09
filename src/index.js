@@ -133,17 +133,13 @@ const App = () => {
                                 <Route exact path="/print-matches" element={<PrintMatches/>}/>
                                 <Route exact path="/promotions" element={<Promotions/>}/>
                                 <Route exact path="/help" element={<Help/>}/>
-                                <Route exact path="/transactions" 
-                                    element={<ProtectedRoute><Transactions/> </ProtectedRoute>}/>
-
-                                <Route exact path="/deposit"
-                                       element={<ProtectedRoute><Deposit/></ProtectedRoute>}/>
-                                <Route exact path="/withdraw"
-                                       element={<ProtectedRoute><Withdraw/></ProtectedRoute>}/>
-                                <Route exact path="/my-bets"
-                                       element={<ProtectedRoute><MyBets/> </ProtectedRoute>}/>
-                                <Route exact path="/my-bet-detail/:betid"
-                                       element={<ProtectedRoute><MyBetDetails /> </ProtectedRoute>}/>
+                                <Route element={<ProtectedRoute /> }>
+                                    <Route exact path="/transactions" element={<Transactions/>}/>
+                                    <Route exact path="/deposit" element={<Deposit/>}/>
+                                    <Route exact path="/withdraw" element={<Withdraw/>}/>
+                                    <Route exact path="/my-bets" element={<MyBets/>}/>
+                                    <Route exact path="/my-bet-detail/:betid" element={<MyBetDetails />}/>
+                                 </Route>
                                 <Route path="*" element={<Index/>}/>
                               </Routes>
                             </div>

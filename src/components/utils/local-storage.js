@@ -2,6 +2,7 @@ const now = () => (new Date()).getTime();
 
 export const getFromLocalStorage = (key) => {
     let entry = window.localStorage.getItem(key);
+    console.log("Get from local storage ", key);
     if (!entry || entry === undefined || entry === "undefined") {
         return null;
     }
@@ -9,6 +10,7 @@ export const getFromLocalStorage = (key) => {
     let expiry = entry_data.now + entry_data.ttl;
 
     if (entry_data.ttl && expiry < now()) {
+        console.log("Removing from done",key );
         window.localStorage.removeItem(key);
         return null;
     }

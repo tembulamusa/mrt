@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState, useCallback} from "react";
+import { Link } from 'react-router-dom';
 import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
 import { useParams} from 'react-router-dom';
@@ -216,7 +217,7 @@ const MyBetDetails = (props) => {
        return (
             <div className='col-md-12 biko-bg p-4 text-center small-pad-horizontal' style={{paddingTop:"2px", paddingBottom:"2px"}}>
                 <h4 className="inline-block">
-                    BET DETAILS { betid } <span style={{float:"right"}}><a href="/my-bets"><small><FontAwesomeIcon icon={faBackward} /> BACK</small></a></span>
+                    BET DETAILS { betid } <span style={{float:"right"}}><Link to="/my-bets" style={{color:"#fff"}}><small><FontAwesomeIcon icon={faBackward} /> BACK</small></Link></span>
                 </h4>
             </div>
        )
