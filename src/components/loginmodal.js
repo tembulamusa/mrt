@@ -8,6 +8,7 @@ import "../App.css";
 import BodyLogin from './header/mobile-login';
 
 
+
 const LoginModal = (props) => {
     const user = getFromLocalStorage("user");
     const app_name = "desktop-web";
@@ -21,7 +22,7 @@ const LoginModal = (props) => {
             dialogClassName="modal-90w popover-login-modal"
             aria-labelledby="contained-modal-title-vcenter">
                      <Modal.Header closeButton className="primary-bg">
-                      <Modal.Title>BIKOSPORTS SIGNIN</Modal.Title>
+                      <Modal.Title>BIKO SPORTS LOGIN</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <BodyLogin />

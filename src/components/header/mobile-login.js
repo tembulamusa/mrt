@@ -9,6 +9,7 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {setLocalStorage} from '../utils/local-storage';
 import useAnalyticsEventTracker from "../analytics/useAnalyticsEventTracker";
+import {isMobile} from 'react-device-detect';
 
 const BodyLogin = (props) => {
     const gaEventTracker = useAnalyticsEventTracker('Navigation');
@@ -18,7 +19,6 @@ const BodyLogin = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [state, dispatch] = useContext(Context);
-    console.log("Body login called again ", props)
     const initialValues = {
         msisdn: "",
         password: ""
@@ -44,7 +44,6 @@ const BodyLogin = (props) => {
     };
 
     const dispatchUser = useCallback(() => {
-        console.log("Tryinig to dipatch user ", message);
         if (message !== null) {
             Notify(message);
 
@@ -52,7 +51,7 @@ const BodyLogin = (props) => {
                 setLocalStorage('user', message.user);
                 location.state?.from 
                     ? navigate(location.state.from) 
-                    :  navigate("/");
+                    :  (isMobile? navigate("/mobile-betslip") : navigate("/")) ;
             }
 
         }
