@@ -53,24 +53,25 @@ const Index = (props) => {
 
 
         let url = new URL(window.location.href)
-        endpoint += "&sport_id=" + (state?.filtersport?.sport_id||sportid || 79);
+        endpoint += "&sport_id=" + (sportid || 79);
         let search_term = url.searchParams.get('search')
 
         endpoint += search_term ? '&search=' + search_term : ""; 
         
-        if(state?.filtercategory) {
-            endpoint += "&category_id=" + state?.filtercategory?.category_id;
-        } else if(categoryid && !state?.filtermenuclicked === true) {
+        if(categoryid) {
             endpoint += "&category_id=" + categoryid;
         }
-        if(state?.filtercompetition ) {
-            endpoint += "&competition_id=" + state?.filtercompetition?.competition_id;
-        } else if(competitionid && !state?.filtermenuclicked === true) {
+        if(competitionid) {
             endpoint += "&competition_id=" +  competitionid;
         }
         
         let tab = url.searchParams.get('tab')
-        endpoint += "&tab=" + currentTab || tab;
+        if(!id && !categoryid && !competitionid) {
+           endpoint += "&tab=" + currentTab || tab;
+        } else {
+           endpoint += "&tab=upcoming";
+        }
+        console.log("New wndpoint ", endpoint);
         //endpoint = endpoint.replaceAll(" ", '')
         endpoint += `&sub_type_id=` + subTypes;
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
@@ -120,7 +121,7 @@ const Index = (props) => {
         setFetching(false);
         fetchData();
         return () => setMatches(null);
-    }, [state?.active_tab]);
+    }, [state?.active_tab, id, sportid, categoryid, competitionid]);
 
     useEffect(() => {
         checkThreeWay()

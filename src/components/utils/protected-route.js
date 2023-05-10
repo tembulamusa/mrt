@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const ProtectedRoute = ({}) => {
     const location = useLocation();
     const user = getFromLocalStorage("user");
-    console.log("Accessing protected route with User ", user);
     return user?.token ? <Outlet /> : <Navigate  replace to="/login" state={{from:location}} />
 }
 

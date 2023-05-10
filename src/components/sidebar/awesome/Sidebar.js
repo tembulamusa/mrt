@@ -69,7 +69,7 @@ const Sidebar = (props) => {
     const [competitions, setCompetitions] = useState(props?.competitions);
 
     const fetchData = useCallback(async () => {
-        let cached_competitions =  getFromLocalStorage('categories');
+        let cached_competitions =  null; //getFromLocalStorage('categories');
         let endpoint = "/v1/categories";
 
         if (!cached_competitions) {
@@ -77,7 +77,6 @@ const Sidebar = (props) => {
                 makeRequest({url: endpoint, method: "get", data: null}),
             ]);
             let [c_status, c_result] = competition_result
-
             if (c_status === 200) {
                 setCompetitions(c_result);
                 setLocalStorage('categories', c_result);
@@ -244,11 +243,12 @@ const Sidebar = (props) => {
                             <SubMenu className={`left-menu-item-1`} title={'Top Leagues'} >
                             {competitions?.top_soccer?.map((top_league, index) =>  (
                                 <MenuItem key={`l_${index}`}
-                                          icon={<img
-                                             src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
-                                             style={{borderRadius: "10%", height: "15px"}}></img>}>
+                                          className={`${pathname.split("/")[4] == top_league.competition_id ? 'active': ''}`}
+                                          icon={<img src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
+                                          style={{borderRadius: "10%", height: "15px"}}></img>} >
+                                          
                                    <Link to={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}`}>
-                                        {top_league?.competition_name}
+                                        {top_league?.competition_name} <span style={{float:"right"}}>{top_league.games_count} </span> 
                                     </Link>
                                 </MenuItem>
                             ))}
@@ -258,13 +258,14 @@ const Sidebar = (props) => {
                         <SubMenu className="left-menu-item-1" title={'Top Countries'}>
                             { competitions?.top_countries.map((country, index) => (
                                 <MenuItem title={country.category_name}
+                                     className={`${pathname.split("/")[3] == country.category_id ? 'active': ''}`}
                                      icon={<img style={{borderRadius: '10%', height: '15px'}}
                                      src={getSportImageIcon(country.flag_icon, 'img/flags-1-1')}
                                      />} key={index} >
 
                                         <Link to={`/competition/${country.sport_id}/${country.category_id}/all`}
                                            onClick={() => setLocalStorage('active_item', country.sport_id)}>
-                                            {country.category_name}
+                                            {country.category_name} <span style={{float:"right"}}>{country.games_count} </span> 
                                         </Link>
                                 </MenuItem>
                              
@@ -279,23 +280,25 @@ const Sidebar = (props) => {
                                          icon={<img style={{borderRadius: '10%', height: '30px'}}
                                                     src={getSportImageIcon(competition.sport_name)}/>}
                                          key={index}>
-                                {/* <SubMenu title={'Countries'}
-                                             style={{maxHeight: '300px', overflowY: 'auto', overflowX: 'hidden'}}> */}
                                         <PerfectScrollbar >
-                                        {competition?.categories.map((country, countryKey) => (
-                                                <MenuItem title={country.category_name}
+                                        {competition?.categories.map((country, countryKey) => {
+
+                                             let gcount = country.competitions.reduce((total, c) => total + c.games_count ,0);
+                                             let ids = pathname.split("/"); 
+                                             return  (<MenuItem title={country.category_name}
+                                                         className={`${ids[3] == country.category_id ? 'active': ''}`}
                                                          icon={<img style={{borderRadius: '10%', height: '15px'}}
                                                          src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
                                                          />} key={countryKey} >
 
-                                                            <Link to={`/competition/${competition.sport_id}/${country.category_id}/all`}
+                                                            <Link className={`${ids[3] == country.category_id ? 'active': ''}`} 
+                                                               to={`/competition/${competition.sport_id}/${country.category_id}/all`}
                                                                onClick={() => setLocalStorage('active_item', competition.sport_id)}>
-                                                                {country.category_name}
+                                                                {country.category_name} <span style={{float:"right"}}>{gcount} </span> 
                                                             </Link>
-                                                </MenuItem>
-                                        ))}
+                                                </MenuItem>)
+                                        })}
                                         </PerfectScrollbar >
-                                { /* </SubMenu> */}
                                 </SubMenu>
                             ))}
                         </SubMenu>

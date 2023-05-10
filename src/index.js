@@ -75,7 +75,6 @@ const Logout = () => {
 const App = () => {
 
     const [state, ] = useContext(Context);
-    console.log("Refereshing APp from routes based ...");
     return ( 
             <BrowserRouter>
                 <Header/>

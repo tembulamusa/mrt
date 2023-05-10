@@ -47,7 +47,6 @@ const MyBets = (props) => {
     }, [loadedBetStaus]);
 
     useEffect(() => {
-       console.log("Calling fetch my bets data")
        fetchData();
     }, [fetchData]);
 
