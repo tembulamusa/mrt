@@ -507,9 +507,6 @@ header, li a, .thedate span {
     color: #fe0100 !important;
 }
 
-.picked .compt {
-    color: #fff;
-}
 
 #betting input {
     /* max-width: 100px; */
@@ -751,14 +748,39 @@ header, li a, .thedate span {
 .match-detail button .label.odd-value {
     font-weight: 700;
 }
+.match-detail .picked {
+    background: #34B3BF !important;
+    color: #fff !important;
+    border: none;
+    font-weight: normal !important;
+}
+.picked .compt {
+    color: #fff;
+}
+.matches .top-matches .match-detail button.home-team.picked {
+    background: #34B3BF !important;
+}
+.picked .theodds,
+.picked .mobi-odd {
+    color: #fff;
+    padding: 0px;
+}
+
+.picked .odd-value {
+    color: #fff !important;
+}
+.top-matches button.picked {
+    background: #34B3BF!important;
+}
+.match-detail button .label:hover, .match-detail button.picked .label {
+    color: #fff !important;
+}
 .matches .top-matches .match-detail button.home-team {
     /* background: #e3e3e3 !important; */
     padding-right: 10px;
     border: 1px solid rgba(52, 179, 191, 0.3);
 }
-.matches .top-matches .match-detail button.home-team.picked {
-    background: #34B3BF !important;
-}
+
 .matches .top-matches .match-detail button.home-team label:hover, .matches .top-matches .match-detail button.home-team:hover {
     background: #34B3BF !important;
     color: #fff !important;
@@ -766,9 +788,6 @@ header, li a, .thedate span {
 .match-detail button .label:hover{
     /*background: #2c2457 !important;*/
     color:#fff !important;
-}
-.match-detail button .label:hover, .match-detail button.picked .label {
-    color: #fff !important;
 }
 .yellow {
     background-color: #ffc428;
@@ -815,11 +834,6 @@ header, li a, .thedate span {
     min-width: 50px !important;
 }
 
-.picked .theodds,
-.picked .mobi-odd {
-    color: #fff;
-    padding: 0px;
-}
 
 .matches .top-matches.match {
     padding: 0px 0px 0px 0px;
@@ -861,10 +875,6 @@ header, li a, .thedate span {
 }
 
 
-
-.picked .odd-value {
-    color: #fff !important;
-}
 
 .events-header {
     background: #101B25;
@@ -2067,10 +2077,9 @@ events-header {
     border-radius: 2px !important;
 }
 
-.home-team {
+.home-team, .home-team:focus {
     background: rgba(52, 179, 191, 0.15)!important;
     color: #2c2457 !important; 
-    /*color: #000 !important;*/
 }
 .away-team {
     background: #c91d56 !important;
@@ -2104,9 +2113,6 @@ events-header {
     padding-bottom: 0;
 }
 
-.top-matches button.picked {
-    background: #34B3BF!important;
-}
 
 .full-mobile.sticky-top {
     border-bottom: 1px solid #dddddd;
@@ -2469,12 +2475,6 @@ img {
      opacity: 0.7; 
 }
 
-.match-detail .picked {
-    background: #fdd835 !important;
-    color: #000 !important;
-    border: none;
-    font-weight: normal !important;
-}
 
 .panel-header h2 {
     margin-bottom: 0;
