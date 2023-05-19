@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="lightWhite">#FEFCFB</color>
+    <color name="colorprimarypink">#c6224e</color>
+    <color name="colorPrimaryDark">#87B9C9 </color>
+    <color name="colorButtonGrey">#ecf0f1</color>
+    <color name="colorPrimaryLight">#FFFFFF</color>
+    <color name="colorAccent">#278A91</color>
+    <color name="text_color_secondary">#0c3c5a</color>
+    <color name="secondary_text_material_light">#0c3c5a</color>
+    <color name="profile_text_color" >#ffe293</color>
+
+    <color name="theme_blue_nav">#68D2F3</color>
+    <color name="light_blue_border">#34b3bf </color>
+    <color name="theme_green_selected">#B4E9F9 </color>
+    <color name="theme_blue">#093A3E</color>
+    <color name="livebackground">#F7DEE7</color>
+    <color name="theme_blue_dark">#030928</color>
+    <color name="theme_grey">#f5f5f5</color>
+    <color name="bg_grey">#d4d4d4</color>
+
+    <color name="draw_blue">#DDD</color>
+    <color name="bets_blue">#DDDDDD</color>
+    <color name="thicker_blue">#81795F</color>
+
+    <color name="bikosports_green">#22323e</color>
+    <color name="bikosports_dark_green_theme">#0c3c5a</color>
+    <color name="bikosports_green_dark">#030928</color>
+    <color name="keyboard_background">#5000</color>
+    <color name="key_background">#FFFFFF</color>
+
+    <color name="text_black">#111111</color>
+    <color name="greyish">#f2f4f4 </color>
+    <color name="textColor">#444444</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000000</color>
+    <color name="yellow">@color/theme_green_selected</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#34AF00</color>
+
+    <integer-array name="progress_colors">
+        <item>@color/bikosports_green</item>
+        <item>@color/theme_green_selected</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/bikosports_green_dark</item>
+    </integer-array>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+
+</resources>
