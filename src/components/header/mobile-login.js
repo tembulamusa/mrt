@@ -9,7 +9,7 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {setLocalStorage} from '../utils/local-storage';
 import useAnalyticsEventTracker from "../analytics/useAnalyticsEventTracker";
-import {isMobile} from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 
 const BodyLogin = (props) => {
     const gaEventTracker = useAnalyticsEventTracker('Navigation');
@@ -18,6 +18,7 @@ const BodyLogin = (props) => {
     const {setUser} = props;
     const navigate = useNavigate();
     const location = useLocation();
+    const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
     const [state, dispatch] = useContext(Context);
     const initialValues = {
         msisdn: "",
@@ -46,12 +47,11 @@ const BodyLogin = (props) => {
     const dispatchUser = useCallback(() => {
         if (message !== null) {
             Notify(message);
-
             if (message.status == 200) {
                 setLocalStorage('user', message.user);
                 location.state?.from 
                     ? navigate(location.state.from) 
-                    :  (isMobile? navigate("/mobile-betslip") : navigate("/")) ;
+                    :  ((isMobile && Object.keys(state?.betslip).length > 0 )? navigate("/mobile-betslip") : navigate("/")) ;
             }
 
         }

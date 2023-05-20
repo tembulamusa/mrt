@@ -53,6 +53,7 @@
     "react-pdf": "^5.7.2",
     "react-perfect-scrollbar": "^1.5.8",
     "react-pro-sidebar": "^0.7.1",
+    "react-responsive": "^9.0.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",

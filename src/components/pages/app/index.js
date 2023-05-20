@@ -4,7 +4,7 @@ import DownloadLink from "react-download-link";
 import mobileBanner from '../../../assets/img/mobile/demo.jpg'
 import Row from 'react-bootstrap/Row';
 
-import downloadAPKFile from '../../../assets/bethipo.apk';
+import downloadAPKFile from '../../../assets/biko.apk';
 
 
 const MobileApp = () => {
