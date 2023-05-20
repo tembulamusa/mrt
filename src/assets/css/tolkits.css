@@ -2075,6 +2075,7 @@ events-header {
 .matches .top-matches button {
     height: 30px;
     border-radius: 2px !important;
+    background:rgba(52, 179, 191, 0.15)
 }
 
 .home-team, .home-team:focus {
