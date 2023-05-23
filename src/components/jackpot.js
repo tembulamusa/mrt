@@ -190,7 +190,7 @@ const Jackpot = (props) => {
                     <div className="col-3">STAKE <span id="jp-stake" className="bold">{jackpot.bet_amount}</span></div>
                     <div className="col-3">
                         { isMobile 
-                            ? <Link to="/mobile-betslip" className="uppercase place-bet-btn btn primary-bg btn-primary-bg" >BET NOW </Link>
+                            ? (state?.jackpotbetslip ? <Link to="/mobile-betslip" className="uppercase place-bet-btn btn primary-bg btn-primary-bg" >BET NOW </Link> : <></> )
                             : <button onClick={() => placeBetClicked(jackpot)} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">BET NOW</button>
                         }
                     </div>
