@@ -28,7 +28,11 @@ const Signup = (props) => {
 
             if (response?.success?.status == 200 || response?.success?.status === 201) {
                 setLoading(false);
-                navigate('/verify-account', {state: {phone: values.msisdn} });
+                if(response?.success?.message?.includes('exists')){
+                    //navigate('/login', {state: {phone: values.msisdn} });
+                } else {
+                    navigate('/verify-account', {state: {phone: values.msisdn} });
+                }
             }
         })
 

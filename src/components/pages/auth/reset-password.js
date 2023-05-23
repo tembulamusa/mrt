@@ -28,9 +28,9 @@ const ResetPassword = (props) => {
         let endpoint = '/v1/code';
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
             setSuccess(status === 200 || status === 201);
-            setMessage(response.success.message);
+            setMessage(response?.success?.message || response?.error?.message);
             setOtpSent(true)
-            setResetID(response.success.id)
+            setResetID(response?.success?.id)
         })
     }
     const handleSubmitPasswordReset = values => {
