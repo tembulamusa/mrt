@@ -48,10 +48,10 @@ const BodyLogin = (props) => {
         if (message !== null) {
             Notify(message);
             if (message.status == 200) {
-                setLocalStorage('user', message.user);
-                location.state?.from 
-                    ? navigate(location.state.from) 
-                    :  ((isMobile && Object.keys(state?.betslip).length > 0 )? navigate("/mobile-betslip") : navigate("/")) ;
+                setLocalStorage('user', message?.user);
+                location?.state?.from 
+                    ? navigate(location?.state?.from) 
+                    :  ((isMobile && Object.keys(state?.betslip ||{}).length > 0 )? navigate("/mobile-betslip") : navigate("/")) ;
             }
 
         }

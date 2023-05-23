@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState, useCallback} from "react";
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {Context} from '../context/store';
 import makeRequest from './utils/fetch-request';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,6 +8,7 @@ import {
     getFromLocalStorage,
     setLocalStorage
 } from './utils/local-storage'; 
+import { useMediaQuery } from 'react-responsive';
 
 
 import CarouselLoader from './carousel/index';
@@ -34,6 +35,8 @@ const MyBets = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [loadedBetStaus, setLoadedBetStatus] = useState("all")
     const [mybets, setMybets] = useState(null);
+    const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
+    const navigate = useNavigate();
 
     const fetchData = useCallback(async() => {
         if(isLoading) return;
@@ -129,13 +132,13 @@ const MyBets = (props) => {
 
         const rebetFromMyBetslip = (e) => {
             e.preventDefault();
-                   setBetslipActionMessage("tsahdnklsa,d;smafkmdslf,;ds");
             let endpoint = "/v1/share?bet_id="+bet.bet_id;
             makeRequest({url: endpoint, method: "GET", data: null, use_jwt:false}).then(([status, result]) => {
                 if(status === 200){
                    setLocalStorage('betslip', result?.betslip, 1*60*60*1000);
                    dispatch({type:"SET", key:"betslip", payload:result?.betslip})
-                   setBetslipActionMessage("Betslip loaded successfully");
+                   setBetslipActionMessage("Betslip loader successfully");
+                   isMobile && navigate("/mobile-betslip");
                 }
             });
         }

@@ -1,5 +1,5 @@
 import React, {useEffect, useCallback, useState, useContext} from "react";
-
+import { Link } from 'react-router-dom';
 import {JackpotMatchList, JackpotHeader} from './matches/index';
 import makeRequest from "./utils/fetch-request";
 import dailyJackpot from '../assets/img/banner/jackpots/DailyJackpot.png'
@@ -16,6 +16,7 @@ import {
     getJackpotBetslip
 } from './utils/betslip';
 import {Context} from '../context/store';
+import { useMediaQuery } from 'react-responsive';
 
 
 const Jackpot = (props) => {
@@ -33,6 +34,7 @@ const Jackpot = (props) => {
     const [state, dispatch] = useContext(Context);
     const [showAppBeslip, setShowAppBetslip] = useState(false);
     const [activeDTab, setActiveDTab] = useState("home");
+    const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
 
     const fetchData = (jpType) => {
         (jpType ==='wjp'  && activeDTab === 'home')? setLoadingJp(true) :  setLoadingDj(true);
@@ -186,8 +188,11 @@ const Jackpot = (props) => {
                             className="btn btn-auto-pick">Auto Pick</button>
                     </div>
                     <div className="col-3">STAKE <span id="jp-stake" className="bold">{jackpot.bet_amount}</span></div>
-                    <div className="col-3 d-none d-md-block">
-                        <button onClick={() => placeBetClicked(jackpot)} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">BET NOW</button>
+                    <div className="col-3 d-md-block">
+                        { isMobile 
+                            ? <Link to="/mobile-betslip" className="uppercase place-bet-btn btn primary-bg btn-primary-bg" >BET NOW </Link>
+                            : <button onClick={() => placeBetClicked(jackpot)} className="uppercase place-bet-btn btn primary-bg btn-primary-bg">BET NOW</button>
+                        }
                     </div>
                 </div>
             </div>
