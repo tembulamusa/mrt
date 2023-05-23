@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.bikosports.android"
-4    android:versionCode="1"
-5    android:versionName="1.0" >
+4    android:versionCode="2"
+5    android:versionName="2.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="22"
@@ -13,89 +13,89 @@
 11    <!-- Permissions -->
 12
 13    <uses-permission android:name="android.permission.INTERNET" />
-13-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:43:5-67
-13-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:43:22-64
+13-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:42:5-67
+13-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:42:22-64
 14
 15    <application
-15-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:5:5-39:19
+15-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:4:5-38:19
 16        android:allowBackup="true"
-16-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:6:9-35
+16-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:5:9-35
 17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-17-->[androidx.core:core:1.8.0] /home/hanningtone/.gradle/caches/transforms-3/cf27aeb78f2198c76c88b5b28a3978e4/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+17-->[androidx.core:core:1.8.0] /home/hanningtone/.gradle/caches/transforms-3/c03efd9a0015437520d15a440f54260f/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
 18        android:debuggable="true"
 19        android:icon="@drawable/android_icon_72"
-19-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:7:9-49
+19-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:6:9-49
 20        android:label="@string/app_name"
-20-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:8:9-41
+20-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:7:9-41
 21        android:roundIcon="@drawable/android_icon_72"
-21-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:9:9-54
+21-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:8:9-54
 22        android:supportsRtl="true"
-22-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:10:9-35
+22-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:9:9-35
 23        android:theme="@style/AppTheme" >
-23-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:11:9-40
+23-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:10:9-40
 24        <activity
-24-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:13:9-26:20
+24-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:12:9-25:20
 25            android:name="com.bikosports.android.MainActivity"
-25-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:15:13-63
+25-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:14:13-63
 26            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
-26-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:14:13-129
+26-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:13:13-129
 27            android:exported="true"
-27-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:19:13-36
+27-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:18:13-36
 28            android:label="@string/title_activity_main"
-28-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:16:13-56
+28-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:15:13-56
 29            android:launchMode="singleTask"
-29-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:18:13-44
+29-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:17:13-44
 30            android:theme="@style/AppTheme.NoActionBar" >
-30-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:17:13-56
+30-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:16:13-56
 31            <intent-filter>
-31-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:21:13-24:29
+31-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:20:13-23:29
 32                <action android:name="android.intent.action.MAIN" />
-32-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:22:17-69
-32-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:22:25-66
+32-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:21:17-69
+32-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:21:25-66
 33
 34                <category android:name="android.intent.category.LAUNCHER" />
-34-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:23:17-77
-34-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:23:27-74
+34-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:22:17-77
+34-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:22:27-74
 35            </intent-filter>
 36        </activity>
 37
 38        <provider
 39            android:name="androidx.core.content.FileProvider"
-39-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:29:13-62
+39-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:28:13-62
 40            android:authorities="com.bikosports.android.fileprovider"
-40-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:30:13-64
+40-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:29:13-64
 41            android:exported="false"
-41-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:31:13-37
+41-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:30:13-37
 42            android:grantUriPermissions="true" >
-42-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:32:13-47
+42-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:31:13-47
 43            <meta-data
-43-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:33:13-36:25
+43-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:32:13-35:25
 44                android:name="android.support.FILE_PROVIDER_PATHS"
-44-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:34:17-67
+44-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:33:17-67
 45                android:resource="@xml/file_paths" >
-45-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:35:17-51
+45-->/var/www/html/miller_sites/bikosports/bikosports-web/android/app/src/main/AndroidManifest.xml:34:17-51
 46            </meta-data>
 47        </provider>
 48        <provider
-48-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/16b3f02e5594c504e498fdfc5a6967e3/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+48-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/70303eae214240f25e9159e2f8aafa12/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
 49            android:name="androidx.startup.InitializationProvider"
-49-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/16b3f02e5594c504e498fdfc5a6967e3/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+49-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/70303eae214240f25e9159e2f8aafa12/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
 50            android:authorities="com.bikosports.android.androidx-startup"
-50-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/16b3f02e5594c504e498fdfc5a6967e3/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+50-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/70303eae214240f25e9159e2f8aafa12/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
 51            android:exported="false" >
-51-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/16b3f02e5594c504e498fdfc5a6967e3/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+51-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/70303eae214240f25e9159e2f8aafa12/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
 52            <meta-data
-52-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/16b3f02e5594c504e498fdfc5a6967e3/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+52-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/70303eae214240f25e9159e2f8aafa12/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
 53                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-53-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/16b3f02e5594c504e498fdfc5a6967e3/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+53-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/70303eae214240f25e9159e2f8aafa12/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
 54                android:value="androidx.startup" />
-54-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/16b3f02e5594c504e498fdfc5a6967e3/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+54-->[androidx.emoji2:emoji2:1.0.0] /home/hanningtone/.gradle/caches/transforms-3/70303eae214240f25e9159e2f8aafa12/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
 55            <meta-data
-55-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/hanningtone/.gradle/caches/transforms-3/bf1371846bef0d818fd7467b5155d033/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+55-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/hanningtone/.gradle/caches/transforms-3/41a54e902d1217f18ed076c1330b313f/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
 56                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-56-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/hanningtone/.gradle/caches/transforms-3/bf1371846bef0d818fd7467b5155d033/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+56-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/hanningtone/.gradle/caches/transforms-3/41a54e902d1217f18ed076c1330b313f/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
 57                android:value="androidx.startup" />
-57-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/hanningtone/.gradle/caches/transforms-3/bf1371846bef0d818fd7467b5155d033/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+57-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/hanningtone/.gradle/caches/transforms-3/41a54e902d1217f18ed076c1330b313f/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
 58        </provider>
 59    </application>
 60
