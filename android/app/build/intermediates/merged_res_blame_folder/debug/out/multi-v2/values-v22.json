@@ -4,7 +4,7 @@
             "outputFile": "com.bikosports.android.app-mergeDebugResources-18:/values-v22/values-v22.xml",
             "map": [
                 {
-                    "source": "/home/hanningtone/.gradle/caches/transforms-3/ad6e77452ce0b37e5cca2f4152ee9c30/transformed/appcompat-1.4.2/res/values-v22/values-v22.xml",
+                    "source": "/home/hanningtone/.gradle/caches/transforms-3/1af3cfb2b5d4c9dffdc0193f81dbff22/transformed/appcompat-1.4.2/res/values-v22/values-v22.xml",
                     "from": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",

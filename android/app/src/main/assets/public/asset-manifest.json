@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b0e6a07b.css",
-    "main.js": "/static/js/main.8f25c5bb.js",
+    "main.css": "/static/css/main.bfec1055.css",
+    "main.js": "/static/js/main.6f83f589.js",
     "static/js/834.8ae91539.chunk.js": "/static/js/834.8ae91539.chunk.js",
     "static/js/879.cec8fe47.chunk.js": "/static/js/879.cec8fe47.chunk.js",
     "static/js/129.e441c490.chunk.js": "/static/js/129.e441c490.chunk.js",
@@ -10,6 +10,7 @@
     "static/js/55.bca3ae8e.chunk.js": "/static/js/55.bca3ae8e.chunk.js",
     "static/js/787.9a024af3.chunk.js": "/static/js/787.9a024af3.chunk.js",
     "static/js/381.dc9bf1c4.chunk.js": "/static/js/381.dc9bf1c4.chunk.js",
+    "static/media/biko.apk": "/static/media/biko.6951adce501ddac96d0a.apk",
     "static/media/banner2-1000x3000x.png": "/static/media/banner2-1000x3000x.acd2021a42501fcb63d2.png",
     "static/media/banner-1-1000x3000.png": "/static/media/banner-1-1000x3000.714a4acbf33780577fe7.png",
     "static/media/banner-3-1000x3000.png": "/static/media/banner-3-1000x3000.c815e19937824d7f8684.png",
@@ -479,9 +480,8 @@
     "static/media/de.svg": "/static/media/de.8406691444ff98ee33d4.svg",
     "static/media/bd.svg": "/static/media/bd.a62e330d249ff3f5bd27.svg",
     "static/media/id.svg": "/static/media/id.578a8a9cdfdb824a35b1.svg",
-    "static/media/bethipo.apk": "/static/media/bethipo.31d6cfe0d16ae931b73c.apk",
-    "main.b0e6a07b.css.map": "/static/css/main.b0e6a07b.css.map",
-    "main.8f25c5bb.js.map": "/static/js/main.8f25c5bb.js.map",
+    "main.bfec1055.css.map": "/static/css/main.bfec1055.css.map",
+    "main.6f83f589.js.map": "/static/js/main.6f83f589.js.map",
     "834.8ae91539.chunk.js.map": "/static/js/834.8ae91539.chunk.js.map",
     "879.cec8fe47.chunk.js.map": "/static/js/879.cec8fe47.chunk.js.map",
     "129.e441c490.chunk.js.map": "/static/js/129.e441c490.chunk.js.map",
@@ -492,7 +492,7 @@
     "381.dc9bf1c4.chunk.js.map": "/static/js/381.dc9bf1c4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0e6a07b.css",
-    "static/js/main.8f25c5bb.js"
+    "static/css/main.bfec1055.css",
+    "static/js/main.6f83f589.js"
   ]
 }
