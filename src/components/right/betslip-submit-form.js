@@ -372,9 +372,9 @@ const BetslipSubmitForm = (props) => {
                 3: 3, 4: 5, 5: 10, 6: 15, 7: 20, 8: 25, 9: 30, 10: 35, 11: 40, 12: 45, 13: 50, 14: 55
             }
             let total_games = Object.values(state?.betslip||{}).filter(
-                (slip) => slip.odd_value > state?.bgconfigs?.multibet_bonus_odd_limit || 1.20 ).length;
+                (slip) => slip.odd_value > (state?.bgconfigs?.multibet_bonus_odd_limit || 1.25) ).length;
 
-
+            console.log("Filtering total games ", total_games, state?.bgconfigs?.multibet_bonus_odd_limit)
             let stake_after_tax = Float(stake);
             let ext = Float(stake) - Float(stake_after_tax);
             let raw_possible_win = Float(stake_after_tax) * Float(totalOdds);

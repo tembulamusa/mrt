@@ -57,7 +57,8 @@ const Right = (props) => {
             3: 3, 4: 5, 5: 10, 6: 15, 7: 20, 8: 25, 9: 30, 10: 35, 11: 40, 12: 45, 13: 50, 14: 55
         }
         let max_games = state?.bonusconfigs?.multibet_bonus_max_event_hard_limit || 14;
-        let total_games = Object.values(state?.betslip||{}).filter((slip) => slip.odd_value > state?.bonusconfigs?.multibet_bonus_odd_limit || 1.20 ).length;
+        let total_games = Object.values(state?.betslip||{}).filter(
+            (slip) => slip.odd_value > (state?.bonusconfigs?.multibet_bonus_odd_limit || 1.25) ).length;
 
         if (total_games > max_games) {
             total_games = max_games;
