@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Formik, Form} from 'formik';
 import makeRequest from "../utils/fetch-request";
-import mpesa from '../../assets/img/mpesa-3.png'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { useLocation } from 'react-router-dom';

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Formik, Form} from 'formik';
 import makeRequest from "../utils/fetch-request";
-import mpesa from '../../assets/img/mpesa-3.png'
 import { useNavigate } from "react-router-dom";
 
 

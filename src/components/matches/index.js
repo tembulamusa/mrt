@@ -351,7 +351,7 @@ const SideBets = (props) => {
 const OddButton = (props) => {
     const {match, mkt, detail, live, jackpot, subType, marketKey} = props
     const [ucn, setUcn] = useState('');
-    const [picked, setPicked] = useState('');
+    const [picked, setPicked] = useState('not-picked');
     const [oddValue, setOddValue] = useState(null);
 
     const [state, dispatch] = useContext(Context);
@@ -383,7 +383,7 @@ const OddButton = (props) => {
             && uc == betslip?.[match.match_id]?.ucn) {
             setPicked('picked');
         } else {
-            setPicked('');
+            setPicked('not-picked');
         }
     }, [picked, state[betslip_key]])
 
@@ -422,7 +422,7 @@ const OddButton = (props) => {
     const updateMatchPicked = useCallback(() => {
         if (state?.[reference]) {
             if (state?.[reference].startsWith('remove.')) {
-                setPicked('');
+                setPicked('not-picked');
             } else {
                 let uc = clean(
                     match.match_id
@@ -433,7 +433,7 @@ const OddButton = (props) => {
                 if (state?.[reference] === uc) {
                     setPicked('picked')
                 } else {
-                    setPicked('');
+                    setPicked('not-picked');
                 }
             }
         }

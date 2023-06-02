@@ -1,5 +1,4 @@
 import React, {useState, useContext, useEffect} from 'react';
-import mpesa from '../../../assets/img/mpesa-3.png';
 import makeRequest from "../../utils/fetch-request";
 import { Formik,  Form} from 'formik';
 import { Context } from '../../../context/store';

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import QuickLogin from './quick-login';
 import CompanyInfo from './company-info';
@@ -28,6 +28,7 @@ const Right = (props) => {
     const [betslip] = useState(Object.keys(state?.betslip || {}).length);
     const [total_odds, setTotalOdds] = useState(1.0);
     const [showAppSlipPage, setShowAppSlipPage] = useState(false);
+    const betslipToRef = useRef();  
    
     const calculateOdds = () => {
         let result = 1;
@@ -43,35 +44,44 @@ const Right = (props) => {
     }
 
     const updateBongeBonusMessage = () => {
-        let win_matrix = {
-            3: 3, 4: 5, 5: 10, 6: 15, 7: 20, 8: 25, 9: 30, 10: 35, 11: 40, 12: 45, 13: 50, 14: 55, 15: 60, 16: 65, 17: 70, 18: 80, 19: 90, 20: 100
+        let str_configs = state?.bgconfigs?.multibet_bonus_event_award_ratio?.split(",");
+        let odd_limit = state?.bgconfigs?.multibet_bonus_odd_limit || 1.25;
+
+        let bgcfgs = {}
+        str_configs?.map((value, index, array) => {
+            let vs = value?.split(":");
+            bgcfgs[vs[0]] = vs[1];
+        })
+
+        let win_matrix = bgcfgs ||  {
+            3: 3, 4: 5, 5: 10, 6: 15, 7: 20, 8: 25, 9: 30, 10: 35, 11: 40, 12: 45, 13: 50, 14: 55
         }
-        let max_games = 16;
-        let total_games = Object.keys(state?.betslip || {}).length;
+        let max_games = state?.bonusconfigs?.multibet_bonus_max_event_hard_limit || 14;
+        let total_games = Object.values(state?.betslip||{}).filter((slip) => slip.odd_value > state?.bonusconfigs?.multibet_bonus_odd_limit || 1.20 ).length;
 
         if (total_games > max_games) {
             total_games = max_games;
         }
         let centage = win_matrix[total_games];
         if (!(total_games in win_matrix)) {
-            setBongeBonusMessage("Chagua mechi 3 au zaidi uweze kupata Bonge Bonus")
+            setBongeBonusMessage("Chagua mechi 3 au zaidi zenye oddi zaidi ya 1.25 uweze kupata Bonge Bonus")
             return;
         }
 
         let bonusAdvice = "";
         if (total_games == 1) {
-            bonusAdvice = "Ongeza mechi 2 uweza kupata WIN bonus ya 3% kuanzia mechi 3.";
+            bonusAdvice = "Ongeza mechi 2 zenye oddi zaidi ya " +odd_limit+ " uweze kupata WIN bonus ya 3% kuanzia mechi 3.";
         } else if (total_games == 2) {
-            bonusAdvice = "Ongeza mechi 1 uweza kupata WIN bonus ya 3% kuanzia mechi 3.";
+            bonusAdvice = "Ongeza mechi 1 yenye oddi zaidi ya " + odd_limit + " uweze kupata WIN bonus ya 3% kuanzia mechi 3.";
         } else {
-            if (total_games > 2 && total_games <= 16) {
+            if (total_games > 2 && total_games <= max_games) {
                 var next_centage = win_matrix[total_games + 1]
                 bonusAdvice = "Hongera umepokea WIN bonus ya "
-                    + centage + "% kwa mechi " + total_games
-                    + " Ongeza mechi 1 uweza kupata WIN bonus ya " + next_centage + "%";
-            } else if (total_games > 16) {
+                    + centage + "% kwa mechi " + total_games + " zenye oddi zaidi ya "+ odd_limit + " "
+                    + " Ongeza mechi 1 yenye oddi zaidi ya "+odd_limit+" uweze kupata WIN bonus ya " + next_centage + "%";
+            } else if (total_games > max_games) {
                 bonusAdvice = "Hongera umepokea WIN bonus ya "
-                    + centage + "% kwa mechi " + total_games;
+                    + centage + "% kwa mechii " + total_games + " zenye oddi zaidi ya " + odd_limit +  "";
             }
         }
         setBongeBonusMessage(bonusAdvice);
@@ -91,6 +101,11 @@ const Right = (props) => {
         updateBongeBonusMessage();
     }, [state?.betslip])
 
+    useEffect(() => {
+        if(mobileslip) {
+            betslipToRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+    }, [mobileslip])
 
     useEffect(() => {
         if(state?.jpbetpressed || state?.betslippressedfromabove) {
@@ -112,7 +127,7 @@ const Right = (props) => {
     }
 
     return (
-        <div className="col-md-3 gn betslip-container sticky-top">
+        <div className="col-md-3 gn betslip-container sticky-top" ref={betslipToRef}>
             <div className={`betslip-container ${mobileslip ? '' : 'd-none d-md-block'}` } >
                 {props?.message && <AlertMessage classname={props.classname} message={props.message} />}
                 <div className="bet-option-list sticky-top" id=''>

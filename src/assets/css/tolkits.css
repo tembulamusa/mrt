@@ -383,10 +383,6 @@ header, li a, .thedate span {
     outline: none;
 }
 
-.accordion-container {
-    /*background: #1E3948 !important;*/
-}
-
 .accordion-item-panel {
     background: #1E3948 !important;
     padding: 10px 35px;
@@ -430,9 +426,6 @@ header, li a, .thedate span {
     color: #fff;
 }
 
-.top-login-input-field::placeholder {
-    /*color: gray;*/
-}
 
 
 .pdf-app {
@@ -442,7 +435,6 @@ header, li a, .thedate span {
 
 
 .home-tab-active {
-    /* background: #00a1d18c !important; */
     border-bottom: 4px solid #34B3BF!important;
 }
 
@@ -773,17 +765,16 @@ header, li a, .thedate span {
     color: #fff !important;
 }
 .matches .top-matches .match-detail button.home-team {
-    /* background: #e3e3e3 !important; */
     padding-right: 10px;
     border: 1px solid rgba(52, 179, 191, 0.3);
 }
 
-.matches .top-matches .match-detail button.home-team label:hover, .matches .top-matches .match-detail button.home-team:hover {
+.matches .top-matches .match-detail button.home-team label:hover, 
+ .matches .top-matches .match-detail button.home-team:hover {
     background: #34B3BF !important;
     color: #fff !important;
 }
 .match-detail button .label:hover{
-    /*background: #2c2457 !important;*/
     color:#fff !important;
 }
 .yellow {
@@ -906,14 +897,11 @@ header, li a, .thedate span {
 .matches .top-matches .events-odd {
     background: transparent;
 }
-.top-matches button.home-team:hover {
-    background: #34B3BF !important;
-    color: #fff !important;
-}
 .top-matches button.home-team {
     overflow: visible;
     display: block;
     width: 100%;
+    border-radius: 2px !important;
     border: none;
     text-align: center !important;
     outline-style: none;
@@ -922,13 +910,28 @@ header, li a, .thedate span {
     font-size: 10px;
     font-weight: normal;
     padding: 2px;
-    background:rgba(52, 179, 191, 0.3);
+    background:#b9e6ea !important;
+    color: #2c2457 !important; 
 }
+
+@media (hover: hover) and (pointer: fine) {
+
+    .top-matches button.home-team:hover, .top-matches button.home-team.not-picked:hover {
+        background: #34B3BF !important;
+        color: #fff !important;
+    }
+}
+
 
 .top-matches button.home-team.picked {
     background: #34B3BF !important;
+    color: #fff !important;
 }
 
+.top-matches button.home-team.not-picked {
+    background: #b9e6ea !important;
+    color: #2c2457 !important; 
+}
 .top-matches .side {
     padding: 12px 8px 2px 5px;
     outline-style: none;
@@ -2055,27 +2058,6 @@ events-header {
     opacity:0.8;
 }
 
-.matches .top-matches button {
-    height: 30px;
-    border-radius: 2px !important;
-    background:rgba(52, 179, 191, 0.15)
-}
-
-.home-team, .home-team:focus {
-    background: rgba(52, 179, 191, 0.15)!important;
-    color: #2c2457 !important; 
-}
-.away-team {
-    background: #c91d56 !important;
-    color: #fff !important;
-    font-weight: bold !important;
-}
-
-.draw {
-    background: #1e2d36 !important;
-    color: #ffffff;
-    font-weight: bold !important;
-}
 
 .web-element.container .top-matches {
     background: rgba(52, 179, 191, 0.06);
@@ -16295,11 +16277,6 @@ svg:hover {
     background: #34B3BF;
 }
 
-.pro-sidebar .pro-menu .pro-menu-item.active a,
-.pro-sidebar .pro-menu .pro-menu-item:hover a {
-    /*color: #fff !important;
-    background: #34B3BF;*/
-}
 
 .pro-menu-item:hover, .pro-menu-item:active a {
     background: #34B3BF;
@@ -16325,18 +16302,12 @@ a:hover {
 .pro-sidebar .pro-menu .pro-menu-item.active svg path,
 .pro-sidebar .pro-menu .pro-menu-item:hover svg path {
     color: #fff !important;
-    /*background: #34B3BF;*/
 }
 
 .pro-sidebar .pro-menu .base-submenu .pro-menu-item {
     border-radius: 5px;
 }
 
-
-::placeholder {
-    /*color: black;*/
-    /*opacity: 1;*/
-}
 
 .form-control ::placeholder {
    color: #000 !important;

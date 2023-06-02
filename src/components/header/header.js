@@ -22,7 +22,6 @@ import {
 import { FaSearch } from "react-icons/fa";
 
 import logo from '../../assets/img/logo.png';
-import logo2 from '../../assets/img/biko-logo.png';
 import {Navbar, Nav, Offcanvas} from "react-bootstrap";
 import SideBar from "../sidebar/awesome/Sidebar";
 import {Menu, MenuItem, ProSidebar, SidebarContent, SidebarHeader, SubMenu} from "react-pro-sidebar";
@@ -145,7 +144,7 @@ const Header = (props) => {
                         <Navbar.Brand as={Link} to="/" className="e logo align-self-start co4" title="Bikosports">
                             <div className="">
                                 <div>
-                                    <LazyLoadImage src={logo2} alt="Bikosports" title="Bikosports" effects="blur"/>
+                                    <LazyLoadImage src={logo} alt="Bikosports" title="Bikosports" effects="blur"/>
                                 </div>
                             </div>
                         </Navbar.Brand>

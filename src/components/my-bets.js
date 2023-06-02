@@ -90,6 +90,8 @@ const MyBets = (props) => {
                    setCanCancel(false);
                    setBetslipActionMessage(result?.message);
 
+                } else {
+                   setBetslipActionMessage("Error: " + result?.message);
                 }
             });
         };

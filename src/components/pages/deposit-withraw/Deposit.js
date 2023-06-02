@@ -2,7 +2,6 @@ import React, {useState, useContext, useEffect} from 'react';
 
 import {Formik, Form} from 'formik';
 import makeRequest from "../../utils/fetch-request";
-import mpesa from '../../../assets/img/mpesa.png'
 import {Context} from '../../../context/store';
 import {getBetslip} from '../../utils/betslip'
 

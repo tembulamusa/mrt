@@ -36,7 +36,6 @@ import LivescoreIcon from "../../../assets/svg/LIVESCORE.svg";
 import LotteryIcon from "../../../assets/svg/LOTTERY.svg";
 import Others from "../../../assets/svg/others.svg";
 import TopLeagues from "../../../assets/svg/top-leagues.svg";
-import Flag from "../../../assets/svg/flag.svg";
 import MostLikedIcon from "../../../assets/svg/MOSTLIKEDOPTIONS.svg";
 import DepositIcon from "../../../assets/svg/deposit.svg";
 import HOWToPlayIcon from "../../../assets/svg/how-to-play.svg";
@@ -70,6 +69,7 @@ const Sidebar = (props) => {
 
     const fetchData = useCallback(async () => {
         let cached_competitions =  null; //getFromLocalStorage('categories');
+        let cached_configs =  null; //getFromLocalStorage('bgconfigs');
         let endpoint = "/v1/categories";
 
         if (!cached_competitions) {
@@ -78,15 +78,20 @@ const Sidebar = (props) => {
             ]);
             let [c_status, c_result] = competition_result
             if (c_status === 200) {
+                let bgconfigs = c_result?.bgconfigs;
+                delete c_result.bgconfigs
                 setCompetitions(c_result);
                 setLocalStorage('categories', c_result);
+                setLocalStorage('bgconfigs', bgconfigs);
                 dispatch({type:"SET", key:"categories", payload:c_result});
+                dispatch({type:"SET", key:"bgconfigs", payload:bgconfigs});
             } else {
                 fetchData()
             }
         } else {
             setCompetitions(cached_competitions);
             dispatch({type:"SET", key:"categories", payload:cached_competitions});
+            dispatch({type:"SET", key:"bgconfigs", payload:cached_configs});
         }
 
     }, []);

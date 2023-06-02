@@ -1,7 +1,6 @@
 import React from "react";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import DownloadLink from "react-download-link";
-import mobileBanner from '../../../assets/img/mobile/demo.jpg'
 import Row from 'react-bootstrap/Row';
 
 import downloadAPKFile from '../../../assets/biko.apk';

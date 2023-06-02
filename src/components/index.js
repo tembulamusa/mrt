@@ -33,7 +33,7 @@ const Index = (props) => {
     const [state, dispatch] = useContext(Context);
     const [fetching, setFetching] = useState(false)
     const [subTypes, setSubTypes] = useState("1,18,29");
-    const [currentTab, setCurrentTab] =useState();
+    const [currentTab, setCurrentTab] =useState('highlights');
     const [searchParams, setSearchParams] = useSearchParams();
 
     const findPostableSlip = () => {
@@ -65,7 +65,8 @@ const Index = (props) => {
             endpoint += "&competition_id=" +  competitionid;
         }
         
-        let tab = url.searchParams.get('tab')
+        let tab = url.searchParams.get('tab') || "upcoming";
+        console.log("Called fatch data with tab: ", tab, currentTab)
         if(!id && !categoryid && !competitionid) {
            endpoint += "&tab=" + currentTab || tab;
         } else {

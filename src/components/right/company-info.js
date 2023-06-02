@@ -1,5 +1,4 @@
 import React from 'react';
-import RightBanner from '../../assets/img/Virtual-side-Banner.png'
 
 const CompanyInfo = (props) => {
 
@@ -23,7 +22,6 @@ const CompanyInfo = (props) => {
                             </div>
                         </div>
                         <div className="col-sm-12">
-        { /**  <img src={RightBanner} alt="" className='w-100'/> **/ }
                         </div>
                     </div>
                 </div>
