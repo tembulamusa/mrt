@@ -360,13 +360,11 @@ const BetslipSubmitForm = (props) => {
         if (betslip) {            
 
             let str_configs = state?.bgconfigs?.multibet_bonus_event_award_ratio?.split(",");
-
             let bgcfgs = {}
             str_configs?.map((value, index, array) => {
                 let vs = value?.split(":");
                 bgcfgs[vs[0]] = vs[1];
             })
-
 
             let win_matrix = bgcfgs ||  {
                 3: 3, 4: 5, 5: 10, 6: 15, 7: 20, 8: 25, 9: 30, 10: 35, 11: 40, 12: 45, 13: 50, 14: 55
@@ -374,7 +372,6 @@ const BetslipSubmitForm = (props) => {
             let total_games = Object.values(state?.betslip||{}).filter(
                 (slip) => slip.odd_value > (state?.bgconfigs?.multibet_bonus_odd_limit || 1.25) ).length;
 
-            console.log("Filtering total games ", total_games, state?.bgconfigs?.multibet_bonus_odd_limit)
             let stake_after_tax = Float(stake);
             let ext = Float(stake) - Float(stake_after_tax);
             let raw_possible_win = Float(stake_after_tax) * Float(totalOdds);
@@ -386,8 +383,8 @@ const BetslipSubmitForm = (props) => {
             if (jackpot) {
                 raw_possible_win = jackpotData?.jackpot_amount
             }
-            if (raw_possible_win > state?.bgconfigs?.max_bet_possible_win || 50000000  && !jackpot) {
-                raw_possible_win = state?.bgconfigs?.max_bet_possible_win || 50000000;
+            if (raw_possible_win > (state?.bgconfigs?.max_bet_possible_win || 50000000)  && !jackpot) {
+                raw_possible_win = (state?.bgconfigs?.max_bet_possible_win || 50000000 );
             }
             let taxable_amount = Float(raw_possible_win) - Float(stake_after_tax);
             let wint = taxable_amount * 0.1;

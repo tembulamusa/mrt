@@ -54,7 +54,6 @@ const Sidebar = (props) => {
     const pathname = window.location.pathname;
     const [topLeagesOpen, setTopLeagesOpen] = useState(false);
     const [topCountriesOpen, setTopContriesOpen] = useState(false);
-    const [otherSportsOpem, setOtherSportsOpen] = useState(false);
 
 
     const handleCollapsedChange = (checked) => {
@@ -156,10 +155,6 @@ const Sidebar = (props) => {
         return sport_image
     }
 
-    const getDefaultMarketsForSport = (competition) => {
-        return competition?.default_display_markets
-    }
-
     const toggleSideCollapsed = useCallback(() => {
        setCollapsed(collapsed => !collapsed)
      }, [ setCollapsed ])
@@ -249,7 +244,7 @@ const Sidebar = (props) => {
                             {competitions?.top_soccer?.map((top_league, index) =>  (
                                 <MenuItem key={`l_${index}`}
                                           className={`${pathname.split("/")[4] == top_league.competition_id ? 'active': ''}`}
-                                          icon={<img src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
+                                          icon={<img alt="" src={getSportImageIcon(top_league?.flag, 'img/flags-1-1', true)}
                                           style={{borderRadius: "10%", height: "15px"}}></img>} >
                                           
                                    <Link to={`/competition/${top_league.sport_id}/${top_league.category_id}/${top_league.competition_id}`}>
@@ -264,7 +259,7 @@ const Sidebar = (props) => {
                             { competitions?.top_countries.map((country, index) => (
                                 <MenuItem title={country.category_name}
                                      className={`${pathname.split("/")[3] == country.category_id ? 'active': ''}`}
-                                     icon={<img style={{borderRadius: '10%', height: '15px'}}
+                                     icon={<img alt="" style={{borderRadius: '10%', height: '15px'}}
                                      src={getSportImageIcon(country.flag_icon, 'img/flags-1-1')}
                                      />} key={index} >
 
@@ -282,7 +277,7 @@ const Sidebar = (props) => {
                             {competitions?.all_sports.map((competition, index) => (
 
                                 <SubMenu title={competition.sport_name} defaultOpen={getActiveSport(competition.sport_id) && index !== 0}
-                                         icon={<img style={{borderRadius: '10%', height: '30px'}}
+                                         icon={<img alt="" style={{borderRadius: '10%', height: '30px'}}
                                                     src={getSportImageIcon(competition.sport_name)}/>}
                                          key={index}>
                                         <PerfectScrollbar >
@@ -292,7 +287,7 @@ const Sidebar = (props) => {
                                              let ids = pathname.split("/"); 
                                              return  (<MenuItem title={country.category_name}
                                                          className={`${ids[3] == country.category_id ? 'active': ''}`}
-                                                         icon={<img style={{borderRadius: '10%', height: '15px'}}
+                                                         icon={<img  alt="" style={{borderRadius: '10%', height: '15px'}}
                                                          src={getSportImageIcon(country.cat_flag, 'img/flags-1-1')}
                                                          />} key={countryKey} >
 
