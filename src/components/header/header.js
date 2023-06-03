@@ -121,8 +121,10 @@ const Header = (props) => {
     }, [updateUserOnHistory])
 
     useEffect(() => {
-       setUser(state?.user);
-       setLocalStorage('user', state?.user);
+       if(state?.user) {
+           setUser(state?.user);
+           setLocalStorage('user', state?.user);
+       }
     
     }, [state?.user])
 

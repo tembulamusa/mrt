@@ -224,7 +224,7 @@ const MyBets = (props) => {
                       
                     }
                     
-                    { canCancel === true && <div className="col-auto"><div className="uppercase">  <CancelBetMarkup /> </div></div> }
+                    { /** canCancel === true && <div className="col-auto"><div className="uppercase">  <CancelBetMarkup /> </div></div>  **/}
                  </div>
             { betslipActionMessage && <div className="row">
                     <div className="col-auto" style={{color:"red"}}>{betslipActionMessage}  </div>
