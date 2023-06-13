@@ -107,6 +107,7 @@ const Jackpot = (props) => {
                let slip = {                                                            
                     "match_id": match.match_id,                                                    
                     "parent_match_id": match.parent_match_id,                                            
+                    "pos":match.pos,
                     "special_bet_value": '',                                           
                     "sub_type_id": 1,                                                
                     "bet_pick":  pickedValue,  
@@ -308,40 +309,15 @@ const Jackpot = (props) => {
         )
     }
 
-    
-    const JackpotTabs = () => {
+
+    const JackpotResults = () => {
 
 
-        const handleTabOnClick = (e) => {
+        useEffect(() => {
         
-            setActiveDTab("results");
+        })
 
-            if(!matches && e === "results") {
-               fetchData("jp");
-            }
-        }
-
-        return (
-            <Tabs
-            variant={'tabs'}
-            defaultActiveKey={activeDTab}
-            id=""
-            className="background-primary menu-type-tabs"
-            onSelect={(e) => handleTabOnClick(e)}
-            justify>
-
-            <Tab eventKey="home" 
-              title=" ALL JACKPOTS" 
-              className={'background-primary'}
-              >
-                <JackpotsListing />
-
-            </Tab>
-
-            <Tab 
-               eventKey="results" 
-               title="RESULTS"
-               >
+        return ( <>
                 <div className="jp-results remove-last-element">
                     <JackpotHeader jackpot={matches?.meta}/>
                     <div className="matches full-mobile sticky-top container">
@@ -388,9 +364,48 @@ const Jackpot = (props) => {
                         </Container>
                     </div>
                 ))}
+            </>
+        );
+
+    
+    }
+
+    
+    const JackpotTabs = () => {
+
+
+        const handleTabOnClick = (e) => {
+        
+            setActiveDTab("results");
+
+            if(!matches && e === "results") {
+               fetchData("jp");
+            }
+        }
+
+        return (
+            <Tabs
+            variant={'tabs'}
+            defaultActiveKey={activeDTab}
+            id=""
+            className="background-primary menu-type-tabs"
+            onSelect={(e) => handleTabOnClick(e)}
+            justify>
+
+            <Tab eventKey="home" 
+              title=" ALL JACKPOTS" 
+              className={'background-primary'}
+              >
+                <JackpotsListing />
+
             </Tab>
 
-
+            <Tab 
+               eventKey="results" 
+               title="RESULTS"
+               >
+                <JackpotResults />
+            </Tab>
             <Tab eventKey="rules" 
               title=" RULES" 
               className={'background-primary'}

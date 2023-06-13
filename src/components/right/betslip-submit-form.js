@@ -34,6 +34,7 @@ import Mpesa from '../../assets/img/payment_logos/mpesa2.PNG'
 import Tigo from '../../assets/img/payment_logos/tigo2.PNG'
 import Halo from '../../assets/img/payment_logos/halo2.PNG'
 import LoginModal from "../loginmodal";
+import { useMediaQuery } from 'react-responsive';
 
 const Float = (equation, precision = 4) => {
     return Math.round(equation * (10 ** precision)) / (10 ** precision);
@@ -60,6 +61,7 @@ const BetslipSubmitForm = (props) => {
     const [payLaterBusy, setPayLaterBusy] = useState(false);
     const [bongeBonus, setBongeBonus] = useState(0.00);
     const [bongeCentage, setBongeCentage] = useState(0.00);
+    const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
     const formRef = useRef()
     const removeRef = useRef()
 
@@ -261,6 +263,10 @@ const BetslipSubmitForm = (props) => {
 
         let live_bet = false;
 
+        if(jackpot) {
+            bs.sort((m0, m1) => (m0.pos > m1.pos) ? 1 : -1);
+        }
+
         for (let slip of bs) {
             if (jackpot) {
                 jackpotMessage += "#" + slip.bet_pick
@@ -298,7 +304,7 @@ const BetslipSubmitForm = (props) => {
 
         let payload = {
             bet_string: 'web',
-            app_name: 'desktop',
+            app_name: isMobile ? 'app': 'desktop',
             possible_win: possibleWin,
             profile_id: values.user_id,
             stake_amount: values.bet_amount,

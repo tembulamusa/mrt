@@ -446,6 +446,7 @@ const OddButton = (props) => {
     const handleButtonOnClick = (event) => {
         let pmid = event.currentTarget.getAttribute("parent_match_id");
         let mid = event.currentTarget.getAttribute("match_id");
+        let pos = event.currentTarget.getAttribute("pos");
         let stid = event.currentTarget.getAttribute("sub_type_id");
         let sbv = event.currentTarget.getAttribute("special_bet_value");
         let oddk = event.currentTarget.getAttribute("odd_key");
@@ -464,6 +465,7 @@ const OddButton = (props) => {
             "special_bet_value": sbv,
             "sub_type_id": stid,
             "bet_pick": oddk,
+            "pos":pos,
             "odd_value": odd_value,
             "home_team": home_team,
             "away_team": away_team,
@@ -500,6 +502,7 @@ const OddButton = (props) => {
     return (
         <button
             ref={ref}
+            pos={match.pos || 0}
             className={`home-team ${match.match_id} ${ucn} ${picked} c-btn`}
             home_team={match.home_team}
             odd_type={match?.name || match?.market_name || "1X2"}

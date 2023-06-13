@@ -66,7 +66,6 @@ const Index = (props) => {
         }
         
         let tab = url.searchParams.get('tab') || "upcoming";
-        console.log("Called fatch data with tab: ", tab, currentTab)
         if(!id && !categoryid && !competitionid) {
            endpoint += "&tab=" + currentTab || tab;
         } else {
