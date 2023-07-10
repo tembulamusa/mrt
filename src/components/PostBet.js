@@ -69,8 +69,10 @@ const PostBet = (props) => {
            }
        }
     }
-
     const createSharableBet = async (social) => {
+        if(sharebleCode) {
+            return false;
+        }
         let endpoint = "/v1/share";
         setDoneShare(false);
         let betslip =  getFromLocalStorage('old_betslip');
@@ -80,8 +82,10 @@ const PostBet = (props) => {
             ip_address: ipv4,
             app:app_name,
             msisdn:user?.msisdn,
-            profile_id:user?.profile_id
+            profile_id:user?.profile_id,
+            betamount:state?.betamount || 1000
         }
+        console.log("Calling shareable bet", payload);
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {
                 setSharebleCode(result.code);

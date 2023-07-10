@@ -20,6 +20,7 @@ const ShareModal = (props) => {
     const [shareMessage, setShareMessage] = useState();
     const [state, dispatch] = useContext(Context);
     const [doneShare, setDoneShare] = useState(false);
+    const [betAmount, setBetAmount] = useState(1000);
 
 
     const createSharableBet = useCallback(async () => {
@@ -32,7 +33,8 @@ const ShareModal = (props) => {
             ip_address: ipv4,
             app:app_name,
             msisdn:user?.msisdn,
-            profile_id:user?.profile_id
+            profile_id:user?.profile_id,
+            betamount:betAmount
         }
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {
@@ -54,6 +56,12 @@ const ShareModal = (props) => {
         setIpv4(ip);
     }, [ipv4]);
 
+    useEffect(() => {
+        if(state?.betamount) {
+            setBetAmount(state.betamount);
+        }
+    }, [state?.betamount])
+    
     useEffect(() => {
         ipAddress();
     }, [ipAddress])

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useMatch } from 'react-router-dom';
 import BetslipSubmitForm from './betslip-submit-form';
 import {Context} from '../../context/store';
 import {
@@ -20,20 +20,25 @@ const clean_rep = (str) => {
     str = str.replace(/[^A-Za-z0-9\-]/g, '');
     return str.replace(/-+/g, '-');
 }
-export const TotalOddsContext = React.createContext();
 
 const BetSlip = (props) => {
     const {jackpot, betslipValidationData, jackpotData} = props;
     const [betslipKey, setBetslipKey] = useState("betslip");
     const [betslipsData, setBetslipsData] = useState(null);
     const [state, dispatch] = useContext(Context);
-    const { code } = useParams();
+    const urlmatch = useMatch("/betslip/share/:code");
+    const urlmatch2 = useMatch("/share/:code");
+    let code = null;
+    if(urlmatch || urlmatch2 ) {
+        code = urlmatch?.params || urlmatch2?.params;
+    }
 
     const [totalOdds, setTotalOdds] = useState(1);
     const [inputShareCode, setInputShareCode] = useState();
 
     const fetchSharedBetslip = useCallback((code) => {
         let endpoint = "/v1/share?code=" + code
+        console.log("Beslip calling get shared slip from code", code)
         makeRequest({url: endpoint, method: "GET", data: null}).then(([status, result]) => {
             if (status == 200) {
                //load betslip
@@ -41,21 +46,15 @@ const BetSlip = (props) => {
                     setLocalStorage("betslip",result?.betslip);
                     setBetslipsData(result?.betslip);
                     dispatch({type: "SET", key: betslipKey, payload: result?.betslip});
+                    dispatch({type: "SET", key: "sharecode", payload: code});
+                    dispatch({type: "SET", key: "betamount", payload: result?.betamount});
+
                 }
             }
         });
     }, [code])
-
-    function ProvideTtalOdds( { children } ){
-        const[otherstate, otherdispatch] = useState(totalOdds);
-
-        return(<TotalOddsContext.Provider value={{ otherstate, otherdispatch }}>
-        { children }
-        </TotalOddsContext.Provider>)
-    }
-
-
-   const handleCodeInputChange = (event) => {
+   
+    const handleCodeInputChange = (event) => {
        setInputShareCode(event.target.value);
     };
 

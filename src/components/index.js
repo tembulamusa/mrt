@@ -24,7 +24,7 @@ import { ShimmerTable } from "react-shimmer-effects";
 const Index = (props) => {
     const { tab } = props;
     const location = useLocation();
-    const {id, sportid, categoryid, competitionid } = useParams();
+    const {id, sportid, categoryid, competitionid} = useParams();
     const [matches, setMatches] = useState([]);
     const [limit, setLimit] = useState(50);
     const [producerDown, setProducerDown] = useState(false);

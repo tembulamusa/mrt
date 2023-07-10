@@ -126,7 +126,9 @@ const MyBets = (props) => {
             makeRequest({url: endpoint, method: "GET", data: null, use_jwt:false}).then(([status, result]) => {
                 if(status === 200){
                    setLocalStorage('betslip', result?.betslip, 1*60*60*1000);
-                   dispatch({type:"SET", key:"showsharemodal", payload:true})
+                   dispatch({type:"SET", key:"showsharemodal", payload:true});
+                   dispatch({type:"SET", key:"betamount", payload:result?.betamount});
+                   dispatch({type:"SET", key:"sharecode", payload:bet.bet_id});
                 }
             });
 
@@ -139,6 +141,8 @@ const MyBets = (props) => {
                 if(status === 200){
                    setLocalStorage('betslip', result?.betslip, 1*60*60*1000);
                    dispatch({type:"SET", key:"betslip", payload:result?.betslip})
+                   dispatch({type:"SET", key:"betamount", payload:result?.betamount});
+                   dispatch({type:"SET", key:"sharecode", payload:bet.bet_id});
                    setBetslipActionMessage("Betslip loader successfully");
                    isMobile && navigate("/mobile-betslip");
                 }

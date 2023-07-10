@@ -71,6 +71,14 @@ const BetslipSubmitForm = (props) => {
         }
     }, [])
 
+    useEffect(() => {
+        console.log("State.bet amount changed am trying to change stake on the form ", state?.betamount)
+        if(state?.betamount) {
+           setStake(state?.betamount)
+        }
+    
+    }, [state?.betamount])
+
     const ipAddress = useCallback(async () => {
         let ip = await publicIp.v4({
             fallbackUrls: ['https://ifconfig.co/ip']
@@ -315,7 +323,8 @@ const BetslipSubmitForm = (props) => {
             slip: bs,
             account: values.user_id ? 1: 0,
             msisdn: state?.user?.msisdn ||"255000000000",
-            accept_all_odds_change: values.accept_all_odds_change
+            accept_all_odds_change: values.accept_all_odds_change,
+            sharecode:state?.sharecode
         };
         let endpoint = '/bet';
         let method = "POST"
@@ -323,7 +332,6 @@ const BetslipSubmitForm = (props) => {
         if (jackpot) {
             payload.message = jackpotMessage
             payload.jackpot_id = jackpotData?.jackpot_event_id
-            payload.app_name = "web"
             payload.slip = ''
             endpoint = "/jp/bet"
             method = "POST"
@@ -348,6 +356,8 @@ const BetslipSubmitForm = (props) => {
                     var _hash = hash(payload);
                     dispatch({type: "SET", key: jackpot ? 'jackpotbetslip' : 'betslip', payload: {}});
                     dispatch({type: "SET", key: "refreshbalance", payload: _hash});
+                    dispatch({type: "SET", key: "betamount", payload: values.bet_amount});
+                    dispatch({type: "DEL", key: "sharecode"});
                 } else {
                     let qmessage = {
                         status: status,
@@ -438,6 +448,7 @@ const BetslipSubmitForm = (props) => {
         dispatch({type: "SET", key:"jackpotbetslip", payload:{}});
         dispatch({type: "DEL", key: "jpbetpressed"});
         dispatch({type: "DEL", key: "jackpotmeta"});
+        dispatch({type: "DEL", key: "sharecode"});
         dispatch({type: "DEL", key: "betslippressedfromabove"});
         dispatch({type: "SET", key:"betslip", "payload":{}});
         setMessage(null);
@@ -531,9 +542,6 @@ const BetslipSubmitForm = (props) => {
 
             return (
                 <FormikForm name="betslip-submit-form">
-                
-
-
                 <table className="bet-table">
                     <tbody>
                     {!jackpot && <tr className="hide-on-affix">
