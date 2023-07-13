@@ -72,7 +72,6 @@ const BetslipSubmitForm = (props) => {
     }, [])
 
     useEffect(() => {
-        console.log("State.bet amount changed am trying to change stake on the form ", state?.betamount)
         if(state?.betamount) {
            setStake(state?.betamount)
         }

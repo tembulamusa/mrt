@@ -1,9 +1,7 @@
 import React, {useEffect, useCallback, useContext, useState} from "react";
 import {render} from "react-dom";
-import { Plugins } from "@capacitor/core";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { confirmable, createConfirmation } from "react-confirm";
 
 
 import {
@@ -59,6 +57,11 @@ import MatchList from './components/matches/index';
 import Right from './components/right/index';
 import SideBar from './components/sidebar/awesome/Sidebar';
 import MobileMainMenu from './components/header/mobile-main-menu';
+import RouteChangeTracker from './components/route-change-tracker'
+import ReactGA from 'react-ga';
+const TRACKING_ID = 'G-Y2RBQTCXF6';
+
+ReactGA.initialize(TRACKING_ID);
 
 const Logout = () => {
     let navigate = useNavigate();
@@ -79,80 +82,9 @@ const Logout = () => {
 const App = () => {
 
     const [state, ] = useContext(Context);
-    const { App } = Plugins;
-    const [showBackAlert, setShowBackAlert] = useState(false);
-
-    const Confirmation = (
-        { okLabel = "OK", 
-            cancelLabel = "Cancel", 
-            title = "Confirmation", 
-            confirmation, 
-            show, 
-            proceed, 
-            enableEscape = true }) => {
-
-              return (
-                <div className="static-modal">
-                  <Modal
-                    animation={false}
-                    show={show}
-                    onHide={() => proceed(false)}
-                    backdrop={enableEscape ? true : "static"}
-                    keyboard={enableEscape}
-                  >
-                    <Modal.Header>
-                      <Modal.Title>{title}</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>{confirmation}</Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={() => proceed(false)}>{cancelLabel}</Button>
-                      <Button
-                        className="button-l"
-                        bsStyle="primary"
-                        onClick={() => proceed(true)}
-                      >
-                        {okLabel}
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                </div>
-              );
-    };
-
-    const   confirm = async ( 
-        confirmation, 
-        proceedLabel = "OK", 
-        cancelLabel = "cancel", 
-        options = {}) => {
-          return createConfirmation(confirmable(Confirmation))({
-            confirmation,
-            proceedLabel,
-            cancelLabel,
-            ...options
-          });
-    }
-
-    useEffect(() => {
-        // listening to ionic back button event
-         document.addEventListener('ionBackButton', (ev: any) => {
-            ev.detail.register(-1, () => {
-              // when you are in your home(last) page
-                  if (window.location.pathname === '/') {
-                    // calling alert box
-                    confirm("You are about to exit BIKOSPORTS?").then(
-                        (result) => {
-                            if (result ) {
-                                 App.exitApp();
-                            }
-                        });
-                  }
-              });
-            });
-
-    }, []);
-
     return ( 
                 <>
+                <RouteChangeTracker />
                 <Header/>
                 <div className="amt">
                     <div className="d-flex flex-row justify-content-between">

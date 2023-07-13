@@ -22,8 +22,7 @@ const CarouselLoader = (props) => {
         setImageLoaded(true);
     }
 
-    const bannerImageClicked = (index) => {
-        console.log("Banner image clicked ", index);
+/*    const bannerImageClicked = (index) => {
         //banner 0 redirect to biko sms
         if(index === 0){
             let url = "https://www.biko.co.tz/sw";
@@ -32,11 +31,11 @@ const CarouselLoader = (props) => {
             navigate("/jackpot");
         }
     }
-
+*/
     return (
         <Carousel>
             {banners.map((banner, idx) => (
-                <Carousel.Item key={idx} onClick ={()  => bannerImageClicked(idx) }>
+                <Carousel.Item key={idx} >
                     <LazyLoadImage
                         className="d-block"
                         style={{display: imageLoaded ? 'block' : 'none', height:"250px"}}

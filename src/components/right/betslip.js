@@ -38,7 +38,6 @@ const BetSlip = (props) => {
 
     const fetchSharedBetslip = useCallback((code) => {
         let endpoint = "/v1/share?code=" + code
-        console.log("Beslip calling get shared slip from code", code)
         makeRequest({url: endpoint, method: "GET", data: null}).then(([status, result]) => {
             if (status == 200) {
                //load betslip
