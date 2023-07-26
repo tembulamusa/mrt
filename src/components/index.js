@@ -87,6 +87,7 @@ const Index = (props) => {
         }
         //endpoint = endpoint.replaceAll(" ", '')
         endpoint += `&sub_type_id=` + subTypes;
+        console.log("Fetching data URL ", endpoint);
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
                 let m = result?.data || result;
@@ -120,19 +121,18 @@ const Index = (props) => {
 
 
     useEffect(() => {
-       setMatches(null);
        setDataLen(0)
        setPage(1);
+       fetchData();
         return () => stop();
     }, [tab]);
 
     useEffect(() => {
-
        reset();
        setFetching(false);
        fetchData();
         return () => stop();
-    }, [page, state?.searchterm]);
+    }, [page]);
 
     useEffect(() => {
        if(matches) {
@@ -147,11 +147,10 @@ const Index = (props) => {
     useEffect(() => {
         reset();
         setFetching(false);
-        setMatches(null);
         setPage(1);
         fetchData();
         return () => stop();
-    }, [ id, sportid, categoryid, competitionid]);
+    }, [ id, sportid, categoryid, competitionid, state?.searchterm]);
 
     useEffect(() => {
         checkThreeWay()
