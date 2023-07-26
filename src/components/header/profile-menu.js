@@ -1,12 +1,15 @@
-import React from "react";
-import { faUser, faLock, faCoins } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useContext, useEffect, useState} from "react";
 import { formatNumber } from "../utils/betslip";
 import { Link } from "react-router-dom";
-import {Navbar} from "react-bootstrap";
+import {Context} from '../../context/store';
 
 const ProfileMenu = (props) => {
-  const { user } = props;
+  const [state, ] = useContext(Context);
+  const [user, setUser] = useState(props?.user);
+  
+  useEffect(() => {
+      setUser(state?.user)
+  }, [state?.user])
 
   return (
     <>

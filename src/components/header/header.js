@@ -121,10 +121,10 @@ const Header = (props) => {
     }, [updateUserOnHistory])
 
     useEffect(() => {
-       if(state?.user) {
            setUser(state?.user);
-           setLocalStorage('user', state?.user);
-       }
+           if(state?.user) {
+               setLocalStorage('user', state?.user);
+           }
     
     }, [state?.user])
 
@@ -174,11 +174,15 @@ const Header = (props) => {
 
 
                             <div className="col-sm-12 col-md-5 disable-ipd d-md-block">
-                                {user ? <ProfileMenu user={user}/> : 
-                                <div className="top-login float-end">
-                                <Link to="/login" className="cg login-button btn width-auto">LOGIN</Link>
-                                <Link to="/signup" className="cg btn btn-primary width-auto">REGISTER</Link>
-                                </div>}
+                                {user 
+                                    ? <ProfileMenu user={user}/> 
+                                    : (
+                                        <div className="top-login float-end">
+                                        <Link to="/login" className="cg login-button btn width-auto">LOGIN </Link>
+                                        <Link to="/signup" className="cg btn btn-primary width-auto">REGISTER</Link>
+                                        </div>
+                                    )
+                                }
                             </div>
                             {/*For the mobile*/}
                             
@@ -206,25 +210,6 @@ const Header = (props) => {
 
                 <span className="d-none d-md-flex ml-1"><div className="">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</div></span>
 
-        { /** <Navbar.Offcanvas
-                        style={{width: "100% !important", height: "100%"}}
-                        className='off-canvas background-primary p-0'
-                        id={`offcanvasNavbar-expand-${expand}`}
-                        aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                        placement="start">
-                        <Offcanvas.Header closeButton className='text-white'>
-                            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                <div className="col-3">
-                                    <div>
-                                        <LazyLoadImage src={logo} alt="Bikosports" title="Bikosports" effects="blur"/>
-                                    </div>
-                                </div>
-                            </Offcanvas.Title>
-                        </Offcanvas.Header>
-                        <Offcanvas.Body>
-                            <SidebarMobile/>
-                        </Offcanvas.Body>
-                    </Navbar.Offcanvas> */}
                 </div>
             </Navbar>
 

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect,  useState, useContext} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { FaBars, FaUserAlt, FaUser } from "react-icons/fa";
 import Dropdown from 'react-bootstrap/Dropdown';
 import {faLock, faCoins } from "@fortawesome/free-solid-svg-icons";
 import { formatNumber } from "../utils/betslip";
+
+import {Context} from '../../context/store';
 
 import depositIcon from "../../assets/svg/deposit.svg"
 import withdrawIcon from "../../assets/svg/withdraw.svg"
@@ -16,7 +18,12 @@ import mybetsIcon from "../../assets/svg/my-bets.svg"
 import transactionsIcon from "../../assets/svg/transactions.svg"
 
 const HeaderMenuToggle = (props) => {
-  const { user } = props;
+  const [user, setUser] = useState(props?.user);
+  const [state, dispatch] = useContext(Context);
+
+  useEffect(() => {
+      setUser(state?.user);
+  }, [state?.user])
 
   return (
     <>

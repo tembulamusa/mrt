@@ -22,10 +22,11 @@ import { ShimmerTable } from "react-shimmer-effects";
 
 
 const Index = (props) => {
-    const { tab } = props;
     const location = useLocation();
+    const { tab } = props;
     const {id, sportid, categoryid, competitionid} = useParams();
     const [matches, setMatches] = useState([]);
+    const [datalen, setDataLen] = useState(0);
     const [limit, setLimit] = useState(50);
     const [producerDown, setProducerDown] = useState(false);
     const [threeWay, setThreeWay] = useState(false);
@@ -33,8 +34,19 @@ const Index = (props) => {
     const [state, dispatch] = useContext(Context);
     const [fetching, setFetching] = useState(false)
     const [subTypes, setSubTypes] = useState("1,18,29");
-    const [currentTab, setCurrentTab] =useState('highlights');
     const [searchParams, setSearchParams] = useSearchParams();
+    
+    const onScroll = useCallback(() => {
+        const scrollTop = document.documentElement.scrollTop
+        const scrollHeight = document.documentElement.scrollHeight
+        const clientHeight = document.documentElement.clientHeight
+
+        if (datalen && scrollTop + clientHeight >= scrollHeight) {
+          let newPage = datalen ? Math.floor(datalen/limit) + 1 : 1;
+          setPage(newPage);
+           
+        }
+    }, [datalen])
 
     const findPostableSlip = () => {
         let betslips = getBetslip() || {};
@@ -45,16 +57,19 @@ const Index = (props) => {
     };
 
 
-    const fetchData = async () => {
+    const fetchData = async (polling = false) => {
+        if(fetching) return false;
+
         setFetching(true)
         let betslip = findPostableSlip();
         let method = betslip ? "POST" : "GET";
-        let endpoint = "/v1/matches?page=" + (page || 1) + `&limit=${limit || 50}` ;
+        let fetchPage = polling ? 1 : page
+        let fetchLimit = polling ? limit*page : limit;
+    
+        let endpoint = "/v1/matches?page=" + fetchPage + "&limit=" + fetchLimit ;
 
-
-        let url = new URL(window.location.href)
         endpoint += "&sport_id=" + (sportid || 79);
-        let search_term = url.searchParams.get('search')
+        let search_term = searchParams.get('search')
 
         endpoint += search_term ? '&search=' + search_term : ""; 
         
@@ -65,9 +80,8 @@ const Index = (props) => {
             endpoint += "&competition_id=" +  competitionid;
         }
         
-        let tab = url.searchParams.get('tab') || "upcoming";
         if(!id && !categoryid && !competitionid) {
-           endpoint += "&tab=" + currentTab || tab;
+           endpoint += "&tab=" + tab;
         } else {
            endpoint += "&tab=upcoming";
         }
@@ -75,7 +89,12 @@ const Index = (props) => {
         endpoint += `&sub_type_id=` + subTypes;
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
-                setMatches(matches?.length > 0 ? {...matches, ...result?.data} : result?.data || result)
+                let m = result?.data || result;
+                if(polling) {
+                    setMatches(m)
+                } else {
+                    setMatches( matches ? [...matches, ...m] : m)
+                }
                 setFetching(false)
                 if (result?.slip_data) {
                     dispatch({type: "SET", key: "betslipvalidationdata", payload: result?.slip_data});
@@ -84,43 +103,55 @@ const Index = (props) => {
             }
         });
 
-    };
+    }
+
 
     const { reset, stop } = useInterval(async () => {
-      fetchData();
+      fetchData(true);
     }, 20000); 
-
-    useEffect(() => {
-        if(tab) {
-            dispatch({type: "SET", key: "active_tab", payload: tab});
-        }
-    }, [ tab])
-
-    useEffect(() => {
-        if(state?.active_tab) {
-            setCurrentTab(state?.active_tab);
-            reset();
-        }
-    }, [ state?.active_tab])
 
     useEffect(() => {
         let cachedSlips = getBetslip("betslip");
         if (cachedSlips) {
             dispatch({type: "SET", key: "betslip", payload: cachedSlips});
         }
-        return () => {
-            stop();
-            setMatches(null);
-        };
+        return () => stop();
     }, []);
 
     useEffect(() => {
+
+       setMatches(null);
+       setDataLen(0)
+       setPage(1);
+        return () => stop();
+    }, [tab]);
+
+    useEffect(() => {
+
+       reset();
+       setFetching(false);
+       fetchData();
+        return () => stop();
+    }, [page]);
+
+    useEffect(() => {
+       if(matches) {
+           setDataLen(matches.length);
+       } else {
+           setDataLen(0);
+       }
+        window.addEventListener('scroll', onScroll)
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [matches, datalen,  onScroll])
+
+    useEffect(() => {
         reset();
-        setMatches(null);
         setFetching(false);
+        setMatches(null);
+        setPage(1);
         fetchData();
-        return () => setMatches(null);
-    }, [state?.active_tab, id, sportid, categoryid, competitionid]);
+        return () => stop();
+    }, [ id, sportid, categoryid, competitionid]);
 
     useEffect(() => {
         checkThreeWay()
@@ -128,7 +159,6 @@ const Index = (props) => {
 
 
     useEffect(() => {
-        let url = new URL(window.location);
         setSubTypes(
              state?.selectedmarkets ||  "1,18,29"
         );
@@ -140,17 +170,11 @@ const Index = (props) => {
         setThreeWay(subTypes.split(",").includes("1"))
     }
 
-    document.addEventListener('scrollEnd', (event) => {
-        if (!fetching) {
-            setFetching(true)
-            setLimit(limit + 50)
-        }
-    })
 
     return (
         <>
             <CarouselLoader/>
-            <MainTabs tab={currentTab} />
+            <MainTabs tab={tab}   />
             {!matches && <ShimmerTable row={5} col={5} /> }
             <MatchList
                 live={false}
@@ -160,6 +184,7 @@ const Index = (props) => {
                 fetching={fetching}
                 subTypes={subTypes}
             />
+            {fetching && <ShimmerTable row={1} col={2} /> }
         </>
     )
 }

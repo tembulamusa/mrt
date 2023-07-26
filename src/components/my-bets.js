@@ -5,13 +5,13 @@ import makeRequest from './utils/fetch-request';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faRecycle, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {
-    getFromLocalStorage,
     setLocalStorage
 } from './utils/local-storage'; 
 import { useMediaQuery } from 'react-responsive';
 
 
 import CarouselLoader from './carousel/index';
+import { ShimmerTable } from "react-shimmer-effects";
 
 const Styles = {
    container: {
@@ -34,24 +34,47 @@ const MyBets = (props) => {
     const [state, dispatch] = useContext(Context);
     const [isLoading, setIsLoading] = useState(false);
     const [loadedBetStaus, setLoadedBetStatus] = useState("all")
-    const [mybets, setMybets] = useState(null);
+    const [mybets, setMybets] = useState([]);
     const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
     const navigate = useNavigate();
+    const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
 
-    const fetchData = useCallback(async() => {
-        if(isLoading) return;
+    const fetchData = useCallback(async (loadedBetStaus, page) => {
+        if(isLoading || !hasMore) return;
         setIsLoading(true);
-        let endpoint = "/v1/mybets?status="+loadedBetStaus+"&limit=";
+        let endpoint = "/v1/mybets?status="+loadedBetStaus+"&limit=50&page="+page;
         makeRequest({url: endpoint, method: "POST", data: null}).then(([status, result]) => {
-            setMybets(result);
+            if(result) {
+                setMybets([...mybets, ...result]);
+                setHasMore(true);
+            } else {
+               setHasMore(false);
+            }
             setIsLoading(false);
         });
 
-    }, [loadedBetStaus]);
+    }, []);
+
+    const onScroll = useCallback(() => {
+        const scrollTop = document.documentElement.scrollTop
+        const scrollHeight = document.documentElement.scrollHeight
+        const clientHeight = document.documentElement.clientHeight
+
+        if (scrollTop + clientHeight >= scrollHeight) {
+          setPage((mybets?.length/50 || 1) + 1)
+           
+        }
+    }, [])
 
     useEffect(() => {
-       fetchData();
-    }, [fetchData]);
+       fetchData(loadedBetStaus, page);
+    }, [page, fetchData, loadedBetStaus]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', onScroll)
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [mybets, onScroll])
 
     const BetItemHeader = (props) => {
         return (
@@ -71,8 +94,7 @@ const MyBets = (props) => {
     const BetItem = (props) => {
         const { bet } = props;
 
-        const [betStatus, setBetStatus] = useState(bet.status);
-        const [canCancel, setCanCancel] = useState(false);
+        const [betStatus, ] = useState(bet.status);
         const [canSharenRebet, setCanSharenRebet] = useState(bet?.sharable);
         const [betslipActionMessage, setBetslipActionMessage] = useState();
 
@@ -87,7 +109,6 @@ const MyBets = (props) => {
             }
             makeRequest({url: endpoint, method: "POST", data: data, use_jwt:true}).then(([status, result]) => {
                 if(status === 201){
-                   setCanCancel(false);
                    setBetslipActionMessage(result?.message);
 
                 } else {
@@ -95,17 +116,6 @@ const MyBets = (props) => {
                 }
             });
         };
-
-        useEffect(() => {
-            if(bet){
-                let bet_time = new Date(bet.created).getTime();
-                var currentDate = new Date().getTime();
-                let diff =  currentDate - bet_time;
-                if(diff/1000/60 < 20){
-                    setCanCancel(true);
-                }
-            }
-        }, [])
 
         const CancelBetMarkup = () => {
             return (
@@ -228,7 +238,6 @@ const MyBets = (props) => {
                       
                     }
                     
-                    { /** canCancel === true && <div className="col-auto"><div className="uppercase">  <CancelBetMarkup /> </div></div>  **/}
                  </div>
             { betslipActionMessage && <div className="row">
                     <div className="col-auto" style={{color:"red"}}>{betslipActionMessage}  </div>
@@ -283,7 +292,7 @@ const MyBets = (props) => {
 		return (
          <>
          <div className="row" style={{padding: "0 10px",}}>
-			{mybets && mybets.map((bet) => (
+			{mybets && mybets?.map((bet) => (
 				<div className="mybet-list" 
                     key = {bet.bet_id} 
                     uuid = { bet.bet_id }
@@ -336,6 +345,7 @@ const MyBets = (props) => {
             <CarouselLoader/>
             <PageTitle />
             <MyBetsList  />
+            {isLoading && <ShimmerTable row={1} col={2} /> }
         </>
     )
 }
