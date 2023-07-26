@@ -87,11 +87,10 @@ const Index = (props) => {
         }
         //endpoint = endpoint.replaceAll(" ", '')
         endpoint += `&sub_type_id=` + subTypes;
-        console.log("Fetching data URL ", endpoint);
         await makeRequest({url: endpoint, method: method, data: betslip}).then(([status, result]) => {
             if (status == 200) {
                 let m = result?.data || result;
-                if(polling) {
+                if(polling || page === 1) {
                     setMatches(m)
                 } else {
                     setMatches( matches ? [...matches, ...m] : m)
