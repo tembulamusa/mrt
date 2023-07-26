@@ -1,67 +1,32 @@
 import React, {useEffect, useCallback, useState, useContext, useRef, Suspense} from 'react';
-import {useNavigate, useSearchParams, Link} from "react-router-dom"
-import Container from 'react-bootstrap/Container';
+import { Link} from "react-router-dom"
 import Row from 'react-bootstrap/Row';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 import {Context} from '../../context/store';
 import {getFromLocalStorage, setLocalStorage} from '../utils/local-storage';
-import {ToastContainer} from 'react-toastify';
 import makeRequest from '../utils/fetch-request';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import {
-    faSearch,
-    faPrint,
-    faQuestionCircle,
-    faTimes,
-    faLaptop,
-    faClock,
-    faMagnet,
-    faMagic, faInfo, faChessBoard, faDice
-} from '@fortawesome/free-solid-svg-icons'
 import { FaSearch } from "react-icons/fa";
 
 import logo from '../../assets/img/logo.png';
-import {Navbar, Nav, Offcanvas} from "react-bootstrap";
-import SideBar from "../sidebar/awesome/Sidebar";
-import {Menu, MenuItem, ProSidebar, SidebarContent, SidebarHeader, SubMenu} from "react-pro-sidebar";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
-import SidebarMobile from "../sidebar/awesome/SidebarMobile";
+import {Navbar} from "react-bootstrap";
 import ShareModal from "../sharemodal";
 
 const ProfileMenu = React.lazy(() => import('./profile-menu'));
-const HeaderLogin = React.lazy(() => import('./top-login'));
 const HeaderMenuToggle = React.lazy(() => import('./menu-toggle'));
-const HeaderNav = React.lazy(() => import('./header-nav'));
-const MobileLogin = React.lazy(() => import('./mobile-login-link'));
 const MobileMenu = React.lazy(() => import('./mobile-menu'));
 
 const Header = (props) => {
     const [user, setUser] = useState(getFromLocalStorage("user"));
     const [state, dispatch] = useContext(Context);
-    const history = useNavigate();
-    const containerRef = useRef();
-    const pathname = window.location.pathname;
     const [searching, setSearching] = useState(false)
     const [matches, setMatches] = useState([])
     const searchInputRef = useRef(null)
-    const [time, setTime] = useState();
     const [searchText, setSearchText] = useState();
-    const [searchParams, setSearchParams] = useSearchParams();
-    
-    useEffect(() => {
-        let s = searchParams.get('search');
-        setSearchText(s);
-        const timer = setInterval(() => {
-          setTime(new Date().toLocaleString().slice(12,22));
-        }, 1000);
-
-        return () => {
-          clearInterval(timer);
-        };
-      }, []);
+   
 
     const fetchMatches = async (search) => {
+        setSearching(true);
         if (search && search.length >= 3) {
             setSearchText(search);
             let method = "POST"
@@ -83,19 +48,6 @@ const Header = (props) => {
         setSearching(false)
         setMatches([])
     }
-    const NotifyToastContaner = () => {
-        return <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-        />
-    };
     const updateUserOnHistory = useCallback(() => {
         if (!user) {
             return false;
@@ -127,6 +79,12 @@ const Header = (props) => {
            }
     
     }, [state?.user])
+
+    useEffect(() => {
+        if(searchText) {
+            dispatch({type: "SET", key: "searchterm", payload: searchText});
+        }
+    }, [searchText]);
 
     const expand = "md"
     return (
@@ -160,17 +118,17 @@ const Header = (props) => {
                                                    className={'form-control input-field border-0  no-border-radius'}/>
                                                    <span className="top-search-icon" style={{margin:"3px 10px"}}><FaSearch size={21}/></span>
                                         
-                                    <div
-                                        className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
+                           { searching && <div className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
                                         {matches.map((match, index) => (
-                                            <Link href={`/?tab=upcoming&search=${match.home_team}`} key={index}>
+                                            <div onClick = { () => { setSearchText(match.home_team); setSearching(false); } } key={index}>
                                                 <li style={{borderBottom: "1px solid #eee"}}>
                                                     {match.home_team}
                                                 </li>
-                                            </Link>
+                                            </div>
                                         ))}
                                     </div>
-                            </div>
+                           }
+                            </div>  
 
 
                             <div className="col-sm-12 col-md-5 disable-ipd d-md-block">
@@ -192,11 +150,6 @@ const Header = (props) => {
                     { /* Mobile version user profile */}
                     
                    </Row>
-
-                   {/*
-                    <Row className="second-nav ck pc os app-navbar app-header-nav">
-                */}
-                        {/*<HeaderNav/>*/}
                     <div className="col-sm-3 col-3 vissible-mobile d-lg-none float-end header-navigation" id="header">
                         {/* Add menus for the mobile*/}
 

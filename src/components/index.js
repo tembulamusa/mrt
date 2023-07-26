@@ -69,7 +69,7 @@ const Index = (props) => {
         let endpoint = "/v1/matches?page=" + fetchPage + "&limit=" + fetchLimit ;
 
         endpoint += "&sport_id=" + (sportid || 79);
-        let search_term = searchParams.get('search')
+        let search_term = state?.searchterm;
 
         endpoint += search_term ? '&search=' + search_term : ""; 
         
@@ -81,7 +81,7 @@ const Index = (props) => {
         }
         
         if(!id && !categoryid && !competitionid) {
-           endpoint += "&tab=" + tab;
+           endpoint += "&tab=" + ( tab || 'upcoming' );
         } else {
            endpoint += "&tab=upcoming";
         }
@@ -118,8 +118,8 @@ const Index = (props) => {
         return () => stop();
     }, []);
 
-    useEffect(() => {
 
+    useEffect(() => {
        setMatches(null);
        setDataLen(0)
        setPage(1);
@@ -132,7 +132,7 @@ const Index = (props) => {
        setFetching(false);
        fetchData();
         return () => stop();
-    }, [page]);
+    }, [page, state?.searchterm]);
 
     useEffect(() => {
        if(matches) {

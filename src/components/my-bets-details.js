@@ -83,6 +83,9 @@ const MyBetDetails = (props) => {
             case 24:
                 st = "cancelled";
                 break;
+            case 200:
+                st="Not Paid";
+                break;
             default:
                 st="pending";
                 break

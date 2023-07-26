@@ -38,12 +38,14 @@ const MyBets = (props) => {
     const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
+    const [datalen, setDataLen] = useState(1);
+    const [limit, setLimit] = useState(50);
     const [hasMore, setHasMore] = useState(true);
 
-    const fetchData = useCallback(async (loadedBetStaus, page) => {
+    const fetchData = useCallback(async () => {
         if(isLoading || !hasMore) return;
         setIsLoading(true);
-        let endpoint = "/v1/mybets?status="+loadedBetStaus+"&limit=50&page="+page;
+        let endpoint = "/v1/mybets?status="+loadedBetStaus+"&limit=" + limit + "&page="+page;
         makeRequest({url: endpoint, method: "POST", data: null}).then(([status, result]) => {
             if(result) {
                 setMybets([...mybets, ...result]);
@@ -54,27 +56,31 @@ const MyBets = (props) => {
             setIsLoading(false);
         });
 
-    }, []);
+    }, [loadedBetStaus, page]);
 
     const onScroll = useCallback(() => {
         const scrollTop = document.documentElement.scrollTop
         const scrollHeight = document.documentElement.scrollHeight
         const clientHeight = document.documentElement.clientHeight
 
-        if (scrollTop + clientHeight >= scrollHeight) {
-          setPage((mybets?.length/50 || 1) + 1)
+        if (datalen && scrollTop + clientHeight >= scrollHeight) {
+          let newPage = datalen ? Math.floor(datalen/limit) + 1 : 1;
+          setPage(newPage);
            
         }
-    }, [])
+    }, [datalen])
 
     useEffect(() => {
-       fetchData(loadedBetStaus, page);
-    }, [page, fetchData, loadedBetStaus]);
+       fetchData();
+    }, [fetchData]);
 
     useEffect(() => {
+        if(mybets) {
+           setDataLen(mybets.length);
+        }
         window.addEventListener('scroll', onScroll)
         return () => window.removeEventListener('scroll', onScroll)
-    }, [mybets, onScroll])
+    }, [mybets, datalen, onScroll])
 
     const BetItemHeader = (props) => {
         return (
@@ -224,7 +230,7 @@ const MyBets = (props) => {
              </div>
              <div className="row"> 
                    <div className="col-auto">
-                            <div className={`uppercase win-status-${betStatus.toLowerCase()}`}> { betStatus }</div>
+                        <div className={`uppercase win-status-${betStatus.toLowerCase()}`}> { betStatus }</div>
                    </div>
                    { canSharenRebet !== 0 && !bet.jackpot_bet_id  &&
                         <>
