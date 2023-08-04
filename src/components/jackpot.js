@@ -1,38 +1,34 @@
-import React, {useEffect, useCallback, useState, useContext} from "react";
+import React, {useEffect,  useState, useContext} from "react";
 import { Link } from 'react-router-dom';
 import {JackpotMatchList, JackpotHeader} from './matches/index';
 import makeRequest from "./utils/fetch-request";
-import dailyJackpot from '../assets/img/banner/jackpots/DailyJackpot.png'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Container from "react-bootstrap/Container";
+import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import CurrencyFormat from 'react-currency-format';
 import {
-    removeFromSlip,
-    getBetslip,
-    clearSlip,
     clearJackpotSlip, 
-    formatNumber,
     addToJackpotSlip,
-    getJackpotBetslip
 } from './utils/betslip';
 import {Context} from '../context/store';
 import { useMediaQuery } from 'react-responsive';
+import { ShimmerTable } from "react-shimmer-effects";
 
 
 const Jackpot = (props) => {
     const [matches, setMatches] = useState(null);
     const [weeklyJPMatches, setWeeklyJPMatches] = useState(null);
     const [dailyJPMatches, setDailyJPMatches] = useState(null);
-    const [message, setMessage] = useState(null);
     const [showEmptyWeeklyJackpot, setShowEmptyWeeklyJackpot] = useState(false);
     const [showEmptyDailyJackpot, setShowEmptyDailyJackpot] = useState(false);
     const [disabledWeekly, setDisabledWeekly] = useState(false);
     const [disabledDaily, setDisabledDaily] = useState(false);
-    const [currentJackpot, setCurrentJackpot] = useState(null);
     const [loadingJp, setLoadingJp] = useState(false);
     const [loadingDj, setLoadingDj] = useState(false);
     const [state, dispatch] = useContext(Context);
-    const [showAppBeslip, setShowAppBetslip] = useState(false);
     const [activeDTab, setActiveDTab] = useState("home");
     const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
 
@@ -45,7 +41,7 @@ const Jackpot = (props) => {
                 if (m_status === 200) {
                     clearJackpotSlip();
                 if (activeDTab === "home") {
-                    if (jpType == "jp"){
+                    if (jpType === "jp"){
                         setDailyJPMatches(m_result);
                         setShowEmptyDailyJackpot(true);
                         setDisabledDaily(true);
@@ -54,7 +50,7 @@ const Jackpot = (props) => {
                         setDisabledWeekly(false);
                         // setCurrentJackpot(dailyJPMatches);
                         setMatches(m_result);
-                    } else if (jpType == "wjp") {
+                    } else if (jpType === "wjp") {
                         setWeeklyJPMatches(m_result);
                         setShowEmptyWeeklyJackpot(true);
                         setDisabledWeekly(true);
@@ -74,9 +70,7 @@ const Jackpot = (props) => {
                 }
 
                 
-            } else {
-                setMessage("An error occurred");
-            }
+            } 
             });
         
 
@@ -86,7 +80,7 @@ const Jackpot = (props) => {
     const AutoPickAllMatches = () => {
  
         const clean = (_str) => {
-            _str = _str.replace(/[^A-Za-z0-9\-]/g, '');                                 
+            _str = _str.replace(/[^A-Za-z0-9-]/g, '');                                 
             return _str.replace(/-+/g, '-'); 
         }
 
@@ -124,6 +118,7 @@ const Jackpot = (props) => {
                 betslip = addToJackpotSlip(slip);                                   
 
                 dispatch({type: "SET", key: reference, payload: cstm});         
+                return null;
             })
             dispatch({type: "SET", key: "jackpotbetslip", payload: betslip});        
         }
@@ -145,20 +140,13 @@ const Jackpot = (props) => {
                placeBetClicked(dailyJPMatches?.meta || weeklyJPMatches?.meta);      
            }
        }
-    }, [state?.betslippressedfromabove])
+    }, [state?.betslippressedfromabove, dailyJPMatches, weeklyJPMatches])
 
-
-    useEffect(() => {
-       if(!state?.jpbetpressed){
-       
-            setShowAppBetslip(false);
-       }
-    }, [state?.jpbetpressed])
 
     useEffect(() => {
         dispatch({type: "SET", key: "jackpotpage", payload: true});         
         dispatch({type: "SET", key: "jackpotmeta", payload: matches?.meta});         
-    }, [matches]);
+    }, [matches, dispatch]);
 
     const JackpotsHeader = () => {
         return (
@@ -311,38 +299,83 @@ const Jackpot = (props) => {
 
 
     const JackpotResults = () => {
+        const [results, setResults] = useState();
+        const [loading, setLoading] = useState(false);
 
+        const fetchData = () => {
+            setLoading(true);
+            let match_endpoint = `/v1/jackpot/results`;
+
+            makeRequest({url: match_endpoint, method: "get", data: null}).then(
+                ([_status, _results]) => {
+                    if (_status === 200) {
+                        setResults(_results);
+                    }
+                    setLoading(false);
+            });
+
+        };
 
         useEffect(() => {
-        
-        })
+           fetchData(); 
+        }, [])
 
-        return ( <>
-                <div className="jp-results remove-last-element">
-                    <JackpotHeader jackpot={matches?.meta}/>
-                    <div className="matches full-mobile sticky-top container">
-                        <div
-                            className="top-matches d-flex position-sticky  p-4">
-                            <div className="col-md-3 bold">
-                                TIME
+        const JackpotResultsHeader = (props) => {
+            const { jackpot } = props
+
+            return (
+                <Container>
+                    <Row className={ `top-matches ${ jackpot?.total_games == 17 ? "primary-bg" : "yellow-bg" } `} >
+                        <Row className="jp-header-text ">
+                            <div className="">
+                                <div className="title-div1">
+                                     {jackpot?.jackpot_name}
+                                </div>
+                                
                             </div>
-                            <div className="col-md-6 bold">
-                                MATCH
-                            </div>
-                            <div className="col-md-3 bold">
-                                OUTCOME
-                            </div>
+                        </Row>
+                        <div className="jp-header-text jp-header-element-1">
+                            {jackpot?.total_games} GAMES
                         </div>
-                    </div>
-                </div>    
+                        <Row className="jp-header-text mb-2 jp-header-element-1">
+                            <div className="jackpot-amount mt">
+                                <CurrencyFormat
+                                    value={jackpot?.jp_amount}
+                                    displayType={'text'}
+                                    thousandSeparator={true} prefix={'TSH'}/>
+                            </div>
+                        </Row>
+                        <Row className="mb-2 jp-header-element-1">
+                             {
+                                jackpot?.winners?.map((winner, index) => (
+                                    <div className="row" key={index} style={{fontSize:"12px"}}>
+                                     <hr className="col-12"/>
+                                     <div className="col-4">Games: { winner.correct_games}</div>
+                                     <div className="col-4">Winners: { winner.count}</div>
+                                     <div className="col-4">Won Amount: { winner.win_amount}</div>
+                                    </div>
+                                ))
+                             }
+                        </Row>
+                    </Row>
+                </Container>
+            )
 
-                {matches?.data.map((match, index) => (
+        }
+        return ( <>
+                
+                {!results && <ShimmerTable row={5} col={5} /> }
+
+
+                {results?.data.map((jp_data, index) => (
                     <div className={'matches full-width'} key={index}>
+                         <JackpotResultsHeader jackpot={jp_data?.jackpot} />
                         <Container className="web-element">
+                          { jp_data?.matches?.map((match, index) => (
                             <div
-                                className="col-md-12 d-flex flex-row p-2 top-matches">
+                                className="col-md-12 d-flex flex-row p-2 top-matches" key={index}>
                                 <div className="col-md-3">
-                                    {match?.start_time}
+                                    {match?.start_time} 
                                 </div>
                                 <div className="col-md-6 d-flex flex-column">
                                     <div className={'small'}>
@@ -358,9 +391,10 @@ const Jackpot = (props) => {
                                     </div>
                                 </div>
                                 <div className="col-md-3">
-                                    {match?.outcome || '-'}
+                                    {match?.winning_outcome ? (`${match?.outcome}- (${match?.winning_outcome})`) :  '-'}
                                 </div>
                             </div>
+                          )) }
                         </Container>
                     </div>
                 ))}

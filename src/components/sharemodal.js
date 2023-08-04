@@ -21,7 +21,7 @@ const ShareModal = (props) => {
     const [state, dispatch] = useContext(Context);
     const [doneShare, setDoneShare] = useState(false);
     const [betAmount, setBetAmount] = useState(1000);
-
+    const [shareBetId, setShareBetId] = useState();
 
     const createSharableBet = useCallback(async () => {
         let endpoint = "/v1/share";
@@ -34,11 +34,13 @@ const ShareModal = (props) => {
             app:app_name,
             msisdn:user?.msisdn,
             profile_id:user?.profile_id,
+            betid:shareBetId,
             betamount:betAmount
         }
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {
                 setShareId(result.code);
+                dispatch({type:"SET", key:"sharecode", payload:result.code});
             } else {
                 setShareMessage("Could not create share code, please try again");
             }
@@ -55,6 +57,12 @@ const ShareModal = (props) => {
 
         setIpv4(ip);
     }, [ipv4]);
+
+    useEffect(() => {
+        if(state?.sharebetid) {
+            setShareBetId(state.sharebetid);
+        }
+    }, [state?.sharebetid])
 
     useEffect(() => {
         if(state?.betamount) {

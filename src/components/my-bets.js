@@ -144,7 +144,7 @@ const MyBets = (props) => {
                    setLocalStorage('betslip', result?.betslip, 1*60*60*1000);
                    dispatch({type:"SET", key:"showsharemodal", payload:true});
                    dispatch({type:"SET", key:"betamount", payload:result?.betamount});
-                   dispatch({type:"SET", key:"sharecode", payload:bet.bet_id});
+                   dispatch({type:"SET", key:"sharebetid", payload:result?.sharebetid});
                 }
             });
 
@@ -158,7 +158,7 @@ const MyBets = (props) => {
                    setLocalStorage('betslip', result?.betslip, 1*60*60*1000);
                    dispatch({type:"SET", key:"betslip", payload:result?.betslip})
                    dispatch({type:"SET", key:"betamount", payload:result?.betamount});
-                   dispatch({type:"SET", key:"sharecode", payload:bet.bet_id});
+                   dispatch({type:"SET", key:"sharebetid", payload:result?.sharebetid});
                    setBetslipActionMessage("Betslip loader successfully");
                    isMobile && navigate("/mobile-betslip");
                 }

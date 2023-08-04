@@ -242,7 +242,7 @@ const BetslipSubmitForm = (props) => {
     }, [state?.betslip])
 
     useEffect(() => {
-        if(state?.jpbetpressed === true){
+        if(state?.jpbetpressed){
              if (formRef.current) {
                 formRef.current.handleSubmit()
                 dispatch({type: "SET", key: "jpbetpressed", payload: false});
@@ -273,6 +273,7 @@ const BetslipSubmitForm = (props) => {
         if(jackpot) {
             bs.sort((m0, m1) => (m0.pos > m1.pos) ? 1 : -1);
         }
+
 
         for (let slip of bs) {
             if (jackpot) {

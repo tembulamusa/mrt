@@ -28,13 +28,16 @@ const BetSlip = (props) => {
     const [state, dispatch] = useContext(Context);
     const urlmatch = useMatch("/betslip/share/:code");
     const urlmatch2 = useMatch("/share/:code");
-    let code = null;
-    if(urlmatch || urlmatch2 ) {
-        code = urlmatch?.params || urlmatch2?.params;
-    }
-
+    const [code, setCode] = useState();
     const [totalOdds, setTotalOdds] = useState(1);
     const [inputShareCode, setInputShareCode] = useState();
+
+    useEffect(() => {
+        if(urlmatch || urlmatch2 ) {
+            let urlparams = urlmatch?.params || urlmatch2?.params;
+            setCode(urlparams?.code);
+        }
+    }, [])
 
     const fetchSharedBetslip = useCallback((code) => {
         let endpoint = "/v1/share?code=" + code
