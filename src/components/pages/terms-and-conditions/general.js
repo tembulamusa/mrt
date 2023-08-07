@@ -17,10 +17,6 @@ const General = () => {
             </AccordionItemHeading>
             <AccordionItemPanel className='accordion-item-panel'>
                 <ol>
-                    <li> These Terms and Conditions refers to Beyond Intoch Software
-                        Limited,
-                        a company incorporated in Kenya.
-                    </li>
                     <li> The term "CLIENT" references any individual person that expressly
                         or
                         impliedly agrees to all terms and conditions of Bikosports by opening
@@ -33,8 +29,7 @@ const General = () => {
                         "Agreement").
                     </li>
                     <li> This agreement and any other agreement between the CLIENT and
-                        Bikosports
-                        is subject to the laws of Kenya.
+                        Bikosports is subject to the laws of United Reuplic of Tanzania.
                     </li>
                     <li> This Agreement describes the terms, conditions and risks applicable
                         to the CLIENT using of Bikosports’ services available under the domains
@@ -94,8 +89,7 @@ const General = () => {
                         affiliated companies.
                     </li>
                     <li> This Agreement shall be governed by and interpreted in accordance
-                        with the laws of the Republic of Kenya and Betting Control and
-                        Licensing
+                        with the laws of Tanzania and Betting Control and Licensing
                         License conditions. Any legal action or proceeding arising under
                         this
                         Agreement will be brought exclusively in courts located in the

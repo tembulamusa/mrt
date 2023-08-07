@@ -25,11 +25,11 @@ const ApplicableLaw = () => {
                 </p>
                 <p> Any and all legal relationship between the CLIENT and the Company, for
                     every circumstance not regulated by the Terms and Conditions of Use,
-                    will be subject to laws of the Republic of Kenya.
+                    will be subject to law.
 
                 </p>
                 <p>
-                    If the CLIENT places of a bet from a location falling outside Kenya,
+                    If the CLIENT places of a bet from a location falling outside Tanzania,
                     such bet shall be subject to all appropriate exchange control
                     regulations and the laws of the foreign jurisdiction from which such
                     communication originates and it shall be the responsibility of the
@@ -40,8 +40,7 @@ const ApplicableLaw = () => {
                 </p>
 
                 <p>
-                    All winnings on bets placed are subject to 20% tax payable to the
-                    Republic of Kenya.
+                    All winnings on bets placed are subject to 10% tax.
                 </p>
             </AccordionItemPanel>
         </AccordionItem>

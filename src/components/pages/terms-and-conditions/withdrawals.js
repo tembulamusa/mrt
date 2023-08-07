@@ -53,8 +53,7 @@ const Withdrawals = () => {
                         of the payment method in question.
                     </li>
                     <li>
-                        The maximum self-service withdrawal amount per day will be Kenya
-                        Shillings Twenty Thousand Only (Kshs. 20,000.00).
+                        The maximum self-service withdrawal amount per day will be TZS Foue hundred Thousand Only (TZS. 400,000.00).
                     </li>
                     <li>
                         Withdrawals from a User’s Account can only be addressed strictly to
@@ -108,8 +107,7 @@ const Withdrawals = () => {
                         Kindly note that Bikosports will hold the funds deposited in the
                         Account
                         as trustee for the CLIENT and not as his/her banker or debtor.
-                        Accordingly, there will be no obligation on the part of Bikosports
-                        Kenya to
+                        Accordingly, there will be no obligation on the part of Bikosports to
                         repay money to the Customer as his/her debtor. Additionally, no
                         interest
                         shall accrue from funds deposited into the CLIENTS’s account be it

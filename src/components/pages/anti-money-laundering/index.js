@@ -19,7 +19,7 @@ const AntiMoneyLaundering = () => {
         <div className="col-md-12 p-5"> 
 
         <h1>Purpose</h1>
-        <p>The purpose of this policy is to prohibit and actively prevent money laundering and any activity that facilitates money laundering or the funding of terrorist or criminal activities within Bikosports by complying with all applicable requirements under the Proceeds of Crime and Anti-Money Laundering (Amendment) Act of Kenya, 2017 and its implementing regulations.</p>
+        <p>The purpose of this policy is to prohibit and actively prevent money laundering and any activity that facilitates money laundering or the funding of terrorist or criminal activities within Bikosports by complying with all applicable requirements under the Proceeds of Crime and Anti-Money Laundering (Amendment) Act and its implementing regulations.</p>
 
         <p>The scope of this process applies to all who use Bikosports ’s money remittance services as well as Bikosports ’s employees.</p>
 
@@ -28,7 +28,7 @@ const AntiMoneyLaundering = () => {
         <ol>
         <li>1. Enable Bikosports to identify, assess, monitor, manage and mitigate the risks associated with money laundering and financing of terrorism.</li>
         <li>2. Create awareness to Bikosports ’s employees, clients and other stakeholders with regard to AML.</li>
-        <li>Ensure compliance with Kenyan laws and regulations on AML.</li>
+        <li>Ensure compliance with laws and regulations on AML.</li>
         </ol>
         <h1>Policies</h1>
         <p><strong>Definition of Money Laundering</strong></p>
@@ -81,7 +81,7 @@ transactions.</p>
     <p>b) Bikosports will endeavor to inform clients/suppliers where transactions have been flagged as suspicious or unusual and ask for appropriate information that would clear the transactions.</p>
     <p>c) Bikosports will report identified suspicious or unusual activities to the relevant government authorities once they are verified as potential ML/TF activities, and take action to curtail them.</p>
     <h1>Record Keeping</h1>
-    <p>a) Bikosports will keep records of all documents obtained for the purpose of identification and all transaction data as well as other information related to money laundering matters in accordance with the applicable AML and data retention laws and regulations of Kenya. </p>
+    <p>a) Bikosports will keep records of all documents obtained for the purpose of identification and all transaction data as well as other information related to money laundering matters in accordance with the applicable AML and data retention laws and regulations. </p>
     <h1>Training and Awareness</h1>
     <p>a) Bikosports will regularly carry out regular training and awareness sessions to its employees and suppliers with regard to AML.</p>
     <p>b) Bikosports will endeavor to inform potential and current clients, suppliers and stakeholders of its standpoint on AML.</p>

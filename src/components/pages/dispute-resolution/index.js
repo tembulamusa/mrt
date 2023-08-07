@@ -17,7 +17,7 @@ const DisputeResolution = () => {
         </div>
         <div className="col-md-12 mt-2 p-5 ">
             <p>
-                Bikosports aims to offer all of the company’s clients from the Kenya the
+                Bikosports aims to offer all of the company’s clients the
                 greatest possible Customer experience in the industry. We want to make
                 sure
                 that all of our clients are completely satisfied with the products and
