@@ -257,10 +257,10 @@ const BetslipSubmitForm = (props) => {
         }
     }, [state?.jpbetremoveall])
 
-    const handlePlaceBet = useCallback((values,
-                                        {setSubmitting, resetForm, setStatus, setErrors}) => {
+    const handlePlaceBet = (values, {setSubmitting, resetForm, setStatus, setErrors}) => {
         let bs = Object.values(betslip || []);
 
+        console.log("Calllig place bet function", bs)
         let slipHasOddsChange = false;
 
         let jackpotMessage = ''
@@ -271,9 +271,8 @@ const BetslipSubmitForm = (props) => {
         let live_bet = false;
 
         if(jackpot) {
-            bs.sort((m0, m1) => (m0.pos > m1.pos) ? 1 : -1);
+            bs.sort((m0, m1) => m0.pos - m1.pos);
         }
-
 
         for (let slip of bs) {
             if (jackpot) {
@@ -367,8 +366,8 @@ const BetslipSubmitForm = (props) => {
                     setMessage(qmessage);
                 }
                 setSubmitting(false);
-            })
-    });
+            }) 
+    };
 
 
 
