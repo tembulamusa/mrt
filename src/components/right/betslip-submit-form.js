@@ -269,14 +269,11 @@ const BetslipSubmitForm = (props) => {
         }
 
         let live_bet = false;
-
-        if(jackpot) {
-            bs.sort((m0, m1) => m0.pos - m1.pos);
-        }
+        let jp_selections = [];
 
         for (let slip of bs) {
             if (jackpot) {
-                jackpotMessage += "#" + slip.bet_pick
+                jp_selections[slip.pos - 1] = slip.bet_pick
             }
             if (slip.prev_odds
                 && slip.prev_odds != slip.odd_value
@@ -329,13 +326,12 @@ const BetslipSubmitForm = (props) => {
         let method = "POST"
         let use_jwt = jackpot
         if (jackpot) {
-            payload.message = jackpotMessage
+            payload.message = jackpotMessage + '#'+ jp_selections.join("#")
             payload.jackpot_id = jackpotData?.jackpot_event_id
             payload.slip = ''
             endpoint = "/jp/bet"
             method = "POST"
         }
-
         makeRequest({url: endpoint, method: method, data: payload, use_jwt: use_jwt})
             .then(([status, response]) => {
                 if (status === 200 || status == 201 || status == 202 ) {
