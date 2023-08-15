@@ -35,7 +35,6 @@ const LiveScore = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
         </>)
 }
 

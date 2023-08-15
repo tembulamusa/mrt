@@ -206,12 +206,6 @@ const Sidebar = (props) => {
                                 </Link>
                             </MenuItem>
 
-                            <MenuItem className={`${pathname === '/livescore' ? 'active' : ''}`}>
-                                <Link to="/livescore"
-                                   title="Live Score">
-                                   <img style={{opacity:"0.5", height:"15px", padding:"0px 5px"}} src={CircleSvg} alt="" className="svg-menu-img-icon " />Live Score
-                                </Link>
-                            </MenuItem>
                             <MenuItem className={`${pathname === '/help' ? 'active' : ''}`}>
                                 <Link to="/help"
                                    title="Jinsi Ya Kucheza">
@@ -223,18 +217,6 @@ const Sidebar = (props) => {
                                    title="DEPOSIT">
                                    <img src={DepositIcon} alt="" className="svg-menu-img-icon " />DEPOSIT
                                 </Link>
-                            </MenuItem>
-                            <MenuItem className={`${pathname === '/lottery' ? 'active' : ''}`}>
-                                <a href="https://www.biko.co.tz/sw"
-                                   title="Live">
-                                   <img src={LotteryIcon} alt="" className="svg-menu-img-icon" />Cheza Biko SMS Lottery
-                                </a>
-                            </MenuItem>
-                            <MenuItem className={`${pathname === '/news' ? 'active' : ''}`}>
-                                <a href="https://blog.bikosports.co.tz/?amount=&loggedOn=0&phone="
-                                   title="Live Score">
-                                   <img src={LivescoreIcon} alt="" className="svg-menu-img-icon " />Sports news
-                                </a>
                             </MenuItem>
                         </div>
 

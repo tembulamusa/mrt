@@ -335,11 +335,6 @@ const SideBets = (props) => {
                  { (!noOdds && match?.side_bets) && <div className="normal-font-weight dark-text uppercase">More</div> }
 
                 </a>
-                <a href={ `https://s5.sir.sportradar.com/betradar/en/match/${match?.parent_match_id}`} className="side stats" 
-                     target={"_blank"} 
-                    title="Stats" style={{padding:"10px 0px", fontSize:"16px"}} >
-                   	<FontAwesomeIcon  icon={faChartLine} /> 
-                </a>
             </>}
         </div>
         </div>

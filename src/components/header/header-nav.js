@@ -125,11 +125,6 @@ const HeaderNav = (props) => {
                             </li>
                         </> )
                    }
-                    {/*<li className={pathname === '/casino' || pathname.includes("virtuals") ? 'active' : ''}>*/}
-                    {/*    <a className="g url-link" href="/virtuals/index" title="Casino">*/}
-                    {/*        <FontAwesomeIcon icon={faDice}/> Casino*/}
-                    {/*    </a>*/}
-                    {/*</li>*/}
                     <li className={pathname === '/promotions' || pathname.includes("promotions") ? 'active' : ''}>
                         <Link className="g url-link" to="/promotions" title="Promotions">
                             <img src={PromotionIcon} alt="" className="svg-menu-img-icon hide1" /> Promotions
@@ -142,9 +137,6 @@ const HeaderNav = (props) => {
                         </Link>
                     </li>
 
-
-                    {/*Livescore*/}
-
                     <li className={pathname === '/livescore' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
                         <Link className="g url-link" to="/livescore"
                            title="Live Score" target="_blank">
@@ -154,30 +146,6 @@ const HeaderNav = (props) => {
                         </Link>
                     </li>
                     
-                    {/*SMS Lottery*/}
-
-                    <li className={pathname === '/sms-lottery' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
-                        <a className="g url-link" href="https://www.biko.co.tz/sw"
-                           title="Live Score" target="_blank">
-                            <span>
-                                <FontAwesomeIcon icon={faInfo}/> SMS Lottery
-                            </span>
-                        </a>
-                    </li>
-                 
-                   {/*Sports News*/}
-
-                    <li className={pathname === '/blog' ? 'active py-3' : 'py-md-0 py-lg-3 py-sm-0 d-flex align-items-center'}>
-                        <a className="g url-link" href="https://blog.bikosports.co.tz/?amount=&loggedOn=0&phone="
-                           title="Live Score" target="_blank">
-                            <span>
-                                <FontAwesomeIcon icon={faMagic}/> Sports News
-                            </span>
-                        </a>
-                    </li>
-                 
-                   
-                   
                     <li className={pathname === '/print-matches' ? 'spacing-end' : 'spacing-end'}>
                         <a className="g url-link fix-display" href="#" title="Search"
                            onClick={() => showSearchBar()}>

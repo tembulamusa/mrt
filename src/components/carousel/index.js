@@ -21,17 +21,6 @@ const CarouselLoader = (props) => {
     const onImageLoaded = () => {
         setImageLoaded(true);
     }
-
-/*    const bannerImageClicked = (index) => {
-        //banner 0 redirect to biko sms
-        if(index === 0){
-            let url = "https://www.biko.co.tz/sw";
-            window.location.replace('https://www.biko.co.tz/sw');
-        } else if (index === 1 || index == 2) {
-            navigate("/jackpot");
-        }
-    }
-*/
     return (
         <Carousel>
             {banners.map((banner, idx) => (

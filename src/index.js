@@ -100,7 +100,6 @@ const App = () => {
                                 <Route exact path="/virtuals" element={<Casino/>}/>
                                 <Route exact path="/virtuals/index" element={<Virtuals />}/>
                                 <Route exact path="/virtuals/casino" element={<Casino />}/>
-                                <Route exact path="/livescore" element={<LiveScore/>}/>
                                 <Route exact path="/casino" element={<Casino/>}/>
                                 <Route exact path="/livecasino" element={<LiveCasino/>}/>
                                 <Route exact path="/virtuals/launch/:game_id" element={<CasinoGamePlay/>}/>
