@@ -6,7 +6,7 @@ import {Context} from '../../context/store';
 import {getFromLocalStorage, setLocalStorage} from '../utils/local-storage';
 import makeRequest from '../utils/fetch-request';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaTrash } from "react-icons/fa";
 
 import logo from '../../assets/img/logo.png';
 import {Navbar} from "react-bootstrap";
@@ -25,12 +25,15 @@ const Header = (props) => {
     const [searchText, setSearchText] = useState();
    
 
-    const fetchMatches = async (search) => {
+    const fetchMatches =async () => {
         setSearching(true);
-        if (search && search.length >= 3) {
-            setSearchText(search);
+        if(!setSearchText) {
+            setMatches([]);
+            return;
+        }
+        if (searchText && searchText.length >= 3) {
             let method = "POST"
-            let endpoint = "/v1/matches?tab=upcoming&page=" + (1) + `&limit=${10}&search=${search}`;
+            let endpoint = "/v1/matches?tab=upcoming&page=" + (1) + `&limit=${10}&search=${searchText}`;
             await makeRequest({url: endpoint, method: method, data: []}).then(([status, result]) => {
                 if (status === 200) {
                     setMatches(result?.data || result)
@@ -38,7 +41,19 @@ const Header = (props) => {
             });
         }
 
-    };
+    }
+
+    const onSearchInputChanged = (value) => {
+        console.log("Setting value to new value ", value, searching)
+        setSearchText(value);
+    }
+    const onSearchTeamSelected = (value) => {
+          console.log("selected search ", value)
+          setSearchText(value);
+          setMatches([]);
+          setSearching(false); 
+    }
+    
 
     const showSearchBar = () => {
         setSearching(true)
@@ -80,10 +95,11 @@ const Header = (props) => {
     
     }, [state?.user])
 
+
     useEffect(() => {
-        if(searchText) {
-            dispatch({type: "SET", key: "searchterm", payload: searchText});
-        }
+        console.log("Looking for search text again", searchText, searching);
+        dispatch({type: "SET", key: "searchterm", payload: searchText});
+        fetchMatches()
     }, [searchText]);
 
     const expand = "md"
@@ -114,20 +130,17 @@ const Header = (props) => {
                             <div id="navbar-collapse-main"
                                        className={`col-7 fadeIn header-menu d-none d-md-flex justify-content-center relative-pos`}>
                                             <input type="text" placeholder={searchText || "Search for Events and Tournaments"} ref={searchInputRef}
-                                                   onInput={(event) => fetchMatches(event.target.value)}
-                                                   className={'form-control input-field border-0  no-border-radius'}/>
-                                                   <span className="top-search-icon" style={{margin:"3px 10px"}}><FaSearch size={21}/></span>
+                                                   onInput={(event) => onSearchInputChanged(event.target.value)}
+                                                   className={'form-control input-field border-0  no-border-radius'} 
+                                                   value={searchText}
+                                            />
+                                       { !searchText 
+                                           ? <span className="top-search-icon" style={{margin:"3px 10px"}}><FaSearch size={21}/></span> 
+                                           : <span className="top-search-icon" 
+                                               style={{margin:"3px 10px", color:"red", opacity:1, fontWeight:100}}
+                                               onClick={() => onSearchInputChanged("") } ><FaTrash size={14}/> Clear </span> 
+                                       }
                                         
-                           { searching && <div className={`autocomplete-box position-fixed bg-white border-dark col-md-5 mt-1 shadow-lg text-start`}>
-                                        {matches.map((match, index) => (
-                                            <div onClick = { () => { setSearchText(match.home_team); setSearching(false); } } key={index}>
-                                                <li style={{borderBottom: "1px solid #eee"}}>
-                                                    {match.home_team}
-                                                </li>
-                                            </div>
-                                        ))}
-                                    </div>
-                           }
                             </div>  
 
 
