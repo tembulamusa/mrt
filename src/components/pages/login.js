@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { useLocation } from 'react-router-dom';
 
-import BodyLogin from '../header/mobile-login';
+import BodyLogin from '../login/body-login';
 
 
 const Login = (props) => {
@@ -29,16 +29,6 @@ const Login = (props) => {
     const [loading, setLoading] = useState(false);
 
     
-    const FormTitle = () => {
-        return (
-            <div className='col-md-12 biko-bg p-2 text-center'>
-                <h4 className="">
-                    Login
-                </h4>
-            </div>
-        )
-    }
-
     const PreLogAlert = (props) => {
         let c = preMsg?"success" : "danger";
         return (<div role="alert" className={`fade alert alert-${c} show`}>{preMsg}</div>);
@@ -51,14 +41,13 @@ const Login = (props) => {
 
     return (
         <React.Fragment>
-            <FormTitle/>
-
             <div className="row">
                 <div className="col-md-12 mt-2  p-2">
-                    {preMsg && <PreLogAlert/>}
-                    {message && <Alert/>}
-
-                    <div className="modal-body pb-0" data-backdrop="static">
+                    
+                    <div className="max-w-md card border-gray-200 mx-auto content-center items-center flex  shadow-sm pb-3" data-backdrop="static">
+                        <h4 className='text-center w-100 bg-blue-400 text-white block p-3 shadow-sm'>Login</h4>
+                        {preMsg && <PreLogAlert/>}
+                        {message && <Alert/>}
                         <BodyLogin />
                     </div>
                 </div>

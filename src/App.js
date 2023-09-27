@@ -6,7 +6,7 @@ import Betslip from "./components/right"
 
 function App() {
   return (
-    <div className="App">
+    <div className="App p-2 px-4">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

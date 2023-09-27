@@ -107,15 +107,13 @@ const ResetPassword = (props) => {
             setFieldValue(field, value);
         }
         return (
-            <Form className={`${otp_sent ? 'd-none' : 'd-block'}`}>
-                <div className="pt-0">
+            <Form className={`${otp_sent ? 'd-none' : 'd-block'} mt-3`}>
                     <div className="row">
-                        <div className="form-group row d-flex justify-content-center mt-5">
-                            <div className="col-md-12">
-                                <label>Mobile Number</label>
+                            <div className="form-group col-12 justify-content-center mt-3">
+                                <label className='mb-2'>Email</label>
                                 <input
                                     value={values.mobile}
-                                    className="text-dark deposit-input form-control col-md-12 input-field"
+                                    className="text-dark deposit-input form-control col-md-12 input-field p-2 mb-3"
                                     id="mobile"
                                     name="mobile"
                                     type="text"
@@ -124,18 +122,14 @@ const ResetPassword = (props) => {
                                 />
                                 {errors.mobile && <div className='text-danger'> {errors.mobile} </div>}
                             </div>
-                        </div>
 
-                        <div className="form-group row d-flex justify-content-left mb-4">
-                            <div className="col-md-12">
+                            <div className="form-group col-12 justify-content-center mt-2">
                                 <button type="submit"
                                         onClick={submitForm}
-                                        className='btn btn-lg biko-blue mt-5 col-md-12 full-width'>
-                                    THIBITISHA
+                                        className='w-100 bg-blue-500 text-white my-2 rounded p-2'>
+                                    Confirm
                                 </button>
                             </div>
-                        </div>
-                    </div>
                 </div>
             </Form>
         );
@@ -152,11 +146,8 @@ const ResetPassword = (props) => {
         }
         return (
             <Form className={`${otp_sent ? 'd-block' : 'd-none'}`}>
-                <div className="pt-0">
                     <div className="row">
-                        <div className="col-md-12">
-                            <div className="form-group row d-flex justify-content-center">
-                            <div className="col-md-12">
+                            <div className="form-group col-12 justify-content-center mt-3">
                                     <label>Code</label>
                                     <input
                                         value={values.code}
@@ -172,8 +163,7 @@ const ResetPassword = (props) => {
                                     </div>}
                                 </div>
                             </div>
-                            <div className="form-group row d-flex justify-content-center mt-5">
-                                <div className="col-md-6">
+                                <div className="form-group col-12 justify-content-center mt-3">
                                     <label>Password</label>
                                     <input
                                         value={values.password}
@@ -188,7 +178,7 @@ const ResetPassword = (props) => {
                                         {errors.password}
                                     </div>}
                                 </div>
-                                <div className="col-md-6">
+                                <div className="form-group col-12 justify-content-center mt-3">
                                     <label>Confirm Password</label>
                                     <input
                                         value={values.repeat_password}
@@ -203,22 +193,16 @@ const ResetPassword = (props) => {
                                         <div className='text-danger'>
                                             {errors.repeat_password}
                                         </div>}
-                                </div>
-                            </div>
 
-                        <div className="form-group row d-flex justify-content-center mt-1">
-                            <div className="col-md-12">
+                        <div className="form-group col-12 justify-content-center mt-3">
                                 <button type="submit"
                                         onClick={submitForm}
                                         className='btn btn-lg  mt-5 biko-blue full-width'>
                                     Reset Password
                                 </button>
-                            </div>
-                        </div>
                         </div>
 
                     </div>
-                </div>
             </Form>
         );
     }
@@ -254,13 +238,10 @@ const ResetPassword = (props) => {
 
     return (
         <React.Fragment>
-            <FormTitle/>
-            <div className="col-md-12 mt-2 p-2">
-                {message && <Alert/>}
-                <div className="modal-body pb-0" data-backdrop="static">
-                    <OptForm/>
+            <div className="max-w-md card border-gray-200 mx-auto content-center items-center flex  shadow-sm pb-2 my-3" data-backdrop="static">
+                        <h4 className='text-center w-100 bg-blue-400 text-white block p-3 shadow-sm'>Reset Password</h4>
+                        <OptForm/>
                     <PasswordResetForm/>
-                </div>
             </div>
         </React.Fragment>
     );

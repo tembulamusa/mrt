@@ -7,10 +7,11 @@ import {getFromLocalStorage, setLocalStorage} from '../utils/local-storage';
 import makeRequest from '../utils/fetch-request';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { FaSearch, FaTrash } from "react-icons/fa";
-
+import NewMemoServiceItemModal from '../memos/new-memo-service-item-modal';
 import logo from '../../assets/img/logo.png';
 import {Navbar} from "react-bootstrap";
 import ShareModal from "../sharemodal";
+import NewMemoModal from "../memos/new-memo-modal";
 
 const ProfileMenu = React.lazy(() => import('./profile-menu'));
 const HeaderMenuToggle = React.lazy(() => import('./menu-toggle'));
@@ -105,31 +106,27 @@ const Header = (props) => {
     const expand = "md"
     return (
         <Suspense fallback={<div></div>} >
-            <Navbar expand="md" className="mb-0 ck pc os app-navbar top-nav" fixed="top" variant="dark">
-                <div className={'d-flex justify-content-between mobile-change container-fluid'}>
-                    <Row style={{width: "100%",}} className="mobile-row-custom-full">
+                <header className={'header bg-white shadow-sm mb-1 py-3 px-4'}>
+                    <div className="header-content flex items-center flex-row">
 
                     {/* Mobile top */}
 
-                    <div className="col-12 d-sm-flex d-md-none d-flex pr-0">
-                        <MobileMenu  user={user}/>
-                    </div>
-
                     <div className="col-3">
-                        <Navbar.Brand as={Link} to="/" className="e logo align-self-start co4" title="Bikosports">
                             <div className="">
                                 <div>
-                                    <LazyLoadImage src={logo} alt="Bikosports" title="Bikosports" effects="blur"/>
+                                    {/* <LazyLoadImage src={logo} alt="Travellers" title="Bikosports" effects="blur"/> */}
+                                    {/* if not logged in, show user */}
+                                    <div className='text-3xl font-bold text-blue-500'>PSC</div>
+                                    
                                 </div>
                             </div>
-                        </Navbar.Brand>
                     </div>
                     <div className="col-9 change-size pt-3" id="navbar-collapse-main">
 
                         <div className="row">
                             <div id="navbar-collapse-main"
                                        className={`col-7 fadeIn header-menu d-none d-md-flex justify-content-center relative-pos`}>
-                                            <input type="text" placeholder={searchText || "Search for Events and Tournaments"} ref={searchInputRef}
+                                            <input type="text" placeholder={searchText || "Search for items"} ref={searchInputRef}
                                                    onInput={(event) => onSearchInputChanged(event.target.value)}
                                                    className={'form-control input-field border-0  no-border-radius'} 
                                                    value={searchText}
@@ -146,23 +143,22 @@ const Header = (props) => {
 
                             <div className="col-sm-12 col-md-5 disable-ipd d-md-block">
                                 {user 
-                                    ? <ProfileMenu user={user}/> 
+                                    ? <Link to="/logout" className="width-auto float-right shadow-sm bg-blue-400 text-white px-4 py-2">Logout </Link> 
                                     : (
-                                        <div className="top-login float-end">
-                                        <Link to="/login" className="cg login-button btn width-auto">LOGIN </Link>
-                                        <Link to="/signup" className="cg btn btn-primary width-auto">REGISTER</Link>
+                                        <div className="float-right">
+                                        <Link to="/login" className="cg bg-blue-400 text-white rounded shadow-sm mr-2 px-4 py-2">Login </Link>
+                                        <Link to="/help" className="cg bg-gray-200 text-gray-700 rounded shadow-sm  px-4 py-2 width-auto float-riht">Help?</Link>
                                         </div>
+                                        
                                     )
                                 }
                             </div>
-                            {/*For the mobile*/}
+                            
                             
                         </div>
-                        <div className={!user?"unlogged-mobile-spacer-height":""}></div>
                     </div>
-                    { /* Mobile version user profile */}
                     
-                   </Row>
+                   </div>
                     <div className="col-sm-3 col-3 vissible-mobile d-lg-none float-end header-navigation" id="header">
                         {/* Add menus for the mobile*/}
 
@@ -174,12 +170,12 @@ const Header = (props) => {
                     </Row>
                 */}
 
-                <span className="d-none d-md-flex ml-1"><div className="">{user ? <HeaderMenuToggle user={user}/> : <HeaderMenuToggle />}</div></span>
+                </header>
+                <ShareModal shown={state?.showsharemodal === true} />
+                <NewMemoModal shown={state?.shownewmemomodal === true} />
+                <NewMemoServiceItemModal show={state?.shownewmemoserviceitemmodal === true } />
 
-                </div>
-            </Navbar>
-
-          <ShareModal shown={state?.showsharemodal === true} />
+                
 
         </Suspense>
 
