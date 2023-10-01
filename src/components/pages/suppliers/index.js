@@ -69,7 +69,7 @@ const SuppliersIndex = (props) => {
             </select>
 
             <table className="w-full">
-                <tbody className="[&>*:nth-child(even)]:bg-white-600 [&>*:nth-child(odd)]:bg-gray-50 capitalize text-blue-600">
+                <tbody className="[&>*:nth-child(even)]:bg-blue-50 capitalize text-blue-600">
                     {suppliersList.map((supplier, index) => (
                         <SupplierItem supplier={supplier} key={index} />
                     ))}

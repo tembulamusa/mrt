@@ -37,6 +37,8 @@ import ServiceDetail from "./components/pages/services/service-detail";
 import SuppliersIndex from "./components/pages/suppliers";
 import SupplierDetails from "./components/pages/suppliers/supplier-details";
 import QuotationsIndex from "./components/pages/quotations";
+import AdminIndex from "./components/pages/admins";
+import AdminDetails from "./components/pages/admins/admin-details";
 
 const Logout = () => {
     let navigate = useNavigate();
@@ -81,7 +83,10 @@ const App = () => {
                         <Route exact path="/service-details/:id" element={<ServiceDetail  user={state?.user}/>}/>
                         <Route exact path="/suppliers" element={<SuppliersIndex  user={state?.user}/>}/>
                         <Route exact path="/supplier-details/:id" element={<SupplierDetails  user={state?.user}/>}/>
-                        <Route exact path="/quotations/" element={<QuotationsIndex user={state?.user}/>}/>
+                        <Route exact path="/quotations" element={<QuotationsIndex user={state?.user}/>}/>
+                        <Route exact path="/admins" element={<AdminIndex user={state?.user}/>}/>
+                        <Route exact path="/admin-details/:id" element={<AdminDetails  user={state?.user}/>}/>
+
                         {/* end delete */}
 
                         <Route element={<ProtectedRoute /> }>
@@ -92,8 +97,10 @@ const App = () => {
                             <Route exact path="/suppliers" element={<SuppliersIndex  user={state?.user}/>}/>
                             <Route exact path="/supplier-details/:id" element={<SupplierDetails  user={state?.user}/>}/>
                             <Route exact path="/quotations" element={<QuotationsIndex  user={state?.user}/>}/>
-
+                            <Route exact path="/admins" element={<AdminIndex user={state?.user}/>}/>
+                            <Route exact path="/admin-details/:id" element={<AdminDetails  user={state?.user}/>}/>
                         </Route>
+                        
                         <Route path="*" element={<Dashboard/>}/>
                         </Routes>
                         </div>
