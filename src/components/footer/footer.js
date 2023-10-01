@@ -28,7 +28,7 @@ const Footer = (props) => {
                 </div>
 
                 <div className="col-md-4 col-sm-12">
-                    <div className=''>Izwof</div>
+                    <div className=''>psc</div>
                 </div>
 
             </div>

@@ -72,7 +72,7 @@ const SideBar = (props) => {
           </li>
           <li className="my-px">
             <a
-              href="#"
+              href="/memos"
               className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700"
             >
               <span className="flex items-center justify-center text-lg text-gray-400">
@@ -98,7 +98,7 @@ const SideBar = (props) => {
           </li>
           <li className="my-px">
             <a
-              href="#"
+              href="/quotations"
               className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700"
             >
               <span className="flex items-center justify-center text-lg text-gray-400">
@@ -132,7 +132,7 @@ const SideBar = (props) => {
           
           <li className="my-px">
             <a
-              href="#"
+              href="/suppliers"
               className="flex flex-row items-center h-10 px-3 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700"
             >
               <span className="flex items-center justify-center text-lg text-gray-400">

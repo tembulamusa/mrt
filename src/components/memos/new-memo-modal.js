@@ -9,8 +9,6 @@ import NewMemoTabs from "./new-memo-tab";
 
 const NewMemoModal = (props) => {
     const user = getFromLocalStorage("user");
-    const app_name = "desktop-web";
-    const [ipv4, setIpv4] = useState(null);
     const [state, dispatch] = useContext(Context);
     const [doneCreate, setDoneCreate] = useState(false);
     const [createMessage, setCreateMessage] = useState(false);
@@ -22,7 +20,6 @@ const NewMemoModal = (props) => {
         let payload = {
             profile_id: "user?.profile_id",
             betid:"get it",
-            betamount:"some stuff"
         }
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {

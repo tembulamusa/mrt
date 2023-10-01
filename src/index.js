@@ -32,6 +32,11 @@ import Dashboard from './components/pages/dashboard';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Sidebar from './components/sidebar/sidebar';
+import Services from "./components/pages/services";
+import ServiceDetail from "./components/pages/services/service-detail";
+import SuppliersIndex from "./components/pages/suppliers";
+import SupplierDetails from "./components/pages/suppliers/supplier-details";
+import QuotationsIndex from "./components/pages/quotations";
 
 const Logout = () => {
     let navigate = useNavigate();
@@ -62,21 +67,34 @@ const App = () => {
                   <div className="p-2 px-3">
                     <div className="bg-white p-2 px-3 shadow-sm border-b border-white min-h-80%">
                         <Routes>
-                        <Route exact path="/" element={<Index/>}/>
+                        <Route exact path="/" element={<Login/>}/>
                         <Route exact path="/login" element={<Login/>}/>
                         <Route exact path="/reset-password" element={<ResetPassword/>}/>
                         <Route exact path="/logout" element={<Logout/>}/>
                         <Route exact path="/print-report" element={<PrintReport/>}/>
                         <Route exact path="/help" element={<Help/>}/>
 
+                        {/* mockup to delete */}
                         <Route exact path="/dashboard" element={<Dashboard  user={state?.user}/>}/>
-                        
+                        <Route exact path="/dashboard" element={<Dashboard  user={state?.user}/>}/>
+                        <Route exact path="/services" element={<Services  user={state?.user}/>}/>
+                        <Route exact path="/service-details/:id" element={<ServiceDetail  user={state?.user}/>}/>
+                        <Route exact path="/suppliers" element={<SuppliersIndex  user={state?.user}/>}/>
+                        <Route exact path="/supplier-details/:id" element={<SupplierDetails  user={state?.user}/>}/>
+                        <Route exact path="/quotations/" element={<QuotationsIndex user={state?.user}/>}/>
+                        {/* end delete */}
+
                         <Route element={<ProtectedRoute /> }>
                             <Route exact path="/bookings" element={<Bookings user={state?.user}/>}/>
                             <Route exact path="/users" element={<Users user={state?.user}/>}/>
-                            <Route exact path="/any-list" element={<AnyList  user={state?.user}/>}/>
+                            <Route exact path="/services" element={<Services  user={state?.user}/>}/>
+                            <Route exact path="/service-details/:id" element={<ServiceDetail  user={state?.user}/>}/>
+                            <Route exact path="/suppliers" element={<SuppliersIndex  user={state?.user}/>}/>
+                            <Route exact path="/supplier-details/:id" element={<SupplierDetails  user={state?.user}/>}/>
+                            <Route exact path="/quotations" element={<QuotationsIndex  user={state?.user}/>}/>
+
                         </Route>
-                        <Route path="*" element={<Index/>}/>
+                        <Route path="*" element={<Dashboard/>}/>
                         </Routes>
                         </div>
                     </div>
