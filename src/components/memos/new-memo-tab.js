@@ -20,7 +20,6 @@ const NewMemoTabs = (props) => {
                 <Tab eventKey="services" title="Services (6)">
                     <MemoServices />
                     <br />
-                    Conditionally enabled based on if new memo exists
                 </Tab>
             </Tabs>
         </div>

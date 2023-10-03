@@ -3,34 +3,46 @@ import MemoItem from "./memo-item"
 
 const dummy = [
     {
-        type: "road",
+        title: "road",
         description: "description sample",
-        status: "assigned"
+        status: "assigned",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "airline",
+        title: "airline",
         description: "description sample",
-        status: "delivered"
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "chopper",
+        title: "chopper",
         description: "description sample",
-        status: "defaulted"
+        status: "defaulted",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "hotel",
+        title: "hotel",
         description: "description sample",
-        status: "assigned"
+        status: "assigned",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "hotel",
+        title: "hotel",
         description: "description sample",
-        status: "delivered"
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "road",
+        title: "road",
         description: "description sample",
-        status: "delivered"
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
     },
 ];
 

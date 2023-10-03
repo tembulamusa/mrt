@@ -6,6 +6,51 @@ import { Context } from "../../../context/store";
 import MemoItem from "../../memos/memo-item";
 import {toast, ToastContainer} from 'react-toastify';
 
+
+const dummy = [
+    {
+        title: "road",
+        description: "description sample",
+        status: "assigned",
+        created: "date",
+        referenceNumber: "some number"
+    },
+    {
+        title: "airline",
+        description: "description sample",
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
+    },
+    {
+        title: "chopper",
+        description: "description sample",
+        status: "defaulted",
+        created: "date",
+        referenceNumber: "some number"
+    },
+    {
+        title: "hotel",
+        description: "description sample",
+        status: "assigned",
+        created: "date",
+        referenceNumber: "some number"
+    },
+    {
+        title: "hotel",
+        description: "description sample",
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
+    },
+    {
+        title: "road",
+        description: "description sample",
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
+    },
+];
 const MemoIndex = (props) => {
     const [state, dispatch] = useContext(Context);
     const [isRequesting, setIsRequesting] = useState(true);
@@ -54,11 +99,11 @@ const MemoIndex = (props) => {
 
     return (
         <>
-            <h1>Memos <button className="bg-blue-500 text-white rounded p-2 float-end" onClick={() => dispatch({type:"SET", key:"shownewmemomodal", payload:true})}>Create New Memo</button></h1>
+            <h1 className="mb-2 text-2xl">Memos <button className="bg-blue-500 text-white rounded p-2 text-sm float-end" onClick={() => dispatch({type:"SET", key:"shownewmemomodal", payload:true})}>Create New Memo</button></h1>
 
             <table className="w-full">
                 <tbody className="[&>*:nth-child(even)]:bg-blue-50">
-                    {memos.map((memo, index) => (
+                    {dummy.map((memo, index) => (
                         <MemoItem memo={memo} key={index}/>
                     ))}
                 </tbody>
