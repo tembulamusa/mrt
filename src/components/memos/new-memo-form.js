@@ -137,7 +137,6 @@ const NewMemoForm = (props) => {
                                     placeholder={errors.reference || "Enter Reference Number"}
                                     onChange={(ev) => onFieldChanged(ev)}
                                 />
-
                                 {errors.reference && <div className='text-danger'> {errors.reference} </div>}
                                 <br/>
                             <input type="hidden" name="ref" value="{props.refURL}"/>

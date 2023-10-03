@@ -1,10 +1,10 @@
 import {setLocalStorage, getFromLocalStorage} from './local-storage';
 
 const ENC_KEY = 'm1XR6ajgepqyh^7&21012G$%_q90)hte====';
-const BASE_URL = 'https://bikoapi.bikosports.co.tz';  
-//const BASE_URL = "http://35.234.140.2:8008";
+// const BASE_URL = 'https://psc-procurement.co.ke';  
+const BASE_URL = "http://109.123.254.230:8187/v1";
 
-const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
+const makeRequest = async ({url, method, data = null, use_jwt = false, is_basic_auth = false}) => {
 
     url = BASE_URL + url;
     let headers = {
@@ -31,6 +31,14 @@ const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
         url += (url.match(/\?/g) ? '&' : '?') + 'token=' + jwt;
         data = null;
     } else {
+        
+        if (is_basic_auth) {
+            const auth = Buffer.from(`${data.username}:${data.password}`).toString("base64");
+            headers = {...headers, Authorization: `Basic ${auth}`}
+            data = null;
+            method = "GET";
+
+        }
         headers = {...headers, ...{"content-type": "application/json"}}
     }
 
@@ -59,7 +67,7 @@ const makeRequest = async ({url, method, data = null, use_jwt = false}) => {
         let status = response?.status;
         return [status, result];
     } catch (err) {
-        
+        console.log("Got an error", err)
         let status = err.response?.status,
             result = err.response?.data;
         return [status, result]

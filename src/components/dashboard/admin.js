@@ -142,6 +142,7 @@ const AdminDashboard = (props) => {
                 <div className='flex flex-col inline-block w-2/5'>
                     <h3 className='text-blue-400 text-2xl mb-3'>Service Suppliers</h3>
                     <LatestUsers />
+                    
                     <div className='text-center bg-white py-3'>
                         <button className='bg-blue-400 text-white rounded shadow-sm py-2 px-3'>Add New Supplier</button>
                     </div>

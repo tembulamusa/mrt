@@ -41,7 +41,7 @@ const Services = (props) => {
                 <h2 className="inline-block text-2xl w-50">Services</h2>
             </div>
             <table className="w-full table">
-                <tbody className="[&>*:nth-child(even)]:bg-white-600 [&>*:nth-child(odd)]:bg-gray-50 capitalize text-blue-600">
+                <tbody className="[&>*:nth-child(even)]:bg-blue-50 capitalize text-blue-600">
                     {servicesData.map((service, index) => (
                         <ServiceItem serviceitem={service} key={index} />
                     ))}

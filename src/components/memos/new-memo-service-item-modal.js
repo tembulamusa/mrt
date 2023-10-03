@@ -17,7 +17,7 @@ const NewMemoServiceItemModal = (props) => {
             {...props}
             // centered
             // size = "sm"
-            show={true}
+            show={state?.shownewmemoserviceitemmodal === true}
             animationDirection='right'
             onHide={() => dispatch({type:"SET", key:"shownewmemoserviceitemmodal", payload:false})}
             dialogClassName="new-memo-modal shadow-lg z-50 opacity-95"

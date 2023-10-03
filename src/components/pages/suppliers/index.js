@@ -56,7 +56,7 @@ const SuppliersIndex = (props) => {
     return (
         <>
             <div className="mb-4 border-b border-gray-200 py-2 my-2 ">
-                <h2 className="text-3xl inline-block">Suppliers </h2>
+                <h2 className="text-2xl inline-block">Suppliers </h2>
                 <input type="text" placeholder="Search for items" className="border border-gray-200 rounded-xl mx-5 p-2"/>
                 <button className="inline-block bg-green-500 text-white rounded p-2 text-1xl" onClick={() => setShowCreateModal(true)}>Add Supplier</button>
             </div>

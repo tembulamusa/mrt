@@ -24,8 +24,8 @@ const Header = (props) => {
     const [matches, setMatches] = useState([])
     const searchInputRef = useRef(null)
     const [searchText, setSearchText] = useState();
-   
-
+    
+    
     const fetchMatches =async () => {
         setSearching(true);
         if(!setSearchText) {
@@ -64,30 +64,7 @@ const Header = (props) => {
         setSearching(false)
         setMatches([])
     }
-    const updateUserOnHistory = useCallback(() => {
-        if (!user) {
-            return false;
-        }
-        let endpoint = "/v1/balance";
-        let udata = {
-            token: user.token
-        }
-        makeRequest({url: endpoint, method: "post", data: udata}).then(([_status, response]) => {
-            if (_status == 200) {
-                let u = {...user, ...response.user};
-                dispatch({type: "SET", key: "user", payload: u});
-                setLocalStorage('user', u);
-                setUser(u)
-            }
-        });
-
-    }, [state?.refreshbalance]);
-
-
-    useEffect(() => {
-        updateUserOnHistory()
-    }, [updateUserOnHistory])
-
+    
     useEffect(() => {
            setUser(state?.user);
            if(state?.user) {
@@ -102,7 +79,7 @@ const Header = (props) => {
         dispatch({type: "SET", key: "searchterm", payload: searchText});
         fetchMatches()
     }, [searchText]);
-
+    const currentUser = getFromLocalStorage("user");
     const expand = "md"
     return (
         <Suspense fallback={<div></div>} >
@@ -142,11 +119,11 @@ const Header = (props) => {
 
 
                             <div className="col-sm-12 col-md-5 disable-ipd d-md-block">
-                                {user 
-                                    ? <Link to="/logout" className="width-auto float-right shadow-sm bg-blue-400 text-white px-4 py-2">Logout </Link> 
+                                {currentUser 
+                                    ? <div className='float-right'><Link to="/logout" className="width-auto mr-2 rounded shadow-sm bg-blue-500 text-white px-4 py-2">Logout </Link> <Link to="/help" className="cg bg-gray-200 text-gray-700 rounded shadow-sm  px-4 py-2 width-auto float-riht">Help?</Link></div>
                                     : (
                                         <div className="float-right">
-                                        <Link to="/login" className="cg bg-blue-400 text-white rounded shadow-sm mr-2 px-4 py-2">Login </Link>
+                                        <Link to="/login" className="cg bg-blue-500 text-white rounded shadow-sm mr-2 px-4 py-2">Login </Link>
                                         <Link to="/help" className="cg bg-gray-200 text-gray-700 rounded shadow-sm  px-4 py-2 width-auto float-riht">Help?</Link>
                                         </div>
                                         

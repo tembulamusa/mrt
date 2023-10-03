@@ -39,6 +39,8 @@ import SupplierDetails from "./components/pages/suppliers/supplier-details";
 import QuotationsIndex from "./components/pages/quotations";
 import AdminIndex from "./components/pages/admins";
 import AdminDetails from "./components/pages/admins/admin-details";
+import {getFromLocalStorage, setLocalStorage} from "./components/utils/local-storage";
+import MemoIndex from "./components/pages/memos";
 
 const Logout = () => {
     let navigate = useNavigate();
@@ -59,10 +61,11 @@ const Logout = () => {
 const App = () => {
 
     const [state, ] = useContext(Context);
+    const isAuthenticated = getFromLocalStorage("user");
     return ( 
                 <div className="flex flex-row min-h-screen bg-gray-100">
                 {/* if logged in, show sidebar */}
-                    <Sidebar />
+                {isAuthenticated && <Sidebar />}
 
                 <div className="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in min-h-screen">
                 <Header/>
@@ -77,7 +80,7 @@ const App = () => {
                         <Route exact path="/help" element={<Help/>}/>
 
                         {/* mockup to delete */}
-                        <Route exact path="/dashboard" element={<Dashboard  user={state?.user}/>}/>
+                        <Route exact path="/" element={<Dashboard  user={state?.user}/>}/>
                         <Route exact path="/dashboard" element={<Dashboard  user={state?.user}/>}/>
                         <Route exact path="/services" element={<Services  user={state?.user}/>}/>
                         <Route exact path="/service-details/:id" element={<ServiceDetail  user={state?.user}/>}/>
@@ -86,11 +89,13 @@ const App = () => {
                         <Route exact path="/quotations" element={<QuotationsIndex user={state?.user}/>}/>
                         <Route exact path="/admins" element={<AdminIndex user={state?.user}/>}/>
                         <Route exact path="/admin-details/:id" element={<AdminDetails  user={state?.user}/>}/>
+                        <Route exact path="/memos" element={<MemoIndex user={state?.user}/>} />
 
                         {/* end delete */}
 
                         <Route element={<ProtectedRoute /> }>
                             <Route exact path="/bookings" element={<Bookings user={state?.user}/>}/>
+                            <Route exact path="/dashboard" element={<Dashboard  user={state?.user}/>}/>
                             <Route exact path="/users" element={<Users user={state?.user}/>}/>
                             <Route exact path="/services" element={<Services  user={state?.user}/>}/>
                             <Route exact path="/service-details/:id" element={<ServiceDetail  user={state?.user}/>}/>
@@ -99,6 +104,7 @@ const App = () => {
                             <Route exact path="/quotations" element={<QuotationsIndex  user={state?.user}/>}/>
                             <Route exact path="/admins" element={<AdminIndex user={state?.user}/>}/>
                             <Route exact path="/admin-details/:id" element={<AdminDetails  user={state?.user}/>}/>
+                            <Route exact path="/memos" element={<MemoIndex user={state?.user}/>} />
                         </Route>
                         
                         <Route path="*" element={<Dashboard/>}/>

@@ -19,7 +19,6 @@ const NewMemoModal = (props) => {
         setDoneCreate(false);
         let payload = {
             profile_id: "user?.profile_id",
-            betid:"get it",
         }
         makeRequest({url: endpoint, method: "POST", data: payload}).then(([status, result]) => {
             if(status === 200) {
@@ -38,7 +37,7 @@ const NewMemoModal = (props) => {
             {...props}
             top
             size = "lg"
-            show={true}
+            show={state?.shownewmemomodal === true}
             onHide={() => dispatch({type:"SET", key:"shownewmemomodal", payload:false})}
             dialogClassName="new-memo-modal"
             aria-labelledby="contained-modal-title-vcenter">

@@ -23,7 +23,7 @@ const CreateNewSupplier = (props) => {
                     <div className="form-group col-12 justify-content-center mt-3">
                         <label className='block mb-2'>Title</label>
                         <input
-                        className={`text-dark deposit-input form-control col-md-12 input-field py-3`}
+                        className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
                         id="title"
                         name="title"
                         type="text"
@@ -40,7 +40,7 @@ const CreateNewSupplier = (props) => {
                     <div className="form-group col-12 justify-content-center mt-3">
                         <label className='block mb-2'>Supplier EMail</label>
                         <input
-                            className={`text-dark deposit-input form-control col-md-12 input-field py-3`}
+                            className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
                             id="email"
                             name="email"
                             type="email"
@@ -51,11 +51,39 @@ const CreateNewSupplier = (props) => {
                         {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
                         <br/>
                     </div>
-                    
+                    <div className="flex flex-row">
+                        <div className="form-group flex flex-col pr-3 pl-0 w-50 justify-content-center mt-3">
+                            <label className='block mb-2'>Primary Mobile Phone</label>
+                            <input
+                                className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
+                                id="primary-msisdn"
+                                name="primaryMsisdn"
+                                type="text"
+                                maxLength={20}
+                                data-action="grow"
+                                required="required"
+                                placeholder="SUpplier Primary Phone number" />
+                                {/* Errors */}
+                                {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
+                            </div>
+                        <div className="form-group  flex flex-col w-50 justify-content-center mt-3 pl-3">
+                            <label className='block mb-2'>Secondary Mobile Phone</label>
+                            <input
+                                className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
+                                id="secondary-msisdn"
+                                name="secondaryMsisdn"
+                                type="text"
+                                maxLength={20}
+                                data-action="grow"
+                                placeholder="SUpplier Primary Phone number" />
+                                {/* Errors */}
+                                {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
+                        </div>
+                    </div>
                     <div className="form-group col-12 justify-content-center mt-3">
                         <label className='block mb-2'>Address</label>
                         <input
-                            className={`text-dark deposit-input form-control col-md-12 input-field py-3`}
+                            className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
                             id="address"
                             name="address"
                             type="text"
@@ -67,70 +95,41 @@ const CreateNewSupplier = (props) => {
                         {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
                         <br/>
                     </div>
-                    
-                    <div className="form-group col-12 justify-content-center mt-3">
-                        <label className='block mb-2'>Registration Pin</label>
-                        <input
-                            className={`text-dark deposit-input form-control col-md-12 input-field py-3`}
-                            id="registration"
-                            name="registration_pin"
+                    <div className="flex flex-row">
+                        <div className="form-group flex flex-col w-50  justify-content-center mt-3 pr-3">
+                            <label className='block mb-2'>Registration Pin</label>
+                            <input
+                                className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
+                                id="registration"
+                                name="registrationPin"
+                                type="text"
+                                maxLength={100}
+                                data-action="grow"
+                                required="required"
+                                placeholder="Supplier Registration Pin" />
+                                {/* Errors */}
+                                {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
+                        </div>
+                        <div className="form-group flex flex-col w-50  justify-content-center mt-3 pl-3">
+                            <label className='block mb-2'>Supplier Kra Pin</label>
+                            <input
+                            className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
+                            id="kra"
+                            name="kraPin"
                             type="text"
                             maxLength={100}
                             data-action="grow"
                             required="required"
-                            placeholder="Supplier Registration Pin" />
+                            placeholder="Supplier Kra Pin" />
                             {/* Errors */}
                             {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
-                        <br/>
-                    </div>
-                    <div className="form-group col-12 justify-content-center mt-3">
-                        <label className='block mb-2'>Supplier Kra Pin</label>
-                        <input
-                        className={`text-dark deposit-input form-control col-md-12 input-field py-3`}
-                        id="kra"
-                        name="kra_pin"
-                        type="text"
-                        maxLength={100}
-                        data-action="grow"
-                        required="required"
-                        placeholder="Supplier Kra Pin" />
-                        {/* Errors */}
-                        {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
-                        <br/>
-                    </div>
-                    <div className="form-group col-12 justify-content-center mt-3">
-                        <label className='block mb-2'>Primary Mobile Phone</label>
-                        <input
-                            className={`text-dark deposit-input form-control col-md-12 input-field py-3`}
-                            id="primary-msisdn"
-                            name="primary_msisdn"
-                            type="text"
-                            maxLength={20}
-                            data-action="grow"
-                            required="required"
-                            placeholder="SUpplier Primary Phone number" />
-                            {/* Errors */}
-                            {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
-                            <br/>
                         </div>
-                    <div className="form-group col-12 justify-content-center mt-3">
-                        <label className='block mb-2'>Secondary Mobile Phone</label>
-                        <input
-                            className={`text-dark deposit-input form-control col-md-12 input-field py-3`}
-                            id="secondary-msisdn"
-                            name="secondary_msisdn"
-                            type="text"
-                            maxLength={20}
-                            data-action="grow"
-                            placeholder="SUpplier Primary Phone number" />
-                            {/* Errors */}
-                            {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
-                            <br/>
-                    </div>
+                    </div>    
+                    
                     <div className="form-group col-12 justify-content-center mt-3">
                         <label className='block mb-2'>Brief Description</label>
                         <textarea
-                            className={`text-dark deposit-input form-control col-md-12 input-field py-3`}
+                            className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
                             id="description"
                             name="description"
                             data-action="grow"
@@ -140,11 +139,12 @@ const CreateNewSupplier = (props) => {
                             <br/>
                     </div>
                     <div className='mt-2 mb-2'>
-                        <button
-                            className={`p-3 rounded shadow-md border border-white-200 w-40 mr-2 bg-red-400 text-white`}
+                        <span
+                            className={`p-3 rounded shadow-md border border-white-200 inline-block w-40 mr-2 bg-red-400 text-white`}
                             disabled={isLoading}> Cancel
-                        </button>
+                        </span>
                         <button className={`p-3 rounded shadow-md border border-white-200 w-50 bg-blue-500 text-white`}
+                            type="submit"
                             disabled={isLoading}>
                                 {isLoading ? <span>Creating Memo...</span> : <span>Continue</span>}
                         </button>
@@ -168,7 +168,7 @@ const CreateNewSupplier = (props) => {
             dialogClassName="new-memo-modal"
             aria-labelledby="contained-modal-title-vcenter">
                      <Modal.Header closeButton className="bg-blue-500 text-white text-center justify-center place-items-center">
-                      <Modal.Title className="w-full font-small ">Add New Supplier</Modal.Title>
+                      <Modal.Title className="w-full font-sm text-md ">Add New Supplier</Modal.Title>
                     </Modal.Header>
                     {
                     <Modal.Body>
