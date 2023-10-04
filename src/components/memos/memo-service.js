@@ -46,6 +46,7 @@ const MemoServices = (props) => {
     const [state, dispatch] = useContext(Context);
     const [memoServices, setMemoServices] = useState([])
 
+
     const Notify = (message) => {
         let options = {
             position: toast.POSITION.TOP_RIGHT,
@@ -91,7 +92,7 @@ const MemoServices = (props) => {
         <>  
             <table className="w-full">
                 <tbody className="w-full">
-                    { memoServices.length >= 1 ? memoServices?.map((memo_service_item, index) => (
+                    { memoServices.length >= 1 && !state?.currentmemoitem === null ? memoServices?.map((memo_service_item, index) => (
                         <MemoServiceItem memoserviceitem = {memo_service_item} key= {index}/>
                         )
                     ): <EmptyRecords itemname="services"/>
