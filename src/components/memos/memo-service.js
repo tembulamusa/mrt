@@ -46,7 +46,6 @@ const MemoServices = (props) => {
     const [state, dispatch] = useContext(Context);
     const [memoServices, setMemoServices] = useState([])
 
-
     const Notify = (message) => {
         let options = {
             position: toast.POSITION.TOP_RIGHT,

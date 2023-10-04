@@ -41,6 +41,7 @@ import AdminIndex from "./components/pages/admins";
 import AdminDetails from "./components/pages/admins/admin-details";
 import {getFromLocalStorage, setLocalStorage} from "./components/utils/local-storage";
 import MemoIndex from "./components/pages/memos";
+import MemoDetail from "./components/pages/memos/memo-detail";
 
 const Logout = () => {
     let navigate = useNavigate();
@@ -90,6 +91,7 @@ const App = () => {
                         <Route exact path="/admins" element={<AdminIndex user={state?.user}/>}/>
                         <Route exact path="/admin-details/:id" element={<AdminDetails  user={state?.user}/>}/>
                         <Route exact path="/memos" element={<MemoIndex user={state?.user}/>} />
+                        <Route exact path="/memo-details/:id" element={<MemoDetail user={state?.user}/>} />
 
                         {/* end delete */}
 
@@ -105,6 +107,7 @@ const App = () => {
                             <Route exact path="/admins" element={<AdminIndex user={state?.user}/>}/>
                             <Route exact path="/admin-details/:id" element={<AdminDetails  user={state?.user}/>}/>
                             <Route exact path="/memos" element={<MemoIndex user={state?.user}/>} />
+                            <Route exact path="/memo-details/:id" element={<MemoDetail user={state?.user}/>} />
                         </Route>
                         
                         <Route path="*" element={<Dashboard/>}/>
