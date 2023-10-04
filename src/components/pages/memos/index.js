@@ -106,6 +106,20 @@ const MemoIndex = (props) => {
     return (
         <>
             <h1 className="mb-2 text-2xl">Memos <button className="bg-blue-500 text-white rounded p-2 text-sm float-end" onClick={() => dispatch({type:"SET", key:"shownewmemomodal", payload:true})}>Create New Memo</button></h1>
+            <div className="mb-3">
+                <select className="p-2">
+                    <option>All Memos</option>
+                    <option>Processing</option>
+                    <option>Closed</option>
+                    <option>Open</option>
+                </select>
+
+                <input
+                type="text"
+                placeholder="Enter memo id or name"
+                className="ml-3 border border-blue-100 p-2 rounded"
+                />
+            </div>
 
             <table className="w-full">
                 <tbody className="[&>*:nth-child(even)]:bg-blue-50">

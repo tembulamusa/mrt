@@ -1,4 +1,5 @@
-
+import React from 'react';
+import { MDBSwitch } from 'mdb-react-ui-kit';
 
 const AdminRoleItem = (props) => {
     const {role, key} = props;
