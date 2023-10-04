@@ -11,6 +11,7 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {setLocalStorage} from '../utils/local-storage';
 import { useMediaQuery } from 'react-responsive';
+import AdminRoles from "./admin-roles";
 
 const NewAdminModal = (props) => {
     const {shownewadminform, adminroles} = props;
@@ -23,8 +24,8 @@ const NewAdminModal = (props) => {
     const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
     const [state, dispatch] = useContext(Context);
     const [newUserId, setNewUserId] = useState(null);
-    const [showAdminRoleForm, setShowNewAdminRole] = useState(true);
-    const [showMessage, setShowMessage] = useState(true);
+    const [showAdminRoles, setShowAdminRoles] = useState(false);
+    const [showMessage, setShowMessage] = useState(false);
     const [messageType, setMessageType] = useState(null)
 
     const initialValues = {
@@ -241,19 +242,7 @@ const NewAdminModal = (props) => {
                 <div id="add-roles">
                     <h1 className="font-md mb-3 font-md">Select Roles To add</h1>
 
-                    <form>
-                            {adminroles.map((role, index) => (
-                                <div className="">
-                                    <label key={index} className="bg-blue-50 border border-blue-70 p-2 w-full mb-2">
-                                        <input type="checkbox" name="roles" className="mr-3" value={role.id}/> {role.name}
-                                    </label>
-                                </div>
-                            ))}
-                        <div>
-                            <input type="hidden" value={newUserId} />
-                        </div>
-                        <button className="p-2 bg-green-500 text-white rounded mt-3">add roles</button>
-                    </form>
+                    
                 </div>
             </>
         )
@@ -280,7 +269,7 @@ const NewAdminModal = (props) => {
                         }
 
                         {
-                            showAdminRoleForm && <UserRolesForm /> || <NewAdminForm values={initialValues}/>
+                            showAdminRoles && <AdminRoles /> || <NewAdminForm values={initialValues}/>
                         }
                     </Modal.Body>
                  }

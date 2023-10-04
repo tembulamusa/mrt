@@ -4,7 +4,8 @@ import makeRequest from "../../utils/fetch-request";
 import {getFromLocalStorage} from '../../utils/local-storage'; 
 import { Context } from "../../../context/store";
 import {toast, ToastContainer} from 'react-toastify';
-import AdminRoleItem from "../../admins/admin-role-item";
+import AdminRoles from "../../admins/admin-roles";
+
 
 const AdminDetails = (props) => {
     const [state, distpatch] = useContext(Context);
@@ -70,15 +71,8 @@ const AdminDetails = (props) => {
                 <div className="mb-2">Email: {state?.selecteduserdetail?.email}</div>
                 </div>
                 <div className="flex flex-col ml-3 w-50">
-                    <h2 className="text-2xl">Roles</h2>
-
-                    <table className="w-full">
-                        <tbody className="[&>*:nth-child(even)]:bg-blue-50 w-full">
-                            {roles.map((role, index) => (
-                                <AdminRoleItem role={role} key={role.roleId} />
-                            ))}
-                        </tbody>
-                    </table>
+                    
+                    <AdminRoles selecteduserid={state?.selecteduserdetail?.userId}/>
 
                 </div>
             </div>
