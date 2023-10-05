@@ -17,10 +17,10 @@ const NewMemoTabs = (props) => {
                 <Tab eventKey="memo" title="Memo">
                     <NewMemoForm />
                 </Tab>
-                <Tab eventKey="services" title="Services (6)">
+                {/* <Tab eventKey="services" title="Services (6)">
                     <MemoServices />
                     <br />
-                </Tab>
+                </Tab> */}
             </Tabs>
         </div>
     )

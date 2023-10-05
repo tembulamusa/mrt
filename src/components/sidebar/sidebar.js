@@ -7,11 +7,13 @@ import {
 } from '../utils/local-storage';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import makeRequest from "../utils/fetch-request";
+import { Context } from "../../context/store";
 
 
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
 const SideBar = (props) => {
+  const [state, dispatch] = useContext(Context);
 
     return (
         <aside
@@ -59,7 +61,7 @@ const SideBar = (props) => {
           <li className="my-px">
             <span className="flex font-medium text-sm text-gray-700 px-4 my-4 mb-3 uppercase">Memos</span>
           </li>
-          <li className="my-px">
+          <li className="my-px"  onClick={() => dispatch({type:"SET", key:"shownewmemomodal", payload:true})}>
             <a
               href="#"
               className="flex flex-row items-center h-10 px-3 rounded-lg text-green-400 font-medium hover:bg-gray-100 hover:text-gray-700"

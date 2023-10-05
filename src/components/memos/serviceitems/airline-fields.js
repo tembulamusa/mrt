@@ -16,16 +16,7 @@ const AirlineFields = () => {
                 placeholder=""
                 />
             </div>
-            <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-            <label className='block mb-2'>Location</label>
-                <input
-                 type="text"
-                 name="location" 
-                 maxlength="50" 
-                 placeholder="Enter Location" 
-                 className="border border-gray-100 p-2"
-                 required="required"/>
-            </div>
+            
             
             <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
             <label className='block mb-2'>departure Date</label>

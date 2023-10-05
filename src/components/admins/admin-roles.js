@@ -38,10 +38,9 @@ const AdminRoles = (props) => {
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
 
             setIsRequesting(false)
-
             if ([200, 201, 204].includes(status)) {
                 // dispatch({type:"SET", key:"showloginmodal", payload:false})
-                setRoles(response?.message?.roles);
+                setRoles(response?.message);
 
                 let endpoint = `/user/${selecteduserid}/roles`;
                 makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
@@ -58,8 +57,8 @@ const AdminRoles = (props) => {
                      })
                     } else {
                         let message = {
-                            status: response.status,
-                            message: response?.status || "Error fetching user roles."
+                            status: status,
+                            message: response?.message?.status || "Error fetching user roles."
                         };
                         Notify(message);
                     }

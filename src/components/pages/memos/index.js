@@ -7,56 +7,7 @@ import MemoItem from "../../memos/memo-item";
 import {toast, ToastContainer} from 'react-toastify';
 
 
-const dummy = [
-    {
-        title: "road",
-        id: 1,
-        description: "description sample",
-        status: "assigned",
-        created: "date",
-        referenceNumber: "some number"
-    },
-    {
-        title: "airline",
-        id: 2,
-        description: "description sample",
-        status: "delivered",
-        created: "date",
-        referenceNumber: "some number"
-    },
-    {
-        title: "chopper",
-        id: 3,
-        description: "description sample",
-        status: "defaulted",
-        created: "date",
-        referenceNumber: "some number"
-    },
-    {
-        title: "hotel",
-        id: 4,
-        description: "description sample",
-        status: "assigned",
-        created: "date",
-        referenceNumber: "some number"
-    },
-    {
-        title: "hotel",
-        id: 5,
-        description: "description sample",
-        status: "delivered",
-        created: "date",
-        referenceNumber: "some number"
-    },
-    {
-        title: "road",
-        id: 6,
-        description: "description sample",
-        status: "delivered",
-        created: "date",
-        referenceNumber: "some number"
-    },
-];
+
 const MemoIndex = (props) => {
     const [state, dispatch] = useContext(Context);
     const [isRequesting, setIsRequesting] = useState(true);
@@ -82,6 +33,10 @@ const MemoIndex = (props) => {
     };
     const Memos = () => {
         let endpoint = "/memos";
+
+        dispatch({type: "DEL", key: "latestmemoobj"})
+        dispatch({type: "DEL", key: "latestsuccessmessage"})
+
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
 
             setIsRequesting(false)
@@ -123,7 +78,7 @@ const MemoIndex = (props) => {
 
             <table className="w-full">
                 <tbody className="[&>*:nth-child(even)]:bg-blue-50">
-                    {dummy.map((memo, index) => (
+                    {memos.map((memo, index) => (
                         <MemoItem memo={memo} key={index}/>
                     ))}
                 </tbody>

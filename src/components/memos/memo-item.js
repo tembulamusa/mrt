@@ -10,20 +10,21 @@ const MemoItem = (props) => {
 
     const memoDetail = (memo) => {
 
-        dispatch({type: "SET", key: "currentselectedmemo", payload: memo})
-        navigate(`/memo-details/${memo.id}`);
+        dispatch({type: "SET", key: "latestmemoobj", payload: memo})
+        navigate(`/memo-details/${memo.memoId}`);
     }
     return (
         <>
             <tr key={key} className="w-full border-b border-gray-100" onClick={() => memoDetail(memo)}>
-                <td className="p-2 border border-blue-70">
-                    {memo.title}
-                </td>
+                
                 <td className="p-2 border border-blue-70">
                     {memo.referenceNumber}
                 </td>
                 <td className="p-2 border border-blue-70">
-                    {memo.created}
+                    {memo.description}
+                </td>
+                <td className="p-2 border border-blue-70">
+                    {memo.createdAt}
                 </td>
                 <td className="p-2 border border-blue-70">
                     {memo.status}

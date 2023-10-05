@@ -36,14 +36,7 @@ const ChopperFields = (props) => {
                  className="border border-gray-100 p-2"
                  required="required"/>
             </div>
-            <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-            <label className='block mb-2'>Select Journey Type</label>
-                <select required="required" name="journey_type" className="p-2 border-gray-200">
-                    <option value={""}>Select location Type</option>
-                    <option value={"one_way"}>one Way</option>
-                    <option value={"two_way"}>two Way</option>
-                </select>
-            </div>
+            
         </>
     )
 }

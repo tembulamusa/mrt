@@ -15,13 +15,17 @@ const MemoDetail = (props) => {
         <div className="flex flex-row">
 
             <div className="flex flex-col w-50 pr-3">
-                <h1 className="text-2xl mb-2">Memo Detail: {state?.currentselectedmemo?.title}</h1>
-                <div>Deadline: {state?.currentselectedmemo?.created}</div>
+                <h1 className="text-2xl mb-2">Memo Detail: {state?.latestmemoobj?.referenceNumber}</h1>
+                <div>Created: {state?.latestmemoobj?.createdAt}</div>
             </div>
 
             <div className="flex flex-col pl-3 w-50">
-                <h1 className="text-2xl">Memo service requests</h1>
+                <h1 className="text-2xl mb-2">Memo service requests</h1>
+
+                {state?.latestsuccessmessage && <div className="bg-green-200 p-3 rounded text-green-600">{state?.latestsuccessmessage}</div>}
+                
                 <MemoServices />
+
             </div>
         </div>
     )

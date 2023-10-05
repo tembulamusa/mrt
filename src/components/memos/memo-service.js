@@ -66,7 +66,7 @@ const MemoServices = (props) => {
     };
 
     const getMemoServices = () => {
-        let endpoint = `/memo/${state?.currentmemoitem?.memoId}/services`;
+        let endpoint = `/memo/${state?.latestmemoobj?.memoId}/services`;
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
 
             if ([200, 201, 204].includes(status)) {
@@ -74,8 +74,8 @@ const MemoServices = (props) => {
 
             } else {
                 let message = {
-                    status: response.status,
-                    message: response?.status || "Error fetching Memos."
+                    status: status,
+                    message: response?.message?.status || "Error fetching Memos."
                 };
                 Notify(message);
             }

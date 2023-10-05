@@ -4,10 +4,11 @@ import makeRequest from '../utils/fetch-request';
 import {toast, ToastContainer} from 'react-toastify';
 import {getFromLocalStorage} from '../utils/local-storage'; 
 import { Context } from "../../context/store"
-import CarHireFields from "./serviceitems/car-hire-fields";
-import AirlineFields from "./serviceitems/airline-fields";
-import HotelFields from "./serviceitems/hotel-fields";
-import ChopperFields from "./serviceitems/chopper-fields";
+import {Formik, Field, Form} from 'formik';
+// import CarHireFields from "./serviceitems/car-hire-fields";
+// import AirlineFields from "./serviceitems/airline-fields";
+// import HotelFields from "./serviceitems/hotel-fields";
+// import airliftFields from "./serviceitems/airlift-fields";
 
 
 const testSystData = [
@@ -21,7 +22,7 @@ const testSystData = [
     },
     {
         id: 3,
-        name: "chopper"
+        name: "airlift"
     },
     {
         id: 4,
@@ -32,9 +33,34 @@ const testSystData = [
 const NewMemoServiceItemModal = (props) => {
     const [state, dispatch] = useContext(Context);
     const [systemServices, setSytemServices] = useState([]);
-    const [selectedService, setSelectedService] = useState(null);
+    const [selectedService, setSelectedService] = useState("");
     const [selectedServiceName, setSelectedServiceName] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [isCreated, setIsCreated] = useState(false);
+    const [serviceUrl, setServiceUrl] = useState("")
+
+    const initialValues = {
+        location: "",
+        memoId: `${state?.latestmemoobj?.memoId}`,
+        serviceId: `${selectedService}`,
+        fromDate: "",
+        toDate: "",
+        locationType: "",
+        roomsCount: "",
+        roomType: "",
+        roomLayout: "",
+        passengersCount: "",
+        destination: "",
+        journeyType: "",
+        serviceName: "",
+        ticketCount: "",
+        departureDate: "",
+        returnDate: "",
+        origin: "",
+        ticketCategory: "",
+
+
+    }
 
     const Notify = (message) => {
         let options = {
@@ -61,15 +87,15 @@ const NewMemoServiceItemModal = (props) => {
 
             setSytemServices(testSystData);
             if ([200, 201, 204].includes(status)) {
-                setSytemServices(response?.message);
+                setSytemServices(response?.message?.services);
 
                 // remove this
                 setSytemServices(testSystData);
 
             } else {
                 let message = {
-                    status: response.status,
-                    message: response?.status || "Error fetching Memos."
+                    status: status,
+                    message: response?.message?.status || "Error fetching Memos."
                 };
                 Notify(message);
             }
@@ -80,80 +106,360 @@ const NewMemoServiceItemModal = (props) => {
         GetSystemServices();
     }, []);
 
-    const handleChange = (e) => {
 
-        setSelectedService(e.target.id);
-        setSelectedServiceName(e.target.value)
+      const handleSubmit = values => {
+        let endpoint = `/memo/${state?.latestmemoobj?.memoId}/${serviceUrl}`;
+        setIsLoading(true)
 
-      }
-      
-    return (
-        <>
-        <Modal
-            {...props}
-            // centered
-            // size = "sm"
-            show={state?.shownewmemoserviceitemmodal === true}
-            animationDirection='right'
-            onHide={() => dispatch({type:"SET", key:"shownewmemoserviceitemmodal", payload:false})}
-            dialogClassName="new-memo-modal shadow-lg z-50 opacity-95"
-            aria-labelledby="contained-modal-title-vcenter">
-                     <Modal.Header closeButton className="bg-purple-500 text-white text-center justify-center place-items-center">
-                      <Modal.Title className="w-full text-sm font-md uppercase ">Add Memo service</Modal.Title>
-                    </Modal.Header>
-                    {
-                    <Modal.Body className="bg-white">
-                        <form>
-                            <select className="p-2" onChange={handleChange} value={selectedService}>
-                                <option className="p-2" value="">Select Service</option>
+        // async await for the password to update and then create
+        // then proceed to send
+        console.log("URL?ENDPOINT :::::", values);
+        makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
+            setIsLoading(false)
+            setIsCreated(false)
+            if ([200, 201, 204].includes(status)) {
+                setIsCreated(true)
+
+                // add the service to the detail level state of memo services
+            } else {
+                let message = {
+                    status: status,
+                    message: response?.message || "Error attempting to create service"
+                };
+                Notify(message);
+            }
+        })
+    }
+    const validate = values => {
+
+        let errors = {}
+
+        // if (!values.referenceNumber || values.referenceNumber.length < 4) {
+        //     errors.referenceNumber = "Invalid reference Number";
+        // }
+
+        return errors
+    }
+    
+    const changeServiceUrl = () => {
+        let current_service = selectedServiceName;
+        if(current_service == "car hire"){
+            setServiceUrl("car_hire_service");
+        } else if (current_service == "airline"){
+            setServiceUrl("airline_service");
+        } else if (current_service == "airlift") {
+            setServiceUrl("airlift_service");
+        } else if (current_service == "hotel") {
+            setServiceUrl("hotel_service")
+        }
+    }
+    useEffect(() => {
+        changeServiceUrl();
+    }, [selectedServiceName])
+
+    const NewMemoServiceForm = (props) => {
+
+        const {isValid, errors, values, submitForm, setFieldValue} = props;
+
+        const onFieldChanged = (ev) => {
+            let field = ev.target.name;
+            let value = ev.target.value;
+            setFieldValue(field, value);
+
+            if (ev.target.name == "serviceId") {
+                setSelectedService(ev.target.id);
+                setSelectedServiceName(ev.target.value)
+
+            }
+        }
+        
+        return (
+            <Form>
+                            <span className="font-medium capitalize mr-3">{selectedServiceName}</span>
+                            <select
+                            name="serviceId"
+                            id={4}
+                            className="p-2" onChange={onFieldChanged}>
+                                <option className="p-2" value="">Change Service</option>
                                 {systemServices.map((service, index) => (
                                     <option id={service.id} className="" value={service.name}>{service.name}</option>
                                 ))}
                             </select>
+
                             
-                            {  ["car hire", "airline", "hotel", "chopper"].includes(selectedServiceName) && <>
+                            
+                            {  ["car hire", "airline", "hotel", "airlift"].includes(selectedServiceName) && <>
                                 <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
                                 <label className='block mb-2'>Location</label>
                                     <input
+                                    id="location"
                                     type="text"
                                     name="location" 
                                     maxlength="50" 
                                     placeholder="Enter Location" 
                                     className="border border-gray-100 p-2"
-                                    required="required"/>
+                                    required="required"
+                                    onChange={(ev) => onFieldChanged(ev)}
+                                    />
                                 </div>
-                                {selectedServiceName == "car hire" &&  <CarHireFields />}
-                                {selectedServiceName === "airline" && <AirlineFields />}
-                                {selectedServiceName === "hotel" && <HotelFields />}
-                                {selectedServiceName === "chopper" && <ChopperFields />}
+                                {/* Car Hire */}
+                                {selectedServiceName == "car hire" &&  <>
+                                <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Number of cars</label>
+                                        <input
+                                        className="p-2 border border-gray-100 p-2"
+                                        id="car-count"
+                                        name="car_count"
+                                        data-action="grow"
+                                        required="required"
+                                        min="1"
+                                        type="number"
+                                        placeholder=""
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                    
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Car Type</label>
+                                        <input
+                                        type="text"
+                                        name="car_type" 
+                                        maxlength="50" 
+                                        placeholder="Enter Car Type" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                    
+
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Select Car Category</label>
+                                        <select
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        required="required" name="car_category" className="p-2 border-gray-200">
+                                        <option value={""}>Select Category</option>
+                                        <option >economy</option>
+                                        <option >luxury</option>
+                                        <option >suv</option>
+                                        <option >people carrier</option>
+                                        </select>
+                                    </div>
+                                
+                                </>}
+
+                                {/* Airline */}
+                                {selectedServiceName === "airline" && <>
+                                <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Number of Tickets</label>
+                                        <input
+                                        className="p-2 border border-gray-100 p-2"
+                                        id="ticketCount"
+                                        name="ticketCount"
+                                        data-action="grow"
+                                        required="required"
+                                        min="1"
+                                        type="number"
+                                        placeholder=""
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                                
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>departure Date</label>
+                                        <input
+                                        type="date"
+                                        name="departureDate" 
+                                        maxlength="50" 
+                                        placeholder="Enter Location" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Return Date</label>
+                                        <input
+                                        type="date"
+                                        name="returnDate" 
+                                        maxlength="50" 
+                                        placeholder="Enter Location" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Select Journey Type</label>
+                                        <select
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        required="required"
+                                        id="journeyType"
+                                        name="journeyType" className="p-2 border-gray-200">
+                                            <option value={""}>Select location Type</option>
+                                            <option value={"one_way"}>one Way</option>
+                                            <option value={"two_way"}>two Way</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Origin</label>
+                                        <input
+                                        type="text"
+                                        name="origin" 
+                                        maxlength="50" 
+                                        placeholder="Enter Origin" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Destination</label>
+                                        <input
+                                        type="text"
+                                        name="destination" 
+                                        maxlength="50" 
+                                        placeholder="Enter Destination" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                </>}
+                                {selectedServiceName === "hotel" && <>
+                                <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                <label className='block mb-2'>Number of Rooms</label>
+                                    <input
+                                    className="p-2 border border-gray-100 p-2"
+                                    id="roomsCount"
+                                    name="roomsCount"
+                                    data-action="grow"
+                                    required="required"
+                                    min="1"
+                                    type="number"
+                                    placeholder=""
+                                    onChange={(ev) => onFieldChanged(ev)}
+                                    />
+                                </div>
+                                
+                                <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                <label className='block mb-2'>Type of Room(s)</label>
+                                    <input
+                                    type="text"
+                                    id="roomType"
+                                    name="roomType" 
+                                    maxlength="50" 
+                                    placeholder="Enter Room Type" 
+                                    className="border border-gray-100 p-2"
+                                    onChange={(ev) => onFieldChanged(ev)}
+                                    />
+                                </div>
+                                <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                <label className='block mb-2'>Room Layout</label>
+                                    <input
+                                    type="text"
+                                    id="roomLayout"
+                                    name="roomLayout" 
+                                    maxlength="50" 
+                                    placeholder="Enter Room Layout" 
+                                    className="border border-gray-100 p-2"
+                                    onChange={(ev) => onFieldChanged(ev)}
+                                    />
+                                </div>
+                                </>}
+                                {selectedServiceName === "airlift" && <>
+                                <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Number of Passengers</label>
+                                        <input
+                                        className="p-2 border border-gray-100 p-2"
+                                        id="passengersCount"
+                                        name="passengersCount"
+                                        data-action="grow"
+                                        required="required"
+                                        min="1"
+                                        type="number"
+                                        placeholder=""
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>origin</label>
+                                        <input
+                                        type="text"
+                                        name="origin" 
+                                        maxlength="50" 
+                                        placeholder="Enter Origin" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Destination</label>
+                                        <input
+                                        type="text"
+                                        name="destination" 
+                                        maxlength="50" 
+                                        placeholder="Enter Destination" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    </div>
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>Select Journey Type</label>
+                                        <select
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        required="required"
+                                        name="journey_type"
+                                        className="p-2 border-gray-200">
+                                            <option value={""}>Select location Type</option>
+                                            <option value={"one_way"}>one Way</option>
+                                            <option value={"two_way"}>two Way</option>
+                                        </select>
+                                    </div>
+                                </>}
 
                                 {/* if selected is not airline */}
                                 <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
                                 <label className='block mb-2'>From Date</label>
                                     <input
                                     type="date"
-                                    name="from_date" 
+                                    id="fromDate"
+                                    name="fromDate" 
                                     maxlength="50" 
-                                    placeholder="Enter Location" 
+                                    placeholder="Select Date" 
                                     className="border border-gray-100 p-2"
-                                    required="required"/>
+                                    required="required"
+                                    onChange={(ev) => onFieldChanged(ev)}
+                                    />
                                 </div>
                                 <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
                                 <label className='block mb-2'>To Date</label>
                                     <input
+                                    id="toDate"
                                     type="date"
-                                    name="to_date" 
+                                    name="toDate" 
                                     maxlength="50" 
                                     placeholder="Enter Location" 
                                     className="border border-gray-100 p-2"
-                                    required="required"/>
+                                    required="required"
+                                    onChange={(ev) => onFieldChanged(ev)}
+                                    />
                                 </div>
 
                                 {/* end if selected is not airline */}
 
                                 <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
                                 <label className='block mb-2'>Select Location Category</label>
-                                    <select required="required" name="location_type" className="p-2 border-gray-200">
+                                    <select 
+                                    required="required" 
+                                    name="locationType"
+                                    id="locationType"
+                                    onChange={(ev) => onFieldChanged(ev)}
+                                    className="p-2 border-gray-200">
                                         <option value={""}>Select location Type</option>
                                         <option >local</option>
                                         <option >international</option>
@@ -175,7 +481,39 @@ const NewMemoServiceItemModal = (props) => {
                             }
 
                         
-                        </form>
+                        </Form>
+        )
+    }
+
+    const MemoServiceForm = (props) => {
+        return (
+            <Formik
+                initialValues={initialValues}
+                onSubmit={handleSubmit}
+                validateOnChange={false}
+                validateOnBlur={false}
+                validate={validate}
+            >{(props) => <NewMemoServiceForm {...props} />}</Formik>
+        );
+    }
+      
+    return (
+        <>
+        <Modal
+            {...props}
+            // centered
+            // size = "sm"
+            show={state?.shownewmemoserviceitemmodal === true}
+            animationDirection='right'
+            onHide={() => dispatch({type:"SET", key:"shownewmemoserviceitemmodal", payload:false})}
+            dialogClassName="new-memo-modal shadow-lg z-50 opacity-95"
+            aria-labelledby="contained-modal-title-vcenter">
+                     <Modal.Header closeButton className="bg-purple-500 text-white text-center justify-center place-items-center">
+                      <Modal.Title className="w-full text-sm font-md uppercase ">Add Memo service</Modal.Title>
+                    </Modal.Header>
+                    {
+                    <Modal.Body className="bg-white">
+                        <MemoServiceForm />
                     </Modal.Body>
                  }
             </Modal>

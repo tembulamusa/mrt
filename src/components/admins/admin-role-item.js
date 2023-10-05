@@ -5,8 +5,8 @@ const AdminRoleItem = (props) => {
     const {role, key} = props;
     return (
         <tr className="w-full">
-            <td className="p-2 border border-blue-60 flex xlex-row">{role.title}</td>
-            <td className='p-2 border border-blue-60 w-10'><MDBSwitch id='flexSwitchCheckDefault'/></td>
+            <td className="p-2 border border-blue-60 flex xlex-row">{role.roleName}</td>
+            <td className='p-2 border border-blue-60 w-10'>{role.hasPermission}<MDBSwitch id='flexSwitchCheckDefault'/></td>
         </tr>
     )
 }

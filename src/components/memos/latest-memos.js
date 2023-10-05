@@ -49,7 +49,7 @@ const dummy = [
 const LatestMemos = (props) => {
     return (
         <>
-            <table className="table-auto w-full text-sm text-gray-500 px-3 ">
+            <table className="table-auto w-full text-sm text-gray-500 px-3 bg-white">
                 <tbody className="w-full ">
                 { dummy?.map((memo, index) => (
                     <MemoItem memo = {memo} key= {index}/>

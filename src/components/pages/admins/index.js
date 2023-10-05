@@ -86,6 +86,8 @@ const AdminIndex = (props) => {
 
     const getAdmins = () => {
         let endpoint = "/users";
+        // flush any messages from the al
+        dispatch({type: "DEL", key: "latestsuccessmessage"})
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
 
             setIsRequesting(false)
@@ -94,8 +96,8 @@ const AdminIndex = (props) => {
 
             } else {
                 let message = {
-                    status: response.status,
-                    message: response?.status || "Error fetching Memos."
+                    status: response?.message?.status,
+                    message: response?.message?.status || "Error fetching Memos."
                 };
                 Notify(message);
             }
@@ -112,7 +114,7 @@ const AdminIndex = (props) => {
         <div className="bg-white p-2 flex flex-row w-full">
          
             <div id="admin-users" className="flex flex-col w-full">
-                <h1 className="bg-white mb-2 pb-2 border- boder-gray-200 text-2xl">Admins <button className="p-2 rounded bg-green-500 text-white float-end text-sm" onClick={() => setShowNewAdminForm(true) }>Add Admin</button></h1>
+                <h1 className="bg-white mb-2 pb-2 border- boder-gray-200 text-2xl">Admins <button className="p-2 rounded bg-green-500 text-white float-end text-sm" onClick={() => dispatch({type: "SET", key: "shownewadminmodal", payload: true}) }>Add Admin</button></h1>
                 <table className="w-full">
                     <tbody className="[&>*:nth-child(even)]:bg-blue-50">
                         {admins.map((admin, index) => (
