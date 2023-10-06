@@ -13,7 +13,7 @@ import {Formik, Field, Form} from 'formik';
 
 const testSystData = [
     {
-        id: 1,
+        id: 3,
         name: "car hire"
     },
     {
@@ -21,7 +21,7 @@ const testSystData = [
         name: "airline"
     },
     {
-        id: 3,
+        id: 1,
         name: "airlift"
     },
     {
@@ -41,24 +41,9 @@ const NewMemoServiceItemModal = (props) => {
 
     const initialValues = {
         location: "",
-        memoId: `${state?.latestmemoobj?.memoId}`,
-        serviceId: `${selectedService}`,
-        fromDate: "",
-        toDate: "",
-        locationType: "",
-        roomsCount: "",
-        roomType: "",
-        roomLayout: "",
-        passengersCount: "",
-        destination: "",
-        journeyType: "",
-        serviceName: "",
-        ticketCount: "",
-        departureDate: "",
-        returnDate: "",
-        origin: "",
-        ticketCategory: "",
-
+        memoId: parseInt(`${state?.latestmemoobj?.memoId}`),
+        serviceId: parseInt(`${selectedService}`),
+        
 
     }
 
@@ -113,10 +98,9 @@ const NewMemoServiceItemModal = (props) => {
 
         // async await for the password to update and then create
         // then proceed to send
-        console.log("URL?ENDPOINT :::::", values);
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
             setIsLoading(false)
-            setIsCreated(false)
+
             if ([200, 201, 204].includes(status)) {
                 setIsCreated(true)
 
@@ -163,22 +147,29 @@ const NewMemoServiceItemModal = (props) => {
 
         const onFieldChanged = (ev) => {
             let field = ev.target.name;
-            let value = ev.target.value;
+            var value = ev.target.value;
+            if (ev.target.type == "number") {
+                value = parseInt(value);
+            }
             setFieldValue(field, value);
 
             if (ev.target.name == "serviceId") {
-                setSelectedService(ev.target.id);
+                parseInt(setSelectedService(ev.target.id));
                 setSelectedServiceName(ev.target.value)
 
             }
+        
+
+            
         }
         
         return (
+  
             <Form>
                             <span className="font-medium capitalize mr-3">{selectedServiceName}</span>
                             <select
                             name="serviceId"
-                            id={4}
+                            id={3}
                             className="p-2" onChange={onFieldChanged}>
                                 <option className="p-2" value="">Change Service</option>
                                 {systemServices.map((service, index) => (
@@ -208,8 +199,8 @@ const NewMemoServiceItemModal = (props) => {
                                     <label className='block mb-2'>Number of cars</label>
                                         <input
                                         className="p-2 border border-gray-100 p-2"
-                                        id="car-count"
-                                        name="car_count"
+                                        id="carCount"
+                                        name="carCount"
                                         data-action="grow"
                                         required="required"
                                         min="1"
@@ -219,25 +210,26 @@ const NewMemoServiceItemModal = (props) => {
                                         />
                                     </div>
                                     
-                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    {/* <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
                                     <label className='block mb-2'>Car Type</label>
                                         <input
                                         type="text"
-                                        name="car_type" 
+                                        id="carType"
+                                        name="carType" 
                                         maxlength="50" 
                                         placeholder="Enter Car Type" 
                                         className="border border-gray-100 p-2"
                                         required="required"
                                         onChange={(ev) => onFieldChanged(ev)}
                                         />
-                                    </div>
+                                    </div> */}
                                     
 
                                     <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-                                    <label className='block mb-2'>Select Car Category</label>
+                                    <label className='block mb-2'>Select Car Type</label>
                                         <select
                                         onChange={(ev) => onFieldChanged(ev)}
-                                        required="required" name="car_category" className="p-2 border-gray-200">
+                                        required="required" name="carType" className="p-2 border-gray-200">
                                         <option value={""}>Select Category</option>
                                         <option >economy</option>
                                         <option >luxury</option>
@@ -513,7 +505,13 @@ const NewMemoServiceItemModal = (props) => {
                     </Modal.Header>
                     {
                     <Modal.Body className="bg-white">
-                        <MemoServiceForm />
+                        {isCreated ? <>
+                            <div className="p-3 rounded bg-green-200 text-green-600 my-3"><span className="font-medium text-green-700">{ selectedServiceName}</span>  created Successfully</div>
+                            <div className="flex flex-row">
+                                <button className="p-3 mr-3 bg-red-300 rounded-sm text-white my-3 w-40">Close</button>
+                                <button className="p-3 my-3 bg-blue-600 text-white rounded-sm w-60" onClick={() => setIsCreated(false)}>Add another Service</button>
+                            </div>
+                            </> : <MemoServiceForm />}
                     </Modal.Body>
                  }
             </Modal>

@@ -50,22 +50,9 @@ const CreateNewSupplier = (props) => {
                         {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
                         <br/>
                     </div>
-                    <div className="flex flex-row">
-                        <div className="form-group flex flex-col w-50  justify-content-center mt-3 pr-3">
-                            <label className='block mb-2'>Registration Pin</label>
-                            <input
-                                className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
-                                id="registration"
-                                name="registrationPin"
-                                type="text"
-                                maxLength={100}
-                                data-action="grow"
-                                required="required"
-                                placeholder="Supplier Registration Pin" />
-                                {/* Errors */}
-                                {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
-                        </div>
-                        <div className="form-group flex flex-col w-50  justify-content-center mt-3 pl-3">
+                    <div className="flex flex-row mb-3">
+                        
+                        <div className="form-group flex flex-col w-100  justify-content-center mt-3 pl-3">
                             <label className='block mb-2'>Supplier Kra Pin</label>
                             <input
                             className={`text-dark deposit-input form-control col-md-12 input-field py-2`}
@@ -80,7 +67,7 @@ const CreateNewSupplier = (props) => {
                             {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
                         </div>
                     </div>  
-                    <div className="py-3 font-medium">Contacts</div>
+                    <div className="py-3 pb-1 font-medium">Contacts</div>
                     <div className="flex flex-row">
                         <div className="form-group flex flex-col pr-3 pl-0 w-50 justify-content-center mt-3">
                             <label className='block mb-2'>Primary Mobile Phone</label>
@@ -127,7 +114,7 @@ const CreateNewSupplier = (props) => {
                     </div>
                     
 
-                    <div className="py-3 font-medium">Description</div>
+                    <div className="py-3 pb-1 font-medium">Description</div>
 
                     <div className="form-group col-12 justify-content-center mt-3">
                         <label className='block mb-2'>Brief Description</label>

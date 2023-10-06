@@ -22,7 +22,7 @@ const MemoDetail = (props) => {
             <div className="flex flex-col pl-3 w-50">
                 <h1 className="text-2xl mb-2">Memo service requests</h1>
 
-                {state?.latestsuccessmessage && <div className="bg-green-200 p-3 rounded text-green-600">{state?.latestsuccessmessage}</div>}
+                {state?.latestsuccessmessage && <div className="bg-green-200 p-3 rounded text-green-600 my-3">{state?.latestsuccessmessage}</div>}
                 
                 <MemoServices />
 

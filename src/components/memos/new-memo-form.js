@@ -66,9 +66,10 @@ const NewMemoForm = (props) => {
 
             setIsLoading(false)
             if (status === 200 || status == 201 || status == 204) {
-                dispatch({type: "SET", key: "latestmemoobj", payload: response?.message?.memo})
-                dispatch({type: "SET", key: "latestsuccessmessage", payload: `Memo ${response?.message?.memo?.referenceNumber} created successfully. Add Services`})
-                navigate(`/memo-details/${response?.message?.memo?.memoId}`);
+                dispatch({type: "SET", key: "latestmemoobj", payload: response?.message})
+                dispatch({type: "SET", key: "latestsuccessmessage", payload: `Memo ${response?.message?.referenceNumber} created successfully. Add Services`})
+                dispatch({type: "SET", key: "shownewmemomodal", payload: false})
+                navigate(`/memo-details/${response?.message?.memoId}`);
             } else {
                 let message = {
                     status: status,

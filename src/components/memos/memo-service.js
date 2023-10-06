@@ -44,7 +44,7 @@ const memo_service_data = [
 
 const MemoServices = (props) => {
     const [state, dispatch] = useContext(Context);
-    const [memoServices, setMemoServices] = useState([])
+    const [memoServices, setMemoServices] = useState({});
 
     const Notify = (message) => {
         let options = {
@@ -68,9 +68,9 @@ const MemoServices = (props) => {
     const getMemoServices = () => {
         let endpoint = `/memo/${state?.latestmemoobj?.memoId}/services`;
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
-
+            
             if ([200, 201, 204].includes(status)) {
-                setMemoServices(response?.message);
+                dispatch({type: "SET", key: "memoservices", payload: {memoId: state?.latestmemoobj, services: response?.message}});
 
             } else {
                 let message = {
@@ -80,6 +80,8 @@ const MemoServices = (props) => {
                 Notify(message);
             }
         })
+
+        console.log("MEMO SERVICE TEST ::::", state?.memoservices?.memoId)
     }
 
     useEffect(() => {
@@ -91,7 +93,7 @@ const MemoServices = (props) => {
         <>  
             <table className="w-full">
                 <tbody className="w-full">
-                    { memoServices.length >= 1 && !state?.currentmemoitem === null ? memoServices?.map((memo_service_item, index) => (
+                    { memoServices.length >= 1 && !state?.latestmemoobj === null ? memoServices?.map((memo_service_item, index) => (
                         <MemoServiceItem memoserviceitem = {memo_service_item} key= {index}/>
                         )
                     ): <EmptyRecords itemname="services"/>
