@@ -101,10 +101,12 @@ const NewMemoServiceItemModal = (props) => {
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
             setIsLoading(false)
 
+            console.log("memo services", state?.memoservices);
             if ([200, 201, 204].includes(status)) {
                 setIsCreated(true)
 
                 // add the service to the detail level state of memo services
+                console.log("memo services", state?.memoservices);
             } else {
                 let message = {
                     status: status,
@@ -461,7 +463,7 @@ const NewMemoServiceItemModal = (props) => {
                                 <div className='mt-4 mb-2'>
                                     <span
                                         className={`p-2 rounded shadow-md border border-white-200 inline-block w-40 mr-2 bg-red-400 text-white text-center`}
-                                        disabled={isLoading}> Cancel
+                                        disabled={isLoading} onClick={() => dispatch({type:"SET", key:"shownewmemoserviceitemmodal", payload:false})}> Cancel
                                     </span>
                                     <button className={`p-2 rounded shadow-md border border-white-200 w-50 bg-blue-500 text-white text-center`}
                                         type="submit"
@@ -508,7 +510,7 @@ const NewMemoServiceItemModal = (props) => {
                         {isCreated ? <>
                             <div className="p-3 rounded bg-green-200 text-green-600 my-3"><span className="font-medium text-green-700">{ selectedServiceName}</span>  created Successfully</div>
                             <div className="flex flex-row">
-                                <button className="p-3 mr-3 bg-red-300 rounded-sm text-white my-3 w-40">Close</button>
+                                <button className="p-3 mr-3 bg-red-300 rounded-sm text-white my-3 w-40" onClick={() => dispatch({type:"SET", key:"shownewmemoserviceitemmodal", payload:false})}>Close</button>
                                 <button className="p-3 my-3 bg-blue-600 text-white rounded-sm w-60" onClick={() => setIsCreated(false)}>Add another Service</button>
                             </div>
                             </> : <MemoServiceForm />}

@@ -1,45 +1,15 @@
 import React, {useEffect, useCallback, useContext, useState} from "react";
 import makeRequest from "../utils/fetch-request";
-import {getFromLocalStorage} from '../utils/local-storage'; 
+import {getFromLocalStorage} from '../utils/local-storage';
+import { Modal } from "react-bootstrap";
+import { useNavigate, useLocation } from "react-router-dom";
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 import { Context } from "../../context/store";
 import {toast, ToastContainer} from 'react-toastify';
 import MemoServiceItem from "./memo-service-item";
 import EmptyRecords from "../utils/empty-records";
-
-
-const memo_service_data = [
-    {
-        servive_id: 1,
-        memo_id: 10,
-        qty: "quantity",
-        status: "my status"
-    },
-    {
-        servive_id: 1,
-        memo_id: 10,
-        qty: "quantity",
-        status: "my status"
-    },
-    {
-        servive_id: 2,
-        memo_id: 10,
-        qty: "quantity",
-        status: "my status"
-    },
-    {
-        servive_id: 3,
-        memo_id: 10,
-        qty: "quantity",
-        status: "my status"
-    },
-    {
-        servive_id: 2,
-        memo_id: 10,
-        qty: "quantity",
-        status: "my status"
-    }
-
-]
+import ServiceRequestDetail from "../service_requests/service-request-details";
 
 
 const MemoServices = (props) => {
@@ -70,8 +40,9 @@ const MemoServices = (props) => {
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
             
             if ([200, 201, 204].includes(status)) {
-                dispatch({type: "SET", key: "memoservices", payload: {memoId: state?.latestmemoobj, services: response?.message}});
 
+                setMemoServices(response?.message);
+                
             } else {
                 let message = {
                     status: status,
@@ -81,23 +52,36 @@ const MemoServices = (props) => {
             }
         })
 
-        console.log("MEMO SERVICE TEST ::::", state?.memoservices?.memoId)
+        
+
     }
 
     useEffect(() => {
         getMemoServices();
      }, []);
 
+     useEffect((memoServices) => {
+        dispatch({type: "SET", key: "memoservices", payload: {memo: state?.latestmemoobj, services: memoServices}});
+     }, [])
+
+     useEffect(() => {
+        console.log("I UPDATED THIS STUFF HERE::::: MEMOSERVICES")
+     }, [state?.memoservices])
 
     return (
         <>  
             <table className="w-full">
-                <tbody className="w-full">
-                    { memoServices.length >= 1 && !state?.latestmemoobj === null ? memoServices?.map((memo_service_item, index) => (
-                        <MemoServiceItem memoserviceitem = {memo_service_item} key= {index}/>
-                        )
-                    ): <EmptyRecords itemname="services"/>
-                    }
+                <tbody className="w-full [&>*:nth-child(odd)]:bg-blue-100">
+                    
+                    { Object.values(memoServices).every(o => Object.keys(o).length < 1) && <EmptyRecords itemname="services"/>}
+                    
+                    {Object.keys(memoServices).map(key => {
+                            return (
+                                <>
+                                { Object.keys(memoServices[key]).length > 0 ? <MemoServiceItem memoserviceitem = {memoServices[key]} key={key} kword={key} /> : ""}
+                                </>
+                            );
+                        })}
                 </tbody>
             </table> 
             <div className="my-2 mt-3">
@@ -105,6 +89,31 @@ const MemoServices = (props) => {
                     Add New memo service
                 </span>
             </div>
+
+
+
+            {/* Show memo service request details */}
+
+
+            <Modal
+            {...props}
+            top
+            size = "xl"
+            show={state?.showservicedetailmodal /*state?.shownewsuppliermodal*/}
+            onHide={() => dispatch({type: "SET", key: "showservicerequestmodal", payload: false})}
+            dialogClassName="new-memo-modal"
+            aria-labelledby="contained-modal-title-vcenter">
+                     <Modal.Header closeButton className="bg-blue-500 text-white text-center justify-center place-items-center">
+                      <Modal.Title className="w-full font-sm text-md capitalize">{state?.latestmemoobj?.referenceNumber} - {state?.latesteservicerequestname}</Modal.Title>
+                    </Modal.Header>
+                    {
+                    <Modal.Body>
+
+                        <ServiceRequestDetail />
+
+                    </Modal.Body>
+                 }
+            </Modal>
         </>
     )
 };
