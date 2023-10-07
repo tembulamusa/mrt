@@ -38,6 +38,7 @@ const NewMemoServiceItemModal = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isCreated, setIsCreated] = useState(false);
     const [serviceUrl, setServiceUrl] = useState("")
+    var selectedServices = [];
 
     const initialValues = {
         location: "",
@@ -104,9 +105,8 @@ const NewMemoServiceItemModal = (props) => {
             console.log("memo services", state?.memoservices);
             if ([200, 201, 204].includes(status)) {
                 setIsCreated(true)
-
-                // add the service to the detail level state of memo services
-                console.log("memo services", state?.memoservices);
+                // update the state of the
+                console.log("GET THE CREATED SERVICE:::: ", response)
             } else {
                 let message = {
                     status: status,
@@ -120,12 +120,22 @@ const NewMemoServiceItemModal = (props) => {
 
         let errors = {}
 
-        // if (!values.referenceNumber || values.referenceNumber.length < 4) {
-        //     errors.referenceNumber = "Invalid reference Number";
-        // }
+        if (values.toDate) {
+
+            let from = new Date(values.fromDate);
+            let to = new Date(values.toDate);
+            if (from > to) {
+                errors.toDate = "to date must be bigger than from Date";
+            }
+            
+        }
 
         return errors
     }
+
+    // useEffect(() => {
+    //     validate();
+    // }, [values.toDate])
     
     const changeServiceUrl = () => {
         let current_service = selectedServiceName;
@@ -142,8 +152,9 @@ const NewMemoServiceItemModal = (props) => {
     useEffect(() => {
         changeServiceUrl();
     }, [selectedServiceName])
-
+    
     const NewMemoServiceForm = (props) => {
+        
 
         const {isValid, errors, values, submitForm, setFieldValue} = props;
 
@@ -164,10 +175,23 @@ const NewMemoServiceItemModal = (props) => {
 
             
         }
+
+        const createdServices = () => {
+            var existingServices = [];
+            
+            Object.values(state?.memoservices?.services).map(value => {
+                    if (value["serviceId"]) {
+                        existingServices.push(value["serviceId"]);
+                    }
+            })
+
+            return existingServices;
+        }
         
         return (
-  
+            
             <Form>
+                
                             <span className="font-medium capitalize mr-3">{selectedServiceName}</span>
                             <select
                             name="serviceId"
@@ -175,7 +199,7 @@ const NewMemoServiceItemModal = (props) => {
                             className="p-2" onChange={onFieldChanged}>
                                 <option className="p-2" value="">Change Service</option>
                                 {systemServices.map((service, index) => (
-                                    <option id={service.id} className="" value={service.name}>{service.name}</option>
+                                    <option id={service.id} className="" disabled={createdServices.includes(service.id)} value={service.name}>{service.name}</option>
                                 ))}
                             </select>
 
@@ -429,6 +453,8 @@ const NewMemoServiceItemModal = (props) => {
                                     required="required"
                                     onChange={(ev) => onFieldChanged(ev)}
                                     />
+                                {errors.fromDate && <div className='text-danger'> {errors.fromDate} </div>}
+
                                 </div>
                                 <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
                                 <label className='block mb-2'>To Date</label>
@@ -442,6 +468,8 @@ const NewMemoServiceItemModal = (props) => {
                                     required="required"
                                     onChange={(ev) => onFieldChanged(ev)}
                                     />
+                                {errors.toDate && <div className='text-danger'> {errors.toDate} </div>}
+
                                 </div>
 
                                 {/* end if selected is not airline */}

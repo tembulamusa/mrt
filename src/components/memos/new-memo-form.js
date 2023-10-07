@@ -59,8 +59,17 @@ const NewMemoForm = (props) => {
         dispatchUser();
     }, [dispatchUser]);
 
+    const flushMemoContent = () => {
+        // flush current memo object
+        dispatch({type: "DEL", key: "latestmemoobj"});
+        // flush all service requests and related names
+        dispatch({type: "DEL", key: "memoservices"});
+        dispatch({type: "DEL", key: "latesteservicerequestname"});
+
+    }
     const handleSubmit = values => {
         let endpoint = '/memo';
+        flushMemoContent();
         setIsLoading(true)
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
 

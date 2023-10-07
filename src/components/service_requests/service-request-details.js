@@ -199,7 +199,7 @@ const ServiceRequestDetail = (props) => {
             )
         }else {
             <>
-                Selected service not available at the moment
+                
             </>
         }
         

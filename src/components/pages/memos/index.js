@@ -42,7 +42,7 @@ const MemoIndex = (props) => {
             setIsRequesting(false)
             if ([200, 201, 204].includes(status)) {
                 // dispatch({type:"SET", key:"showloginmodal", payload:false})
-                setMemos(response?.message?.memos);
+                setMemos(response?.message?.memos.reverse()); //Undo the reverse and get it from the server as it should query from the latest
 
             } else {
                 let message = {
@@ -71,7 +71,7 @@ const MemoIndex = (props) => {
 
                 <input
                 type="text"
-                placeholder="Enter memo id or name"
+                placeholder="Enter memo reference number or description"
                 className="ml-3 border border-blue-100 p-2 rounded"
                 />
             </div>

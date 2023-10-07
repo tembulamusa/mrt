@@ -42,6 +42,7 @@ const MemoServices = (props) => {
             if ([200, 201, 204].includes(status)) {
 
                 setMemoServices(response?.message);
+                dispatch({type: "SET", key: "memoservices", payload: {memo: state?.latestmemoobj, services: response?.message}});
                 
             } else {
                 let message = {
@@ -68,10 +69,15 @@ const MemoServices = (props) => {
         console.log("I UPDATED THIS STUFF HERE::::: MEMOSERVICES")
      }, [state?.memoservices])
 
+     const resetModalContents = () => {
+        dispatch({type: "SET", key: "showservicerequestmodal", payload: false});
+     }
     return (
         <>  
             <table className="w-full">
-                <tbody className="w-full [&>*:nth-child(odd)]:bg-blue-100">
+            
+
+                <tbody className="w-full [&>*:nth-child(even)]:bg-blue-100">
                     
                     { Object.values(memoServices).every(o => Object.keys(o).length < 1) && <EmptyRecords itemname="services"/>}
                     
@@ -100,7 +106,7 @@ const MemoServices = (props) => {
             top
             size = "xl"
             show={state?.showservicedetailmodal /*state?.shownewsuppliermodal*/}
-            onHide={() => dispatch({type: "SET", key: "showservicerequestmodal", payload: false})}
+            onHide={() => resetModalContents()}
             dialogClassName="new-memo-modal"
             aria-labelledby="contained-modal-title-vcenter">
                      <Modal.Header closeButton className="bg-blue-500 text-white text-center justify-center place-items-center">
