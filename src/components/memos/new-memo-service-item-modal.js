@@ -38,7 +38,8 @@ const NewMemoServiceItemModal = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isCreated, setIsCreated] = useState(false);
     const [serviceUrl, setServiceUrl] = useState("")
-    var selectedServices = [];
+    const [createdServices, setCreatedServices] = useState([]);
+    const [showGeneralErrorMessage, setShowGeneralErrorMessage] = useState(false);
 
     const initialValues = {
         location: "",
@@ -96,7 +97,7 @@ const NewMemoServiceItemModal = (props) => {
       const handleSubmit = values => {
         let endpoint = `/memo/${state?.latestmemoobj?.memoId}/${serviceUrl}`;
         setIsLoading(true)
-
+        setShowGeneralErrorMessage(true);
         // async await for the password to update and then create
         // then proceed to send
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
@@ -105,12 +106,18 @@ const NewMemoServiceItemModal = (props) => {
             console.log("memo services", state?.memoservices);
             if ([200, 201, 204].includes(status)) {
                 setIsCreated(true)
+
                 // update the state of the
                 console.log("GET THE CREATED SERVICE:::: ", response)
             } else {
+                if (status == 400) {
+                    setShowGeneralErrorMessage(true);
+                }
                 let message = {
                     status: status,
                     message: response?.message || "Error attempting to create service"
+
+                    // Set the 400 error message in the form and prevent resetting
                 };
                 Notify(message);
             }
@@ -127,7 +134,20 @@ const NewMemoServiceItemModal = (props) => {
             if (from > to) {
                 errors.toDate = "to date must be bigger than from Date";
             }
+            if (from < Date.now()) {
+                errors.fromDate = "Can't start before today"
+            }
             
+        }
+        if (values.returnDate){
+            let depart = new Date(values.departureDate);
+            let returnDate = new Date(values.returnDate);
+            if (depart > returnDate) {
+                errors.toDate = "return date must be bigger than departure Date";
+            }
+            if (depart < Date.now()) {
+                errors.departureDate = "Can't start before today"
+            }
         }
 
         return errors
@@ -148,17 +168,36 @@ const NewMemoServiceItemModal = (props) => {
         } else if (current_service == "hotel") {
             setServiceUrl("hotel_service")
         }
+
+        console.log("SSSSSELELECTED SERVICEID:::::==== ", selectedService)
     }
     useEffect(() => {
         changeServiceUrl();
     }, [selectedServiceName])
+
     
+    useEffect(() => {
+        var existingServices = [];
+        
+        if (state?.memoservices) {Object.values(state?.memoservices?.services).map(value => {
+            if (value["serviceId"]) {
+                existingServices.push(value["serviceId"]);
+            }
+        })
+        setCreatedServices(existingServices);}
+
+        }, [state?.memoservices?.services]);
+
+
     const NewMemoServiceForm = (props) => {
         
 
         const {isValid, errors, values, submitForm, setFieldValue} = props;
 
         const onFieldChanged = (ev) => {
+            if (showGeneralErrorMessage){
+                setShowGeneralErrorMessage(false);
+            }
             let field = ev.target.name;
             var value = ev.target.value;
             if (ev.target.type == "number") {
@@ -167,39 +206,31 @@ const NewMemoServiceItemModal = (props) => {
             setFieldValue(field, value);
 
             if (ev.target.name == "serviceId") {
-                parseInt(setSelectedService(ev.target.id));
+                setSelectedService(parseInt(ev.target.dataset.SelectedId));
+
+                var options = ev.target.options;
+                var selectedServiceId = options[options.selectedIndex].id;
+                setSelectedService(parseInt(selectedServiceId));
                 setSelectedServiceName(ev.target.value)
 
             }
+            
+        }
+
         
-
-            
-        }
-
-        const createdServices = () => {
-            var existingServices = [];
-            
-            Object.values(state?.memoservices?.services).map(value => {
-                    if (value["serviceId"]) {
-                        existingServices.push(value["serviceId"]);
-                    }
-            })
-
-            return existingServices;
-        }
         
         return (
-            
-            <Form>
-                
+                <Form>
+                        {showGeneralErrorMessage && <div className="border border-red-200 bg-red-100 p-3 rounded text-red-500 mb-3">Error Posting data. Please Contact the admin</div>}
+
                             <span className="font-medium capitalize mr-3">{selectedServiceName}</span>
                             <select
                             name="serviceId"
-                            id={3}
+                            id={selectedService}
                             className="p-2" onChange={onFieldChanged}>
                                 <option className="p-2" value="">Change Service</option>
                                 {systemServices.map((service, index) => (
-                                    <option id={service.id} className="" disabled={createdServices.includes(service.id)} value={service.name}>{service.name}</option>
+                                    <option key={service.id} id={service.id} className={service.id} disabled={createdServices.includes(service.id)} value={service.name}>{service.name}</option>
                                 ))}
                             </select>
 
@@ -284,7 +315,7 @@ const NewMemoServiceItemModal = (props) => {
                                     </div>
                                                 
                                     <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-                                    <label className='block mb-2'>departure Date</label>
+                                    <label className='block mb-2'>Departure Date</label>
                                         <input
                                         type="date"
                                         name="departureDate" 
@@ -294,6 +325,8 @@ const NewMemoServiceItemModal = (props) => {
                                         required="required"
                                         onChange={(ev) => onFieldChanged(ev)}
                                         />
+                                    {errors.departureDate && <div className='text-danger'> {errors.departureDate} </div>}
+
                                     </div>
                                     <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
                                     <label className='block mb-2'>Return Date</label>
@@ -306,6 +339,8 @@ const NewMemoServiceItemModal = (props) => {
                                         required="required"
                                         onChange={(ev) => onFieldChanged(ev)}
                                         />
+                                    {errors.returnDate && <div className='text-danger'> {errors.returnDate} </div>}
+
                                     </div>
                                 
                                     <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
@@ -440,38 +475,39 @@ const NewMemoServiceItemModal = (props) => {
                                     </div>
                                 </>}
 
-                                {/* if selected is not airline */}
-                                <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-                                <label className='block mb-2'>From Date</label>
-                                    <input
-                                    type="date"
-                                    id="fromDate"
-                                    name="fromDate" 
-                                    maxlength="50" 
-                                    placeholder="Select Date" 
-                                    className="border border-gray-100 p-2"
-                                    required="required"
-                                    onChange={(ev) => onFieldChanged(ev)}
-                                    />
-                                {errors.fromDate && <div className='text-danger'> {errors.fromDate} </div>}
+                                {   selectedServiceName != "airline" && <>
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>From Date</label>
+                                        <input
+                                        type="date"
+                                        id="fromDate"
+                                        name="fromDate" 
+                                        maxlength="50" 
+                                        placeholder="Select Date" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    {errors.fromDate && <div className='text-danger'> {errors.fromDate} </div>}
 
-                                </div>
-                                <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-                                <label className='block mb-2'>To Date</label>
-                                    <input
-                                    id="toDate"
-                                    type="date"
-                                    name="toDate" 
-                                    maxlength="50" 
-                                    placeholder="Enter Location" 
-                                    className="border border-gray-100 p-2"
-                                    required="required"
-                                    onChange={(ev) => onFieldChanged(ev)}
-                                    />
-                                {errors.toDate && <div className='text-danger'> {errors.toDate} </div>}
+                                    </div>
+                                    <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
+                                    <label className='block mb-2'>To Date</label>
+                                        <input
+                                        id="toDate"
+                                        type="date"
+                                        name="toDate" 
+                                        maxlength="50" 
+                                        placeholder="Enter Location" 
+                                        className="border border-gray-100 p-2"
+                                        required="required"
+                                        onChange={(ev) => onFieldChanged(ev)}
+                                        />
+                                    {errors.toDate && <div className='text-danger'> {errors.toDate} </div>}
 
-                                </div>
-
+                                    </div>
+                                </>
+                                }
                                 {/* end if selected is not airline */}
 
                                 <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
