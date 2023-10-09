@@ -6,6 +6,8 @@ import { Context } from "../../../context/store";
 import MemoItem from "../../memos/memo-item";
 import {toast, ToastContainer} from 'react-toastify';
 
+
+
 const MemoIndex = (props) => {
     const [state, dispatch] = useContext(Context);
     const [isRequesting, setIsRequesting] = useState(true);
@@ -31,12 +33,12 @@ const MemoIndex = (props) => {
     };
     const Memos = () => {
         let endpoint = "/memos";
+        
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
-
             setIsRequesting(false)
             if ([200, 201, 204].includes(status)) {
                 // dispatch({type:"SET", key:"showloginmodal", payload:false})
-                setMemos(response?.message?.memos);
+                setMemos(response?.message?.memos.reverse()); //Undo the reverse and get it from the server as it should query from the latest
 
             } else {
                 let message = {
@@ -54,7 +56,21 @@ const MemoIndex = (props) => {
 
     return (
         <>
-            <h1>Memos <button className="bg-blue-500 text-white rounded p-2 float-end" onClick={() => dispatch({type:"SET", key:"shownewmemomodal", payload:true})}>Create New Memo</button></h1>
+            <h1 className="mb-2 text-2xl">Memos <button className="bg-blue-500 text-white rounded p-2 text-sm float-end" onClick={() => dispatch({type:"SET", key:"shownewmemomodal", payload:true})}>Create New Memo</button></h1>
+            <div className="mb-3">
+                <select className="p-2">
+                    <option>All Memos</option>
+                    <option>Processing</option>
+                    <option>Closed</option>
+                    <option>Open</option>
+                </select>
+
+                <input
+                type="text"
+                placeholder="Enter memo reference number or description"
+                className="ml-3 border border-blue-100 p-2 rounded"
+                />
+            </div>
 
             <table className="w-full">
                 <tbody className="[&>*:nth-child(even)]:bg-blue-50">

@@ -16,30 +16,13 @@ const AirlineFields = () => {
                 placeholder=""
                 />
             </div>
-            <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-            <label className='block mb-2'>Location</label>
-                <input
-                 type="text"
-                 name="location" 
-                 maxlength="50" 
-                 placeholder="Enter Location" 
-                 className="border border-gray-100 p-2"
-                 required="required"/>
-            </div>
-            <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-            <label className='block mb-2'>Car Type</label>
-                <input
-                 type="text"
-                 name="location" 
-                 maxlength="50" 
-                 placeholder="Enter Car Type" 
-                 className="border border-gray-100 p-2"/>
-            </div>
+            
+            
             <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
             <label className='block mb-2'>departure Date</label>
                 <input
                  type="date"
-                 name="departure_date" 
+                 name="departureDate" 
                  maxlength="50" 
                  placeholder="Enter Location" 
                  className="border border-gray-100 p-2"
@@ -49,20 +32,13 @@ const AirlineFields = () => {
             <label className='block mb-2'>Return Date</label>
                 <input
                  type="date"
-                 name="return_date" 
+                 name="returnDate" 
                  maxlength="50" 
                  placeholder="Enter Location" 
                  className="border border-gray-100 p-2"
                  required="required"/>
             </div>
-            <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
-            <label className='block mb-2'>Select Location Category</label>
-                <select required="required" name="location_type" className="p-2 border-gray-200">
-                    <option value={""}>Select location Type</option>
-                    <option >local</option>
-                    <option >international</option>
-                </select>
-            </div>
+           
             <div className="form-group col-12 justify-content-center mt-3 flex flex-col">
             <label className='block mb-2'>Select Journey Type</label>
                 <select required="required" name="journey_type" className="p-2 border-gray-200">

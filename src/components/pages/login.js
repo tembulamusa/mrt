@@ -45,7 +45,7 @@ const Login = (props) => {
                 <div className="col-md-12 mt-2  p-2">
                     
                     <div className="max-w-md card border-gray-200 mx-auto content-center items-center flex  shadow-sm pb-3" data-backdrop="static">
-                        <h4 className='text-center w-100 bg-blue-400 text-white block p-3 shadow-sm'>Login</h4>
+                        <h4 className='text-center w-100 bg-blue-700 text-white block p-3 shadow-sm'>Login</h4>
                         {preMsg && <PreLogAlert/>}
                         {message && <Alert/>}
                         <BodyLogin />

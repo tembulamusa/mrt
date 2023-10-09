@@ -11,10 +11,9 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {setLocalStorage} from '../utils/local-storage';
 import { useMediaQuery } from 'react-responsive';
+import AdminRoles from "./admin-roles";
 
 const NewAdminModal = (props) => {
-    const {shownewadminform, adminroles} = props;
-    const [dummyAdminshow, setDummyAdminShow] = useState(true);
     const [isLoading, setIsLoading] = useState(null)
     const [message, setMessage] = useState("null message for a start");
     const {setUser} = props;
@@ -23,18 +22,17 @@ const NewAdminModal = (props) => {
     const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
     const [state, dispatch] = useContext(Context);
     const [newUserId, setNewUserId] = useState(null);
-    const [showAdminRoleForm, setShowNewAdminRole] = useState(true);
-    const [showMessage, setShowMessage] = useState(true);
+    const [showAdminRoles, setShowAdminRoles] = useState(false);
+    const [showMessage, setShowMessage] = useState(false);
     const [messageType, setMessageType] = useState(null)
-
+    const [generatedPassword, setGeneratedPassword] = useState("password123")
     const initialValues = {
         email: "",
         lastName: "",
+        firstName: "",
         msisdn: "",
         username: "",
-        password: "",
-        password: "",
-        firstName: ""
+        password: `${generatedPassword}`,
     }
 
     const Notify = (message) => {
@@ -65,16 +63,21 @@ const NewAdminModal = (props) => {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
 
-        initialValues.password = result;
+        setGeneratedPassword(result);
 
     }
+
+    useEffect(() => {
+        CreatePassword();
+    }, [])
+
     const dispatchUser = useCallback(() => {
         if (message !== null) {
             Notify(message);
             if (message.status == 200) {
                 setLocalStorage('user', message?.user);
                 location?.state?.from
-                    ? navigate(location?.state?.from) 
+                    ? navigate(location?.state?.from)
                     :  ((isMobile && Object.keys(state?.betslip ||{}).length > 0 )? navigate("/") : navigate("/")) ;
             }
 
@@ -86,21 +89,20 @@ const NewAdminModal = (props) => {
     }, [dispatchUser]);
 
     const handleSubmit = values => {
-        let endpoint = '/v1/user';
+        let endpoint = '/user';
         setIsLoading(true)
 
         // async await for the password to update and then create
-        values.password = CreatePassword();
         // then proceed to send
 
-
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
-
             setIsLoading(false)
             if (status === 200 || status == 201 || status == 204) {
-                dispatch({type:"SET", key:"showloginmodal", payload:false})
-                dispatch({type:"SET", key:"user", payload:response?.user})
-                setMessage(response);
+                
+                // Redirect to admin details to create permissions
+                dispatch({type: "SET", key: "selecteduserdetail", payload: response?.message?.user})
+                dispatch({type: "SET", key: "latestsuccessmessage", payload: `admin created successfully. Add roles/permissions for ${response?.message?.user?.firstName + " " + response?.message?.user?.lastName}`})
+                navigate(`/admin-details/${response?.message?.user.userId}`);
             } else {
                 let message = {
                     status: status,
@@ -116,9 +118,9 @@ const NewAdminModal = (props) => {
 
         let errors = {}
 
-        if (!values.reference || values.reference.length < 4) {
-            errors.reference = "Invalid reference";
-        }
+        // if (!values.reference || values.reference.length < 4) {
+        //     errors.reference = "Invalid reference";
+        // }
 
         return errors
     }
@@ -132,24 +134,25 @@ const NewAdminModal = (props) => {
             let value = ev.target.value;
             setFieldValue(field, value);
         }
+
         return (
-            <form className="p-3">
+            <Form className="p-3">
                     <Row>
                         <div className="form-group col-12 justify-content-center mt-3">
                             <label className='block mb-2'>User Email</label>
 
                             <input
                                     value={values.email}
-                                    className={`text-dark deposit-input form-control col-md-12 input-field py-2 ${'errors.email && "text-danger"'}`}
+                                    className={`text-dark deposit-input form-control col-md-12 input-field py-2 ${errors.email && "text-danger"}`}
                                     id="name"
                                     name="email"
                                     type="email"
                                     data-action="grow"
                                     required="required"
                                     placeholder={"Enter User Email"}
-                                    // onChange={(ev) => onFieldChanged(ev)}
+                                    onChange={(ev) => onFieldChanged(ev)}
                                 />
-                                {/* {errors.email && <div className='text-danger'> {errors.email} </div>} */}
+                                {errors.email && <div className='text-danger'> {errors.email} </div>}
 
                             
                             <br/>
@@ -160,112 +163,114 @@ const NewAdminModal = (props) => {
                                 <label className='block mb-2'>First Name</label>
                                 <input
                                     value={values.firstName}
-                                    className={`text-dark deposit-input form-control col-md-12 input-field py-2 ${"errors.first_name && 'text-danger'"}`}
-                                    id="first-name"
-                                    name="first_name"
+                                    className={`text-dark deposit-input form-control col-md-12 input-field py-2 ${errors.firstName && 'text-danger'}`}
+                                    id="firstName"
+                                    name="firstName"
                                     data-action="grow"
                                     required="required"
                                     placeholder={"Admin First Name"}
-                                    // onChange={(ev) => onFieldChanged(ev)}
+                                    onChange={(ev) => onFieldChanged(ev)}
                                 />
 
-                                {/* {errors.first_name && <div className='text-danger'> {errors.first_name} </div>} */}
+                                {errors.lastName && <div className='text-danger'> {errors.lastName} </div>}
                         
                         </div>
                         <div className="form-group col-6 justify-content-center mt-2">
                                 <label className='block mb-2'>Last Name</label>
                                 <input
-                                    value={values.last_name}
-                                    className={`text-dark deposit-input form-control col-md-12 input-field py-2 ${"errors.last_name && 'text-danger'"}`}
-                                    id="last-name"
-                                    name="last_name"
+                                    value={values.lastName}
+                                    className={`text-dark deposit-input form-control col-md-12 input-field py-2 ${errors.lastName && 'text-danger'}`}
+                                    id="lastName"
+                                    name="lastName"
                                     data-action="grow"
                                     required="required"
                                     placeholder={"Admin Last Name"}
-                                    // onChange={(ev) => onFieldChanged(ev)}
+                                    onChange={(ev) => onFieldChanged(ev)}
                                 />
 
-                                {/* {errors.reference && <div className='text-danger'> {errors.reference} </div>} */}
+                                {errors.lastName && <div className='text-danger'> {errors.lastName} </div>}
                         
                         </div>
 
-                        <div className="form-group col-12 justify-content-center mt-4">
+                        <div className="form-group col-6 justify-content-center mt-4">
                             <label className='block mb-2'>User Phone Number</label>
 
                             <input
-                                    value={values.email}
+                                    value={values.msisdn}
                                     className={`text-dark deposit-input form-control col-md-12 input-field py-2 ${"errors.name && text-danger"}`}
-                                    id="name"
-                                    name="name"
+                                    id="msisdn"
+                                    name="msisdn"
                                     type="text"
                                     data-action="grow"
                                     required="required"
                                     placeholder={"072xxxxxxx"}
-                                    // onChange={(ev) => onFieldChanged(ev)}
+                                    onChange={(ev) => onFieldChanged(ev)}
                                 />
-                                {/* {errors.name && <div className='text-danger'> {errors.name} </div>} */}
+                                {errors.msisdn && <div className='text-danger'> {errors.msisdn} </div>}
 
                                                         
                         </div>
+                        <div className="form-group col-6 justify-content-center mt-4">
+                                <label className='block mb-2'>Username</label>
+                                <input
+                                    value={values.username}
+                                    className={`text-dark deposit-input form-control col-md-12 input-field py-2 ${errors.username && 'text-danger'}`}
+                                    id="username"
+                                    name="username"
+                                    data-action="grow"
+                                    required="required"
+                                    placeholder={"Admin Username"}
+                                    onChange={(ev) => onFieldChanged(ev)}
+                                />
+
+                                {errors.username && <div className='text-danger'> {errors.username} </div>}
+                        
+                        </div>
 
                                                 
-                            <div className='mt-3 mb-2'>
-                                <span className={`p-3 rounded shadow-md border border-white-200 w-40 mr-2 bg-red-400 text-white`}
+                            <div className='mt-3 mb-2 flex flex-row text-center'>
+                                <span
+                                onClick={() => dispatch({type: "SET", key: "shownewadminmodal", payload: false})}
+                                className={`p-3 rounded shadow-md border border-white-200 w-50 mr-2 bg-red-400 text-white flex flex-col`}
                                             disabled={isLoading}>
                                         Cancel
                                 </span>
 
-                                <button className={`p-3 rounded shadow-md border border-white-200 w-50 bg-blue-500 text-white`}
+                                <button
+                                 className={`p-3 rounded shadow-md border border-white-200 w-50 bg-blue-500 text-white text-center`}
                                             disabled={isLoading}>
-                                        {isLoading ? <span>Creating Memo...</span> : <span>Continue</span>}
+                                        {isLoading ? 'Creating Memo...' : 'Continue'}
                                 </button>
                             </div> 
 
                                 
                             
                     </Row>
-                </form>
+                </Form>
         )
     }
 
     // show/set user roles form after creating the user
-
-    const UserRolesForm = (props) => {
-        const handleRoleSubmit = (rolevalues) => {
-
-        }
-
+    const AdminFormikForm = (props) => {
         return (
-            <>
-                
-                <div id="add-roles">
-                    <h1 className="font-md mb-3 font-md">Select Roles To add</h1>
-
-                    <form>
-                            {adminroles.map((role, index) => (
-                                <div className="">
-                                    <label key={index} className="bg-blue-50 border border-blue-70 p-2 w-full mb-2">
-                                        <input type="checkbox" name="roles" className="mr-3" value={role.id}/> {role.name}
-                                    </label>
-                                </div>
-                            ))}
-                        <div>
-                            <input type="hidden" value={newUserId} />
-                        </div>
-                        <button className="p-2 bg-green-500 text-white rounded mt-3">add roles</button>
-                    </form>
-                </div>
-            </>
-        )
+            <Formik
+                initialValues={initialValues}
+                onSubmit={handleSubmit}
+                validateOnChange={false}
+                validateOnBlur={false}
+                validate={validate}
+            >{(props) => <NewAdminForm {...props} />}</Formik>
+        );
     }
+    
     return (
         <>
             <Modal
             {...props}
             top
             size = "md"
-            show={shownewadminform}
-            onHide={() => setDummyAdminShow(true)}
+            show={state?.shownewadminmodal}
+            onHide={() => dispatch({type: "SET", key: "shownewadminmodal", payload: false})}
             dialogClassName="new-admin-modal"
             aria-labelledby="contained-modal-title-vcenter">
                      <Modal.Header closeButton className="bg-blue-500 text-white text-center justify-center place-items-center">
@@ -280,7 +285,7 @@ const NewAdminModal = (props) => {
                         }
 
                         {
-                            showAdminRoleForm && <UserRolesForm /> || <NewAdminForm values={initialValues}/>
+                            showAdminRoles && <AdminRoles userid={newUserId}/> || <AdminFormikForm />
                         }
                     </Modal.Body>
                  }

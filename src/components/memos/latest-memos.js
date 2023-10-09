@@ -3,41 +3,53 @@ import MemoItem from "./memo-item"
 
 const dummy = [
     {
-        type: "road",
+        title: "road",
         description: "description sample",
-        status: "assigned"
+        status: "assigned",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "airline",
+        title: "airline",
         description: "description sample",
-        status: "delivered"
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "chopper",
+        title: "chopper",
         description: "description sample",
-        status: "defaulted"
+        status: "defaulted",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "hotel",
+        title: "hotel",
         description: "description sample",
-        status: "assigned"
+        status: "assigned",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "hotel",
+        title: "hotel",
         description: "description sample",
-        status: "delivered"
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
     },
     {
-        type: "road",
+        title: "road",
         description: "description sample",
-        status: "delivered"
+        status: "delivered",
+        created: "date",
+        referenceNumber: "some number"
     },
 ];
 
 const LatestMemos = (props) => {
     return (
         <>
-            <table className="table-auto w-full text-sm text-gray-500 px-3 ">
+            <table className="table-auto w-full text-sm text-gray-500 px-3 bg-white">
                 <tbody className="w-full ">
                 { dummy?.map((memo, index) => (
                     <MemoItem memo = {memo} key= {index}/>

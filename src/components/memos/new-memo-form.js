@@ -19,8 +19,8 @@ const NewMemoForm = (props) => {
     const isMobile = useMediaQuery({ query: `(max-width: 576px)` });
     const [state, dispatch] = useContext(Context);
     const initialValues = {
-        name: "",
-        reference: ""
+        referenceNumber: "",
+        decsription: ""
     }
 
     const Notify = (message) => {
@@ -59,20 +59,30 @@ const NewMemoForm = (props) => {
         dispatchUser();
     }, [dispatchUser]);
 
+    const flushMemoContent = () => {
+        // flush current memo object
+        dispatch({type: "DEL", key: "latestmemoobj"});
+        // flush all service requests and related names
+        dispatch({type: "DEL", key: "memoservices"});
+        dispatch({type: "DEL", key: "latestservicerequestname"});
+
+    }
     const handleSubmit = values => {
-        let endpoint = '/v1/login';
+        let endpoint = '/memo';
+        flushMemoContent();
         setIsLoading(true)
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {
 
             setIsLoading(false)
             if (status === 200 || status == 201 || status == 204) {
-                dispatch({type:"SET", key:"showloginmodal", payload:false})
-                dispatch({type:"SET", key:"user", payload:response?.user})
-                setMessage(response);
+                dispatch({type: "SET", key: "latestmemoobj", payload: response?.message})
+                dispatch({type: "SET", key: "latestsuccessmessage", payload: `Memo ${response?.message?.referenceNumber} created successfully. Add Services`})
+                dispatch({type: "SET", key: "shownewmemomodal", payload: false})
+                navigate(`/memo-details/${response?.message?.memoId}`);
             } else {
                 let message = {
                     status: status,
-                    message: response?.message || "Error attempting to login"
+                    message: response?.message || "Error attempting to create memo"
                 };
                 Notify(message);
             }
@@ -84,8 +94,8 @@ const NewMemoForm = (props) => {
 
         let errors = {}
 
-        if (!values.reference || values.reference.length < 4) {
-            errors.reference = "Invalid reference";
+        if (!values.referenceNumber || values.referenceNumber.length < 4) {
+            errors.referenceNumber = "Invalid reference Number";
         }
 
         return errors
@@ -105,20 +115,20 @@ const NewMemoForm = (props) => {
                 <Form className="p-3">
                     <Row>
                         <div className="form-group col-12 justify-content-center mt-3">
-                            <label className='block mb-2'>Name</label>
+                            <label className='block mb-2'>Reference Number</label>
 
                             <input
-                                    value={values.name}
-                                    className={`text-dark deposit-input form-control col-md-12 input-field py-3 ${errors.name && 'text-danger'}`}
-                                    id="name"
-                                    name="name"
+                                    value={values.referenceNumber}
+                                    className={`text-dark deposit-input form-control col-md-12 input-field py-3 ${errors.referenceNumber && 'text-danger'}`}
+                                    id="referenceNumber"
+                                    name="referenceNumber"
                                     type="text"
                                     data-action="grow"
                                     required="required"
-                                    placeholder={errors.name || "Enter Memo Name"}
+                                    placeholder={errors.referenceNumber || "Enter Memo Name"}
                                     onChange={(ev) => onFieldChanged(ev)}
                                 />
-                                {errors.name && <div className='text-danger'> {errors.name} </div>}
+                                {errors.referenceNumber && <div className='text-danger'> {errors.referenceNumber} </div>}
 
                             
                             <br/>
@@ -126,28 +136,30 @@ const NewMemoForm = (props) => {
                         </div>
 
                         <div className="form-group col-12 justify-content-center mt-3">
-                                <label className='block mb-2'>Reference Number</label>
-                                <input
-                                    value={values.reference}
-                                    className={`text-dark deposit-input form-control col-md-12 input-field py-3 ${errors.reference && 'text-danger'}`}
-                                    id="reference"
-                                    name="reference"
+                                <label className='block mb-2'>Description</label>
+                                <textarea
+                                    value={values.description}
+                                    className={`text-dark deposit-input form-control col-md-12 input-field py-3 ${errors.description && 'text-danger'}`}
+                                    id="description"
+                                    name="description"
                                     data-action="grow"
                                     required="required"
-                                    placeholder={errors.reference || "Enter Reference Number"}
+                                    placeholder={errors.description || "Enter brief description"}
                                     onChange={(ev) => onFieldChanged(ev)}
                                 />
-                                {errors.reference && <div className='text-danger'> {errors.reference} </div>}
+                                {errors.description && <div className='text-danger'> {errors.description} </div>}
                                 <br/>
                             <input type="hidden" name="ref" value="{props.refURL}"/>
                         </div>
-                            <div className='mt-2 mb-2'>
-                                <button className={`p-3 rounded shadow-md border border-white-200 w-40 mr-2 bg-red-400 text-white`}
+                            <div className='mt-2 mb-2 flex flex-row'>
+                                <span
+                                onClick={() => dispatch({type:"SET", key:"shownewmemomodal", payload:false})}
+                                className={`p-3 rounded shadow-md border border-white-200 w-40 mr-2 bg-red-400 text-white flex flex-col text-center`}
                                             disabled={isLoading}>
                                         Cancel
-                                </button>
+                                </span>
 
-                                <button className={`p-3 rounded shadow-md border border-white-200 w-50 bg-blue-500 text-white`}
+                                <button className={`p-3 rounded shadow-md border border-white-200 w-50 bg-blue-500 text-white text-center`}
                                             disabled={isLoading}>
                                         {isLoading ? <span>Creating Memo...</span> : <span>Continue</span>}
                                 </button>

@@ -7,11 +7,9 @@ const NewMemoServiceItem = (props) => {
     // const [showNewItemModal, setShowNewItemModal] = useState(true);
 
     return (
-        <>
-        <div className="btn btn-primary my-3">
-            New memoserviceitem
+        <div className="my-2 mt-3">
+            
         </div>
-        </>
     )
 }
 

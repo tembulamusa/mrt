@@ -31,6 +31,11 @@ const NewMemoModal = (props) => {
         });
     }, []);
 
+
+    useEffect(() => {
+        
+    }, [])
+
     return (
         <>
             <Modal
