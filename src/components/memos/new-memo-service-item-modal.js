@@ -42,7 +42,6 @@ const NewMemoServiceItemModal = (props) => {
     const [showGeneralErrorMessage, setShowGeneralErrorMessage] = useState(false);
 
     const initialValues = {
-        location: "",
         memoId: parseInt(`${state?.latestmemoobj?.memoId}`),
         serviceId: parseInt(`${selectedService}`),
         
@@ -97,7 +96,7 @@ const NewMemoServiceItemModal = (props) => {
       const handleSubmit = values => {
         let endpoint = `/memo/${state?.latestmemoobj?.memoId}/${serviceUrl}`;
         setIsLoading(true)
-        setShowGeneralErrorMessage(true);
+        setShowGeneralErrorMessage(false);
         // async await for the password to update and then create
         // then proceed to send
         makeRequest({url: endpoint, method: 'POST', data: values}).then(([status, response]) => {

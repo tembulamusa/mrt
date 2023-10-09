@@ -33,12 +33,8 @@ const MemoIndex = (props) => {
     };
     const Memos = () => {
         let endpoint = "/memos";
-
-        dispatch({type: "DEL", key: "latestmemoobj"})
-        dispatch({type: "DEL", key: "latestsuccessmessage"})
-
+        
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
-
             setIsRequesting(false)
             if ([200, 201, 204].includes(status)) {
                 // dispatch({type:"SET", key:"showloginmodal", payload:false})

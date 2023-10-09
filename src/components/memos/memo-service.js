@@ -69,8 +69,8 @@ const MemoServices = (props) => {
         console.log("I UPDATED THIS STUFF HERE::::: MEMOSERVICES")
      }, [state?.memoservices])
 
-     const resetModalContents = () => {
-        dispatch({type: "SET", key: "showservicerequestmodal", payload: false});
+     const resetModalContents = (props) => {
+        dispatch({type: "SET", key: "showservicedetailmodal", payload: false});
      }
     return (
         <>  
@@ -110,11 +110,11 @@ const MemoServices = (props) => {
             dialogClassName="new-memo-modal"
             aria-labelledby="contained-modal-title-vcenter">
                      <Modal.Header closeButton className="bg-blue-500 text-white text-center justify-center place-items-center">
-                      <Modal.Title className="w-full font-sm text-md capitalize">{state?.latestmemoobj?.referenceNumber} - {state?.latesteservicerequestname}</Modal.Title>
+                      <Modal.Title className="w-full font-sm text-md capitalize">{state?.latestmemoobj?.referenceNumber} - {state?.latestmemoobj?.description}</Modal.Title>
                     </Modal.Header>
                     {
                     <Modal.Body>
-
+                        <h1 className="font-medium my-2 mb-3 capitalize">{state?.latestservicerequestname}</h1>
                         <ServiceRequestDetail />
 
                     </Modal.Body>

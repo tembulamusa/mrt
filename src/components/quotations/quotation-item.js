@@ -12,10 +12,9 @@ const QuotationItem = (props) => {
     return (
         <>
             <tr className="w-full" key={key} onClick={() => setShowQuotationDetail(true)}>
-                <td className="p-2 border border-gray-200">supplier</td>
-                <td className="p-2 border border-gray-200">{entry.status}</td>
+                <td className="p-2 border border-gray-200">{entry.supplier}</td>
                 <td className="p-2 border border-gray-200">{entry.amount}</td>
-                <td className="p-2 border border-gray-200">created</td>
+                <td className="p-2 border border-gray-200">{entry.createdAt}</td>
                 {/* cancel btn active until accomplished then gets disabled*/}
                 <td className="p-2 border border-gray-200">{entry.status} {entry.status === "awarded" && <button className="bg-red-600 rounded text-white p-1">Cancel</button>}</td>
                 
@@ -26,7 +25,7 @@ const QuotationItem = (props) => {
                 {...props}
                 top
                 size = "lg"
-                show={showQuotationDetail}
+                show={false}
                 onHide={() => setShowQuotationDetail(false)}
                 dialogClassName="new-memo-modal"
                 aria-labelledby="contained-modal-title-vcenter">

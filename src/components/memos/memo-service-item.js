@@ -19,7 +19,7 @@ const MemoServiceItem = (props) => {
 
     const setServiceRequestParams = () => {
         dispatch({type: "SET", key: "showservicedetailmodal", payload: true});
-        dispatch({type: "SET", key: "latesteservicerequestname", payload: createServiceName(kword)})
+        dispatch({type: "SET", key: "latestservicerequestname", payload: createServiceName(kword)})
         dispatch({type: "SET", key: "latestmemoserviceitem", payload: memoserviceitem})
     }
     return (

@@ -64,7 +64,7 @@ const NewMemoForm = (props) => {
         dispatch({type: "DEL", key: "latestmemoobj"});
         // flush all service requests and related names
         dispatch({type: "DEL", key: "memoservices"});
-        dispatch({type: "DEL", key: "latesteservicerequestname"});
+        dispatch({type: "DEL", key: "latestservicerequestname"});
 
     }
     const handleSubmit = values => {

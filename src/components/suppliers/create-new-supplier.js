@@ -10,10 +10,13 @@ import { Context } from "../../context/store"
 
 
 const CreateNewSupplier = (props) => {
+    const [isLoading, setIsLoading] = useState(false);
     const [state, dispatch] = useContext(Context);
-
+    
     const SupplierForm = (props) => {
-        const [isLoading, setIsLoading] = useState(false);
+
+        
+
         return (
             <>
             <form className="p-3">
@@ -154,7 +157,7 @@ const CreateNewSupplier = (props) => {
             {...props}
             top
             size = "lg"
-            show={false /*state?.shownewsuppliermodal*/}
+            show={state?.shownewsuppliermodal /*state?.shownewsuppliermodal*/}
             onHide={() => dispatch({type: "SET", key: "shownewsuppliermodal", payload: false})}
             dialogClassName="new-memo-modal"
             aria-labelledby="contained-modal-title-vcenter">

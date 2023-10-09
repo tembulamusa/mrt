@@ -2,13 +2,16 @@ import React, {useState, useCallback, useEffect, useContext} from "react";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { Context } from "../../context/store"
+import QuotationMailList from "./index";
+import ReceivedQuotationList from "../quotations";
+
 
 const ServiceRequestDetail = (props) => {
     const [key, setKey] = useState("detail");
     const [state, dispatch] = useContext(Context);
 
     const setServiceRequestDetail = () => {
-        const selectedService = state?.latesteservicerequestname;
+        const selectedService = state?.latestservicerequestname;
 
         {console.log("SERVICES LOGGED:::: ", state?.latestmemoserviceitem)}
         if (selectedService.includes("hotel")) {
@@ -216,11 +219,11 @@ const ServiceRequestDetail = (props) => {
                 <Tab eventKey="detail" title="Detail">
                     {setServiceRequestDetail()}
                 </Tab>
-                <Tab eventKey="requests" title={"requests (6)"}>
-                    <div>The service requests sent come here</div>
+                <Tab eventKey="requests" title={"quotation emails (6)"}>
+                    <div><QuotationMailList /></div>
                 </Tab>
-                <Tab eventKey="quotations" title="Quotations (4)">
-                    <div>The Quotations received come here</div>
+                <Tab eventKey="quotations" title="Quotations Received (4)">
+                    <div><ReceivedQuotationList /></div>
                 </Tab>
             </Tabs>
 
