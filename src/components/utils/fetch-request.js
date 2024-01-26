@@ -1,7 +1,7 @@
 import {setLocalStorage, getFromLocalStorage} from './local-storage';
 
 const ENC_KEY = 'm1XR6ajgepqyh^7&21012G$%_q90)hte====';
-// const BASE_URL = 'https://psc-procurement.co.ke';  
+// const BASE_URL = 'https://dimba.co.ke';  
 const BASE_URL = "http://109.123.254.230:8187/v1";
 
 const makeRequest = async ({url, method, data = null, use_jwt = false, is_basic_auth = false}) => {

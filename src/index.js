@@ -23,25 +23,21 @@ import Index  from './components/index';
 import Login from './components/pages/login';
 import ResetPassword from './components/pages/auth/reset-password';
 import ProtectedRoute from './components/utils/protected-route';
-import PrintReport from './components/pages/downloads';
 import Help from './components/pages/Help';
-import AnyList from './components/pages/any-list';
-import Users from './components/pages/users';
-import Bookings from './components/pages/bookings';
-import Dashboard from './components/pages/dashboard';
-import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Sidebar from './components/sidebar/sidebar';
-import Services from "./components/pages/services";
-import ServiceDetail from "./components/pages/services/service-detail";
-import SuppliersIndex from "./components/pages/suppliers";
-import SupplierDetails from "./components/pages/suppliers/supplier-details";
-import QuotationsIndex from "./components/pages/quotations";
-import AdminIndex from "./components/pages/admins";
-import AdminDetails from "./components/pages/admins/admin-details";
 import {getFromLocalStorage, setLocalStorage} from "./components/utils/local-storage";
-import MemoIndex from "./components/pages/memos";
-import MemoDetail from "./components/pages/memos/memo-detail";
+import TeamDetail from "./components/pages/team-detail";
+
+// import Services from "./components/pages/services";
+// import ServiceDetail from "./components/pages/services/service-detail";
+// import SuppliersIndex from "./components/pages/suppliers";
+// import SupplierDetails from "./components/pages/suppliers/supplier-details";
+// import QuotationsIndex from "./components/pages/quotations";
+// import AdminIndex from "./components/pages/admins";
+// import AdminDetails from "./components/pages/admins/admin-details";
+// import MemoIndex from "./components/pages/memos";
+// import MemoDetail from "./components/pages/memos/memo-detail";
 
 const Logout = () => {
     let navigate = useNavigate();
@@ -64,57 +60,35 @@ const App = () => {
     const [state, ] = useContext(Context);
     const isAuthenticated = getFromLocalStorage("user");
     return ( 
-                <div className="flex flex-row min-h-screen bg-gray-100">
-                {/* if logged in, show sidebar */}
-                {isAuthenticated && <Sidebar />}
+                <div className="flex flex-row min-h-screen bg-white">
 
                 <div className="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in min-h-screen">
-                <Header/>
-                  <div className="p-2 px-3">
-                    <div className="bg-white p-2 px-3 shadow-sm border-b border-white min-h-80%">
+                    <div className="relative">
                         <Routes>
-                        <Route exact path="/" element={<Login/>}/>
+                        <Route exact path="/" element={<Index/>}/>
                         <Route exact path="/login" element={<Login/>}/>
                         <Route exact path="/reset-password" element={<ResetPassword/>}/>
                         <Route exact path="/logout" element={<Logout/>}/>
-                        <Route exact path="/print-report" element={<PrintReport/>}/>
+                        {/* <Route exact path="/print-report" element={<PrintReport/>}/> */}
                         <Route exact path="/help" element={<Help/>}/>
 
                         {/* mockup to delete */}
-                        <Route exact path="/" element={<Dashboard  user={state?.user}/>}/>
-                        <Route exact path="/dashboard" element={<Dashboard  user={state?.user}/>}/>
-                        <Route exact path="/services" element={<Services  user={state?.user}/>}/>
-                        <Route exact path="/service-details/:id" element={<ServiceDetail  user={state?.user}/>}/>
-                        <Route exact path="/suppliers" element={<SuppliersIndex  user={state?.user}/>}/>
-                        <Route exact path="/supplier-details/:id" element={<SupplierDetails  user={state?.user}/>}/>
-                        <Route exact path="/quotations" element={<QuotationsIndex user={state?.user}/>}/>
-                        <Route exact path="/admins" element={<AdminIndex user={state?.user}/>}/>
-                        <Route exact path="/admin-details/:id" element={<AdminDetails  user={state?.user}/>}/>
-                        <Route exact path="/memos" element={<MemoIndex user={state?.user}/>} />
-                        <Route exact path="/memo-details/:id" element={<MemoDetail user={state?.user}/>} />
+                        
+                        <Route exact path="/" element={<Index user={state?.user}/>} />
+                        <Route exact path="/team-details/:team" element={<TeamDetail user={state?.user}/>} />
 
                         {/* end delete */}
 
                         <Route element={<ProtectedRoute /> }>
-                            <Route exact path="/bookings" element={<Bookings user={state?.user}/>}/>
-                            <Route exact path="/dashboard" element={<Dashboard  user={state?.user}/>}/>
-                            <Route exact path="/users" element={<Users user={state?.user}/>}/>
-                            <Route exact path="/services" element={<Services  user={state?.user}/>}/>
-                            <Route exact path="/service-details/:id" element={<ServiceDetail  user={state?.user}/>}/>
-                            <Route exact path="/suppliers" element={<SuppliersIndex  user={state?.user}/>}/>
-                            <Route exact path="/supplier-details/:id" element={<SupplierDetails  user={state?.user}/>}/>
-                            <Route exact path="/quotations" element={<QuotationsIndex  user={state?.user}/>}/>
-                            <Route exact path="/admins" element={<AdminIndex user={state?.user}/>}/>
-                            <Route exact path="/admin-details/:id" element={<AdminDetails  user={state?.user}/>}/>
-                            <Route exact path="/memos" element={<MemoIndex user={state?.user}/>} />
-                            <Route exact path="/memo-details/:id" element={<MemoDetail user={state?.user}/>} />
+                            <Route exact path="/" element={<Index  user={state?.user}/>}/>
+                            <Route exact path="/home" element={<Index user={state?.user}/>}/>
+                            <Route exact path="/team-details/:team" element={<TeamDetail user={state?.user}/>} />
                         </Route>
                         
-                        <Route path="*" element={<Dashboard/>}/>
+                        <Route path="*" element={<Index/>}/>
                         </Routes>
-                        </div>
                     </div>
-                <Footer/>
+                    <Footer/>
                 </div>
               </div>
     )

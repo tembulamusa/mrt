@@ -16,3 +16,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.container {
+  max-width: 1200px;
+}
+
+#menu .item {
+  padding: 10px 10px;
+}
