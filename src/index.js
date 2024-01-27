@@ -24,8 +24,7 @@ import Login from './components/pages/login';
 import ResetPassword from './components/pages/auth/reset-password';
 import ProtectedRoute from './components/utils/protected-route';
 import Help from './components/pages/Help';
-import Footer from './components/footer/footer';
-import Sidebar from './components/sidebar/sidebar';
+// import Sidebar from './components/sidebar/sidebar';
 import {getFromLocalStorage, setLocalStorage} from "./components/utils/local-storage";
 import TeamDetail from "./components/pages/team-detail";
 
@@ -88,7 +87,6 @@ const App = () => {
                         <Route path="*" element={<Index/>}/>
                         </Routes>
                     </div>
-                    <Footer/>
                 </div>
               </div>
     )

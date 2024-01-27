@@ -23,3 +23,18 @@ code {
 #menu .item {
   padding: 10px 10px;
 }
+
+#start-blog {
+  background: url('./assets/backgrounds/start-blog.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#subscribe {
+  background: url('./assets/backgrounds/subscribe.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menu .item {
+  padding-top: 10px;
+}
