@@ -42,7 +42,7 @@ const Matches = (props) => {
                     <li className="inline-block mr-3 py-2 pb-3">Live Games</li>
                     <li className="inline-block mr-3 py-2 pb-3">Fun football</li>
                 </ul>
-                <ul className="capitalize font-bold">
+                <ul className="capitalize font-lighter">
                     {Games.map((game, idx) => (
                         <li className="block w-full py-1 px-2 bg-gray-200 mb-2 rounded">
                             <span id="home-team" className="w-1/4 inline-block">
@@ -50,7 +50,7 @@ const Matches = (props) => {
                                 className={'inline-block'}
                                 src={require(`../../assets/img/teams/${game.home_team}.svg`)} /> {game.home_team}
                             </span>
-                            <span className="rounded-2xl px-3 py-1  inline-block w-1/7 uppercase bg-gray-300 mx-4">vs</span>
+                            <span className="rounded-2xl px-3 py-1  inline-block w-1/7 uppercase bg-gray-300 mx-4 font-bold">vs</span>
 
                             <span id="away-team" className="w-1/4 inline-block">
                                 <img style={{width:"25px"}}

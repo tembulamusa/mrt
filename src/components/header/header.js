@@ -11,6 +11,9 @@ import {Navbar} from "react-bootstrap";
 import ShareModal from "../sharemodal";
 import MainHeader from './main-header';
 import TeamHeader from './team-header';
+import Logo from '../../assets/svg/logo.svg';
+
+
 
 const Header = (props) => {
     const [user, setUser] = useState(getFromLocalStorage("user"));
@@ -21,12 +24,28 @@ const Header = (props) => {
     const expand = "md";
 
     return (
-        <section className='absolute w-100 left-0 right-0 text-white'>
-            <div className='container'>
-                {headertype == "main" ? <MainHeader /> : <TeamHeader /> }
-            </div>
-            
-        </section>
+        <>  
+            { !state?.followingclub ?
+            <section className='absolute w-100 left-0 right-0 text-white'>
+                <div className='container'>
+                    <MainHeader />
+                </div>
+                
+            </section>
+
+            : 
+                <section className='relative w-full'>
+                    <div className='container'>
+                        <div id='team-logo'>
+                            <img src='' />
+                        </div>
+                        <Link to={'/'} className='float-end'>
+                            <img src={Logo} width="150px"/>
+                        </Link>
+                    </div>
+                </section> 
+            }
+        </>
     )
 }
 export default React.memo(Header);

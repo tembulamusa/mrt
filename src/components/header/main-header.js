@@ -2,10 +2,12 @@ import React, {useEffect, useContext} from "react";
 import Logo from '../../assets/svg/logo.svg';
 import { Link } from "react-router-dom";
 import { FaSearch, FaTrash } from "react-icons/fa";
+import { Context } from "../../context/store";
+
 
 
 const MainHeader = props => {
-
+    const [state, dispatch] = useContext(Context);
     return (
         <>
             <div className="flex mt-3">
@@ -27,8 +29,7 @@ const MainHeader = props => {
                     <FaSearch className="inline-block mr-3"/>
                     <Link to="/" className="bg-white rounded-3xl px-4 py-1 text-gray-700 item uppercase">Sign in</Link>
                 </div>
-            </div>
-            
+            </div>            
         </>
     )
 }

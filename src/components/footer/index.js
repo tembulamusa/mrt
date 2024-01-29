@@ -20,7 +20,7 @@ const Footer = (props) => {
                     
                     <Link to={"/about"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'>About</Link>
                     <Link to={"/contact-us"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'>Contact Us</Link>
-                    <Link to={"/help"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'>Help</Link>
+                    <Link to={"/#"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'>Help</Link>
                     <Link to={"/Legal"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'>Legal</Link>
                     <Link to={"/store"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'>Store</Link>
                 </div>
@@ -28,7 +28,7 @@ const Footer = (props) => {
                 <div className="inline-block w-1/3 text-center">
                     <Link to={"/about"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'><FaInstagram className='inline-block'/></Link>
                     <Link to={"/contact-us"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'><RiFacebookBoxLine className='inline-block' /></Link>
-                    <Link to={"/help"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'><FaTwitter className='inline-block'/></Link>
+                    <Link to={"/#"} className='mr-2 opacity-50 hover:opacity-100 hover:text-white'><FaTwitter className='inline-block'/></Link>
                 </div>
 
                 <div className="inline-block w-1/3 opacity-50">
