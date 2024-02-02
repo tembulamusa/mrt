@@ -12,6 +12,7 @@ import ShareModal from "../sharemodal";
 import MainHeader from './main-header';
 import TeamHeader from './team-header';
 import Logo from '../../assets/svg/logo.svg';
+import BuyTicketModal from '../buy-ticket-modal';
 
 
 
@@ -45,6 +46,8 @@ const Header = (props) => {
                     </div>
                 </section> 
             }
+
+            {state?.selectedevent && <BuyTicketModal />}
         </>
     )
 }

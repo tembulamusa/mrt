@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../context/store";
+import makeRequest from "./utils/fetch-request";
 
 const SampleGames = [
     {
@@ -22,12 +23,48 @@ const SampleGames = [
     },
 
 ]
-const Games = (props) => {
+
+
+const FeaturedEvents = (props) => {
     const [state, dispatch] = useContext(Context);
+    const [events, setEvents] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const buyGameTicket = (game) => {
+        dispatch({type: "SET", key: "selectedevent", payload: game});
+        dispatch({type: "SET", key: "showbuyticketmodal", payload: true});
+    }
+
+    const getEvents = () => {
+        let endpoint = "upcoming_events";
+
+        makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
+            
+            if ([200, 201, 204].includes(status)) {
+                setEvents(response?.data?.events);
+
+            } else {
+                if (response?.message) {
+                    setErrorMessage(response?.message);
+                } else {
+                    setErrorMessage("an error occurred");
+                }
+                
+            }
+        })
+
+    }
+
+    useEffect(() => {
+        getEvents();
+    }, []);
+
+    
     return (
-        <section id='next-games' className={`bg-${state?.followingclub ? state?.followingclub.bg_color: "red" }-200`}>
+        <section id='next-games' className={`bg-red-200 bg-${state?.followingclub ? state?.followingclub.bgColor : "red" }-200`}>
                 <div className='container py-5 capitalize'>
-                    {SampleGames.map((game, idx) => (
+                    {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+                    {events?.map((game, idx) => (
                         <div className='text-center w-1/3 inline-block p-3'>
                             <div className='bg-white p-3 py-4 rounded shadow-md'>
                                 <div className='font-bold'>{game.date}</div>
@@ -36,20 +73,24 @@ const Games = (props) => {
                                         <div className='text-red-500 inline-block w-1/3'>
                                             <img style={{width:"35px"}}
                                             className={'mx-auto'}
-                                            src={require(`../assets/img/teams/${game.home_team}.svg`)}/>
-                                            {game.home_team}
+                                            src={game?.home_team?.logo}/>
+                                            {game.home_team?.logo}
                                         </div>
                                         <div className='bg-gray-200 rounded font-bold text-2xl inline-block w-1/3'>0 - 0</div>
                                         <div className='text-red-500 inline-block w-1/3'>
                                             <img style={{width:"35px"}}
                                             className={'mx-auto'}
-                                            src={require(`../assets/img/teams/${game.away_team}.svg`)}/>
-                                            {game.away_team}
+                                            src={game?.away?.logo}/>
+                                            {game?.away_team?.name}
                                         </div>
                                         
                                 </div>
 
-                                <button className={`bg-${state?.followingclub ? state?.followingclub.bg_color: "red"}-600 rounded-md text-white p-3 py-2 mt-4 w-full`}>Buy Ticket</button>
+                                <button 
+                                    onClick={() => buyGameTicket(game)}
+                                    className={`bg-${state?.followingclub ? state?.followingclub.bg_color: "red"}-600 rounded-md text-white p-3 py-2 mt-4 w-full`}>
+                                    Buy Ticket
+                                    </button>
                             </div>
                         </div>
                     ))}
@@ -59,4 +100,4 @@ const Games = (props) => {
     )
 }
 
-export default React.memo(Games)
+export default React.memo(FeaturedEvents)
