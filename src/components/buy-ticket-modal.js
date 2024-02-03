@@ -16,6 +16,7 @@ const BuyTicketModal = (props) => {
     const [successfulRequest, setSuccessfulRequest] = useState(false);
     let errors = {};
     const [isRequesting, setIsRequesting] = useState(false);
+    const [isFetchingEVent, setIsFetchingEVent] = useState(false);
 
     const onMobileChange = (ev) => {
         setMsisdn(ev.target.value);
@@ -43,10 +44,12 @@ const BuyTicketModal = (props) => {
 
     const selectedEventDetail = (eventId) => {
         let endpoint = `event/${eventId}`;
+        setIsFetchingEVent(true);
         makeRequest({url: endpoint, method: 'GET' }).then(([status, response]) => {
             
             if ([200, 201, 204].includes(status)) {
                 dispatch({type: "SET", key: "selectedeventdetail", payload: response?.data});
+                setIsFetchingEVent(false);
 
             } else {
                 if (response?.message) {
