@@ -15,7 +15,7 @@ import Footer from './footer/index.js';
 import Jumbotron from './jumbotron.js';
 import Clubs from './clubs.js';
 import { useContext } from 'react';
-import Games from './games.js';
+import FeaturedEvents from './featured-events.js';
 
 
 
@@ -30,7 +30,7 @@ const Index = (props) => {
 
             {!state?.followingclub && <Clubs />}
 
-            <Games />
+            <FeaturedEvents />
 
             <section id='matches' className='bg-white'>
                 <div className='container py-8'>

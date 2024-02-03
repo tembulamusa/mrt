@@ -64,30 +64,30 @@ const FeaturedEvents = (props) => {
         <section id='next-games' className={`bg-red-200 bg-${state?.followingclub ? state?.followingclub.bgColor : "red" }-200`}>
                 <div className='container py-5 capitalize'>
                     {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
-                    {events?.map((game, idx) => (
+                    {events?.map((event, idx) => (
                         <div className='text-center w-1/3 inline-block p-3'>
                             <div className='bg-white p-3 py-4 rounded shadow-md'>
-                                <div className='font-bold'>{game.date}</div>
-                                <div className='capitalize text-gray-400'>{game.competition}</div>
+                                <div className='font-bold'>{(new Date(event?.start_date)).toDateString()}</div>
+                                <div className='capitalize text-gray-400'>{event.competition}</div>
                                 <div className='my-3'>
                                         <div className='text-red-500 inline-block w-1/3'>
                                             <img style={{width:"35px"}}
                                             className={'mx-auto'}
-                                            src={game?.home_team?.logo}/>
-                                            {game.home_team?.logo}
+                                            src={event?.home_team?.logo}/>
+                                            {event.home_team?.logo}
                                         </div>
                                         <div className='bg-gray-200 rounded font-bold text-2xl inline-block w-1/3'>0 - 0</div>
                                         <div className='text-red-500 inline-block w-1/3'>
                                             <img style={{width:"35px"}}
                                             className={'mx-auto'}
-                                            src={game?.away?.logo}/>
-                                            {game?.away_team?.name}
+                                            src={event?.away?.logo}/>
+                                            {event?.away_team?.name}
                                         </div>
                                         
                                 </div>
 
                                 <button 
-                                    onClick={() => buyGameTicket(game)}
+                                    onClick={() => buyGameTicket(event)}
                                     className={`bg-${state?.followingclub ? state?.followingclub.bg_color: "red"}-600 rounded-md text-white p-3 py-2 mt-4 w-full`}>
                                     Buy Ticket
                                     </button>

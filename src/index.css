@@ -38,3 +38,12 @@ code {
 .menu .item {
   padding-top: 10px;
 }
+
+:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+.modal-header .btn-close {
+  background: red;
+}
