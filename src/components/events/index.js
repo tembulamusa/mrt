@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoMdFootball } from "react-icons/io";
-
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 const Games = [
     {
@@ -28,20 +29,13 @@ const Games = [
         scores: [0, 0]
     }
 ]
-const Matches = (props) => {
+const Events = (props) => {
     const [active, setActive] = useState("all_matches")
-    return (
-        <>
-            <div className="font-bold my-4"><IoMdFootball className="inline-block"/> Football Matches</div>
+    const [key, setKey] = useState("latest_matches");
 
-            <div id="filter" className="">
-                <ul className={`pt-3 text-gray-400 border-b border-gray-200 mb-3`}>
-                    <li className="text-gray-700 inline-block mr-3 py-2 pb-3 border-b-2 border-blue-500">latest Matches</li>
-                    <li className="inline-block mr-3 py-2 pb-3">Coming Matches</li>
-                    <li className="inline-block mr-3 py-2 pb-3">Pre-season</li>
-                    <li className="inline-block mr-3 py-2 pb-3">Live Games</li>
-                    <li className="inline-block mr-3 py-2 pb-3">Fun football</li>
-                </ul>
+    const EventsHtml = (props) => {
+
+        return (
                 <ul className="capitalize font-lighter">
                     {Games.map((game, idx) => (
                         <li className="block w-full py-1 px-2 bg-gray-200 mb-2 rounded">
@@ -63,9 +57,36 @@ const Matches = (props) => {
                         </li>
                     ))}
                 </ul>
-            </div>
+        )
+    }
+    return (
+        <>
+            <div className="font-bold my-4"><IoMdFootball className="inline-block"/> Football Matches</div>
+
+            <Tabs
+                id="events-selector"
+                activeKey={key}
+                onSelect={(k) => setKey(k)}
+                className="events-selector mb-3"
+                >
+                <Tab eventKey="latest_matches" title="Latest Matches">
+                    <EventsHtml />
+                </Tab>
+                <Tab eventKey="coming_matches" title="Coming Matches">
+                    <EventsHtml />                   
+                </Tab>
+                <Tab eventKey="pre_season" title="Pre-season">
+                    <EventsHtml />                   
+                </Tab>
+                <Tab eventKey="live_games" title="Live Games">
+                    <EventsHtml />                    
+                </Tab>
+                <Tab eventKey="fun_football" title="Fun Football">
+                    <EventsHtml />                 
+                </Tab>
+            </Tabs>
         </>
     )
 }
 
-export default React.memo(Matches)
+export default React.memo(Events)

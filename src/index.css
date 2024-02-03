@@ -47,3 +47,18 @@ code {
 .modal-header .btn-close {
   background: red;
 }
+
+.events-selector.nav-tabs .nav-item.show .nav-link, .events-selector.nav-tabs .nav-link.active {
+  border-color: transparent;
+  border-bottom: 2px solid blue;
+}
+
+.events-selector .nav-link {
+  padding-left: 0;
+  text-transform: capitalize;
+}
+
+.events-selector .nav-link:hover {
+  background: transparent;
+  border: transparent;
+}

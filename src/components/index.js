@@ -5,7 +5,7 @@ import Header from './header/header.js'
 import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { GiGamepad } from "react-icons/gi";
-import Matches from './matches/index.js';
+import Events from './events/index.js';
 import Shop from './shop/index.js';
 import AppDownload from './download_app.js';
 import News from './news.js';
@@ -34,7 +34,7 @@ const Index = (props) => {
 
             <section id='matches' className='bg-white'>
                 <div className='container py-8'>
-                    <Matches />
+                    <Events />
                 </div>
             </section>
             

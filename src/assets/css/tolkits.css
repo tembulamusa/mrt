@@ -17179,3 +17179,11 @@ background:#999;
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+#events-selector {
+
+}
+
+.events-selector .nav-tabs .nav-item.show .nav-link, .events-selector .nav-tabs .nav-link.active {
+    border-color: transparent;
+}
