@@ -27,7 +27,7 @@ const Header = (props) => {
     return (
         <>  
             { !state?.followingclub ?
-            <section className='absolute w-100 left-0 right-0 text-white'>
+            <section className=''>
                 <div className='container'>
                     <MainHeader />
                 </div>
