@@ -11,13 +11,14 @@ import {Navbar} from "react-bootstrap";
 import ShareModal from "../sharemodal";
 import MainHeader from './main-header';
 import TeamHeader from './team-header';
-import Logo from '../../assets/svg/logo.svg';
 import BuyTicketModal from '../buy-ticket-modal';
 import { MdPhoneInTalk } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import Logo from '../../assets/img/logo.png';
+
 
 
 
@@ -48,25 +49,22 @@ const Header = (props) => {
             </section>
             <section className=''>
                 <div className='container'>
-                    <MainHeader />
+                    <div className='py-2 pb-1'><img src={Logo} className='w-20'/></div>
                 </div>
-                
             </section>
-
-            : 
-                <section className='relative w-full'>
-                    <div className='container'>
-                        <div id='team-logo'>
-                            <img src='' />
-                        </div>
-                        <Link to={'/'} className='float-end'>
-                            <img src={Logo} width="150px"/>
-                        </Link>
+            <section className='bg-blue-600 text-white'>
+                <div className='container flex flex-row'>
+                    <div className='w-60 flex-col'>
+                        <Link to={"/"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>Home </Link>
+                        <Link to={"/about"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>About </Link>
+                        <Link to={"/services"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>Services </Link>
+                        <Link to={"/contact"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>Contact Us</Link>
                     </div>
-                </section> 
-            }
-
-            {state?.selectedevent && <BuyTicketModal />}
+                    <div className='w-40 flex-col text-align-right'>
+                        <div className='float-end'><button className='px-3 py-2 bg-red-500 text-white my-2 rounded-md shadow'>Get a Free Quote</button></div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }
