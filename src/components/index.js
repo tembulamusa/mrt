@@ -31,12 +31,8 @@ const Index = (props) => {
             <OurPromise />
 
             <FeaturedEvents />
-
-            <section id='matches' className='bg-white'>
-                <div className='container py-8'>
-                    <Events />
-                </div>
-            </section>
+            
+            <Events />
             
             <hr className='container'/>
             <section id='fkf-shop' className='bg-white'>
