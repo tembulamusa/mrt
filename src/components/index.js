@@ -13,7 +13,7 @@ import Subscribe from './subscribe.js';
 import StartBlog from './start-blog.js';
 import Footer from './footer/index.js';
 import Jumbotron from './jumbotron.js';
-import Clubs from './clubs.js';
+import OurPromise from './our-promise.js';
 import { useContext } from 'react';
 import FeaturedEvents from './featured-events.js';
 
@@ -28,7 +28,7 @@ const Index = (props) => {
             
             <Jumbotron />
 
-            {!state?.followingclub && <Clubs />}
+            <OurPromise />
 
             <FeaturedEvents />
 
