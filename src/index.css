@@ -35,6 +35,16 @@ code {
   background-repeat: no-repeat;
 }
 
+#jumbotron {
+  background: url('./assets/backgrounds/inner-banner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-transluscent {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .menu .item {
   padding-top: 10px;
 }
