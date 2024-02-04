@@ -13,6 +13,12 @@ import MainHeader from './main-header';
 import TeamHeader from './team-header';
 import Logo from '../../assets/svg/logo.svg';
 import BuyTicketModal from '../buy-ticket-modal';
+import { MdPhoneInTalk } from "react-icons/md";
+import { FaFacebookF } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+
 
 
 
@@ -26,7 +32,20 @@ const Header = (props) => {
 
     return (
         <>  
-            { !state?.followingclub ?
+            <section id='top-header' className='py-2 bg-blue-600 text-white'>
+                <div className='container'>
+                    <div className='inline-block w-50 py-2'>
+                        <MdPhoneInTalk className='inline-block mr-3' size={30}/> Call Mombasa: +254717506069</div>
+                    <div className='inline-block w-50'>
+                        <div className='float-end' id='social-networks'>
+                            <FaFacebookF className='inline-block mr-2' size={20}/>
+                            <FaTwitter className='inline-block mr-2' size={20}/>
+                            <FaInstagram className='inline-block mr-2' size={20}/>
+                            <FaLinkedin className='inline-block' size={20}/>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section className=''>
                 <div className='container'>
                     <MainHeader />
