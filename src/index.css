@@ -95,3 +95,11 @@ code {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+#customers-ticker img {
+  margin-right: 10px;
+}
+
+#customers-ticker div {
+  display: none;
+}

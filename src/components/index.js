@@ -16,7 +16,7 @@ import Jumbotron from './jumbotron.js';
 import OurPromise from './our-promise.js';
 import { useContext } from 'react';
 import FeaturedEvents from './featured-events.js';
-
+import OurCUstomers from './our-customers.js';
 
 
 const Index = (props) => {
@@ -32,18 +32,9 @@ const Index = (props) => {
 
             <FeaturedEvents />
             
-            <Events />
+            <Events /> {/* The why us section*/}
             
-            <hr className='container'/>
-            <section id='fkf-shop' className='bg-white'>
-                <div className='container py-8'>
-                    <Shop />
-                </div>
-            </section>
-
-            <section>
-                <AppDownload />
-            </section>
+            <OurCUstomers />
 
             <section>
                 <News />

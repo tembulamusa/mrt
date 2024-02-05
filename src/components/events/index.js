@@ -47,7 +47,7 @@ const Events = (props) => {
     
     return (
         <>
-            <section className="py-5">
+            <section className="py-5 pb-2">
                 <div className="container">
                     <h1 className="text-blue-600 font-bold capitalize mb-4 text-center text-4xl ">Why Choose Us</h1>
 
