@@ -17,6 +17,7 @@ import OurPromise from './our-promise.js';
 import { useContext } from 'react';
 import FeaturedEvents from './featured-events.js';
 import OurCUstomers from './our-customers.js';
+import GetQuote from './get-quote.js';
 
 
 const Index = (props) => {
@@ -35,14 +36,7 @@ const Index = (props) => {
             <Events /> {/* The why us section*/}
             
             <OurCUstomers />
-
-            <section>
-                <News />
-            </section>
-            
-            <section className='py-7 text-white text-center start-blog' id='start-blog'>
-                <StartBlog />
-            </section>
+            <GetQuote />
             
             <section className='py-7 text-white text-center' id='subscribe'>
                 <Subscribe />
