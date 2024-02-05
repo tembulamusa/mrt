@@ -85,7 +85,7 @@ const FeaturedEvents = (props) => {
                             </div>
                             <div className="text-2xl capitalize my-3 font-bold">High-quality Professional Courier Services</div>
                             <div className="py-2">
-                                A Courier service app by Cube Movers offering affordable, reliable and efficient parcel delivery within Nairobi.
+                                A Courier service app by Mara Movers offering affordable, reliable and efficient parcel delivery within Nairobi.
                             </div>
                         </div>
                     </div>
