@@ -6,7 +6,7 @@ import EmptyRecordsDiv from "../utils/empty-records-div";
 import makeRequest from "../utils/fetch-request";
 import IsLoadingHtml from "../utils/loading.js";
 import { Context } from "../../context/store.js";
-import WhyUs from '../../assets/img/why-us.jpg';
+import WhyUs from '../../assets/img/services/team2.jpg';
 import { BiWorld } from "react-icons/bi";
 import { FaUsers, FaRegLightbulb, FaHandshake } from "react-icons/fa";
 
@@ -114,7 +114,7 @@ const Events = (props) => {
                         
                         <div className="flex-col nline-block w-1/3 pr-3">
                         
-                                <img src={WhyUs} className="flex flex-row"/>
+                                <img src={WhyUs} className="flex flex-row rounded border border-gray-200 p-1"/>
                             
                         </div>
                     </div>
