@@ -101,7 +101,7 @@ const Footer = (props) => {
                             <li className='leading-5 mb-2'>
                                 < FaPhoneAlt size={30} className='w-20 mr-3 inline-block text-blue-500' />
                                 <div className='inline-block w-70'>
-                                    <div>Email: - maramoversk@gmail.com</div>
+                                    <div>Phone: - 254717506069</div>
                                     <span></span>
                                     </div>
                             </li>
