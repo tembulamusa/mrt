@@ -38,10 +38,7 @@ const Index = (props) => {
             <OurCUstomers />
             <GetQuote />
             
-            <section className='py-7 text-white text-center' id='subscribe'>
-                <Subscribe />
-                <Footer />
-            </section>
+            <Footer />
            
         </div>
     )

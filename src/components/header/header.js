@@ -6,7 +6,6 @@ import {Context} from '../../context/store';
 import {getFromLocalStorage, setLocalStorage} from '../utils/local-storage';
 import makeRequest from '../utils/fetch-request';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import logo from '../../assets/img/logo.png';
 import {Navbar} from "react-bootstrap";
 import ShareModal from "../sharemodal";
 import MainHeader from './main-header';
