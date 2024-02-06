@@ -119,8 +119,8 @@ const Footer = (props) => {
                 </div>
 
                 <div className="inline-block w-1/3 text-center">
-                    <Link to={"/about"} className='mr-2 opacity-70 hover:opacity-100 '><FaInstagram className='inline-block' size={30}/></Link>
-                    <Link to={"/contact-us"} className='mr-2 opacity-70 hover:opacity-100 '><RiFacebookBoxLine className='inline-block' size={30}/></Link>
+                    <Link to={"https://www.instagram.com/maramovers?igsh=YzljYTk1ODg3Zg=="} target='_blank' className='mr-2 opacity-70 hover:opacity-100 ' ><FaInstagram className='inline-block' size={30}/></Link>
+                    <Link to={"https://www.facebook.com/profile.php?id=100094662474097"} target="_blank" rel="noopener noreferrer" className='mr-2 opacity-70 hover:opacity-100 '><RiFacebookBoxLine className='inline-block' size={30}/></Link>
                     <Link to={"/#"} className='mr-2 opacity-70 hover:opacity-100'><FaTwitter className='inline-block' size={30}/></Link>
                 </div>
 
