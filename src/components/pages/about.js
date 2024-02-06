@@ -1,16 +1,17 @@
 import React from "react";
+import PageHeader from "../utils/page-header";
 const About = (props) => {
 
     return (
         <>
-            <section className="page-header">
-                <div className="container">
-                    <h1>About Us</h1>
-                </div>
-            </section>
+            <PageHeader title="About Us"/>
 
             <section className="py-3">
-                <div className="">Some about us</div>
+                <div className="container flex">
+                    <div className="w-50">
+
+                    </div>
+                </div>
             </section>
         </>
     )
