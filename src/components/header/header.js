@@ -38,10 +38,10 @@ const Header = (props) => {
                         <MdPhoneInTalk className='inline-block mr-3' size={30}/> Call Mombasa: +254717506069</div>
                     <div className='inline-block w-50'>
                         <div className='float-end' id='social-networks'>
-                            <FaFacebookF className='inline-block mr-2' size={20}/>
-                            <FaTwitter className='inline-block mr-2' size={20}/>
-                            <FaInstagram className='inline-block mr-2' size={20}/>
-                            <FaLinkedin className='inline-block' size={20}/>
+                            <Link className='hover:text-white hover:opacity-60' to={"https://www.facebook.com/profile.php?id=100094662474097"} target='_blank'><FaFacebookF className='inline-block mr-2' size={20}/></Link>
+                            <Link className='hover:text-white hover:opacity-60' to="" target='_blank'><FaTwitter className='inline-block mr-2' size={20}/></Link>
+                            <Link className='hover:text-white hover:opacity-60' to="https://www.instagram.com/maramovers?igsh=YzljYTk1ODg3Zg==" target='_blank'><FaInstagram className='inline-block mr-2' size={20}/></Link>
+                            <Link className='hover:text-white hover:opacity-60' to="" target='_blank'><FaLinkedin className='inline-block' size={20}/></Link>
                         </div>
                     </div>
                 </div>
