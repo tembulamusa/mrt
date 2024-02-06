@@ -29,6 +29,7 @@ import TeamDetail from "./components/pages/team-detail";
 import About from "./components/pages/about";
 import Header from "./components/header/header";
 import Footer from "./components/footer/index.js";
+import Services from "./components/pages/services.js";
 
 
 const Logout = () => {
@@ -69,6 +70,7 @@ const App = () => {
                         {/* <Route exact path="/print-report" element={<PrintReport/>}/> */}
                         <Route exact path="/help" element={<Help/>}/>
                         <Route exact path="/about" element={<About/>}/>
+                        <Route exact path="/services" element={<Services />} />
 
                         
                         {/* end delete */}
