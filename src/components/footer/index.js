@@ -64,14 +64,14 @@ const Footer = (props) => {
                                 </div>
                             </li>
                             <li className='leading-5 mb-2 flex'>
-                                <img src={Storage} className='w-20 mr-3 inline-block'/>
+                                <img src={PostConstruction} className='w-20 mr-3 inline-block'/>
                                 <div className='inline-block w-70'>
                                     <div>2 Reasons Why Post-Construction Clean-up is Important</div>
                                     <span></span>
                                 </div>
                             </li>
                             <li className='leading-5 mb-2 flex'>
-                                <img src={Storage} className='w-20 mr-3 inline-block'/>
+                                <img src={Tips} className='w-20 mr-3 inline-block'/>
                                 <div className='inline-block w-70'>
                                     <div>New Tips to Make Moving in Nairobi Easier with the #1 Moving Company, Cube Movers</div>
                                     <span></span>
