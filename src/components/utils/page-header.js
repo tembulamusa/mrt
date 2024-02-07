@@ -5,7 +5,7 @@ const PageHeader = (props) => {
     return (
         <section className="page-header border-b border-gray-300 capitalize">
             <div className="text-whie text-2xl font-bold">
-                <div className="container py-3">
+                <div className="container py-3 text-gray-500">
                     <h1>{title}</h1>
                 </div>
             </div>
