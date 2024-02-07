@@ -30,6 +30,7 @@ import About from "./components/pages/about";
 import Header from "./components/header/header";
 import Footer from "./components/footer/index.js";
 import Services from "./components/pages/services.js";
+import ContactUs from "./components/pages/contact-us.js";
 
 
 const Logout = () => {
@@ -67,20 +68,10 @@ const App = () => {
                         <Route exact path="/login" element={<Login/>}/>
                         <Route exact path="/reset-password" element={<ResetPassword/>}/>
                         <Route exact path="/logout" element={<Logout/>}/>
-                        {/* <Route exact path="/print-report" element={<PrintReport/>}/> */}
                         <Route exact path="/help" element={<Help/>}/>
                         <Route exact path="/about" element={<About/>}/>
                         <Route exact path="/services" element={<Services />} />
-
-                        
-                        {/* end delete */}
-
-                        <Route element={<ProtectedRoute /> }>
-                            <Route exact path="/" element={<Index  user={state?.user}/>}/>
-                            <Route exact path="/home" element={<Index user={state?.user}/>}/>
-                            <Route exact path="/team-details/:team" element={<TeamDetail user={state?.user}/>} />
-                        </Route>
-                        
+                        <Route exact path="/contact-us" element={<ContactUs />} />                        
                         <Route path="*" element={<Index/>}/>
                         </Routes>
 
