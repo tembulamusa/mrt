@@ -22,13 +22,13 @@ const Footer = (props) => {
     return (
         <section className="mt-4 pt-3">
             <section className='bg-gray-200 py-4'>
-                <div className='container'>
-                    <div className='w-60 inline-block'>
+                <div className='container text-center md:text-left'>
+                    <div className='w-full md:w-60 inline-block'>
                         <h1 className='font-bold capitalize text-2xl'>Get the best professional moving services in Kenya.</h1>
                         <p>Highly trained staff, latest technology and 100% satisfaction guaranteed</p>
                     </div>
-                    <div className='w-40 inline-block'>
-                        <button className='flex rounded-md bg-red-500 p-3 px-5 font-bold text-white float-end'>Get Started</button>
+                    <div className='w-full py-4 md:py-0 md:w-40 inline-block text-center'>
+                        <button className='block md:flex rounded-md bg-red-500 p-3 px-5 font-bold text-white w-full text-center mx-auto md:float-end'>Get Started</button>
                     </div>
                 </div>
             </section>
