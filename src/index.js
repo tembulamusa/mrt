@@ -56,11 +56,11 @@ const App = () => {
     return (
                 <>
                 
-                <div className="flex flex-row min-h-screen bg-white">
+                <div className="">
                
 
-                <div className="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in min-h-screen">
-                    <div className="relative">
+                <div className="">
+                    <div className="">
                         <Header />
                         
                         <Routes>
