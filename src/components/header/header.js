@@ -48,7 +48,7 @@ const Header = (props) => {
             </section>
             <section className=''>
                 <div className='container'>
-                    <div className='py-2 pb-1 flex'><div className='w-60 flex-col'><img src={Logo} className=''/> </div> <div className='w-40 flex-col text-align-right'>
+                    <div className='py-2 pb-1 flex'><div className='w-60 flex-col'><img src={Logo} className='md:w-40'/> </div> <div className='w-40 flex-col text-align-right'>
                         <div className='float-end'><button className='px-3 py-2 bg-red-500 text-white my-2 rounded-md shadow'><span className='d-none md:inline-block'>Get a </span>Free Quote</button></div>
                     </div></div>
                 </div>
