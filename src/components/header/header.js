@@ -34,8 +34,8 @@ const Header = (props) => {
         <>  
             <section id='top-header' className='py-2 bg-blue-600 text-white'>
                 <div className='container'>
-                    <div className='inline-block w-50 py-2'>
-                        <MdPhoneInTalk className='inline-block mr-3' size={30}/> <span className='d-none md:inline-block'>Call Mombasa: </span>+254717506069</div>
+                    <div className='inline-block w-50 py-2 text-3xl'>
+                        <MdPhoneInTalk className='inline-block mr-3 ' size={30}/> <span className='d-none md:inline-block'>Call Mombasa: </span>+254717506069</div>
                     <div className='inline-block w-50'>
                         <div className='float-end' id='social-networks'>
                             <Link className='hover:text-white hover:opacity-60' to={"https://www.facebook.com/profile.php?id=100094662474097"} target='_blank'><FaFacebookF className='inline-block mr-2' size={20}/></Link>

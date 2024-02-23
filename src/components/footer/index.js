@@ -3,16 +3,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
 // import {FaFacebook, FaInstagram, faTwitter, faYoutube} from "@fortawesome/free-brands-svg-icons"
 import { Link } from 'react-router-dom';
-import { FaInstagram } from "react-icons/fa";
 import { RiFacebookBoxLine } from "react-icons/ri";
-import { FaTwitter } from "react-icons/fa";
 import Logo from '../../assets/img/logo.png';
 import Storage from '../../assets/img/posts/storage.jpg';
 import PostConstruction from '../../assets/img/posts/construction.jpg';
 import Tips from '../../assets/img/posts/tips.jpg';
-import { FaMapMarkerAlt } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaWhatsapp, FaMapMarkerAlt, FaTwitter, FaInstagram } from "react-icons/fa";
+
 
 
 
@@ -23,11 +21,11 @@ const Footer = (props) => {
         <section className="mt-4 pt-3">
             <section className='bg-gray-200 py-4'>
                 <div className='container text-center md:text-left'>
-                    <div className='w-full md:w-60 inline-block'>
+                    <div className='w-full md:w-2/3 inline-block'>
                         <h1 className='font-bold capitalize text-2xl'>Get the best professional moving services in Kenya.</h1>
                         <p>Highly trained staff, latest technology and 100% satisfaction guaranteed</p>
                     </div>
-                    <div className='w-full py-4 md:py-0 md:w-40 inline-block text-center'>
+                    <div className='w-full py-4 md:py-0 md:w-1/3 inline-block text-center'>
                         <button className='block md:flex rounded-md bg-red-500 p-3 px-5 font-bold text-white w-full text-center mx-auto md:float-end'>Get Started</button>
                     </div>
                 </div>
@@ -35,7 +33,7 @@ const Footer = (props) => {
 
             <section className='border-b border-gray-300' id='site-sumary'>
                 <div className='container my-4 block text-center md:text-left md:flex flex-row'>
-                    <div className='w-full md:w-3/12 flex-col pr-3 border-b border-gray-300 mb-3 md:border-none md'>
+                    <div className='w-full md:w-3/12 flex-col pr-3 md:text-left border-b border-gray-300 mb-3 md:border-none md'>
                         <img src={Logo} className='w-60'/>
                         <div className='my-3'>
                             Experience the delight of having breakfast at your old house, and by evening, enjoying dinner with feet up at your new house, all without breaking a sweat!
@@ -127,7 +125,11 @@ const Footer = (props) => {
                 <div className="pt-2 inline-block w-full md:w-1/3 opacity-80">
                     &copy;2020 maramovers.co.ke <span className='opacity-60'>A RT Systems Site</span>
                 </div>
-
+                
+                <a className='fixed bottom-5 left-3 bg-green-500 text-white p-1 px-3 rounded-3xl text-xl' href={ `https://wa.me/254717506069?text=Welcome%20to%20maramovers.%20how%20can%20we%20help%20you?` } target="_blank">
+                    <FaWhatsapp size={25} className='mr-3 inline-block' />
+                    chat Now
+                </a>
             </div>
             
         </section>
