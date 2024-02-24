@@ -126,7 +126,7 @@ const Footer = (props) => {
                     &copy;2020 maramovers.co.ke <span className='opacity-60'>A RT Systems Site</span>
                 </div>
                 
-                <a className='fixed bottom-5 left-3 bg-green-500 text-white p-1 px-3 rounded-3xl text-xl' href={ `https://wa.me/254717506069?text=Welcome%20to%20maramovers.%20how%20can%20we%20help%20you?` } target="_blank">
+                <a className='fixed bottom-5 left-3 bg-green-500 text-white p-1 px-3 rounded-3xl text-xl' href={ `https://wa.me/254717506069?text=Hello%Maramovers.%20I%20would%20like%you%20to%20help.` } target="_blank">
                     <FaWhatsapp size={25} className='mr-3 inline-block' />
                     chat Now
                 </a>

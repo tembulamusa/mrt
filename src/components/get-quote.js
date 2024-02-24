@@ -41,8 +41,6 @@ const GetQuote = (props) => {
                     <div className="flex flex-col w-full md:w-50">
                         <h1 className="font-bold capitalize my-3">Our Moving Value Addition Includes:</h1>
                         <ul className="list-disc leading-8 pl-4">
-                            <li>Free DSTV installation & Zuku satellite TV installation</li>
-                            <li>Safe and secure storage fitted with 24 hour CCTV surveillance cameras.</li>
                             <li>Provision of hydraulic trolleys for handling and movement of heavy items such as safes.</li>
                             <li>Mounting of various wall hangings such as; pictures, paintings, mirrors and TVs.</li>
                             <li>Furniture protection with various padding materials.</li>
