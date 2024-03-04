@@ -35,7 +35,7 @@ const Fields = (props) => {
                 <div className="container text-2xl">Fields</div>
 
                 <div className="container">
-                    <div >
+                    <div className="">
                         sports
                     </div> fintech, erp, </div>
             </div>

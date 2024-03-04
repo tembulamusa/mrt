@@ -9,4 +9,13 @@ const TextCarousel = (props) => {
     )
 }
 
+
+export const ImageCarousel = (props) => {
+    return (
+        <>
+            <h1 className="text-4xl">Image carousels</h1>
+        </>
+    )
+}
+
 export default React.memo(TextCarousel);

@@ -1,15 +1,14 @@
 import React from "react";
-// import IndexCarousel from "./carousels";
-
+import TextCarousel, {ImageCarousel} from "./carousels/jumbotron-carousels.js"
 const Jumbotron = (props) => {
 
     return (
         <>
             <section id='jumbotron' className=" text-white text-cent">
-                <div className="w-full hero-section py-3">
-                    <div className='container py-7 z-50'>
+                <div className="w-full hero-section py-">
+                    <div className='container py7 z-50'>
                         <div className="hero-section-center-holder z-50">
-                            <div className='w-full py-6 inline-block'>
+                            <div className='w-full py- inline-block'>
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div className='text-3xl md:text-5xl py-3 font-bold leading-9'>Dependable, Revolutionary Tech Systems Engineering</div>
