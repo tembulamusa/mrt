@@ -5,7 +5,7 @@ import { GiGamepad } from "react-icons/gi";
 import Events from './events/index.js';
 import Shop from './shop/index.js';
 import AppDownload from './download_app.js';
-import News from './news.js';
+import Fields from './fields.js';
 import Subscribe from './subscribe.js';
 import StartBlog from './start-blog.js';
 import Jumbotron from './jumbotron.js';
@@ -14,6 +14,7 @@ import { useContext } from 'react';
 import FeaturedEvents from './featured-events.js';
 import OurCUstomers from './our-customers.js';
 import GetQuote from './get-quote.js';
+import Header from './header/header.js';
 
 
 const Index = (props) => {
@@ -21,17 +22,13 @@ const Index = (props) => {
     
     return (
         <div className='main w-100'>
-            
-            <Jumbotron />
-
+            <section id='top-wrapper' className=''>
+                <Header />
+                <Jumbotron />
+            </section>
             <OurPromise />
-
             <FeaturedEvents />
-            
-            <Events /> {/* The why us section*/}
-            
-            <OurCUstomers />
-            <GetQuote />
+            <Fields />
 
         </div>
     )

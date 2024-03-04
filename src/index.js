@@ -61,7 +61,6 @@ const App = () => {
 
                 <div className="">
                     <div className="">
-                        <Header />
                         
                         <Routes>
                         <Route exact path="/" element={<Index/>}/>

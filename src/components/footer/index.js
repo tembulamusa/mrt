@@ -19,18 +19,6 @@ const Footer = (props) => {
 
     return (
         <section className="mt-4 pt-3">
-            <section className='bg-gray-200 py-4'>
-                <div className='container text-center md:text-left'>
-                    <div className='w-full md:w-2/3 inline-block'>
-                        <h1 className='font-bold capitalize text-2xl'>Get the best professional moving services in Kenya.</h1>
-                        <p>Highly trained staff, latest technology and 100% satisfaction guaranteed</p>
-                    </div>
-                    <div className='w-full py-4 md:py-0 md:w-1/3 inline-block text-center'>
-                        <button className='block md:flex rounded-md bg-red-500 p-3 px-5 font-bold text-white w-full text-center mx-auto md:float-end'>Get Started</button>
-                    </div>
-                </div>
-            </section>
-
             <section className='border-b border-gray-300' id='site-sumary'>
                 <div className='container my-4 block text-center md:text-left md:flex flex-row'>
                     <div className='w-full md:w-3/12 flex-col pr-3 md:text-left border-b border-gray-300 mb-3 md:border-none md'>
@@ -91,7 +79,7 @@ const Footer = (props) => {
                             <li className='leading-5 mb-2'>
                                 <CiMail size={30} className='w-20 mr-3 inline-block text-blue-500' />
                                 <div className='inline-block w-70'>
-                                    <div>Email: - maramoversk@gmail.com</div>
+                                    <div>Email: - mrtk@gmail.com</div>
                                     <span></span>
                                     </div>
                             </li>
@@ -117,16 +105,16 @@ const Footer = (props) => {
                 </div>
 
                 <div className="inline-block w-full pt-2 md:w-1/3 text-center">
-                    <Link to={"https://www.instagram.com/maramovers?igsh=YzljYTk1ODg3Zg=="} target='_blank' className='mr-2 opacity-70 hover:opacity-100 ' ><FaInstagram className='inline-block' size={30}/></Link>
+                    <Link to={"https://www.instagram.com/mrt?igsh=YzljYTk1ODg3Zg=="} target='_blank' className='mr-2 opacity-70 hover:opacity-100 ' ><FaInstagram className='inline-block' size={30}/></Link>
                     <Link to={"https://www.facebook.com/profile.php?id=100094662474097"} target="_blank" rel="noopener noreferrer" className='mr-2 opacity-70 hover:opacity-100 '><RiFacebookBoxLine className='inline-block' size={30}/></Link>
                     <Link to={"/#"} className='mr-2 opacity-70 hover:opacity-100'><FaTwitter className='inline-block' size={30}/></Link>
                 </div>
 
                 <div className="pt-2 inline-block w-full md:w-1/3 opacity-80">
-                    &copy;2020 maramovers.co.ke <span className='opacity-60'>A RT Systems Site</span>
+                    &copy;2020 mrt.co.ke <span className='opacity-60'>A RT Systems Site</span>
                 </div>
                 
-                <a className='fixed bottom-5 left-3 bg-green-500 text-white p-1 px-3 rounded-3xl text-xl' href={ `https://wa.me/254717506069?text=Hello%Maramovers.%20I%20would%20like%you%20to%20help.` } target="_blank">
+                <a className='fixed bottom-5 left-3 bg-green-500 text-white p-1 px-3 rounded-3xl text-xl' href={ `https://wa.me/254717506069?text=Hello%mrt.%20I%20would%20like%you%20to%20help.` } target="_blank">
                     <FaWhatsapp size={25} className='mr-3 inline-block' />
                     chat Now
                 </a>

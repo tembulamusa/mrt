@@ -49,7 +49,7 @@ const FeaturedEvents = (props) => {
                     </h1>
 
                     <div className="py-3 my-2 text-center md:text-left">
-                        Mara Movers takes the pressure out of your move and ensures the job gets done right. We are a reliable, trusted and competent moving services company here to help you shoulder the load of a residential or commercial move. Choosing the right moving company is the key to a smooth and successful move without complications or delays. That is what you get when you choose our moving services.
+                        Our Services range from development, to deployment, to tech support. How a service is interpreted depending on the customer. For example, to businesses, it suffices tosay we do system development, but to tech firms, we can have the services expanded: eg requirement collection, analysis, development, deployment, audit, system support, and many more develpment. It all depends on were you stand
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@ const FeaturedEvents = (props) => {
                             <div className="text-center">
                                 <img src={Messenger} alt="house-moving"  className="mx-auto rounded-full w-20"/>
                             </div>
-                            <div className="text-xl md:text-2xl capitalize mb-1 md:my-3 font-bold">Domestic and Inter-County Moving</div>
+                            <div className="text-xl md:text-2xl capitalize mb-1 md:my-3 font-bold">System Development and management()</div>
                             <div className="py-2">
                                 Our house moves team handles everything from packing to final arrangement at your new house, we take the anxiety out of moving.
                             </div>
@@ -71,7 +71,7 @@ const FeaturedEvents = (props) => {
                             <div className="text-center">
                                 <img src={Office} alt="house-moving"  className="mx-auto rounded-full w-20"/>
                             </div>
-                            <div className="text-xl md:text-2xl capitalize mb-1 md:my-3 font-bold">Internal and Inter-county Office Moving</div>
+                            <div className="text-xl md:text-2xl capitalize mb-1 md:my-3 font-bold">System management and maintenance</div>
                             <div className="py-2">
                                 We provide high quality custom moving solutions at affordable prices. Call us or fill the free quote form to get a free estimate.
                             </div>
@@ -83,7 +83,7 @@ const FeaturedEvents = (props) => {
                             <div className="text-center">
                                 <img src={Courier} alt="house-moving"  className="mx-auto rounded-full w-20"/>
                             </div>
-                            <div className="text-xl md:text-2xl capitalize mb-1 md:my-3 font-bold">High-quality Professional Courier Services</div>
+                            <div className="text-xl md:text-2xl capitalize mb-1 md:my-3 font-bold">Software as a service Integration</div>
                             <div className="py-2">
                                 A Courier service app by Mara Movers offering affordable, reliable and efficient parcel delivery within Nairobi.
                             </div>

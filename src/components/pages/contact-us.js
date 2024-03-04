@@ -25,7 +25,7 @@ const ContactUs = (props) => {
                         </div>
                         <div className="mt-4">
                             <span className="font-bold">Email:</span><br/>
-                            maramoversk@gmail.com
+                            mrtk@gmail.com
                         </div>
                         <div className="mt-4">
                             <span className="font-bold">Location:</span><br/>
