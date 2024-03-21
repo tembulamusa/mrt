@@ -15,14 +15,14 @@ const About = (props) => {
                     </div>
                     <div className="w-50 pl-3 leading-8">
                         <h1 className="capitalize text-2xl text-blue-600 font-bold">
-                            About Us : Mara Movers Limited
+                            About Us : mrt space Limited
                         </h1>
 
                         <p className="py-2">
-                            Mara Movers is your smart and trusted relocation, moving and storage company that was incorporated in December 2014 and started operating in January 2015. The company is managed by indigenous Kenyans with more than 100 years combined experience in the industry.
+                            mrt space is your smart and trusted relocation, moving and storage company that was incorporated in December 2014 and started operating in January 2015. The company is managed by indigenous Kenyans with more than 100 years combined experience in the industry.
                         </p>
                         <p className="py-1">
-                            As Kenya’s leading premium removals service provider, we ensure that the anxiety of moving is replaced with the delightful convenience that only true experts can provide. Mara Movers has highly trained enthusiastic staff who are recruited after vigorous background checks to ensure we have only the best.
+                            As Kenya’s leading premium removals service provider, we ensure that the anxiety of moving is replaced with the delightful convenience that only true experts can provide. mrt space has highly trained enthusiastic staff who are recruited after vigorous background checks to ensure we have only the best.
                         </p>
                         <p className="py-2">
                             Our superior equipment and packaging materials ensure your personal goods not only move in style but are also handled with utmost care.With several years of experience, industry knowledge and lots of satisfied customers, we move you without tears!
@@ -38,7 +38,7 @@ const About = (props) => {
                     </h1>
 
                     <div className="">
-                        At Mara Movers Limited we will offer personalized solutions. We will continuously improve our services through technical expertise, customer centric approach in all our processes and respect the environment. In so doing, we will nurture the talents of our employees to achieve personal growth while enjoying what we do.
+                        At mrt space Limited we will offer personalized solutions. We will continuously improve our services through technical expertise, customer centric approach in all our processes and respect the environment. In so doing, we will nurture the talents of our employees to achieve personal growth while enjoying what we do.
                     </div>
                 </div>
             </section>

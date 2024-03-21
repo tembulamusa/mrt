@@ -39,7 +39,7 @@ const Services = (props) => {
                             <img src={Warehouse} className="w-20 rounded-full mx-auto my-2"/>
                             <h1 className="text-2xl font-bold leading-8 py-3">Warehousing and Storage Services</h1>
                             <div className="leading-6 pb-4">
-                                Store you household and commercial goods in our warehouse at 15% off to celebrate 15 years of Mara Movers.
+                                Store you household and commercial goods in our warehouse at 15% off to celebrate 15 years of mrt space.
                             </div>
                         </div>
                     </div>

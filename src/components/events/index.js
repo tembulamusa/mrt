@@ -64,7 +64,7 @@ const Events = (props) => {
                                 <div className="flex flex-col">
                                     <h1 className="text-gray-600 font-bold">Global Know-how</h1>
                                     <div className="mb-4">
-                                        Whether by air or sea, Mara movers ensures proper packing to international standards, handling and safe delivery to final destination.
+                                        Whether by air or sea, mrt space ensures proper packing to international standards, handling and safe delivery to final destination.
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ const Events = (props) => {
                                 <div className="flex flex-col">
                                     <h1 className="text-gray-600 font-bold">Dedicated Teams</h1>
                                     <div className="mb-4">
-                                    Mara movers is committed to helping our clients reach their goals, through personalized solutions for great experiences.                                    </div>
+                                    mrt space is committed to helping our clients reach their goals, through personalized solutions for great experiences.                                    </div>
                                 </div>
                             </div>
 

@@ -1,21 +1,23 @@
 import React from "react";
+import RightCarousel from "./jumbotron-carousels/right-carousel";
+import LeftCarousel from "./jumbotron-carousels/left-carousel";
 
-const TextCarousel = (props) => {
+const Left = (props) => {
 
     return (
         <>
-            <h1 className="text-4xl">Some Text Carousel</h1>
+            <LeftCarousel />
         </>
     )
 }
 
 
-export const ImageCarousel = (props) => {
+export const Right = (props) => {
     return (
         <>
-            <h1 className="text-4xl">Image carousels</h1>
+            <RightCarousel />
         </>
     )
 }
 
-export default React.memo(TextCarousel);
+export default React.memo(Left);
