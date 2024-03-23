@@ -52,7 +52,7 @@ const FeaturedEvents = (props) => {
                                     <div className="inline-block mr-2 opacity-60">
                                         <IoIosMailOpen size={40}/>
                                     </div>
-                                    <div className="inline-block opacity-80">
+                                    <div className="inline-block opacity-90">
                                         <h1 className="capitalize font-bold tracking-wider text-2xl">
                                             Contact for Problem Specific Approach
                                         </h1>
@@ -68,28 +68,28 @@ const FeaturedEvents = (props) => {
                     </div>
                 </section>
 
-                <div className='container relative w-full tracking-wider'>                    
+                <div className='container relative w-full tracking-wider flex'>                    
                     <div className='w-full md:w-1/3 pr-4 mt-2 inline-block'>
-                        <div className="p-3 text-center rounded column-1">
+                        <div className="text-center rounded column-1">
                             <div className="text-center">
                                 {/* <img src={Messenger} alt="house-moving"  className="mx-auto rounded-full w-20"/> */}
                             </div>
                             <div className="text-2xl uppercase my-3 font-medium tracking-wider">Languages and Tools</div>
                             <div className="py-2">
-                                Different Languages for different usecases
+                                Different programming Languages for different usecases
                                 <button className="mx-auto block capitalize my-4 btn flat-btn text-white">Check Out</button>
                             </div>
                         </div>
                     </div>
 
                     <div className='w-full md:w-1/3 pr-4 mt-2 inline-block'>
-                        <div className="p-3 text-center rounded column-2">
+                        <div className="text-center rounded column-2">
                             <div className="text-center">
                                 {/* <img src={Office} alt="house-moving"  className="mx-auto rounded-full w-20"/> */}
                             </div>
                             <div className="text-2xl uppercase my-3 font-medium tracking-wider">Team and Product</div>
                             <div className="py-2">
-                                Team of Big Talent
+                                Team of Big Talent managing your products to be big
                                 <button className="mx-auto block capitalize my-4 btn flat-btn text-white">Check out</button>
                             </div>
                         </div>
@@ -102,7 +102,7 @@ const FeaturedEvents = (props) => {
                             </div>
                             <div className="text-2xl uppercase my-3 font-medium tracking-wider">Solutions and Others</div>
                             <div className="py-2">
-                                Problem specific Solutions
+                                Big works with others. We integrate from all all sides of tech
                                 <button className="mx-auto block capitalize my-4 btn flat-btn text-white">Check out</button>
                             </div>
                         </div>
