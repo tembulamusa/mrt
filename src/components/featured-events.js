@@ -4,6 +4,7 @@ import makeRequest from "./utils/fetch-request";
 import Messenger from '../assets/img/services/messenger.jpg'
 import Office from '../assets/img/services/house.jpg'
 import Courier from '../assets/img/services/pest.png'
+import { IoIosMailOpen } from "react-icons/io";
 
 
 const FeaturedEvents = (props) => {
@@ -47,14 +48,21 @@ const FeaturedEvents = (props) => {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-6">
-                                <h1 className="">
-                                    Our Services
-                                </h1>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="">
-                                    subscribe
+                                <div>
+                                    <div className="inline-block mr-2 opacity-60">
+                                        <IoIosMailOpen size={40}/>
+                                    </div>
+                                    <div className="inline-block opacity-80">
+                                        <h1 className="capitalize font-bold tracking-wider text-2xl">
+                                            Contact for Problem Specific Approach
+                                        </h1>
+                                        <p>Your Problem is unique and requires the specific solution</p>
+                                    </div>
                                 </div>
+                            </div>
+                            <div className="col-md-6 relative">
+                            <div id="mc_embed_signup_scroll" className="mc-form"><input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email address...." value=""/><button id="mc-embedded-subscribe" type="submit" name="subscribe"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="primary-text-color" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M48 448l416-192L48 64v149.333L346 256 48 298.667z"></path></svg></button></div>
+
                             </div>
                         </div>
                     </div>

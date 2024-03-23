@@ -69,11 +69,10 @@ code {
 }
 
 .transition-block .title-block {
-  padding-bottom: 60px;
+  padding-bottom: 40px;
   padding-top: 40px;
   border-bottom: 1px solid #ffffff45;
 }
-
 #jumbotron {
   /* background: url('./assets/backgrounds/jumbotron.png'); */
   background-size: cover;
@@ -304,22 +303,22 @@ ul {
 }
 
 .email {
-  background: #333333 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border: 0 none;
   border-radius: 3px 0 0 3px;
   color: #666666;
   font-size: 14px;
   font-weight: 300;
-  height: 37px;
+  height: 50px;
   padding: 0 18px;
   width: calc(100% - 55px);
 }
 .mc-news {
-  left: -5000px;
+  /* left: -5000px; */
   position: absolute;
 }
 #mc_embed_signup_scroll > button {
-  background: #333333 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   border-radius: 0 3px 3px 0;
   color: #00bea2;
   font-size: 14px;
