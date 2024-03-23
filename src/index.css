@@ -40,6 +40,29 @@ code {
   padding-top: 20px;
   padding-bottom: 120px;
 }
+.column-1 {
+  background: url('./assets/img/backgrounds/column-bg-1.png');
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: center center;
+
+}
+
+.column-2 {
+  background: url('./assets/img/backgrounds/column-bg-2.png');
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: center center;
+
+}
+
+.column-3 {
+  background: url('./assets/img/backgrounds/column-bg-3.png');
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: center center;
+
+}
 
 .flat-btn {
   border: 1px solid #ffffff65;
