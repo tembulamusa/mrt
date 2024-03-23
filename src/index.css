@@ -29,10 +29,26 @@ code {
   background-size: cover;
   background-repeat: no-repeat;
 }
-#subscribe {
-  background: url('./assets/backgrounds/subscribe.svg');
+
+.transition-block {
+  
+}
+.transition-block {
+  background: url('./assets/img/backgrounds/transition.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  padding-top: 20px;
+  padding-bottom: 120px;
+}
+
+.flat-btn {
+  border: 1px solid #ffffff65;
+}
+
+.transition-block .title-block {
+  padding-bottom: 60px;
+  padding-top: 40px;
+  border-bottom: 1px solid #ffffff45;
 }
 
 #jumbotron {

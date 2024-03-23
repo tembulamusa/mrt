@@ -46,12 +46,12 @@ const Header = (props) => {
                             <Link to={"/"} className='py-2 pt-3 mr-5 inline-block hover:text-white hover:opacity-70'>Home </Link>
                             <Link to={"/services"} className='py-2 pt-3 mr-5 inline-block hover:text-white hover:opacity-70'>Services </Link>
                             <Link to={"/contact"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>Contact Us</Link>
-                            <Link to={"/tech-stacks"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>Tech Stacks</Link>
-                            <Link to={"/customers"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>customers</Link>
+                            <Link to={"/tech-stacks"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>Talent Scouting</Link>
+                            <Link to={"/customers"} className='py-2 pt-3 mr-3 inline-block hover:text-white hover:opacity-70'>Partnering</Link>
                         </div>
                         <div className='w-20 flex-col text-align-right'>
                         <div className='float-end'>
-                            <button className='px-3 py-2 bg-red-500 text-white my-2 rounded-md shadow'><span className='d-none md:inline-block'>Get a </span>Free Quote</button>
+                            <button className='px-3 py-2 bg-red-500 text-white my-2 rounded-md shadow'>Consult Now</button>
                         </div>
                     </div></div>
                 </div>
