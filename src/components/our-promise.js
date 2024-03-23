@@ -1,12 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import { FaHandshake } from "react-icons/fa";
 import { FaCommentDollar } from "react-icons/fa";
 import { FaRegMoneyBillAlt } from "react-icons/fa";
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 
 
 const Teams = ["tusker", "ulinzi", "nairobi", "shabana","kenya_police", "posta", "nzoia", "muranga"]
 
 const OurPromise = (props) => {
+    const [key, setKey] = useState("areas");
+
     return (
         <>
             
@@ -25,6 +29,23 @@ const OurPromise = (props) => {
                         </div>
                     </div>
                     <div className="w-full md:w-2/3 inline-block p-3">
+
+                        {/* Tabs */}
+
+                        <Tabs
+                            id="events-selector"
+                            activeKey={key}
+                            onSelect={(k) => setKey(k)}
+                            className="events-selector mb-3"
+                            >
+                            <Tab eventKey="areas" title="Key Areas">
+                                Scrolling areas etc
+                            </Tab>
+                            <Tab eventKey="business" title="Business Sizes">
+                                Scrolling business with descriptions
+                            </Tab>
+                            
+                        </Tabs>
                         <div className="border border-gray-200 rounded-md px-2 pb-3">
                         <div className="border-b border-gray-200 pb-2 mb-2 text-center text-2xl py-2">Business</div>
                         <div className='w-full md:w-1/2 p-2 mt-2 inline-block'>
